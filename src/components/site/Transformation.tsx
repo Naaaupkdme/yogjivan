@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import beforeImage from "@/assets/fb_img_1690971312359.jpg.asset.json";
-import afterImage from "@/assets/img_20260620_125938.jpg.asset.json";
+import beforeImage from "@/assets/img_3777.jpg.asset.json";
+import afterImage from "@/assets/img_5569.jpg.asset.json";
 
 const stories = [
   { label: "Alignment", value: "+72%", detail: "More stable posture and body control across seated, standing, and advanced work." },
@@ -45,7 +45,7 @@ export function Transformation() {
 
           <div className="glass-luxe rounded-[2rem] p-4 sm:p-5">
             <div className="relative overflow-hidden rounded-[1.5rem] border border-border/70">
-              <img src={afterImage.url} alt="Present-day Yog Jivan founder meditation portrait" className="aspect-[4/5] w-full object-cover" loading="lazy" />
+              <img src={afterImage.url} alt="Refined yoga expression — present mastery" className="h-[320px] sm:h-[420px] md:h-[520px] w-full object-cover" loading="lazy" />
               <div className="absolute inset-y-0 left-0 overflow-hidden" style={{ width: `${position}%` }}>
                 <img src={beforeImage.url} alt="Early founder yoga practice photo" className="h-full w-full object-cover" loading="lazy" />
               </div>
