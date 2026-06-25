@@ -20,7 +20,7 @@ const THEMES: { id: ThemeName; label: string }[] = [
   { id: "ivory", label: "Ivory Sanctuary" },
 ];
 
-const WHATSAPP = "https://wa.me/84000000000?text=Hello%20Yog%20Jivan%2C%20I%27d%20like%20to%20book%20a%20free%20trial.";
+const WHATSAPP = "https://wa.me/84782046066?text=Hello%20Yog%20Jivan%2C%20I%27d%20like%20to%20book%20a%20free%20trial.";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);

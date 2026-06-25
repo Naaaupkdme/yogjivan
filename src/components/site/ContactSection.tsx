@@ -13,7 +13,7 @@ const schema = z.object({
 });
 
 type Values = z.infer<typeof schema>;
-const WHATSAPP = "84000000000";
+const WHATSAPP = "84782046066";
 
 const studios = [
   { title: "Studio One", body: "An urban sanctuary in Hai Duong for private and refined group practice.", img: studioImg.url },
@@ -85,7 +85,7 @@ export function ContactSection() {
             <div className="grid grid-cols-2 gap-3">
               {[
                 { Icon: MessageCircle, title: "WhatsApp", body: "Instant booking", href: `https://wa.me/${WHATSAPP}` },
-                { Icon: Phone, title: "Phone", body: "+84 000 000 000", href: "tel:+84000000000" },
+                { Icon: Phone, title: "Phone", body: "+84 782 046 066", href: "tel:+84782046066" },
                 { Icon: Mail, title: "Email", body: "hello@yogjivan.com", href: "mailto:hello@yogjivan.com" },
                 { Icon: MapPin, title: "Studios", body: "Hai Duong, Vietnam", href: "https://maps.google.com/?q=Hai+Duong,+Vietnam" },
               ].map(({ Icon, title, body, href }) => (

@@ -49,34 +49,58 @@ export function Hero() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Ping-pong (forward → reverse → forward) seamless loop
+  // Seamless ping-pong loop (forward ↔ reverse). No freeze, no jump cut.
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    v.loop = false;
+    v.muted = true;
+    v.playbackRate = 0.9;
+
     let reverse = false;
     let raf = 0;
     let last = performance.now();
+    const EDGE = 0.18; // seconds of headroom from each end to swap direction smoothly
+
+    const startForward = () => {
+      reverse = false;
+      v.play().catch(() => {});
+    };
+    const startReverse = () => {
+      reverse = true;
+      v.pause();
+      last = performance.now();
+    };
+
     const tick = (now: number) => {
       const dt = (now - last) / 1000;
       last = now;
-      if (v.duration && !v.paused === false) {
-        // when reversing, drive currentTime manually
-      }
+      const d = v.duration || 0;
       if (reverse) {
-        v.currentTime = Math.max(0, v.currentTime - dt);
-        if (v.currentTime <= 0.05) { reverse = false; v.play().catch(() => {}); }
+        const next = v.currentTime - dt * 0.9;
+        if (next <= EDGE) {
+          v.currentTime = EDGE;
+          startForward();
+        } else {
+          v.currentTime = next;
+        }
+      } else if (d > 0 && v.currentTime >= d - EDGE) {
+        startReverse();
       }
       raf = requestAnimationFrame(tick);
     };
-    const onEnded = () => {
-      reverse = true;
-      v.pause();
+
+    const onLoaded = () => {
+      startForward();
+      raf = requestAnimationFrame(tick);
     };
-    v.addEventListener("ended", onEnded);
-    v.loop = false;
-    v.play().catch(() => {});
-    raf = requestAnimationFrame(tick);
-    return () => { cancelAnimationFrame(raf); v.removeEventListener("ended", onEnded); };
+    if (v.readyState >= 2) onLoaded();
+    else v.addEventListener("loadeddata", onLoaded, { once: true });
+
+    return () => {
+      cancelAnimationFrame(raf);
+      v.removeEventListener("loadeddata", onLoaded);
+    };
   }, []);
 
   return (
