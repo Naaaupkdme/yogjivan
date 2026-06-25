@@ -126,12 +126,12 @@ const copy: Record<Lang, Copy> = {
       freeTrial: "Học thử",
     },
     hero: {
-      eyebrow: "Không gian wellness cao cấp tại Hải Dương",
-      title: ["Chuyển hóa cơ thể.", "Nâng tầm tâm trí.", "Chạm đến an lành đích thực."],
-      sub: "Yog Jivan là không gian yoga và chuyển hóa cao cấp do Master Anil Choudhary dẫn dắt — nơi trị liệu chuyên sâu, sự tĩnh lặng tinh thần và phong cách chuyên nghiệp toàn cầu hội tụ trong một hành trình nhập vai.",
+      eyebrow: "Sanctuary wellness riêng tư · Hải Dương",
+      title: ["Minh triết Ấn Độ cổ.", "Trị liệu hiện đại.", "Sang trọng tĩnh lặng."],
+      sub: "Dẫn dắt bởi Master Anil Choudhary — nơi chữa lành chạm đến sự an tĩnh.",
       primary: "Đặt buổi học thử",
       secondary: "Khám phá chương trình",
-      trust: ["12+ năm kinh nghiệm", "2 studio cao cấp", "1000+ cuộc đời chuyển hóa"],
+      trust: ["12+ năm", "2 studio", "1000+ chuyển hóa"],
     },
     story: {
       eyebrow: "Hành trình người sáng lập",
