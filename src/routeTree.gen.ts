@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as PersonalTrainingRouteImport } from './routes/personal-training'
 import { Route as OnlineRouteImport } from './routes/online'
@@ -17,6 +18,11 @@ import { Route as CorporateRouteImport } from './routes/corporate'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TestimonialsRoute = TestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/online': typeof OnlineRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
+  '/testimonials': typeof TestimonialsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/online': typeof OnlineRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
+  '/testimonials': typeof TestimonialsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/online': typeof OnlineRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
+  '/testimonials': typeof TestimonialsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/online'
     | '/personal-training'
     | '/programs'
+    | '/testimonials'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/online'
     | '/personal-training'
     | '/programs'
+    | '/testimonials'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/online'
     | '/personal-training'
     | '/programs'
+    | '/testimonials'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,10 +131,18 @@ export interface RootRouteChildren {
   OnlineRoute: typeof OnlineRoute
   PersonalTrainingRoute: typeof PersonalTrainingRoute
   ProgramsRoute: typeof ProgramsRoute
+  TestimonialsRoute: typeof TestimonialsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/testimonials': {
+      id: '/testimonials'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programs': {
       id: '/programs'
       path: '/programs'
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   OnlineRoute: OnlineRoute,
   PersonalTrainingRoute: PersonalTrainingRoute,
   ProgramsRoute: ProgramsRoute,
+  TestimonialsRoute: TestimonialsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
