@@ -1,26 +1,223 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 export type Lang = "EN" | "VI";
+export type ThemeName = "midnight" | "earth" | "ivory";
 
-const Ctx = createContext<{ lang: Lang; setLang: (l: Lang) => void }>({
+type Copy = {
+  nav: {
+    home: string;
+    about: string;
+    programs: string;
+    online: string;
+    corporate: string;
+    gallery: string;
+    contact: string;
+    book: string;
+    freeTrial: string;
+  };
+  hero: {
+    eyebrow: string;
+    title: string[];
+    sub: string;
+    primary: string;
+    secondary: string;
+    trust: string[];
+  };
+  story: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+  };
+  trust: {
+    eyebrow: string;
+    title: string;
+    sub: string;
+  };
+  services: {
+    eyebrow: string;
+    title: string;
+    sub: string;
+  };
+  community: {
+    eyebrow: string;
+    title: string;
+    sub: string;
+  };
+  contact: {
+    eyebrow: string;
+    title: string;
+    sub: string;
+    formTitle: string;
+    note: string;
+    submit: string;
+  };
+  footer: {
+    newsletter: string;
+    newsletterSub: string;
+    subscribe: string;
+  };
+};
+
+const copy: Record<Lang, Copy> = {
+  EN: {
+    nav: {
+      home: "Home",
+      about: "About",
+      programs: "Programs",
+      online: "Online Yoga",
+      corporate: "Corporate",
+      gallery: "Gallery",
+      contact: "Contact",
+      book: "Book Free Trial",
+      freeTrial: "Free Trial",
+    },
+    hero: {
+      eyebrow: "Luxury wellness sanctuary in Hai Duong",
+      title: ["Transform Your Body.", "Elevate Your Mind.", "Experience True Wellness."],
+      sub: "Yog Jivan is a premium yoga and transformation sanctuary guided by Master Anil Choudhary — where therapeutic mastery, spiritual calm, and global professionalism come together in one immersive journey.",
+      primary: "Book Free Trial",
+      secondary: "Explore Programs",
+      trust: ["12+ years experience", "2 premium studios", "1000+ lives transformed"],
+    },
+    story: {
+      eyebrow: "Founder journey",
+      title: "A life built around discipline, healing, and service.",
+      intro: "From India to Vietnam, Yog Jivan grew from a personal practice into a luxury wellness sanctuary for students seeking transformation, therapy, depth, and belonging.",
+    },
+    trust: {
+      eyebrow: "Trust & credibility",
+      title: "Proof, lineage, and real human transformation.",
+      sub: "A premium wellness brand must feel emotionally resonant and professionally credible. This section brings both together.",
+    },
+    services: {
+      eyebrow: "Signature pathways",
+      title: "Programs designed for outcomes, not just attendance.",
+      sub: "Every service is positioned as a guided transformation with a clear benefit, emotional promise, and next step.",
+    },
+    community: {
+      eyebrow: "Community & celebration",
+      title: "A sanctuary held by people, rituals, and shared moments.",
+      sub: "Retreats, outdoor sessions, group celebrations, and student milestones turn Yog Jivan into a living community — not a quiet studio with empty walls.",
+    },
+    contact: {
+      eyebrow: "Begin your journey",
+      title: "Enter the sanctuary with a conversation.",
+      sub: "Tell us where you are in your journey and we will guide you to the right practice, format, and studio experience.",
+      formTitle: "Book a private consultation",
+      note: "Replies are personal and usually fast on WhatsApp.",
+      submit: "Send via WhatsApp",
+    },
+    footer: {
+      newsletter: "Receive sanctuary notes",
+      newsletterSub: "Occasional retreat news, practice guidance, and luxury wellness updates.",
+      subscribe: "Subscribe",
+    },
+  },
+  VI: {
+    nav: {
+      home: "Trang chủ",
+      about: "Giới thiệu",
+      programs: "Chương trình",
+      online: "Yoga Online",
+      corporate: "Doanh nghiệp",
+      gallery: "Thư viện",
+      contact: "Liên hệ",
+      book: "Đặt buổi học thử",
+      freeTrial: "Học thử",
+    },
+    hero: {
+      eyebrow: "Không gian wellness cao cấp tại Hải Dương",
+      title: ["Chuyển hóa cơ thể.", "Nâng tầm tâm trí.", "Chạm đến an lành đích thực."],
+      sub: "Yog Jivan là không gian yoga và chuyển hóa cao cấp do Master Anil Choudhary dẫn dắt — nơi trị liệu chuyên sâu, sự tĩnh lặng tinh thần và phong cách chuyên nghiệp toàn cầu hội tụ trong một hành trình nhập vai.",
+      primary: "Đặt buổi học thử",
+      secondary: "Khám phá chương trình",
+      trust: ["12+ năm kinh nghiệm", "2 studio cao cấp", "1000+ cuộc đời chuyển hóa"],
+    },
+    story: {
+      eyebrow: "Hành trình người sáng lập",
+      title: "Một cuộc đời được xây dựng bằng kỷ luật, chữa lành và phụng sự.",
+      intro: "Từ Ấn Độ đến Việt Nam, Yog Jivan phát triển từ một hành trình tu tập cá nhân thành không gian wellness cao cấp dành cho những học viên tìm kiếm chuyển hóa, trị liệu, chiều sâu và sự kết nối.",
+    },
+    trust: {
+      eyebrow: "Niềm tin & uy tín",
+      title: "Minh chứng thực tế, nền tảng chuyên môn và chuyển hóa chân thực.",
+      sub: "Một thương hiệu wellness cao cấp cần vừa chạm cảm xúc vừa tạo niềm tin mạnh mẽ. Phần này mang cả hai đến cùng lúc.",
+    },
+    services: {
+      eyebrow: "Lộ trình đặc trưng",
+      title: "Chương trình được thiết kế cho kết quả, không chỉ để tham gia.",
+      sub: "Mỗi dịch vụ là một hành trình được dẫn dắt rõ ràng về lợi ích, mục tiêu và bước tiếp theo.",
+    },
+    community: {
+      eyebrow: "Cộng đồng & lễ hội",
+      title: "Một sanctuary được nuôi dưỡng bởi con người, nghi thức và những khoảnh khắc chung.",
+      sub: "Retreat, lớp học ngoài trời, các sự kiện cộng đồng và dấu mốc học viên biến Yog Jivan thành một cộng đồng sống động — không chỉ là một studio yên tĩnh.",
+    },
+    contact: {
+      eyebrow: "Bắt đầu hành trình",
+      title: "Bước vào sanctuary bằng một cuộc trò chuyện.",
+      sub: "Hãy chia sẻ bạn đang ở đâu trên hành trình của mình, chúng tôi sẽ dẫn bạn tới hình thức tập và trải nghiệm phù hợp nhất.",
+      formTitle: "Đặt lịch tư vấn riêng",
+      note: "Phản hồi cá nhân và thường rất nhanh qua WhatsApp.",
+      submit: "Gửi qua WhatsApp",
+    },
+    footer: {
+      newsletter: "Nhận bản tin sanctuary",
+      newsletterSub: "Cập nhật retreat, hướng dẫn luyện tập và tin tức wellness cao cấp một cách chọn lọc.",
+      subscribe: "Đăng ký",
+    },
+  },
+};
+
+type ContextValue = {
+  lang: Lang;
+  setLang: (lang: Lang) => void;
+  theme: ThemeName;
+  setTheme: (theme: ThemeName) => void;
+  t: Copy;
+};
+
+const Ctx = createContext<ContextValue>({
   lang: "EN",
   setLang: () => {},
+  theme: "midnight",
+  setTheme: () => {},
+  t: copy.EN,
 });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("EN");
+  const [theme, setThemeState] = useState<ThemeName>("midnight");
+
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("yj_lang") as Lang | null;
-      if (saved === "EN" || saved === "VI") setLangState(saved);
+      const savedLang = localStorage.getItem("yj_lang") as Lang | null;
+      if (savedLang === "EN" || savedLang === "VI") setLangState(savedLang);
+      const savedTheme = localStorage.getItem("yj_theme") as ThemeName | null;
+      if (savedTheme === "midnight" || savedTheme === "earth" || savedTheme === "ivory") setThemeState(savedTheme);
     } catch {}
   }, []);
-  const setLang = (l: Lang) => {
-    setLangState(l);
-    try { localStorage.setItem("yj_lang", l); } catch {}
-    if (typeof document !== "undefined") document.documentElement.lang = l === "VI" ? "vi" : "en";
-  };
-  return <Ctx.Provider value={{ lang, setLang }}>{children}</Ctx.Provider>;
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = lang === "VI" ? "vi" : "en";
+      document.documentElement.dataset.theme = theme;
+    }
+    try {
+      localStorage.setItem("yj_lang", lang);
+      localStorage.setItem("yj_theme", theme);
+    } catch {}
+  }, [lang, theme]);
+
+  const value = useMemo<ContextValue>(() => ({
+    lang,
+    setLang: setLangState,
+    theme,
+    setTheme: setThemeState,
+    t: copy[lang],
+  }), [lang, theme]);
+
+  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 
 export const useLang = () => useContext(Ctx);

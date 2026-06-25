@@ -20,11 +20,9 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <p className="eyebrow">404</p>
-        <h1 className="mt-3 text-5xl">Page not found</h1>
-        <p className="mt-3 text-sm text-muted-foreground">
-          This path drifted off the mat. Return to the studio.
-        </p>
+        <p className="eyebrow justify-center">404</p>
+        <h1 className="mt-4 text-5xl">Page not found</h1>
+        <p className="mt-3 text-sm text-muted-foreground">This path drifted beyond the sanctuary. Return home.</p>
         <div className="mt-8">
           <Link to="/" className="btn-gold">Go home</Link>
         </div>
@@ -57,32 +55,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Yog Jivan — Luxury Yoga, Wellness & Transformation | Hai Duong, Vietnam" },
-      { name: "description", content: "Premium yoga, therapeutic healing and holistic wellness with Master Anil Choudhary. Two studios in Hai Duong, Vietnam. Personal training, online programs, corporate wellness." },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { title: "Yog Jivan — Ultra Luxury Wellness Sanctuary" },
+      { name: "description", content: "World-class luxury yoga, therapeutic healing, immersive wellness, and transformational programs with Yog Jivan in Hai Duong, Vietnam." },
       { name: "author", content: "Yog Jivan" },
       { property: "og:site_name", content: "Yog Jivan" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "theme-color", content: "#0B0B0B" },
+      { name: "theme-color", content: "#151210" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" },
     ],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "@id": "https://yogjivan.com/#org",
+          "@type": "HealthAndBeautyBusiness",
           name: "Yog Jivan",
-          description: "Luxury yoga studio offering authentic yoga, therapeutic practices, and holistic wellness in Hai Duong, Vietnam.",
-          image: "https://yogjivan.com/og-image.jpg",
-          telephone: "+84-000-000-000",
+          description: "Luxury yoga and wellness sanctuary offering private training, therapeutic yoga, online programs and corporate wellness.",
           priceRange: "$$$",
           address: {
             "@type": "PostalAddress",
@@ -117,7 +112,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
-        <div className="relative min-h-screen bg-background text-foreground">
+        <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
           <SiteHeader />
           <main>
             <Outlet />
