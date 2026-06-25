@@ -48,17 +48,18 @@ export function SiteHeader() {
     : "bg-transparent border border-transparent";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 safe-pt pointer-events-none" style={{ height: "var(--hdr-h,64px)" }}>
-      <style>{`:root{--hdr-h:64px}@media(min-width:1024px){:root{--hdr-h:80px}}`}</style>
+    <header className="fixed inset-x-0 top-0 z-50 safe-pt pointer-events-none" style={{ height: "var(--hdr-h,72px)" }}>
+      <style>{`:root{--hdr-h:72px}@media(min-width:1024px){:root{--hdr-h:92px}}`}</style>
       <div className="container-luxe h-full pt-2 sm:pt-3 pointer-events-none">
-        <div className={`pointer-events-auto grid h-[calc(var(--hdr-h,64px)-0.75rem)] grid-cols-[minmax(0,1fr)_auto] items-center rounded-full px-3 sm:px-4 transition-[background,border,box-shadow] duration-500 ${shell}`}>
+        <div className={`pointer-events-auto grid h-[calc(var(--hdr-h,72px)-0.75rem)] grid-cols-[minmax(0,1fr)_auto] items-center rounded-full px-3 sm:px-4 transition-[background,border,box-shadow] duration-500 ${shell}`}>
           <Link to="/" className="flex min-w-0 items-center gap-3 group" aria-label="Yog Jivan home">
-            <img src={logo.url} alt="" className="h-9 w-9 shrink-0 rounded-full object-cover sm:h-10 sm:w-10 transition-transform duration-500 group-hover:scale-105" />
+            <img src={logo.url} alt="" className="h-12 w-12 shrink-0 rounded-full object-cover sm:h-13 sm:w-13 lg:h-14 lg:w-14 ring-1 ring-[color-mix(in_oklab,var(--gold)_30%,transparent)] transition-transform duration-500 group-hover:scale-105" style={{height:'3rem',width:'3rem'}} />
             <div className="min-w-0 hidden sm:block">
-              <div className="truncate font-display text-[1.05rem] leading-tight">Yog Jivan</div>
-              <div className="truncate text-[0.55rem] uppercase tracking-[0.28em] text-muted-foreground">Sanctuary</div>
+              <div className="truncate font-display text-[1.35rem] lg:text-[1.5rem] leading-tight tracking-tight">Yog Jivan</div>
+              <div className="truncate text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">Sanctuary</div>
             </div>
           </Link>
+
 
           <div className="hidden xl:flex items-center justify-center gap-7 absolute left-1/2 -translate-x-1/2">
             <nav className="flex items-center gap-7">
