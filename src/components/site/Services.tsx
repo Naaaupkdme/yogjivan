@@ -78,7 +78,7 @@ export function Services() {
             >
               <Link to={service.to} className="glass-luxe hover-lift group block overflow-hidden rounded-[1.6rem]">
                 <div className="relative overflow-hidden">
-                  <img src={service.image.url} alt={service.title} className="aspect-[5/4] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy" />
+                  <img src={service.image.url} alt={service.title} className="h-[240px] sm:h-[280px] md:h-[320px] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy" />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,color-mix(in_oklab,var(--onyx)_58%,transparent))]" />
                   <div className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-white/20 bg-card/35 text-primary">
                     <ArrowUpRight className="h-4 w-4" />
