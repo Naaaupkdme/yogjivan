@@ -9,13 +9,14 @@ export function FloatingWhatsApp() {
       target="_blank"
       rel="noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full text-white shadow-[0_20px_50px_-10px_rgba(37,211,102,0.55)] transition-transform hover:scale-110"
+      className="fixed bottom-4 right-4 z-40 grid h-14 w-14 place-items-center rounded-full border border-white/15 text-[color:var(--foreground)] shadow-[0_22px_60px_-18px_rgba(0,0,0,0.45)] transition-transform hover:scale-105 sm:bottom-5 sm:right-5"
       style={{
-        background: "linear-gradient(135deg,#25D366,#128C7E)",
+        background: "linear-gradient(135deg, color-mix(in oklab, var(--gold) 38%, #20cc68), #16a85a)",
         marginBottom: "env(safe-area-inset-bottom,0px)",
       }}
     >
-      <span className="absolute inset-0 rounded-full animate-ping bg-[#25D366]/40" />
+      <span className="absolute inset-0 rounded-full border border-white/20" />
+      <span className="absolute inset-0 rounded-full" style={{ animation: "pulse-ring 2.2s ease-out infinite", background: "rgba(34,197,94,0.22)" }} />
       <MessageCircle className="relative h-6 w-6" />
     </a>
   );
