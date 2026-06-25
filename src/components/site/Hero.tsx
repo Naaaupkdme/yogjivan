@@ -1,20 +1,31 @@
 import { Link } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Play } from "lucide-react";
 import heroVideo from "@/assets/hero-meditation.mp4.asset.json";
 import heroPoster from "@/assets/img_20260620_125938.jpg.asset.json";
 import { AmbientCanvas } from "@/components/site/AmbientCanvas";
 import { useLang } from "@/lib/language";
 
+const QUOTES = [
+  { q: "Yoga is the journey of the self, through the self, to the self.", a: "Bhagavad Gita" },
+  { q: "Yoga does not just change the way we see things. It transforms the person who sees.", a: "B.K.S. Iyengar" },
+  { q: "Stillness is where creativity and solutions are found.", a: "Patanjali" },
+  { q: "When you inhale, you are taking the strength from God. When you exhale, it represents the service you give.", a: "B.K.S. Iyengar" },
+];
+
 export function Hero() {
   const rootRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { t } = useLang();
   const { scrollYProgress } = useScroll({ target: rootRef, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+
+  const [qIdx, setQIdx] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     if (!contentRef.current) return;
@@ -25,37 +36,96 @@ export function Hero() {
     return () => ctx.revert();
   }, []);
 
+  // Rotating quotes
+  useEffect(() => {
+    const id = setInterval(() => setQIdx((i) => (i + 1) % QUOTES.length), 8000);
+    return () => clearInterval(id);
+  }, []);
+
+  // Hide scroll indicator after first scroll
+  useEffect(() => {
+    const onScroll = () => { if (window.scrollY > 40) setScrolled(true); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Ping-pong (forward → reverse → forward) seamless loop
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    let reverse = false;
+    let raf = 0;
+    let last = performance.now();
+    const tick = (now: number) => {
+      const dt = (now - last) / 1000;
+      last = now;
+      if (v.duration && !v.paused === false) {
+        // when reversing, drive currentTime manually
+      }
+      if (reverse) {
+        v.currentTime = Math.max(0, v.currentTime - dt);
+        if (v.currentTime <= 0.05) { reverse = false; v.play().catch(() => {}); }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    const onEnded = () => {
+      reverse = true;
+      v.pause();
+    };
+    v.addEventListener("ended", onEnded);
+    v.loop = false;
+    v.play().catch(() => {});
+    raf = requestAnimationFrame(tick);
+    return () => { cancelAnimationFrame(raf); v.removeEventListener("ended", onEnded); };
+  }, []);
+
   return (
-    <section ref={rootRef} className="relative overflow-hidden" style={{ minHeight: "100svh", paddingTop: "var(--hdr-h,64px)" }}>
+    <section ref={rootRef} className="relative overflow-hidden" style={{ minHeight: "100svh", paddingTop: "var(--hdr-h,72px)" }}>
       <motion.div style={{ y, scale }} className="absolute inset-0">
-        <video src={heroVideo.url} poster={heroPoster.url} autoPlay muted loop playsInline preload="metadata"
+        <video ref={videoRef} src={heroVideo.url} poster={heroPoster.url} autoPlay muted playsInline preload="auto"
           className="h-full w-full object-cover" />
       </motion.div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_46%,transparent),color-mix(in_oklab,var(--onyx)_72%,transparent)_50%,color-mix(in_oklab,var(--onyx)_92%,transparent))]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_30%,color-mix(in_oklab,var(--gold)_14%,transparent),transparent_38%),radial-gradient(circle_at_85%_75%,color-mix(in_oklab,var(--gold-soft)_10%,transparent),transparent_42%)]" />
-      <div className="pointer-events-none absolute inset-0 ambient-grid opacity-[0.08]" />
+      {/* Cinematic overlays — stronger on the right (desktop) where content lives */}
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_42%,transparent),color-mix(in_oklab,var(--onyx)_72%,transparent)_55%,color-mix(in_oklab,var(--onyx)_94%,transparent))]" />
+      <div className="absolute inset-0 hidden lg:block bg-[linear-gradient(90deg,transparent,transparent_40%,color-mix(in_oklab,var(--onyx)_72%,transparent)_75%,color-mix(in_oklab,var(--onyx)_88%,transparent))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_30%,color-mix(in_oklab,var(--gold)_12%,transparent),transparent_38%),radial-gradient(circle_at_85%_75%,color-mix(in_oklab,var(--gold-soft)_10%,transparent),transparent_42%)]" />
+      <div className="pointer-events-none absolute inset-0 ambient-grid opacity-[0.06]" />
       <div className="pointer-events-none absolute left-[-10%] top-[18%] h-[28rem] w-[28rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 22%, transparent), transparent 70%)", animation: "breathe 14s ease-in-out infinite" }} />
       <div className="pointer-events-none absolute right-[-6%] bottom-[10%] h-[34rem] w-[34rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold-soft) 16%, transparent), transparent 68%)", animation: "breathe 18s ease-in-out infinite reverse" }} />
+
+      {/* Sacred geometry — slow rotating mandala */}
+      <div className="pointer-events-none absolute inset-0 grid place-items-center opacity-[0.07]">
+        <svg viewBox="0 0 600 600" className="h-[80vmin] w-[80vmin] animate-[spin_120s_linear_infinite]" aria-hidden>
+          <g fill="none" stroke="currentColor" strokeWidth="0.6" className="text-primary">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <circle key={i} cx="300" cy="300" r={60 + i * 20} />
+            ))}
+            {Array.from({ length: 24 }).map((_, i) => (
+              <line key={i} x1="300" y1="300" x2={300 + 280 * Math.cos((i * Math.PI) / 12)} y2={300 + 280 * Math.sin((i * Math.PI) / 12)} />
+            ))}
+          </g>
+        </svg>
+      </div>
+
       <div className="pointer-events-none absolute inset-0 opacity-60"><AmbientCanvas /></div>
 
-      <div className="container-luxe relative z-10 flex min-h-[calc(100svh-var(--hdr-h,64px))] items-center py-10 sm:py-14">
-        <div ref={contentRef} className="mx-auto w-full max-w-4xl text-center">
-          <div className="hero-reveal eyebrow justify-center">
+      <div className="container-luxe relative z-10 flex min-h-[calc(100svh-var(--hdr-h,72px))] items-end lg:items-center py-8 sm:py-12">
+        <div ref={contentRef} className="w-full lg:max-w-xl lg:ml-auto text-center lg:text-left">
+          <div className="hero-reveal eyebrow justify-center lg:justify-start">
             <span className="h-px w-10 bg-primary" />
             {t.hero.eyebrow}
-            <span className="h-px w-10 bg-primary" />
           </div>
-          <h1 className="mt-6 fluid-display mx-auto max-w-[16ch]">
+          <h1 className="mt-5 mx-auto lg:mx-0 max-w-[16ch]" style={{ fontSize: "clamp(2rem, 5.4vw, 4rem)", lineHeight: 1.05, fontFamily: "var(--font-display, serif)" }}>
             <span className="hero-reveal block">{t.hero.title[0]}</span>
             <span className="hero-reveal block italic text-gold-gradient">{t.hero.title[1]}</span>
-            <span className="hero-reveal block">{t.hero.title[2]}</span>
+            {t.hero.title[2] && <span className="hero-reveal block">{t.hero.title[2]}</span>}
           </h1>
-          <p className="hero-reveal mt-6 mx-auto max-w-xl text-[clamp(0.95rem,1.4vw,1.1rem)] leading-relaxed text-muted-foreground">
+          <p className="hero-reveal mt-5 mx-auto lg:mx-0 max-w-md text-[clamp(0.85rem,1.2vw,1rem)] leading-relaxed text-muted-foreground">
             {t.hero.sub}
           </p>
 
-          <div className="hero-reveal mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="hero-reveal mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-3">
             <Link to="/contact" className="btn-gold">
               {t.hero.primary} <ArrowRight className="h-4 w-4" />
             </Link>
@@ -64,21 +134,44 @@ export function Hero() {
             </Link>
           </div>
 
-          <div className="hero-reveal mt-10 flex flex-wrap justify-center gap-2.5">
+          <div className="hero-reveal mt-8 flex flex-wrap justify-center lg:justify-start gap-2">
             {t.hero.trust.map((item) => (
-              <div key={item} className="glass-soft rounded-full px-4 py-2 text-[0.62rem] uppercase tracking-[0.24em] text-foreground/88">
+              <div key={item} className="glass-soft rounded-full px-3.5 py-1.5 text-[0.58rem] uppercase tracking-[0.24em] text-foreground/88">
                 {item}
               </div>
             ))}
           </div>
+
+          {/* Rotating spiritual quote */}
+          <div className="hero-reveal mt-8 hidden lg:block min-h-[3.5rem]">
+            <AnimatePresence mode="wait">
+              <motion.blockquote key={qIdx}
+                initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 1.1, ease: "easeOut" }}
+                className="text-[0.78rem] italic text-muted-foreground/85 max-w-md">
+                "{QUOTES[qIdx].q}"
+                <footer className="not-italic mt-1 text-[0.55rem] uppercase tracking-[0.28em] text-primary/80">— {QUOTES[qIdx].a}</footer>
+              </motion.blockquote>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 text-muted-foreground">
-        <span className="text-[0.55rem] uppercase tracking-[0.32em]">Scroll</span>
-        <div className="h-10 w-px bg-gradient-to-b from-primary/70 to-transparent" />
-      </div>
+      {/* Scroll indicator — auto-hides after first scroll, never overlaps content */}
+      <AnimatePresence>
+        {!scrolled && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-muted-foreground">
+            <span className="text-[0.5rem] uppercase tracking-[0.32em]">Scroll</span>
+            <motion.div
+              animate={{ scaleY: [0.3, 1, 0.3], opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+              className="h-10 w-px origin-top bg-gradient-to-b from-primary/90 via-primary/40 to-transparent" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
