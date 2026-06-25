@@ -1,29 +1,42 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/site/Hero";
+import { About } from "@/components/site/About";
+import { Services } from "@/components/site/Services";
+import { Programs } from "@/components/site/Programs";
+import { Gallery } from "@/components/site/Gallery";
+import { Testimonials } from "@/components/site/Testimonials";
+import { Transformation } from "@/components/site/Transformation";
+import { Corporate } from "@/components/site/Corporate";
+import { ContactSection } from "@/components/site/ContactSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Yog Jivan — Luxury Yoga, Wellness & Transformation | Hai Duong, Vietnam" },
+      { name: "description", content: "Premium yoga studio in Hai Duong, Vietnam. Authentic yoga, therapeutic healing and holistic wellness with Master Anil Choudhary — 12+ years of experience." },
+      { name: "keywords", content: "Yoga Studio Vietnam, Yoga Hai Duong, Online Yoga Classes, Personal Yoga Training, Therapeutic Yoga Vietnam, Corporate Yoga Vietnam, Yoga Teacher Vietnam, Holistic Wellness Vietnam" },
+      { property: "og:title", content: "Yog Jivan — Luxury Yoga & Wellness" },
+      { property: "og:description", content: "Authentic yoga, therapeutic healing and holistic wellness with Master Anil Choudhary in Hai Duong, Vietnam." },
+      { property: "og:url", content: "/" },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Hero />
+      <About />
+      <Services />
+      <Programs />
+      <Transformation />
+      <Gallery />
+      <Testimonials />
+      <Corporate />
+      <ContactSection />
+    </>
   );
 }
