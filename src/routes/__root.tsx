@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
+import { LanguageProvider } from "@/lib/language";
 
 function NotFoundComponent() {
   return (
@@ -114,13 +116,16 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="relative min-h-screen bg-background text-foreground">
-        <SiteHeader />
-        <main>
-          <Outlet />
-        </main>
-        <SiteFooter />
-      </div>
+      <LanguageProvider>
+        <div className="relative min-h-screen bg-background text-foreground">
+          <SiteHeader />
+          <main>
+            <Outlet />
+          </main>
+          <SiteFooter />
+          <FloatingWhatsApp />
+        </div>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }

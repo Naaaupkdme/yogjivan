@@ -155,7 +155,25 @@
 }
 
 @utility section-pad {
-  padding-block: clamp(5rem, 10vw, 9rem);
+  padding-block: clamp(3.75rem, 7vw, 6.25rem);
+}
+
+@utility safe-pt {
+  padding-top: max(env(safe-area-inset-top), 0.5rem);
+}
+@utility safe-pb {
+  padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+}
+
+@utility fluid-display {
+  font-size: clamp(2rem, 7.5vw, 5rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
 }
 
 @keyframes breathe {
