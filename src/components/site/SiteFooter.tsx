@@ -83,7 +83,7 @@ export function SiteFooter() {
             </div>
             <div className="mt-5 flex items-center gap-2">
               {[
-                { href: "https://wa.me/84000000000", Icon: MessageCircle, label: "WhatsApp" },
+                { href: "https://wa.me/84782046066", Icon: MessageCircle, label: "WhatsApp" },
                 { href: "https://instagram.com", Icon: Instagram, label: "Instagram" },
                 { href: "https://facebook.com", Icon: Facebook, label: "Facebook" },
                 { href: "https://youtube.com", Icon: Youtube, label: "YouTube" },
@@ -111,7 +111,7 @@ export function SiteFooter() {
             <h4 className="eyebrow mb-4">Sanctuary</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><span>Hai Duong, Vietnam</span></li>
-              <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="tel:+84000000000" className="hover:text-foreground">+84 000 000 000</a></li>
+              <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="tel:+84782046066" className="hover:text-foreground">+84 782 046 066</a></li>
               <li className="flex gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="mailto:hello@yogjivan.com" className="hover:text-foreground">hello@yogjivan.com</a></li>
             </ul>
           </div>
