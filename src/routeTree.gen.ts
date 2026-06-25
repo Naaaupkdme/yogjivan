@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as PersonalTrainingRouteImport } from './routes/personal-training'
 import { Route as OnlineRouteImport } from './routes/online'
+import { Route as CorporateRouteImport } from './routes/corporate'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -30,6 +31,11 @@ const OnlineRoute = OnlineRouteImport.update({
   path: '/online',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CorporateRoute = CorporateRouteImport.update({
+  id: '/corporate',
+  path: '/corporate',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -44,6 +50,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/corporate': typeof CorporateRoute
   '/online': typeof OnlineRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/corporate': typeof CorporateRoute
   '/online': typeof OnlineRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
@@ -59,19 +67,33 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/corporate': typeof CorporateRoute
   '/online': typeof OnlineRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/online' | '/personal-training' | '/programs'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/corporate'
+    | '/online'
+    | '/personal-training'
+    | '/programs'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/online' | '/personal-training' | '/programs'
+  to:
+    | '/'
+    | '/about'
+    | '/corporate'
+    | '/online'
+    | '/personal-training'
+    | '/programs'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/corporate'
     | '/online'
     | '/personal-training'
     | '/programs'
@@ -80,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CorporateRoute: typeof CorporateRoute
   OnlineRoute: typeof OnlineRoute
   PersonalTrainingRoute: typeof PersonalTrainingRoute
   ProgramsRoute: typeof ProgramsRoute
@@ -108,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OnlineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/corporate': {
+      id: '/corporate'
+      path: '/corporate'
+      fullPath: '/corporate'
+      preLoaderRoute: typeof CorporateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -128,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CorporateRoute: CorporateRoute,
   OnlineRoute: OnlineRoute,
   PersonalTrainingRoute: PersonalTrainingRoute,
   ProgramsRoute: ProgramsRoute,
