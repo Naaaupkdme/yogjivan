@@ -1,67 +1,73 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 
-const TESTIMONIALS = [
-  { name: "Linh Pham", role: "Hanoi, Vietnam", quote: "Six months with Master Anil rebuilt my spine and quieted a decade of anxiety. The studio feels like another world." },
-  { name: "Arjun Mehta", role: "Indian expat, Hai Duong", quote: "Authentic Indian yoga, taught with depth I haven't found outside Rishikesh. The therapeutic work is extraordinary." },
-  { name: "Sophie Laurent", role: "Online program, Paris", quote: "I joined the online program from Europe. Every session feels personal — like he's in the room with you." },
-  { name: "Tran Minh", role: "Corporate client", quote: "Our team's stress markers dropped measurably after three months of weekly sessions. A genuine investment in our people." },
-  { name: "Priya Iyer", role: "Personal training", quote: "He doesn't sell poses. He teaches you who you are underneath them. Worth every dong, every breath." },
+const testimonials = [
+  { name: "Linh Pham", role: "Vietnam", flag: "🇻🇳", quote: "I came for flexibility, but what changed my life was the emotional calm. Yog Jivan feels premium, peaceful, and deeply authentic." },
+  { name: "Arjun Mehta", role: "India in Hai Duong", flag: "🇮🇳", quote: "This is the rare place where Indian yoga lineage meets world-class presentation and true therapeutic intelligence." },
+  { name: "Sophie Laurent", role: "France · Online", flag: "🇫🇷", quote: "Even from Europe, the online experience feels intimate and refined. The guidance is personal, elegant, and deeply grounding." },
+  { name: "Tran Minh", role: "Corporate client", flag: "🇻🇳", quote: "Our team adopted the sessions because they felt premium, thoughtful, and genuinely effective — not like a corporate checkbox." },
 ];
 
 export function Testimonials() {
-  const [idx, setIdx] = useState(0);
+  const [index, setIndex] = useState(0);
+
   useEffect(() => {
-    const id = setInterval(() => setIdx((i) => (i + 1) % TESTIMONIALS.length), 6000);
+    const id = setInterval(() => setIndex((current) => (current + 1) % testimonials.length), 5500);
     return () => clearInterval(id);
   }, []);
-  const t = TESTIMONIALS[idx];
+
+  const item = testimonials[index];
 
   return (
-    <section className="relative section-pad overflow-hidden">
-      <div className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-[40rem] w-[60rem] max-w-full bg-[radial-gradient(ellipse,oklch(0.755_0.105_80/0.10),transparent_70%)] blur-3xl" />
-      <div className="container-luxe relative">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="eyebrow justify-center">In Their Words</p>
-          <h2 className="mt-5 text-[clamp(2rem,4vw,3.5rem)] leading-[1.05]">
-            Stories of <span className="italic text-gold-gradient">transformation</span>.
-          </h2>
-        </div>
+    <section className="section-tight relative overflow-hidden">
+      <div className="container-luxe">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <p className="eyebrow"><span className="h-px w-10 bg-primary" />Testimonials & reviews</p>
+            <h2 className="mt-5 fluid-title max-w-[12ch]">Emotional proof from people who felt the shift.</h2>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {[
+                "Google reviews",
+                "Video testimonials",
+                "Real transformation stories",
+              ].map((pill) => (
+                <div key={pill} className="glass-soft rounded-full px-4 py-2 text-[0.64rem] uppercase tracking-[0.22em] text-foreground/90">{pill}</div>
+              ))}
+            </div>
+          </div>
 
-        <div className="mx-auto mt-14 max-w-4xl">
           <motion.div
-            key={idx}
-            initial={{ opacity: 0, y: 20 }}
+            key={item.name}
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="glass-luxe relative rounded-[2rem] p-10 md:p-14"
+            transition={{ duration: 0.65 }}
+            className="glass-luxe relative rounded-[2rem] p-6 sm:p-8 md:p-10"
           >
-            <Quote className="absolute -left-3 -top-3 h-12 w-12 rotate-180 text-[color:var(--gold)]/30" />
-            <p className="font-display text-2xl leading-snug text-foreground md:text-3xl">
-              "{t.quote}"
-            </p>
+            <Quote className="absolute right-6 top-6 h-10 w-10 text-primary/30" />
+            <div className="flex items-center gap-1 text-primary">
+              {Array.from({ length: 5 }).map((_, idx) => <Star key={idx} className="h-4 w-4 fill-current" />)}
+            </div>
+            <p className="mt-6 text-[clamp(1.2rem,2.2vw,2rem)] leading-relaxed">“{item.quote}”</p>
             <div className="mt-8 flex items-center gap-4">
-              <span className="grid h-12 w-12 place-items-center rounded-full border border-[color:var(--gold)]/40 font-display text-[color:var(--gold)]">
-                {t.name.slice(0, 1)}
-              </span>
+              <div className="grid h-13 w-13 place-items-center rounded-full border border-primary/30 bg-card/40 text-lg">{item.flag}</div>
               <div>
-                <div className="font-display text-lg">{t.name}</div>
-                <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground">{t.role}</div>
+                <div className="font-display text-xl">{item.name}</div>
+                <div className="text-[0.66rem] uppercase tracking-[0.22em] text-muted-foreground">{item.role}</div>
               </div>
             </div>
-          </motion.div>
 
-          <div className="mt-8 flex items-center justify-center gap-2">
-            {TESTIMONIALS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setIdx(i)}
-                aria-label={`Story ${i + 1}`}
-                className={`h-1.5 rounded-full transition-all ${i === idx ? "w-10 bg-[color:var(--gold)]" : "w-4 bg-white/15 hover:bg-white/30"}`}
-              />
-            ))}
-          </div>
+            <div className="mt-8 flex gap-2">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setIndex(idx)}
+                  className={`h-1.5 rounded-full transition-all ${idx === index ? "w-10 bg-primary" : "w-4 bg-border"}`}
+                  aria-label={`Go to testimonial ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

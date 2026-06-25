@@ -1,27 +1,41 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
 import { Link } from "@tanstack/react-router";
-import { ChevronDown } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
+import { ArrowRight, Play, Star } from "lucide-react";
 import heroVideo from "@/assets/hero-meditation.mp4.asset.json";
-import heroPoster from "@/assets/file_00000000c9fc71fb801dd14554d92fa7.png.asset.json";
+import heroPoster from "@/assets/img_20260620_125938.jpg.asset.json";
+import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
+import { AmbientCanvas } from "@/components/site/AmbientCanvas";
 import { useLang } from "@/lib/language";
 
 export function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 140]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
-  const { lang } = useLang();
+  const rootRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
+  const { scrollYProgress } = useScroll({ target: rootRef, offset: ["start start", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+
+  useEffect(() => {
+    if (!contentRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".hero-reveal",
+        { y: 26, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.15, stagger: 0.12, ease: "power3.out", delay: 0.18 },
+      );
+    }, contentRef);
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
-      ref={ref}
-      className="relative w-full overflow-hidden"
-      style={{ minHeight: "100svh", paddingTop: "var(--hdr-h, 64px)" }}
+      ref={rootRef}
+      className="relative overflow-hidden"
+      style={{ minHeight: "100svh", paddingTop: "var(--hdr-h,64px)" }}
     >
-      {/* Video background with parallax */}
-      <motion.div style={{ scale, y }} className="absolute inset-0">
+      <motion.div style={{ y, scale }} className="absolute inset-0">
         <video
           src={heroVideo.url}
           poster={heroPoster.url}
@@ -34,93 +48,84 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--onyx)]/80 via-[color:var(--onyx)]/55 to-[color:var(--onyx)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_30%,oklch(0.10_0.005_60/0.7)_80%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_28%,transparent),color-mix(in_oklab,var(--onyx)_72%,transparent)_54%,color-mix(in_oklab,var(--onyx)_90%,transparent))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_25%,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_30%),radial-gradient(circle_at_80%_18%,color-mix(in_oklab,var(--gold-soft)_14%,transparent),transparent_32%),radial-gradient(circle_at_50%_75%,color-mix(in_oklab,var(--gold)_9%,transparent),transparent_38%)]" />
+      <div className="pointer-events-none absolute inset-0 ambient-grid opacity-20" />
+      <div className="pointer-events-none absolute left-[-10%] top-[18%] h-[28rem] w-[28rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 20%, transparent), transparent 70%)", animation: "breathe 14s ease-in-out infinite" }} />
+      <div className="pointer-events-none absolute right-[-6%] top-[10%] h-[34rem] w-[34rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold-soft) 14%, transparent), transparent 68%)", animation: "breathe 18s ease-in-out infinite reverse" }} />
+      <div className="pointer-events-none absolute inset-0 opacity-65"><AmbientCanvas /></div>
 
-      {/* Cinematic light rays */}
-      <div className="pointer-events-none absolute -top-40 left-1/4 h-[120vh] w-[40vw] -rotate-12 bg-[linear-gradient(180deg,oklch(0.755_0.105_80/0.18),transparent)] blur-3xl" />
-      <div className="pointer-events-none absolute -top-32 right-10 h-[110vh] w-[30vw] rotate-12 bg-[linear-gradient(180deg,oklch(0.92_0.06_85/0.10),transparent)] blur-3xl" />
+      <div className="container-luxe relative z-10 flex min-h-[calc(100svh-var(--hdr-h,64px))] items-center py-10 sm:py-14">
+        <div ref={contentRef} className="grid w-full items-end gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)]">
+          <div className="min-w-0 max-w-4xl">
+            <div className="hero-reveal eyebrow">
+              <span className="h-px w-10 bg-primary" />
+              {t.hero.eyebrow}
+            </div>
+            <h1 className="mt-5 max-w-[13ch] fluid-display">
+              <span className="hero-reveal block">{t.hero.title[0]}</span>
+              <span className="hero-reveal block italic text-gold-gradient">{t.hero.title[1]}</span>
+              <span className="hero-reveal block">{t.hero.title[2]}</span>
+            </h1>
+            <p className="hero-reveal mt-6 max-w-2xl text-[clamp(1rem,1.6vw,1.18rem)] leading-relaxed text-muted-foreground">
+              {t.hero.sub}
+            </p>
 
-      {/* Ambient orbs */}
-      <div className="pointer-events-none absolute -left-32 top-1/3 h-80 w-80 rounded-full bg-[radial-gradient(circle,oklch(0.755_0.105_80/0.18),transparent_70%)] blur-3xl" style={{ animation: "breathe 12s ease-in-out infinite" }} />
-      <div className="pointer-events-none absolute -right-20 bottom-10 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,oklch(0.755_0.105_80/0.12),transparent_70%)] blur-3xl" style={{ animation: "breathe 16s ease-in-out infinite reverse" }} />
+            <div className="hero-reveal mt-8 flex flex-wrap items-center gap-3">
+              <Link to="/contact" className="btn-gold">
+                {t.hero.primary} <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/programs" className="btn-ghost-gold">
+                <Play className="h-3.5 w-3.5" /> {t.hero.secondary}
+              </Link>
+            </div>
 
-      {/* Particles */}
-      {Array.from({ length: 12 }).map((_, i) => (
-        <span
-          key={i}
-          className="pointer-events-none absolute h-1 w-1 rounded-full bg-[color:var(--gold)]/40"
-          style={{
-            left: `${(i * 73) % 100}%`,
-            top: `${(i * 47) % 100}%`,
-            animation: `float-y ${8 + (i % 5)}s ease-in-out ${i * 0.4}s infinite`,
-            filter: "blur(0.5px)",
-          }}
-        />
-      ))}
+            <div className="hero-reveal mt-8 flex flex-wrap gap-3">
+              {t.hero.trust.map((item) => (
+                <div key={item} className="glass-soft rounded-full px-4 py-2 text-[0.66rem] uppercase tracking-[0.22em] text-foreground/88">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
 
-      {/* Content */}
-      <motion.div style={{ opacity }} className="relative z-10 flex min-h-[calc(100svh-var(--hdr-h,64px))] items-center" >
-        <div className="container-luxe w-full py-12 sm:py-20">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="eyebrow"
-          >
-            <span className="h-px w-8 bg-[color:var(--gold)]" />
-            {lang === "VI" ? "Yoga · Sức khỏe · Chuyển hóa" : "Yoga · Wellness · Transformation"}
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, delay: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
-            className="mt-5 max-w-[18ch] fluid-display font-display"
-          >
-            {lang === "VI" ? (
-              <>Chuyển hóa cơ thể.<br /><span className="italic text-gold-gradient">Nâng tầm</span> tâm trí.<br />Sống trọn vẹn.</>
-            ) : (
-              <>Transform your body.<br /><span className="italic text-gold-gradient">Elevate</span> your mind.<br />Experience true wellness.</>
-            )}
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="mt-6 max-w-xl text-[clamp(0.95rem,1.6vw,1.125rem)] leading-relaxed text-muted-foreground"
-          >
-            {lang === "VI"
-              ? "Yoga cao cấp, trị liệu và sức khỏe toàn diện cùng Master Anil Choudhary — 12 năm thực hành chân chính, kết tinh tại Hải Dương, Việt Nam."
-              : "Premium yoga, therapeutic healing and holistic wellness with Master Anil Choudhary — twelve years of authentic practice, distilled into a sanctuary in Hai Duong, Vietnam."}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.05 }}
-            className="mt-8 flex flex-wrap items-center gap-3"
-          >
-            <Link to="/contact" className="btn-gold">{lang === "VI" ? "Học thử miễn phí" : "Book Free Trial"}</Link>
-            <Link to="/programs" className="btn-ghost-gold">{lang === "VI" ? "Khám phá khóa học" : "Explore Programs"}</Link>
-          </motion.div>
+          <div className="hero-reveal min-w-0 lg:justify-self-end">
+            <div className="glass-luxe relative overflow-hidden rounded-[2rem] p-5 sm:p-6">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_45%)]" />
+              <div className="relative flex items-center gap-4">
+                <img src={logo.url} alt="Yog Jivan mark" className="h-14 w-14 rounded-full object-cover" />
+                <div>
+                  <p className="text-[0.64rem] uppercase tracking-[0.26em] text-primary">Circle of Unity</p>
+                  <p className="mt-1 font-display text-2xl">Yog Jivan</p>
+                </div>
+              </div>
+              <div className="relative mt-5 overflow-hidden rounded-[1.5rem] border border-border/70">
+                <img src={heroPoster.url} alt="Master Anil meditating at sunrise" className="aspect-[4/5] w-full object-cover" loading="eager" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,color-mix(in_oklab,var(--onyx)_72%,transparent))]" />
+                <div className="absolute inset-x-4 bottom-4 flex items-end justify-between gap-4">
+                  <div>
+                    <p className="text-[0.62rem] uppercase tracking-[0.26em] text-primary">Founder presence</p>
+                    <p className="mt-1 text-sm text-foreground/88">Meditation, breathwork, therapeutic precision, luxury calm.</p>
+                  </div>
+                  <div className="glass-soft rounded-full px-3 py-2 text-[0.64rem] uppercase tracking-[0.24em] text-primary">Live video</div>
+                </div>
+              </div>
+              <div className="relative mt-5 grid gap-3 sm:grid-cols-3">
+                {[
+                  { value: "4.9", label: "Google" },
+                  { value: "20+", label: "Countries" },
+                  { value: "1000+", label: "Students" },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-2xl border border-border/70 bg-card/40 p-4 text-center">
+                    <div className="flex items-center justify-center gap-1 text-primary"><Star className="h-3.5 w-3.5 fill-current" /> <span className="font-display text-2xl">{item.value}</span></div>
+                    <div className="mt-1 text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </motion.div>
-
-      {/* scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 1 }}
-        className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-muted-foreground"
-      >
-        <div className="flex flex-col items-center gap-1.5">
-          <span className="text-[0.55rem] uppercase tracking-[0.32em]">Scroll</span>
-          <ChevronDown className="h-4 w-4 animate-bounce text-[color:var(--gold)]" />
-        </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
