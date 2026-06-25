@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as PersonalTrainingRouteImport } from './routes/personal-training'
 import { Route as OnlineRouteImport } from './routes/online'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as CorporateRouteImport } from './routes/corporate'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -29,6 +30,11 @@ const PersonalTrainingRoute = PersonalTrainingRouteImport.update({
 const OnlineRoute = OnlineRouteImport.update({
   id: '/online',
   path: '/online',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CorporateRoute = CorporateRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/corporate': typeof CorporateRoute
+  '/gallery': typeof GalleryRoute
   '/online': typeof OnlineRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/corporate': typeof CorporateRoute
+  '/gallery': typeof GalleryRoute
   '/online': typeof OnlineRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/corporate': typeof CorporateRoute
+  '/gallery': typeof GalleryRoute
   '/online': typeof OnlineRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/corporate'
+    | '/gallery'
     | '/online'
     | '/personal-training'
     | '/programs'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/corporate'
+    | '/gallery'
     | '/online'
     | '/personal-training'
     | '/programs'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/corporate'
+    | '/gallery'
     | '/online'
     | '/personal-training'
     | '/programs'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CorporateRoute: typeof CorporateRoute
+  GalleryRoute: typeof GalleryRoute
   OnlineRoute: typeof OnlineRoute
   PersonalTrainingRoute: typeof PersonalTrainingRoute
   ProgramsRoute: typeof ProgramsRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/online'
       fullPath: '/online'
       preLoaderRoute: typeof OnlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/corporate': {
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CorporateRoute: CorporateRoute,
+  GalleryRoute: GalleryRoute,
   OnlineRoute: OnlineRoute,
   PersonalTrainingRoute: PersonalTrainingRoute,
   ProgramsRoute: ProgramsRoute,
