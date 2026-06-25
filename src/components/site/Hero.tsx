@@ -61,8 +61,8 @@ export function Hero() {
       ))}
 
       {/* Content */}
-      <motion.div style={{ opacity }} className="relative z-10 flex min-h-[100svh] items-center" >
-        <div className="container-luxe w-full py-20 sm:py-24">
+      <motion.div style={{ opacity }} className="relative z-10 flex min-h-[calc(100svh-var(--hdr-h,64px))] items-center" >
+        <div className="container-luxe w-full py-12 sm:py-20">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
