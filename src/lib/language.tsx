@@ -72,12 +72,12 @@ const copy: Record<Lang, Copy> = {
       freeTrial: "Free Trial",
     },
     hero: {
-      eyebrow: "Private wellness sanctuary · Hai Duong",
-      title: ["Ancient Indian Wisdom.", "Modern Therapeutic Mastery.", "Quiet Luxury."],
-      sub: "Guided by Master Anil Choudhary — where healing meets stillness.",
+      eyebrow: "Luxury wellness sanctuary · Hai Duong & Online",
+      title: ["Luxury Yoga.", "Therapeutic Healing.", "Global Wellness Sanctuary."],
+      sub: "Private sessions, luxury studio classes, therapeutic recovery, and online yoga programs guided by Master Anil Choudhary.",
       primary: "Book Free Trial",
       secondary: "Explore Programs",
-      trust: ["12+ years", "2 studios", "1000+ transformed"],
+      trust: ["12+ years", "2 studios", "20+ countries"],
     },
     story: {
       eyebrow: "Founder journey",
