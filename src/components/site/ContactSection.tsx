@@ -16,8 +16,8 @@ type Values = z.infer<typeof schema>;
 const WHATSAPP = "84782046066";
 
 const studios = [
-  { title: "Studio One", body: "An urban sanctuary in Hai Duong for private and refined group practice.", img: studioImg.url },
-  { title: "Studio Two", body: "A second space for community classes and elevated student experiences.", img: outdoorImg.url },
+  { title: "Yog Jivan Sanctuary", address: "Nguyen Trai Street, Hai Duong City, Vietnam", img: studioImg.url },
+  { title: "Yog Jivan Wellness & Healing Center", address: "Tran Hung Dao Street, Hai Duong City, Vietnam", img: outdoorImg.url },
 ];
 
 export function ContactSection() {
