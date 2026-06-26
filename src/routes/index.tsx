@@ -7,18 +7,23 @@ import { Transformation } from "@/components/site/Transformation";
 import { Gallery } from "@/components/site/Gallery";
 import { Testimonials } from "@/components/site/Testimonials";
 import { CommunitySection } from "@/components/site/CommunitySection";
+import { SmartWellnessJourney } from "@/components/site/SmartWellnessJourney";
 import { Corporate } from "@/components/site/Corporate";
 import { ContactSection } from "@/components/site/ContactSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Yog Jivan — Ultra Luxury Wellness Sanctuary" },
-      { name: "description", content: "A cinematic luxury wellness website for Yog Jivan — immersive yoga, therapeutic healing, and transformational programs in Hai Duong, Vietnam." },
-      { property: "og:title", content: "Yog Jivan — Ultra Luxury Wellness Sanctuary" },
-      { property: "og:description", content: "Transform your body, elevate your mind, and experience true wellness in a premium sanctuary." },
+      { title: "Yog Jivan Sanctuary — Luxury Yoga, Therapeutic Healing & Online Programs" },
+      { name: "description", content: "Authentic Indian yoga, therapeutic healing, private sessions, luxury studio classes, and online programs guided by Master Anil Choudhary — Hai Duong & Online." },
+      { name: "keywords", content: "online yoga classes, therapeutic yoga, private yoga sessions, luxury yoga studio, yoga in Vietnam, Indian yoga teacher, healing yoga, yoga for back pain, authentic yoga online" },
+      { property: "og:title", content: "Yog Jivan Sanctuary — Luxury Yoga & Therapeutic Healing" },
+      { property: "og:description", content: "Ancient Indian wisdom. Modern therapeutic mastery. Quiet luxury." },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Yog Jivan Sanctuary" },
+      { name: "twitter:description", content: "Ancient Indian wisdom. Modern therapeutic mastery. Quiet luxury." },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -34,8 +39,9 @@ function Index() {
       <Services />
       <Transformation />
       <Gallery />
-      <Testimonials />
       <CommunitySection />
+      <SmartWellnessJourney />
+      <Testimonials />
       <Corporate />
       <ContactSection />
     </>
