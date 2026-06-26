@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Award, Globe2, ShieldCheck, Star, Users2, Video } from "lucide-react";
 import bgGoogle from "@/assets/img_20260621_105308.jpg.asset.json";
-import bgStudents from "@/assets/outdoor-class.jpg.asset.json";
+import bgStudents from "@/assets/fb_img_1685723528749.jpg.asset.json";
 import bgCountries from "@/assets/dji_0014.jpg.asset.json";
 import bgTherapy from "@/assets/img_5570.jpg.asset.json";
 import bgLineage from "@/assets/img_20260620_125938.jpg.asset.json";
