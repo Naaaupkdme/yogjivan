@@ -126,12 +126,12 @@ const copy: Record<Lang, Copy> = {
       freeTrial: "Học thử",
     },
     hero: {
-      eyebrow: "Sanctuary wellness riêng tư · Hải Dương",
-      title: ["Minh triết Ấn Độ cổ.", "Trị liệu hiện đại.", "Sang trọng tĩnh lặng."],
-      sub: "Dẫn dắt bởi Master Anil Choudhary — nơi chữa lành chạm đến sự an tĩnh.",
+      eyebrow: "Sanctuary wellness cao cấp · Hải Dương & Online",
+      title: ["Yoga cao cấp.", "Trị liệu chữa lành.", "Sanctuary wellness toàn cầu."],
+      sub: "Lớp riêng, lớp studio cao cấp, phục hồi trị liệu và các chương trình yoga online dẫn dắt bởi Master Anil Choudhary.",
       primary: "Đặt buổi học thử",
       secondary: "Khám phá chương trình",
-      trust: ["12+ năm", "2 studio", "1000+ chuyển hóa"],
+      trust: ["12+ năm", "2 studio", "20+ quốc gia"],
     },
     story: {
       eyebrow: "Hành trình người sáng lập",
