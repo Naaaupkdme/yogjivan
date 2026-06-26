@@ -107,12 +107,12 @@ export function Hero() {
             <span className="h-px w-10 bg-primary" />
             {t.hero.eyebrow}
           </div>
-          <h1 className="mt-5 mx-auto lg:mx-0 max-w-[14ch]" style={{ fontFamily: "var(--font-display, serif)", textShadow: "0 2px 30px color-mix(in oklab, var(--gold) 25%, transparent)" }}>
-            <span className="hero-reveal block italic text-gold-gradient" style={{ fontSize: "clamp(1.7rem, 3.6vw, 3rem)", lineHeight: 1.02 }}>{t.hero.title[0]}</span>
-            <span className="hero-reveal block mt-1.5" style={{ fontSize: "clamp(1.25rem, 2.6vw, 2.15rem)", lineHeight: 1.08 }}>{t.hero.title[1]}</span>
-            {t.hero.title[2] && <span className="hero-reveal block mt-1 text-foreground/90" style={{ fontSize: "clamp(1rem, 2vw, 1.6rem)", lineHeight: 1.15 }}>{t.hero.title[2]}</span>}
+          <h1 className="mt-5 lg:mx-0" style={{ fontFamily: "var(--font-display, serif)", textShadow: "0 2px 30px color-mix(in oklab, var(--gold) 25%, transparent)", maxWidth: "min(100%, 650px)", marginInline: "auto", lineHeight: 1.05 }}>
+            <span className="hero-reveal block" style={{ fontSize: "clamp(1.85rem, 3.4vw, 3.4rem)", lineHeight: 1.05 }}>{t.hero.title[0]}</span>
+            <span className="hero-reveal block italic text-gold-gradient mt-1" style={{ fontSize: "clamp(1.85rem, 3.4vw, 3.4rem)", lineHeight: 1.05 }}>{t.hero.title[1]}</span>
+            {t.hero.title[2] && <span className="hero-reveal block mt-1" style={{ fontSize: "clamp(1.85rem, 3.4vw, 3.4rem)", lineHeight: 1.05 }}>{t.hero.title[2]}</span>}
           </h1>
-          <p className="hero-reveal mt-5 mx-auto lg:mx-0 max-w-sm text-[clamp(0.8rem,1.05vw,0.95rem)] leading-relaxed text-muted-foreground">
+          <p className="hero-reveal mt-6 lg:mx-0 leading-relaxed text-muted-foreground" style={{ maxWidth: "min(100%, 560px)", marginInline: "auto", fontSize: "clamp(0.92rem, 1.1vw, 1.05rem)" }}>
             {t.hero.sub}
           </p>
 
