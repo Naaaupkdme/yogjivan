@@ -49,57 +49,23 @@ export function Hero() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Seamless ping-pong loop (forward ↔ reverse). No freeze, no jump cut.
+  // Bulletproof seamless loop: native loop attr + onEnded fallback.
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    v.loop = false;
+    v.loop = true;
     v.muted = true;
-    v.playbackRate = 0.9;
-
-    let reverse = false;
-    let raf = 0;
-    let last = performance.now();
-    const EDGE = 0.18; // seconds of headroom from each end to swap direction smoothly
-
-    const startForward = () => {
-      reverse = false;
-      v.play().catch(() => {});
-    };
-    const startReverse = () => {
-      reverse = true;
-      v.pause();
-      last = performance.now();
-    };
-
-    const tick = (now: number) => {
-      const dt = (now - last) / 1000;
-      last = now;
-      const d = v.duration || 0;
-      if (reverse) {
-        const next = v.currentTime - dt * 0.9;
-        if (next <= EDGE) {
-          v.currentTime = EDGE;
-          startForward();
-        } else {
-          v.currentTime = next;
-        }
-      } else if (d > 0 && v.currentTime >= d - EDGE) {
-        startReverse();
-      }
-      raf = requestAnimationFrame(tick);
-    };
-
-    const onLoaded = () => {
-      startForward();
-      raf = requestAnimationFrame(tick);
-    };
-    if (v.readyState >= 2) onLoaded();
-    else v.addEventListener("loadeddata", onLoaded, { once: true });
-
+    v.playsInline = true;
+    v.playbackRate = 0.95;
+    const restart = () => { try { v.currentTime = 0; v.play().catch(() => {}); } catch {} };
+    const onEnded = () => restart();
+    const onPause = () => { if (!document.hidden) v.play().catch(() => {}); };
+    v.addEventListener("ended", onEnded);
+    v.addEventListener("pause", onPause);
+    v.play().catch(() => {});
     return () => {
-      cancelAnimationFrame(raf);
-      v.removeEventListener("loadeddata", onLoaded);
+      v.removeEventListener("ended", onEnded);
+      v.removeEventListener("pause", onPause);
     };
   }, []);
 
