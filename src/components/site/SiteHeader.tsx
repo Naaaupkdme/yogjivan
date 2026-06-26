@@ -48,15 +48,18 @@ export function SiteHeader() {
     : "bg-transparent border border-transparent";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 safe-pt pointer-events-none" style={{ height: "var(--hdr-h,72px)" }}>
-      <style>{`:root{--hdr-h:72px}@media(min-width:1024px){:root{--hdr-h:92px}}`}</style>
+    <header className="fixed inset-x-0 top-0 z-50 safe-pt pointer-events-none" style={{ height: "var(--hdr-h,96px)" }}>
+      <style>{`:root{--hdr-h:96px}@media(min-width:1024px){:root{--hdr-h:120px}}`}</style>
       <div className="container-luxe h-full pt-2 sm:pt-3 pointer-events-none">
-        <div className={`pointer-events-auto grid h-[calc(var(--hdr-h,72px)-0.75rem)] grid-cols-[minmax(0,1fr)_auto] items-center rounded-full px-3 sm:px-4 transition-[background,border,box-shadow] duration-500 ${shell}`}>
-          <Link to="/" className="flex min-w-0 items-center gap-3 group" aria-label="Yog Jivan home">
-            <img src={logo.url} alt="" className="h-12 w-12 shrink-0 rounded-full object-cover sm:h-13 sm:w-13 lg:h-14 lg:w-14 ring-1 ring-[color-mix(in_oklab,var(--gold)_30%,transparent)] transition-transform duration-500 group-hover:scale-105" style={{height:'3rem',width:'3rem'}} />
-            <div className="min-w-0 hidden sm:block">
-              <div className="truncate font-display text-[1.35rem] lg:text-[1.5rem] leading-tight tracking-tight">Yog Jivan</div>
-              <div className="truncate text-[0.6rem] uppercase tracking-[0.32em] text-muted-foreground">Sanctuary</div>
+        <div className={`pointer-events-auto grid h-[calc(var(--hdr-h,96px)-0.75rem)] grid-cols-[minmax(0,1fr)_auto] items-center rounded-[2rem] px-4 sm:px-5 transition-[background,border,box-shadow] duration-500 ${shell}`}>
+          <Link to="/" className="flex min-w-0 items-center gap-3.5 sm:gap-4 group" aria-label="Yog Jivan home">
+            <span className="relative shrink-0">
+              <span aria-hidden className="absolute inset-0 -m-1 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_35%,transparent),transparent_70%)] opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-500" />
+              <img src={logo.url} alt="" className="relative h-[4.2rem] w-[4.2rem] sm:h-[4.6rem] sm:w-[4.6rem] lg:h-[5.4rem] lg:w-[5.4rem] rounded-full object-cover ring-1 ring-[color-mix(in_oklab,var(--gold)_38%,transparent)] shadow-[0_8px_30px_-12px_color-mix(in_oklab,var(--gold)_55%,transparent)] transition-transform duration-500 group-hover:scale-[1.04]" />
+            </span>
+            <div className="min-w-0 hidden xs:block sm:block">
+              <div className="truncate font-display leading-[0.95] tracking-[0.22em] text-[1.05rem] sm:text-[1.2rem] lg:text-[1.5rem] uppercase text-gold-gradient">YOG JIVAN</div>
+              <div className="truncate font-display leading-tight tracking-[0.42em] text-[0.62rem] sm:text-[0.7rem] lg:text-[0.82rem] uppercase text-muted-foreground mt-1">SANCTUARY</div>
             </div>
           </Link>
 
