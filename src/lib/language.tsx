@@ -77,7 +77,7 @@ const copy: Record<Lang, Copy> = {
       sub: "Private sessions, luxury studio classes, therapeutic recovery, and online yoga programs guided by Master Anil Choudhary.",
       primary: "Book Free Trial",
       secondary: "Explore Programs",
-      trust: ["12+ years", "2 studios", "20+ countries"],
+      trust: ["12+ years of excellence", "1000+ students transformed", "20+ countries served"],
     },
     story: {
       eyebrow: "Founder journey",
@@ -131,7 +131,7 @@ const copy: Record<Lang, Copy> = {
       sub: "Lớp riêng, lớp studio cao cấp, phục hồi trị liệu và các chương trình yoga online dẫn dắt bởi Master Anil Choudhary.",
       primary: "Đặt buổi học thử",
       secondary: "Khám phá chương trình",
-      trust: ["12+ năm", "2 studio", "20+ quốc gia"],
+      trust: ["12+ năm tinh hoa", "1000+ học viên chuyển hóa", "20+ quốc gia"],
     },
     story: {
       eyebrow: "Hành trình người sáng lập",
