@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Globe2, Menu, MessageCircle, Palette, X } from "lucide-react";
+import { Facebook, Globe2, Instagram, Menu, MessageCircle, Palette, X, Youtube } from "lucide-react";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
 import { useLang, type ThemeName } from "@/lib/language";
 
