@@ -1,56 +1,64 @@
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import serviceA from "@/assets/yog_jivan_acro_arch.png.asset.json";
-import serviceB from "@/assets/yog_jivan_acro_stack.png.asset.json";
-import serviceC from "@/assets/yog_jivan_acro_twins.png.asset.json";
-import serviceD from "@/assets/yog_jivan_acro_flying.png.asset.json";
-import serviceE from "@/assets/fb_img_1691544924455.jpg.asset.json";
-import serviceF from "@/assets/fb_img_1690971312359.jpg.asset.json";
+import imgPrivate from "@/assets/img_5569.jpg.asset.json";
+import imgStudio from "@/assets/fb_img_1685724561436.jpg.asset.json";
+import imgAcro from "@/assets/yog_jivan_acro_arch.png.asset.json";
+import imgTherapeutic from "@/assets/img_20260624_wa0037.jpg.asset.json";
+import imgOnline from "@/assets/online-practice.png.asset.json";
+import imgMeditation from "@/assets/img_20260620_125938.jpg.asset.json";
+import imgCorporate from "@/assets/corporate-event.jpg.asset.json";
 import { useLang } from "@/lib/language";
 
 const services = [
   {
     title: "Private Transformation",
-    benefit: "A fully personalized practice for posture, pain relief, confidence, and inner stillness.",
+    benefit: "Personal assessment, customized sequence, hands-on posture correction, lifestyle guidance, and accountability.",
     outcome: "Expected outcome: deeper mobility, body intelligence, measurable calm.",
-    image: serviceA,
+    image: imgPrivate,
     to: "/personal-training",
   },
   {
     title: "Luxury Studio Classes",
-    benefit: "Curated group classes inside a premium sanctuary atmosphere with refined guidance.",
+    benefit: "Curated group practice for up to 50 students inside our premium Hai Duong sanctuary environment.",
     outcome: "Expected outcome: consistency, ritual, and visible weekly progress.",
-    image: serviceB,
+    image: imgStudio,
     to: "/programs",
   },
   {
     title: "Acro & Advanced Mastery",
-    benefit: "Aspirational strength, control, balance, and trust-building through advanced practice.",
+    benefit: "Balance, strength, flexibility, and partner trust through aspirational advanced practice.",
     outcome: "Expected outcome: breakthrough confidence and elevated technical range.",
-    image: serviceC,
+    image: imgAcro,
     to: "/programs",
   },
   {
     title: "Therapeutic Recovery",
-    benefit: "Gentle, intelligent sequences for back pain, joints, stress, tension, and fatigue.",
+    benefit: "Back pain, neck pain, sciatica, stress, posture correction, mobility restoration, anxiety support.",
     outcome: "Expected outcome: restored comfort, breath capacity, and sustainable daily movement.",
-    image: serviceD,
+    image: imgTherapeutic,
     to: "/programs",
   },
   {
     title: "Online Global Practice",
-    benefit: "Live and remote coaching for students outside Hai Duong who still want personal depth.",
-    outcome: "Expected outcome: structure, accountability, and continuity wherever you live.",
-    image: serviceE,
+    benefit: "Live interactive sessions, global access, and community accountability for students worldwide.",
+    outcome: "Expected outcome: structure, continuity, and depth wherever you live.",
+    image: imgOnline,
     to: "/online",
   },
   {
     title: "Meditation & Breathwork",
-    benefit: "Nervous-system calming, emotional reset, and spiritual grounding through guided stillness.",
+    benefit: "Stress reduction, emotional balance, mental clarity, and deep relaxation through guided stillness.",
     outcome: "Expected outcome: clarity, sleep quality, presence, and emotional resilience.",
-    image: serviceF,
+    image: imgMeditation,
     to: "/programs",
+  },
+  {
+    title: "Corporate Wellness",
+    benefit: "Bespoke programs for executive teams — boardroom mobility, breathwork, and stress recovery on-site.",
+    outcome: "Expected outcome: sharper focus, fewer absences, and measurable team wellbeing.",
+    image: imgCorporate,
+    to: "/corporate",
   },
 ];
 

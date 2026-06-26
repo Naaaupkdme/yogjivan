@@ -72,12 +72,12 @@ const copy: Record<Lang, Copy> = {
       freeTrial: "Free Trial",
     },
     hero: {
-      eyebrow: "Private wellness sanctuary · Hai Duong",
-      title: ["Ancient Indian Wisdom.", "Modern Therapeutic Mastery.", "Quiet Luxury."],
-      sub: "Guided by Master Anil Choudhary — where healing meets stillness.",
+      eyebrow: "Luxury wellness sanctuary · Hai Duong & Online",
+      title: ["Luxury Yoga.", "Therapeutic Healing.", "Global Wellness Sanctuary."],
+      sub: "Private sessions, luxury studio classes, therapeutic recovery, and online yoga programs guided by Master Anil Choudhary.",
       primary: "Book Free Trial",
       secondary: "Explore Programs",
-      trust: ["12+ years", "2 studios", "1000+ transformed"],
+      trust: ["12+ years", "2 studios", "20+ countries"],
     },
     story: {
       eyebrow: "Founder journey",
@@ -126,12 +126,12 @@ const copy: Record<Lang, Copy> = {
       freeTrial: "Học thử",
     },
     hero: {
-      eyebrow: "Sanctuary wellness riêng tư · Hải Dương",
-      title: ["Minh triết Ấn Độ cổ.", "Trị liệu hiện đại.", "Sang trọng tĩnh lặng."],
-      sub: "Dẫn dắt bởi Master Anil Choudhary — nơi chữa lành chạm đến sự an tĩnh.",
+      eyebrow: "Sanctuary wellness cao cấp · Hải Dương & Online",
+      title: ["Yoga cao cấp.", "Trị liệu chữa lành.", "Sanctuary wellness toàn cầu."],
+      sub: "Lớp riêng, lớp studio cao cấp, phục hồi trị liệu và các chương trình yoga online dẫn dắt bởi Master Anil Choudhary.",
       primary: "Đặt buổi học thử",
       secondary: "Khám phá chương trình",
-      trust: ["12+ năm", "2 studio", "1000+ chuyển hóa"],
+      trust: ["12+ năm", "2 studio", "20+ quốc gia"],
     },
     story: {
       eyebrow: "Hành trình người sáng lập",

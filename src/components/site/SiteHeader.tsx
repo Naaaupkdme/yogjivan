@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Globe2, Menu, MessageCircle, Palette, X } from "lucide-react";
+import { Facebook, Globe2, Instagram, Menu, MessageCircle, Palette, X, Youtube } from "lucide-react";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
 import { useLang, type ThemeName } from "@/lib/language";
 
@@ -106,10 +106,24 @@ export function SiteHeader() {
               )}
             </div>
 
+            {/* Social ecosystem — subtle luxury gold line icons */}
+            <div className="hidden lg:flex items-center gap-1 mr-1 pr-2 border-r border-border/50">
+              {[
+                { href: "https://facebook.com/yogjivan", Icon: Facebook, label: "Facebook" },
+                { href: "https://instagram.com/yogjivan", Icon: Instagram, label: "Instagram" },
+                { href: "https://youtube.com/@yogjivan", Icon: Youtube, label: "YouTube" },
+              ].map(({ href, Icon, label }) => (
+                <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
+                  className="grid h-8 w-8 place-items-center rounded-full text-muted-foreground/80 transition-all duration-300 hover:text-[color:var(--gold)] hover:bg-[color-mix(in_oklab,var(--gold)_10%,transparent)] hover:shadow-[0_0_18px_-4px_color-mix(in_oklab,var(--gold)_55%,transparent)]">
+                  <Icon className="h-3.5 w-3.5" strokeWidth={1.5} />
+                </a>
+              ))}
+            </div>
+
             <a href={WHATSAPP} target="_blank" rel="noreferrer"
-              className="grid h-9 w-9 place-items-center rounded-full border border-border/60 text-muted-foreground transition-all hover:text-primary hover:border-primary/40"
+              className="grid h-9 w-9 place-items-center rounded-full border border-border/60 text-muted-foreground transition-all duration-300 hover:text-[color:var(--gold)] hover:border-[color:var(--gold)]/50 hover:shadow-[0_0_18px_-4px_color-mix(in_oklab,var(--gold)_55%,transparent)]"
               aria-label="WhatsApp">
-              <MessageCircle className="h-3.5 w-3.5" />
+              <MessageCircle className="h-3.5 w-3.5" strokeWidth={1.5} />
             </a>
 
             <Link to="/contact" className="btn-gold hidden md:inline-flex !min-h-[2.25rem] !py-2 !px-4 !text-[0.62rem]">
