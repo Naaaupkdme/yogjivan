@@ -61,33 +61,61 @@ export function ContactSection() {
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-[1.75rem] border border-border/70">
-          <iframe title="Yog Jivan Hai Duong location"
-            src="https://www.google.com/maps?q=Hai+Duong,+Vietnam&output=embed"
-            className="h-[260px] w-full grayscale md:h-[340px]" loading="lazy" />
-        </div>
+        {/* Form first — single consolidated form */}
+        <form onSubmit={onSubmit} className="glass-luxe relative mx-auto max-w-3xl rounded-[1.75rem] p-6 sm:p-10">
+          {sent && (
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 rounded-[1.75rem] bg-background/92 p-8 text-center backdrop-blur-xl">
+              <CheckCircle2 className="h-12 w-12 text-primary" />
+              <h3 className="text-3xl">Namaste.</h3>
+              <p className="max-w-sm text-sm text-muted-foreground">Your WhatsApp booking is ready to send.</p>
+              <button type="button" className="btn-ghost-gold" onClick={() => setSent(false)}>Send another</button>
+            </div>
+          )}
+          <h3 className="font-display text-3xl sm:text-4xl">{t.contact.formTitle}</h3>
+          <p className="mt-2 text-sm text-muted-foreground">{t.contact.note}</p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <Field label="Full Name" name="name" error={errors.name} placeholder="Your full name" />
+            <Field label="Phone / WhatsApp" name="phone" error={errors.phone} placeholder="+84 ..." />
+            <div className="sm:col-span-2">
+              <Field label="Your Interest" name="goal" error={errors.goal} placeholder="Private session, therapeutic, retreat..." />
+            </div>
+            <div className="sm:col-span-2">
+              <label className="text-[0.62rem] uppercase tracking-[0.24em] text-muted-foreground">Message (optional)</label>
+              <textarea name="message" rows={4} placeholder="Tell us about your practice..." className="mt-2 w-full rounded-[1rem] border border-border bg-card/35 px-4 py-3 text-sm outline-none focus:border-primary/50" />
+            </div>
+          </div>
+          <button type="submit" className="btn-gold mt-6 w-full">
+            {t.contact.submit} <Send className="h-4 w-4" />
+          </button>
+          <p className="mt-3 text-center text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">Your information is secure and private.</p>
+        </form>
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+        {/* Studios + Map (50/50) */}
+        <div className="mt-14 grid gap-6 lg:grid-cols-2">
           <div className="grid gap-4">
-            <div className="grid gap-3 sm:grid-cols-2">
-              {studios.map((studio) => (
-                <div key={studio.title} className="group relative overflow-hidden rounded-[1.25rem] border border-border/70">
-                  <img src={studio.img} alt="" className="h-[140px] w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_30%,color-mix(in_oklab,var(--onyx)_88%,transparent))]" />
-                  <div className="absolute inset-x-3 bottom-3">
-                    <div className="font-display text-lg">{studio.title}</div>
-                    <div className="text-[0.55rem] uppercase tracking-[0.24em] text-primary">Hai Duong</div>
+            <div className="eyebrow"><span className="h-px w-8 bg-primary" />Visit our studios</div>
+            <h3 className="font-display text-3xl sm:text-4xl">Hai Duong City, Vietnam</h3>
+            <p className="text-sm text-muted-foreground">Two serene spaces. One transformative journey.</p>
+            <div className="mt-2 grid gap-4">
+              {studios.map((studio, idx) => (
+                <a key={studio.title} href="https://maps.google.com/?q=Hai+Duong,+Vietnam" target="_blank" rel="noreferrer"
+                  className="group relative flex gap-4 overflow-hidden rounded-[1.25rem] border border-border/70 bg-card/30 p-3 transition-all hover:-translate-y-0.5 hover:border-primary/40">
+                  <img src={studio.img} alt="" className="h-24 w-32 shrink-0 rounded-[0.9rem] object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                  <div className="min-w-0 flex-1 py-1">
+                    <div className="text-[0.55rem] uppercase tracking-[0.26em] text-primary">Studio {idx + 1}</div>
+                    <div className="mt-1 font-display text-lg leading-tight">{studio.title}</div>
+                    <div className="mt-1.5 flex items-start gap-1.5 text-xs text-muted-foreground">
+                      <MapPin className="mt-0.5 h-3 w-3 shrink-0 text-primary/70" />
+                      <span>{studio.address}</span>
+                    </div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
-
-            <div className="grid grid-cols-2 gap-3">
+            <div className="mt-2 grid grid-cols-2 gap-3">
               {[
-                { Icon: MessageCircle, title: "WhatsApp", body: "Instant booking", href: `https://wa.me/${WHATSAPP}` },
-                { Icon: Phone, title: "Phone", body: "+84 782 046 066", href: "tel:+84782046066" },
+                { Icon: MessageCircle, title: "WhatsApp", body: "+84 782 046 066", href: `https://wa.me/${WHATSAPP}` },
                 { Icon: Mail, title: "Email", body: "hello@yogjivan.com", href: "mailto:hello@yogjivan.com" },
-                { Icon: MapPin, title: "Studios", body: "Hai Duong, Vietnam", href: "https://maps.google.com/?q=Hai+Duong,+Vietnam" },
               ].map(({ Icon, title, body, href }) => (
                 <a key={title} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer"
                   className="glass-soft rounded-[1rem] p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40">
@@ -99,32 +127,23 @@ export function ContactSection() {
             </div>
           </div>
 
-          <form onSubmit={onSubmit} className="glass-luxe relative rounded-[1.75rem] p-6 sm:p-8">
-            {sent && (
-              <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 rounded-[1.75rem] bg-background/92 p-8 text-center backdrop-blur-xl">
-                <CheckCircle2 className="h-12 w-12 text-primary" />
-                <h3 className="text-3xl">Namaste.</h3>
-                <p className="max-w-sm text-sm text-muted-foreground">Your WhatsApp booking is ready to send.</p>
-                <button type="button" className="btn-ghost-gold" onClick={() => setSent(false)}>Send another</button>
+          {/* Interactive map card */}
+          <a href="https://maps.google.com/?q=Hai+Duong,+Vietnam" target="_blank" rel="noreferrer"
+            className="group relative block overflow-hidden rounded-[1.75rem] border border-border/70">
+            <iframe title="Yog Jivan Hai Duong location"
+              src="https://www.google.com/maps?q=Hai+Duong,+Vietnam&output=embed"
+              className="pointer-events-none h-full min-h-[420px] w-full grayscale transition-all duration-700 group-hover:grayscale-0" loading="lazy" />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,color-mix(in_oklab,var(--onyx)_90%,transparent))]" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 p-5">
+              <div>
+                <div className="text-[0.55rem] uppercase tracking-[0.28em] text-primary">Hai Duong City</div>
+                <div className="mt-1 font-display text-xl">Open in Google Maps</div>
               </div>
-            )}
-            <h3 className="text-2xl sm:text-3xl">{t.contact.formTitle}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{t.contact.note}</p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <Field label="Name" name="name" error={errors.name} placeholder="Your full name" />
-              <Field label="Phone" name="phone" error={errors.phone} placeholder="+84 ..." />
-              <div className="sm:col-span-2">
-                <Field label="Goal" name="goal" error={errors.goal} placeholder="Flexibility, therapy, stress..." />
-              </div>
-              <div className="sm:col-span-2">
-                <label className="text-[0.62rem] uppercase tracking-[0.24em] text-muted-foreground">Message</label>
-                <textarea name="message" rows={4} placeholder="Tell us about your practice..." className="mt-2 w-full rounded-[1rem] border border-border bg-card/35 px-4 py-3 text-sm outline-none focus:border-primary/50" />
+              <div className="grid h-11 w-11 place-items-center rounded-full border border-[color-mix(in_oklab,var(--gold)_50%,transparent)] bg-[color-mix(in_oklab,var(--gold)_18%,transparent)] text-[color:var(--gold)] transition-transform duration-500 group-hover:scale-110">
+                <MapPin className="h-4 w-4" />
               </div>
             </div>
-            <button type="submit" className="btn-gold mt-6 w-full">
-              {t.contact.submit} <Send className="h-4 w-4" />
-            </button>
-          </form>
+          </a>
         </div>
       </div>
     </section>
