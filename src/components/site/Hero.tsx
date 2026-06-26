@@ -134,18 +134,19 @@ export function Hero() {
 
       <div className="pointer-events-none absolute inset-0 opacity-60"><AmbientCanvas /></div>
 
-      <div className="container-luxe relative z-10 flex min-h-[calc(100svh-var(--hdr-h,72px))] items-end lg:items-center py-8 sm:py-12">
-        <div ref={contentRef} className="w-full lg:max-w-xl lg:ml-auto text-center lg:text-left">
+      <div className="container-luxe relative z-10 grid min-h-[calc(100svh-var(--hdr-h,72px))] lg:grid-cols-[65fr_35fr] items-end lg:items-center py-8 sm:py-12">
+        <div className="hidden lg:block" aria-hidden />
+        <div ref={contentRef} className="w-full text-center lg:text-left lg:pl-6 xl:pl-10">
           <div className="hero-reveal eyebrow justify-center lg:justify-start">
             <span className="h-px w-10 bg-primary" />
             {t.hero.eyebrow}
           </div>
-          <h1 className="mt-5 mx-auto lg:mx-0 max-w-[16ch]" style={{ fontSize: "clamp(2rem, 5.4vw, 4rem)", lineHeight: 1.05, fontFamily: "var(--font-display, serif)" }}>
-            <span className="hero-reveal block">{t.hero.title[0]}</span>
-            <span className="hero-reveal block italic text-gold-gradient">{t.hero.title[1]}</span>
-            {t.hero.title[2] && <span className="hero-reveal block">{t.hero.title[2]}</span>}
+          <h1 className="mt-5 mx-auto lg:mx-0 max-w-[14ch]" style={{ fontFamily: "var(--font-display, serif)", textShadow: "0 2px 30px color-mix(in oklab, var(--gold) 25%, transparent)" }}>
+            <span className="hero-reveal block italic text-gold-gradient" style={{ fontSize: "clamp(1.7rem, 3.6vw, 3rem)", lineHeight: 1.02 }}>{t.hero.title[0]}</span>
+            <span className="hero-reveal block mt-1.5" style={{ fontSize: "clamp(1.25rem, 2.6vw, 2.15rem)", lineHeight: 1.08 }}>{t.hero.title[1]}</span>
+            {t.hero.title[2] && <span className="hero-reveal block mt-1 text-foreground/90" style={{ fontSize: "clamp(1rem, 2vw, 1.6rem)", lineHeight: 1.15 }}>{t.hero.title[2]}</span>}
           </h1>
-          <p className="hero-reveal mt-5 mx-auto lg:mx-0 max-w-md text-[clamp(0.85rem,1.2vw,1rem)] leading-relaxed text-muted-foreground">
+          <p className="hero-reveal mt-5 mx-auto lg:mx-0 max-w-sm text-[clamp(0.8rem,1.05vw,0.95rem)] leading-relaxed text-muted-foreground">
             {t.hero.sub}
           </p>
 
@@ -158,23 +159,23 @@ export function Hero() {
             </Link>
           </div>
 
-          <div className="hero-reveal mt-8 flex flex-wrap justify-center lg:justify-start gap-2">
+          <div className="hero-reveal mt-6 flex flex-wrap justify-center lg:justify-start gap-2">
             {t.hero.trust.map((item) => (
-              <div key={item} className="glass-soft rounded-full px-3.5 py-1.5 text-[0.58rem] uppercase tracking-[0.24em] text-foreground/88">
+              <div key={item} className="glass-soft rounded-full px-3 py-1.5 text-[0.55rem] uppercase tracking-[0.24em] text-foreground/88">
                 {item}
               </div>
             ))}
           </div>
 
           {/* Rotating spiritual quote */}
-          <div className="hero-reveal mt-8 hidden lg:block min-h-[3.5rem]">
+          <div className="hero-reveal mt-7 hidden lg:block min-h-[3.5rem]">
             <AnimatePresence mode="wait">
               <motion.blockquote key={qIdx}
                 initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 1.1, ease: "easeOut" }}
-                className="text-[0.78rem] italic text-muted-foreground/85 max-w-md">
+                className="text-[0.72rem] italic text-muted-foreground/85 max-w-sm">
                 "{QUOTES[qIdx].q}"
-                <footer className="not-italic mt-1 text-[0.55rem] uppercase tracking-[0.28em] text-primary/80">— {QUOTES[qIdx].a}</footer>
+                <footer className="not-italic mt-1 text-[0.5rem] uppercase tracking-[0.28em] text-primary/80">— {QUOTES[qIdx].a}</footer>
               </motion.blockquote>
             </AnimatePresence>
           </div>
