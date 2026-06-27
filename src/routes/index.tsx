@@ -6,7 +6,6 @@ import { Services } from "@/components/site/Services";
 import { Philosophy } from "@/components/site/Philosophy";
 import { Transformation } from "@/components/site/Transformation";
 import { Gallery } from "@/components/site/Gallery";
-import { CommunitySection } from "@/components/site/CommunitySection";
 import { Testimonials } from "@/components/site/Testimonials";
 import { ContactSection } from "@/components/site/ContactSection";
 
@@ -33,13 +32,12 @@ function Index() {
   return (
     <>
       <Hero />
+      <Philosophy />
       <div id="journey"><FounderJourney /></div>
       <TrustSection />
       <Services />
-      <Philosophy />
       <Transformation />
       <Gallery />
-      <CommunitySection />
       <Testimonials />
       <ContactSection />
     </>
