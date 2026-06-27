@@ -164,7 +164,7 @@ export function FounderJourney() {
         }
       `}</style>
 
-      <div className="relative container-luxe pt-20 md:pt-28 pb-16 md:pb-24">
+      <div className="relative container-luxe pt-12 md:pt-16 pb-10 md:pb-14">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto relative z-20">
           <p className="eyebrow justify-center">
