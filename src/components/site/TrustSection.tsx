@@ -13,11 +13,11 @@ type Metric = {
 };
 
 const METRICS: Metric[] = [
-  { Icon: Star, value: 4.9, decimals: 1, label: "Google Rating" },
+  { Icon: Star, value: 4.9, decimals: 1, suffix: "★", label: "Average Rating" },
   { Icon: Users2, value: 1000, suffix: "+", label: "Students Served" },
   { Icon: Globe2, value: 20, suffix: "+", label: "Countries Reached" },
   { Icon: Heart, value: 12, suffix: "+", label: "Years Experience" },
-  { Icon: Trophy, value: 100, suffix: "%", label: "Certified Yoga Expert" },
+  { Icon: Trophy, value: 100, suffix: "%", label: "Certified Indian Yoga Master" },
   { Icon: Award, value: 95, suffix: "%", label: "Student Retention" },
 ];
 
