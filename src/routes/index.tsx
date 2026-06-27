@@ -36,6 +36,7 @@ function Index() {
       <div id="journey"><FounderJourney /></div>
       <TrustSection />
       <Services />
+      <Philosophy />
       <Transformation />
       <Gallery />
       <CommunitySection />
