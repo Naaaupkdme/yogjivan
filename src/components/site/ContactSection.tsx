@@ -48,34 +48,8 @@ export function ContactSection() {
           </div>
         </div>
 
-        {/* Form first — single consolidated form */}
-        <form onSubmit={onSubmit} className="glass-luxe relative mx-auto max-w-3xl rounded-[1.75rem] p-6 sm:p-10">
-          {sent && (
-            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 rounded-[1.75rem] bg-background/92 p-8 text-center backdrop-blur-xl">
-              <CheckCircle2 className="h-12 w-12 text-primary" />
-              <h3 className="text-3xl">Namaste.</h3>
-              <p className="max-w-sm text-sm text-muted-foreground">Your WhatsApp booking is ready to send.</p>
-              <button type="button" className="btn-ghost-gold" onClick={() => setSent(false)}>Send another</button>
-            </div>
-          )}
-          <h3 className="font-display text-3xl sm:text-4xl">{t.contact.formTitle}</h3>
-          <p className="mt-2 text-sm text-muted-foreground">{t.contact.note}</p>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            <Field label="Full Name" name="name" error={errors.name} placeholder="Your full name" />
-            <Field label="Phone / WhatsApp" name="phone" error={errors.phone} placeholder="+84 ..." />
-            <div className="sm:col-span-2">
-              <Field label="Your Interest" name="goal" error={errors.goal} placeholder="Private session, therapeutic, retreat..." />
-            </div>
-            <div className="sm:col-span-2">
-              <label className="text-[0.62rem] uppercase tracking-[0.24em] text-muted-foreground">Message (optional)</label>
-              <textarea name="message" rows={4} placeholder="Tell us about your practice..." className="mt-2 w-full rounded-[1rem] border border-border bg-card/35 px-4 py-3 text-sm outline-none focus:border-primary/50" />
-            </div>
-          </div>
-          <button type="submit" className="btn-gold mt-6 w-full">
-            {t.contact.submit} <Send className="h-4 w-4" />
-          </button>
-          <p className="mt-3 text-center text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">Your information is secure and private.</p>
-        </form>
+        <SmartConsultation />
+
 
         {/* Studios + Map (50/50) */}
         <div className="mt-14 grid gap-6 lg:grid-cols-2">
