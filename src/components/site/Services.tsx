@@ -8,6 +8,7 @@ type Program = {
   italic: string;
   blurb: string;
   bullets: string[];
+  cta: string;
   to: string;
   Icon: typeof User;
 };
@@ -19,6 +20,7 @@ const PROGRAMS: Program[] = [
     italic: "Transformation",
     blurb: "One-to-one personalized sessions for true inner balance.",
     bullets: ["Personal Assessment", "Customized Plan", "Posture Correction", "Lifestyle Guidance"],
+    cta: "Explore Program",
     to: "/personal-training",
     Icon: User,
   },
@@ -28,6 +30,7 @@ const PROGRAMS: Program[] = [
     italic: "Studio Classes",
     blurb: "Collective practice in a serene, premium environment.",
     bullets: ["Indoor & Outdoor", "All Levels Welcome", "Expert Guidance", "Curated Schedules"],
+    cta: "View Schedule",
     to: "/programs",
     Icon: Users2,
   },
@@ -37,6 +40,7 @@ const PROGRAMS: Program[] = [
     italic: "Recovery",
     blurb: "Healing-focused yoga for pain relief and restoration.",
     bullets: ["Back & Neck Relief", "Stress Relief", "Posture Correction", "Mobility & Flexibility"],
+    cta: "Discover Healing",
     to: "/programs",
     Icon: HeartPulse,
   },
@@ -46,6 +50,7 @@ const PROGRAMS: Program[] = [
     italic: "Yoga Mastery",
     blurb: "Strength, flexibility and advanced asana techniques.",
     bullets: ["Strength & Balance", "Advanced Asanas", "Acro Yoga", "Personal Growth"],
+    cta: "Master Your Practice",
     to: "/programs",
     Icon: Flame,
   },
@@ -55,6 +60,7 @@ const PROGRAMS: Program[] = [
     italic: "Wellness",
     blurb: "On-site sessions that elevate team energy and focus.",
     bullets: ["Employee Wellness", "Stress Reduction", "Team Building", "Productivity"],
+    cta: "Request Proposal",
     to: "/corporate",
     Icon: Briefcase,
   },
@@ -64,6 +70,7 @@ const PROGRAMS: Program[] = [
     italic: "Yoga",
     blurb: "Playful, safe practice for growing minds and bodies.",
     bullets: ["Focus & Concentration", "Flexibility", "Confidence Building", "Healthy Growth"],
+    cta: "Enroll Child",
     to: "/programs",
     Icon: Smile,
   },
@@ -120,7 +127,7 @@ export function Services() {
                 to={p.to}
                 className="mt-auto pt-4 inline-flex items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--gold)] transition-all duration-300 group-hover:gap-2.5"
               >
-                Explore <ArrowRight className="h-3.5 w-3.5" />
+                {p.cta} <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </motion.article>
           ))}

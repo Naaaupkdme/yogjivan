@@ -13,11 +13,11 @@ type Metric = {
 };
 
 const METRICS: Metric[] = [
-  { Icon: Star, value: 4.9, decimals: 1, label: "Google Rating" },
+  { Icon: Star, value: 4.9, decimals: 1, suffix: "★", label: "Average Rating" },
   { Icon: Users2, value: 1000, suffix: "+", label: "Students Served" },
   { Icon: Globe2, value: 20, suffix: "+", label: "Countries Reached" },
   { Icon: Heart, value: 12, suffix: "+", label: "Years Experience" },
-  { Icon: Trophy, value: 100, suffix: "%", label: "Certified Yoga Expert" },
+  { Icon: Trophy, value: 100, suffix: "%", label: "Certified Indian Yoga Master" },
   { Icon: Award, value: 95, suffix: "%", label: "Student Retention" },
 ];
 
@@ -60,8 +60,8 @@ export function TrustSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.55, delay: idx * 0.05 }}
-              className="group relative flex flex-col items-center justify-center rounded-2xl border border-[color:var(--gold)]/20 bg-[linear-gradient(180deg,oklch(0.16_0.008_60/0.85),oklch(0.10_0.005_60/0.95))] p-6 text-center transition-all duration-500 hover:-translate-y-1 hover:border-[color:var(--gold)]/50 hover:shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--gold)_55%,transparent)]"
-              style={{ maxHeight: 240, minHeight: 200 }}
+              className="group relative flex flex-col items-center justify-center rounded-2xl border border-[color:var(--gold)]/20 bg-[linear-gradient(180deg,oklch(0.16_0.008_60/0.85),oklch(0.10_0.005_60/0.95))] p-5 text-center transition-all duration-500 hover:-translate-y-1 hover:border-[color:var(--gold)]/55 hover:shadow-[0_28px_70px_-30px_color-mix(in_oklab,var(--gold)_65%,transparent)]"
+              style={{ maxHeight: 216, minHeight: 180 }}
             >
               <span className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--gold)]/45 bg-black/35 text-[color:var(--gold)] shadow-[0_0_18px_-4px_color-mix(in_oklab,var(--gold)_60%,transparent)] transition-transform duration-500 group-hover:scale-110">
                 <m.Icon className="h-5 w-5" strokeWidth={1.5} />

@@ -3,6 +3,7 @@ import { Hero } from "@/components/site/Hero";
 import { FounderJourney } from "@/components/site/FounderJourney";
 import { TrustSection } from "@/components/site/TrustSection";
 import { Services } from "@/components/site/Services";
+import { Philosophy } from "@/components/site/Philosophy";
 import { Transformation } from "@/components/site/Transformation";
 import { Gallery } from "@/components/site/Gallery";
 import { CommunitySection } from "@/components/site/CommunitySection";
@@ -35,6 +36,7 @@ function Index() {
       <div id="journey"><FounderJourney /></div>
       <TrustSection />
       <Services />
+      <Philosophy />
       <Transformation />
       <Gallery />
       <CommunitySection />
