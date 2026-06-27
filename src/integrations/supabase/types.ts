@@ -14,7 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          created_at: string
+          email: string | null
+          experience_level: string | null
+          goals: string[] | null
+          health_notes: string | null
+          health_tags: string[] | null
+          id: string
+          meta: Json | null
+          name: string
+          preferred_experience: string | null
+          preferred_time: string | null
+          source: string | null
+          status: string
+          updated_at: string
+          whatsapp: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          experience_level?: string | null
+          goals?: string[] | null
+          health_notes?: string | null
+          health_tags?: string[] | null
+          id?: string
+          meta?: Json | null
+          name: string
+          preferred_experience?: string | null
+          preferred_time?: string | null
+          source?: string | null
+          status?: string
+          updated_at?: string
+          whatsapp: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          experience_level?: string | null
+          goals?: string[] | null
+          health_notes?: string | null
+          health_tags?: string[] | null
+          id?: string
+          meta?: Json | null
+          name?: string
+          preferred_experience?: string | null
+          preferred_time?: string | null
+          source?: string | null
+          status?: string
+          updated_at?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
