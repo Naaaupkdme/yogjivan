@@ -127,7 +127,7 @@ export function Services() {
                 to={p.to}
                 className="mt-auto pt-4 inline-flex items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--gold)] transition-all duration-300 group-hover:gap-2.5"
               >
-                Explore <ArrowRight className="h-3.5 w-3.5" />
+                {p.cta} <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </motion.article>
           ))}
