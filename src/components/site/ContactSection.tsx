@@ -140,13 +140,3 @@ export function ContactSection() {
     </section>
   );
 }
-
-function Field({ label, name, placeholder, error }: { label: string; name: string; placeholder: string; error?: string }) {
-  return (
-    <div>
-      <label className="text-[0.62rem] uppercase tracking-[0.24em] text-muted-foreground">{label}</label>
-      <input name={name} placeholder={placeholder} className="mt-2 w-full rounded-[1rem] border border-border bg-card/35 px-4 py-3 text-sm outline-none focus:border-primary/50" />
-      {error ? <p className="mt-1.5 text-xs text-destructive">{error}</p> : null}
-    </div>
-  );
-}
