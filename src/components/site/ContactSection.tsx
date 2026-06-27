@@ -1,18 +1,9 @@
-import { useState } from "react";
-import { MapPin, MessageCircle, Mail, Send, CheckCircle2, Circle } from "lucide-react";
-import { z } from "zod";
+import { MapPin, MessageCircle, Mail, Circle } from "lucide-react";
 import studioImg from "@/assets/4253.jpg.asset.json";
 import outdoorImg from "@/assets/dji_0014.jpg.asset.json";
 import { useLang } from "@/lib/language";
+import { SmartConsultation } from "./SmartConsultation";
 
-const schema = z.object({
-  name: z.string().trim().min(2, "Please share your name"),
-  phone: z.string().trim().min(6, "Please share a valid phone number"),
-  goal: z.string().trim().min(2, "Please share your goal"),
-  message: z.string().trim().max(1000).optional().default(""),
-});
-
-type Values = z.infer<typeof schema>;
 const WHATSAPP = "84782046066";
 
 const studios = [
@@ -33,24 +24,8 @@ const studios = [
 ];
 
 export function ContactSection() {
-  const [errors, setErrors] = useState<Partial<Record<keyof Values, string>>>({});
-  const [sent, setSent] = useState(false);
   const { t } = useLang();
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = Object.fromEntries(new FormData(event.currentTarget)) as Record<string, string>;
-    const parsed = schema.safeParse(data);
-    if (!parsed.success) {
-      const next: Partial<Record<keyof Values, string>> = {};
-      parsed.error.issues.forEach((i) => { next[i.path[0] as keyof Values] = i.message; });
-      setErrors(next); return;
-    }
-    setErrors({});
-    const message = encodeURIComponent(`Hello Yog Jivan,%0A%0AName: ${parsed.data.name}%0APhone: ${parsed.data.phone}%0AGoal: ${parsed.data.goal}%0A%0AMessage: ${parsed.data.message}`);
-    window.open(`https://wa.me/${WHATSAPP}?text=${message}`, "_blank", "noreferrer");
-    setSent(true);
-  };
 
   return (
     <section className="section-pad relative overflow-hidden">
