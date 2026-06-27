@@ -73,8 +73,8 @@ const copy: Record<Lang, Copy> = {
     },
     hero: {
       eyebrow: "Private Wellness Sanctuary · Hai Duong & Online",
-      title: ["Ancient Indian Wisdom.", "Modern Therapeutic Mastery.", "Quiet Luxury."],
-      sub: "Private sessions, therapeutic healing, luxury studio classes and online transformation programs for people seeking transformation, not exercise.",
+      title: ["Where Ancient Wisdom", "Meets Modern Healing."],
+      sub: "Authentic Indian yoga, therapeutic recovery and luxury wellness experiences designed for profound transformation of body, mind and soul.",
       primary: "Book Private Consultation",
       secondary: "Explore Programs",
       trust: ["12+ years of excellence", "1000+ students transformed", "20+ countries served"],
