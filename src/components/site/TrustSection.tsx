@@ -29,39 +29,41 @@ export function TrustSection() {
           <p className="mt-5 text-sm md:text-base leading-relaxed text-muted-foreground">{t.trust.sub}</p>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {proofs.map(({ Icon, title, body, bg }, idx) => (
             <motion.article
               key={title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: idx * 0.06 }}
-              className="group relative overflow-hidden rounded-[1.6rem] ring-1 ring-[color-mix(in_oklab,var(--gold)_18%,transparent)] shadow-[0_30px_70px_-30px_color-mix(in_oklab,var(--gold)_30%,transparent)] aspect-[4/5] sm:aspect-[3/4] cursor-default"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, delay: idx * 0.05 }}
+              className="group relative overflow-hidden rounded-[1.3rem] ring-1 ring-[color-mix(in_oklab,var(--gold)_18%,transparent)] shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--gold)_30%,transparent)] cursor-default"
+              style={{ aspectRatio: "4 / 3.4" }}
             >
+              {/* Number badge */}
+              <div className="absolute left-4 top-4 z-20 grid h-9 w-9 place-items-center rounded-md border border-[color:var(--gold)]/40 bg-black/60 backdrop-blur text-[0.68rem] tracking-[0.1em] text-[color:var(--gold)]">
+                {String(idx + 1).padStart(2, "0")}
+              </div>
               <img
                 src={bg} alt="" loading="lazy" aria-hidden
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
               />
-              {/* Dark luxury overlay — 70% */}
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_55%,transparent),color-mix(in_oklab,var(--onyx)_88%,transparent)_60%,color-mix(in_oklab,var(--onyx)_96%,transparent))]" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_55%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              {/* Gold hairline frame on hover */}
-              <div className="absolute inset-3 rounded-[1.3rem] border border-[color:var(--gold)]/0 group-hover:border-[color:var(--gold)]/30 transition-colors duration-700" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_45%,transparent),color-mix(in_oklab,var(--onyx)_88%,transparent)_55%,color-mix(in_oklab,var(--onyx)_96%,transparent))]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,color-mix(in_oklab,var(--gold)_16%,transparent),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-2.5 rounded-[1.05rem] border border-[color:var(--gold)]/0 group-hover:border-[color:var(--gold)]/30 transition-colors duration-700" />
 
-              <div className="relative z-10 flex h-full flex-col justify-between p-6">
-                <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[color:var(--gold)]/40 bg-black/30 backdrop-blur-md text-[color:var(--gold)] shadow-[0_0_20px_-4px_color-mix(in_oklab,var(--gold)_55%,transparent)]">
+              <div className="relative z-10 flex h-full flex-col items-center justify-end p-5 text-center">
+                <div className="grid h-12 w-12 place-items-center rounded-full border border-[color:var(--gold)]/40 bg-black/30 backdrop-blur-md text-[color:var(--gold)] shadow-[0_0_22px_-4px_color-mix(in_oklab,var(--gold)_55%,transparent)]">
                   <Icon className="h-5 w-5" strokeWidth={1.5} />
                 </div>
-                <div>
-                  <h3 className="font-display text-xl md:text-2xl leading-tight text-foreground">{title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-foreground/80">{body}</p>
-                  <div className="mt-4 h-px w-12 bg-gradient-to-r from-[color:var(--gold)] to-transparent" />
-                </div>
+                <h3 className="mt-3 font-display text-2xl md:text-[1.7rem] leading-tight text-foreground">{title}</h3>
+                <div className="mt-2 h-px w-10 bg-gradient-to-r from-transparent via-[color:var(--gold)] to-transparent" />
+                <p className="mt-2 max-w-[28ch] text-[0.78rem] leading-relaxed text-foreground/80">{body}</p>
               </div>
             </motion.article>
           ))}
         </div>
+
       </div>
     </section>
   );
