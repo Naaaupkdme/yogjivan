@@ -78,11 +78,18 @@ export function Gallery() {
   }, [active, prev, next]);
 
   return (
-    <section className="section-pad relative overflow-hidden">
-      <div className="container-luxe">
+    <section
+      className="relative overflow-hidden"
+      style={{ paddingTop: "clamp(60px, 9vw, 90px)", paddingBottom: "clamp(60px, 9vw, 90px)" }}
+    >
+      <div className="mx-auto px-5 sm:px-8" style={{ maxWidth: "1500px" }}>
         <div className="mx-auto mb-8 max-w-2xl text-center">
           <p className="eyebrow justify-center"><span className="h-px w-10 bg-primary" />Immersive gallery<span className="h-px w-10 bg-primary" /></p>
-          <h2 className="mt-5 fluid-title mx-auto max-w-[14ch]">A visual sanctuary of practice and presence.</h2>
+          <h2 className="mt-5 font-display leading-[1.1]" style={{ fontSize: "clamp(1.85rem, 4vw, 3.25rem)" }}>
+            Moments of Practice.
+            <br />
+            <span className="italic text-gold-gradient">Stories of Transformation.</span>
+          </h2>
         </div>
 
         <div className="mb-6 flex flex-wrap justify-center gap-2">
@@ -94,27 +101,32 @@ export function Gallery() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4">
           {items.map((item, idx) => (
             <motion.button
               key={item.src + idx}
               layout
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: (idx % 8) * 0.04 }}
+              transition={{ duration: 0.7, delay: (idx % 8) * 0.04, ease: "easeOut" }}
               onClick={() => setActive(idx)}
-              className="group relative overflow-hidden rounded-[1.25rem] border border-border/60 text-left"
+              className="group relative overflow-hidden rounded-[1.25rem] border border-border/60 text-left transition-all duration-700 hover:border-[color:var(--gold)]/60 hover:shadow-[0_30px_80px_-30px_color-mix(in_oklab,var(--gold)_60%,transparent)]"
             >
               <img src={item.src} alt={item.alt} loading="lazy"
-                className="h-[220px] w-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-[1.07] sm:h-[260px] md:h-[300px]" />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,color-mix(in_oklab,var(--onyx)_82%,transparent))]" />
-              <div className="absolute inset-x-3 bottom-3 flex items-center justify-between">
+                className="h-[242px] w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.08] sm:h-[286px] md:h-[330px]" />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,color-mix(in_oklab,var(--onyx)_85%,transparent))]" />
+              <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-[radial-gradient(circle_at_50%_60%,color-mix(in_oklab,var(--gold)_20%,transparent),transparent_70%)]" />
+              <div className="absolute inset-x-3 bottom-3 flex items-end justify-between gap-3">
                 <span className="text-[0.55rem] uppercase tracking-[0.26em] text-primary">{item.cat}</span>
+                <span className="max-w-[60%] translate-y-2 text-right text-[0.7rem] leading-tight text-foreground/90 opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 font-display italic">
+                  {item.alt}
+                </span>
               </div>
             </motion.button>
           ))}
         </div>
       </div>
+
 
       {active !== null && (
         <div className="fixed inset-0 z-[80] flex items-center justify-center bg-background/95 p-4 backdrop-blur-xl" onClick={close}>
