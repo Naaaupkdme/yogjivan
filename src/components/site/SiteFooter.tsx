@@ -9,21 +9,21 @@ import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
 import { useLang } from "@/lib/language";
 
 const QUOTES = [
-  { text: "Yoga is the journey of the self, through the self, to the self.", source: "Bhagavad Gita" },
-  { text: "When you inhale, you are taking the strength from God. When you exhale, it represents the service you are giving to the world.", source: "B.K.S. Iyengar" },
-  { text: "The body is your temple. Keep it pure and clean for the soul to reside in.", source: "B.K.S. Iyengar" },
-  { text: "Practice and all is coming.", source: "Sri K. Pattabhi Jois" },
+  { text: "In stillness, we remember who we are.", source: "Yog Jivan" },
+];
+
+const TRUST_STRIP = [
+  { value: "12+", label: "Years Experience" },
+  { value: "1000+", label: "Students" },
+  { value: "4.9★", label: "Google Rating" },
+  { value: "Global", label: "International Community" },
 ];
 
 export function SiteFooter() {
   const { t } = useLang();
   const [email, setEmail] = useState("");
-  const [qi, setQi] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setQi((i) => (i + 1) % QUOTES.length), 7000);
-    return () => clearInterval(id);
-  }, []);
+  const qi = 0;
+  useEffect(() => {}, []);
 
   return (
     <footer className="relative mt-12 overflow-hidden border-t border-border/60">
@@ -75,7 +75,7 @@ export function SiteFooter() {
               </div>
             </div>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              Where yoga, healing and quiet luxury meet.
+              Rooted in tradition. Refined for modern life.
             </p>
             <div className="mt-5 flex items-center gap-2 text-xs text-muted-foreground">
               <Star className="h-3.5 w-3.5 text-primary fill-primary" />
@@ -125,16 +125,29 @@ export function SiteFooter() {
                 </a>
               ))}
             </div>
-            <form className="mt-4 grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" onSubmit={(e) => e.preventDefault()}>
+            <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+              Receive mindful insights, retreat updates and wellness inspiration.
+            </p>
+            <form className="mt-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" onSubmit={(e) => e.preventDefault()}>
               <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="rounded-full border border-border bg-card/40 px-4 py-2.5 text-sm outline-none focus:border-primary/50" />
               <button className="btn-gold !min-h-[2.5rem] !text-[0.6rem]">{t.footer.subscribe}</button>
             </form>
           </div>
         </div>
 
+        {/* Trust strip */}
+        <div className="mt-8 grid grid-cols-2 gap-2 border-y border-border/40 py-5 sm:grid-cols-4 sm:gap-3">
+          {TRUST_STRIP.map((t) => (
+            <div key={t.label} className="text-center">
+              <div className="font-display text-base leading-none text-gold-gradient sm:text-lg">{t.value}</div>
+              <div className="mt-1 text-[0.55rem] uppercase tracking-[0.22em] text-muted-foreground">{t.label}</div>
+            </div>
+          ))}
+        </div>
+
         <div className="flex flex-col gap-3 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Yog Jivan. All rights reserved.</p>
-          <p className="uppercase tracking-[0.28em]">A sanctuary, not a template</p>
+          <p className="uppercase tracking-[0.28em]">Rooted in tradition. Refined for modern life.</p>
         </div>
       </div>
     </footer>
