@@ -183,7 +183,7 @@ export function FounderJourney() {
           style={{ y: treeY }}
           className="relative mt-10 md:mt-16 w-full"
         >
-          <div className="relative w-full" style={{ minHeight: "clamp(720px, 95vh, 1100px)" }}>
+          <div className="relative w-full" style={{ minHeight: "clamp(560px, 70vh, 820px)" }}>
             {/* Banyan Tree SVG */}
             <svg
               aria-hidden
