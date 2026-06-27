@@ -244,11 +244,11 @@
 }
 
 @utility section-pad {
-  padding-block: clamp(3.25rem, 6.5vw, 5.5rem);
+  padding-block: clamp(2.75rem, 5vw, 4.5rem);
 }
 
 @utility section-tight {
-  padding-block: clamp(2.5rem, 5vw, 4rem);
+  padding-block: clamp(2rem, 3.5vw, 3.25rem);
 }
 
 @utility safe-pt {
@@ -260,13 +260,13 @@
 }
 
 @utility fluid-display {
-  font-size: clamp(2.7rem, 8vw, 6.8rem);
-  line-height: 0.96;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  line-height: 0.98;
 }
 
 @utility fluid-title {
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1.02;
+  font-size: clamp(1.85rem, 4vw, 3.5rem);
+  line-height: 1.05;
 }
 
 @utility ambient-grid {

@@ -164,7 +164,7 @@ export function FounderJourney() {
         }
       `}</style>
 
-      <div className="relative container-luxe pt-20 md:pt-28 pb-16 md:pb-24">
+      <div className="relative container-luxe pt-12 md:pt-16 pb-10 md:pb-14">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto relative z-20">
           <p className="eyebrow justify-center">
@@ -183,7 +183,7 @@ export function FounderJourney() {
           style={{ y: treeY }}
           className="relative mt-10 md:mt-16 w-full"
         >
-          <div className="relative w-full" style={{ minHeight: "clamp(720px, 95vh, 1100px)" }}>
+          <div className="relative w-full" style={{ minHeight: "clamp(560px, 70vh, 820px)" }}>
             {/* Banyan Tree SVG */}
             <svg
               aria-hidden
