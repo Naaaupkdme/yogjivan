@@ -27,6 +27,7 @@ export type Database = {
           name: string
           preferred_experience: string | null
           preferred_time: string | null
+          session_id: string | null
           source: string | null
           status: string
           updated_at: string
@@ -44,6 +45,7 @@ export type Database = {
           name: string
           preferred_experience?: string | null
           preferred_time?: string | null
+          session_id?: string | null
           source?: string | null
           status?: string
           updated_at?: string
@@ -61,6 +63,7 @@ export type Database = {
           name?: string
           preferred_experience?: string | null
           preferred_time?: string | null
+          session_id?: string | null
           source?: string | null
           status?: string
           updated_at?: string
