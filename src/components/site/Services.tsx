@@ -8,6 +8,7 @@ type Program = {
   italic: string;
   blurb: string;
   bullets: string[];
+  cta: string;
   to: string;
   Icon: typeof User;
 };
