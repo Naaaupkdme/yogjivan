@@ -1,80 +1,400 @@
-import { motion } from "framer-motion";
+import type { CSSProperties, PointerEvent } from "react";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Sparkles, User, Users2, HeartPulse, Flame, Briefcase, Smile } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpenText,
+  Briefcase,
+  Check,
+  ClipboardList,
+  Flame,
+  Globe2,
+  HeartPulse,
+  Mountain,
+  Smile,
+  Sparkles,
+  User,
+  Users2,
+} from "lucide-react";
+import privateTransformationAsset from "@/assets/services/service-private-transformation.png.asset.json";
+import luxuryStudioClassesAsset from "@/assets/services/service-luxury-studio-classes.png.asset.json";
+import therapeuticRecoveryAsset from "@/assets/services/service-therapeutic-recovery.png.asset.json";
+import advancedYogaMasteryAsset from "@/assets/services/service-advanced-yoga-mastery.png.asset.json";
+import corporateWellnessAsset from "@/assets/services/service-corporate-wellness.png.asset.json";
+import kidsYogaAsset from "@/assets/services/service-kids-yoga.png.asset.json";
+import onlineGlobalClassesAsset from "@/assets/services/service-online-global-classes.png.asset.json";
+import retreatNatureExperiencesAsset from "@/assets/services/service-retreat-nature-experiences.png.asset.json";
+import traditionalYogaPhilosophyAsset from "@/assets/services/service-traditional-yoga-philosophy.png.asset.json";
+import holisticLifestyleConsultationAsset from "@/assets/services/service-holistic-lifestyle-consultation.png.asset.json";
 
-type Program = {
+type ServiceVariant =
+  | "private"
+  | "studio"
+  | "therapeutic"
+  | "mastery"
+  | "corporate"
+  | "kids"
+  | "online"
+  | "retreat"
+  | "philosophy"
+  | "consultation";
+
+type Service = {
   num: string;
   title: string;
   italic: string;
   blurb: string;
   bullets: string[];
   cta: string;
-  to: string;
+  to: "/personal-training" | "/programs" | "/corporate";
   Icon: typeof User;
+  image: string;
+  variant: ServiceVariant;
+  opacity: number;
+  blur: number;
+  brightness: number;
+  saturation?: number;
+  scale?: number;
+  hoverScale?: number;
+  parallax?: number;
+  position?: string;
+  overlay: string;
 };
 
-const PROGRAMS: Program[] = [
+const SERVICES: Service[] = [
   {
     num: "01",
     title: "Private",
     italic: "Transformation",
-    blurb: "One-to-one personalized sessions for true inner balance.",
+    blurb: "One-to-one transformation through individualized therapeutic guidance.",
     bullets: ["Personal Assessment", "Customized Plan", "Posture Correction", "Lifestyle Guidance"],
     cta: "Explore Program",
     to: "/personal-training",
     Icon: User,
+    image: privateTransformationAsset.url,
+    variant: "private",
+    opacity: 0.16,
+    blur: 8,
+    brightness: 0.45,
+    saturation: 0.8,
+    parallax: 18,
+    position: "center center",
+    overlay:
+      "linear-gradient(180deg, rgba(0,0,0,0.58), rgba(0,0,0,0.82))",
   },
   {
     num: "02",
     title: "Luxury",
     italic: "Studio Classes",
-    blurb: "Collective practice in a serene, premium environment.",
+    blurb: "Premium guided practice in a refined studio community.",
     bullets: ["Indoor & Outdoor", "All Levels Welcome", "Expert Guidance", "Curated Schedules"],
     cta: "View Schedule",
     to: "/programs",
     Icon: Users2,
+    image: luxuryStudioClassesAsset.url,
+    variant: "studio",
+    opacity: 0.14,
+    blur: 10,
+    brightness: 0.42,
+    scale: 1.1,
+    overlay:
+      "radial-gradient(circle at center, rgba(212,175,55,0.14) 0%, rgba(0,0,0,0.16) 32%, rgba(0,0,0,0.78) 100%), linear-gradient(180deg, rgba(0,0,0,0.56), rgba(0,0,0,0.82))",
   },
   {
     num: "03",
     title: "Therapeutic",
     italic: "Recovery",
-    blurb: "Healing-focused yoga for pain relief and restoration.",
-    bullets: ["Back & Neck Relief", "Stress Relief", "Posture Correction", "Mobility & Flexibility"],
+    blurb: "Restorative healing for recovery, relief and nervous system balance.",
+    bullets: ["Back & Neck Relief", "Stress Relief", "Posture Support", "Mobility & Flexibility"],
     cta: "Discover Healing",
     to: "/programs",
     Icon: HeartPulse,
+    image: therapeuticRecoveryAsset.url,
+    variant: "therapeutic",
+    opacity: 0.15,
+    blur: 9,
+    brightness: 0.4,
+    overlay:
+      "radial-gradient(circle at 18% 12%, rgba(212,175,55,0.16), transparent 30%), linear-gradient(180deg, rgba(0,0,0,0.58), rgba(0,0,0,0.84))",
   },
   {
     num: "04",
     title: "Advanced",
     italic: "Yoga Mastery",
-    blurb: "Strength, flexibility and advanced asana techniques.",
-    bullets: ["Strength & Balance", "Advanced Asanas", "Acro Yoga", "Personal Growth"],
+    blurb: "Elite discipline for strength, refinement and advanced asana control.",
+    bullets: ["Strength & Balance", "Advanced Asanas", "Precision Practice", "Personal Growth"],
     cta: "Master Your Practice",
     to: "/programs",
     Icon: Flame,
+    image: advancedYogaMasteryAsset.url,
+    variant: "mastery",
+    opacity: 0.14,
+    blur: 7,
+    brightness: 0.38,
+    hoverScale: 1.08,
+    overlay:
+      "radial-gradient(circle at 52% 36%, rgba(212,175,55,0.12), transparent 28%), linear-gradient(180deg, rgba(0,0,0,0.58), rgba(0,0,0,0.84))",
   },
   {
     num: "05",
     title: "Corporate",
     italic: "Wellness",
-    blurb: "On-site sessions that elevate team energy and focus.",
+    blurb: "Executive wellness experiences for clarity, resilience and performance.",
     bullets: ["Employee Wellness", "Stress Reduction", "Team Building", "Productivity"],
     cta: "Request Proposal",
     to: "/corporate",
     Icon: Briefcase,
+    image: corporateWellnessAsset.url,
+    variant: "corporate",
+    opacity: 0.14,
+    blur: 8,
+    brightness: 0.42,
+    overlay:
+      "linear-gradient(180deg, rgba(0,0,0,0.52), rgba(0,0,0,0.82))",
   },
   {
     num: "06",
     title: "Kids",
     italic: "Yoga",
-    blurb: "Playful, safe practice for growing minds and bodies.",
+    blurb: "Playful practice that nurtures confidence, focus and healthy growth.",
     bullets: ["Focus & Concentration", "Flexibility", "Confidence Building", "Healthy Growth"],
     cta: "Enroll Child",
     to: "/programs",
     Icon: Smile,
+    image: kidsYogaAsset.url,
+    variant: "kids",
+    opacity: 0.15,
+    blur: 8,
+    brightness: 0.5,
+    overlay:
+      "radial-gradient(circle at 10% 0%, rgba(255,214,135,0.18), transparent 34%), linear-gradient(180deg, rgba(0,0,0,0.48), rgba(0,0,0,0.78))",
+  },
+  {
+    num: "07",
+    title: "Online Global",
+    italic: "Classes",
+    blurb: "Practice live with Yog Jivan from anywhere in the world.",
+    bullets: ["Live Interactive Sessions", "Global Community", "Flexible Schedule", "Personalized Guidance"],
+    cta: "Join Online",
+    to: "/programs",
+    Icon: Globe2,
+    image: onlineGlobalClassesAsset.url,
+    variant: "online",
+    opacity: 0.15,
+    blur: 8,
+    brightness: 0.4,
+    overlay:
+      "linear-gradient(180deg, rgba(0,0,0,0.56), rgba(0,0,0,0.84))",
+  },
+  {
+    num: "08",
+    title: "Retreat & Nature",
+    italic: "Experiences",
+    blurb: "Reconnect with yourself in breathtaking natural environments.",
+    bullets: ["Nature Meditation", "Weekend Retreats", "Mountain Practice", "Inner Rejuvenation"],
+    cta: "Explore Retreats",
+    to: "/programs",
+    Icon: Mountain,
+    image: retreatNatureExperiencesAsset.url,
+    variant: "retreat",
+    opacity: 0.16,
+    blur: 8,
+    brightness: 0.48,
+    overlay:
+      "radial-gradient(circle at 78% 6%, rgba(255,210,124,0.2), transparent 24%), linear-gradient(180deg, rgba(0,0,0,0.44), rgba(0,0,0,0.8))",
+  },
+  {
+    num: "09",
+    title: "Traditional Yoga",
+    italic: "Philosophy",
+    blurb: "Learn authentic yogic wisdom beyond physical practice.",
+    bullets: ["Yoga Sutras", "Meditation Science", "Yogic Lifestyle", "Spiritual Understanding"],
+    cta: "Learn Philosophy",
+    to: "/programs",
+    Icon: BookOpenText,
+    image: traditionalYogaPhilosophyAsset.url,
+    variant: "philosophy",
+    opacity: 0.15,
+    blur: 9,
+    brightness: 0.4,
+    overlay:
+      "linear-gradient(180deg, rgba(0,0,0,0.56), rgba(0,0,0,0.84))",
+  },
+  {
+    num: "10",
+    title: "Holistic Lifestyle",
+    italic: "Consultation",
+    blurb: "Personal guidance for sustainable transformation.",
+    bullets: ["Health Assessment", "Lifestyle Planning", "Habit Transformation", "Wellness Roadmap"],
+    cta: "Book Consultation",
+    to: "/personal-training",
+    Icon: ClipboardList,
+    image: holisticLifestyleConsultationAsset.url,
+    variant: "consultation",
+    opacity: 0.15,
+    blur: 8,
+    brightness: 0.45,
+    overlay:
+      "radial-gradient(circle at 50% 14%, rgba(212,175,55,0.12), transparent 28%), linear-gradient(180deg, rgba(0,0,0,0.52), rgba(0,0,0,0.82))",
   },
 ];
+
+const PARTICLES = [
+  { left: "10%", top: "14%", size: 72, delay: "0s", duration: "20s" },
+  { left: "78%", top: "18%", size: 62, delay: "4s", duration: "17s" },
+  { left: "18%", top: "72%", size: 58, delay: "8s", duration: "22s" },
+  { left: "84%", top: "76%", size: 84, delay: "2s", duration: "19s" },
+] as const;
+
+function ServiceAmbient({ variant }: { variant: ServiceVariant }) {
+  return (
+    <>
+      <div className="service-card__vignette absolute inset-0" />
+      <div className="service-card__cursor absolute inset-0" />
+      <div className="service-card__shimmer absolute inset-0" />
+      <div className="service-card__particles absolute inset-0">
+        {PARTICLES.map((particle, index) => (
+          <span
+            key={`${variant}-${index}`}
+            className="service-card__particle"
+            style={{
+              left: particle.left,
+              top: particle.top,
+              width: particle.size,
+              height: particle.size,
+              animationDelay: particle.delay,
+              animationDuration: particle.duration,
+            }}
+          />
+        ))}
+      </div>
+
+      {variant === "studio" ? <div className="service-card__gold-vignette absolute inset-0" /> : null}
+      {variant === "therapeutic" ? <div className="service-card__breathing-glow absolute inset-0" /> : null}
+      {variant === "mastery" ? <div className="service-card__spotlight absolute inset-0" /> : null}
+      {variant === "corporate" ? <div className="service-card__glass-reflection absolute inset-0" /> : null}
+      {variant === "kids" ? <div className="service-card__sun-rays absolute inset-0" /> : null}
+      {variant === "retreat" ? <div className="service-card__sunrise-glow absolute inset-0" /> : null}
+      {variant === "philosophy" ? <div className="service-card__sacred-geometry absolute inset-0" /> : null}
+      {variant === "consultation" ? <div className="service-card__warm-glow absolute inset-0" /> : null}
+
+      {variant === "online" ? (
+        <div className="service-card__world-lines absolute inset-0">
+          <svg viewBox="0 0 100 100" className="h-full w-full" preserveAspectRatio="none" aria-hidden>
+            <path d="M12 72 C28 48, 38 40, 52 48 S74 70, 88 44" />
+            <path d="M18 30 C30 24, 44 26, 58 40 S78 52, 92 30" />
+            <path d="M24 82 C40 66, 54 62, 74 76" />
+            <circle cx="12" cy="72" r="1.5" />
+            <circle cx="52" cy="48" r="1.5" />
+            <circle cx="88" cy="44" r="1.5" />
+            <circle cx="18" cy="30" r="1.25" />
+            <circle cx="92" cy="30" r="1.25" />
+            <circle cx="74" cy="76" r="1.25" />
+          </svg>
+        </div>
+      ) : null}
+    </>
+  );
+}
+
+function ServiceCard({ service, index }: { service: Service; index: number }) {
+  const cardRef = useRef<HTMLElement | null>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"],
+  });
+
+  const parallaxAmount = service.parallax ?? 12;
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [parallaxAmount, -parallaxAmount]);
+
+  const handlePointerMove = (event: PointerEvent<HTMLElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    event.currentTarget.style.setProperty("--pointer-x", `${x}%`);
+    event.currentTarget.style.setProperty("--pointer-y", `${y}%`);
+  };
+
+  const cardStyle = {
+    "--service-opacity": service.opacity,
+    "--service-blur": `${service.blur}px`,
+    "--service-brightness": service.brightness,
+    "--service-saturation": service.saturation ?? 1,
+    "--service-scale": service.scale ?? 1.04,
+    "--service-hover-scale": service.hoverScale ?? 1.06,
+    "--service-position": service.position ?? "center center",
+    "--service-overlay": service.overlay,
+  } as CSSProperties;
+
+  return (
+    <motion.article
+      ref={cardRef}
+      initial={{ opacity: 0, y: 26 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{
+        duration: 1.2,
+        delay: index * 0.12,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      onPointerMove={handlePointerMove}
+      className={`service-card service-card--${service.variant} group relative flex min-h-[360px] flex-col overflow-hidden rounded-[28px] p-5 sm:min-h-[372px]`}
+      style={cardStyle}
+    >
+      <div className="absolute inset-0 overflow-hidden rounded-[28px]" aria-hidden>
+        <motion.div
+          className="absolute inset-[-8%]"
+          style={shouldReduceMotion ? undefined : { y: parallaxY }}
+        >
+          <div
+            className="service-card__bg absolute inset-0"
+            style={{ backgroundImage: `url(${service.image})` }}
+          />
+        </motion.div>
+        <div className="service-card__overlay absolute inset-0" />
+        <ServiceAmbient variant={service.variant} />
+      </div>
+
+      <div className="relative z-10 flex h-full flex-col">
+        <div className="flex items-start justify-between gap-3">
+          <span className="service-card__icon grid h-11 w-11 place-items-center rounded-full">
+            <service.Icon className="h-5 w-5" strokeWidth={1.5} />
+          </span>
+          <span className="text-[0.62rem] tracking-[0.2em] text-[color:var(--gold)]/72">{service.num}</span>
+        </div>
+
+        <h3 className="mt-3 font-display text-xl leading-tight text-foreground">
+          {service.title} <span className="italic text-gold-gradient">{service.italic}</span>
+        </h3>
+        <p className="mt-1.5 max-w-[32ch] text-[0.78rem] leading-relaxed text-muted-foreground">
+          {service.blurb}
+        </p>
+
+        <ul className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5">
+          {service.bullets.map((bullet) => (
+            <li key={bullet} className="flex items-start gap-1.5 text-[0.72rem] text-foreground/88">
+              <Check className="mt-0.5 h-3 w-3 shrink-0 text-[color:var(--gold)]" strokeWidth={2.6} />
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
+
+        <span className="service-card__badge mt-4 inline-flex w-fit items-center rounded-full px-3 py-1.5 text-[0.64rem] font-medium tracking-[0.14em] uppercase">
+          Custom Wellness Programs Available
+        </span>
+
+        <Link
+          to={service.to}
+          className="mt-auto inline-flex items-center gap-1.5 pt-4 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--gold)] transition-all duration-300 group-hover:gap-2.5"
+        >
+          {service.cta} <ArrowRight className="h-3.5 w-3.5" />
+        </Link>
+      </div>
+    </motion.article>
+  );
+}
 
 export function Services() {
   return (
@@ -88,48 +408,8 @@ export function Services() {
         </div>
 
         <div className="mt-10 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {PROGRAMS.map((p, idx) => (
-            <motion.article
-              key={p.num}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: idx * 0.05 }}
-              className="group glass-luxe relative flex flex-col rounded-2xl p-5 transition-all duration-500 hover:-translate-y-1.5 hover:border-[color:var(--gold)]/55 hover:shadow-[0_30px_70px_-30px_color-mix(in_oklab,var(--gold)_55%,transparent)]"
-              style={{ maxHeight: 320 }}
-            >
-              <div className="flex items-start justify-between">
-                <span className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--gold)]/45 bg-black/35 text-[color:var(--gold)] shadow-[0_0_18px_-4px_color-mix(in_oklab,var(--gold)_60%,transparent)] transition-transform duration-500 group-hover:scale-110">
-                  <p.Icon className="h-5 w-5" strokeWidth={1.5} />
-                </span>
-                <span className="text-[0.62rem] tracking-[0.2em] text-[color:var(--gold)]/70">
-                  {p.num}
-                </span>
-              </div>
-
-              <h3 className="mt-3 font-display text-xl leading-tight">
-                {p.title} <span className="italic text-gold-gradient">{p.italic}</span>
-              </h3>
-              <p className="mt-1.5 text-[0.78rem] leading-relaxed text-muted-foreground">
-                {p.blurb}
-              </p>
-
-              <ul className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5">
-                {p.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-1.5 text-[0.72rem] text-foreground/85">
-                    <Check className="mt-0.5 h-3 w-3 shrink-0 text-[color:var(--gold)]" strokeWidth={2.6} />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Link
-                to={p.to}
-                className="mt-auto pt-4 inline-flex items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-[color:var(--gold)] transition-all duration-300 group-hover:gap-2.5"
-              >
-                {p.cta} <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </motion.article>
+          {SERVICES.map((service, index) => (
+            <ServiceCard key={service.num} service={service} index={index} />
           ))}
         </div>
       </div>
