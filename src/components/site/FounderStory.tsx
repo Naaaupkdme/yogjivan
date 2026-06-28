@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { LuxuryImage } from "./LuxuryImage";
-import portrait from "@/assets/file_00000000c69072099fbaa6a18942f63a.png.asset.json";
+import { masterImages, masterAlts } from "@/lib/images";
 
 const TIMELINE = [
   { year: "Pre-2017", title: "Formation in India", body: "Years of dedicated study — Diploma and Master's Degree in Yoga, rooted in the classical Indian lineage." },
@@ -34,13 +34,14 @@ export function FounderStory() {
             className="relative lg:sticky lg:top-28"
           >
             <LuxuryImage
-              src={portrait.url}
-              alt="Master Anil Choudhary — Founder of Yog Jivan Sanctuary"
+              src={masterImages.founderPortrait}
+              alt={masterAlts.founderPortrait}
               aspect="4 / 5"
               overlay
               shimmer
               radius={32}
             />
+
           </motion.div>
 
           <ol className="relative space-y-8 lg:space-y-10 pl-6 sm:pl-10">

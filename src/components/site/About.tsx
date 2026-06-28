@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import aboutImg from "@/assets/img_0275.jpg.asset.json";
-import aboutImg2 from "@/assets/8c8a04a521fc965966fa27bd93b84031.jpg.asset.json";
+import { masterImages, masterAlts } from "@/lib/images";
+const aboutImg = { url: masterImages.advancedHeadstand };
+const aboutImg2 = { url: masterImages.armBalance };
 import { Sparkles, HeartHandshake, Flower2, Globe2 } from "lucide-react";
 
 const PILLARS = [
@@ -25,7 +26,7 @@ export function About() {
           className="relative"
         >
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-white/10 shadow-[var(--shadow-luxe)]">
-            <img src={aboutImg.url} alt="Master Anil Choudhary in advanced backbend asana" className="h-full w-full object-cover" loading="lazy" />
+            <img src={aboutImg.url} alt={masterAlts.advancedHeadstand} width="1280" height="1700" className="h-full w-full object-cover" loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--onyx)]/40 to-transparent" />
           </div>
           <motion.div
@@ -35,7 +36,7 @@ export function About() {
             transition={{ duration: 1, delay: 0.2 }}
             className="absolute -bottom-10 -right-6 hidden w-56 overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 shadow-[var(--shadow-gold)] md:block"
           >
-            <img src={aboutImg2.url} alt="Inversion practice" className="h-72 w-full object-cover" loading="lazy" />
+            <img src={aboutImg2.url} alt={masterAlts.armBalance} width="900" height="600" className="h-72 w-full object-cover" loading="lazy" decoding="async" />
           </motion.div>
           <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full border border-[color:var(--gold)]/30" />
         </motion.div>

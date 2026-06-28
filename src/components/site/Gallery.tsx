@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, X, ArrowRight } from "lucide-react";
+import { masterImages, masterAlts } from "@/lib/images";
 
 import acroArch from "@/assets/yog_jivan_acro_arch.png.asset.json";
 import acroFlying from "@/assets/yog_jivan_acro_flying.png.asset.json";
@@ -44,8 +45,16 @@ const CATEGORIES: Category[] = [
     label: "Master Anil",
     countLabel: "Photos",
     cta: "Explore Gallery",
-    cover: master1.url,
+    cover: masterImages.founderPortrait,
     images: [
+      { src: masterImages.founderPortrait, alt: masterAlts.founderPortrait },
+      { src: masterImages.studioBackbend, alt: masterAlts.studioBackbend },
+      { src: masterImages.rabbitPose, alt: masterAlts.rabbitPose },
+      { src: masterImages.studioSplit, alt: masterAlts.studioSplit },
+      { src: masterImages.advancedHeadstand, alt: masterAlts.advancedHeadstand },
+      { src: masterImages.armBalance, alt: masterAlts.armBalance },
+      { src: masterImages.ploughPose, alt: masterAlts.ploughPose },
+      { src: masterImages.outdoorBridge, alt: masterAlts.outdoorBridge },
       { src: master1.url, alt: "Master Anil in meditation" },
       { src: masterGroup.url, alt: "Master Anil with students" },
       { src: masterAlt.url, alt: "Master Anil teaching" },
@@ -62,8 +71,10 @@ const CATEGORIES: Category[] = [
     label: "Community",
     countLabel: "Moments",
     cta: "Explore Gallery",
-    cover: studio.url,
+    cover: masterImages.studioAdjustment,
     images: [
+      { src: masterImages.studioAdjustment, alt: masterAlts.studioAdjustment },
+      { src: masterImages.kidsYoga, alt: masterAlts.kidsYoga },
       { src: studio.url, alt: "Studio practice" },
       { src: masterGroup.url, alt: "Group practice" },
       { src: eventA.url, alt: "Community gathering" },
@@ -77,8 +88,12 @@ const CATEGORIES: Category[] = [
     label: "Transformations",
     countLabel: "Stories",
     cta: "Explore Gallery",
-    cover: transform1.url,
+    cover: masterImages.advancedHeadstand,
     images: [
+      { src: masterImages.advancedHeadstand, alt: masterAlts.advancedHeadstand },
+      { src: masterImages.armBalance, alt: masterAlts.armBalance },
+      { src: masterImages.studioBackbend, alt: masterAlts.studioBackbend },
+      { src: masterImages.outdoorBridge, alt: masterAlts.outdoorBridge },
       { src: transform1.url, alt: "Advanced inversion" },
       { src: transform2.url, alt: "Camel pose transformation" },
       { src: transform3.url, alt: "Backbend expression" },

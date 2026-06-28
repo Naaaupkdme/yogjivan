@@ -4,7 +4,8 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import heroVideo from "@/assets/hero-meditation.mp4.asset.json";
-import heroPoster from "@/assets/img_20260620_125938.jpg.asset.json";
+import { masterImages } from "@/lib/images";
+const heroPoster = { url: masterImages.founderPortrait };
 import { AmbientCanvas } from "@/components/site/AmbientCanvas";
 import { useLang } from "@/lib/language";
 

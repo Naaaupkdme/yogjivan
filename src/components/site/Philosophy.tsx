@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import founderImg from "@/assets/img_20260620_125938.jpg.asset.json";
+import { masterImages, masterAlts } from "@/lib/images";
+const founderImg = { url: masterImages.founderPortrait, alt: masterAlts.founderPortrait };
 
 export function Philosophy() {
   return (
