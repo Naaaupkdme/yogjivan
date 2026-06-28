@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 import { Hero } from "@/components/site/Hero";
-import { FAQS } from "@/components/site/FAQ";
+import { FAQS } from "@/lib/faqs";
 
 const Philosophy = lazy(() => import("@/components/site/Philosophy").then(m => ({ default: m.Philosophy })));
 const TrustSection = lazy(() => import("@/components/site/TrustSection").then(m => ({ default: m.TrustSection })));
