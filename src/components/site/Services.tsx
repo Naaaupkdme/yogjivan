@@ -340,7 +340,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         ease: [0.22, 1, 0.36, 1],
       }}
       onPointerMove={handlePointerMove}
-      className={`service-card service-card--${service.variant} group relative flex min-h-[360px] flex-col overflow-hidden rounded-[28px] p-5 sm:min-h-[372px]`}
+      className={`service-card service-card--${service.variant} group relative flex min-h-[320px] flex-col overflow-hidden rounded-[28px] p-5`}
       style={cardStyle}
     >
       <div className="absolute inset-0 overflow-hidden rounded-[28px]" aria-hidden>
