@@ -2,11 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import heroVideo from "@/assets/hero-meditation.mp4.asset.json";
 import heroPoster from "@/assets/img_20260620_125938.jpg.asset.json";
 import { AmbientCanvas } from "@/components/site/AmbientCanvas";
 import { useLang } from "@/lib/language";
+
+const WHATSAPP_URL = "https://wa.me/84782046066?text=Hello%20Yog%20Jivan%2C%20I%27d%20like%20to%20book%20a%20free%20trial.";
 
 const QUOTES = [
   { q: "Yoga is the journey of the self, through the self, to the self.", a: "Bhagavad Gita" },
