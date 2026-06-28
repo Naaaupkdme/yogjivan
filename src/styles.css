@@ -353,6 +353,53 @@
   }
 }
 
+@keyframes service-particle-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.014;
+  }
+  50% {
+    transform: translate3d(0, -16px, 0) scale(1.15);
+    opacity: 0.032;
+  }
+}
+
+@keyframes service-breathe-glow {
+  0%, 100% {
+    opacity: 0.12;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.18;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes service-sunrise-glow {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.18;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes service-world-flow {
+  0% {
+    stroke-dashoffset: 160;
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.34;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.2;
+  }
+}
+
 .trust-section-title {
   color: #F3E4C8;
 }
@@ -449,11 +496,207 @@
   border-color: rgba(212, 175, 55, 0.58);
 }
 
+.service-card {
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --service-opacity: 0.15;
+  --service-blur: 8px;
+  --service-brightness: 0.42;
+  --service-saturation: 1;
+  --service-scale: 1.04;
+  --service-hover-scale: 1.06;
+  --service-position: center center;
+  --service-overlay: linear-gradient(180deg, rgba(0,0,0,0.58), rgba(0,0,0,0.82));
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 0 0 rgba(212,175,55,0);
+  isolation: isolate;
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-card__bg {
+  background-size: cover;
+  background-position: var(--service-position);
+  opacity: var(--service-opacity);
+  transform: scale(var(--service-scale));
+  filter: blur(var(--service-blur)) brightness(var(--service-brightness)) saturate(var(--service-saturation));
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-card__overlay {
+  background: var(--service-overlay);
+}
+
+.service-card__vignette {
+  box-shadow: inset 0 0 34px rgba(0,0,0,0.34), inset 0 -48px 72px rgba(0,0,0,0.36), inset 0 18px 34px rgba(0,0,0,0.2);
+}
+
+.service-card__cursor {
+  background: radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(212,175,55,0.06), transparent 24%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.service-card__shimmer {
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.03) 44%, rgba(243,228,200,0.04) 50%, rgba(212,175,55,0.03) 56%, transparent 100%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: trust-shimmer 8s linear infinite;
+}
+
+.service-card__particles {
+  pointer-events: none;
+}
+
+.service-card__particle {
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(212,175,55,0.85) 0%, rgba(212,175,55,0) 72%);
+  opacity: 0.024;
+  filter: blur(0.3px);
+  animation: service-particle-float 22s ease-in-out infinite;
+}
+
+.service-card__icon {
+  border: 1px solid rgba(212,175,55,0.45);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(0,0,0,0.2));
+  color: rgba(212,175,55,0.96);
+  box-shadow: 0 0 18px rgba(212,175,55,0.16);
+  transition:
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-card__badge {
+  background: rgba(212,175,55,0.08);
+  border: 1px solid rgba(212,175,55,0.18);
+  color: rgba(243,228,200,0.92);
+}
+
+.service-card__gold-vignette {
+  background: radial-gradient(circle at center, transparent 42%, rgba(212,175,55,0.08) 100%);
+}
+
+.service-card__breathing-glow {
+  background: radial-gradient(circle at 18% 12%, rgba(212,175,55,0.1), transparent 32%);
+  animation: service-breathe-glow 7s ease-in-out infinite;
+}
+
+.service-card__spotlight {
+  background: radial-gradient(circle at 56% 38%, rgba(255,225,160,0.1), transparent 24%);
+}
+
+.service-card__glass-reflection {
+  background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.06) 22%, transparent 42%);
+  opacity: 0.24;
+}
+
+.service-card__sun-rays {
+  background:
+    linear-gradient(118deg, rgba(255,214,135,0.12) 0%, transparent 28%),
+    linear-gradient(132deg, rgba(255,214,135,0.06) 10%, transparent 38%);
+}
+
+.service-card__world-lines svg {
+  opacity: 0.34;
+}
+
+.service-card__world-lines path,
+.service-card__world-lines circle {
+  fill: none;
+  stroke: rgba(212,175,55,0.48);
+  stroke-width: 0.55;
+  filter: drop-shadow(0 0 6px rgba(212,175,55,0.18));
+}
+
+.service-card__world-lines path {
+  stroke-dasharray: 160;
+  animation: service-world-flow 10s linear infinite alternate;
+}
+
+.service-card__world-lines circle {
+  fill: rgba(243,228,200,0.56);
+  stroke-width: 0.2;
+}
+
+.service-card__sunrise-glow {
+  background: radial-gradient(circle at 82% 4%, rgba(255,211,122,0.16), transparent 22%);
+  animation: service-sunrise-glow 8s ease-in-out infinite;
+}
+
+.service-card__sacred-geometry {
+  background-image:
+    radial-gradient(circle, rgba(212,175,55,0.06) 1px, transparent 1.4px),
+    radial-gradient(circle at center, rgba(212,175,55,0.08) 0%, transparent 34%);
+  background-size: 22px 22px, auto;
+  opacity: 0.28;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.75), transparent 86%);
+}
+
+.service-card__warm-glow {
+  background: radial-gradient(circle at 50% 14%, rgba(212,175,55,0.14), transparent 26%);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212,175,55,0.2);
+  box-shadow: 0 20px 60px rgba(212,175,55,0.12);
+}
+
+.service-card:hover .service-card__bg {
+  transform: scale(var(--service-hover-scale));
+}
+
+.service-card:hover .service-card__icon {
+  transform: scale(1.06);
+  box-shadow: 0 0 24px rgba(212,175,55,0.2);
+  border-color: rgba(212,175,55,0.58);
+}
+
+.service-card:hover .service-card__cursor {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trust-card,
+  .trust-card__bg,
+  .trust-card__icon,
+  .service-card,
+  .service-card__bg,
+  .service-card__icon {
+    transition-duration: 0.01ms !important;
+  }
+
+  .trust-card__particle,
+  .trust-card__shimmer,
+  .service-card__particle,
+  .service-card__shimmer,
+  .service-card__breathing-glow,
+  .service-card__sunrise-glow,
+  .service-card__world-lines path {
+    animation: none !important;
+  }
+}
+
 @media (max-width: 767px) {
   .btn-gold, .btn-ghost-gold {
     min-height: 2.75rem;
     padding-inline: 1rem;
     font-size: 0.68rem;
   }
+
+  .service-card {
+    min-height: 342px;
+  }
 }
+
 
