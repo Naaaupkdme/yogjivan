@@ -36,7 +36,7 @@ export function About() {
             transition={{ duration: 1, delay: 0.2 }}
             className="absolute -bottom-10 -right-6 hidden w-56 overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 shadow-[var(--shadow-gold)] md:block"
           >
-            <img src={aboutImg2.url} alt="Inversion practice" className="h-72 w-full object-cover" loading="lazy" />
+            <img src={aboutImg2.url} alt={masterAlts.armBalance} width="900" height="600" className="h-72 w-full object-cover" loading="lazy" decoding="async" />
           </motion.div>
           <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full border border-[color:var(--gold)]/30" />
         </motion.div>
