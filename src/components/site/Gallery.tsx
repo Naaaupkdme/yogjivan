@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight, X, ArrowRight } from "lucide-react";
+import { masterImages, masterAlts } from "@/lib/images";
 
 import acroArch from "@/assets/yog_jivan_acro_arch.png.asset.json";
 import acroFlying from "@/assets/yog_jivan_acro_flying.png.asset.json";
