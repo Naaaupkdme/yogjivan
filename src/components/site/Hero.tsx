@@ -122,9 +122,9 @@ export function Hero() {
             <Link to="/contact" className="btn-gold">
               {t.hero.primary} <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/programs" className="btn-ghost-gold">
-              <Play className="h-3.5 w-3.5" /> {t.hero.secondary}
-            </Link>
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-ghost-gold">
+              <MessageCircle className="h-3.5 w-3.5 text-[#25D366]" /> {t.hero.secondary}
+            </a>
           </div>
 
           <div className="hero-reveal mt-6 flex flex-wrap justify-center lg:justify-start gap-2">
