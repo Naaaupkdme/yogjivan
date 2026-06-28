@@ -14,6 +14,9 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
+import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
+import { FloatingConsultationCTA } from "@/components/site/FloatingConsultationCTA";
+import { ExitIntentModal } from "@/components/site/ExitIntentModal";
 import { LanguageProvider } from "@/lib/language";
 
 function NotFoundComponent() {
@@ -119,6 +122,9 @@ function RootComponent() {
           </main>
           <SiteFooter />
           <FloatingWhatsApp />
+          <FloatingConsultationCTA />
+          <ExitIntentModal />
+          <MobileStickyCTA />
         </div>
       </LanguageProvider>
     </QueryClientProvider>
