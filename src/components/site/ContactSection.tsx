@@ -1,4 +1,4 @@
-import { MapPin, MessageCircle, Mail, Circle } from "lucide-react";
+import { MapPin, MessageCircle, Mail, Circle, Clock, ShieldCheck, Sparkles, Heart } from "lucide-react";
 import studioImg from "@/assets/4253.jpg.asset.json";
 import outdoorImg from "@/assets/dji_0014.jpg.asset.json";
 import { useLang } from "@/lib/language";
@@ -48,7 +48,69 @@ export function ContactSection() {
           </div>
         </div>
 
-        <SmartConsultation />
+        <div id="consultation" className="grid gap-6 lg:grid-cols-5 lg:items-stretch">
+          {/* LEFT — Luxury WhatsApp Panel (40%) */}
+          <aside className="relative overflow-hidden rounded-[1.75rem] border border-[color:var(--gold)]/25 bg-gradient-to-br from-black/70 via-black/55 to-[color-mix(in_oklab,var(--gold)_8%,transparent)] p-7 sm:p-9 lg:col-span-2 backdrop-blur-xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]">
+            <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 22%, transparent), transparent 70%)" }} />
+            <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full blur-3xl" style={{ background: "radial-gradient(circle, rgba(37,211,102,0.18), transparent 70%)" }} />
+
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#25D366]/30 bg-[#25D366]/10 px-3 py-1 text-[0.55rem] uppercase tracking-[0.26em] text-[#25D366]">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366]/70" />
+                  <Circle className="relative h-2 w-2 fill-[#25D366] text-[#25D366]" />
+                </span>
+                Online · Replies within 5 min
+              </div>
+
+              <div className="mt-6 flex items-center gap-4">
+                <div className="grid h-14 w-14 place-items-center rounded-2xl border border-[#25D366]/40 bg-gradient-to-br from-[#25D366]/30 to-[#128C7E]/30 shadow-[0_0_40px_rgba(37,211,102,0.25)]">
+                  <MessageCircle className="h-7 w-7 text-[#25D366]" />
+                </div>
+                <div>
+                  <div className="text-[0.6rem] uppercase tracking-[0.24em] text-primary">Direct Line</div>
+                  <div className="font-display text-lg leading-tight">Master Anil Choudhary</div>
+                </div>
+              </div>
+
+              <h3 className="mt-6 font-display text-3xl leading-tight sm:text-4xl">Speak directly with Master Anil.</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                A short, private conversation to understand your goals and recommend the right practice for your body and life.
+              </p>
+
+              <div className="mt-6 grid gap-2.5">
+                {[
+                  { Icon: Clock, t: "Average response · under 5 minutes" },
+                  { Icon: Sparkles, t: "Personalized guidance · no scripts" },
+                  { Icon: ShieldCheck, t: "Private & confidential consultation" },
+                  { Icon: Heart, t: "12+ years guiding 1000+ students" },
+                ].map(({ Icon, t }) => (
+                  <div key={t} className="flex items-center gap-3 rounded-xl border border-white/8 bg-white/[0.03] px-3.5 py-2.5">
+                    <Icon className="h-4 w-4 shrink-0 text-[color:var(--gold)]" />
+                    <span className="text-xs text-foreground/85">{t}</span>
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href={`https://wa.me/${WHATSAPP}?text=Hello%20Master%20Anil%2C%20I%27d%20like%20a%20personal%20consultation.`}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_50px_-12px_rgba(37,211,102,0.55)] transition-transform hover:scale-[1.02]"
+              >
+                <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
+              </a>
+              <p className="mt-3 text-center text-[0.6rem] uppercase tracking-[0.24em] text-muted-foreground">
+                +84 782 046 066
+              </p>
+            </div>
+          </aside>
+
+          {/* RIGHT — Smart Consultation form (60%) */}
+          <div className="lg:col-span-3">
+            <SmartConsultation />
+          </div>
+        </div>
 
 
         {/* Studios + Map (50/50) */}
