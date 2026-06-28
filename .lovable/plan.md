@@ -1,51 +1,77 @@
-## Scope
+# Yog Jivan Legacy — World-Class Luxury Upgrade Plan
 
-Rebuild every section of the homepage to match the 11 design boards in your PDF, plus add the new Smart Wellness Journey quiz. The current site already has the right bones (dark luxury theme, gold accents, glass, ambient canvas). This pass replaces composition, hierarchy, imagery, and storytelling — not the design system.
+Preserving the existing dark luxury theme, gold/amber palette, animations and brand identity. This is an *upgrade* on top of the current site, not a rebuild.
 
-I'll keep the existing token system (Champagne Gold, Onyx, Ivory, Bronze are already close — I'll only retune the palette to your exact hex: #050505 / #1B120D / #C8A46A / #F4EBDD / #7A5C3A). Typography swaps to Cormorant Garamond (headings) + Inter (body) loaded via `<link>` in `__root.tsx`.
+Given the scope (8 phases, 30+ sub-features), I'll ship in **4 build waves** so you can review progressively. Each wave is independently shippable.
 
-## What changes, board by board
+---
 
-1. **Header** — narrower floating glass pill, larger logo, ALL CAPS wordmark already there; add EN/VI + FB/YT/WA icons + gold "Book Free Trial" CTA in a tighter row.
-2. **Hero** — keep 65/35 split + ping‑pong video; tighten copy to the three‑line headline; add three trust badges at the bottom (12+ Years • 1000+ Students • 20+ Countries).
-3. **Founder Journey → Tree of Transformation** — full rebuild. SVG Banyan tree (roots in India, branches into Vietnam), circular gold portrait of Master Anil at the trunk, 5 milestones woven into branches (2013/2017/2019/2022/2026), faint India→Vietnam map arc behind.
-4. **Trust & Credibility** — keep 6 editorial image cards, retune copy + add 01–06 numerals, swap to the 6 board‑specified scenes (community / outdoor class / world map / therapeutic hands / master+student / video testimonial).
-5. **Programs** — 4 large editorial cards (Private / Studio / Therapeutic / Advanced) with cinematic imagery, numbered, benefit bullets, gold CTAs.
-6. **Transformation Story** — split layout: editorial copy on left, before/after evolution slider on right (mastery evolution, not body transformation).
-7. **Gallery** — large hero image + masonry with category filters (Master Anil / Community / Transformations / Events / Retreats) and cinematic lightbox.
-8. **Community** — "Held by People. Shaped by Ritual." 3 emotional blocks (outdoor / studio celebration / retreat).
-9. **Smart Wellness Journey (NEW)** — 6‑step luxury quiz with gold progress rail: Details → Goals → Experience → Health → Preferences → Done. Submits to WhatsApp link.
-10. **Testimonials** — large quote cards + country flags + Google rating strip + video thumbnails.
-11. **Consultation** — split: studio imagery + WhatsApp/email/2 studios on left, premium form on right, interactive embedded map below.
-12. **Footer** — Gita quote top, Instagram strip, newsletter, quick links, studio details, social, founder signature, gold particles.
+## Wave 1 — Conversion Layer (Phase 1 + page-level CRO)
 
-## Global polish
+New components:
+- `MobileStickyCTA.tsx` — fixed bottom bar (mobile only, hidden ≥md), "Book Free Trial" + "WhatsApp", glassmorphism + gold glow, `bottom-[env(safe-area-inset-bottom)]`, offset so it never overlaps `FloatingWhatsApp` (move WhatsApp button up on mobile when bar is visible).
+- `FloatingConsultationCTA.tsx` — appears after `30s` OR `scrollY > 50%` (whichever first). Glass card top-right desktop / inline mobile. Dismiss → `localStorage` for 7 days.
+- `ExitIntentModal.tsx` — desktop: `mouseleave` on top edge; mobile: `>75%` scroll. Single shadcn `Dialog`. Dismissal persisted in `localStorage`.
+- Mount all three in `__root.tsx` so they're sitewide.
 
-- Palette retuned to your exact hex values in `src/styles.css`.
-- Cormorant Garamond + Inter loaded via `<link>` in `__root.tsx`; `--font-display` updated.
-- Section reveal animations standardized (Framer Motion `whileInView`, slow easing).
-- Lotus bloom page loader, scroll progress bar, cursor glow (desktop only), floating Sanskrit quotes.
-- Floating WhatsApp already present — kept.
+## Wave 2 — Trust & Credibility (Phase 2)
 
-## What I will NOT change
+- Extend `TrustSection.tsx` with new "Trusted Worldwide" block: animated SVG world map (dot grid + 6 gold arcs from India → VN/US/UK/FR/AU/CA), "20+ Countries" headline.
+- New `FounderCredentials.tsx` — 6 luxury glass cards (12+ Yrs, Master Degree, 1000+ Students, Certified Indian Master, Global Educator, Therapeutic Specialist).
+- New `SuccessStories.tsx` — luxury carousel with photo / problem / transformation / quote / country / duration (3 stories: back pain, stress, anxiety). Reuse existing gallery photos.
+- New `GoogleReviews.tsx` — carousel with star rating, verified badge, "via Google" source. Replaces/augments existing Testimonials trust strip.
 
-- Routing, server functions, language provider API, asset URLs, SEO scaffold in `__root.tsx` (only meta copy refreshed).
-- Existing shadcn components, FloatingWhatsApp, AmbientCanvas.
+## Wave 3 — Services Expansion (Phase 3)
 
-## Out of scope (call out if you want them)
+- Enhance existing `Services.tsx` cards: background image at 20% opacity + 1.5px blur + dark gradient overlay, shimmer sweep, hover zoom 1.05, ambient gold glow. (Most already exists — tune values to spec.)
+- Remove any visible price → replace with "Personalized Luxury Programs" badge sitewide (audit `Programs.tsx`, `Services.tsx`, route pages).
+- New sections appended to homepage flow:
+  1. `SignatureJourneys.tsx` — Private Mentorship / Therapeutic Healing / Global Online (3 large editorial cards).
+  2. `WhoIsThisFor.tsx` — 6 audience cards (Busy Professionals, Chronic Pain, Stress, Beginners, Advanced, Corporate Leaders).
+  3. `PhilosophyLineage.tsx` — vertical timeline: Ancient Wisdom → Modern Science → Personal Transformation → Lifelong Wellbeing.
+  4. `WellnessMethod.tsx` — 4-step process: Assessment → Customized Program → Guided Practice → Tracking.
 
-- Ambient sound toggle (needs audio asset + autoplay UX decision).
-- Real Instagram API strip (will use curated image strip instead).
-- Real Google Reviews API (will use static curated quotes with Google badge).
+## Wave 4 — SEO, Performance, Luxury Polish, A11y, i18n (Phases 4–8)
 
-## Order of execution
+SEO:
+- Per-route `head()` audit for all routes (`/`, `/about`, `/programs`, `/gallery`, `/contact`, `/corporate`, `/online`, `/personal-training`, `/blog`, `/testimonials`) — unique title, description, canonical, OG, Twitter card.
+- Root JSON-LD: `Organization` + `LocalBusiness` + `YogaStudio` (2 studio addresses) + `BreadcrumbList` helpers.
+- FAQ schema on `/programs`; Review schema on `/testimonials`.
+- Improve `robots.txt`; sitemap server route already exists — verify entries.
 
-1. Tokens + fonts (`styles.css`, `__root.tsx`).
-2. Header + Hero refinements.
-3. Tree of Transformation (biggest new build).
-4. Trust, Programs, Transformation, Gallery, Community refinements.
-5. Smart Wellness Journey quiz (new component + mount on home).
-6. Testimonials, Consultation, Footer refinements.
-7. Global effects (loader, scroll progress, cursor glow).
+Performance:
+- Add `loading="lazy"` + explicit `width`/`height` on all `<img>` (CLS).
+- Hero video keeps `preload="metadata"`; hero poster `<link rel="preload" as="image">` in route head.
+- Audit gallery images for `decoding="async"`.
 
-Reply "go" and I'll start shipping; or tell me which boards to prioritize first if you'd rather see this land in waves.
+Luxury experience:
+- `ScrollProgress.tsx` — top 2px gold gradient bar, scaleX with scrollYProgress.
+- `MouseParallax.tsx` — desktop-only wrapper, ≤10px translate; opt-in via `data-parallax` attribute on hero accent layer.
+- `SacredDivider.tsx` — SVG mandala-line divider component for between major sections.
+- `LuxuryLoader.tsx` — first-paint loader: gold logo + particle burst, fades on `load`. Mount in `__root.tsx`, gated by sessionStorage so it only shows once per session.
+
+Accessibility:
+- Sweep for missing `aria-label` on icon-only buttons; add focus-visible rings using existing `--gold` token; ensure `alt` on every `<img>`; verify single `<main>` per route.
+
+Internationalization:
+- Extend `src/lib/language.tsx` to support `'en' | 'vi' | 'hi'` (hi stub-ready, falls back to en).
+- Add `useTimezone()` hook → `Intl.DateTimeFormat().resolvedOptions().timeZone`, surface in `SmartConsultation` review step ("Times shown in your timezone: Asia/Saigon").
+
+---
+
+## Technical notes
+
+- All new sections follow existing `glass-luxe` / `section-tight` / gold-gradient conventions in `styles.css`.
+- No new heavy dependencies. Reuse `framer-motion`, existing GSAP, existing assets.
+- Pricing audit will use `rg "\\$|VND|₫|/mo|/month|price"` across `src/` to catch every instance.
+- All new copy bilingual via `useLang()` keys.
+- Estimated final bundle delta: ~25–35KB gzip (mostly the 4 new content sections).
+
+## Order of execution after approval
+
+1. Wave 1 (CRO) — ~6 file writes
+2. Wave 2 (Trust) — ~4 new components + 1 edit
+3. Wave 3 (Services + pricing sweep) — ~5 new components + edits
+4. Wave 4 (SEO/perf/polish/a11y/i18n) — route head() pass + 4 polish components + language extension
+
+Reply "go" to ship Wave 1, or "ship all" to run all four waves back-to-back.
