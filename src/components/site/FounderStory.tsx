@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { LuxuryImage } from "./LuxuryImage";
-import portrait from "@/assets/file_00000000c69072099fbaa6a18942f63a.png.asset.json";
+import { masterImages, masterAlts } from "@/lib/images";
 
 const TIMELINE = [
   { year: "Pre-2017", title: "Formation in India", body: "Years of dedicated study — Diploma and Master's Degree in Yoga, rooted in the classical Indian lineage." },
