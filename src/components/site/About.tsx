@@ -26,7 +26,7 @@ export function About() {
           className="relative"
         >
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-white/10 shadow-[var(--shadow-luxe)]">
-            <img src={aboutImg.url} alt="Master Anil Choudhary in advanced backbend asana" className="h-full w-full object-cover" loading="lazy" />
+            <img src={aboutImg.url} alt={masterAlts.advancedHeadstand} width="1280" height="1700" className="h-full w-full object-cover" loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--onyx)]/40 to-transparent" />
           </div>
           <motion.div
