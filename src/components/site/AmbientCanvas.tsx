@@ -11,7 +11,9 @@ type Particle = {
 function Particles() {
   const points = useRef<THREE.Points>(null);
   const particles = useMemo<Particle[]>(() => {
-    return Array.from({ length: 90 }, () => ({
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const count = isMobile ? 38 : 90;
+    return Array.from({ length: count }, () => ({
       position: [
         (Math.random() - 0.5) * 14,
         (Math.random() - 0.5) * 10,

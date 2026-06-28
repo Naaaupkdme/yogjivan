@@ -2,11 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import heroVideo from "@/assets/hero-meditation.mp4.asset.json";
 import heroPoster from "@/assets/img_20260620_125938.jpg.asset.json";
 import { AmbientCanvas } from "@/components/site/AmbientCanvas";
 import { useLang } from "@/lib/language";
+
+const WHATSAPP_URL = "https://wa.me/84782046066?text=Hello%20Yog%20Jivan%2C%20I%27d%20like%20to%20book%20a%20free%20trial.";
 
 const QUOTES = [
   { q: "Yoga is the journey of the self, through the self, to the self.", a: "Bhagavad Gita" },
@@ -120,9 +122,9 @@ export function Hero() {
             <Link to="/contact" className="btn-gold">
               {t.hero.primary} <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/programs" className="btn-ghost-gold">
-              <Play className="h-3.5 w-3.5" /> {t.hero.secondary}
-            </Link>
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-ghost-gold">
+              <MessageCircle className="h-3.5 w-3.5 text-[#25D366]" /> {t.hero.secondary}
+            </a>
           </div>
 
           <div className="hero-reveal mt-6 flex flex-wrap justify-center lg:justify-start gap-2">

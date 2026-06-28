@@ -247,8 +247,17 @@
   padding-block: clamp(2.75rem, 5vw, 4.5rem);
 }
 
+@utility section-y {
+  padding-block: clamp(72px, 9vw, 120px);
+}
+
 @utility section-tight {
   padding-block: clamp(2rem, 3.5vw, 3.25rem);
+}
+
+@utility section-skeleton {
+  min-height: 60vh;
+  background: linear-gradient(180deg, transparent, color-mix(in oklab, var(--surface) 30%, transparent), transparent);
 }
 
 @utility safe-pt {
