@@ -34,13 +34,14 @@ export function FounderStory() {
             className="relative lg:sticky lg:top-28"
           >
             <LuxuryImage
-              src={portrait.url}
-              alt="Master Anil Choudhary — Founder of Yog Jivan Sanctuary"
+              src={masterImages.founderPortrait}
+              alt={masterAlts.founderPortrait}
               aspect="4 / 5"
               overlay
               shimmer
               radius={32}
             />
+
           </motion.div>
 
           <ol className="relative space-y-8 lg:space-y-10 pl-6 sm:pl-10">
