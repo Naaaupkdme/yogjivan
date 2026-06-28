@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import aboutImg from "@/assets/img_0275.jpg.asset.json";
-import aboutImg2 from "@/assets/8c8a04a521fc965966fa27bd93b84031.jpg.asset.json";
+import { masterImages, masterAlts } from "@/lib/images";
+const aboutImg = { url: masterImages.advancedHeadstand };
+const aboutImg2 = { url: masterImages.armBalance };
 import { Sparkles, HeartHandshake, Flower2, Globe2 } from "lucide-react";
 
 const PILLARS = [
