@@ -1,7 +1,13 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 import { Award, Globe2, Heart, Star, Trophy, Users2 } from "lucide-react";
 import { useLang } from "@/lib/language";
+import bgRating from "@/assets/trust/trust-rating-stars.png.asset.json";
+import bgStudents from "@/assets/trust/trust-students-gathering.png.asset.json";
+import bgCountries from "@/assets/trust/trust-countries-map.png.asset.json";
+import bgYears from "@/assets/trust/trust-years-lotus-temple.png.asset.json";
+import bgCertified from "@/assets/trust/trust-certified-lotus-circle.png.asset.json";
+import bgRetention from "@/assets/trust/trust-retention-roots-tree.png.asset.json";
 
 type Metric = {
   Icon: typeof Star;
@@ -10,26 +16,42 @@ type Metric = {
   prefix?: string;
   label: string;
   decimals?: number;
+  image: string;
 };
 
 const METRICS: Metric[] = [
-  { Icon: Star, value: 4.9, decimals: 1, suffix: "★", label: "Average Rating" },
-  { Icon: Users2, value: 1000, suffix: "+", label: "Students Served" },
-  { Icon: Globe2, value: 20, suffix: "+", label: "Countries Reached" },
-  { Icon: Heart, value: 12, suffix: "+", label: "Years Experience" },
-  { Icon: Trophy, value: 100, suffix: "%", label: "Certified Indian Yoga Master" },
-  { Icon: Award, value: 95, suffix: "%", label: "Student Retention" },
+  { Icon: Star, value: 4.9, decimals: 1, label: "Average Rating", image: bgRating.url },
+  { Icon: Users2, value: 1000, suffix: "+", label: "Students Served", image: bgStudents.url },
+  { Icon: Globe2, value: 20, suffix: "+", label: "Countries Reached", image: bgCountries.url },
+  { Icon: Heart, value: 12, suffix: "+", label: "Years Experience", image: bgYears.url },
+  { Icon: Trophy, value: 100, suffix: "%", label: "Certified Indian Yoga Master", image: bgCertified.url },
+  { Icon: Award, value: 95, suffix: "%", label: "Student Retention", image: bgRetention.url },
+];
+
+const PARTICLES = [
+  { left: "12%", top: "18%", size: 3, duration: 22, delay: 0 },
+  { left: "78%", top: "22%", size: 2, duration: 26, delay: 3 },
+  { left: "24%", top: "66%", size: 2.5, duration: 24, delay: 5 },
+  { left: "86%", top: "70%", size: 3, duration: 28, delay: 2 },
+  { left: "58%", top: "14%", size: 2, duration: 20, delay: 6 },
+  { left: "46%", top: "82%", size: 2.5, duration: 30, delay: 4 },
 ];
 
 function CountUp({ value, decimals = 0, prefix = "", suffix = "" }: { value: number; decimals?: number; prefix?: string; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const mv = useMotionValue(0);
-  const rounded = useTransform(mv, (v) => `${prefix}${v.toFixed(decimals)}${suffix}`);
+  const rounded = useTransform(mv, (v) => {
+    const formatted = decimals ? v.toFixed(decimals) : Math.round(v).toString();
+    return `${prefix}${formatted}${suffix}`;
+  });
 
   useEffect(() => {
     if (!inView) return;
-    const controls = animate(mv, value, { duration: 1.8, ease: "easeOut" });
+    const controls = animate(mv, value, {
+      duration: 2.5,
+      ease: [0.16, 1, 0.3, 1],
+    });
     return () => controls.stop();
   }, [inView, value, mv]);
 
@@ -43,36 +65,61 @@ export function TrustSection() {
     <section className="section-tight relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,color-mix(in_oklab,var(--gold)_8%,transparent),transparent_50%)]" />
       <div className="container-luxe relative">
-        <div className="text-center max-w-2xl mx-auto">
+        <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow justify-center">
             <span className="h-px w-10 bg-primary" />
             {t.trust.eyebrow}
             <span className="h-px w-10 bg-primary" />
           </p>
-          <h2 className="mt-4 fluid-title">{t.trust.title}</h2>
+          <h2 className="trust-section-title mt-4 fluid-title">{t.trust.title}</h2>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {METRICS.map((m, idx) => (
             <motion.article
               key={m.label}
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: idx * 0.05 }}
-              className="group relative flex flex-col items-center justify-center rounded-2xl border border-[color:var(--gold)]/20 bg-[linear-gradient(180deg,oklch(0.16_0.008_60/0.85),oklch(0.10_0.005_60/0.95))] p-5 text-center transition-all duration-500 hover:-translate-y-1 hover:border-[color:var(--gold)]/55 hover:shadow-[0_28px_70px_-30px_color-mix(in_oklab,var(--gold)_65%,transparent)]"
-              style={{ maxHeight: 216, minHeight: 180 }}
+              transition={{ duration: 1.2, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              className="trust-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-2xl p-5 text-center"
+              style={{
+                maxHeight: 216,
+                minHeight: 180,
+                ["--trust-bg" as string]: `url(${m.image})`,
+              } as CSSProperties}
             >
-              <span className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--gold)]/45 bg-black/35 text-[color:var(--gold)] shadow-[0_0_18px_-4px_color-mix(in_oklab,var(--gold)_60%,transparent)] transition-transform duration-500 group-hover:scale-110">
-                <m.Icon className="h-5 w-5" strokeWidth={1.5} />
-              </span>
-              <div className="mt-3 font-display text-4xl md:text-5xl leading-none text-gold-gradient">
-                <CountUp value={m.value} decimals={m.decimals} prefix={m.prefix} suffix={m.suffix} />
+              <div className="trust-card__bg absolute inset-0" />
+              <div className="trust-card__overlay absolute inset-0" />
+              <div className="trust-card__vignette absolute inset-0" />
+              <div className="trust-card__particles absolute inset-0">
+                {PARTICLES.map((particle, particleIdx) => (
+                  <span
+                    key={`${m.label}-${particleIdx}`}
+                    className="trust-card__particle"
+                    style={{
+                      left: particle.left,
+                      top: particle.top,
+                      width: particle.size,
+                      height: particle.size,
+                      animationDelay: `${particle.delay + idx * 0.6}s`,
+                      animationDuration: `${particle.duration}s`,
+                    }}
+                  />
+                ))}
               </div>
-              <div className="mt-2 h-px w-10 bg-gradient-to-r from-transparent via-[color:var(--gold)] to-transparent" />
-              <p className="mt-2 text-[0.78rem] uppercase tracking-[0.18em] text-foreground/80">
-                {m.label}
-              </p>
+              <div className="trust-card__shimmer absolute inset-y-0 -left-1/2 w-1/2" style={{ animationDelay: `${idx * 1.25}s` }} />
+
+              <div className="relative z-10 flex flex-col items-center">
+                <span className="trust-card__icon grid h-11 w-11 place-items-center rounded-full">
+                  <m.Icon className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+                <div className="mt-3 font-display text-4xl leading-none text-gold-gradient md:text-5xl">
+                  <CountUp value={m.value} decimals={m.decimals} prefix={m.prefix} suffix={m.suffix} />
+                </div>
+                <div className="mt-2 h-px w-10 bg-gradient-to-r from-transparent via-[color:var(--gold)] to-transparent" />
+                <p className="trust-card__label mt-2 text-[0.78rem] uppercase tracking-[0.18em]">{m.label}</p>
+              </div>
             </motion.article>
           ))}
         </div>
