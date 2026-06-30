@@ -130,9 +130,10 @@ export function Testimonials() {
                 ))}
               </div>
               <a
-                href="https://www.youtube.com/@yogjivan"
+                href="https://youtube.com/@yogjivanvietnam?si=MClExD8wRgaoWbvR"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
+                aria-label="Watch student transformation stories on the Yog Jivan YouTube channel"
                 className="inline-flex items-center gap-1.5 text-[0.7rem] uppercase tracking-[0.22em] text-primary hover:text-foreground transition-colors"
               >
                 Watch Student Stories <ArrowRight className="h-3 w-3" />
