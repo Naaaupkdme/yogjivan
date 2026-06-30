@@ -67,7 +67,7 @@ export function SmartConsultation() {
   async function submitMicro(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
-    const parsed = microSchema.safeParse(data);
+    const parsed = microSchema.safeParse({ name: data.name, whatsapp: phoneValue });
     if (!parsed.success) {
       const next: typeof errors = {};
       parsed.error.issues.forEach((i) => { next[i.path[0] as "name" | "whatsapp"] = i.message; });
