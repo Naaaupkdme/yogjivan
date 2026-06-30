@@ -175,7 +175,7 @@ export function ContactSection() {
           <a href={SOCIAL.googleMaps} target="_blank" rel="noopener noreferrer" aria-label="Open Yog Jivan Hai Duong studios in Google Maps"
             className="group relative block overflow-hidden rounded-[1.75rem] border border-[color:var(--gold)]/30">
             <iframe title="Yog Jivan Hai Duong location"
-              src="https://www.google.com/maps?q=Hai+Duong,+Vietnam&output=embed"
+              src={SOCIAL.googleMapsEmbed}
               className="pointer-events-none h-full min-h-[460px] w-full grayscale-[0.85] contrast-[1.05] transition-all duration-700 group-hover:grayscale-0" loading="lazy"
               style={{ filter: "grayscale(0.85) contrast(1.05) brightness(0.7) sepia(0.15)" }} />
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_30%,transparent)_0%,transparent_30%,color-mix(in_oklab,var(--onyx)_92%,transparent)_100%)]" />
