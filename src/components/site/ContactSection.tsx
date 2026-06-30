@@ -3,8 +3,9 @@ import studioImg from "@/assets/4253.jpg.asset.json";
 import outdoorImg from "@/assets/dji_0014.jpg.asset.json";
 import { useLang } from "@/lib/language";
 import { SmartConsultation } from "./SmartConsultation";
+import { SOCIAL } from "@/lib/social";
 
-const WHATSAPP = "84782046066";
+const WHATSAPP = SOCIAL.whatsappE164;
 
 const studios = [
   {
@@ -12,14 +13,14 @@ const studios = [
     address: "Nguyen Trai Street, Hai Duong City, Vietnam",
     img: studioImg.url,
     tags: ["Premium Indoor Studio", "Private Sessions", "Therapeutic Yoga"],
-    mapHref: "https://maps.google.com/?q=Nguyen+Trai+Hai+Duong+Vietnam",
+    mapHref: SOCIAL.googleMaps,
   },
   {
     title: "Yog Jivan Wellness & Healing Center",
     address: "Tran Hung Dao Street, Hai Duong City, Vietnam",
     img: outdoorImg.url,
     tags: ["Outdoor Wellness Space", "Community Programs", "Corporate Wellness"],
-    mapHref: "https://maps.google.com/?q=Tran+Hung+Dao+Hai+Duong+Vietnam",
+    mapHref: SOCIAL.googleMaps,
   },
 ];
 
