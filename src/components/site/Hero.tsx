@@ -1,13 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import heroVideo from "@/assets/hero-meditation.mp4.asset.json";
 import { masterImages } from "@/lib/images";
-const heroPoster = { url: masterImages.founderPortrait };
-import { AmbientCanvas } from "@/components/site/AmbientCanvas";
 import { useLang } from "@/lib/language";
+
+const heroPoster = { url: masterImages.founderPortrait };
+
+// AmbientCanvas (three.js) is the largest non-critical chunk; only load it on
+// desktop, after first paint. Mobile users never download or execute it.
+const AmbientCanvas = lazy(() =>
+  import("@/components/site/AmbientCanvas").then((m) => ({ default: m.AmbientCanvas })),
+);
 
 const WHATSAPP_URL = "https://wa.me/84782046066?text=Hello%20Yog%20Jivan%2C%20I%27d%20like%20to%20book%20a%20free%20trial.";
 
@@ -18,17 +24,31 @@ const QUOTES = [
   { q: "When you inhale, you are taking the strength from God. When you exhale, it represents the service you give.", a: "B.K.S. Iyengar" },
 ];
 
+function useIsDesktop() {
+  const [isDesktop, set] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)");
+    const update = () => set(mq.matches);
+    update();
+    mq.addEventListener?.("change", update);
+    return () => mq.removeEventListener?.("change", update);
+  }, []);
+  return isDesktop;
+}
+
 export function Hero() {
   const rootRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const { t } = useLang();
+  const isDesktop = useIsDesktop();
   const { scrollYProgress } = useScroll({ target: rootRef, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
   const [qIdx, setQIdx] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
 
   useEffect(() => {
     if (!contentRef.current) return;
@@ -39,56 +59,88 @@ export function Hero() {
     return () => ctx.revert();
   }, []);
 
-  // Rotating quotes
+  // Defer hero video load until the browser is idle, AND only when not on a
+  // data-saver / reduced-motion / small-screen context. This unblocks LCP.
   useEffect(() => {
-    const id = setInterval(() => setQIdx((i) => (i + 1) % QUOTES.length), 8000);
-    return () => clearInterval(id);
+    if (typeof window === "undefined") return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // @ts-expect-error - non-standard but widely available
+    const saveData = navigator.connection?.saveData;
+    if (reduced || saveData) return;
+
+    const load = () => setVideoSrc(heroVideo.url);
+    const ric = (window as unknown as { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback;
+    const id = ric
+      ? ric(load, { timeout: 2500 })
+      : (window.setTimeout(load, 1800) as unknown as number);
+    return () => {
+      const cic = (window as unknown as { cancelIdleCallback?: (id: number) => void }).cancelIdleCallback;
+      if (cic) cic(id); else window.clearTimeout(id);
+    };
   }, []);
 
-  // Hide scroll indicator after first scroll
+  // Rotate quotes — desktop only (mobile saves the timer + re-renders).
+  useEffect(() => {
+    if (!isDesktop) return;
+    const id = window.setInterval(() => setQIdx((i) => (i + 1) % QUOTES.length), 8000);
+    return () => window.clearInterval(id);
+  }, [isDesktop]);
+
   useEffect(() => {
     const onScroll = () => { if (window.scrollY > 40) setScrolled(true); };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Bulletproof seamless loop: native loop attr + onEnded fallback.
+  // Seamless loop once the video element has its src.
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
+    if (!v || !videoSrc) return;
     v.loop = true;
     v.muted = true;
     v.playsInline = true;
     v.playbackRate = 0.95;
-    const restart = () => { try { v.currentTime = 0; v.play().catch(() => {}); } catch {} };
-    const onEnded = () => restart();
-    const onPause = () => { if (!document.hidden) v.play().catch(() => {}); };
+    const onEnded = () => { try { v.currentTime = 0; v.play().catch(() => {}); } catch {} };
     v.addEventListener("ended", onEnded);
-    v.addEventListener("pause", onPause);
     v.play().catch(() => {});
-    return () => {
-      v.removeEventListener("ended", onEnded);
-      v.removeEventListener("pause", onPause);
-    };
-  }, []);
+    return () => v.removeEventListener("ended", onEnded);
+  }, [videoSrc]);
 
   return (
     <section ref={rootRef} className="relative overflow-hidden" style={{ minHeight: "100svh", paddingTop: "var(--hdr-h,72px)" }}>
       <motion.div style={{ y, scale }} className="absolute inset-0">
-        <video ref={videoRef} src={heroVideo.url} poster={heroPoster.url} autoPlay muted playsInline preload="auto"
-          className="h-full w-full object-cover" />
+        {/* Poster is the LCP candidate — eager, high priority, no video request blocks it */}
+        <img
+          src={heroPoster.url}
+          alt="Master Anil Choudhary in seated meditation at Yog Jivan Sanctuary"
+          width={1600}
+          height={1000}
+          fetchPriority="high"
+          decoding="async"
+          className="h-full w-full object-cover"
+        />
+        {videoSrc && (
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            poster={heroPoster.url}
+            autoPlay
+            muted
+            playsInline
+            preload="none"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        )}
       </motion.div>
 
-      {/* Cinematic overlays — stronger on the right (desktop) where content lives */}
+      {/* Cinematic overlays */}
       <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_42%,transparent),color-mix(in_oklab,var(--onyx)_72%,transparent)_55%,color-mix(in_oklab,var(--onyx)_94%,transparent))]" />
       <div className="absolute inset-0 hidden lg:block bg-[linear-gradient(90deg,transparent,transparent_40%,color-mix(in_oklab,var(--onyx)_72%,transparent)_75%,color-mix(in_oklab,var(--onyx)_88%,transparent))]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_30%,color-mix(in_oklab,var(--gold)_12%,transparent),transparent_38%),radial-gradient(circle_at_85%_75%,color-mix(in_oklab,var(--gold-soft)_10%,transparent),transparent_42%)]" />
       <div className="pointer-events-none absolute inset-0 ambient-grid opacity-[0.06]" />
-      <div className="pointer-events-none absolute left-[-10%] top-[18%] h-[28rem] w-[28rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 22%, transparent), transparent 70%)", animation: "breathe 14s ease-in-out infinite" }} />
-      <div className="pointer-events-none absolute right-[-6%] bottom-[10%] h-[34rem] w-[34rem] rounded-full blur-3xl" style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold-soft) 16%, transparent), transparent 68%)", animation: "breathe 18s ease-in-out infinite reverse" }} />
 
-      {/* Sacred geometry — slow rotating mandala */}
-      <div className="pointer-events-none absolute inset-0 grid place-items-center opacity-[0.07]">
+      {/* Sacred geometry — desktop only (heavy on mobile paint) */}
+      <div className="pointer-events-none absolute inset-0 hidden lg:grid place-items-center opacity-[0.07]">
         <svg viewBox="0 0 600 600" className="h-[80vmin] w-[80vmin] animate-[spin_120s_linear_infinite]" aria-hidden>
           <g fill="none" stroke="currentColor" strokeWidth="0.6" className="text-primary">
             {Array.from({ length: 12 }).map((_, i) => (
@@ -101,7 +153,12 @@ export function Hero() {
         </svg>
       </div>
 
-      <div className="pointer-events-none absolute inset-0 opacity-60"><AmbientCanvas /></div>
+      {/* Ambient three.js layer — desktop only, lazy-loaded after first paint */}
+      {isDesktop && (
+        <div className="pointer-events-none absolute inset-0 opacity-60">
+          <Suspense fallback={null}><AmbientCanvas /></Suspense>
+        </div>
+      )}
 
       <div className="container-luxe relative z-10 grid min-h-[calc(100svh-var(--hdr-h,72px))] lg:grid-cols-[65fr_35fr] items-end lg:items-center py-8 sm:py-12">
         <div className="hidden lg:block" aria-hidden />
@@ -136,22 +193,22 @@ export function Hero() {
             ))}
           </div>
 
-          {/* Rotating spiritual quote */}
-          <div className="hero-reveal mt-7 hidden lg:block min-h-[3.5rem]">
-            <AnimatePresence mode="wait">
-              <motion.blockquote key={qIdx}
-                initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 1.1, ease: "easeOut" }}
-                className="text-[0.72rem] italic text-muted-foreground/85 max-w-sm">
-                "{QUOTES[qIdx].q}"
-                <footer className="not-italic mt-1 text-[0.5rem] uppercase tracking-[0.28em] text-primary/80">— {QUOTES[qIdx].a}</footer>
-              </motion.blockquote>
-            </AnimatePresence>
-          </div>
+          {isDesktop && (
+            <div className="hero-reveal mt-7 hidden lg:block min-h-[3.5rem]">
+              <AnimatePresence mode="wait">
+                <motion.blockquote key={qIdx}
+                  initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 1.1, ease: "easeOut" }}
+                  className="text-[0.72rem] italic text-muted-foreground/85 max-w-sm">
+                  "{QUOTES[qIdx].q}"
+                  <footer className="not-italic mt-1 text-[0.5rem] uppercase tracking-[0.28em] text-primary/80">— {QUOTES[qIdx].a}</footer>
+                </motion.blockquote>
+              </AnimatePresence>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Scroll indicator — auto-hides after first scroll, never overlaps content */}
       <AnimatePresence>
         {!scrolled && (
           <motion.div
