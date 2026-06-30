@@ -111,9 +111,9 @@ export function SiteFooter() {
           <div>
             <h4 className="eyebrow mb-4">Sanctuary</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><span>Hai Duong, Vietnam</span></li>
-              <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="tel:+84782046066" className="hover:text-foreground">+84 782 046 066</a></li>
-              <li className="flex gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="mailto:hello@yogjivan.com" className="hover:text-foreground">hello@yogjivan.com</a></li>
+              <li className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.googleMaps} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Hai Duong, Vietnam</a></li>
+              <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`tel:${SOCIAL.phoneTel}`} className="hover:text-foreground">{SOCIAL.phone}</a></li>
+              <li className="flex gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`mailto:${SOCIAL.email}`} className="hover:text-foreground">{SOCIAL.email}</a></li>
             </ul>
           </div>
 
