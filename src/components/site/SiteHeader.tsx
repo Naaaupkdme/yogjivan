@@ -80,7 +80,7 @@ export function SiteHeader() {
               { href: SOCIAL.facebook, Icon: Facebook, label: "Visit Yog Jivan Facebook" },
               { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram" },
               { href: SOCIAL.youtube, Icon: Youtube, label: "Visit Yog Jivan YouTube" },
-              { href: WHATSAPP, Icon: MessageCircle, label: "WhatsApp" },
+              { href: WHATSAPP, Icon: MessageCircle, label: "Open WhatsApp chat" },
             ].map(({ href, Icon, label }) => (
               <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
                 className="grid h-8 w-8 place-items-center rounded-full text-muted-foreground/80 transition-all duration-300 hover:text-[color:var(--gold)] hover:bg-[color-mix(in_oklab,var(--gold)_10%,transparent)]">
