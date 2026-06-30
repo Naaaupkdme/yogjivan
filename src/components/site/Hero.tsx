@@ -59,8 +59,8 @@ export function Hero() {
     return () => ctx.revert();
   }, []);
 
-  // Defer hero video load until the browser is idle, AND only when not on a
-  // data-saver / reduced-motion / small-screen context. This unblocks LCP.
+  // Defer hero video load by ~2s so it never competes with LCP. Skip entirely
+  // for data-saver / reduced-motion users.
   useEffect(() => {
     if (typeof window === "undefined") return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -68,15 +68,8 @@ export function Hero() {
     const saveData = navigator.connection?.saveData;
     if (reduced || saveData) return;
 
-    const load = () => setVideoSrc(heroVideo.url);
-    const ric = (window as unknown as { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback;
-    const id = ric
-      ? ric(load, { timeout: 2500 })
-      : (window.setTimeout(load, 1800) as unknown as number);
-    return () => {
-      const cic = (window as unknown as { cancelIdleCallback?: (id: number) => void }).cancelIdleCallback;
-      if (cic) cic(id); else window.clearTimeout(id);
-    };
+    const id = window.setTimeout(() => setVideoSrc(heroVideo.url), 2000);
+    return () => window.clearTimeout(id);
   }, []);
 
   // Rotate quotes — desktop only (mobile saves the timer + re-renders).
