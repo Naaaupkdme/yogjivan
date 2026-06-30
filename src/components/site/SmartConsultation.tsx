@@ -3,9 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowLeft, Check, ShieldCheck, Sparkles, Clock, Heart, MessageCircle } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 import { emptyLeadState, type LeadState, loadState, saveState, clearState, submitLead } from "@/lib/leads";
+import { SOCIAL } from "@/lib/social";
 
-const WHATSAPP = "84782046066";
+const WHATSAPP = SOCIAL.whatsappE164;
 
 const GOALS = [
   "Weight Loss", "Weight Gain", "Flexibility", "Stress Relief", "Back Pain", "Neck Pain",
