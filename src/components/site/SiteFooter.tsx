@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube, MessageCircle, MapPin, Mail, Phone, Star } from "lucide-react";
+import { SOCIAL } from "@/lib/social";
 import communityA from "@/assets/img_20260621_105308.jpg.asset.json";
 import communityB from "@/assets/img_20260622_114016.jpg.asset.json";
 import communityC from "@/assets/img_5066.jpg.asset.json";
