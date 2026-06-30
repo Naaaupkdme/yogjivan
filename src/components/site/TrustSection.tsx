@@ -86,7 +86,7 @@ export function TrustSection() {
               style={{
                 maxHeight: 216,
                 minHeight: 180,
-                ["--trust-bg" as string]: `url(${m.image})`,
+                ["--trust-bg" as string]: m.gradient,
               } as CSSProperties}
             >
               <div className="trust-card__bg absolute inset-0" />
