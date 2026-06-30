@@ -158,7 +158,7 @@ export function ContactSection() {
             </div>
             <div className="mt-2 grid grid-cols-2 gap-3">
               {[
-                { Icon: MessageCircle, title: "WhatsApp", body: "+84 782 046 066", href: `https://wa.me/${WHATSAPP}` },
+                { Icon: MessageCircle, title: "WhatsApp", body: SOCIAL.phone, href: SOCIAL.whatsapp },
                 { Icon: Mail, title: "Email", body: "hello@yogjivan.com", href: "mailto:hello@yogjivan.com" },
               ].map(({ Icon, title, body, href }) => (
                 <a key={title} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer"
