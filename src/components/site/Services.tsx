@@ -17,16 +17,33 @@ import {
   User,
   Users2,
 } from "lucide-react";
-import privateTransformationAsset from "@/assets/services/service-private-transformation.png.asset.json";
-import luxuryStudioClassesAsset from "@/assets/services/service-luxury-studio-classes.png.asset.json";
-import therapeuticRecoveryAsset from "@/assets/services/service-therapeutic-recovery.png.asset.json";
-import advancedYogaMasteryAsset from "@/assets/services/service-advanced-yoga-mastery.png.asset.json";
-import corporateWellnessAsset from "@/assets/services/service-corporate-wellness.png.asset.json";
-import kidsYogaAsset from "@/assets/services/service-kids-yoga.png.asset.json";
-import onlineGlobalClassesAsset from "@/assets/services/service-online-global-classes.png.asset.json";
-import retreatNatureExperiencesAsset from "@/assets/services/service-retreat-nature-experiences.png.asset.json";
-import traditionalYogaPhilosophyAsset from "@/assets/services/service-traditional-yoga-philosophy.png.asset.json";
-import holisticLifestyleConsultationAsset from "@/assets/services/service-holistic-lifestyle-consultation.png.asset.json";
+// Background imagery temporarily replaced with luxury onyx + gold gradients.
+// New optimized imagery will be wired back through `service.image` once uploaded.
+
+// Per-card gradient palettes — each gives a distinct mood while keeping the
+// onyx + gold luxury identity coherent across the grid.
+const GRADIENTS: Record<string, string> = {
+  private:
+    "radial-gradient(circle at 28% 22%, rgba(212,175,55,0.22), transparent 48%), linear-gradient(150deg, #0c0a08 0%, #181210 55%, #0a0807 100%)",
+  studio:
+    "radial-gradient(circle at 50% 18%, rgba(243,228,200,0.22), transparent 52%), linear-gradient(160deg, #0a0a0c 0%, #15110d 60%, #08070a 100%)",
+  therapeutic:
+    "radial-gradient(circle at 18% 14%, rgba(212,175,55,0.2), transparent 42%), linear-gradient(170deg, #0a0c0d 0%, #14110f 55%, #07090a 100%)",
+  mastery:
+    "radial-gradient(circle at 60% 38%, rgba(212,175,55,0.2), transparent 44%), linear-gradient(140deg, #0a0807 0%, #18130d 60%, #07060a 100%)",
+  corporate:
+    "radial-gradient(circle at 80% 20%, rgba(212,175,55,0.18), transparent 46%), linear-gradient(165deg, #0a0a0d 0%, #12110f 55%, #07080a 100%)",
+  kids:
+    "radial-gradient(circle at 18% 10%, rgba(255,214,135,0.24), transparent 48%), linear-gradient(160deg, #0d0a08 0%, #1a140e 55%, #08070a 100%)",
+  online:
+    "radial-gradient(circle at 70% 70%, rgba(212,175,55,0.18), transparent 46%), linear-gradient(145deg, #08090c 0%, #12110f 55%, #07080a 100%)",
+  retreat:
+    "radial-gradient(circle at 78% 8%, rgba(255,210,124,0.24), transparent 44%), linear-gradient(160deg, #0a0907 0%, #17130d 55%, #07060a 100%)",
+  philosophy:
+    "radial-gradient(circle at 50% 50%, rgba(212,175,55,0.18), transparent 50%), linear-gradient(155deg, #0a0807 0%, #14110d 60%, #07060a 100%)",
+  consultation:
+    "radial-gradient(circle at 50% 14%, rgba(212,175,55,0.2), transparent 46%), linear-gradient(165deg, #0a0a0c 0%, #15110f 55%, #07080a 100%)",
+};
 
 type ServiceVariant =
   | "private"
@@ -49,7 +66,8 @@ type Service = {
   cta: string;
   to: "/personal-training" | "/programs" | "/corporate";
   Icon: typeof User;
-  image: string;
+  // image left optional — temporarily replaced by gradient placeholder.
+  image?: string;
   variant: ServiceVariant;
   opacity: number;
   blur: number;
@@ -72,7 +90,6 @@ const SERVICES: Service[] = [
     cta: "Explore Program",
     to: "/personal-training",
     Icon: User,
-    image: privateTransformationAsset.url,
     variant: "private",
     opacity: 0.16,
     blur: 8,
@@ -92,7 +109,6 @@ const SERVICES: Service[] = [
     cta: "View Schedule",
     to: "/programs",
     Icon: Users2,
-    image: luxuryStudioClassesAsset.url,
     variant: "studio",
     opacity: 0.14,
     blur: 10,
@@ -110,7 +126,6 @@ const SERVICES: Service[] = [
     cta: "Discover Healing",
     to: "/programs",
     Icon: HeartPulse,
-    image: therapeuticRecoveryAsset.url,
     variant: "therapeutic",
     opacity: 0.15,
     blur: 9,
@@ -127,7 +142,6 @@ const SERVICES: Service[] = [
     cta: "Master Your Practice",
     to: "/programs",
     Icon: Flame,
-    image: advancedYogaMasteryAsset.url,
     variant: "mastery",
     opacity: 0.14,
     blur: 7,
@@ -145,7 +159,6 @@ const SERVICES: Service[] = [
     cta: "Request Proposal",
     to: "/corporate",
     Icon: Briefcase,
-    image: corporateWellnessAsset.url,
     variant: "corporate",
     opacity: 0.14,
     blur: 8,
@@ -162,7 +175,6 @@ const SERVICES: Service[] = [
     cta: "Enroll Child",
     to: "/programs",
     Icon: Smile,
-    image: kidsYogaAsset.url,
     variant: "kids",
     opacity: 0.15,
     blur: 8,
@@ -179,7 +191,6 @@ const SERVICES: Service[] = [
     cta: "Join Online",
     to: "/programs",
     Icon: Globe2,
-    image: onlineGlobalClassesAsset.url,
     variant: "online",
     opacity: 0.15,
     blur: 8,
@@ -196,7 +207,6 @@ const SERVICES: Service[] = [
     cta: "Explore Retreats",
     to: "/programs",
     Icon: Mountain,
-    image: retreatNatureExperiencesAsset.url,
     variant: "retreat",
     opacity: 0.16,
     blur: 8,
@@ -213,7 +223,6 @@ const SERVICES: Service[] = [
     cta: "Learn Philosophy",
     to: "/programs",
     Icon: BookOpenText,
-    image: traditionalYogaPhilosophyAsset.url,
     variant: "philosophy",
     opacity: 0.15,
     blur: 9,
@@ -230,7 +239,6 @@ const SERVICES: Service[] = [
     cta: "Book Consultation",
     to: "/personal-training",
     Icon: ClipboardList,
-    image: holisticLifestyleConsultationAsset.url,
     variant: "consultation",
     opacity: 0.15,
     blur: 8,
@@ -350,7 +358,13 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         >
           <div
             className="service-card__bg absolute inset-0"
-            style={{ backgroundImage: `url(${service.image})` }}
+            style={{
+              backgroundImage: service.image
+                ? `url(${service.image})`
+                : GRADIENTS[service.variant],
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           />
         </motion.div>
         <div className="service-card__overlay absolute inset-0" />
