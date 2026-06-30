@@ -14,7 +14,9 @@ const NAV = [
   { href: "/contact", label: "Contact" },
 ];
 
-const WHATSAPP = "https://wa.me/84782046066?text=Hello%20Yog%20Jivan%2C%20I%27d%20like%20to%20book%20a%20free%20trial.";
+import { SOCIAL } from "@/lib/social";
+
+const WHATSAPP = SOCIAL.whatsapp;
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
