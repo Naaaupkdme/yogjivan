@@ -39,6 +39,7 @@ export function SmartConsultation() {
   const [phase, setPhase] = useState<Phase>("micro");
   const [errors, setErrors] = useState<{ name?: string; whatsapp?: string }>({});
   const [busy, setBusy] = useState(false);
+  const [phoneValue, setPhoneValue] = useState<string>("");
 
   // Restore previous session
   useEffect(() => {
