@@ -163,7 +163,21 @@ export function SmartConsultation() {
               </p>
               <div className="mt-7 grid gap-4 sm:grid-cols-2">
                 <Field label="Full Name" name="name" placeholder="Your full name" error={errors.name} defaultValue={state.name} />
-                <Field label="WhatsApp Number" name="whatsapp" placeholder="+84 ..." error={errors.whatsapp} defaultValue={state.whatsapp} />
+                <div>
+                  <label className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">
+                    WhatsApp Number
+                  </label>
+                  <PhoneInput
+                    defaultCountry="vn"
+                    value={phoneValue}
+                    onChange={(v) => setPhoneValue(v)}
+                    inputProps={{ name: "whatsapp", "aria-label": "WhatsApp number with country code" }}
+                    className="yj-phone"
+                  />
+                  {errors.whatsapp && (
+                    <p className="mt-1.5 text-[0.65rem] text-red-400">{errors.whatsapp}</p>
+                  )}
+                </div>
               </div>
               <button type="submit" disabled={busy} className="btn-gold mt-7 w-full justify-center disabled:opacity-60">
                 {busy ? "Sending..." : "Continue"} <ArrowRight className="h-4 w-4" />
