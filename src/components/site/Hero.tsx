@@ -120,7 +120,7 @@ export function Hero() {
             autoPlay
             muted
             playsInline
-            preload="none"
+            preload="metadata"
             className="absolute inset-0 h-full w-full object-cover"
           />
         )}
