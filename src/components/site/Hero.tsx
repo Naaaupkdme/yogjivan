@@ -4,10 +4,8 @@ import gsap from "gsap";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import heroVideo from "@/assets/hero-meditation.mp4.asset.json";
-import { masterImages } from "@/lib/images";
 import { useLang } from "@/lib/language";
-
-const heroPoster = { url: masterImages.founderPortrait };
+import { SOCIAL } from "@/lib/social";
 
 // AmbientCanvas (three.js) is the largest non-critical chunk; only load it on
 // desktop, after first paint. Mobile users never download or execute it.
@@ -15,7 +13,7 @@ const AmbientCanvas = lazy(() =>
   import("@/components/site/AmbientCanvas").then((m) => ({ default: m.AmbientCanvas })),
 );
 
-const WHATSAPP_URL = "https://wa.me/84782046066?text=Hello%20Yog%20Jivan%2C%20I%27d%20like%20to%20book%20a%20free%20trial.";
+const WHATSAPP_URL = SOCIAL.whatsapp;
 
 const QUOTES = [
   { q: "Yoga is the journey of the self, through the self, to the self.", a: "Bhagavad Gita" },
