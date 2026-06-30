@@ -4,10 +4,8 @@ import gsap from "gsap";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import heroVideo from "@/assets/hero-meditation.mp4.asset.json";
-import { masterImages } from "@/lib/images";
 import { useLang } from "@/lib/language";
-
-const heroPoster = { url: masterImages.founderPortrait };
+import { SOCIAL } from "@/lib/social";
 
 // AmbientCanvas (three.js) is the largest non-critical chunk; only load it on
 // desktop, after first paint. Mobile users never download or execute it.
@@ -15,7 +13,7 @@ const AmbientCanvas = lazy(() =>
   import("@/components/site/AmbientCanvas").then((m) => ({ default: m.AmbientCanvas })),
 );
 
-const WHATSAPP_URL = "https://wa.me/84782046066?text=Hello%20Yog%20Jivan%2C%20I%27d%20like%20to%20book%20a%20free%20trial.";
+const WHATSAPP_URL = SOCIAL.whatsapp;
 
 const QUOTES = [
   { q: "Yoga is the journey of the self, through the self, to the self.", a: "Bhagavad Gita" },
@@ -49,6 +47,7 @@ export function Hero() {
   const [qIdx, setQIdx] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     if (!contentRef.current) return;
@@ -102,26 +101,27 @@ export function Hero() {
   return (
     <section ref={rootRef} className="relative overflow-hidden" style={{ minHeight: "100svh", paddingTop: "var(--hdr-h,72px)" }}>
       <motion.div style={{ y, scale }} className="absolute inset-0">
-        {/* Poster is the LCP candidate — eager, high priority, no video request blocks it */}
-        <img
-          src={heroPoster.url}
-          alt="Master Anil Choudhary in seated meditation at Yog Jivan Sanctuary"
-          width={1600}
-          height={1000}
-          fetchPriority="high"
-          decoding="async"
-          className="h-full w-full object-cover"
+        {/* Luxury dark canvas — visible for the first 2s while the video defers */}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--gold) 12%, transparent), transparent 55%), radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--gold-soft) 10%, transparent), transparent 60%), linear-gradient(180deg, color-mix(in oklab, var(--onyx) 96%, black), color-mix(in oklab, var(--onyx) 100%, black))",
+          }}
         />
         {videoSrc && (
           <video
             ref={videoRef}
             src={videoSrc}
-            poster={heroPoster.url}
             autoPlay
             muted
             playsInline
             preload="metadata"
-            className="absolute inset-0 h-full w-full object-cover"
+            aria-hidden
+            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out"
+            style={{ opacity: videoReady ? 1 : 0 }}
+            onCanPlay={() => setVideoReady(true)}
           />
         )}
       </motion.div>

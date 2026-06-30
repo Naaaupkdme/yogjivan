@@ -3,8 +3,9 @@ import studioImg from "@/assets/4253.jpg.asset.json";
 import outdoorImg from "@/assets/dji_0014.jpg.asset.json";
 import { useLang } from "@/lib/language";
 import { SmartConsultation } from "./SmartConsultation";
+import { SOCIAL } from "@/lib/social";
 
-const WHATSAPP = "84782046066";
+const WHATSAPP = SOCIAL.whatsappE164;
 
 const studios = [
   {
@@ -12,14 +13,14 @@ const studios = [
     address: "Nguyen Trai Street, Hai Duong City, Vietnam",
     img: studioImg.url,
     tags: ["Premium Indoor Studio", "Private Sessions", "Therapeutic Yoga"],
-    mapHref: "https://maps.google.com/?q=Nguyen+Trai+Hai+Duong+Vietnam",
+    mapHref: SOCIAL.googleMaps,
   },
   {
     title: "Yog Jivan Wellness & Healing Center",
     address: "Tran Hung Dao Street, Hai Duong City, Vietnam",
     img: outdoorImg.url,
     tags: ["Outdoor Wellness Space", "Community Programs", "Corporate Wellness"],
-    mapHref: "https://maps.google.com/?q=Tran+Hung+Dao+Hai+Duong+Vietnam",
+    mapHref: SOCIAL.googleMaps,
   },
 ];
 
@@ -93,7 +94,7 @@ export function ContactSection() {
               </div>
 
               <a
-                href={`https://wa.me/${WHATSAPP}?text=Hello%20Master%20Anil%2C%20I%27d%20like%20a%20personal%20consultation.`}
+                href={SOCIAL.whatsapp}
                 target="_blank"
                 rel="noreferrer"
                 className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_50px_-12px_rgba(37,211,102,0.55)] transition-transform hover:scale-[1.02]"
@@ -157,7 +158,7 @@ export function ContactSection() {
             </div>
             <div className="mt-2 grid grid-cols-2 gap-3">
               {[
-                { Icon: MessageCircle, title: "WhatsApp", body: "+84 782 046 066", href: `https://wa.me/${WHATSAPP}` },
+                { Icon: MessageCircle, title: "WhatsApp", body: SOCIAL.phone, href: SOCIAL.whatsapp },
                 { Icon: Mail, title: "Email", body: "hello@yogjivan.com", href: "mailto:hello@yogjivan.com" },
               ].map(({ Icon, title, body, href }) => (
                 <a key={title} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer"
@@ -171,10 +172,10 @@ export function ContactSection() {
           </div>
 
           {/* Interactive map card */}
-          <a href="https://maps.google.com/?q=Hai+Duong,+Vietnam" target="_blank" rel="noreferrer"
+          <a href={SOCIAL.googleMaps} target="_blank" rel="noopener noreferrer" aria-label="Open Yog Jivan Hai Duong studios in Google Maps"
             className="group relative block overflow-hidden rounded-[1.75rem] border border-[color:var(--gold)]/30">
             <iframe title="Yog Jivan Hai Duong location"
-              src="https://www.google.com/maps?q=Hai+Duong,+Vietnam&output=embed"
+              src={SOCIAL.googleMapsEmbed}
               className="pointer-events-none h-full min-h-[460px] w-full grayscale-[0.85] contrast-[1.05] transition-all duration-700 group-hover:grayscale-0" loading="lazy"
               style={{ filter: "grayscale(0.85) contrast(1.05) brightness(0.7) sepia(0.15)" }} />
             <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_30%,transparent)_0%,transparent_30%,color-mix(in_oklab,var(--onyx)_92%,transparent)_100%)]" />

@@ -1,14 +1,13 @@
 import { MessageCircle } from "lucide-react";
-
-const WHATSAPP = "https://wa.me/84782046066?text=Hello%20Yog%20Jivan%2C%20I%27d%20like%20to%20book%20a%20free%20trial.";
+import { SOCIAL } from "@/lib/social";
 
 export function FloatingWhatsApp() {
   return (
     <a
-      href={WHATSAPP}
+      href={SOCIAL.whatsapp}
       target="_blank"
-      rel="noreferrer"
-      aria-label="Chat on WhatsApp — Book Free Trial, Ask Questions, Quick Response"
+      rel="noopener noreferrer"
+      aria-label="Open WhatsApp chat — book free trial or ask Master Anil a question"
       className="fixed left-4 z-40 grid h-14 w-14 place-items-center rounded-full border border-white/15 text-[color:var(--foreground)] shadow-[0_22px_60px_-18px_rgba(0,0,0,0.45)] transition-transform hover:scale-105 sm:left-5 bottom-[88px] md:bottom-5"
       style={{
         background: "linear-gradient(135deg, color-mix(in oklab, var(--gold) 38%, #20cc68), #16a85a)",

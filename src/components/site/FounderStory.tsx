@@ -40,6 +40,7 @@ export function FounderStory() {
               overlay
               shimmer
               radius={32}
+              eager
             />
 
           </motion.div>

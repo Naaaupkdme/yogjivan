@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube, MessageCircle, MapPin, Mail, Phone, Star } from "lucide-react";
+import { SOCIAL } from "@/lib/social";
 import communityA from "@/assets/img_20260621_105308.jpg.asset.json";
 import communityB from "@/assets/img_20260622_114016.jpg.asset.json";
 import communityC from "@/assets/img_5066.jpg.asset.json";
@@ -83,14 +84,14 @@ export function SiteFooter() {
             </div>
             <div className="mt-5 flex items-center gap-2">
               {[
-                { href: "https://wa.me/84782046066", Icon: MessageCircle, label: "WhatsApp" },
-                { href: "https://instagram.com", Icon: Instagram, label: "Instagram" },
-                { href: "https://facebook.com", Icon: Facebook, label: "Facebook" },
-                { href: "https://youtube.com", Icon: Youtube, label: "YouTube" },
+                { href: SOCIAL.whatsapp, Icon: MessageCircle, label: "Open WhatsApp chat" },
+                { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram" },
+                { href: SOCIAL.facebook, Icon: Facebook, label: "Visit Yog Jivan Facebook" },
+                { href: SOCIAL.youtube, Icon: Youtube, label: "Visit Yog Jivan YouTube" },
               ].map(({ href, Icon, label }) => (
-                <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
-                  className="grid h-9 w-9 place-items-center rounded-full border border-border bg-card/40 text-muted-foreground transition-all hover:text-primary hover:border-primary/40 hover:-translate-y-0.5">
-                  <Icon className="h-3.5 w-3.5" />
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                  className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card/40 text-muted-foreground transition-all hover:text-primary hover:border-primary/40 hover:-translate-y-0.5">
+                  <Icon className="h-4 w-4" />
                 </a>
               ))}
             </div>
@@ -110,9 +111,9 @@ export function SiteFooter() {
           <div>
             <h4 className="eyebrow mb-4">Sanctuary</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><span>Hai Duong, Vietnam</span></li>
-              <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="tel:+84782046066" className="hover:text-foreground">+84 782 046 066</a></li>
-              <li className="flex gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="mailto:hello@yogjivan.com" className="hover:text-foreground">hello@yogjivan.com</a></li>
+              <li className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.googleMaps} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Hai Duong, Vietnam</a></li>
+              <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`tel:${SOCIAL.phoneTel}`} className="hover:text-foreground">{SOCIAL.phone}</a></li>
+              <li className="flex gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`mailto:${SOCIAL.email}`} className="hover:text-foreground">{SOCIAL.email}</a></li>
             </ul>
           </div>
 
@@ -120,8 +121,8 @@ export function SiteFooter() {
             <h4 className="eyebrow mb-4">@yogjivan</h4>
             <div className="grid grid-cols-4 gap-2">
               {[communityA, communityC, communityD, communityB].map((img, i) => (
-                <a key={i} href="https://instagram.com" target="_blank" rel="noreferrer" className="group overflow-hidden rounded-lg border border-border/60">
-                  <img src={img.url} alt="" loading="lazy" className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <a key={i} href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit Yog Jivan Instagram" className="group overflow-hidden rounded-lg border border-border/60">
+                  <img src={img.url} alt="Yog Jivan community moments on Instagram" loading="lazy" className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 </a>
               ))}
             </div>

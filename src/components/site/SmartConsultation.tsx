@@ -3,9 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowLeft, Check, ShieldCheck, Sparkles, Clock, Heart, MessageCircle } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
 import { emptyLeadState, type LeadState, loadState, saveState, clearState, submitLead } from "@/lib/leads";
+import { SOCIAL } from "@/lib/social";
 
-const WHATSAPP = "84782046066";
+const WHATSAPP = SOCIAL.whatsappE164;
 
 const GOALS = [
   "Weight Loss", "Weight Gain", "Flexibility", "Stress Relief", "Back Pain", "Neck Pain",
@@ -36,11 +39,13 @@ export function SmartConsultation() {
   const [phase, setPhase] = useState<Phase>("micro");
   const [errors, setErrors] = useState<{ name?: string; whatsapp?: string }>({});
   const [busy, setBusy] = useState(false);
+  const [phoneValue, setPhoneValue] = useState<string>("");
 
   // Restore previous session
   useEffect(() => {
     const restored = loadState();
     setState(restored);
+    if (restored.whatsapp) setPhoneValue(restored.whatsapp);
     if (restored.name && restored.whatsapp) {
       // resume from where they left off
       const map: Record<number, Phase> = { 0: "success", 1: 1, 2: 2, 3: 3, 4: 4, 5: "complete" };
@@ -62,7 +67,7 @@ export function SmartConsultation() {
   async function submitMicro(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
-    const parsed = microSchema.safeParse(data);
+    const parsed = microSchema.safeParse({ name: data.name, whatsapp: phoneValue });
     if (!parsed.success) {
       const next: typeof errors = {};
       parsed.error.issues.forEach((i) => { next[i.path[0] as "name" | "whatsapp"] = i.message; });
@@ -158,7 +163,21 @@ export function SmartConsultation() {
               </p>
               <div className="mt-7 grid gap-4 sm:grid-cols-2">
                 <Field label="Full Name" name="name" placeholder="Your full name" error={errors.name} defaultValue={state.name} />
-                <Field label="WhatsApp Number" name="whatsapp" placeholder="+84 ..." error={errors.whatsapp} defaultValue={state.whatsapp} />
+                <div>
+                  <label className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">
+                    WhatsApp Number
+                  </label>
+                  <PhoneInput
+                    defaultCountry="vn"
+                    value={phoneValue}
+                    onChange={(v) => setPhoneValue(v)}
+                    inputProps={{ name: "whatsapp", "aria-label": "WhatsApp number with country code" }}
+                    className="yj-phone"
+                  />
+                  {errors.whatsapp && (
+                    <p className="mt-1.5 text-[0.65rem] text-red-400">{errors.whatsapp}</p>
+                  )}
+                </div>
               </div>
               <button type="submit" disabled={busy} className="btn-gold mt-7 w-full justify-center disabled:opacity-60">
                 {busy ? "Sending..." : "Continue"} <ArrowRight className="h-4 w-4" />
@@ -301,7 +320,7 @@ export function SmartConsultation() {
               </p>
               <p className="mt-2 text-[0.6rem] uppercase tracking-[0.28em] text-primary">Usually within 5 minutes</p>
               <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
-                <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer" className="btn-gold justify-center">
+                <a href={SOCIAL.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp chat with Yog Jivan" className="btn-gold justify-center">
                   <MessageCircle className="h-4 w-4" /> Open WhatsApp Now
                 </a>
                 <button onClick={startOver} className="btn-ghost-gold justify-center">Return to Website</button>

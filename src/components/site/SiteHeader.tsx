@@ -14,7 +14,9 @@ const NAV = [
   { href: "/contact", label: "Contact" },
 ];
 
-const WHATSAPP = "https://wa.me/84782046066?text=Hello%20Yog%20Jivan%2C%20I%27d%20like%20to%20book%20a%20free%20trial.";
+import { SOCIAL } from "@/lib/social";
+
+const WHATSAPP = SOCIAL.whatsapp;
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -75,10 +77,10 @@ export function SiteHeader() {
 
           <div className="hidden lg:flex items-center gap-1 border-l border-border/50 pl-2">
             {[
-              { href: "https://facebook.com/yogjivan", Icon: Facebook, label: "Facebook" },
-              { href: "https://instagram.com/yogjivan", Icon: Instagram, label: "Instagram" },
-              { href: "https://youtube.com/@yogjivan", Icon: Youtube, label: "YouTube" },
-              { href: WHATSAPP, Icon: MessageCircle, label: "WhatsApp" },
+              { href: SOCIAL.facebook, Icon: Facebook, label: "Visit Yog Jivan Facebook" },
+              { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram" },
+              { href: SOCIAL.youtube, Icon: Youtube, label: "Visit Yog Jivan YouTube" },
+              { href: WHATSAPP, Icon: MessageCircle, label: "Open WhatsApp chat" },
             ].map(({ href, Icon, label }) => (
               <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
                 className="grid h-8 w-8 place-items-center rounded-full text-muted-foreground/80 transition-all duration-300 hover:text-[color:var(--gold)] hover:bg-[color-mix(in_oklab,var(--gold)_10%,transparent)]">
