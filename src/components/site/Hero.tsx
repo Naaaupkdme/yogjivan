@@ -100,26 +100,27 @@ export function Hero() {
   return (
     <section ref={rootRef} className="relative overflow-hidden" style={{ minHeight: "100svh", paddingTop: "var(--hdr-h,72px)" }}>
       <motion.div style={{ y, scale }} className="absolute inset-0">
-        {/* Poster is the LCP candidate — eager, high priority, no video request blocks it */}
-        <img
-          src={heroPoster.url}
-          alt="Master Anil Choudhary in seated meditation at Yog Jivan Sanctuary"
-          width={1600}
-          height={1000}
-          fetchPriority="high"
-          decoding="async"
-          className="h-full w-full object-cover"
+        {/* Luxury dark canvas — visible for the first 2s while the video defers */}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--gold) 12%, transparent), transparent 55%), radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--gold-soft) 10%, transparent), transparent 60%), linear-gradient(180deg, color-mix(in oklab, var(--onyx) 96%, black), color-mix(in oklab, var(--onyx) 100%, black))",
+          }}
         />
         {videoSrc && (
           <video
             ref={videoRef}
             src={videoSrc}
-            poster={heroPoster.url}
             autoPlay
             muted
             playsInline
             preload="metadata"
-            className="absolute inset-0 h-full w-full object-cover"
+            aria-hidden
+            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out"
+            style={{ opacity: videoReady ? 1 : 0 }}
+            onCanPlay={() => setVideoReady(true)}
           />
         )}
       </motion.div>
