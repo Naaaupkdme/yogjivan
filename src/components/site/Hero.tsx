@@ -47,6 +47,7 @@ export function Hero() {
   const [qIdx, setQIdx] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     if (!contentRef.current) return;
