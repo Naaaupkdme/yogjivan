@@ -37,7 +37,6 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://yog-jivan-zenith.lovable.app/" },
-      { rel: "preload", as: "image", href: "/__l5e/assets-v1/28793cc3-25a7-4e9a-9288-dd77d66b6726/master-anil-meditation-portrait.webp", fetchpriority: "high" },
     ],
     scripts: [
       {
