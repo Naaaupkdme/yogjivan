@@ -2,12 +2,8 @@ import { motion, useInView, useMotionValue, useTransform, animate } from "framer
 import { useEffect, useRef, type CSSProperties } from "react";
 import { Award, Globe2, Heart, Star, Trophy, Users2 } from "lucide-react";
 import { useLang } from "@/lib/language";
-import bgRating from "@/assets/trust/trust-rating-stars.png.asset.json";
-import bgStudents from "@/assets/trust/trust-students-gathering.png.asset.json";
-import bgCountries from "@/assets/trust/trust-countries-map.png.asset.json";
-import bgYears from "@/assets/trust/trust-years-lotus-temple.png.asset.json";
-import bgCertified from "@/assets/trust/trust-certified-lotus-circle.png.asset.json";
-import bgRetention from "@/assets/trust/trust-retention-roots-tree.png.asset.json";
+// Background imagery temporarily replaced with luxury onyx + gold gradients.
+// New optimized imagery will be wired back through `metric.image` later.
 
 type Metric = {
   Icon: typeof Star;
@@ -16,16 +12,20 @@ type Metric = {
   prefix?: string;
   label: string;
   decimals?: number;
-  image: string;
+  /** Per-card luxury gradient (onyx base + gold accent). */
+  gradient: string;
 };
 
+const ONYX_GOLD = (angle: number, accent: string) =>
+  `radial-gradient(circle at ${accent}, rgba(212,175,55,0.22), transparent 50%), linear-gradient(${angle}deg, #0a0807 0%, #15110d 55%, #07060a 100%)`;
+
 const METRICS: Metric[] = [
-  { Icon: Star, value: 4.9, decimals: 1, label: "Average Rating", image: bgRating.url },
-  { Icon: Users2, value: 1000, suffix: "+", label: "Students Served", image: bgStudents.url },
-  { Icon: Globe2, value: 20, suffix: "+", label: "Countries Reached", image: bgCountries.url },
-  { Icon: Heart, value: 12, suffix: "+", label: "Years Experience", image: bgYears.url },
-  { Icon: Trophy, value: 100, suffix: "%", label: "Certified Indian Yoga Master", image: bgCertified.url },
-  { Icon: Award, value: 95, suffix: "%", label: "Student Retention", image: bgRetention.url },
+  { Icon: Star, value: 4.9, decimals: 1, label: "Average Rating", gradient: ONYX_GOLD(150, "28% 22%") },
+  { Icon: Users2, value: 1000, suffix: "+", label: "Students Served", gradient: ONYX_GOLD(160, "72% 28%") },
+  { Icon: Globe2, value: 20, suffix: "+", label: "Countries Reached", gradient: ONYX_GOLD(140, "50% 18%") },
+  { Icon: Heart, value: 12, suffix: "+", label: "Years Experience", gradient: ONYX_GOLD(170, "20% 70%") },
+  { Icon: Trophy, value: 100, suffix: "%", label: "Certified Indian Yoga Master", gradient: ONYX_GOLD(155, "50% 50%") },
+  { Icon: Award, value: 95, suffix: "%", label: "Student Retention", gradient: ONYX_GOLD(165, "78% 76%") },
 ];
 
 const PARTICLES = [
