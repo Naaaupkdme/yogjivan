@@ -172,7 +172,7 @@ export function ContactSection() {
           </div>
 
           {/* Interactive map card */}
-          <a href="https://maps.google.com/?q=Hai+Duong,+Vietnam" target="_blank" rel="noreferrer"
+          <a href={SOCIAL.googleMaps} target="_blank" rel="noopener noreferrer" aria-label="Open Yog Jivan Hai Duong studios in Google Maps"
             className="group relative block overflow-hidden rounded-[1.75rem] border border-[color:var(--gold)]/30">
             <iframe title="Yog Jivan Hai Duong location"
               src="https://www.google.com/maps?q=Hai+Duong,+Vietnam&output=embed"
