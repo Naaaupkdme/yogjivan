@@ -94,7 +94,7 @@ export function ContactSection() {
               </div>
 
               <a
-                href={`https://wa.me/${WHATSAPP}?text=Hello%20Master%20Anil%2C%20I%27d%20like%20a%20personal%20consultation.`}
+                href={SOCIAL.whatsapp}
                 target="_blank"
                 rel="noreferrer"
                 className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_50px_-12px_rgba(37,211,102,0.55)] transition-transform hover:scale-[1.02]"
