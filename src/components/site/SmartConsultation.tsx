@@ -45,6 +45,7 @@ export function SmartConsultation() {
   useEffect(() => {
     const restored = loadState();
     setState(restored);
+    if (restored.whatsapp) setPhoneValue(restored.whatsapp);
     if (restored.name && restored.whatsapp) {
       // resume from where they left off
       const map: Record<number, Phase> = { 0: "success", 1: 1, 2: 2, 3: 3, 4: 4, 5: "complete" };
