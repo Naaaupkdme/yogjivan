@@ -121,8 +121,8 @@ export function SiteFooter() {
             <h4 className="eyebrow mb-4">@yogjivan</h4>
             <div className="grid grid-cols-4 gap-2">
               {[communityA, communityC, communityD, communityB].map((img, i) => (
-                <a key={i} href="https://instagram.com" target="_blank" rel="noreferrer" className="group overflow-hidden rounded-lg border border-border/60">
-                  <img src={img.url} alt="" loading="lazy" className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <a key={i} href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit Yog Jivan Instagram" className="group overflow-hidden rounded-lg border border-border/60">
+                  <img src={img.url} alt="Yog Jivan community moments on Instagram" loading="lazy" className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 </a>
               ))}
             </div>
