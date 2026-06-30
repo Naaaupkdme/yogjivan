@@ -77,9 +77,9 @@ export function SiteHeader() {
 
           <div className="hidden lg:flex items-center gap-1 border-l border-border/50 pl-2">
             {[
-              { href: "https://facebook.com/yogjivan", Icon: Facebook, label: "Facebook" },
-              { href: "https://instagram.com/yogjivan", Icon: Instagram, label: "Instagram" },
-              { href: "https://youtube.com/@yogjivan", Icon: Youtube, label: "YouTube" },
+              { href: SOCIAL.facebook, Icon: Facebook, label: "Visit Yog Jivan Facebook" },
+              { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram" },
+              { href: SOCIAL.youtube, Icon: Youtube, label: "Visit Yog Jivan YouTube" },
               { href: WHATSAPP, Icon: MessageCircle, label: "WhatsApp" },
             ].map(({ href, Icon, label }) => (
               <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
