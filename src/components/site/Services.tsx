@@ -66,7 +66,8 @@ type Service = {
   cta: string;
   to: "/personal-training" | "/programs" | "/corporate";
   Icon: typeof User;
-  image: string;
+  // image left optional — temporarily replaced by gradient placeholder.
+  image?: string;
   variant: ServiceVariant;
   opacity: number;
   blur: number;
@@ -357,7 +358,13 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         >
           <div
             className="service-card__bg absolute inset-0"
-            style={{ backgroundImage: `url(${service.image})` }}
+            style={{
+              backgroundImage: service.image
+                ? `url(${service.image})`
+                : GRADIENTS[service.variant],
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           />
         </motion.div>
         <div className="service-card__overlay absolute inset-0" />
