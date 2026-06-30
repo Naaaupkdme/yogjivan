@@ -320,7 +320,7 @@ export function SmartConsultation() {
               </p>
               <p className="mt-2 text-[0.6rem] uppercase tracking-[0.28em] text-primary">Usually within 5 minutes</p>
               <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
-                <a href={`https://wa.me/${WHATSAPP}`} target="_blank" rel="noreferrer" className="btn-gold justify-center">
+                <a href={SOCIAL.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp chat with Yog Jivan" className="btn-gold justify-center">
                   <MessageCircle className="h-4 w-4" /> Open WhatsApp Now
                 </a>
                 <button onClick={startOver} className="btn-ghost-gold justify-center">Return to Website</button>
