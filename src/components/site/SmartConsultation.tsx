@@ -108,7 +108,7 @@ export function SmartConsultation() {
   async function finalSubmit() {
     setBusy(true);
     try {
-      await submitLead({ ...state, status: "personalised_complete" });
+      await submitLead({ ...state, status: "submitted" });
       setState((s) => ({ ...s, step: 5 }));
       setPhase("complete");
       // Open WhatsApp with personalised summary
