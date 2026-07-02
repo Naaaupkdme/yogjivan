@@ -77,6 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "preconnect", href: "https://www.googletagmanager.com" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" },
     ],
     scripts: [
@@ -95,6 +96,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           },
           founder: { "@type": "Person", name: "Master Anil Choudhary" },
         }),
+      },
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=G-LFV05NVEJZ",
+        async: true,
+      },
+      {
+        children:
+          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LFV05NVEJZ',{send_page_view:true});",
       },
     ],
   }),
@@ -118,6 +127,20 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  useEffect(() => {
+    const unsub = router.subscribe("onResolved", () => {
+      const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+      if (typeof w.gtag === "function") {
+        w.gtag("event", "page_view", {
+          page_path: window.location.pathname + window.location.search,
+          page_location: window.location.href,
+          page_title: document.title,
+        });
+      }
+    });
+    return () => unsub();
+  }, [router]);
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
