@@ -97,6 +97,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           founder: { "@type": "Person", name: "Master Anil Choudhary" },
         }),
       },
+      {
+        src: "https://www.googletagmanager.com/gtag/js?id=G-LFV05NVEJZ",
+        async: true,
+      },
+      {
+        children:
+          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LFV05NVEJZ',{send_page_view:true});",
+      },
     ],
   }),
   shellComponent: RootShell,
