@@ -135,13 +135,16 @@ function RootComponent() {
   const router = useRouter();
   useEffect(() => {
     const unsub = router.subscribe("onResolved", () => {
-      const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+      const w = window as unknown as { gtag?: (...args: unknown[]) => void; fbq?: (...args: unknown[]) => void };
       if (typeof w.gtag === "function") {
         w.gtag("event", "page_view", {
           page_path: window.location.pathname + window.location.search,
           page_location: window.location.href,
           page_title: document.title,
         });
+      }
+      if (typeof w.fbq === "function") {
+        w.fbq("track", "PageView");
       }
     });
     return () => unsub();
