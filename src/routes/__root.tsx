@@ -149,6 +149,39 @@ function RootComponent() {
     });
     return () => unsub();
   }, [router]);
+
+  // Meta Pixel conversion tracking: Contact (WhatsApp) & Lead (Book Free Trial CTAs)
+  useEffect(() => {
+    const WHATSAPP_RE = /wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i;
+    const LEAD_TEXT_RE = /(book\s+(a\s+)?free\s+trial|free\s+trial|book\s+trial|personal\s+consultation|personalize\s+my\s+recommendation)/i;
+    let lastKey = "";
+    let lastAt = 0;
+    const fire = (event: "Contact" | "Lead", key: string) => {
+      const w = window as unknown as { fbq?: (...args: unknown[]) => void };
+      if (typeof w.fbq !== "function") return;
+      const now = Date.now();
+      if (key === lastKey && now - lastAt < 800) return; // dedupe rapid double-fires
+      lastKey = key; lastAt = now;
+      w.fbq("track", event);
+    };
+    const onClick = (e: MouseEvent) => {
+      const target = e.target as Element | null;
+      if (!target) return;
+      const el = (target.closest("a,button") as HTMLElement | null);
+      if (!el) return;
+      const href = (el as HTMLAnchorElement).href || el.getAttribute("href") || "";
+      const label = `${el.getAttribute("aria-label") || ""} ${el.textContent || ""}`.trim();
+      if (WHATSAPP_RE.test(href) || /whatsapp/i.test(el.getAttribute("aria-label") || "")) {
+        fire("Contact", `contact:${href || label}`);
+        return;
+      }
+      if (LEAD_TEXT_RE.test(label) || /#consultation$/.test(href)) {
+        fire("Lead", `lead:${label || href}`);
+      }
+    };
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
+  }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
