@@ -109,6 +109,8 @@ export function SmartConsultation() {
     setBusy(true);
     try {
       await submitLead({ ...state, status: "submitted" });
+      const w = window as unknown as { fbq?: (...args: unknown[]) => void };
+      if (typeof w.fbq === "function") w.fbq("track", "Lead");
       setState((s) => ({ ...s, step: 5 }));
       setPhase("complete");
       // Open WhatsApp with personalised summary
