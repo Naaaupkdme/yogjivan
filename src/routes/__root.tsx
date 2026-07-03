@@ -78,6 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "preconnect", href: "https://www.googletagmanager.com" },
+      { rel: "preconnect", href: "https://connect.facebook.net" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" },
     ],
     scripts: [
@@ -105,6 +106,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children:
           "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LFV05NVEJZ',{send_page_view:true});",
       },
+      {
+        children:
+          "!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1752860699056785');fbq('track','PageView');",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -130,13 +135,16 @@ function RootComponent() {
   const router = useRouter();
   useEffect(() => {
     const unsub = router.subscribe("onResolved", () => {
-      const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+      const w = window as unknown as { gtag?: (...args: unknown[]) => void; fbq?: (...args: unknown[]) => void };
       if (typeof w.gtag === "function") {
         w.gtag("event", "page_view", {
           page_path: window.location.pathname + window.location.search,
           page_location: window.location.href,
           page_title: document.title,
         });
+      }
+      if (typeof w.fbq === "function") {
+        w.fbq("track", "PageView");
       }
     });
     return () => unsub();
