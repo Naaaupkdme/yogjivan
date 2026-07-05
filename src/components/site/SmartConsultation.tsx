@@ -108,17 +108,23 @@ export function SmartConsultation() {
   async function finalSubmit() {
     setBusy(true);
     try {
+      // 1. Submit to backend + Make webhook (throws if webhook fails)
       await submitLead({ ...state, status: "submitted" });
+
+      // 2. Track conversion
       const w = window as unknown as { fbq?: (...args: unknown[]) => void };
       if (typeof w.fbq === "function") w.fbq("track", "Lead");
+
+      // 3. Advance UI to completion state
       setState((s) => ({ ...s, step: 5 }));
       setPhase("complete");
-      // Open WhatsApp with personalised summary
+
+      // 4. Only after webhook success — open WhatsApp with prefilled message
       const summary = `Namaste, this is ${state.name}.%0A%0AI'd love a personalised recommendation.%0AGoals: ${state.goals.join(", ") || "—"}%0APreferred: ${state.preferred_experience || "—"} · ${state.preferred_time || "—"}%0AHealth notes: ${(state.health_notes || state.health_tags.join(", ")) || "—"}%0AExperience: ${state.experience_level || "—"}`;
       window.open(`https://wa.me/${WHATSAPP}?text=${summary}`, "_blank", "noreferrer");
     } catch (err) {
       console.error(err);
-      toast.error("Could not submit. Please try again.");
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setBusy(false);
     }
