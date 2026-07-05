@@ -69,33 +69,29 @@ type SubmitPayload = Partial<Omit<LeadState, "step">> & {
 const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/033hlthorhbfgymbwym42o5tk1qghaa1";
 
 async function postToMakeWebhook(payload: SubmitPayload) {
-  try {
-    const body = {
-      full_name: payload.name || "",
-      email: payload.email || "",
-      phone: payload.whatsapp || "",
-      country: "",
-      city: "",
-      service: payload.preferred_experience || "",
-      message: [
-        payload.health_notes,
-        payload.goals?.length ? `Goals: ${payload.goals.join(", ")}` : "",
-        payload.preferred_time ? `Preferred time: ${payload.preferred_time}` : "",
-        payload.experience_level ? `Experience: ${payload.experience_level}` : "",
-        payload.health_tags?.length ? `Health: ${payload.health_tags.join(", ")}` : "",
-      ].filter(Boolean).join(" | "),
-      source: "Website Contact Form",
-      created_at: new Date().toISOString(),
-    };
-    await fetch(MAKE_WEBHOOK_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-      keepalive: true,
-    });
-  } catch (err) {
-    console.error("Make webhook failed", err);
-  }
+  const body = {
+    full_name: payload.name || "",
+    email: payload.email || "",
+    phone: payload.whatsapp || "",
+    country: "",
+    city: "",
+    service: payload.preferred_experience || "",
+    message: [
+      payload.health_notes,
+      payload.goals?.length ? `Goals: ${payload.goals.join(", ")}` : "",
+      payload.preferred_time ? `Preferred time: ${payload.preferred_time}` : "",
+      payload.experience_level ? `Experience: ${payload.experience_level}` : "",
+      payload.health_tags?.length ? `Health: ${payload.health_tags.join(", ")}` : "",
+    ].filter(Boolean).join(" | "),
+    source: "Website Contact Form",
+    created_at: new Date().toISOString(),
+  };
+  const res = await fetch(MAKE_WEBHOOK_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) throw new Error(`Webhook failed with status ${res.status}`);
 }
 
 export async function submitLead(payload: SubmitPayload) {
