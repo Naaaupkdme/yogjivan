@@ -5,13 +5,13 @@ import { Testimonials } from "@/components/site/Testimonials";
 export const Route = createFileRoute("/online")({
   head: () => ({
     meta: [
-      { title: "Online Yoga Classes — Global Programs | Yog Jivan" },
-      { name: "description", content: "Live and on-demand online yoga programs with Master Anil Choudhary. Students from Vietnam, India, Europe and beyond." },
+      { title: "Online Yoga Classes with Master Anil Choudhary — Join from Anywhere" },
+      { name: "description", content: "Live and on-demand online yoga classes for beginners and advanced students with Master Anil Choudhary. Yoga for back pain, PCOD, anxiety, weight loss and stress — students in 20+ countries." },
       { property: "og:title", content: "Online Yoga Classes — Yog Jivan" },
-      { property: "og:description", content: "Live and on-demand online yoga, anywhere in the world." },
-      { property: "og:url", content: "/online" },
+      { property: "og:description", content: "Live and on-demand online yoga classes for beginners and advanced practitioners, anywhere in the world." },
+      { property: "og:url", content: "https://www.yogjivan.com/online" },
     ],
-    links: [{ rel: "canonical", href: "/online" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/online" }],
   }),
   component: () => (
     <>
