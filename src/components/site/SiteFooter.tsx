@@ -93,6 +93,7 @@ export function SiteFooter() {
             <div className="mt-5 flex items-center gap-2">
               {[
                 { href: SOCIAL.whatsapp, Icon: MessageCircle, label: "Open WhatsApp chat" },
+                { href: SOCIAL.zalo, Icon: ZaloIcon, label: "Chat on Zalo" },
                 { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram" },
                 { href: SOCIAL.facebook, Icon: Facebook, label: "Visit Yog Jivan Facebook" },
                 { href: SOCIAL.youtube, Icon: Youtube, label: "Visit Yog Jivan YouTube" },
