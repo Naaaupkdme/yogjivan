@@ -7,13 +7,13 @@ import heroImg from "@/assets/file_00000000cca471fbb8967be0b0dfeda8.png.asset.js
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Master Anil Choudhary — Yog Jivan" },
-      { name: "description", content: "Meet Master Anil Choudhary, founder of Yog Jivan. 12+ years of authentic yoga, therapeutic practice and holistic wellness in Hai Duong, Vietnam." },
+      { title: "About Master Anil Choudhary — Founder of Yog Jivan Hai Duong" },
+      { name: "description", content: "Meet Master Anil Choudhary, founder of Yog Jivan yoga studio in Hai Duong, Vietnam. 12+ years teaching authentic Indian yoga, therapeutic practice and holistic wellness to 1000+ students in 20+ countries." },
       { property: "og:title", content: "About Master Anil Choudhary — Yog Jivan" },
-      { property: "og:description", content: "Authentic yoga rooted in tradition, taught in Vietnam by Master Anil Choudhary." },
-      { property: "og:url", content: "/about" },
+      { property: "og:description", content: "Authentic Indian yoga rooted in tradition, taught in Hai Duong, Vietnam by Master Anil Choudhary." },
+      { property: "og:url", content: "https://www.yogjivan.com/about" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/about" }],
   }),
   component: () => (
     <>
