@@ -17,7 +17,7 @@ export const FAQS = [
   },
   {
     q: "Where are the studios located?",
-    a: "Our two studios are in Hai Duong City, Vietnam — Nguyen Trai Street (Sanctuary studio) and Tran Hung Dao Street (Wellness & Healing Center).",
+    a: "Our two studios are in Hai Duong City, Vietnam — Yog Jivan Sanctuary at Nha Thi Dau 1, Bui Thi Xuan, P. Le Thanh Nghi, Hai Duong City, Hai Duong Province, 170000, and Yog Jivan Wellness & Healing Center at W8R8+42R, 5 Ngo Quyen, Thanh Dong, Hai Duong, Hai Duong Province, 170000.",
   },
   {
     q: "Do you offer online classes for students outside Vietnam?",

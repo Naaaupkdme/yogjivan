@@ -5,13 +5,13 @@ import { Gallery } from "@/components/site/Gallery";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — Yog Jivan Studio Hai Duong" },
-      { name: "description", content: "Photographs from inside Yog Jivan — our studios, Master Anil, outdoor classes and students in practice." },
-      { property: "og:title", content: "Gallery — Yog Jivan" },
-      { property: "og:description", content: "A visual journey through Yog Jivan." },
-      { property: "og:url", content: "/gallery" },
+      { title: "Studio Gallery — Yog Jivan Yoga Studio Hai Duong" },
+      { name: "description", content: "Photographs from inside the Yog Jivan yoga studio in Hai Duong, Vietnam — our sanctuary, Master Anil, outdoor classes and students in practice." },
+      { property: "og:title", content: "Studio Gallery — Yog Jivan Hai Duong" },
+      { property: "og:description", content: "A visual journey through the Yog Jivan yoga studio in Hai Duong." },
+      { property: "og:url", content: "https://www.yogjivan.com/gallery" },
     ],
-    links: [{ rel: "canonical", href: "/gallery" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/gallery" }],
   }),
   component: () => (
     <>

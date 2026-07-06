@@ -24,19 +24,19 @@ const Lazy = ({ children }: { children: React.ReactNode }) => (
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Yog Jivan Sanctuary — Transform Your Body. Heal Your Mind. Elevate Your Soul." },
-      { name: "description", content: "Authentic Indian yoga for modern life. Private, studio, online and therapeutic programs in Hai Duong & online, guided by Master Anil Choudhary. 12+ years, 1000+ students, 20+ countries." },
-      { name: "keywords", content: "luxury yoga, therapeutic yoga, private yoga sessions, online yoga classes, yoga in Vietnam, Indian yoga teacher, healing yoga, yoga sanctuary, Master Anil Choudhary" },
-      { property: "og:title", content: "Yog Jivan Sanctuary — Authentic Indian Yoga & Therapeutic Healing" },
-      { property: "og:description", content: "Transform your body. Heal your mind. Elevate your soul. Private, studio, online and therapeutic programs." },
-      { property: "og:url", content: "https://yog-jivan-zenith.lovable.app/" },
+      { title: "Yoga Studio Near Me in Hai Duong — Yog Jivan Sanctuary" },
+      { name: "description", content: "Authentic Indian yoga in Hai Duong, Vietnam and online worldwide. Private, studio, online, therapeutic and corporate programs with Master Anil Choudhary. 12+ years · 1000+ students · 20+ countries." },
+      { name: "keywords", content: "yoga near me, yoga studio near me, yoga classes in Hai Duong, yoga studio Hai Duong Vietnam, online yoga classes, yoga for beginners, therapeutic yoga, yoga for back pain, yoga for anxiety, yoga for PCOD, private yoga sessions Hai Duong, Master Anil Choudhary" },
+      { property: "og:title", content: "Yoga Studio Near Me in Hai Duong — Yog Jivan Sanctuary" },
+      { property: "og:description", content: "Authentic Indian yoga studio in Hai Duong, Vietnam and online worldwide. Private, studio, online and therapeutic programs." },
+      { property: "og:url", content: "https://www.yogjivan.com/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Yog Jivan Sanctuary" },
-      { name: "twitter:description", content: "Transform your body. Heal your mind. Elevate your soul." },
+      { name: "twitter:title", content: "Yoga Studio Near Me in Hai Duong — Yog Jivan" },
+      { name: "twitter:description", content: "Authentic Indian yoga in Hai Duong, Vietnam. Studio, online, therapeutic and corporate programs." },
     ],
     links: [
-      { rel: "canonical", href: "https://yog-jivan-zenith.lovable.app/" },
+      { rel: "canonical", href: "https://www.yogjivan.com/" },
     ],
     scripts: [
       {
@@ -57,7 +57,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yog-jivan-zenith.lovable.app/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
           ],
         }),
       },

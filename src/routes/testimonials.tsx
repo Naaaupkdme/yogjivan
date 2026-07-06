@@ -6,13 +6,13 @@ import { Transformation } from "@/components/site/Transformation";
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
     meta: [
-      { title: "Student Stories & Testimonials — Yog Jivan" },
-      { name: "description", content: "Transformation stories and testimonials from Yog Jivan students across Vietnam, India and Europe." },
+      { title: "Student Stories & Testimonials — Yog Jivan Yoga Hai Duong" },
+      { name: "description", content: "Real transformation stories and testimonials from Yog Jivan yoga students across Vietnam, India and Europe." },
       { property: "og:title", content: "Student Stories — Yog Jivan" },
-      { property: "og:description", content: "Real transformations, real students." },
-      { property: "og:url", content: "/testimonials" },
+      { property: "og:description", content: "Real transformations from Yog Jivan students." },
+      { property: "og:url", content: "https://www.yogjivan.com/testimonials" },
     ],
-    links: [{ rel: "canonical", href: "/testimonials" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/testimonials" }],
   }),
   component: () => (
     <>

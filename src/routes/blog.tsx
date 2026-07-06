@@ -14,13 +14,13 @@ const POSTS = [
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Journal — Yoga, Wellness & Meditation | Yog Jivan" },
-      { name: "description", content: "Writings on yoga, health, wellness, meditation, weight loss and lifestyle from Master Anil Choudhary and the Yog Jivan team." },
+      { title: "Yoga, Wellness & Meditation Journal — Yog Jivan" },
+      { name: "description", content: "Practical writing on yoga for beginners, therapeutic yoga, breathwork, meditation, weight loss and wellness from Master Anil Choudhary and the Yog Jivan team." },
       { property: "og:title", content: "Journal — Yog Jivan" },
-      { property: "og:description", content: "Notes from the practice." },
-      { property: "og:url", content: "/blog" },
+      { property: "og:description", content: "Notes from the practice — yoga, wellness and meditation." },
+      { property: "og:url", content: "https://www.yogjivan.com/blog" },
     ],
-    links: [{ rel: "canonical", href: "/blog" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/blog" }],
   }),
   component: () => (
     <>

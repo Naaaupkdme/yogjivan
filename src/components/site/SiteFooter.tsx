@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube, MessageCircle, MapPin, Mail, Phone, Star } from "lucide-react";
-import { SOCIAL } from "@/lib/social";
+import { SOCIAL, STUDIO_ADDRESSES } from "@/lib/social";
+
+function ZaloIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden className={className} fill="currentColor">
+      <path d="M12 2C6.5 2 2 5.9 2 10.7c0 2.6 1.4 5 3.7 6.6-.2 1-.7 2.5-1.6 3.5-.2.2 0 .5.3.5 1.9-.1 3.6-.9 4.7-1.7 1 .2 2 .4 2.9.4 5.5 0 10-3.9 10-8.7C22 5.9 17.5 2 12 2zm-4.5 11H6V8h1.5v5zm5.5 0h-1.3l-2.3-3v3H8V8h1.4l2.3 3V8H13v5zm3.5 0H15c-.6 0-1-.4-1-1V8h1.5v3.5H17V13zm3.7-1.4c0 .9-.7 1.6-1.6 1.6s-1.6-.7-1.6-1.6.7-1.6 1.6-1.6 1.6.7 1.6 1.6z"/>
+    </svg>
+  );
+}
 import communityA from "@/assets/img_20260621_105308.jpg.asset.json";
 import communityB from "@/assets/img_20260622_114016.jpg.asset.json";
 import communityC from "@/assets/img_5066.jpg.asset.json";
@@ -85,6 +93,7 @@ export function SiteFooter() {
             <div className="mt-5 flex items-center gap-2">
               {[
                 { href: SOCIAL.whatsapp, Icon: MessageCircle, label: "Open WhatsApp chat" },
+                { href: SOCIAL.zalo, Icon: ZaloIcon, label: "Chat on Zalo" },
                 { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram" },
                 { href: SOCIAL.facebook, Icon: Facebook, label: "Visit Yog Jivan Facebook" },
                 { href: SOCIAL.youtube, Icon: Youtube, label: "Visit Yog Jivan YouTube" },
@@ -111,8 +120,23 @@ export function SiteFooter() {
           <div>
             <h4 className="eyebrow mb-4">Sanctuary</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.googleMaps} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Hai Duong, Vietnam</a></li>
+              <li className="flex gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <a href={SOCIAL.googleMapsStudio1} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
+                  <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">Studio 1 · Sanctuary</span>
+                  <span className="mt-0.5 block">{STUDIO_ADDRESSES.studio1.full}</span>
+                </a>
+              </li>
+              <li className="flex gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <a href={SOCIAL.googleMapsStudio2} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
+                  <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">Studio 2 · Wellness & Healing</span>
+                  <span className="mt-0.5 block">{STUDIO_ADDRESSES.studio2.full}</span>
+                </a>
+              </li>
               <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`tel:${SOCIAL.phoneTel}`} className="hover:text-foreground">{SOCIAL.phone}</a></li>
+              <li className="flex gap-3"><MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">WhatsApp {SOCIAL.phone}</a></li>
+              <li className="flex gap-3"><ZaloIcon className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.zalo} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Zalo {SOCIAL.phone}</a></li>
               <li className="flex gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`mailto:${SOCIAL.email}`} className="hover:text-foreground">{SOCIAL.email}</a></li>
             </ul>
           </div>

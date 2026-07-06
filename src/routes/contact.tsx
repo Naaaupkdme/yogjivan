@@ -5,13 +5,13 @@ import { ContactSection } from "@/components/site/ContactSection";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact & Book a Free Consultation — Yog Jivan" },
-      { name: "description", content: "Book a free consultation with Yog Jivan. Two premium studios in Hai Duong, Vietnam. WhatsApp, phone and email available." },
-      { property: "og:title", content: "Contact Yog Jivan" },
-      { property: "og:description", content: "Reach the studio. Book a free consultation." },
-      { property: "og:url", content: "/contact" },
+      { title: "Contact & Book a Free Yoga Consultation — Yog Jivan Hai Duong" },
+      { name: "description", content: "Book a free yoga consultation with Master Anil Choudhary. Two premium studios in Hai Duong, Vietnam. Reach us on WhatsApp, Zalo, phone or email." },
+      { property: "og:title", content: "Contact Yog Jivan — Book a Free Consultation" },
+      { property: "og:description", content: "Reach the studio in Hai Duong. Book a free yoga consultation." },
+      { property: "og:url", content: "https://www.yogjivan.com/contact" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/contact" }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify({
