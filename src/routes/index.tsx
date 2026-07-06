@@ -57,7 +57,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yog-jivan-zenith.lovable.app/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
           ],
         }),
       },
