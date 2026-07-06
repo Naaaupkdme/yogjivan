@@ -6,13 +6,13 @@ import { ContactSection } from "@/components/site/ContactSection";
 export const Route = createFileRoute("/corporate")({
   head: () => ({
     meta: [
-      { title: "Corporate Wellness Programs — Yog Jivan Vietnam" },
-      { name: "description", content: "On-site and virtual corporate yoga and wellness programs in Vietnam. Reduce stress, boost productivity, retain talent." },
-      { property: "og:title", content: "Corporate Yoga & Wellness — Yog Jivan" },
-      { property: "og:description", content: "Yoga and wellness programs for high-performing teams." },
-      { property: "og:url", content: "/corporate" },
+      { title: "Corporate Yoga & Wellness Programs in Vietnam — Yog Jivan" },
+      { name: "description", content: "On-site and virtual corporate yoga and wellness programs across Vietnam. Reduce stress, improve posture, boost productivity and retain talent." },
+      { property: "og:title", content: "Corporate Yoga & Wellness — Yog Jivan Vietnam" },
+      { property: "og:description", content: "Yoga and wellness programs designed for high-performing teams in Vietnam." },
+      { property: "og:url", content: "https://www.yogjivan.com/corporate" },
     ],
-    links: [{ rel: "canonical", href: "/corporate" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/corporate" }],
   }),
   component: () => (
     <>
