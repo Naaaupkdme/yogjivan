@@ -112,8 +112,6 @@ export async function submitLead(payload: SubmitPayload) {
   });
   if (error) throw error;
 
-  // Fire webhook only on final submission to avoid duplicates
-  if (payload.status === "submitted") {
-    await postToMakeWebhook(payload);
-  }
+  // Always fire the webhook so every lead reaches the Google Sheet CRM.
+  await postToMakeWebhook(payload);
 }
