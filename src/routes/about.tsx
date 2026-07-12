@@ -17,7 +17,7 @@ export const Route = createFileRoute("/about")({
   }),
   component: () => (
     <>
-      <PageHero eyebrow="The Founder" title="A life devoted to the" accent="path." sub="Master Anil Choudhary brings twelve years of traditional Indian yoga, therapeutic mastery and quiet authority to every student he touches." image={heroImg.url} />
+      <PageHero eyebrow="The Founder" title="A life devoted to the" accent="path." sub="Master Anil Choudhary brings twelve years of traditional Indian yoga, therapeutic mastery and quiet authority to every student he touches." image={masterImages.meditationPortrait} />
       <About />
       <Transformation />
       <CTABanner title="Meet Master Anil in person." sub="A free consultation is the first step on the path." />
