@@ -160,6 +160,7 @@
   p { text-wrap: pretty; }
   img, video { display: block; }
   ::selection { background: color-mix(in oklab, var(--gold) 72%, transparent); color: var(--onyx); }
+  #lovable-badge { display: none !important; }
 }
 
 @utility container-luxe {
