@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, CTABanner } from "@/components/site/PageHero";
 import { About } from "@/components/site/About";
 import { Transformation } from "@/components/site/Transformation";
-import heroImg from "@/assets/file_00000000cca471fbb8967be0b0dfeda8.png.asset.json";
+import { masterImages } from "@/lib/images";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/about")({
   }),
   component: () => (
     <>
-      <PageHero eyebrow="The Founder" title="A life devoted to the" accent="path." sub="Master Anil Choudhary brings twelve years of traditional Indian yoga, therapeutic mastery and quiet authority to every student he touches." image={heroImg.url} />
+      <PageHero eyebrow="The Founder" title="A life devoted to the" accent="path." sub="Master Anil Choudhary brings twelve years of traditional Indian yoga, therapeutic mastery and quiet authority to every student he touches." image={masterImages.meditationPortrait} />
       <About />
       <Transformation />
       <CTABanner title="Meet Master Anil in person." sub="A free consultation is the first step on the path." />
