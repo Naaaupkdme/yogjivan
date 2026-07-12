@@ -52,7 +52,7 @@ export const masterImages = {
 } as const;
 
 export const masterAlts = {
-  founderPortrait: "Master Anil Choudhary in seated meditation — Founder of Yog Jivan Sanctuary",
+  founderPortrait: "Master Anil Choudhary — Founder of Yog Jivan Sanctuary",
   outdoorBridge: "Master Anil holding an advanced bridge variation by a lakeside",
   ploughPose: "Master Anil in plough pose (Halasana) on a sunlit field",
   studioAdjustment: "Master Anil giving a hands-on adjustment to a student in the studio",
