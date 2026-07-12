@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, CTABanner } from "@/components/site/PageHero";
 import { About } from "@/components/site/About";
 import { Transformation } from "@/components/site/Transformation";
-import heroImg from "@/assets/file_00000000cca471fbb8967be0b0dfeda8.png.asset.json";
+import { masterImages } from "@/lib/images";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
