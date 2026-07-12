@@ -67,7 +67,7 @@ export function Hero() {
     const saveData = navigator.connection?.saveData;
     if (reduced || saveData) return;
 
-    const id = window.setTimeout(() => setVideoSrc(heroVideo.url), 2000);
+    const id = window.setTimeout(() => setVideoSrc(heroVideo.url), 100);
     return () => window.clearTimeout(id);
   }, []);
 
