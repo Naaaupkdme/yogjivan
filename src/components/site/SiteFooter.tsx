@@ -32,6 +32,8 @@ export function SiteFooter() {
   const { t } = useLang();
   const [email, setEmail] = useState("");
   const qi = 0;
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const hideLocal = pathname === "/online-yoga-classes";
   useEffect(() => {}, []);
 
   return (
