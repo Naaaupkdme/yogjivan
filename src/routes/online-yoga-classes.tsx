@@ -82,7 +82,7 @@ const CLASS_DETAILS = [
   {
     label: "Pricing",
     value:
-      "Free live trial · Small Group: affordable monthly membership · 1-on-1 Private: premium personalized tier",
+      "Free live trial · Small Group: Monthly membership starting at $49/month · 1-on-1 Private: Premium personalized tier.",
   },
 ];
 
