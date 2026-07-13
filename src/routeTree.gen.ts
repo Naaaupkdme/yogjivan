@@ -13,6 +13,7 @@ import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as PersonalTrainingRouteImport } from './routes/personal-training'
+import { Route as OnlineYogaClassesRouteImport } from './routes/online-yoga-classes'
 import { Route as OnlineRouteImport } from './routes/online'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as CorporateRouteImport } from './routes/corporate'
@@ -39,6 +40,11 @@ const ProgramsRoute = ProgramsRouteImport.update({
 const PersonalTrainingRoute = PersonalTrainingRouteImport.update({
   id: '/personal-training',
   path: '/personal-training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineYogaClassesRoute = OnlineYogaClassesRouteImport.update({
+  id: '/online-yoga-classes',
+  path: '/online-yoga-classes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnlineRoute = OnlineRouteImport.update({
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
   '/online': typeof OnlineRoute
+  '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
   '/online': typeof OnlineRoute
+  '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
   '/online': typeof OnlineRoute
+  '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/corporate'
     | '/gallery'
     | '/online'
+    | '/online-yoga-classes'
     | '/personal-training'
     | '/programs'
     | '/sitemap.xml'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/corporate'
     | '/gallery'
     | '/online'
+    | '/online-yoga-classes'
     | '/personal-training'
     | '/programs'
     | '/sitemap.xml'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/corporate'
     | '/gallery'
     | '/online'
+    | '/online-yoga-classes'
     | '/personal-training'
     | '/programs'
     | '/sitemap.xml'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   CorporateRoute: typeof CorporateRoute
   GalleryRoute: typeof GalleryRoute
   OnlineRoute: typeof OnlineRoute
+  OnlineYogaClassesRoute: typeof OnlineYogaClassesRoute
   PersonalTrainingRoute: typeof PersonalTrainingRoute
   ProgramsRoute: typeof ProgramsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -201,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/personal-training'
       fullPath: '/personal-training'
       preLoaderRoute: typeof PersonalTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-yoga-classes': {
+      id: '/online-yoga-classes'
+      path: '/online-yoga-classes'
+      fullPath: '/online-yoga-classes'
+      preLoaderRoute: typeof OnlineYogaClassesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/online': {
@@ -263,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   CorporateRoute: CorporateRoute,
   GalleryRoute: GalleryRoute,
   OnlineRoute: OnlineRoute,
+  OnlineYogaClassesRoute: OnlineYogaClassesRoute,
   PersonalTrainingRoute: PersonalTrainingRoute,
   ProgramsRoute: ProgramsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
