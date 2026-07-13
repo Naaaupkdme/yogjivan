@@ -76,7 +76,7 @@ export function SiteFooter() {
           <div className="gold-hairline mt-10 mx-auto max-w-md" />
         </div>
 
-        <div className="grid gap-8 border-b border-border/60 pb-10 lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]">
+        <div className={`grid gap-8 border-b border-border/60 pb-10 ${hideLocal ? "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]" : "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]"}`}>
           <div>
             <div className="flex items-center gap-3">
               <img src={logo.url} alt="" className="h-11 w-11 rounded-full object-cover" />
