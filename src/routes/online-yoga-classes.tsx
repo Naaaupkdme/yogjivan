@@ -49,13 +49,13 @@ const FAQ_SECTIONS: { q: string; bullets: string[]; answer: string }[] = [
     q: "How Much Do Online Yoga Classes Cost?",
     bullets: [
       "Free live trial class for every new student — no card required.",
-      "Small Group live classes: affordable monthly membership.",
-      "1-on-1 Private online sessions: fully personalized premium tier.",
+      "Small Group live classes: monthly membership starting at $49/month.",
+      "1-on-1 Private online sessions: premium personalized tier.",
       "Custom corporate and family packages available on request.",
       "Transparent pricing shared during your free consultation.",
     ],
     answer:
-      "Start with a free live trial class. After that, choose Small Group live classes (affordable monthly membership) or 1-on-1 Private sessions (premium personalized tier). Pricing is shared transparently on your consultation call.",
+      "Start with a free live trial. After that, Small Group live classes start at $49/month, and 1-on-1 Private sessions are offered as a premium personalized tier. Pricing is shared transparently on your consultation call.",
   },
   {
     q: "How Do I Join My First Class?",
