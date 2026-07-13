@@ -267,7 +267,13 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
-      <Testimonials />
+      <Testimonials
+        items={[
+          { name: "Tim", initial: "T", country: "USA", flag: "🇺🇸", category: "Online Student", quote: "I've been taking Master Anil's live online classes from the US, and the experience is incredible. The real-time posture corrections and therapeutic approach helped my back pain immensely. It feels just as effective and personalized as being in a physical studio." },
+          { name: "Sophie Laurent", initial: "S", country: "France", flag: "🇫🇷", category: "Online Client", quote: "Even from Europe, the online experience feels intimate and refined. The guidance is personal, elegant, and deeply grounding." },
+          { name: "Emily Tran", initial: "E", country: "Canada", flag: "🇨🇦", category: "Therapeutic Program", quote: "My chronic back pain eased within weeks. The therapeutic precision and warmth here are unlike any studio I've tried." },
+        ]}
+      />
 
       {/* Brand-voice closing (moved to bottom per spec) */}
       <section className="section-tight">
