@@ -49,13 +49,13 @@ const FAQ_SECTIONS: { q: string; bullets: string[]; answer: string }[] = [
     q: "How Much Do Online Yoga Classes Cost?",
     bullets: [
       "Free live trial class for every new student — no card required.",
-      "Small Group live classes: affordable monthly membership.",
-      "1-on-1 Private online sessions: fully personalized premium tier.",
+      "Small Group live classes: monthly membership starting at $49/month.",
+      "1-on-1 Private online sessions: premium personalized tier.",
       "Custom corporate and family packages available on request.",
       "Transparent pricing shared during your free consultation.",
     ],
     answer:
-      "Start with a free live trial class. After that, choose Small Group live classes (affordable monthly membership) or 1-on-1 Private sessions (premium personalized tier). Pricing is shared transparently on your consultation call.",
+      "Start with a free live trial. After that, Small Group live classes start at $49/month, and 1-on-1 Private sessions are offered as a premium personalized tier. Pricing is shared transparently on your consultation call.",
   },
   {
     q: "How Do I Join My First Class?",
@@ -82,7 +82,7 @@ const CLASS_DETAILS = [
   {
     label: "Pricing",
     value:
-      "Free live trial · Small Group: affordable monthly membership · 1-on-1 Private: premium personalized tier",
+      "Free live trial · Small Group: Monthly membership starting at $49/month · 1-on-1 Private: Premium personalized tier.",
   },
 ];
 
@@ -139,6 +139,35 @@ export const Route = createFileRoute("/online-yoga-classes")({
             name: f.q,
             acceptedAnswer: { "@type": "Answer", text: f.answer },
           })),
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Event",
+          name: "Live Online Yoga Class with Master Anil Choudhary",
+          description:
+            "Daily live online yoga sessions with certified Indian Master Anil Choudhary. Multiple timezone-friendly slots (morning, evening and late slots across IST, GMT and EST). Small-batch, therapeutic and personalized.",
+          eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+          eventStatus: "https://schema.org/EventScheduled",
+          location: {
+            "@type": "VirtualLocation",
+            url: "https://www.yogjivan.com/online-yoga-classes",
+          },
+          organizer: {
+            "@type": "Organization",
+            name: "Yog Jivan Sanctuary",
+            url: "https://www.yogjivan.com",
+          },
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+            description: "Free live trial class",
+            url: "https://www.yogjivan.com/online-yoga-classes",
+          },
         }),
       },
     ],
@@ -238,7 +267,13 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
-      <Testimonials />
+      <Testimonials
+        items={[
+          { name: "Tim", initial: "T", country: "USA", flag: "🇺🇸", category: "Online Student", quote: "I've been taking Master Anil's live online classes from the US, and the experience is incredible. The real-time posture corrections and therapeutic approach helped my back pain immensely. It feels just as effective and personalized as being in a physical studio." },
+          { name: "Sophie Laurent", initial: "S", country: "France", flag: "🇫🇷", category: "Online Client", quote: "Even from Europe, the online experience feels intimate and refined. The guidance is personal, elegant, and deeply grounding." },
+          { name: "Emily Tran", initial: "E", country: "Canada", flag: "🇨🇦", category: "Therapeutic Program", quote: "My chronic back pain eased within weeks. The therapeutic precision and warmth here are unlike any studio I've tried." },
+        ]}
+      />
 
       {/* Brand-voice closing (moved to bottom per spec) */}
       <section className="section-tight">

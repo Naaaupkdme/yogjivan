@@ -2,7 +2,16 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Quote, Star, BadgeCheck, ArrowRight } from "lucide-react";
 
-const testimonials = [
+type TestimonialItem = {
+  name: string;
+  initial: string;
+  country: string;
+  flag: string;
+  category: string;
+  quote: string;
+};
+
+const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
   {
     name: "Linh Pham",
     initial: "L",
@@ -45,7 +54,8 @@ const TRUST = [
   { value: "Global", label: "Online Community" },
 ];
 
-export function Testimonials() {
+export function Testimonials({ items = DEFAULT_TESTIMONIALS }: { items?: TestimonialItem[] } = {}) {
+  const testimonials = items;
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -54,7 +64,7 @@ export function Testimonials() {
     if (paused) return;
     const id = setInterval(() => setIndex((c) => (c + 1) % testimonials.length), 8000);
     return () => clearInterval(id);
-  }, [paused]);
+  }, [paused, testimonials.length]);
 
   const item = testimonials[index];
 

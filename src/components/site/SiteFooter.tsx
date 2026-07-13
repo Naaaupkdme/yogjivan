@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube, MessageCircle, MapPin, Mail, Phone, Star } from "lucide-react";
 import { SOCIAL, STUDIO_ADDRESSES } from "@/lib/social";
 
@@ -32,6 +32,8 @@ export function SiteFooter() {
   const { t } = useLang();
   const [email, setEmail] = useState("");
   const qi = 0;
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const hideLocal = pathname === "/online-yoga-classes";
   useEffect(() => {}, []);
 
   return (
@@ -74,7 +76,7 @@ export function SiteFooter() {
           <div className="gold-hairline mt-10 mx-auto max-w-md" />
         </div>
 
-        <div className="grid gap-8 border-b border-border/60 pb-10 lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]">
+        <div className={`grid gap-8 border-b border-border/60 pb-10 ${hideLocal ? "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]" : "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]"}`}>
           <div>
             <div className="flex items-center gap-3">
               <img src={logo.url} alt="" className="h-11 w-11 rounded-full object-cover" />
@@ -118,23 +120,27 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h4 className="eyebrow mb-4">Sanctuary</h4>
+            <h4 className="eyebrow mb-4">{hideLocal ? "Contact" : "Sanctuary"}</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href={SOCIAL.googleMapsStudio1} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
-                  <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">Studio 1 · Sanctuary</span>
-                  <span className="mt-0.5 block">{STUDIO_ADDRESSES.studio1.full}</span>
-                </a>
-              </li>
-              <li className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href={SOCIAL.googleMapsStudio2} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
-                  <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">Studio 2 · Wellness & Healing</span>
-                  <span className="mt-0.5 block">{STUDIO_ADDRESSES.studio2.full}</span>
-                </a>
-              </li>
-              <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`tel:${SOCIAL.phoneTel}`} className="hover:text-foreground">{SOCIAL.phone}</a></li>
+              {!hideLocal && (
+                <>
+                  <li className="flex gap-3">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <a href={SOCIAL.googleMapsStudio1} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
+                      <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">Studio 1 · Sanctuary</span>
+                      <span className="mt-0.5 block">{STUDIO_ADDRESSES.studio1.full}</span>
+                    </a>
+                  </li>
+                  <li className="flex gap-3">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <a href={SOCIAL.googleMapsStudio2} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
+                      <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">Studio 2 · Wellness & Healing</span>
+                      <span className="mt-0.5 block">{STUDIO_ADDRESSES.studio2.full}</span>
+                    </a>
+                  </li>
+                  <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`tel:${SOCIAL.phoneTel}`} className="hover:text-foreground">{SOCIAL.phone}</a></li>
+                </>
+              )}
               <li className="flex gap-3"><MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">WhatsApp {SOCIAL.phone}</a></li>
               <li className="flex gap-3"><ZaloIcon className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.zalo} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Zalo {SOCIAL.phone}</a></li>
               <li className="flex gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`mailto:${SOCIAL.email}`} className="hover:text-foreground">{SOCIAL.email}</a></li>
