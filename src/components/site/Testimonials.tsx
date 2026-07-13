@@ -2,7 +2,16 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Quote, Star, BadgeCheck, ArrowRight } from "lucide-react";
 
-const testimonials = [
+type TestimonialItem = {
+  name: string;
+  initial: string;
+  country: string;
+  flag: string;
+  category: string;
+  quote: string;
+};
+
+const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
   {
     name: "Linh Pham",
     initial: "L",
