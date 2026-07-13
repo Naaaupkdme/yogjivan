@@ -141,6 +141,35 @@ export const Route = createFileRoute("/online-yoga-classes")({
           })),
         }),
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Event",
+          name: "Live Online Yoga Class with Master Anil Choudhary",
+          description:
+            "Daily live online yoga sessions with certified Indian Master Anil Choudhary. Multiple timezone-friendly slots (morning, evening and late slots across IST, GMT and EST). Small-batch, therapeutic and personalized.",
+          eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+          eventStatus: "https://schema.org/EventScheduled",
+          location: {
+            "@type": "VirtualLocation",
+            url: "https://www.yogjivan.com/online-yoga-classes",
+          },
+          organizer: {
+            "@type": "Organization",
+            name: "Yog Jivan Sanctuary",
+            url: "https://www.yogjivan.com",
+          },
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+            description: "Free live trial class",
+            url: "https://www.yogjivan.com/online-yoga-classes",
+          },
+        }),
+      },
     ],
   }),
   component: OnlineYogaClassesPage,
