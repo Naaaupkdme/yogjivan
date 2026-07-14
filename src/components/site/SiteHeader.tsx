@@ -5,12 +5,14 @@ import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
 import { useLang } from "@/lib/language";
 
 const NAV = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/online-yoga-classes", label: "Online Yoga" },
+  { href: "/personal-training", label: "Therapeutic Yoga" },
   { href: "/programs", label: "Programs" },
   { href: "/about#studios", label: "Studios" },
-  { href: "/#journey", label: "Journey" },
-  { href: "/gallery", label: "Gallery" },
   { href: "/testimonials", label: "Testimonials" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
