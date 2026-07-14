@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { SOCIAL } from "@/lib/social";
 import { masterImages } from "@/lib/images";
 import {
-  Award, Users, Globe2, Heart, CheckCircle2, XCircle, Sparkles, Video, Eye, Wind, Activity,
+  Award, Users, Globe2, CheckCircle2, XCircle, Sparkles, Eye, Wind, Activity,
   Brain, HeartPulse, Flower2, Sunrise, ClipboardCheck, TrendingUp, Leaf, Calendar,
   MessageCircle, PhoneCall, ShieldCheck, GraduationCap, Stethoscope, Compass, Circle,
 } from "lucide-react";
