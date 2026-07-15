@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { Gallery } from "@/components/site/Gallery";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/gallery")({
   head: () => ({
@@ -12,6 +13,10 @@ export const Route = createFileRoute("/gallery")({
       { property: "og:url", content: "https://www.yogjivan.com/gallery" },
     ],
     links: [{ rel: "canonical", href: "https://www.yogjivan.com/gallery" }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify(breadcrumbSchema("Gallery", "/gallery")),
+    }],
   }),
   component: () => (
     <>

@@ -11,6 +11,8 @@ const POSTS = [
   { cat: "Lifestyle", title: "Building a home practice you'll keep for life", excerpt: "Five rituals from our long-term students — what made them stay on the mat through every season.", read: "5 min" },
 ];
 
+import { breadcrumbSchema } from "@/lib/schema";
+
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
@@ -21,6 +23,10 @@ export const Route = createFileRoute("/blog")({
       { property: "og:url", content: "https://www.yogjivan.com/blog" },
     ],
     links: [{ rel: "canonical", href: "https://www.yogjivan.com/blog" }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify(breadcrumbSchema("Blog", "/blog")),
+    }],
   }),
   component: () => (
     <>
