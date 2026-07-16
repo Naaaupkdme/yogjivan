@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
 const BASE_URL = "https://www.yogjivan.com";
-const PATHS = ["/", "/about", "/programs", "/personal-training", "/online-yoga-classes", "/corporate", "/gallery", "/testimonials", "/blog", "/contact"];
+const PATHS = ["/", "/about", "/programs", "/personal-training", "/online-yoga-classes", "/yoga-for-beginners", "/corporate", "/gallery", "/testimonials", "/blog", "/contact"];
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
