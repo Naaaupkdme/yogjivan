@@ -24,16 +24,16 @@ const Lazy = ({ children }: { children: React.ReactNode }) => (
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Authentic Indian Online Yoga Classes | Yog Jivan" },
-      { name: "description", content: "Live online yoga classes with Certified Indian Yoga Master Anil Choudhary. Therapeutic, small-batch, personalized guidance. Join students from 20+ countries. Book a free live trial." },
+      { title: "Yog Jivan Sanctuary | Premium Yoga Studio Hai Duong & Online" },
+      { name: "description", content: "Authentic Indian yoga in Hai Duong, Vietnam & live online worldwide. Therapeutic, private & studio classes with Master Anil Choudhary. Book a free trial." },
       { name: "keywords", content: "online yoga classes, authentic Indian yoga, live online yoga, therapeutic yoga, yoga for beginners, yoga for back pain, yoga for anxiety, yoga for PCOD, certified Indian yoga teacher, yoga near me, Master Anil Choudhary" },
-      { property: "og:title", content: "Authentic Indian Online Yoga Classes | Yog Jivan" },
-      { property: "og:description", content: "Live therapeutic yoga classes with Certified Indian Yoga Master Anil Choudhary. Students from Vietnam, India, USA, Canada, Australia and worldwide." },
+      { property: "og:title", content: "Yog Jivan Sanctuary | Premium Yoga Studio Hai Duong & Online" },
+      { property: "og:description", content: "Authentic Indian yoga in Hai Duong, Vietnam & live online worldwide. Therapeutic, private & studio classes with Master Anil Choudhary. Book a free trial." },
       { property: "og:url", content: "https://www.yogjivan.com/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Authentic Indian Online Yoga Classes | Yog Jivan" },
-      { name: "twitter:description", content: "Live therapeutic yoga with Certified Indian Yoga Master Anil Choudhary. Small batch. Personalized. Join from anywhere." },
+      { name: "twitter:title", content: "Yog Jivan Sanctuary | Premium Yoga Studio Hai Duong & Online" },
+      { name: "twitter:description", content: "Authentic Indian yoga in Hai Duong, Vietnam & live online worldwide. Therapeutic, private & studio classes with Master Anil Choudhary. Book a free trial." },
     ],
     links: [
       { rel: "canonical", href: "https://www.yogjivan.com/" },
