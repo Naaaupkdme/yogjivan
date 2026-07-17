@@ -44,11 +44,13 @@ export const submitLeadToCrm = createServerFn({ method: "POST" })
     if (!url) throw new Error("CRM webhook not configured");
 
     // Best-effort IP based rate limit using request headers.
-    const { getWebRequest } = await import("@tanstack/react-start/server");
-    const req = getWebRequest();
+    const { getRequestHeader, getRequestIP } = await import(
+      "@tanstack/react-start/server"
+    );
     const ip =
-      req?.headers.get("cf-connecting-ip") ||
-      req?.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      getRequestHeader("cf-connecting-ip") ||
+      getRequestHeader("x-forwarded-for")?.split(",")[0]?.trim() ||
+      getRequestIP() ||
       "unknown";
     if (!rateLimit(ip)) {
       throw new Error("Too many requests");
