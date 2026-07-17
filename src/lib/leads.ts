@@ -66,33 +66,7 @@ type SubmitPayload = Partial<Omit<LeadState, "step">> & {
   status: string;
 };
 
-const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/033hlthorhbfgymbwym42o5tk1qghaa1";
-
-async function postToMakeWebhook(payload: SubmitPayload) {
-  const body = {
-    full_name: payload.name || "",
-    email: payload.email || "",
-    phone: payload.whatsapp || "",
-    country: "",
-    city: "",
-    service: payload.preferred_experience || "",
-    message: [
-      payload.health_notes,
-      payload.goals?.length ? `Goals: ${payload.goals.join(", ")}` : "",
-      payload.preferred_time ? `Preferred time: ${payload.preferred_time}` : "",
-      payload.experience_level ? `Experience: ${payload.experience_level}` : "",
-      payload.health_tags?.length ? `Health: ${payload.health_tags.join(", ")}` : "",
-    ].filter(Boolean).join(" | "),
-    source: "Website Contact Form",
-    created_at: new Date().toISOString(),
-  };
-  const res = await fetch(MAKE_WEBHOOK_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) throw new Error(`Webhook failed with status ${res.status}`);
-}
+import { submitLeadToCrm } from "./submit-lead.functions";
 
 export async function submitLead(payload: SubmitPayload) {
   const session_id = getSessionId();
@@ -112,6 +86,21 @@ export async function submitLead(payload: SubmitPayload) {
   });
   if (error) throw error;
 
-  // Always fire the webhook so every lead reaches the Google Sheet CRM.
-  await postToMakeWebhook(payload);
+  // Proxy the CRM webhook call through the server so the URL stays secret
+  // and inputs get validated/rate-limited server-side.
+  await submitLeadToCrm({
+    data: {
+      name: payload.name,
+      whatsapp: payload.whatsapp,
+      email: payload.email || "",
+      goals: payload.goals,
+      preferred_experience: payload.preferred_experience,
+      preferred_time: payload.preferred_time,
+      health_notes: payload.health_notes,
+      health_tags: payload.health_tags,
+      experience_level: payload.experience_level,
+      status: payload.status,
+    },
+  });
 }
+
