@@ -23,7 +23,7 @@ import uploadGroupNamaste from "@/assets/uploads/img_20260621_105308.webp.asset.
 import uploadGroupCelebration from "@/assets/uploads/img_20260622_114016.webp.asset.json";
 
 export const masterImages = {
-  founderPortrait: studioBackbendFlowers.url,
+  founderPortrait: masterAnilMeditationPortrait.url,
   founderPortraitAlt: "Master Anil Choudhary — Founder of Yog Jivan Sanctuary",
   meditationPortrait: masterAnilMeditationPortrait.url,
 
