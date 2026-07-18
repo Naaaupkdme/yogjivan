@@ -228,6 +228,36 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
+
+  // Conditionally load Google Analytics + Meta Pixel only AFTER cookie consent.
+  useEffect(() => {
+    let loaded = false;
+    const loadAnalytics = () => {
+      if (loaded) return;
+      loaded = true;
+      // Google Analytics (GA4)
+      const gtagScript = document.createElement("script");
+      gtagScript.async = true;
+      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-LFV05NVEJZ";
+      document.head.appendChild(gtagScript);
+      const gtagInit = document.createElement("script");
+      gtagInit.text =
+        "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','G-LFV05NVEJZ',{send_page_view:true});";
+      document.head.appendChild(gtagInit);
+      // Meta Pixel
+      const fbInit = document.createElement("script");
+      fbInit.text =
+        "!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1752860699056785');fbq('track','PageView');";
+      document.head.appendChild(fbInit);
+    };
+    if (getConsent() === "accepted") loadAnalytics();
+    const onConsent = (e: Event) => {
+      if ((e as CustomEvent).detail === "accepted") loadAnalytics();
+    };
+    window.addEventListener(CONSENT_EVENT, onConsent);
+    return () => window.removeEventListener(CONSENT_EVENT, onConsent);
+  }, []);
+
   useEffect(() => {
     const unsub = router.subscribe("onResolved", () => {
       const w = window as unknown as { gtag?: (...args: unknown[]) => void; fbq?: (...args: unknown[]) => void };
@@ -290,6 +320,7 @@ function RootComponent() {
           <FloatingConsultationCTA />
           <ExitIntentModal />
           <MobileStickyCTA />
+          <CookieConsent />
         </div>
       </LanguageProvider>
     </QueryClientProvider>
