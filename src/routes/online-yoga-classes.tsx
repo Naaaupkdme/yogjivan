@@ -405,6 +405,32 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
+      {/* Video breather — a live-class glimpse */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <div className="mx-auto max-w-5xl">
+            <div className="relative overflow-hidden rounded-[2rem] border border-[color:var(--gold)]/30 shadow-2xl">
+              <video
+                src={heroVideoAsset.url}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="A short cinematic glimpse of practice at Yog Jivan"
+                className="aspect-video w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute bottom-0 left-0 right-0 p-4 md:p-5">
+                <p className="text-[0.65rem] uppercase tracking-[0.28em] text-white/80">
+                  A glimpse of practice · placeholder — a dedicated class-demo video will replace this shortly
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* EEAT / Master Anil */}
       <section className="section-y">
         <div className="container-luxe">
