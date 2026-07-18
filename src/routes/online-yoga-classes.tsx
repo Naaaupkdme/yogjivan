@@ -5,10 +5,12 @@ import { LuxuryImage } from "@/components/site/LuxuryImage";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SOCIAL } from "@/lib/social";
 import { masterImages } from "@/lib/images";
+import heroVideoAsset from "@/assets/hero-meditation.mp4.asset.json";
 import {
   Award, Users, Globe2, CheckCircle2, XCircle, Sparkles, Eye, Wind, Activity,
   Brain, HeartPulse, Flower2, Sunrise, ClipboardCheck, TrendingUp, Leaf, Calendar,
   MessageCircle, PhoneCall, ShieldCheck, GraduationCap, Stethoscope, Compass, Circle,
+  Quote,
 } from "lucide-react";
 
 const CANONICAL = "https://www.yogjivan.com/online-yoga-classes";
@@ -402,6 +404,32 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
+      {/* Video breather — a live-class glimpse */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <div className="mx-auto max-w-5xl">
+            <div className="relative overflow-hidden rounded-[2rem] border border-[color:var(--gold)]/30 shadow-2xl">
+              <video
+                src={heroVideoAsset.url}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="A short cinematic glimpse of practice at Yog Jivan"
+                className="aspect-video w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute bottom-0 left-0 right-0 p-4 md:p-5">
+                <p className="text-[0.65rem] uppercase tracking-[0.28em] text-white/80">
+                  A glimpse of practice · placeholder — a dedicated class-demo video will replace this shortly
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* EEAT / Master Anil */}
       <section className="section-y">
         <div className="container-luxe">
@@ -463,6 +491,34 @@ function OnlineYogaClassesPage() {
               </ul>
               <p className="mt-5 text-xs text-muted-foreground">Yoga is complementary — not a substitute for medical care. We coordinate with your physician when needed.</p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Image breather */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2">
+            <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 aspect-[4/3]">
+              <LuxuryImage
+                src={masterImages.warriorClass}
+                alt="Master Anil leading a live Warrior II class — the same sequencing streamed to online students worldwide"
+                className="h-full w-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-xs uppercase tracking-[0.22em] text-white/85">
+                Live class · same teacher, in-studio & on Zoom
+              </figcaption>
+            </figure>
+            <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 aspect-[4/3]">
+              <LuxuryImage
+                src={masterImages.wallSeated}
+                alt="Student in a supported seated stretch — the kind of therapeutic online yoga posture prescribed for back pain and desk fatigue"
+                className="h-full w-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-xs uppercase tracking-[0.22em] text-white/85">
+                Therapeutic prop use · corrected on camera
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -611,6 +667,21 @@ function OnlineYogaClassesPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Pull-quote break */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <figure className="mx-auto max-w-3xl text-center">
+            <Quote className="mx-auto h-8 w-8 text-[color:var(--gold)]/70" />
+            <blockquote className="mt-4 font-display text-2xl md:text-3xl italic leading-[1.3] text-foreground/95">
+              "The real-time posture corrections and therapeutic approach eased my back pain within weeks. It feels as effective as being in a physical studio — from the other side of the world."
+            </blockquote>
+            <figcaption className="mt-5 text-xs uppercase tracking-[0.28em] text-[color:var(--gold)]">
+              Tim · Online Student · USA
+            </figcaption>
+          </figure>
         </div>
       </section>
 

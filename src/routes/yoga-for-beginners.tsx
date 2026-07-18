@@ -6,7 +6,7 @@ import { SOCIAL } from "@/lib/social";
 import { masterImages } from "@/lib/images";
 import {
   Award, Users, Globe2, CheckCircle2, Sparkles, MessageCircle,
-  ShieldCheck, GraduationCap, Stethoscope,
+  ShieldCheck, GraduationCap, Stethoscope, Quote,
 } from "lucide-react";
 
 const CANONICAL = "https://www.yogjivan.com/yoga-for-beginners";
@@ -260,6 +260,34 @@ function YogaForBeginnersPage() {
         </div>
       </section>
 
+      {/* Visual breather — studio life */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
+            <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 md:col-span-2 md:aspect-[16/9]">
+              <LuxuryImage
+                src={masterImages.studioAdjustment}
+                alt="Master Anil giving a gentle hands-on adjustment to a beginner student inside the Hai Duong studio"
+                className="h-full w-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-xs uppercase tracking-[0.22em] text-white/85">
+                Beginner-first adjustments · Hai Duong studio
+              </figcaption>
+            </figure>
+            <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 aspect-[4/5] md:aspect-auto">
+              <LuxuryImage
+                src={masterImages.savasanaClass}
+                alt="Students resting in Savasana at the end of a beginner-friendly yoga class"
+                className="h-full w-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-xs uppercase tracking-[0.22em] text-white/85">
+                Closing Savasana · every class
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       {/* Question-based H2 sections */}
       <section className="section-y">
         <div className="container-luxe">
@@ -277,7 +305,10 @@ function YogaForBeginnersPage() {
                 <h2 className="font-display text-xl md:text-2xl leading-[1.2] text-foreground">
                   {qa.q}
                 </h2>
-                <ul className="mt-5 space-y-3">
+                <p className="mt-4 text-sm md:text-base leading-relaxed text-foreground/85">
+                  {qa.answer}
+                </p>
+                <ul className="mt-5 space-y-3 border-t border-white/10 pt-5">
                   {qa.bullets.map((b) => (
                     <li key={b} className="flex gap-3 text-sm leading-relaxed text-foreground/90">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" />
@@ -291,6 +322,21 @@ function YogaForBeginnersPage() {
           <div className="mx-auto mt-10 max-w-5xl">
             <InlineCTA />
           </div>
+        </div>
+      </section>
+
+      {/* Pull-quote break */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <figure className="mx-auto max-w-3xl text-center">
+            <Quote className="mx-auto h-8 w-8 text-[color:var(--gold)]/70" />
+            <blockquote className="mt-4 font-display text-2xl md:text-3xl italic leading-[1.3] text-foreground/95">
+              "I came for flexibility, but what changed my life was the emotional calm. Yog Jivan feels premium, peaceful, and deeply authentic."
+            </blockquote>
+            <figcaption className="mt-5 text-xs uppercase tracking-[0.28em] text-[color:var(--gold)]">
+              Linh Pham · Studio Student · Vietnam
+            </figcaption>
+          </figure>
         </div>
       </section>
 
