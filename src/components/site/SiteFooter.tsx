@@ -179,7 +179,16 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-3 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Yog Jivan. All rights reserved.</p>
-          <p className="uppercase tracking-[0.28em]">Rooted in tradition. Refined for modern life.</p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event("yj:open-cookie-settings"))}
+              className="underline-offset-4 hover:text-foreground hover:underline"
+            >
+              Cookie Settings
+            </button>
+            <p className="uppercase tracking-[0.28em]">Rooted in tradition. Refined for modern life.</p>
+          </div>
         </div>
       </div>
     </footer>
