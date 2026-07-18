@@ -260,6 +260,34 @@ function YogaForBeginnersPage() {
         </div>
       </section>
 
+      {/* Visual breather — studio life */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
+            <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 md:col-span-2 md:aspect-[16/9]">
+              <LuxuryImage
+                src={masterImages.studioAdjustment}
+                alt="Master Anil giving a gentle hands-on adjustment to a beginner student inside the Hai Duong studio"
+                className="h-full w-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-xs uppercase tracking-[0.22em] text-white/85">
+                Beginner-first adjustments · Hai Duong studio
+              </figcaption>
+            </figure>
+            <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 aspect-[4/5] md:aspect-auto">
+              <LuxuryImage
+                src={masterImages.savasanaClass}
+                alt="Students resting in Savasana at the end of a beginner-friendly yoga class"
+                className="h-full w-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-xs uppercase tracking-[0.22em] text-white/85">
+                Closing Savasana · every class
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       {/* Question-based H2 sections */}
       <section className="section-y">
         <div className="container-luxe">
