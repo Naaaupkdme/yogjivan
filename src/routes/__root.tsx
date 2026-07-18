@@ -17,6 +17,7 @@ import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { FloatingConsultationCTA } from "@/components/site/FloatingConsultationCTA";
 import { ExitIntentModal } from "@/components/site/ExitIntentModal";
+import { CookieConsent, getConsent, CONSENT_EVENT } from "@/components/site/CookieConsent";
 import { LanguageProvider } from "@/lib/language";
 
 function NotFoundComponent() {
@@ -201,18 +202,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           ],
         }),
       },
-      {
-        src: "https://www.googletagmanager.com/gtag/js?id=G-LFV05NVEJZ",
-        async: true,
-      },
-      {
-        children:
-          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LFV05NVEJZ',{send_page_view:true});",
-      },
-      {
-        children:
-          "!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1752860699056785');fbq('track','PageView');",
-      },
+      // NOTE: Google Analytics (gtag) and Meta Pixel are loaded conditionally
+      // in RootComponent AFTER the user grants cookie consent — do not add
+      // those scripts here or they will load on every visit before consent.
     ],
   }),
   shellComponent: RootShell,
