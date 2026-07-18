@@ -5,10 +5,13 @@ import { LuxuryImage } from "@/components/site/LuxuryImage";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SOCIAL } from "@/lib/social";
 import { masterImages } from "@/lib/images";
+import { useEffect, useRef } from "react";
+import heroVideoAsset from "@/assets/hero-meditation.mp4.asset.json";
 import {
   Award, Users, Globe2, CheckCircle2, XCircle, Sparkles, Eye, Wind, Activity,
   Brain, HeartPulse, Flower2, Sunrise, ClipboardCheck, TrendingUp, Leaf, Calendar,
   MessageCircle, PhoneCall, ShieldCheck, GraduationCap, Stethoscope, Compass, Circle,
+  Quote,
 } from "lucide-react";
 
 const CANONICAL = "https://www.yogjivan.com/online-yoga-classes";
