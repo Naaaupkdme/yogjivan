@@ -5,7 +5,6 @@ import { LuxuryImage } from "@/components/site/LuxuryImage";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SOCIAL } from "@/lib/social";
 import { masterImages } from "@/lib/images";
-import { useEffect, useRef } from "react";
 import heroVideoAsset from "@/assets/hero-meditation.mp4.asset.json";
 import {
   Award, Users, Globe2, CheckCircle2, XCircle, Sparkles, Eye, Wind, Activity,
