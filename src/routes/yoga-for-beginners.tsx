@@ -6,7 +6,7 @@ import { SOCIAL } from "@/lib/social";
 import { masterImages } from "@/lib/images";
 import {
   Award, Users, Globe2, CheckCircle2, Sparkles, MessageCircle,
-  ShieldCheck, GraduationCap, Stethoscope,
+  ShieldCheck, GraduationCap, Stethoscope, Quote,
 } from "lucide-react";
 
 const CANONICAL = "https://www.yogjivan.com/yoga-for-beginners";
@@ -322,6 +322,21 @@ function YogaForBeginnersPage() {
           <div className="mx-auto mt-10 max-w-5xl">
             <InlineCTA />
           </div>
+        </div>
+      </section>
+
+      {/* Pull-quote break */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <figure className="mx-auto max-w-3xl text-center">
+            <Quote className="mx-auto h-8 w-8 text-[color:var(--gold)]/70" />
+            <blockquote className="mt-4 font-display text-2xl md:text-3xl italic leading-[1.3] text-foreground/95">
+              "I came for flexibility, but what changed my life was the emotional calm. Yog Jivan feels premium, peaceful, and deeply authentic."
+            </blockquote>
+            <figcaption className="mt-5 text-xs uppercase tracking-[0.28em] text-[color:var(--gold)]">
+              Linh Pham · Studio Student · Vietnam
+            </figcaption>
+          </figure>
         </div>
       </section>
 
