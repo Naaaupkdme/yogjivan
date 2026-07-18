@@ -277,7 +277,10 @@ function YogaForBeginnersPage() {
                 <h2 className="font-display text-xl md:text-2xl leading-[1.2] text-foreground">
                   {qa.q}
                 </h2>
-                <ul className="mt-5 space-y-3">
+                <p className="mt-4 text-sm md:text-base leading-relaxed text-foreground/85">
+                  {qa.answer}
+                </p>
+                <ul className="mt-5 space-y-3 border-t border-white/10 pt-5">
                   {qa.bullets.map((b) => (
                     <li key={b} className="flex gap-3 text-sm leading-relaxed text-foreground/90">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" />
