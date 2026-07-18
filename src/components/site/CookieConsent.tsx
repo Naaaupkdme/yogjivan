@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+
 import { Cookie } from "lucide-react";
 
 const STORAGE_KEY = "yj_cookie_consent";
@@ -49,11 +49,7 @@ export function CookieConsent() {
               <Cookie className="h-4 w-4 text-[color:var(--gold)]" />
             </span>
             <p className="text-sm leading-relaxed text-foreground/90">
-              We use cookies to improve your experience and understand site traffic. See our{" "}
-              <Link to="/privacy" className="text-[color:var(--gold)] underline hover:text-foreground">
-                Privacy Policy
-              </Link>{" "}
-              for details.
+              We use cookies to improve your experience and understand site traffic. See our Privacy Policy for details.
             </p>
           </div>
           <div className="flex flex-shrink-0 gap-2">
