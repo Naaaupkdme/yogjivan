@@ -495,6 +495,34 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
+      {/* Image breather */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2">
+            <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 aspect-[4/3]">
+              <LuxuryImage
+                src={masterImages.warriorClass}
+                alt="Master Anil leading a live Warrior II class — the same sequencing streamed to online students worldwide"
+                className="h-full w-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-xs uppercase tracking-[0.22em] text-white/85">
+                Live class · same teacher, in-studio & on Zoom
+              </figcaption>
+            </figure>
+            <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 aspect-[4/3]">
+              <LuxuryImage
+                src={masterImages.wallSeated}
+                alt="Student in a supported seated stretch — the kind of therapeutic online yoga posture prescribed for back pain and desk fatigue"
+                className="h-full w-full object-cover"
+              />
+              <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-xs uppercase tracking-[0.22em] text-white/85">
+                Therapeutic prop use · corrected on camera
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       {/* Live vs Recorded Apps */}
       <section className="section-y">
         <div className="container-luxe">
