@@ -180,6 +180,9 @@ export function SiteFooter() {
         <div className="flex flex-col gap-3 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Yog Jivan. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link to="/privacy" className="underline-offset-4 hover:text-foreground hover:underline">
+              Privacy Policy
+            </Link>
             <button
               type="button"
               onClick={() => window.dispatchEvent(new Event("yj:open-cookie-settings"))}
