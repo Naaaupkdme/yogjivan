@@ -59,7 +59,7 @@ export const submitLeadToCrm = createServerFn({ method: "POST" })
     const body = {
       full_name: stripFormula(data.name),
       email: stripFormula(data.email || ""),
-      phone: stripFormula(data.whatsapp),
+      phone: (data.whatsapp.startsWith("+") ? "+" : "") + stripFormula(data.whatsapp),
       country: "",
       city: "",
       service: stripFormula(data.preferred_experience || ""),
