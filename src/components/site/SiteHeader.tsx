@@ -6,9 +6,9 @@ import { useLang } from "@/lib/language";
 
 const NAV = [
   { href: "/about", label: "About" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/online-yoga-classes", label: "Online Yoga Classes" },
   { href: "/yoga-for-beginners", label: "Yoga for Beginners" },
+  { href: "/online-yoga-classes", label: "Online Yoga Classes" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ];
 
