@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { Link } from "@tanstack/react-router";
 import { Cookie } from "lucide-react";
 
 const STORAGE_KEY = "yj_cookie_consent";

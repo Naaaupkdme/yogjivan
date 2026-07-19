@@ -13,6 +13,7 @@ import { Route as YogaForBeginnersRouteImport } from './routes/yoga-for-beginner
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PersonalTrainingRouteImport } from './routes/personal-training'
 import { Route as OnlineYogaClassesRouteImport } from './routes/online-yoga-classes'
 import { Route as OnlineRouteImport } from './routes/online'
@@ -44,6 +45,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PersonalTrainingRoute = PersonalTrainingRouteImport.update({
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/online': typeof OnlineRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/personal-training': typeof PersonalTrainingRoute
+  '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByTo {
   '/online': typeof OnlineRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/personal-training': typeof PersonalTrainingRoute
+  '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
@@ -155,6 +163,7 @@ export interface FileRoutesById {
   '/online': typeof OnlineRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/personal-training': typeof PersonalTrainingRoute
+  '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
     | '/online'
     | '/online-yoga-classes'
     | '/personal-training'
+    | '/privacy'
     | '/programs'
     | '/sitemap.xml'
     | '/testimonials'
@@ -193,6 +203,7 @@ export interface FileRouteTypes {
     | '/online'
     | '/online-yoga-classes'
     | '/personal-training'
+    | '/privacy'
     | '/programs'
     | '/sitemap.xml'
     | '/testimonials'
@@ -211,6 +222,7 @@ export interface FileRouteTypes {
     | '/online'
     | '/online-yoga-classes'
     | '/personal-training'
+    | '/privacy'
     | '/programs'
     | '/sitemap.xml'
     | '/testimonials'
@@ -230,6 +242,7 @@ export interface RootRouteChildren {
   OnlineRoute: typeof OnlineRoute
   OnlineYogaClassesRoute: typeof OnlineYogaClassesRoute
   PersonalTrainingRoute: typeof PersonalTrainingRoute
+  PrivacyRoute: typeof PrivacyRoute
   ProgramsRoute: typeof ProgramsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TestimonialsRoute: typeof TestimonialsRoute
@@ -267,6 +280,13 @@ declare module '@tanstack/react-router' {
       path: '/programs'
       fullPath: '/programs'
       preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/personal-training': {
@@ -366,6 +386,7 @@ const rootRouteChildren: RootRouteChildren = {
   OnlineRoute: OnlineRoute,
   OnlineYogaClassesRoute: OnlineYogaClassesRoute,
   PersonalTrainingRoute: PersonalTrainingRoute,
+  PrivacyRoute: PrivacyRoute,
   ProgramsRoute: ProgramsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TestimonialsRoute: TestimonialsRoute,
@@ -377,13 +398,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
