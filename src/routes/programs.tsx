@@ -109,6 +109,14 @@ export const Route = createFileRoute("/programs")({
             <span>Go one-on-one with <Link to="/personal-training" className="text-[color:var(--gold)] hover:underline">personal training</Link>.</span>
             <span>Bring practice to your team with <Link to="/corporate" className="text-[color:var(--gold)] hover:underline">corporate wellness yoga</Link>.</span>
           </div>
+          <div className="mt-6">
+            <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Therapeutic focus areas</p>
+            <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
+              <span><Link to="/yoga-for-back-pain" className="text-[color:var(--gold)] hover:underline">Yoga for back pain</Link></span>
+              <span><Link to="/yoga-for-stress" className="text-[color:var(--gold)] hover:underline">Yoga for stress & anxiety</Link></span>
+              <span><Link to="/yoga-for-weight-loss" className="text-[color:var(--gold)] hover:underline">Yoga for weight loss</Link></span>
+            </div>
+          </div>
         </div>
       </section>
       <CTABanner title="Not sure which path is yours?" sub="Book a free consultation — we'll guide you." />
