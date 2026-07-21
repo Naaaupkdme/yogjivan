@@ -78,11 +78,27 @@ export const submitLeadToCrm = createServerFn({ method: "POST" })
       created_at: new Date().toISOString(),
     };
 
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    if (!res.ok) throw new Error(`Webhook failed with status ${res.status}`);
-    return { ok: true };
+    const startedAt = Date.now();
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const ms = Date.now() - startedAt;
+      if (!res.ok) {
+        console.error(
+          `[submitLeadToCrm] webhook non-2xx status=${res.status} in ${ms}ms`,
+        );
+        throw new Error(`Webhook failed with status ${res.status}`);
+      }
+      console.log(`[submitLeadToCrm] webhook ok status=${res.status} in ${ms}ms`);
+      return { ok: true };
+    } catch (err) {
+      console.error(
+        `[submitLeadToCrm] webhook error after ${Date.now() - startedAt}ms:`,
+        err instanceof Error ? err.message : err,
+      );
+      throw err;
+    }
   });

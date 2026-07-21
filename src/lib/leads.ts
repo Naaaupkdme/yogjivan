@@ -86,21 +86,28 @@ export async function submitLead(payload: SubmitPayload) {
   });
   if (error) throw error;
 
-  // Proxy the CRM webhook call through the server so the URL stays secret
-  // and inputs get validated/rate-limited server-side.
-  await submitLeadToCrm({
-    data: {
-      name: payload.name,
-      whatsapp: payload.whatsapp,
-      email: payload.email || "",
-      goals: payload.goals,
-      preferred_experience: payload.preferred_experience,
-      preferred_time: payload.preferred_time,
-      health_notes: payload.health_notes,
-      health_tags: payload.health_tags,
-      experience_level: payload.experience_level,
-      status: payload.status,
-    },
-  });
+  // CRM sync is a best-effort convenience — the lead is already saved.
+  // If the webhook fails we log server-side but do NOT surface an error
+  // to the visitor (they'd see a scary error even though their data was
+  // captured). Server logs remain the source of truth for CRM sync health.
+  try {
+    await submitLeadToCrm({
+      data: {
+        name: payload.name,
+        whatsapp: payload.whatsapp,
+        email: payload.email || "",
+        goals: payload.goals,
+        preferred_experience: payload.preferred_experience,
+        preferred_time: payload.preferred_time,
+        health_notes: payload.health_notes,
+        health_tags: payload.health_tags,
+        experience_level: payload.experience_level,
+        status: payload.status,
+      },
+    });
+  } catch (e) {
+    // Non-fatal — logged server-side inside submitLeadToCrm too.
+    console.warn("CRM webhook sync failed (lead still saved):", e);
+  }
 }
 
