@@ -275,6 +275,50 @@ function RootComponent() {
     return () => unsub();
   }, [router]);
 
+  // Global hash-scroll: after any navigation or on initial load, if the URL has
+  // a #hash, smoothly scroll that element into view once it exists in the DOM.
+  // Accounts for the fixed header height and any async section rendering.
+  useEffect(() => {
+    const HEADER_OFFSET = 96;
+    const scrollToHash = (hash: string) => {
+      if (!hash) return;
+      const id = hash.replace(/^#/, "");
+      if (!id) return;
+      const start = Date.now();
+      const tryScroll = () => {
+        const el = document.getElementById(id);
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.pageYOffset - HEADER_OFFSET;
+          window.scrollTo({ top: y, behavior: "smooth" });
+          return true;
+        }
+        return false;
+      };
+      // Retry for up to ~2.5s while lazy sections mount.
+      const tick = () => {
+        if (tryScroll()) return;
+        if (Date.now() - start > 2500) return;
+        requestAnimationFrame(() => setTimeout(tick, 80));
+      };
+      tick();
+    };
+
+    // Initial load
+    if (window.location.hash) {
+      setTimeout(() => scrollToHash(window.location.hash), 60);
+    }
+    // Subsequent client-side navigations
+    const unsub = router.subscribe("onResolved", () => {
+      if (window.location.hash) {
+        setTimeout(() => scrollToHash(window.location.hash), 60);
+      }
+    });
+    // In-page hash changes (same route)
+    const onHash = () => scrollToHash(window.location.hash);
+    window.addEventListener("hashchange", onHash);
+    return () => { unsub(); window.removeEventListener("hashchange", onHash); };
+  }, [router]);
+
   // Meta Pixel conversion tracking: Contact (WhatsApp) & Lead (Book Free Trial CTAs)
   useEffect(() => {
     const WHATSAPP_RE = /wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i;

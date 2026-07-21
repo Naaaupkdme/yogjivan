@@ -77,8 +77,25 @@ export const Route = createFileRoute("/personal-training")({
       <CTABanner title="Reserve a private session." sub="Limited weekly slots. Apply for an introductory consultation." />
       <section className="section-pad-sm">
         <div className="container-luxe">
-          <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Related paths</p>
-          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
+          <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Related concerns we work with</p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <Link to="/yoga-for-back-pain" className="glass-soft group rounded-2xl p-5 transition hover:border-[color:var(--gold)]/40">
+              <div className="font-display text-lg text-foreground">Yoga for Back Pain</div>
+              <p className="mt-2 text-sm text-muted-foreground">Therapeutic sessions for postural and chronic back pain — alignment, strengthening, decompression.</p>
+              <span className="mt-3 inline-block text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)] group-hover:underline">Explore →</span>
+            </Link>
+            <Link to="/yoga-for-stress" className="glass-soft group rounded-2xl p-5 transition hover:border-[color:var(--gold)]/40">
+              <div className="font-display text-lg text-foreground">Yoga for Stress</div>
+              <p className="mt-2 text-sm text-muted-foreground">Pranayama, meditation and gentle asana for anxiety, burnout and better sleep.</p>
+              <span className="mt-3 inline-block text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)] group-hover:underline">Explore →</span>
+            </Link>
+            <Link to="/yoga-for-weight-loss" className="glass-soft group rounded-2xl p-5 transition hover:border-[color:var(--gold)]/40">
+              <div className="font-display text-lg text-foreground">Yoga for Weight Loss</div>
+              <p className="mt-2 text-sm text-muted-foreground">A sustainable, whole-body approach — strength, breath, sleep and lifestyle.</p>
+              <span className="mt-3 inline-block text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)] group-hover:underline">Explore →</span>
+            </Link>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
             <span>Prefer to practice from home? Explore <Link to="/online-yoga-classes" className="text-[color:var(--gold)] hover:underline">live online yoga classes</Link>.</span>
             <span>Or compare full pricing across our <Link to="/programs" className="text-[color:var(--gold)] hover:underline">yoga programs</Link>.</span>
           </div>

@@ -115,6 +115,9 @@ export function SiteFooter() {
               <li><Link to="/programs" className="hover:text-foreground">Programs</Link></li>
               <li><Link to="/online-yoga-classes" className="hover:text-foreground">Online</Link></li>
               <li><Link to="/yoga-for-beginners" className="hover:text-foreground">For Beginners</Link></li>
+              <li><Link to="/yoga-for-back-pain" className="hover:text-foreground">Yoga for Back Pain</Link></li>
+              <li><Link to="/yoga-for-stress" className="hover:text-foreground">Yoga for Stress</Link></li>
+              <li><Link to="/yoga-for-weight-loss" className="hover:text-foreground">Yoga for Weight Loss</Link></li>
               <li><Link to="/corporate" className="hover:text-foreground">Corporate</Link></li>
               <li><Link to="/gallery" className="hover:text-foreground">Gallery</Link></li>
             </ul>
