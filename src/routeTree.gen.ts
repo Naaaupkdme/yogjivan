@@ -9,7 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YogaForWeightLossRouteImport } from './routes/yoga-for-weight-loss'
+import { Route as YogaForStressRouteImport } from './routes/yoga-for-stress'
 import { Route as YogaForBeginnersRouteImport } from './routes/yoga-for-beginners'
+import { Route as YogaForBackPainRouteImport } from './routes/yoga-for-back-pain'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgramsRouteImport } from './routes/programs'
@@ -27,9 +30,24 @@ import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/e
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 
+const YogaForWeightLossRoute = YogaForWeightLossRouteImport.update({
+  id: '/yoga-for-weight-loss',
+  path: '/yoga-for-weight-loss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaForStressRoute = YogaForStressRouteImport.update({
+  id: '/yoga-for-stress',
+  path: '/yoga-for-stress',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const YogaForBeginnersRoute = YogaForBeginnersRouteImport.update({
   id: '/yoga-for-beginners',
   path: '/yoga-for-beginners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaForBackPainRoute = YogaForBackPainRouteImport.update({
+  id: '/yoga-for-back-pain',
+  path: '/yoga-for-back-pain',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TestimonialsRoute = TestimonialsRouteImport.update({
@@ -128,7 +146,10 @@ export interface FileRoutesByFullPath {
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
+  '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
+  '/yoga-for-stress': typeof YogaForStressRoute
+  '/yoga-for-weight-loss': typeof YogaForWeightLossRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
@@ -147,7 +168,10 @@ export interface FileRoutesByTo {
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
+  '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
+  '/yoga-for-stress': typeof YogaForStressRoute
+  '/yoga-for-weight-loss': typeof YogaForWeightLossRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
@@ -167,7 +191,10 @@ export interface FileRoutesById {
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
+  '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
+  '/yoga-for-stress': typeof YogaForStressRoute
+  '/yoga-for-weight-loss': typeof YogaForWeightLossRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
@@ -188,7 +215,10 @@ export interface FileRouteTypes {
     | '/programs'
     | '/sitemap.xml'
     | '/testimonials'
+    | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
+    | '/yoga-for-stress'
+    | '/yoga-for-weight-loss'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
@@ -207,7 +237,10 @@ export interface FileRouteTypes {
     | '/programs'
     | '/sitemap.xml'
     | '/testimonials'
+    | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
+    | '/yoga-for-stress'
+    | '/yoga-for-weight-loss'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
@@ -226,7 +259,10 @@ export interface FileRouteTypes {
     | '/programs'
     | '/sitemap.xml'
     | '/testimonials'
+    | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
+    | '/yoga-for-stress'
+    | '/yoga-for-weight-loss'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
@@ -246,7 +282,10 @@ export interface RootRouteChildren {
   ProgramsRoute: typeof ProgramsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TestimonialsRoute: typeof TestimonialsRoute
+  YogaForBackPainRoute: typeof YogaForBackPainRoute
   YogaForBeginnersRoute: typeof YogaForBeginnersRoute
+  YogaForStressRoute: typeof YogaForStressRoute
+  YogaForWeightLossRoute: typeof YogaForWeightLossRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
@@ -254,11 +293,32 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/yoga-for-weight-loss': {
+      id: '/yoga-for-weight-loss'
+      path: '/yoga-for-weight-loss'
+      fullPath: '/yoga-for-weight-loss'
+      preLoaderRoute: typeof YogaForWeightLossRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-for-stress': {
+      id: '/yoga-for-stress'
+      path: '/yoga-for-stress'
+      fullPath: '/yoga-for-stress'
+      preLoaderRoute: typeof YogaForStressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/yoga-for-beginners': {
       id: '/yoga-for-beginners'
       path: '/yoga-for-beginners'
       fullPath: '/yoga-for-beginners'
       preLoaderRoute: typeof YogaForBeginnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-for-back-pain': {
+      id: '/yoga-for-back-pain'
+      path: '/yoga-for-back-pain'
+      fullPath: '/yoga-for-back-pain'
+      preLoaderRoute: typeof YogaForBackPainRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/testimonials': {
@@ -390,7 +450,10 @@ const rootRouteChildren: RootRouteChildren = {
   ProgramsRoute: ProgramsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TestimonialsRoute: TestimonialsRoute,
+  YogaForBackPainRoute: YogaForBackPainRoute,
   YogaForBeginnersRoute: YogaForBeginnersRoute,
+  YogaForStressRoute: YogaForStressRoute,
+  YogaForWeightLossRoute: YogaForWeightLossRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
