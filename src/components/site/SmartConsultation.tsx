@@ -143,7 +143,10 @@ export function SmartConsultation() {
                   defaultCountry="vn"
                   value={form.whatsapp}
                   onChange={(v) => update("whatsapp", v)}
-                  inputProps={{ name: "whatsapp", "aria-label": "WhatsApp number with country code" }}
+                  disableDialCodeAndPrefix
+                  showDisabledDialCodeAndPrefix
+                  placeholder="912 345 678"
+                  inputProps={{ name: "whatsapp", "aria-label": "WhatsApp number (country dial code shown separately)" }}
                   className="yj-phone"
                 />
                 {errors.whatsapp && (
