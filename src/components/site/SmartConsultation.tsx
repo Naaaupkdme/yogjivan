@@ -3,8 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, ShieldCheck, Sparkles, Clock, Heart, MessageCircle } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { PhoneInput } from "react-international-phone";
-import "react-international-phone/style.css";
+import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
 import { submitLead } from "@/lib/leads";
 import { SOCIAL } from "@/lib/social";
 
@@ -139,15 +138,13 @@ export function SmartConsultation() {
                 <label className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">
                   WhatsApp Number *
                 </label>
-                <PhoneInput
-                  defaultCountry="vn"
+                <SearchablePhoneInput
                   value={form.whatsapp}
                   onChange={(v) => update("whatsapp", v)}
-                  disableDialCodeAndPrefix
-                  showDisabledDialCodeAndPrefix
+                  defaultCountry="vn"
                   placeholder="912 345 678"
-                  inputProps={{ name: "whatsapp", "aria-label": "WhatsApp number (country dial code shown separately)" }}
-                  className="yj-phone"
+                  name="whatsapp"
+                  ariaLabel="WhatsApp number (search country or dial code)"
                 />
                 {errors.whatsapp && (
                   <p className="mt-1.5 text-[0.65rem] text-red-400">{errors.whatsapp}</p>
