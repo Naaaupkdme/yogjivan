@@ -195,7 +195,7 @@ function YogaForBeginnersPage() {
         sub="Small-batch, beginner-first yoga taught personally by Master Anil Choudhary. In-studio in Hai Duong, Vietnam and live online worldwide. No flexibility or experience required."
       >
         <div className="mt-2 flex flex-wrap gap-3">
-          <Link to="/contact" className="btn-gold"><Sparkles className="h-4 w-4" /> Book Free Trial Class</Link>
+          <Link to="/contact" hash="consultation" className="btn-gold"><Sparkles className="h-4 w-4" /> Book Free Trial Class</Link>
           <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold"><MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp Us</a>
         </div>
       </PageHero>
