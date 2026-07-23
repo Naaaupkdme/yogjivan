@@ -823,13 +823,13 @@ function OnlineYogaClassesPage() {
       <section className="section-tight">
         <div className="container-luxe">
           <div className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-3">
-            <Link to="/contact" className="glass-luxe flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm text-foreground hover:text-[color:var(--gold)]">
+            <Link to="/contact" hash="consultation" className="glass-luxe flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm text-foreground hover:text-[color:var(--gold)]">
               <Sparkles className="h-4 w-4 text-[color:var(--gold)]" /> Book Free Trial
             </Link>
             <a href={WA} target="_blank" rel="noopener noreferrer" className="glass-luxe flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm text-foreground hover:text-[color:var(--gold)]">
               <MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp Chat
             </a>
-            <Link to="/contact" className="glass-luxe flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm text-foreground hover:text-[color:var(--gold)]">
+            <Link to="/contact" hash="consultation" className="glass-luxe flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm text-foreground hover:text-[color:var(--gold)]">
               <PhoneCall className="h-4 w-4 text-[color:var(--gold)]" /> Schedule Consultation
             </Link>
           </div>
