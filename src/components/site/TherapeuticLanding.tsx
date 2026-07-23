@@ -43,7 +43,7 @@ const TRUST_STATS = [
 function InlineCTA() {
   return (
     <div className="mt-6 flex flex-wrap gap-3">
-      <Link to="/contact" className="btn-gold">
+      <Link to="/contact" hash="consultation" className="btn-gold">
         <Sparkles className="h-4 w-4" /> Book Free Consultation
       </Link>
       <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
