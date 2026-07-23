@@ -170,7 +170,7 @@ export function Hero() {
           </p>
 
           <div className="hero-reveal mt-7 flex flex-wrap items-center justify-center lg:justify-start gap-3">
-            <Link to="/contact" className="btn-gold">
+            <Link to="/contact" hash="consultation" className="btn-gold">
               {t.hero.primary} <ArrowRight className="h-4 w-4" />
             </Link>
             <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-ghost-gold">

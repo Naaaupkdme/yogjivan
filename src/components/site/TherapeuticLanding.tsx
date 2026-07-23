@@ -43,7 +43,7 @@ const TRUST_STATS = [
 function InlineCTA() {
   return (
     <div className="mt-6 flex flex-wrap gap-3">
-      <Link to="/contact" className="btn-gold">
+      <Link to="/contact" hash="consultation" className="btn-gold">
         <Sparkles className="h-4 w-4" /> Book Free Consultation
       </Link>
       <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
@@ -74,7 +74,7 @@ export function TherapeuticLanding(props: TherapeuticPageProps) {
     <>
       <PageHero eyebrow={eyebrow} title={heroTitle} sub={heroSub}>
         <div className="mt-2 flex flex-wrap gap-3">
-          <Link to="/contact" className="btn-gold"><Sparkles className="h-4 w-4" /> Book Free Consultation</Link>
+          <Link to="/contact" hash="consultation" className="btn-gold"><Sparkles className="h-4 w-4" /> Book Free Consultation</Link>
           <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
             <MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp Us
           </a>
@@ -230,7 +230,7 @@ export function TherapeuticLanding(props: TherapeuticPageProps) {
             <h2 className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] leading-tight">{ctaTitle}</h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">{ctaSub}</p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link to="/contact" className="btn-gold">Book Free Consultation</Link>
+              <Link to="/contact" hash="consultation" className="btn-gold">Book Free Consultation</Link>
               <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
                 <MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp
               </a>

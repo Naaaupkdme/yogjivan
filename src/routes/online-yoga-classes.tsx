@@ -345,7 +345,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
 function InlineCTA({ variant = "gold" }: { variant?: "gold" | "ghost" }) {
   return (
     <div className="mt-6 flex flex-wrap gap-3">
-      <Link to="/contact" className={variant === "gold" ? "btn-gold" : "btn-ghost-gold"}>
+      <Link to="/contact" hash="consultation" className={variant === "gold" ? "btn-gold" : "btn-ghost-gold"}>
         <Sparkles className="h-4 w-4" /> Book Free Live Trial
       </Link>
       <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
@@ -376,7 +376,7 @@ function OnlineYogaClassesPage() {
         sub="Small-batch, therapeutic yoga taught live over Zoom by Master Anil Choudhary. Personalized for back pain, PCOD, anxiety and sleep. Students in 20+ countries. Free live trial — no card required."
       >
         <div className="mt-2 flex flex-wrap gap-3">
-          <Link to="/contact" className="btn-gold"><Sparkles className="h-4 w-4" /> Book Free Live Trial</Link>
+          <Link to="/contact" hash="consultation" className="btn-gold"><Sparkles className="h-4 w-4" /> Book Free Live Trial</Link>
           <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold"><MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp Us</a>
         </div>
       </PageHero>
@@ -823,13 +823,13 @@ function OnlineYogaClassesPage() {
       <section className="section-tight">
         <div className="container-luxe">
           <div className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-3">
-            <Link to="/contact" className="glass-luxe flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm text-foreground hover:text-[color:var(--gold)]">
+            <Link to="/contact" hash="consultation" className="glass-luxe flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm text-foreground hover:text-[color:var(--gold)]">
               <Sparkles className="h-4 w-4 text-[color:var(--gold)]" /> Book Free Trial
             </Link>
             <a href={WA} target="_blank" rel="noopener noreferrer" className="glass-luxe flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm text-foreground hover:text-[color:var(--gold)]">
               <MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp Chat
             </a>
-            <Link to="/contact" className="glass-luxe flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm text-foreground hover:text-[color:var(--gold)]">
+            <Link to="/contact" hash="consultation" className="glass-luxe flex items-center justify-center gap-2 rounded-2xl px-5 py-4 text-sm text-foreground hover:text-[color:var(--gold)]">
               <PhoneCall className="h-4 w-4 text-[color:var(--gold)]" /> Schedule Consultation
             </Link>
           </div>
