@@ -92,7 +92,7 @@ export function Programs() {
                 ))}
               </ul>
 
-              <Link to="/contact" className={`mt-10 inline-flex w-full ${plan.featured ? "btn-gold" : "btn-ghost-gold"}`}>
+              <Link to="/contact" hash="consultation" className={`mt-10 inline-flex w-full ${plan.featured ? "btn-gold" : "btn-ghost-gold"}`}>
                 Reserve Your Place
               </Link>
             </motion.div>
