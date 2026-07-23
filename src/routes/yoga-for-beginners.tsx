@@ -395,7 +395,7 @@ function YogaForBeginnersPage() {
               Book a free trial — in-studio in Hai Duong or live online — and experience an authentic Indian yoga class taught personally by Master Anil Choudhary.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <Link to="/contact" className="btn-gold"><Sparkles className="h-4 w-4" /> Book Free Trial Class</Link>
+              <Link to="/contact" hash="consultation" className="btn-gold"><Sparkles className="h-4 w-4" /> Book Free Trial Class</Link>
               <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
                 <MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp Master Anil
               </a>
