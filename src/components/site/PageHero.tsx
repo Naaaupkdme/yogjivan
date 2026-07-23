@@ -49,7 +49,7 @@ export function CTABanner({ title, sub }: { title: string; sub?: string }) {
           <h2 className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] leading-tight">{title}</h2>
           {sub && <p className="mx-auto mt-4 max-w-xl text-muted-foreground">{sub}</p>}
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link to="/contact" className="btn-gold">Book Free Consultation</Link>
+            <Link to="/contact" hash="consultation" className="btn-gold">Book Free Consultation</Link>
             <Link to="/programs" className="btn-ghost-gold">View Programs</Link>
           </div>
         </div>
