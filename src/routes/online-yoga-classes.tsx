@@ -345,7 +345,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
 function InlineCTA({ variant = "gold" }: { variant?: "gold" | "ghost" }) {
   return (
     <div className="mt-6 flex flex-wrap gap-3">
-      <Link to="/contact" className={variant === "gold" ? "btn-gold" : "btn-ghost-gold"}>
+      <Link to="/contact" hash="consultation" className={variant === "gold" ? "btn-gold" : "btn-ghost-gold"}>
         <Sparkles className="h-4 w-4" /> Book Free Live Trial
       </Link>
       <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
