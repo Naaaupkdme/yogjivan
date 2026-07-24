@@ -159,7 +159,7 @@ export function ContactSection() {
                 </a>
                 <div className="p-5">
                   <div className="flex gap-4">
-                    <img src={studio.img} alt="" className="h-20 w-24 shrink-0 rounded-[0.9rem] object-cover" loading="lazy" />
+                    <img src={studio.img} alt={`${studio.title} — Yog Jivan yoga studio in Hai Duong`} className="h-20 w-24 shrink-0 rounded-[0.9rem] object-cover" loading="lazy" />
                     <div className="min-w-0 flex-1">
                       <div className="font-display text-lg leading-tight">{studio.title}</div>
                       <div className="mt-1.5 flex items-start gap-1.5 text-xs text-muted-foreground">
