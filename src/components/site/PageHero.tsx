@@ -14,7 +14,7 @@ export function PageHero({ eyebrow, title, accent, sub, image, children }: {
     <section className="relative isolate overflow-hidden pt-[calc(var(--hdr-h,64px)+3.5rem)] pb-16 md:pt-[calc(var(--hdr-h,80px)+4.5rem)] md:pb-24">
       {image && (
         <>
-          <img src={image} alt="" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-28" />
+          <img src={image} alt="" role="presentation" aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-28" />
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_45%,transparent),color-mix(in_oklab,var(--onyx)_68%,transparent))]" />
         </>
       )}

@@ -79,7 +79,7 @@ export function SiteFooter() {
         <div className={`grid gap-8 border-b border-border/60 pb-10 ${hideLocal ? "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]" : "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]"}`}>
           <div>
             <div className="flex items-center gap-3">
-              <img src={logo.url} alt="" className="h-11 w-11 rounded-full object-cover" />
+              <img src={logo.url} alt="Yog Jivan Sanctuary logo" className="h-11 w-11 rounded-full object-cover" />
               <div>
                 <div className="font-display text-xl">Yog Jivan</div>
                 <div className="text-[0.6rem] uppercase tracking-[0.28em] text-muted-foreground">Sanctuary</div>

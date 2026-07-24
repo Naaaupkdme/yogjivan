@@ -84,7 +84,7 @@ export function SiteHeader() {
 
       <div className="mx-auto flex h-full max-w-[1600px] items-center justify-between gap-6 px-6 md:px-10 lg:px-[80px]">
         <Link to="/" className="flex items-center gap-3 group shrink-0" aria-label="Yog Jivan Sanctuary home">
-          <img src={logo.url} alt="" className="h-12 w-12 md:h-14 md:w-14 lg:h-[60px] lg:w-[60px] rounded-full object-cover ring-1 ring-[color-mix(in_oklab,var(--gold)_40%,transparent)] shadow-[0_8px_24px_-10px_color-mix(in_oklab,var(--gold)_55%,transparent)] transition-transform duration-500 group-hover:scale-105" />
+          <img src={logo.url} alt="Yog Jivan Sanctuary logo" className="h-12 w-12 md:h-14 md:w-14 lg:h-[60px] lg:w-[60px] rounded-full object-cover ring-1 ring-[color-mix(in_oklab,var(--gold)_40%,transparent)] shadow-[0_8px_24px_-10px_color-mix(in_oklab,var(--gold)_55%,transparent)] transition-transform duration-500 group-hover:scale-105" />
           <div className="hidden sm:block leading-none">
             <div className="font-display tracking-[0.24em] text-[1rem] lg:text-[1.15rem] uppercase text-gold-gradient">YOG JIVAN</div>
             <div className="font-display tracking-[0.4em] text-[0.58rem] lg:text-[0.65rem] uppercase text-muted-foreground mt-1.5">SANCTUARY</div>

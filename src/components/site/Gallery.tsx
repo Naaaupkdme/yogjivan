@@ -268,7 +268,7 @@ export function Gallery() {
                   onClick={() => setIdx(i)}
                   className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-md border transition-all ${i === idx ? "border-[color:var(--gold)] ring-1 ring-[color:var(--gold)]/40" : "border-border/60 opacity-60 hover:opacity-100"}`}
                 >
-                  <img src={im.src} alt="" className="h-full w-full object-cover" loading="lazy" />
+                  <img src={im.src} alt={im.alt || `${activeCat.label} thumbnail`} className="h-full w-full object-cover" loading="lazy" />
                 </button>
               ))}
             </div>
