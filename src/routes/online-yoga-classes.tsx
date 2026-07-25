@@ -23,7 +23,7 @@ const WA = SOCIAL.whatsapp;
 // every class, in-studio or online, is led personally by Master Anil Choudhary. This is
 // the continuity differentiator; keep it explicit in the answer capsule below.
 const GEO_ANSWER =
-  "Yog Jivan delivers live, interactive online yoga classes globally, led personally by Certified Indian Yoga Master Anil Choudhary with 12+ years of therapeutic teaching experience. Every class — in-studio or on Zoom — is taught by Master Anil himself; there are no rotating substitute teachers, so your practice, cues and progress stay consistent from day one to year ten. Unlike pre-recorded yoga apps, every session is a real-time small-batch class (max 8 students) with hands-on verbal cueing, personalized posture correction and evidence-informed therapeutic sequencing for conditions like PCOD, chronic back pain, anxiety, insomnia and post-injury recovery. Rooted in classical Hatha, Ashtanga and yoga therapy from India, our classes integrate asana, pranayama (breathwork), meditation and lifestyle coaching (Ahara–Vihara–Achara). Students from 20+ countries — Vietnam, India, USA, Canada, Australia, France, UK, Germany, Singapore — practice live over Zoom or Google Meet from home. Book a free live trial (no card required) to experience authentic Indian yoga therapy tailored to your body.";
+  "Yog Jivan delivers live, interactive online yoga classes globally, led personally by Certified Indian Yoga Master Anil Choudhary with 12+ years of therapeutic teaching experience. Every class — in-studio or on Zoom — is taught by Master Anil himself; there are no rotating substitute teachers, so your practice, cues and progress stay consistent from day one to year ten. Unlike pre-recorded yoga apps, every session is a real-time small-batch class (max 8 students) with hands-on verbal cueing, personalized posture correction and evidence-informed therapeutic sequencing for conditions like PCOD, chronic back pain, anxiety, insomnia and post-injury recovery. Rooted in classical Hatha, Ashtanga and yoga therapy from India, our classes integrate asana, pranayama (breathwork), meditation and lifestyle coaching (Ahara–Vihara–Achara). Students from 20+ countries — Vietnam, India, USA, Canada, Australia, France, UK, Germany, Singapore — practice live over Zoom or Google Meet from home. Start with a free trial — 3 days of group class access plus one complimentary private session with Master Anil, no card required.";
 
 // TODO (business decision — Anil): Session recordings policy.
 // Competitors (MyYogaTeacher, Rishikesh Yogkulam, Pratham Yoga) advertise recorded
@@ -31,12 +31,6 @@ const GEO_ANSWER =
 // either way on this page. Do you (a) want to offer recordings and add copy here,
 // (b) explicitly state we do NOT record (privacy/small-batch intimacy reason), or
 // (c) leave it as-is? Do not add a claim in code until you confirm.
-
-// TODO (business decision — Anil): Free trial structure.
-// MyYogaTeacher advertises a "7-day free trial + one complimentary private session".
-// Our current offer on this page is a single "free live trial class (no card required)".
-// Do you want to match/exceed the 7-day + private session structure? Do not change
-// the offer terms in code until you confirm.
 
 const TRUST_STATS = [
   { k: "12+", v: "Years Teaching" },
@@ -184,9 +178,9 @@ const CLASS_DETAILS = [
   },
   {
     label: "Pricing",
-    value: "Free live trial · Small Group from $49/month · 1-on-1 Private (premium personalized tier) · Corporate & family packages on request.",
+    value: "Free trial (3 days of group classes + one complimentary private session, no card required) · Small Group from $49/month · 1-on-1 Private (premium personalized tier) · Corporate & family packages on request.",
   },
-  { label: "Trial",      value: "1 free live class — no card required" },
+  { label: "Trial",      value: "3-day free trial access to group classes, plus one complimentary private session — no card required" },
 ];
 
 const FAQS_20: { q: string; a: string }[] = [
@@ -215,7 +209,7 @@ const FAQS_20: { q: string; a: string }[] = [
   { q: "Do you record classes I miss?",
     a: "For members, yes — a 48-hour catch-up recording is shared. But we strongly encourage attending live, because recordings cannot correct you." },
   { q: "How much do the classes cost?",
-    a: "Free live trial. Small Group membership starts at $49/month. 1-on-1 Private is our premium personalized tier. We share the full pricing on your consultation call — no card is required to try." },
+    a: "Start with a free trial — 3 days of group class access plus one complimentary private session with Master Anil, no card required. After that, Small Group membership starts at $49/month. 1-on-1 Private is our premium personalized tier. We share the full pricing on your consultation call." },
   { q: "How long until I see real results?",
     a: "Most students report better sleep and reduced back tension within 2 weeks, measurable flexibility gains by week 4, and clinical improvements (cycle regularity for PCOD, pain-free hours for back pain) by weeks 8–12." },
   { q: "Is this safe during pregnancy or postpartum?",
@@ -771,6 +765,134 @@ function OnlineYogaClassesPage() {
                 </div>
               ))}
             </dl>
+          </div>
+          <InlineCTA />
+        </div>
+      </section>
+
+      {/* Live Correction Explanation */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Live · In Real Time"
+            title="How Master Anil corrects your posture on Zoom"
+            sub="Live verbal correction from a real teacher — not a recorded video. Personal attention is possible because batches stay small (max 8)."
+          />
+          <div className="mx-auto mt-8 max-w-4xl glass-luxe rounded-[2rem] p-6 md:p-8 space-y-4 text-sm md:text-base leading-relaxed text-foreground/85">
+            <p>Every online class runs live over Zoom or Google Meet with cameras on. Master Anil pins each student's video and watches you move — the same way he would in the studio, just through a screen.</p>
+            <p>Corrections come as verbal cues, called by name: a note on your shoulder line, your breath rhythm, the angle of a knee, when to soften and when to hold. Because the group is capped at eight, each student is seen and adjusted individually across the hour — not lost in a crowd.</p>
+            <p>This is not a pre-recorded video that plays the same way for everyone. It is a live teacher adapting instructions to the person in front of him — the reason students progress safely, especially those working with pain, injury or a therapeutic goal.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Setup Guide */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Setup Guide"
+            title="How to set up for your first online class"
+            sub="A few small things make the difference between being seen clearly and being missed by the camera."
+          />
+          <div className="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-2">
+            {[
+              { title: "Camera at mat level", body: "Place your device on the floor or on a low stool at the level of your mat — not on a desk. Master Anil needs to see your whole body, head to toes, during standing and floor postures." },
+              { title: "Enough space to move", body: "Clear roughly 2×2 metres around your mat so you can extend your arms and legs freely in every direction without hitting furniture." },
+              { title: "Mat or non-slip surface", body: "A yoga mat is ideal. If you don't have one yet, a non-slip rug on a hard floor works for the first class." },
+              { title: "Stable internet", body: "Wi-Fi or wired both work well — avoid mobile hotspot if possible so the video stays smooth for real-time corrections." },
+              { title: "Device propped up", body: "Prop your phone, tablet or laptop against a wall or use a small stand. Handheld cameras move too much for the teacher to read your alignment." },
+              { title: "Quiet, warm space", body: "A calm corner, softly lit, warm enough that your muscles relax. Turn notifications off for the full 60 minutes." },
+            ].map((x) => (
+              <div key={x.title} className="glass-luxe rounded-2xl p-6">
+                <h3 className="font-display text-lg text-gold-gradient">{x.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/85">{x.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Backup Policy */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="If Something Goes Wrong"
+            title="Connection drops or missed classes"
+          />
+          <div className="mx-auto mt-8 max-w-3xl glass-luxe rounded-[2rem] p-6 md:p-8 space-y-4 text-sm md:text-base leading-relaxed text-foreground/85">
+            <p>If your internet disconnects mid-class, message us on WhatsApp — we'll help you rejoin quickly, or reschedule the session into another live slot the same week.</p>
+            <p>If you know in advance that you will miss a class, tell us and we'll place you in a different live batch that fits your timezone. Because groups are small, we can almost always accommodate a swap.</p>
+            <p className="text-xs text-muted-foreground">Note: our policy on session recordings is currently under review. Please contact us to confirm before enrolling if replays are important to you.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Health & Safety Intake */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Health & Safety"
+            title="A short conversation before your first class"
+            sub="Every new student has a brief health check-in with Master Anil before stepping on the mat. This is how the practice stays safe — and how it stays therapeutic."
+          />
+          <div className="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-3">
+            {[
+              { title: "Health history", body: "Any current conditions, past injuries, surgeries, chronic pain, medications and — for women — cycle-related symptoms." },
+              { title: "What to avoid", body: "Movements, ranges or breathing techniques that are not appropriate for your body right now. These are respected in every class you attend." },
+              { title: "How we adapt", body: "Your first class is sequenced with modifications ready — props, alternative postures and pacing chosen for your body, not a generic level." },
+            ].map((x) => (
+              <div key={x.title} className="glass-luxe rounded-2xl p-6">
+                <ShieldCheck className="h-6 w-6 text-[color:var(--gold)]" />
+                <h3 className="mt-3 font-display text-lg">{x.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/85">{x.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Hybrid Flexibility */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Studio + Online"
+            title="Move between in-person and online — same teacher, same practice"
+          />
+          <div className="mx-auto mt-8 max-w-4xl glass-luxe rounded-[2rem] p-6 md:p-8 space-y-4 text-sm md:text-base leading-relaxed text-foreground/85">
+            <p>Because every class — in-studio in Hai Duong and online worldwide — is led personally by Master Anil, students move fluidly between the two without starting over.</p>
+            <p>Visiting Vietnam for work or a holiday? Practice in-studio while you're here, then continue live on Zoom after you fly home. Based abroad and joining us on a trip? Your online practice picks up the moment you land back home.</p>
+            <p>The cues, the sequencing, the therapeutic focus and the teacher stay the same. Only the room changes.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Live vs App-Based Comparison */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Two Approaches"
+            title="Live teacher vs app-based yoga"
+            sub="Both have their place. Here is the honest difference in shape and experience."
+          />
+          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 glass-luxe">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="border-b border-white/10 p-6 md:border-b-0 md:border-r md:p-8">
+                <p className="text-[0.6rem] uppercase tracking-[0.24em] text-muted-foreground">App-based yoga</p>
+                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-foreground/80">
+                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>Pre-recorded video with no feedback on how you're actually moving</span></li>
+                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>A rotating library of instructors — no continuity from class to class</span></li>
+                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>Generic content designed for thousands of anonymous users at once</span></li>
+                </ul>
+              </div>
+              <div className="bg-[color:var(--gold)]/5 p-6 md:p-8">
+                <p className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">Live teacher · Yog Jivan</p>
+                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-foreground/90">
+                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>Live teacher correcting you in real time, by name</span></li>
+                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>The same teacher — Master Anil — every class, every week</span></li>
+                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>Small batch of eight, personal attention on every posture</span></li>
+                </ul>
+              </div>
+            </div>
           </div>
           <InlineCTA />
         </div>
