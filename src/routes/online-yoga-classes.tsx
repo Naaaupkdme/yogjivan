@@ -770,6 +770,134 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
+      {/* Live Correction Explanation */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Live · In Real Time"
+            title="How Master Anil corrects your posture on Zoom"
+            sub="Live verbal correction from a real teacher — not a recorded video. Personal attention is possible because batches stay small (max 8)."
+          />
+          <div className="mx-auto mt-8 max-w-4xl glass-luxe rounded-[2rem] p-6 md:p-8 space-y-4 text-sm md:text-base leading-relaxed text-foreground/85">
+            <p>Every online class runs live over Zoom or Google Meet with cameras on. Master Anil pins each student's video and watches you move — the same way he would in the studio, just through a screen.</p>
+            <p>Corrections come as verbal cues, called by name: a note on your shoulder line, your breath rhythm, the angle of a knee, when to soften and when to hold. Because the group is capped at eight, each student is seen and adjusted individually across the hour — not lost in a crowd.</p>
+            <p>This is not a pre-recorded video that plays the same way for everyone. It is a live teacher adapting instructions to the person in front of him — the reason students progress safely, especially those working with pain, injury or a therapeutic goal.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Setup Guide */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Setup Guide"
+            title="How to set up for your first online class"
+            sub="A few small things make the difference between being seen clearly and being missed by the camera."
+          />
+          <div className="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-2">
+            {[
+              { title: "Camera at mat level", body: "Place your device on the floor or on a low stool at the level of your mat — not on a desk. Master Anil needs to see your whole body, head to toes, during standing and floor postures." },
+              { title: "Enough space to move", body: "Clear roughly 2×2 metres around your mat so you can extend your arms and legs freely in every direction without hitting furniture." },
+              { title: "Mat or non-slip surface", body: "A yoga mat is ideal. If you don't have one yet, a non-slip rug on a hard floor works for the first class." },
+              { title: "Stable internet", body: "Wi-Fi or wired both work well — avoid mobile hotspot if possible so the video stays smooth for real-time corrections." },
+              { title: "Device propped up", body: "Prop your phone, tablet or laptop against a wall or use a small stand. Handheld cameras move too much for the teacher to read your alignment." },
+              { title: "Quiet, warm space", body: "A calm corner, softly lit, warm enough that your muscles relax. Turn notifications off for the full 60 minutes." },
+            ].map((x) => (
+              <div key={x.title} className="glass-luxe rounded-2xl p-6">
+                <h3 className="font-display text-lg text-gold-gradient">{x.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/85">{x.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Backup Policy */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="If Something Goes Wrong"
+            title="Connection drops or missed classes"
+          />
+          <div className="mx-auto mt-8 max-w-3xl glass-luxe rounded-[2rem] p-6 md:p-8 space-y-4 text-sm md:text-base leading-relaxed text-foreground/85">
+            <p>If your internet disconnects mid-class, message us on WhatsApp — we'll help you rejoin quickly, or reschedule the session into another live slot the same week.</p>
+            <p>If you know in advance that you will miss a class, tell us and we'll place you in a different live batch that fits your timezone. Because groups are small, we can almost always accommodate a swap.</p>
+            <p className="text-xs text-muted-foreground">Note: our policy on session recordings is currently under review. Please contact us to confirm before enrolling if replays are important to you.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Health & Safety Intake */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Health & Safety"
+            title="A short conversation before your first class"
+            sub="Every new student has a brief health check-in with Master Anil before stepping on the mat. This is how the practice stays safe — and how it stays therapeutic."
+          />
+          <div className="mx-auto mt-8 grid max-w-5xl gap-4 md:grid-cols-3">
+            {[
+              { title: "Health history", body: "Any current conditions, past injuries, surgeries, chronic pain, medications and — for women — cycle-related symptoms." },
+              { title: "What to avoid", body: "Movements, ranges or breathing techniques that are not appropriate for your body right now. These are respected in every class you attend." },
+              { title: "How we adapt", body: "Your first class is sequenced with modifications ready — props, alternative postures and pacing chosen for your body, not a generic level." },
+            ].map((x) => (
+              <div key={x.title} className="glass-luxe rounded-2xl p-6">
+                <ShieldCheck className="h-6 w-6 text-[color:var(--gold)]" />
+                <h3 className="mt-3 font-display text-lg">{x.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/85">{x.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Hybrid Flexibility */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Studio + Online"
+            title="Move between in-person and online — same teacher, same practice"
+          />
+          <div className="mx-auto mt-8 max-w-4xl glass-luxe rounded-[2rem] p-6 md:p-8 space-y-4 text-sm md:text-base leading-relaxed text-foreground/85">
+            <p>Because every class — in-studio in Hai Duong and online worldwide — is led personally by Master Anil, students move fluidly between the two without starting over.</p>
+            <p>Visiting Vietnam for work or a holiday? Practice in-studio while you're here, then continue live on Zoom after you fly home. Based abroad and joining us on a trip? Your online practice picks up the moment you land back home.</p>
+            <p>The cues, the sequencing, the therapeutic focus and the teacher stay the same. Only the room changes.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Live vs App-Based Comparison */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Two Approaches"
+            title="Live teacher vs app-based yoga"
+            sub="Both have their place. Here is the honest difference in shape and experience."
+          />
+          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 glass-luxe">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="border-b border-white/10 p-6 md:border-b-0 md:border-r md:p-8">
+                <p className="text-[0.6rem] uppercase tracking-[0.24em] text-muted-foreground">App-based yoga</p>
+                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-foreground/80">
+                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>Pre-recorded video with no feedback on how you're actually moving</span></li>
+                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>A rotating library of instructors — no continuity from class to class</span></li>
+                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>Generic content designed for thousands of anonymous users at once</span></li>
+                </ul>
+              </div>
+              <div className="bg-[color:var(--gold)]/5 p-6 md:p-8">
+                <p className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">Live teacher · Yog Jivan</p>
+                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-foreground/90">
+                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>Live teacher correcting you in real time, by name</span></li>
+                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>The same teacher — Master Anil — every class, every week</span></li>
+                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>Small batch of eight, personal attention on every posture</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <InlineCTA />
+        </div>
+      </section>
+
       {/* Testimonials */}
       <Testimonials
         items={[
