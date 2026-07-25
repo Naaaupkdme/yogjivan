@@ -178,9 +178,9 @@ const CLASS_DETAILS = [
   },
   {
     label: "Pricing",
-    value: "Free live trial · Small Group from $49/month · 1-on-1 Private (premium personalized tier) · Corporate & family packages on request.",
+    value: "Free trial (3 days of group classes + one complimentary private session, no card required) · Small Group from $49/month · 1-on-1 Private (premium personalized tier) · Corporate & family packages on request.",
   },
-  { label: "Trial",      value: "1 free live class — no card required" },
+  { label: "Trial",      value: "3-day free trial access to group classes, plus one complimentary private session — no card required" },
 ];
 
 const FAQS_20: { q: string; a: string }[] = [
