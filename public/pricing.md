@@ -4,9 +4,9 @@ Authentic Indian yoga with Certified Master Anil Choudhary. Studios in Hai Duong
 
 Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://www.yogjivan.com/contact
 
-## Free Live Trial
+## Free Trial
 - Price: $0
-- Includes: One live online class with Master Anil (Zoom or Google Meet)
+- Includes: 3-day free trial access to live group online classes with Master Anil, plus one complimentary private session (Zoom or Google Meet)
 - Limits: One trial per new student · no credit card required
 - Best for: First-time students evaluating fit before committing
 
