@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "sdk_version": "0.24.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "yog-jivan-mcp",
+      "version": "0.1.0",
+      "title": "Yog Jivan Sanctuary"
+    },
+    "tools": [
+      {
+        "name": "get_contact_info",
+        "title": "Get contact info",
+        "description": "Return Yog Jivan Sanctuary's public contact details: phone, WhatsApp, email, and social links.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_studios",
+        "title": "List studios",
+        "description": "Return Yog Jivan Sanctuary's studio locations in Hai Duong, Vietnam, with addresses, coordinates, and Google Maps links.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_faqs",
+        "title": "List FAQs",
+        "description": "Return the full list of frequently asked questions and answers about Yog Jivan Sanctuary's yoga programs, studios, and offerings.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "submit_consultation_request",
+        "title": "Submit consultation request",
+        "description": "Submit a free consultation request to Yog Jivan Sanctuary on behalf of a prospective student. Mirrors the public website contact form; the team replies on WhatsApp.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "openWorldHint": true
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 120,
+              "description": "Full name of the person requesting the consultation."
+            },
+            "whatsapp": {
+              "type": "string",
+              "minLength": 6,
+              "maxLength": 40,
+              "description": "WhatsApp number in international format (e.g. +84782046066)."
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "maxLength": 200,
+              "description": "Optional email address."
+            },
+            "preferred_experience": {
+              "type": "string",
+              "maxLength": 80,
+              "description": "One of: Private Session, Studio Classes, Online Classes, Therapeutic Recovery, Corporate Wellness."
+            },
+            "message": {
+              "type": "string",
+              "maxLength": 1000,
+              "description": "Optional goal or health notes."
+            }
+          },
+          "required": [
+            "name",
+            "whatsapp"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
