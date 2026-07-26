@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as YogaForWeightLossRouteImport } from './routes/yoga-for-weight-loss'
 import { Route as YogaForStressRouteImport } from './routes/yoga-for-stress'
+import { Route as YogaForPcodRouteImport } from './routes/yoga-for-pcod'
 import { Route as YogaForBeginnersRouteImport } from './routes/yoga-for-beginners'
 import { Route as YogaForBackPainRouteImport } from './routes/yoga-for-back-pain'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
@@ -42,6 +43,11 @@ const YogaForWeightLossRoute = YogaForWeightLossRouteImport.update({
 const YogaForStressRoute = YogaForStressRouteImport.update({
   id: '/yoga-for-stress',
   path: '/yoga-for-stress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaForPcodRoute = YogaForPcodRouteImport.update({
+  id: '/yoga-for-pcod',
+  path: '/yoga-for-pcod',
   getParentRoute: () => rootRouteImport,
 } as any)
 const YogaForBeginnersRoute = YogaForBeginnersRouteImport.update({
@@ -176,6 +182,7 @@ export interface FileRoutesByFullPath {
   '/testimonials': typeof TestimonialsRoute
   '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
+  '/yoga-for-pcod': typeof YogaForPcodRoute
   '/yoga-for-stress': typeof YogaForStressRoute
   '/yoga-for-weight-loss': typeof YogaForWeightLossRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -202,6 +209,7 @@ export interface FileRoutesByTo {
   '/testimonials': typeof TestimonialsRoute
   '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
+  '/yoga-for-pcod': typeof YogaForPcodRoute
   '/yoga-for-stress': typeof YogaForStressRoute
   '/yoga-for-weight-loss': typeof YogaForWeightLossRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -229,6 +237,7 @@ export interface FileRoutesById {
   '/testimonials': typeof TestimonialsRoute
   '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
+  '/yoga-for-pcod': typeof YogaForPcodRoute
   '/yoga-for-stress': typeof YogaForStressRoute
   '/yoga-for-weight-loss': typeof YogaForWeightLossRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -257,6 +266,7 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
+    | '/yoga-for-pcod'
     | '/yoga-for-stress'
     | '/yoga-for-weight-loss'
     | '/.mcp/list-tools'
@@ -283,6 +293,7 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
+    | '/yoga-for-pcod'
     | '/yoga-for-stress'
     | '/yoga-for-weight-loss'
     | '/.mcp/list-tools'
@@ -309,6 +320,7 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
+    | '/yoga-for-pcod'
     | '/yoga-for-stress'
     | '/yoga-for-weight-loss'
     | '/.mcp/list-tools'
@@ -336,6 +348,7 @@ export interface RootRouteChildren {
   TestimonialsRoute: typeof TestimonialsRoute
   YogaForBackPainRoute: typeof YogaForBackPainRoute
   YogaForBeginnersRoute: typeof YogaForBeginnersRoute
+  YogaForPcodRoute: typeof YogaForPcodRoute
   YogaForStressRoute: typeof YogaForStressRoute
   YogaForWeightLossRoute: typeof YogaForWeightLossRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
@@ -360,6 +373,13 @@ declare module '@tanstack/react-router' {
       path: '/yoga-for-stress'
       fullPath: '/yoga-for-stress'
       preLoaderRoute: typeof YogaForStressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-for-pcod': {
+      id: '/yoga-for-pcod'
+      path: '/yoga-for-pcod'
+      fullPath: '/yoga-for-pcod'
+      preLoaderRoute: typeof YogaForPcodRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/yoga-for-beginners': {
@@ -536,6 +556,7 @@ const rootRouteChildren: RootRouteChildren = {
   TestimonialsRoute: TestimonialsRoute,
   YogaForBackPainRoute: YogaForBackPainRoute,
   YogaForBeginnersRoute: YogaForBeginnersRoute,
+  YogaForPcodRoute: YogaForPcodRoute,
   YogaForStressRoute: YogaForStressRoute,
   YogaForWeightLossRoute: YogaForWeightLossRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
