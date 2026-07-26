@@ -142,8 +142,10 @@ function StressPage() {
       }
       relatedLinks={[
         { to: "/yoga-for-back-pain", label: "Yoga for Back Pain" },
+        { to: "/yoga-for-pcod", label: "Yoga for PCOD & PCOS" },
+        { to: "/yoga-for-thyroid", label: "Yoga for Thyroid Health" },
+        { to: "/period-safe-yoga", label: "Period-Safe Yoga" },
         { to: "/online-yoga-classes", label: "Live Online Classes" },
-        { to: "/personal-training", label: "1-on-1 Sessions" },
         { to: "/yoga-for-beginners", label: "New to Yoga? Start Here" },
       ]}
       ctaTitle="Breathe. Rest. Come back to yourself."
