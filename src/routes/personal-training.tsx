@@ -78,7 +78,7 @@ export const Route = createFileRoute("/personal-training")({
       <section className="section-pad-sm">
         <div className="container-luxe">
           <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Related concerns we work with</p>
-          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <Link to="/yoga-for-back-pain" className="glass-soft group rounded-2xl p-5 transition hover:border-[color:var(--gold)]/40">
               <div className="font-display text-lg text-foreground">Yoga for Back Pain</div>
               <p className="mt-2 text-sm text-muted-foreground">Therapeutic sessions for postural and chronic back pain — alignment, strengthening, decompression.</p>
@@ -92,6 +92,21 @@ export const Route = createFileRoute("/personal-training")({
             <Link to="/yoga-for-weight-loss" className="glass-soft group rounded-2xl p-5 transition hover:border-[color:var(--gold)]/40">
               <div className="font-display text-lg text-foreground">Yoga for Weight Loss</div>
               <p className="mt-2 text-sm text-muted-foreground">A sustainable, whole-body approach — strength, breath, sleep and lifestyle.</p>
+              <span className="mt-3 inline-block text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)] group-hover:underline">Explore →</span>
+            </Link>
+            <Link to="/yoga-for-pcod" className="glass-soft group rounded-2xl p-5 transition hover:border-[color:var(--gold)]/40">
+              <div className="font-display text-lg text-foreground">Yoga for PCOD & PCOS</div>
+              <p className="mt-2 text-sm text-muted-foreground">Gentle, cycle-aware practice supporting hormonal balance alongside medical care.</p>
+              <span className="mt-3 inline-block text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)] group-hover:underline">Explore →</span>
+            </Link>
+            <Link to="/yoga-for-thyroid" className="glass-soft group rounded-2xl p-5 transition hover:border-[color:var(--gold)]/40">
+              <div className="font-display text-lg text-foreground">Yoga for Thyroid Health</div>
+              <p className="mt-2 text-sm text-muted-foreground">Gentle sequencing to support hypo- and hyperthyroid conditions alongside medical treatment.</p>
+              <span className="mt-3 inline-block text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)] group-hover:underline">Explore →</span>
+            </Link>
+            <Link to="/period-safe-yoga" className="glass-soft group rounded-2xl p-5 transition hover:border-[color:var(--gold)]/40">
+              <div className="font-display text-lg text-foreground">Period-Safe Yoga</div>
+              <p className="mt-2 text-sm text-muted-foreground">Cycle-aware modifications — practise safely and kindly through your period.</p>
               <span className="mt-3 inline-block text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)] group-hover:underline">Explore →</span>
             </Link>
           </div>

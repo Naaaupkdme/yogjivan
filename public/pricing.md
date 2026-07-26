@@ -37,7 +37,7 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://www.yogjivan.
 
 ## Notes
 - Every class — in-studio or online — is taught personally by Master Anil Choudhary. Yog Jivan does not use substitute or rotating teachers.
-- Session recordings: policy is currently under review; please contact us to confirm availability before enrolling if replays are important to you.
+- Session recordings: members receive a 48-hour catch-up recording for missed classes. Live attendance is strongly encouraged — recordings cannot correct your posture in real time.
 - Yoga is complementary to, not a substitute for, medical care.
 
 Last updated: 2026-07-24
