@@ -118,6 +118,10 @@ export function SiteFooter() {
               <li><Link to="/yoga-for-back-pain" className="hover:text-foreground">Yoga for Back Pain</Link></li>
               <li><Link to="/yoga-for-stress" className="hover:text-foreground">Yoga for Stress</Link></li>
               <li><Link to="/yoga-for-weight-loss" className="hover:text-foreground">Yoga for Weight Loss</Link></li>
+              <li><Link to="/yoga-for-pcod" className="hover:text-foreground">Yoga for PCOD & PCOS</Link></li>
+              <li><Link to="/yoga-for-thyroid" className="hover:text-foreground">Yoga for Thyroid Health</Link></li>
+              <li><Link to="/period-safe-yoga" className="hover:text-foreground">Period-Safe Yoga</Link></li>
+              <li><Link to="/yoga-for-expats-in-vietnam" className="hover:text-foreground">Yoga for Expats</Link></li>
               <li><Link to="/corporate" className="hover:text-foreground">Corporate</Link></li>
               <li><Link to="/gallery" className="hover:text-foreground">Gallery</Link></li>
             </ul>

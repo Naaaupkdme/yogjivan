@@ -10,8 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as YogaForWeightLossRouteImport } from './routes/yoga-for-weight-loss'
+import { Route as YogaForThyroidRouteImport } from './routes/yoga-for-thyroid'
 import { Route as YogaForStressRouteImport } from './routes/yoga-for-stress'
 import { Route as YogaForPcodRouteImport } from './routes/yoga-for-pcod'
+import { Route as YogaForExpatsInVietnamRouteImport } from './routes/yoga-for-expats-in-vietnam'
 import { Route as YogaForBeginnersRouteImport } from './routes/yoga-for-beginners'
 import { Route as YogaForBackPainRouteImport } from './routes/yoga-for-back-pain'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
@@ -19,6 +21,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PersonalTrainingRouteImport } from './routes/personal-training'
+import { Route as PeriodSafeYogaRouteImport } from './routes/period-safe-yoga'
 import { Route as OnlineYogaClassesRouteImport } from './routes/online-yoga-classes'
 import { Route as OnlineRouteImport } from './routes/online'
 import { Route as McpRouteImport } from './routes/mcp'
@@ -40,6 +43,11 @@ const YogaForWeightLossRoute = YogaForWeightLossRouteImport.update({
   path: '/yoga-for-weight-loss',
   getParentRoute: () => rootRouteImport,
 } as any)
+const YogaForThyroidRoute = YogaForThyroidRouteImport.update({
+  id: '/yoga-for-thyroid',
+  path: '/yoga-for-thyroid',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const YogaForStressRoute = YogaForStressRouteImport.update({
   id: '/yoga-for-stress',
   path: '/yoga-for-stress',
@@ -48,6 +56,11 @@ const YogaForStressRoute = YogaForStressRouteImport.update({
 const YogaForPcodRoute = YogaForPcodRouteImport.update({
   id: '/yoga-for-pcod',
   path: '/yoga-for-pcod',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaForExpatsInVietnamRoute = YogaForExpatsInVietnamRouteImport.update({
+  id: '/yoga-for-expats-in-vietnam',
+  path: '/yoga-for-expats-in-vietnam',
   getParentRoute: () => rootRouteImport,
 } as any)
 const YogaForBeginnersRoute = YogaForBeginnersRouteImport.update({
@@ -83,6 +96,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const PersonalTrainingRoute = PersonalTrainingRouteImport.update({
   id: '/personal-training',
   path: '/personal-training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PeriodSafeYogaRoute = PeriodSafeYogaRouteImport.update({
+  id: '/period-safe-yoga',
+  path: '/period-safe-yoga',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnlineYogaClassesRoute = OnlineYogaClassesRouteImport.update({
@@ -175,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
+  '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
@@ -182,8 +201,10 @@ export interface FileRoutesByFullPath {
   '/testimonials': typeof TestimonialsRoute
   '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
+  '/yoga-for-expats-in-vietnam': typeof YogaForExpatsInVietnamRoute
   '/yoga-for-pcod': typeof YogaForPcodRoute
   '/yoga-for-stress': typeof YogaForStressRoute
+  '/yoga-for-thyroid': typeof YogaForThyroidRoute
   '/yoga-for-weight-loss': typeof YogaForWeightLossRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -202,6 +223,7 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
+  '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
@@ -209,8 +231,10 @@ export interface FileRoutesByTo {
   '/testimonials': typeof TestimonialsRoute
   '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
+  '/yoga-for-expats-in-vietnam': typeof YogaForExpatsInVietnamRoute
   '/yoga-for-pcod': typeof YogaForPcodRoute
   '/yoga-for-stress': typeof YogaForStressRoute
+  '/yoga-for-thyroid': typeof YogaForThyroidRoute
   '/yoga-for-weight-loss': typeof YogaForWeightLossRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -230,6 +254,7 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
+  '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
@@ -237,8 +262,10 @@ export interface FileRoutesById {
   '/testimonials': typeof TestimonialsRoute
   '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
+  '/yoga-for-expats-in-vietnam': typeof YogaForExpatsInVietnamRoute
   '/yoga-for-pcod': typeof YogaForPcodRoute
   '/yoga-for-stress': typeof YogaForStressRoute
+  '/yoga-for-thyroid': typeof YogaForThyroidRoute
   '/yoga-for-weight-loss': typeof YogaForWeightLossRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -259,6 +286,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/online'
     | '/online-yoga-classes'
+    | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
     | '/programs'
@@ -266,8 +294,10 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
+    | '/yoga-for-expats-in-vietnam'
     | '/yoga-for-pcod'
     | '/yoga-for-stress'
+    | '/yoga-for-thyroid'
     | '/yoga-for-weight-loss'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -286,6 +316,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/online'
     | '/online-yoga-classes'
+    | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
     | '/programs'
@@ -293,8 +324,10 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
+    | '/yoga-for-expats-in-vietnam'
     | '/yoga-for-pcod'
     | '/yoga-for-stress'
+    | '/yoga-for-thyroid'
     | '/yoga-for-weight-loss'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -313,6 +346,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/online'
     | '/online-yoga-classes'
+    | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
     | '/programs'
@@ -320,8 +354,10 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
+    | '/yoga-for-expats-in-vietnam'
     | '/yoga-for-pcod'
     | '/yoga-for-stress'
+    | '/yoga-for-thyroid'
     | '/yoga-for-weight-loss'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -341,6 +377,7 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   OnlineRoute: typeof OnlineRoute
   OnlineYogaClassesRoute: typeof OnlineYogaClassesRoute
+  PeriodSafeYogaRoute: typeof PeriodSafeYogaRoute
   PersonalTrainingRoute: typeof PersonalTrainingRoute
   PrivacyRoute: typeof PrivacyRoute
   ProgramsRoute: typeof ProgramsRoute
@@ -348,8 +385,10 @@ export interface RootRouteChildren {
   TestimonialsRoute: typeof TestimonialsRoute
   YogaForBackPainRoute: typeof YogaForBackPainRoute
   YogaForBeginnersRoute: typeof YogaForBeginnersRoute
+  YogaForExpatsInVietnamRoute: typeof YogaForExpatsInVietnamRoute
   YogaForPcodRoute: typeof YogaForPcodRoute
   YogaForStressRoute: typeof YogaForStressRoute
+  YogaForThyroidRoute: typeof YogaForThyroidRoute
   YogaForWeightLossRoute: typeof YogaForWeightLossRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -368,6 +407,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof YogaForWeightLossRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/yoga-for-thyroid': {
+      id: '/yoga-for-thyroid'
+      path: '/yoga-for-thyroid'
+      fullPath: '/yoga-for-thyroid'
+      preLoaderRoute: typeof YogaForThyroidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/yoga-for-stress': {
       id: '/yoga-for-stress'
       path: '/yoga-for-stress'
@@ -380,6 +426,13 @@ declare module '@tanstack/react-router' {
       path: '/yoga-for-pcod'
       fullPath: '/yoga-for-pcod'
       preLoaderRoute: typeof YogaForPcodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-for-expats-in-vietnam': {
+      id: '/yoga-for-expats-in-vietnam'
+      path: '/yoga-for-expats-in-vietnam'
+      fullPath: '/yoga-for-expats-in-vietnam'
+      preLoaderRoute: typeof YogaForExpatsInVietnamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/yoga-for-beginners': {
@@ -429,6 +482,13 @@ declare module '@tanstack/react-router' {
       path: '/personal-training'
       fullPath: '/personal-training'
       preLoaderRoute: typeof PersonalTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/period-safe-yoga': {
+      id: '/period-safe-yoga'
+      path: '/period-safe-yoga'
+      fullPath: '/period-safe-yoga'
+      preLoaderRoute: typeof PeriodSafeYogaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/online-yoga-classes': {
@@ -549,6 +609,7 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   OnlineRoute: OnlineRoute,
   OnlineYogaClassesRoute: OnlineYogaClassesRoute,
+  PeriodSafeYogaRoute: PeriodSafeYogaRoute,
   PersonalTrainingRoute: PersonalTrainingRoute,
   PrivacyRoute: PrivacyRoute,
   ProgramsRoute: ProgramsRoute,
@@ -556,8 +617,10 @@ const rootRouteChildren: RootRouteChildren = {
   TestimonialsRoute: TestimonialsRoute,
   YogaForBackPainRoute: YogaForBackPainRoute,
   YogaForBeginnersRoute: YogaForBeginnersRoute,
+  YogaForExpatsInVietnamRoute: YogaForExpatsInVietnamRoute,
   YogaForPcodRoute: YogaForPcodRoute,
   YogaForStressRoute: YogaForStressRoute,
+  YogaForThyroidRoute: YogaForThyroidRoute,
   YogaForWeightLossRoute: YogaForWeightLossRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
