@@ -73,8 +73,8 @@ const QUESTIONS: QA[] = [
 export const Route = createFileRoute("/period-safe-yoga")({
   head: () => ({
     meta: [
-      { title: "Period-Safe Yoga — Practice Safely Through Your Cycle | Yog Jivan" },
-      { name: "description", content: "Cycle-aware, period-safe yoga with Master Anil Choudhary — which poses to modify, which to skip, and which to lean into. Studio in Hai Duong & live online. Free consultation." },
+      { title: "Period-Safe Yoga — Cycle-Aware Practice | Yog Jivan" },
+      { name: "description", content: "Cycle-aware, period-safe yoga with Master Anil — which poses to modify, which to skip, which to lean into. Hai Duong studio & live online." },
       { name: "keywords", content: "period-safe yoga, yoga during period, menstruation yoga, cycle-aware yoga, yoga for cramps, safe yoga on period, women's yoga Hai Duong" },
       { property: "og:title", content: "Period-Safe Yoga — Practice Safely Through Your Cycle | Yog Jivan" },
       { property: "og:description", content: "Gentle, cycle-aware yoga — small-batch, personalized, in-studio and online. Free consultation." },

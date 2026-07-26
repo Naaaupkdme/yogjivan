@@ -78,7 +78,7 @@ export const Route = createFileRoute("/yoga-for-thyroid")({
   head: () => ({
     meta: [
       { title: "Yoga for Thyroid Health — A Therapeutic Approach | Yog Jivan" },
-      { name: "description", content: "Therapeutic yoga for thyroid health with Master Anil Choudhary — gentle practice supporting hypo- and hyperthyroid conditions alongside medical care. Studio in Hai Duong & live online." },
+      { name: "description", content: "Therapeutic yoga for thyroid health with Master Anil — gentle practice supporting hypo- and hyperthyroid conditions. Hai Duong studio & live online." },
       { name: "keywords", content: "yoga for thyroid, thyroid yoga, yoga for hypothyroidism, yoga for hyperthyroidism, thyroid health yoga, therapeutic yoga thyroid, thyroid yoga Hai Duong" },
       { property: "og:title", content: "Yoga for Thyroid Health — A Therapeutic Approach | Yog Jivan" },
       { property: "og:description", content: "Gentle, consistent yoga supporting thyroid health alongside your medical care. Studio & online. Free consultation." },

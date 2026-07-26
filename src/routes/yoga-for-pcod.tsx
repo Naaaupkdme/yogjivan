@@ -78,7 +78,7 @@ export const Route = createFileRoute("/yoga-for-pcod")({
   head: () => ({
     meta: [
       { title: "Yoga for PCOD & PCOS — A Therapeutic Approach | Yog Jivan" },
-      { name: "description", content: "Therapeutic yoga for PCOD and PCOS with Master Anil Choudhary — pranayama, gentle strengthening and stress reduction. Studio in Hai Duong & live online. Free consultation." },
+      { name: "description", content: "Therapeutic yoga for PCOD and PCOS with Master Anil Choudhary — pranayama, gentle strengthening and stress reduction. Hai Duong studio & online." },
       { name: "keywords", content: "yoga for pcod, yoga for pcos, pcod yoga, pcos yoga, hormonal balance yoga, therapeutic yoga women, pcod yoga Hai Duong, online pcod yoga" },
       { property: "og:title", content: "Yoga for PCOD & PCOS — A Therapeutic Approach | Yog Jivan" },
       { property: "og:description", content: "Gentle, consistent yoga for hormonal balance — supporting medical care. Studio & online. Free consultation." },
