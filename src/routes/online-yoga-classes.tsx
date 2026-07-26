@@ -822,7 +822,7 @@ function OnlineYogaClassesPage() {
           <div className="mx-auto mt-8 max-w-3xl glass-luxe rounded-[2rem] p-6 md:p-8 space-y-4 text-sm md:text-base leading-relaxed text-foreground/85">
             <p>If your internet disconnects mid-class, message us on WhatsApp — we'll help you rejoin quickly, or reschedule the session into another live slot the same week.</p>
             <p>If you know in advance that you will miss a class, tell us and we'll place you in a different live batch that fits your timezone. Because groups are small, we can almost always accommodate a swap.</p>
-            <p className="text-xs text-muted-foreground">Note: our policy on session recordings is currently under review. Please contact us to confirm before enrolling if replays are important to you.</p>
+            <p>If you miss a class entirely, members receive a 48-hour catch-up recording so you can practice along at home. We still strongly encourage attending live whenever possible — recordings cannot correct your posture the way Master Anil can in real time.</p>
           </div>
         </div>
       </section>
