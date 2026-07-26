@@ -73,7 +73,7 @@ export const Route = createFileRoute("/yoga-for-expats-in-vietnam")({
   head: () => ({
     meta: [
       { title: "Yoga for Expats in Hai Duong Vietnam | Yog Jivan" },
-      { name: "description", content: "The English-speaking yoga sanctuary for the expat community in Hai Duong. Authentic Indian yoga with Master Anil Choudhary — in-studio and live online. Free consultation." },
+      { name: "description", content: "The English-speaking yoga sanctuary for the expat community in Hai Duong. Authentic Indian yoga with Master Anil — in-studio and live online." },
       { name: "keywords", content: "yoga for expats vietnam, english yoga hai duong, expat yoga vietnam, english-speaking yoga studio, foreigners yoga hai duong, international yoga vietnam" },
       { property: "og:title", content: "Yoga for Expats in Hai Duong, Vietnam | Yog Jivan" },
       { property: "og:description", content: "English-speaking yoga sanctuary in Hai Duong — authentic Indian practice with Master Anil. Studio & online. Free consultation." },
