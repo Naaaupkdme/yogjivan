@@ -25,12 +25,6 @@ const WA = SOCIAL.whatsapp;
 const GEO_ANSWER =
   "Yog Jivan delivers live, interactive online yoga classes globally, led personally by Certified Indian Yoga Master Anil Choudhary with 12+ years of therapeutic teaching experience. Every class — in-studio or on Zoom — is taught by Master Anil himself; there are no rotating substitute teachers, so your practice, cues and progress stay consistent from day one to year ten. Unlike pre-recorded yoga apps, every session is a real-time small-batch class (max 8 students) with hands-on verbal cueing, personalized posture correction and evidence-informed therapeutic sequencing for conditions like PCOD, chronic back pain, anxiety, insomnia and post-injury recovery. Rooted in classical Hatha, Ashtanga and yoga therapy from India, our classes integrate asana, pranayama (breathwork), meditation and lifestyle coaching (Ahara–Vihara–Achara). Students from 20+ countries — Vietnam, India, USA, Canada, Australia, France, UK, Germany, Singapore — practice live over Zoom or Google Meet from home. Start with a free trial — 3 days of group class access plus one complimentary private session with Master Anil, no card required.";
 
-// TODO (business decision — Anil): Session recordings policy.
-// Competitors (MyYogaTeacher, Rishikesh Yogkulam, Pratham Yoga) advertise recorded
-// replays of missed classes as a standard trust feature. We currently make no claim
-// either way on this page. Do you (a) want to offer recordings and add copy here,
-// (b) explicitly state we do NOT record (privacy/small-batch intimacy reason), or
-// (c) leave it as-is? Do not add a claim in code until you confirm.
 
 const TRUST_STATS = [
   { k: "12+", v: "Years Teaching" },
