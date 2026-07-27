@@ -270,6 +270,26 @@ function RootComponent() {
       }
       if (typeof w.fbq === "function") {
         w.fbq("track", "PageView");
+        // Fire Meta standard ViewContent on key service pages (deduped per navigation).
+        const path = window.location.pathname.replace(/\/+$/, "") || "/";
+        const VIEW_CONTENT_MAP: Record<string, { content_name: string; content_category: string }> = {
+          "/": { content_name: "Home — Yog Jivan Sanctuary", content_category: "Home" },
+          "/online-yoga-classes": { content_name: "Online Yoga Classes", content_category: "Online Classes" },
+          "/personal-training": { content_name: "Personal Training", content_category: "Private Sessions" },
+          "/yoga-for-back-pain": { content_name: "Back Pain Yoga", content_category: "Therapeutic Yoga" },
+          "/yoga-for-stress": { content_name: "Stress Relief Yoga", content_category: "Therapeutic Yoga" },
+          "/yoga-for-weight-loss": { content_name: "Weight Loss Yoga", content_category: "Therapeutic Yoga" },
+          "/contact": { content_name: "Contact Yog Jivan", content_category: "Contact" },
+        };
+        const match = VIEW_CONTENT_MAP[path];
+        if (match) {
+          w.fbq("track", "ViewContent", {
+            content_name: match.content_name,
+            content_category: match.content_category,
+            content_type: "product",
+            page_location: window.location.href,
+          });
+        }
       }
     });
     return () => unsub();
