@@ -70,7 +70,7 @@ export function TherapeuticLanding(props: TherapeuticPageProps) {
   const {
     eyebrow, heroTitle, heroSub, answerCapsule, credentials, questions,
     quote, breatherImages, cautionNote, ctaTitle, ctaSub, relatedLinks,
-    portrait, portraitAlt, masterIntro,
+    relatedPosts, portrait, portraitAlt, masterIntro,
   } = props;
 
   return (
