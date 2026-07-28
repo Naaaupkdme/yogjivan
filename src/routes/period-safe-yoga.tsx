@@ -147,6 +147,11 @@ function PeriodSafePage() {
         { to: "/yoga-for-stress", label: "Yoga for Stress Relief" },
         { to: "/personal-training", label: "1-on-1 Sessions" },
       ]}
+      relatedPosts={[
+        { slug: "the-breath-you-didnt-know-you-were-holding", title: "The breath you didn't know you were holding", cat: "Wellness", read: "4 min" },
+        { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters in 2026", cat: "Yoga", read: "6 min" },
+        { slug: "building-a-home-practice-you-will-keep", title: "Building a home practice you'll keep for life", cat: "Lifestyle", read: "5 min" },
+      ]}
       ctaTitle="Honour the rhythm."
       ctaSub="Book a free consultation with Master Anil to begin a cycle-aware practice that meets you where you are."
     />
