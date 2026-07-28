@@ -384,6 +384,20 @@ function OnlineYogaClassesPage() {
           <Link to="/contact" hash="consultation" className="btn-gold"><Sparkles className="h-4 w-4" /> Book Free Live Trial</Link>
           <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold"><MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp Us</a>
         </div>
+        <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.68rem] uppercase tracking-[0.2em] text-muted-foreground">
+          {[
+            "3-day free group access",
+            "1 private session included",
+            "No card required",
+            "Max 8 students per class",
+            "Taught by Master Anil personally",
+          ].map((chip) => (
+            <li key={chip} className="inline-flex items-center gap-2">
+              <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)]" />
+              {chip}
+            </li>
+          ))}
+        </ul>
       </PageHero>
 
       {/* Trust strip */}
