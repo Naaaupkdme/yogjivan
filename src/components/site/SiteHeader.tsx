@@ -10,6 +10,7 @@ const NAV = [
   { href: "/about", label: "About" },
   { href: "/yoga-for-beginners", label: "Yoga for Beginners" },
   { href: "/online-yoga-classes", label: "Online Yoga Classes" },
+  { href: "/blog", label: "Journal" },
   { href: "/contact", label: "Contact" },
 ];
 
