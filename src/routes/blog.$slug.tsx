@@ -1,12 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { BLOG_POSTS, getPostBySlug } from "@/lib/blog-posts";
+import { BLOG_POSTS, getPostBySlug, type BlogPost } from "@/lib/blog-posts";
 import { breadcrumbSchema } from "@/lib/schema";
 
 const SITE = "https://www.yogjivan.com";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { post: BlogPost } => {
     const post = getPostBySlug(params.slug);
     if (!post) throw notFound();
     return { post };
