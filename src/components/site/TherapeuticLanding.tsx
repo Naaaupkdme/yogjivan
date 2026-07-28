@@ -13,6 +13,8 @@ export type QA = { q: string; answer: string; bullets: string[] };
 
 export type RelatedLink = { to: string; label: string };
 
+export type RelatedPost = { slug: string; title: string; cat: string; read: string };
+
 export type TherapeuticPageProps = {
   eyebrow: string;
   heroTitle: string;
@@ -27,6 +29,7 @@ export type TherapeuticPageProps = {
   ctaTitle: string;
   ctaSub: string;
   relatedLinks: RelatedLink[];
+  relatedPosts?: RelatedPost[];
   portrait: string;
   portraitAlt: string;
   masterIntro: React.ReactNode;
