@@ -146,6 +146,11 @@ function WeightLossPage() {
         { to: "/personal-training", label: "1-on-1 Personal Training" },
         { to: "/online-yoga-classes", label: "Live Online Classes" },
       ]}
+      relatedPosts={[
+        { slug: "yoga-for-sustainable-fat-loss", title: "Yoga for sustainable fat loss (without burnout)", cat: "Weight Loss", read: "8 min" },
+        { slug: "building-a-home-practice-you-will-keep", title: "Building a home practice you'll keep for life", cat: "Lifestyle", read: "5 min" },
+        { slug: "the-breath-you-didnt-know-you-were-holding", title: "The breath you didn't know you were holding", cat: "Wellness", read: "4 min" },
+      ]}
       ctaTitle="Change that actually lasts."
       ctaSub="Book a free consultation with Master Anil to design a sustainable weight and lifestyle plan."
     />
