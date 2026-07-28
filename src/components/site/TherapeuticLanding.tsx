@@ -210,6 +210,36 @@ export function TherapeuticLanding(props: TherapeuticPageProps) {
         </div>
       </section>
 
+      {/* From the Journal — related blog posts */}
+      {relatedPosts && relatedPosts.length > 0 && (
+        <section className="section-tight">
+          <div className="container-luxe">
+            <div className="mx-auto max-w-5xl">
+              <p className="eyebrow"><span className="h-px w-10 bg-primary" />From the Journal</p>
+              <div className="mt-5 grid gap-4 md:grid-cols-3">
+                {relatedPosts.map((p) => (
+                  <Link
+                    key={p.slug}
+                    to="/blog/$slug"
+                    params={{ slug: p.slug }}
+                    className="group block h-full rounded-2xl border border-white/8 bg-[linear-gradient(180deg,oklch(0.18_0.005_60/0.6),oklch(0.13_0.005_60/0.7))] p-6 transition-all hover:-translate-y-1 hover:border-[color:var(--gold)]/40"
+                  >
+                    <div className="flex items-center justify-between text-[0.58rem] uppercase tracking-[0.22em]">
+                      <span className="text-[color:var(--gold)]">{p.cat}</span>
+                      <span className="text-muted-foreground">{p.read}</span>
+                    </div>
+                    <h3 className="mt-4 font-display text-lg leading-tight">{p.title}</h3>
+                    <div className="mt-4 inline-flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+                      Read journal →
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Related links */}
       <section className="section-tight">
         <div className="container-luxe">
@@ -223,6 +253,7 @@ export function TherapeuticLanding(props: TherapeuticPageProps) {
           </div>
         </div>
       </section>
+
 
       {/* Closing CTA */}
       <section className="section-y">
