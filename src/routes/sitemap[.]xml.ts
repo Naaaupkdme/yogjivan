@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
 const BASE_URL = "https://www.yogjivan.com";
-const PATHS = ["/", "/about", "/programs", "/personal-training", "/online-yoga-classes", "/yoga-for-beginners", "/yoga-for-back-pain", "/yoga-for-stress", "/yoga-for-weight-loss", "/yoga-for-pcod", "/yoga-for-thyroid", "/period-safe-yoga", "/yoga-for-expats-in-vietnam", "/corporate", "/gallery", "/testimonials", "/blog", "/contact", "/privacy", "/pricing.md"];
+import { BLOG_POSTS } from "@/lib/blog-posts";
+const PATHS = ["/", "/about", "/programs", "/personal-training", "/online-yoga-classes", "/yoga-for-beginners", "/yoga-for-back-pain", "/yoga-for-stress", "/yoga-for-weight-loss", "/yoga-for-pcod", "/yoga-for-thyroid", "/period-safe-yoga", "/yoga-for-expats-in-vietnam", "/corporate", "/gallery", "/testimonials", "/blog", ...BLOG_POSTS.map((p) => `/blog/${p.slug}`), "/contact", "/privacy", "/pricing.md"];
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
