@@ -146,6 +146,11 @@ function ExpatsPage() {
         { to: "/yoga-for-beginners", label: "New to Yoga? Start Here" },
         { to: "/gallery", label: "Sanctuary Gallery" },
       ]}
+      relatedPosts={[
+        { slug: "building-a-home-practice-you-will-keep", title: "Building a home practice you'll keep for life", cat: "Lifestyle", read: "5 min" },
+        { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters in 2026", cat: "Yoga", read: "6 min" },
+        { slug: "the-breath-you-didnt-know-you-were-holding", title: "The breath you didn't know you were holding", cat: "Wellness", read: "4 min" },
+      ]}
       ctaTitle="Welcome to the sanctuary."
       ctaSub="Message us on WhatsApp or Zalo to book your free consultation and complimentary trial with Master Anil."
     />

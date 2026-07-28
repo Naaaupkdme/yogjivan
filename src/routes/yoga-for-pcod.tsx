@@ -151,6 +151,12 @@ function PCODPage() {
         { to: "/period-safe-yoga", label: "Period-Safe Yoga" },
         { to: "/yoga-for-thyroid", label: "Yoga for Thyroid Health" },
         { to: "/personal-training", label: "1-on-1 Therapeutic Sessions" },
+        { to: "/online-yoga-classes", label: "Live Online Classes" },
+      ]}
+      relatedPosts={[
+        { slug: "the-breath-you-didnt-know-you-were-holding", title: "The breath you didn't know you were holding", cat: "Wellness", read: "4 min" },
+        { slug: "yoga-for-sustainable-fat-loss", title: "Yoga for sustainable fat loss (without burnout)", cat: "Weight Loss", read: "8 min" },
+        { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters in 2026", cat: "Yoga", read: "6 min" },
       ]}
       ctaTitle="Support your cycle. Support yourself."
       ctaSub="Book a free consultation with Master Anil to design a therapeutic PCOD or PCOS practice that fits your body."

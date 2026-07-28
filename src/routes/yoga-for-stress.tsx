@@ -148,6 +148,11 @@ function StressPage() {
         { to: "/online-yoga-classes", label: "Live Online Classes" },
         { to: "/yoga-for-beginners", label: "New to Yoga? Start Here" },
       ]}
+      relatedPosts={[
+        { slug: "the-breath-you-didnt-know-you-were-holding", title: "The breath you didn't know you were holding", cat: "Wellness", read: "4 min" },
+        { slug: "beginners-guide-to-20-minutes-of-stillness", title: "A beginner's guide to 20 minutes of stillness", cat: "Meditation", read: "7 min" },
+        { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters in 2026", cat: "Yoga", read: "6 min" },
+      ]}
       ctaTitle="Breathe. Rest. Come back to yourself."
       ctaSub="Book a free consultation with Master Anil to map a calming path for your nervous system."
     />
