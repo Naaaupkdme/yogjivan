@@ -1256,6 +1256,8 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
+      <PricingFinal />
+
       <CTABanner title="Ready for your first live class?" sub="Free live trial with a Certified Indian Yoga Master. No card required. Reply within minutes." />
 
       {/* Final tri-CTA row */}
