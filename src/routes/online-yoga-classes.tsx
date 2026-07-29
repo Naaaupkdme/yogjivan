@@ -543,7 +543,6 @@ function PlanCard({ plan }: { plan: Plan }) {
         <Link
           to="/contact"
           hash="consultation"
-          search={{ plan: plan.id } as never}
           aria-label={`${plan.cta} — ${plan.plan} plan`}
           className={isFeatured ? "btn-gold w-full justify-center" : "btn-ghost-gold w-full justify-center"}
         >
