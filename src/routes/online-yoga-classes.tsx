@@ -10,7 +10,8 @@ import {
   Award, Users, Globe2, CheckCircle2, XCircle, Sparkles, Eye, Wind, Activity,
   Brain, HeartPulse, Flower2, Sunrise, ClipboardCheck, TrendingUp, Leaf, Calendar,
   MessageCircle, PhoneCall, ShieldCheck, GraduationCap, Stethoscope, Compass, Circle,
-  Quote, Star, Crown, Zap, TagIcon,
+  Quote, Star, Crown, Zap,
+  type LucideIcon,
 } from "lucide-react";
 
 /* ---------- Pricing data (single source of truth) ---------- */
