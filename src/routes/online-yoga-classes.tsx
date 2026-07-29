@@ -10,8 +10,73 @@ import {
   Award, Users, Globe2, CheckCircle2, XCircle, Sparkles, Eye, Wind, Activity,
   Brain, HeartPulse, Flower2, Sunrise, ClipboardCheck, TrendingUp, Leaf, Calendar,
   MessageCircle, PhoneCall, ShieldCheck, GraduationCap, Stethoscope, Compass, Circle,
-  Quote,
+  Quote, Star, Crown, Zap,
+  type LucideIcon,
 } from "lucide-react";
+
+/* ---------- Pricing data (single source of truth) ---------- */
+
+type Plan = {
+  id: "m1" | "m3" | "m6" | "m12";
+  label: string;
+  plan: string;
+  months: number;
+  price: number;
+  tagline: string;
+  cta: string;
+  badge?: string;
+  featured?: boolean;
+  accent?: "gold" | "royal";
+  icon: LucideIcon;
+};
+
+const PLANS: Plan[] = [
+  {
+    id: "m1", label: "Starter Access", plan: "1 Month", months: 1, price: 19.99,
+    tagline: "Best for trying the live class experience",
+    cta: "Start Now", icon: Zap,
+  },
+  {
+    id: "m3", label: "Most Popular", plan: "3 Months", months: 3, price: 54.99,
+    tagline: "Best for consistency and better progress",
+    cta: "Choose 3 Months", badge: "Most Popular", featured: true, accent: "gold", icon: Star,
+  },
+  {
+    id: "m6", label: "Best Value", plan: "6 Months", months: 6, price: 99.99,
+    tagline: "Best for deeper improvement and stronger routine building",
+    cta: "Choose Best Value", badge: "Best Value", accent: "gold", icon: Award,
+  },
+  {
+    id: "m12", label: "Premium Plan", plan: "12 Months", months: 12, price: 179.99,
+    tagline: "Best for long-term lifestyle change and maximum savings",
+    cta: "Join Premium Plan", accent: "royal", icon: Crown,
+  },
+];
+
+const PLAN_BENEFITS = [
+  "Live online group classes",
+  "Live human correction",
+  "Small-batch learning (max 8)",
+  "Therapeutic guidance",
+  "Beginner-friendly support",
+  "WhatsApp support with Master Anil",
+  "Free assessment before you start",
+  "Flexible weekly schedule",
+];
+
+function fmtPrice(n: number) {
+  return `$${n.toFixed(2)}`;
+}
+function monthlyEq(p: Plan) {
+  return `$${(p.price / p.months).toFixed(2)}/mo`;
+}
+function savingsVsMonthly(p: Plan) {
+  const base = 19.99 * p.months;
+  const saved = base - p.price;
+  if (saved <= 0) return null;
+  const pct = Math.round((saved / base) * 100);
+  return { saved: saved.toFixed(2), pct };
+}
 
 const CANONICAL = "https://www.yogjivan.com/online-yoga-classes";
 const WA = SOCIAL.whatsapp;
@@ -370,6 +435,233 @@ function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; 
   );
 }
 
+/* ---------- Pricing components ---------- */
+
+function PricingTeaser() {
+  return (
+    <section className="section-tight">
+      <div className="container-luxe">
+        <div className="mx-auto max-w-5xl">
+          <div className="glass-luxe rounded-[1.75rem] border border-[color:var(--gold)]/25 p-5 md:p-6">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div className="flex items-start gap-4 md:items-center">
+                <div className="hidden h-11 w-11 shrink-0 place-items-center rounded-full border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10 md:grid">
+                  <Sparkles className="h-5 w-5 text-[color:var(--gold)]" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">Membership · From $19.99</p>
+                  <p className="mt-1 font-display text-lg leading-snug md:text-xl">
+                    Live online group classes with Master Anil — plans from <span className="text-gold-gradient">$19.99/month</span>. Free trial before you decide.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-2 md:shrink-0">
+                {PLANS.map((p) => (
+                  <a
+                    key={p.id}
+                    href="#pricing"
+                    className={`rounded-full border px-3 py-1.5 text-[0.65rem] uppercase tracking-[0.16em] transition-colors ${
+                      p.featured
+                        ? "border-[color:var(--gold)]/60 bg-[color:var(--gold)]/15 text-[color:var(--gold)]"
+                        : "border-white/15 text-foreground/85 hover:border-[color:var(--gold)]/40 hover:text-[color:var(--gold)]"
+                    }`}
+                  >
+                    {p.plan} · {fmtPrice(p.price)}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PlanCard({ plan }: { plan: Plan }) {
+  const Icon = plan.icon;
+  const sav = savingsVsMonthly(plan);
+  const isFeatured = !!plan.featured;
+  const isBest = plan.id === "m6";
+  const isPremium = plan.id === "m12";
+  const cardRing =
+    isFeatured
+      ? "border-[color:var(--gold)]/60 shadow-[0_30px_80px_-30px_color-mix(in_oklab,var(--gold)_55%,transparent)] md:scale-[1.03]"
+      : isBest
+      ? "border-[color:var(--gold)]/40"
+      : isPremium
+      ? "border-white/20"
+      : "border-white/10";
+
+  return (
+    <article
+      className={`glass-luxe relative flex flex-col rounded-[1.75rem] border p-6 md:p-7 ${cardRing}`}
+    >
+      {plan.badge && (
+        <span
+          className={`absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.22em] ${
+            isFeatured
+              ? "bg-gradient-to-r from-[color:var(--gold)] to-amber-300 text-black shadow-[0_10px_30px_-10px_color-mix(in_oklab,var(--gold)_70%,transparent)]"
+              : "border border-[color:var(--gold)]/50 bg-background/80 text-[color:var(--gold)]"
+          }`}
+        >
+          {plan.badge}
+        </span>
+      )}
+
+      <div className="flex items-center gap-3">
+        <div className="grid h-10 w-10 place-items-center rounded-full border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10">
+          <Icon className="h-5 w-5 text-[color:var(--gold)]" />
+        </div>
+        <p className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">{plan.label}</p>
+      </div>
+
+      <h3 className="mt-4 font-display text-2xl">{plan.plan}</h3>
+      <p className="mt-1 text-sm text-muted-foreground">{plan.tagline}</p>
+
+      <div className="mt-5 flex items-end gap-2">
+        <span className="font-display text-4xl leading-none text-gold-gradient md:text-5xl">
+          {fmtPrice(plan.price)}
+        </span>
+        <span className="pb-1 text-xs text-muted-foreground">/ {plan.plan.toLowerCase()}</span>
+      </div>
+      <p className="mt-1 text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">
+        ≈ {monthlyEq(plan)}
+        {sav && <span className="ml-2 text-[color:var(--gold)]">· save {sav.pct}%</span>}
+      </p>
+
+      <ul className="mt-6 space-y-2.5">
+        {PLAN_BENEFITS.slice(0, 5).map((b) => (
+          <li key={b} className="flex gap-2.5 text-sm leading-snug text-foreground/85">
+            <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" />
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-auto pt-6">
+        <Link
+          to="/contact"
+          hash="consultation"
+          aria-label={`${plan.cta} — ${plan.plan} plan`}
+          className={isFeatured ? "btn-gold w-full justify-center" : "btn-ghost-gold w-full justify-center"}
+        >
+          <Sparkles className="h-4 w-4" /> {plan.cta}
+        </Link>
+      </div>
+    </article>
+  );
+}
+
+function PricingCards() {
+  return (
+    <section id="pricing" className="section-y scroll-mt-24">
+      <div className="container-luxe">
+        <SectionHead
+          eyebrow="Online Group Classes Pricing"
+          title="Choose the plan that fits your journey"
+          sub="Start with one month, build consistency over three months, go deeper in six months, or commit for a full year for the best value."
+        />
+        <div className="mx-auto mt-12 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:items-stretch">
+          {PLANS.map((p) => (
+            <PlanCard key={p.id} plan={p} />
+          ))}
+        </div>
+        <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground">
+          Choose the plan that fits your journey. New students are welcome to start with any plan.
+          All memberships include a free assessment call and a complimentary trial class.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function PricingRecap() {
+  return (
+    <section className="section-tight">
+      <div className="container-luxe">
+        <div className="mx-auto max-w-5xl glass-luxe rounded-[1.75rem] border border-[color:var(--gold)]/25 p-6 md:p-7">
+          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+            <div className="min-w-0">
+              <p className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">Pricing at a glance</p>
+              <p className="mt-1 font-display text-xl leading-snug">
+                From <span className="text-gold-gradient">$19.99/month</span> — longer plans save up to <span className="text-gold-gradient">25%</span>.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 md:shrink-0">
+              {PLANS.map((p) => (
+                <a
+                  key={p.id}
+                  href="#pricing"
+                  className={`rounded-2xl border px-3 py-2 text-center transition-colors ${
+                    p.featured
+                      ? "border-[color:var(--gold)]/60 bg-[color:var(--gold)]/10"
+                      : "border-white/10 hover:border-[color:var(--gold)]/40"
+                  }`}
+                >
+                  <div className="text-[0.6rem] uppercase tracking-[0.18em] text-muted-foreground">{p.plan}</div>
+                  <div className="mt-0.5 font-display text-base text-gold-gradient">{fmtPrice(p.price)}</div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PricingFinal() {
+  return (
+    <section className="section-y">
+      <div className="container-luxe">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-[color:var(--gold)]/30 glass-luxe">
+          <div className="grid gap-0 md:grid-cols-[1.1fr_1fr]">
+            <div className="p-7 md:p-10">
+              <p className="eyebrow"><span className="h-px w-10 bg-primary" />Ready to begin<span className="h-px w-10 bg-primary" /></p>
+              <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}>
+                Start with any plan — begin with a free trial
+              </h2>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Plans start at $19.99 for a month, and the 3- and 6-month plans are where most students
+                settle in and see visible change. Try a live class first — we'll match you to the right plan afterwards.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link to="/contact" hash="consultation" className="btn-gold">
+                  <Sparkles className="h-4 w-4" /> Book Free Live Trial
+                </Link>
+                <a href="#pricing" className="btn-ghost-gold">
+                  See All Plans
+                </a>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-0 border-t border-[color:var(--gold)]/20 md:border-l md:border-t-0">
+              {PLANS.map((p) => (
+                <a
+                  key={p.id}
+                  href="#pricing"
+                  className={`flex flex-col items-start justify-between border-b border-r border-white/10 p-5 last:border-r-0 md:p-6 ${
+                    p.featured ? "bg-[color:var(--gold)]/10" : ""
+                  }`}
+                >
+                  <div>
+                    <p className="text-[0.6rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">{p.label}</p>
+                    <p className="mt-1 font-display text-lg">{p.plan}</p>
+                  </div>
+                  <div className="mt-3">
+                    <div className="font-display text-2xl text-gold-gradient">{fmtPrice(p.price)}</div>
+                    <div className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">≈ {monthlyEq(p)}</div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- Page ---------- */
 
 function OnlineYogaClassesPage() {
@@ -413,6 +705,8 @@ function OnlineYogaClassesPage() {
           </div>
         </div>
       </section>
+
+      <PricingTeaser />
 
       {/* GEO answer capsule */}
       <section className="section-tight">
@@ -859,6 +1153,8 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
+      <PricingCards />
+
       {/* Hybrid Flexibility */}
       <section className="section-y">
         <div className="container-luxe">
@@ -918,6 +1214,8 @@ function OnlineYogaClassesPage() {
         ]}
       />
 
+      <PricingRecap />
+
       {/* 20 FAQs */}
       <section className="section-y">
         <div className="container-luxe">
@@ -963,6 +1261,8 @@ function OnlineYogaClassesPage() {
           </div>
         </div>
       </section>
+
+      <PricingFinal />
 
       <CTABanner title="Ready for your first live class?" sub="Free live trial with a Certified Indian Yoga Master. No card required. Reply within minutes." />
 
