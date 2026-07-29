@@ -10,8 +10,72 @@ import {
   Award, Users, Globe2, CheckCircle2, XCircle, Sparkles, Eye, Wind, Activity,
   Brain, HeartPulse, Flower2, Sunrise, ClipboardCheck, TrendingUp, Leaf, Calendar,
   MessageCircle, PhoneCall, ShieldCheck, GraduationCap, Stethoscope, Compass, Circle,
-  Quote,
+  Quote, Star, Crown, Zap, TagIcon,
 } from "lucide-react";
+
+/* ---------- Pricing data (single source of truth) ---------- */
+
+type Plan = {
+  id: "m1" | "m3" | "m6" | "m12";
+  label: string;
+  plan: string;
+  months: number;
+  price: number;
+  tagline: string;
+  cta: string;
+  badge?: string;
+  featured?: boolean;
+  accent?: "gold" | "royal";
+  icon: React.ComponentType<{ className?: string }>;
+};
+
+const PLANS: Plan[] = [
+  {
+    id: "m1", label: "Starter Access", plan: "1 Month", months: 1, price: 19.99,
+    tagline: "Best for trying the live class experience",
+    cta: "Start Now", icon: Zap,
+  },
+  {
+    id: "m3", label: "Most Popular", plan: "3 Months", months: 3, price: 54.99,
+    tagline: "Best for consistency and better progress",
+    cta: "Choose 3 Months", badge: "Most Popular", featured: true, accent: "gold", icon: Star,
+  },
+  {
+    id: "m6", label: "Best Value", plan: "6 Months", months: 6, price: 99.99,
+    tagline: "Best for deeper improvement and stronger routine building",
+    cta: "Choose Best Value", badge: "Best Value", accent: "gold", icon: Award,
+  },
+  {
+    id: "m12", label: "Premium Plan", plan: "12 Months", months: 12, price: 179.99,
+    tagline: "Best for long-term lifestyle change and maximum savings",
+    cta: "Join Premium Plan", accent: "royal", icon: Crown,
+  },
+];
+
+const PLAN_BENEFITS = [
+  "Live online group classes",
+  "Live human correction",
+  "Small-batch learning (max 8)",
+  "Therapeutic guidance",
+  "Beginner-friendly support",
+  "WhatsApp support with Master Anil",
+  "Free assessment before you start",
+  "Flexible weekly schedule",
+];
+
+function fmtPrice(n: number) {
+  return `$${n.toFixed(2)}`;
+}
+function monthlyEq(p: Plan) {
+  return `$${(p.price / p.months).toFixed(2)}/mo`;
+}
+function savingsVsMonthly(p: Plan) {
+  const base = 19.99 * p.months;
+  const saved = base - p.price;
+  if (saved <= 0) return null;
+  const pct = Math.round((saved / base) * 100);
+  return { saved: saved.toFixed(2), pct };
+}
 
 const CANONICAL = "https://www.yogjivan.com/online-yoga-classes";
 const WA = SOCIAL.whatsapp;
