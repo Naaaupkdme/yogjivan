@@ -27,7 +27,7 @@ type Plan = {
   badge?: string;
   featured?: boolean;
   accent?: "gold" | "royal";
-  icon: React.ComponentType<{ className?: string }>;
+  icon: LucideIcon;
 };
 
 const PLANS: Plan[] = [
