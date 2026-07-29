@@ -1151,6 +1151,8 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
+      <PricingCards />
+
       {/* Hybrid Flexibility */}
       <section className="section-y">
         <div className="container-luxe">
