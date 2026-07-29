@@ -1,4 +1,4 @@
-import { useState, type ImgHTMLAttributes } from "react";
+import { useEffect, useRef, useState, type ImgHTMLAttributes } from "react";
 
 type Props = ImgHTMLAttributes<HTMLImageElement> & {
   src: string;
@@ -36,6 +36,13 @@ export function LuxuryImage({
 }: Props) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    // Handle cached images that fire load before hydration
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth > 0) setLoaded(true);
+  }, [src]);
 
   return (
     <div
@@ -59,6 +66,7 @@ export function LuxuryImage({
         </div>
       ) : (
         <img
+          ref={imgRef}
           src={src}
           alt={alt}
           loading={eager ? "eager" : "lazy"}
