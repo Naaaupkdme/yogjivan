@@ -66,6 +66,7 @@ export function LuxuryImage({
         </div>
       ) : (
         <img
+          ref={imgRef}
           src={src}
           alt={alt}
           loading={eager ? "eager" : "lazy"}
