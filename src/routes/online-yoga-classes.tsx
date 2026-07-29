@@ -1210,6 +1210,8 @@ function OnlineYogaClassesPage() {
         ]}
       />
 
+      <PricingRecap />
+
       {/* 20 FAQs */}
       <section className="section-y">
         <div className="container-luxe">
