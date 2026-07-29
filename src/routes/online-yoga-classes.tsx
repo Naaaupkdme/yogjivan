@@ -706,6 +706,8 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
+      <PricingTeaser />
+
       {/* GEO answer capsule */}
       <section className="section-tight">
         <div className="container-luxe">
