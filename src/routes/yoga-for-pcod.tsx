@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages } from "@/lib/images";
 
-const CANONICAL = "https://www.yogjivan.com/yoga-for-pcod";
+const CANONICAL = "https://yogjivan.com/yoga-for-pcod";
 
 const ANSWER_CAPSULE =
   "Master Anil's therapeutic approach to PCOD and PCOS blends consistent asana, targeted pranayama and stress reduction — because chronic stress is one of the biggest drivers of hormonal imbalance in polycystic ovarian conditions. Sessions focus on pelvic circulation, gentle strengthening, seated forward folds and twists that support the endocrine system, and closing breath work that calms the nervous system. Practice is small-batch or private for personalized attention, available in-studio in Hai Duong, Vietnam and live online worldwide. Yoga supports — it does not replace — medical care; the strongest outcomes come from practicing alongside your doctor's plan.";
@@ -109,7 +109,7 @@ export const Route = createFileRoute("/yoga-for-pcod")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Yoga for PCOD & PCOS", item: CANONICAL },
           ],
         }),

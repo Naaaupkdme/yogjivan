@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages } from "@/lib/images";
 
-const CANONICAL = "https://www.yogjivan.com/yoga-for-thyroid";
+const CANONICAL = "https://yogjivan.com/yoga-for-thyroid";
 
 const ANSWER_CAPSULE =
   "Master Anil's therapeutic approach to thyroid health uses gentle, consistent practice to support metabolism, calm the nervous system and stimulate healthy circulation around the throat and endocrine centres — as a complement to your medical treatment, never a replacement. Sessions focus on shoulder-stand-family postures (adapted for your body), specific pranayama that supports the throat area, and closing meditation to lower the chronic stress that so often exacerbates thyroid symptoms. Small-batch or private, available in-studio in Hai Duong, Vietnam and live online worldwide.";
@@ -109,7 +109,7 @@ export const Route = createFileRoute("/yoga-for-thyroid")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Yoga for Thyroid Health", item: CANONICAL },
           ],
         }),

@@ -29,9 +29,9 @@ export const Route = createFileRoute("/personal-training")({
       { name: "description", content: "Private 1-on-1 yoga sessions with Master Anil Choudhary in Hai Duong, Vietnam. Therapeutic yoga for back pain, PCOD, anxiety, pranayama and meditation. Custom 90-day transformation plans." },
       { property: "og:title", content: "Private Yoga Sessions & Therapeutic Yoga — Yog Jivan" },
       { property: "og:description", content: "Bespoke private yoga sessions and therapeutic yoga for back pain, PCOD, anxiety and recovery." },
-      { property: "og:url", content: "https://www.yogjivan.com/personal-training" },
+      { property: "og:url", content: "https://yogjivan.com/personal-training" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogjivan.com/personal-training" }],
+    links: [{ rel: "canonical", href: "https://yogjivan.com/personal-training" }],
     scripts: [
       {
         type: "application/ld+json",

@@ -78,7 +78,7 @@ function savingsVsMonthly(p: Plan) {
   return { saved: saved.toFixed(2), pct };
 }
 
-const CANONICAL = "https://www.yogjivan.com/online-yoga-classes";
+const CANONICAL = "https://yogjivan.com/online-yoga-classes";
 const WA = SOCIAL.whatsapp;
 
 /* ---------- Content Data ---------- */
@@ -322,7 +322,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
           "@type": "Course",
           name: "Live Online Yoga Classes with Master Anil Choudhary",
           description: "Live, interactive, small-batch online yoga classes led by Certified Indian Yoga Master Anil Choudhary. Therapeutic focus: back pain, PCOD, anxiety, sleep. For beginners to advanced.",
-          provider: { "@type": "Organization", name: "Yog Jivan", url: "https://www.yogjivan.com", sameAs: "https://www.yogjivan.com" },
+          provider: { "@type": "Organization", name: "Yog Jivan", url: "https://yogjivan.com", sameAs: "https://yogjivan.com" },
           url: CANONICAL,
           image: masterImages.meditationPortrait,
           educationalLevel: "Beginner to Advanced",
@@ -343,7 +343,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
               name: "Master Anil Choudhary",
               jobTitle: "Certified Indian Yoga Master & Yoga Therapist",
               image: masterImages.meditationPortrait,
-              url: "https://www.yogjivan.com/about",
+              url: "https://yogjivan.com/about",
             },
           },
         }),
@@ -366,7 +366,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Online Yoga Classes", item: CANONICAL },
           ],
         }),
@@ -381,7 +381,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
           eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
           eventStatus: "https://schema.org/EventScheduled",
           location: { "@type": "VirtualLocation", url: CANONICAL },
-          organizer: { "@type": "Organization", name: "Yog Jivan", url: "https://www.yogjivan.com" },
+          organizer: { "@type": "Organization", name: "Yog Jivan", url: "https://yogjivan.com" },
           offers: {
             "@type": "Offer", price: "0", priceCurrency: "USD",
             availability: "https://schema.org/InStock", description: "Free live trial class", url: CANONICAL,

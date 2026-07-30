@@ -1,6 +1,6 @@
 // Shared JSON-LD schema helpers for Yog Jivan routes.
 
-const SITE = "https://www.yogjivan.com";
+const SITE = "https://yogjivan.com";
 
 export function breadcrumbSchema(pageName: string, path: string) {
   return {

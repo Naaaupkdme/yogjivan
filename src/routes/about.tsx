@@ -12,9 +12,9 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "Meet Master Anil Choudhary, founder of Yog Jivan yoga studio in Hai Duong, Vietnam. 12+ years teaching authentic Indian yoga, therapeutic practice and holistic wellness to 1000+ students in 20+ countries." },
       { property: "og:title", content: "About Master Anil Choudhary — Yog Jivan" },
       { property: "og:description", content: "Authentic Indian yoga rooted in tradition, taught in Hai Duong, Vietnam by Master Anil Choudhary." },
-      { property: "og:url", content: "https://www.yogjivan.com/about" },
+      { property: "og:url", content: "https://yogjivan.com/about" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogjivan.com/about" }],
+    links: [{ rel: "canonical", href: "https://yogjivan.com/about" }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify(breadcrumbSchema("About", "/about")),

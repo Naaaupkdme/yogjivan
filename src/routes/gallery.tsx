@@ -10,9 +10,9 @@ export const Route = createFileRoute("/gallery")({
       { name: "description", content: "Photographs from inside the Yog Jivan yoga studio in Hai Duong, Vietnam — our sanctuary, Master Anil, outdoor classes and students in practice." },
       { property: "og:title", content: "Studio Gallery — Yog Jivan Hai Duong" },
       { property: "og:description", content: "A visual journey through the Yog Jivan yoga studio in Hai Duong." },
-      { property: "og:url", content: "https://www.yogjivan.com/gallery" },
+      { property: "og:url", content: "https://yogjivan.com/gallery" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogjivan.com/gallery" }],
+    links: [{ rel: "canonical", href: "https://yogjivan.com/gallery" }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify(breadcrumbSchema("Gallery", "/gallery")),
