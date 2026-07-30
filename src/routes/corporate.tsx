@@ -11,9 +11,9 @@ export const Route = createFileRoute("/corporate")({
       { name: "description", content: "On-site and virtual corporate yoga and wellness programs across Vietnam. Reduce stress, improve posture, boost productivity and retain talent." },
       { property: "og:title", content: "Corporate Yoga & Wellness — Yog Jivan Vietnam" },
       { property: "og:description", content: "Yoga and wellness programs designed for high-performing teams in Vietnam." },
-      { property: "og:url", content: "https://www.yogjivan.com/corporate" },
+      { property: "og:url", content: "https://yogjivan.com/corporate" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogjivan.com/corporate" }],
+    links: [{ rel: "canonical", href: "https://yogjivan.com/corporate" }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify(breadcrumbSchema("Corporate", "/corporate")),

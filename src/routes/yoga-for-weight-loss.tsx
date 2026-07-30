@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages } from "@/lib/images";
 
-const CANONICAL = "https://www.yogjivan.com/yoga-for-weight-loss";
+const CANONICAL = "https://yogjivan.com/yoga-for-weight-loss";
 
 const ANSWER_CAPSULE =
   "Weight loss through yoga is not a quick-fix — it is a whole-body approach built on consistency, strength, mindful eating and better sleep. Master Anil's method combines a stronger, more active asana practice (Ashtanga-inspired flows, standing holds, core work) with breath work that improves digestion, and a supporting Holistic Lifestyle Consultation covering rhythm, food and rest. Available in-studio in Hai Duong, Vietnam and live online worldwide. Sustainable change over months, not dramatic promises in weeks.";
@@ -104,7 +104,7 @@ export const Route = createFileRoute("/yoga-for-weight-loss")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Yoga for Weight Loss", item: CANONICAL },
           ],
         }),

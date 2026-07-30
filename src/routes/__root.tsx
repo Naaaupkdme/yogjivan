@@ -89,8 +89,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Yog Jivan",
-          url: "https://www.yogjivan.com",
-          logo: "https://www.yogjivan.com/favicon.ico",
+          url: "https://yogjivan.com",
+          logo: "https://yogjivan.com/favicon.ico",
           description: "Luxury yoga and wellness sanctuary in Hai Duong, Vietnam — private, studio, online, therapeutic and corporate programs led by Master Anil Choudhary.",
           founder: { "@type": "Person", name: "Master Anil Choudhary" },
           telephone: "+84782046066",
@@ -104,10 +104,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           location: [
             {
               "@type": "LocalBusiness",
-              "@id": "https://www.yogjivan.com/#studio-sanctuary",
+              "@id": "https://yogjivan.com/#studio-sanctuary",
               name: "Yog Jivan Sanctuary",
-              image: "https://www.yogjivan.com/og-studio-1.jpg",
-              url: "https://www.yogjivan.com",
+              image: "https://yogjivan.com/og-studio-1.jpg",
+              url: "https://yogjivan.com",
               telephone: "+84782046066",
               priceRange: "$$$",
               address: {
@@ -135,10 +135,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             },
             {
               "@type": "LocalBusiness",
-              "@id": "https://www.yogjivan.com/#studio-wellness",
+              "@id": "https://yogjivan.com/#studio-wellness",
               name: "Yog Jivan Wellness & Healing Center",
-              image: "https://www.yogjivan.com/og-studio-2.jpg",
-              url: "https://www.yogjivan.com",
+              image: "https://yogjivan.com/og-studio-2.jpg",
+              url: "https://yogjivan.com",
               telephone: "+84782046066",
               priceRange: "$$$",
               address: {
@@ -172,13 +172,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          "@id": "https://www.yogjivan.com/#master-anil-choudhary",
+          "@id": "https://yogjivan.com/#master-anil-choudhary",
           name: "Master Anil Choudhary",
           jobTitle: "Certified Indian Yoga Master & Founder",
-          worksFor: { "@type": "Organization", name: "Yog Jivan", url: "https://www.yogjivan.com" },
+          worksFor: { "@type": "Organization", name: "Yog Jivan", url: "https://yogjivan.com" },
           description: "Certified Indian Yoga Master with 12+ years of teaching in classical Hatha, Ashtanga and Yoga Therapy. Founder of Yog Jivan Sanctuary in Hai Duong, Vietnam.",
-          image: "https://www.yogjivan.com/og-master-anil.jpg",
-          url: "https://www.yogjivan.com/about",
+          image: "https://yogjivan.com/og-master-anil.jpg",
+          url: "https://yogjivan.com/about",
           nationality: "Indian",
           hasCredential: [
             { "@type": "EducationalOccupationalCredential", credentialCategory: "Diploma", name: "Diploma in Yoga (India)" },

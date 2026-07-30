@@ -10,9 +10,9 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Book a free yoga consultation with Master Anil Choudhary. Two premium studios in Hai Duong, Vietnam. Reach us on WhatsApp, Zalo, phone or email." },
       { property: "og:title", content: "Contact Yog Jivan — Book a Free Consultation" },
       { property: "og:description", content: "Reach the studio in Hai Duong. Book a free yoga consultation." },
-      { property: "og:url", content: "https://www.yogjivan.com/contact" },
+      { property: "og:url", content: "https://yogjivan.com/contact" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogjivan.com/contact" }],
+    links: [{ rel: "canonical", href: "https://yogjivan.com/contact" }],
     scripts: [
       {
         type: "application/ld+json",

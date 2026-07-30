@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages } from "@/lib/images";
 
-const CANONICAL = "https://www.yogjivan.com/yoga-for-back-pain";
+const CANONICAL = "https://yogjivan.com/yoga-for-back-pain";
 
 const ANSWER_CAPSULE =
   "Master Anil's therapeutic approach to back pain begins with a careful intake — where the pain is, what triggers it, and how long you've lived with it — followed by posture correction, gentle spinal decompression, targeted core and glute strengthening, and breath work to release protective muscle guarding. Sessions are small-batch or private so every posture is scaled to your body. Available in-studio in Hai Duong, Vietnam and live online worldwide. Most students feel meaningful relief within 3–6 weeks of consistent practice.";
@@ -108,7 +108,7 @@ export const Route = createFileRoute("/yoga-for-back-pain")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Yoga for Back Pain", item: CANONICAL },
           ],
         }),

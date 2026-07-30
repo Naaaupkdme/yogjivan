@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages } from "@/lib/images";
 
-const CANONICAL = "https://www.yogjivan.com/period-safe-yoga";
+const CANONICAL = "https://yogjivan.com/period-safe-yoga";
 
 const ANSWER_CAPSULE =
   "Master Anil teaches period-safe yoga as a gentle, cycle-aware practice — softer sequencing during menstruation, restorative postures that ease common discomfort, and clear guidance on which practices to modify or skip on heavier days. Sessions are small-batch or private so nothing is generic; your teacher knows where you are in your cycle and adapts the class accordingly. In-studio in Hai Duong, Vietnam and live online worldwide. This is yoga that honours the body, not overrides it.";
@@ -105,7 +105,7 @@ export const Route = createFileRoute("/period-safe-yoga")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Period-Safe Yoga", item: CANONICAL },
           ],
         }),

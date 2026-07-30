@@ -12,9 +12,9 @@ export const Route = createFileRoute("/blog")({
       { name: "description", content: "Practical writing on yoga for beginners, therapeutic yoga, breathwork, meditation, weight loss and wellness from Master Anil Choudhary and the Yog Jivan team." },
       { property: "og:title", content: "Journal — Yog Jivan" },
       { property: "og:description", content: "Notes from the practice — yoga, wellness and meditation." },
-      { property: "og:url", content: "https://www.yogjivan.com/blog" },
+      { property: "og:url", content: "https://yogjivan.com/blog" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogjivan.com/blog" }],
+    links: [{ rel: "canonical", href: "https://yogjivan.com/blog" }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify(breadcrumbSchema("Blog", "/blog")),

@@ -11,9 +11,9 @@ export const Route = createFileRoute("/testimonials")({
       { name: "description", content: "Real transformation stories and testimonials from Yog Jivan yoga students across Vietnam, India and Europe." },
       { property: "og:title", content: "Student Stories — Yog Jivan" },
       { property: "og:description", content: "Real transformations from Yog Jivan students." },
-      { property: "og:url", content: "https://www.yogjivan.com/testimonials" },
+      { property: "og:url", content: "https://yogjivan.com/testimonials" },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogjivan.com/testimonials" }],
+    links: [{ rel: "canonical", href: "https://yogjivan.com/testimonials" }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify(breadcrumbSchema("Testimonials", "/testimonials")),
