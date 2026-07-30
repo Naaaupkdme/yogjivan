@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import { BLOG_POSTS } from "@/lib/blog-posts";
 import { breadcrumbSchema } from "@/lib/schema";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "Yoga, Wellness & Meditation Journal — Yog Jivan" },
