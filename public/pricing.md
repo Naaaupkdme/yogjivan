@@ -2,7 +2,7 @@
 
 Authentic Indian yoga with Certified Master Anil Choudhary. Studios in Hai Duong, Vietnam; live online classes worldwide. All prices in USD unless noted; VND rates apply at the Hai Duong studio.
 
-Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://www.yogjivan.com/contact
+Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/contact
 
 ## Free Trial
 - Price: $0
