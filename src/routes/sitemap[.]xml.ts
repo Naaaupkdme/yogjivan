@@ -3,7 +3,9 @@ import type {} from "@tanstack/react-start";
 
 const BASE_URL = "https://yogjivan.com";
 import { BLOG_POSTS } from "@/lib/blog-posts";
-const PATHS = ["/", "/about", "/programs", "/personal-training", "/online-yoga-classes", "/yoga-for-beginners", "/yoga-for-back-pain", "/yoga-for-stress", "/yoga-for-weight-loss", "/yoga-for-pcod", "/yoga-for-thyroid", "/period-safe-yoga", "/yoga-for-expats-in-vietnam", "/corporate", "/gallery", "/testimonials", "/blog", ...BLOG_POSTS.map((p) => `/blog/${p.slug}`), "/contact", "/privacy", "/pricing.md"];
+// Only canonical, 200-status, indexable HTML routes. /pricing.md is a raw
+// machine-readable file for AI agents (linked from llms.txt), not an HTML page.
+const PATHS = ["/", "/about", "/programs", "/personal-training", "/online-yoga-classes", "/yoga-for-beginners", "/yoga-for-back-pain", "/yoga-for-stress", "/yoga-for-weight-loss", "/yoga-for-pcod", "/yoga-for-thyroid", "/period-safe-yoga", "/yoga-for-expats-in-vietnam", "/corporate", "/gallery", "/testimonials", "/blog", ...BLOG_POSTS.map((p) => `/blog/${p.slug}`), "/contact", "/privacy"];
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
