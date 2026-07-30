@@ -185,8 +185,61 @@ export const BLOG_POSTS: BlogPost[] = [
       { label: "Online Yoga Classes", to: "/online-yoga-classes" },
       { label: "Yoga for Beginners", to: "/yoga-for-beginners" }
     ]
+  },
+  {
+    slug: "therapeutic-yoga-benefits",
+    cat: "Health",
+    title: "What is yoga therapy? A practical guide to therapeutic yoga",
+    excerpt:
+      "Yoga therapy applies traditional practice to a specific condition — chronic pain, stress, restricted mobility. Here is how it works, and how it differs from a normal class.",
+    read: "8 min",
+    date: "2026-07-30",
+    body: [
+      { type: "p", text: "Yoga therapy is the application of yogic tools — asana, pranayama, relaxation and lifestyle correction — to one person's specific condition, rather than to a room full of people doing the same sequence. A general class asks you to fit the practice. Therapeutic yoga fits the practice to you." },
+      { type: "h2", text: "Yoga therapy vs. a regular yoga class" },
+      { type: "ul", items: [
+        "A class has one sequence for everyone; therapy has a sequence built from your assessment.",
+        "A class measures nothing; therapy measures a baseline — pain score, range of motion, sleep, breath rate — and re-checks it.",
+        "A class progresses by difficulty; therapy progresses by symptom response.",
+        "A class ends when the hour ends; therapy includes what you do the other 23 hours — posture, breath, sleep, food timing."
+      ]},
+      { type: "h2", text: "The science, in plain terms" },
+      { type: "p", text: "Most therapeutic benefit comes from three mechanisms, all well documented. First, load and mobility: graded movement restores tissue tolerance, which is why controlled motion beats rest for most persistent back pain. Second, the breath: slow nasal breathing at roughly six breaths per minute raises vagal tone and shifts the nervous system out of sustained sympathetic arousal. Third, interoception: the trained ability to notice what your body is doing early, before it becomes a flare-up." },
+      { type: "quote", text: "We are not treating the pose. We are treating the person who is in pain — the pose is only the instrument.", cite: "Master Anil Choudhary" },
+      { type: "h2", text: "Chronic pain" },
+      { type: "p", text: "For long-standing back, neck and knee pain, the therapeutic approach is deliberately unimpressive to watch: small ranges, long holds, breath-paired movement, and strict avoidance of the one or two motions that provoke your symptoms. The aim in the first month is not flexibility — it is to prove to a sensitised nervous system that movement is safe again. Load and range are added only once pain stops spiking after sessions." },
+      { type: "h2", text: "Stress, anxiety and sleep" },
+      { type: "p", text: "Here the primary tool is pranayama, not posture. Extended exhale breathing, alternate nostril breathing and yoga nidra do the heavy lifting; asana exists mainly to discharge physical tension so the breath work can land. Students usually report sleep improving before mood does — that order is normal and is a good early signal that the protocol is working." },
+      { type: "h2", text: "Mobility and ageing well" },
+      { type: "p", text: "Mobility loss is rarely uniform. Most people lose hip internal rotation, thoracic extension and ankle dorsiflexion first, and the body then borrows range from the lower back to compensate. Therapeutic yoga targets the restricted joint directly and teaches the spine to stop compensating — which is what protects it over decades." },
+      { type: "h2", text: "What a therapeutic programme looks like with us" },
+      { type: "ul", items: [
+        "Intake: history, current symptoms, medications, previous injuries, and what you actually want to be able to do again.",
+        "Assessment: breath pattern, range of motion, and the specific movements that provoke or relieve symptoms.",
+        "A short daily home sequence — usually 12 to 20 minutes, because that is what gets done.",
+        "Weekly one-to-one or small-group sessions where the sequence is corrected and progressed.",
+        "Re-assessment every four to six weeks against the original baseline."
+      ]},
+      { type: "h2", text: "Who it is not for" },
+      { type: "p", text: "Yoga therapy supports medical care; it does not replace it. Acute injury, undiagnosed pain, red-flag symptoms such as numbness or loss of bladder control, and unstable cardiac or pregnancy conditions need a doctor first. We will ask, and we will say no if the honest answer is that you need imaging rather than a mat." },
+      { type: "p", text: "If you want to start, our therapeutic pages for back pain, stress and PCOD explain the condition-specific protocols, and our live online classes and one-to-one training both run on the same assessment-first method." }
+    ],
+    related: [
+      { label: "Yoga for Back Pain", to: "/yoga-for-back-pain" },
+      { label: "Yoga for Stress & Anxiety", to: "/yoga-for-stress" },
+      { label: "Personal Training", to: "/personal-training" },
+      { label: "Online Yoga Classes", to: "/online-yoga-classes" }
+    ],
+    faqs: [
+      { q: "What is yoga therapy?", a: "Yoga therapy is the use of yoga tools — postures, breath work, relaxation and lifestyle changes — applied to an individual's specific health condition, based on an assessment and re-checked against measurable baselines such as pain score, range of motion and sleep quality." },
+      { q: "How is therapeutic yoga different from regular yoga?", a: "A regular class delivers one sequence to everyone. Therapeutic yoga builds the sequence around your assessment, avoids your provoking movements, and progresses according to symptom response rather than difficulty." },
+      { q: "Is yoga therapy effective for chronic pain?", a: "For persistent non-specific back, neck and knee pain, graded movement combined with breath regulation is well supported. Progress is typically measured over 6 to 12 weeks of consistent short daily practice rather than in single sessions." },
+      { q: "How long before I see results from yoga therapy?", a: "Sleep and stress markers usually shift within two to three weeks. Structural changes in pain and mobility generally take six to twelve weeks of consistent daily practice." },
+      { q: "Can I do yoga therapy online?", a: "Yes. Our live online sessions include the same intake, assessment and real-time correction as in-studio therapeutic work, with a short daily home sequence between sessions." }
+    ]
   }
 ];
+
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);

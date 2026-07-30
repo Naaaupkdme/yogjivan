@@ -157,6 +157,7 @@ function BackPainPage() {
         { slug: "yoga-for-spine-longevity-12-minutes", title: "Yoga for spine longevity: the daily 12 minutes", cat: "Health", read: "5 min" },
         { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters in 2026", cat: "Yoga", read: "6 min" },
         { slug: "the-breath-you-didnt-know-you-were-holding", title: "The breath you didn't know you were holding", cat: "Wellness", read: "4 min" },
+        { slug: "therapeutic-yoga-benefits", title: "What is yoga therapy? A practical guide", cat: "Health", read: "8 min" },
       ]}
       ctaTitle="Move without the ache."
       ctaSub="Book a free consultation with Master Anil to map a therapeutic path for your back."
