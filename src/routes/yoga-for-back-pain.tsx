@@ -76,7 +76,7 @@ export const Route = createFileRoute("/yoga-for-back-pain")({
   head: () => ({
     meta: [
       { title: "Yoga for Back Pain Relief — Therapeutic Approach | Yog Jivan" },
-      { name: "description", content: "Therapeutic yoga for back pain with Master Anil Choudhary in Hai Duong, Vietnam & live online. Posture correction, gentle strengthening, personalized small-batch sessions. Book free consultation." },
+      { name: "description", content: "Therapeutic yoga for back pain with Master Anil in Hai Duong, Vietnam and live online. Posture correction and gentle strengthening. Free consultation." },
       { name: "keywords", content: "yoga for back pain, therapeutic yoga back pain, back pain relief yoga, yoga for lower back pain, sciatica yoga, back pain yoga Hai Duong, online back pain yoga" },
       { property: "og:title", content: "Yoga for Back Pain Relief — A Therapeutic Approach | Yog Jivan" },
       { property: "og:description", content: "Personalized therapeutic yoga for back pain. Studio in Hai Duong & live online. Small-batch. Alignment-first. Book a free consultation with Master Anil." },

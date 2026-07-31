@@ -71,8 +71,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: "Yog Jivan — Ultra Luxury Wellness Sanctuary" },
       { property: "og:description", content: "World-class luxury yoga, therapeutic healing, immersive wellness, and transformational programs with Yog Jivan in Hai Duong, Vietnam." },
       { name: "twitter:description", content: "World-class luxury yoga, therapeutic healing, immersive wellness, and transformational programs with Yog Jivan in Hai Duong, Vietnam." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/051ca238-9da9-46e7-aca7-fac4010c0aa0/id-preview-8ef1d5a4--fb15e133-c4b9-4ec2-944e-9a89ea90823d.lovable.app-1782674709515.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/051ca238-9da9-46e7-aca7-fac4010c0aa0/id-preview-8ef1d5a4--fb15e133-c4b9-4ec2-944e-9a89ea90823d.lovable.app-1782674709515.png" },
+      { property: "og:image", content: "https://yogjivan.com/og-yog-jivan.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: "https://yogjivan.com/og-yog-jivan.jpg" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
