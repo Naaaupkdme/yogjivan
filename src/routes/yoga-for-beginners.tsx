@@ -117,7 +117,7 @@ export const Route = createFileRoute("/yoga-for-beginners")({
   head: () => ({
     meta: [
       { title: "Yoga for Beginners — Start with Confidence | Yog Jivan" },
-      { name: "description", content: "Beginner-friendly yoga classes in Hai Duong, Vietnam & live online worldwide. No flexibility needed. Personally taught by Master Anil Choudhary. Book a free trial." },
+      { name: "description", content: "Beginner-friendly yoga in Hai Duong, Vietnam and live online. No flexibility needed. Taught by Master Anil Choudhary. Book a free trial class." },
       { name: "keywords", content: "yoga for beginners, beginner yoga classes, first yoga class, learn yoga online, beginner yoga Hai Duong, beginner yoga Vietnam, online yoga for beginners, Indian yoga master, safe yoga for newcomers" },
       { property: "og:title", content: "Yoga for Beginners — Start Your Practice with Confidence | Yog Jivan" },
       { property: "og:description", content: "New to yoga? Small-batch, beginner-first classes in Hai Duong & live online. Personally taught by Master Anil Choudhary. Free trial — no experience needed." },

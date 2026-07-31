@@ -300,8 +300,8 @@ const RELATED_LINKS = [
 export const Route = createFileRoute("/online-yoga-classes")({
   head: () => ({
     meta: [
-      { title: "Online Yoga Classes — Live with Certified Indian Master | Yog Jivan" },
-      { name: "description", content: "Live online yoga classes with Certified Indian Master Anil Choudhary. Small-batch, therapeutic yoga for back pain, PCOD, anxiety & sleep. Free live trial. Students in 20+ countries." },
+      { title: "Live Online Yoga Classes | Yog Jivan" },
+      { name: "description", content: "Live online yoga with Certified Indian Master Anil Choudhary. Small-batch therapeutic classes for back pain, PCOD, anxiety and sleep. Free live trial." },
       { name: "keywords", content: "online yoga classes, live online yoga, therapeutic yoga, yoga therapy online, Indian yoga teacher, yoga for back pain, yoga for PCOD, yoga for anxiety, online yoga Vietnam, online yoga worldwide, certified yoga master, small batch yoga" },
       { property: "og:title", content: "Online Yoga Classes with Master Anil Choudhary — Yog Jivan" },
       { property: "og:description", content: "Authentic live online yoga worldwide. Small-batch, therapeutic, personalized. Free live trial — no card required." },
