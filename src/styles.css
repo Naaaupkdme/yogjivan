@@ -150,11 +150,11 @@
     scroll-behavior: smooth;
     /* Opaque base so any frame the compositor hasn't painted yet
        (fast-scroll checkerboarding) shows the brand base, never white. */
-    background-color: var(--onyx);
+    background-color: var(--surface);
   }
   body {
     /* Solid fallback under the gradient layer. */
-    background-color: var(--onyx);
+    background-color: var(--surface);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
