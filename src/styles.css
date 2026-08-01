@@ -148,11 +148,13 @@
   * { border-color: var(--color-border); }
   html {
     scroll-behavior: smooth;
+    /* Opaque base so any frame the compositor hasn't painted yet
+       (fast-scroll checkerboarding) shows the brand base, never white. */
     background-color: var(--onyx);
   }
   body {
-    background: var(--background);
-    background-attachment: fixed;
+    /* Solid fallback under the gradient layer. */
+    background-color: var(--onyx);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -160,6 +162,18 @@
     letter-spacing: 0;
     overflow-x: hidden;
   }
+  /* The viewport-locked gradient lives on its own composited layer instead of
+     `background-attachment: fixed`, which forces a full repaint every scroll
+     frame and causes white flashes at the leading (bottom) viewport edge. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: var(--background);
+    pointer-events: none;
+  }
+
   h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; letter-spacing: 0; }
   p { text-wrap: pretty; }
   img, video { display: block; }
