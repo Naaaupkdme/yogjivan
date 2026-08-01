@@ -23,8 +23,8 @@ import uploadGroupNamaste from "@/assets/uploads/img_20260621_105308.webp.asset.
 import uploadGroupCelebration from "@/assets/uploads/img_20260622_114016.webp.asset.json";
 
 export const masterImages = {
-  founderPortrait: masterAnilMeditationPortrait.url,
-  founderPortraitAlt: "Master Anil Choudhary — Founder of Yog Jivan Sanctuary",
+  founderPortrait: armBalanceOutdoor.url,
+  founderPortraitAlt: "Master Anil Choudhary — Founder of Yog Jivan Sanctuary — holding an advanced arm balance outdoors",
   meditationPortrait: masterAnilMeditationPortrait.url,
 
   outdoorBridge: outdoorBridgeLake.url,
@@ -52,7 +52,7 @@ export const masterImages = {
 } as const;
 
 export const masterAlts = {
-  founderPortrait: "Master Anil Choudhary — Founder of Yog Jivan Sanctuary",
+  founderPortrait: "Master Anil Choudhary, Founder of Yog Jivan Sanctuary, holding an advanced arm balance on a sunlit field",
   outdoorBridge: "Master Anil holding an advanced bridge variation by a lakeside",
   ploughPose: "Master Anil in plough pose (Halasana) on a sunlit field",
   studioAdjustment: "Master Anil giving a hands-on adjustment to a student in the studio",
