@@ -153,8 +153,10 @@
     background-color: var(--surface);
   }
   body {
-    /* Solid fallback under the gradient layer. */
-    background-color: var(--surface);
+    /* Transparent so the fixed gradient layer below (body::before) stays
+       visible; the opaque fallback lives on <html>. */
+    background-color: transparent;
+
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
