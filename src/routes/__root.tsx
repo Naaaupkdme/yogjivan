@@ -18,7 +18,7 @@ import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { FloatingConsultationCTA } from "@/components/site/FloatingConsultationCTA";
 import { ExitIntentModal } from "@/components/site/ExitIntentModal";
 import { CookieConsent } from "@/components/site/CookieConsent";
-import { initAnalytics, trackPageView, trackCta, metaEvent, CONSENT_EVENT } from "@/lib/analytics";
+import { initAnalytics, trackPageView, trackCta, metaEvent } from "@/lib/analytics";
 import { LanguageProvider } from "@/lib/language";
 
 
@@ -266,11 +266,10 @@ function RootComponent() {
     };
     // Initial load (gtag config runs with send_page_view:false).
     sendPageView();
+    // A consent change never re-sends page_view — the current page was already
+    // measured once (cookielessly while denied), so no duplicates are produced.
     const unsub = router.subscribe("onResolved", sendPageView);
-    // A consent grant mid-session should still record the current page once.
-    const onConsent = () => { lastKey = ""; sendPageView(); };
-    window.addEventListener(CONSENT_EVENT, onConsent);
-    return () => { unsub(); window.removeEventListener(CONSENT_EVENT, onConsent); };
+    return () => unsub();
   }, [router]);
 
 
