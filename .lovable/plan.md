@@ -1,57 +1,108 @@
-## Yog Jivan Sanctuary — Premium Redesign & Performance Overhaul
+# Phase 3A — Dependency Security Truth Audit and Minimal Safe Upgrade Plan
 
-Preserving existing dark luxury identity, gold accents, and multilingual architecture. No rebuild from scratch — surgical upgrades to existing components.
+Audit only. No code, package, lockfile, or deployment changes were made.
 
-### 1. Performance Foundation (highest impact)
+## Package manager and tree facts
 
-- Convert `src/routes/index.tsx` to lazy-load all below-the-fold sections via `React.lazy` + `Suspense` with skeleton fallbacks. Only Hero + SiteHeader render eagerly.
-- Create `src/components/site/LuxuryImage.tsx` — reusable image primitive: native `loading="lazy"`, `decoding="async"`, fade-in on load, optional dark overlay (35%), gold shimmer, 28px radius, desktop-only hover zoom, graceful fallback.
-- Audit Framer Motion: replace always-on animations with `whileInView` (viewport-triggered, `once: true`).
-- Reduce `AmbientCanvas` particle count on mobile; disable on `prefers-reduced-motion`.
-- Add `<link rel="preload">` for hero video poster + LCP image in route head.
+Package manager: **bun** (`bun.lock`, 239 KB text lockfile). No npm/pnpm/yarn lockfile exists, so `npm ls` / `pnpm why` are not applicable; resolved versions were read directly from `bun.lock`.
 
-### 2. Global Design Tokens
+Existing overrides already in `package.json`: `overrides.seroval = 1.5.6`, `pnpm.overrides.entities = 4.5.0`.
 
-- In `src/styles.css`, add section spacing utilities: `.section-y` → `padding-block: clamp(72px, 10vw, 120px)`.
-- Apply across all section components.
+Resolved versions (exact, from `bun.lock`):
 
-### 3. Section-Level Upgrades (preserve existing structure)
+| Package | Declared | Resolved | Path |
+|---|---|---|---|
+| @tanstack/react-start | ^1.167.50 | 1.167.50 | direct, prod |
+| @tanstack/start-server-core | — | **1.167.22** | transitive via react-start, prod/SSR |
+| @tanstack/react-router | ^1.168.25 | 1.168.25 | direct, prod |
+| @tanstack/router-plugin | ^1.167.28 | 1.167.28 | direct, build-time |
+| seroval | ^1.5.6 (+ override 1.5.6) | **1.5.6** | direct + forced everywhere |
+| undici | — | **7.24.8** | transitive: `@tanstack/start-plugin-core@1.169.6 → cheerio@1.2.0 → undici` (build-time only) |
+| js-yaml | — | **4.1.1** | transitive: `start-plugin-core → xmlbuilder2@4.0.3` (build-time) and `@eslint/eslintrc` (dev) |
+| @lovable.dev/mcp-js | ^0.24.0 | 0.24.0 | direct, prod |
+| @hono/node-server | — | **1.19.15** | transitive: `mcp-js → @modelcontextprotocol/sdk@1.28.0 → @hono/node-server` |
+| hono | — | 4.12.31 | same chain |
 
-| Section | Action |
-|---|---|
-| Hero | Update copy to new headline/sub, keep trust metrics, ensure WhatsApp secondary CTA visible |
-| TrustSection | Already has background image support — verify 35% overlay + shimmer |
-| **NEW** WhyChooseYogJivan | 6 premium feature cards (glass, gold icons, viewport-triggered) |
-| Programs/Services | Upgrade cards with parallax (desktop only), 45% overlay, disable motion on mobile |
-| **NEW** FounderStory | Timeline + portrait (reuse FounderJourney data, simplify) |
-| Gallery | Already masonry + lightbox — verify lazy loading via LuxuryImage |
-| **NEW** VideoTestimonials | Slider with YouTube embeds, auto-pause on slide change |
-| Programs (pricing) | Strip prices, show "Premium Packages Available" badges, single CTA |
-| **NEW** FAQ | 10 SEO FAQs with accordion + FAQPage JSON-LD schema |
-| SmartConsultation | Convert to right-side floating slide-in panel with 5-step form |
-| FloatingWhatsApp | Move to left side, always visible |
+## Risk table
 
-### 4. SEO & Accessibility
+| Advisory | Package | Resolved | Patched | Prod/Dev | Vulnerable path used | Status | Action |
+|---|---|---|---|---|---|---|---|
+| GHSA-9m65-766c-r333 | @tanstack/start-server-core | 1.167.22 (< 1.167.30) | 1.167.30+ | Prod (SSR + server fn) | Deserialization sink is seroval; project forces seroval 1.5.6 (≥ 1.5.3 fix) | **Conditional — partially mitigated** | Bump react-start so start-server-core ≥ 1.167.30 (P1) |
+| GHSA-vmh5-mc38-953g / p88m-4jfj-68fv / vxpw-j846-p89q / hm92-r4w5-c3mj / pr7r-676h-xcf6 | undici | 7.24.8 | 7.28.0+ (7.x branch) | **Build-time only** (cheerio inside the TanStack build plugin) | No SOCKS5 ProxyAgent, no WebSocket, no cache interceptor, no Set-Cookie forwarding in app code; app runs on Cloudflare Workers `fetch`, not undici | **Not applicable at runtime** | Optional override `undici: 7.29.0` (P3) |
+| GHSA-h67p-54hq-rp68, GHSA-52cp-r559-cp3m | js-yaml | 4.1.1 | 4.3.0+ | Build/dev only (xmlbuilder2 sitemap tooling, eslint config loader) | No user-controlled YAML anywhere in the app | **Not applicable at runtime** | Optional override `js-yaml: 4.3.1` (P3) |
+| GHSA-frvp-7c67-39w9 | @hono/node-server | 1.19.15 | 1.19.17 (1.x line) | Ships in the MCP dependency graph | Vulnerability requires `serve-static` on **Windows** with encoded backslashes; production is Cloudflare Workers, no Node server, no serve-static | **Not applicable** | Optional override `@hono/node-server: 1.19.17` (P3) |
 
-- Add LocalBusiness + FAQPage + BreadcrumbList JSON-LD to root + index route.
-- Remove `maximum-scale` / `user-scalable=no` from viewport meta.
-- Verify single H1 per route, alt text on all images.
+Server-function exposure check: exactly one client-callable server function exists, `submitLeadToCrm` in `src/lib/submit-lead.functions.ts`. It has a strict Zod `inputValidator`, per-IP rate limiting, and formula-injection stripping. It performs no privileged DB write and no auth-bearing side effect — it forwards a sanitised payload to the Make webhook. So even the confirmed advisory has no privileged sink in this app.
 
-### 5. Mobile UX
+## Minimal safe update plan
 
-- Disable parallax + hover effects via `md:` breakpoints.
-- Keep existing `MobileStickyCTA` (already left/right split).
-- Increase tap target min-height to 44px on all CTAs.
+**Priority 0 — urgent:** none.
 
-### Technical Notes
+**Priority 1 — confirmed production exposure (recommended):**
+- `@tanstack/react-start` `^1.167.50` → `^1.168.34` (latest stable). This pulls `@tanstack/start-server-core@1.169.17` (≥ 1.167.30, patched) and `@tanstack/react-router@1.170.18`.
+- To keep TanStack packages mutually compatible, bump in the same step: `@tanstack/react-router` → `^1.170.18`, `@tanstack/router-plugin` → matching latest 1.17x line.
+- Keep the existing `seroval: 1.5.6` override (defence in depth).
+- This is a minor bump inside the same v1 line — no major framework migration.
 
-- All new sections lazy-imported in `routes/index.tsx`.
-- LuxuryImage replaces `<img>` tags incrementally in upgraded sections only (don't touch unrelated ones).
-- FAQ component uses shadcn `Accordion` (already installed).
-- VideoTestimonials uses `<iframe>` with `loading="lazy"` + intersection-observer pause.
-- No new dependencies needed.
+**Priority 2 — conditional/unreached:** none beyond P1.
 
-### Out of Scope
+**Priority 3 — scanner cleanup only (optional, zero runtime effect):**
+- `overrides.undici = "7.29.0"` (same 7.x branch — do not jump to 8.x).
+- `overrides.js-yaml = "4.3.1"` (v4 legacy line, API-compatible with 4.1.1).
+- `overrides.@hono/node-server = "1.19.17"` (1.x line — do not jump to 2.x, the MCP SDK requires ^1.19.9).
 
-- Email/WhatsApp backend integration wiring (form already submits to Supabase leads table; "ready" hooks remain).
-- Translating new copy strings (existing `src/lib/language.tsx` continues to work; new strings added in English, follow existing pattern).
+**No action:** seroval (already forced to patched 1.5.6).
+
+Note: `bunfig.toml` enforces a 24h minimum release age; all target versions are older than that, so no exclusion entry is needed.
+
+## Files that would change
+
+- `package.json` (dependency versions + optional `overrides` block)
+- `bun.lock` (regenerated by `bun install`)
+
+No source files change. Estimated files changed: **2**.
+
+## Regression protection plan (after the TanStack bump)
+
+Build/SSR: production build succeeds; SSR HTML present on `/`; hydration with no console errors; direct refresh of nested routes (`/blog/<slug>`, `/yoga-for-back-pain`).
+Server/data: Make.com lead flow via `submitLeadToCrm`, Supabase lead insert, success state, email queue routes under `/lovable/email/*`.
+Analytics: GA4 Consent Mode v2 defaults denied, Meta Pixel gated, SPA `page_view` fires once per route change including back navigation.
+Content/SEO: all 26 routes 200, `sitemap.xml`, `robots.txt`, canonical + og tags, 404 `noindex`.
+UI: consultation form validation, WhatsApp/Zalo/phone links, mobile/tablet/desktop navigation and drawer scroll.
+
+## Completion table
+
+| Prompt requirement | Status | Evidence | Action required |
+|---|---|---|---|
+| Inspect package.json / lockfile / manager | Complete | `package.json` read; `bun.lock` is the only lockfile | None |
+| Exact resolved versions of 9 packages | Complete | Table above, read from `bun.lock` | None |
+| Overrides already present | Complete | `overrides.seroval=1.5.6`, `pnpm.overrides.entities=4.5.0` | None |
+| GHSA-9m65-766c-r333 verification | Complete | start-server-core 1.167.22 < 1.167.30; seroval forced 1.5.6; one validated server fn | P1 bump |
+| Undici advisories | Complete | 7.24.8 via cheerio via start-plugin-core (build-only); no SOCKS5/WS/cache/Set-Cookie usage in src | P3 optional |
+| js-yaml advisories | Complete | 4.1.1 via xmlbuilder2 + eslintrc; no user YAML | P3 optional |
+| Hono advisory | Complete | 1.19.15 via MCP SDK; Workers runtime, no serve-static, not Windows | P3 optional |
+| Read-only security checks | Complete | Lockfile tree inspection + npm registry version queries; no audit-fix run | None |
+| Risk table | Complete | Above | None |
+| Minimal upgrade plan | Complete | Above | Approval |
+| Regression plan | Complete | Above | Run after implementation |
+| No code changed | Complete | Plan mode only | None |
+
+## Blocked / manual items
+
+- Preview and production redeploy after the bump are manual and out of scope for this phase.
+- `bun install` will rewrite `bun.lock`; that is unavoidable for any dependency change.
+
+## Questions before implementation
+
+1. Apply the Priority 1 TanStack bump now, or hold until the next feature window?
+2. Include the Priority 3 cosmetic overrides so the scanner reports zero findings, or leave them (they carry a small build-tooling risk and zero runtime benefit)?
+
+---
+
+- SAFE TO IMPLEMENT: YES
+- URGENT FIX REQUIRED: NO
+- RECOMMENDED IMPLEMENTATION ORDER: P1 TanStack minor bump → verify build/SSR/routes → optional P3 overrides → verify build again → publish
+- ESTIMATED NUMBER OF FILES CHANGED: 2
+- PACKAGE.JSON CHANGE REQUIRED: YES
+- LOCKFILE CHANGE REQUIRED: YES
+- MAJOR FRAMEWORK UPGRADE REQUIRED: NO
