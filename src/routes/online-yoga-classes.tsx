@@ -268,7 +268,7 @@ const FAQS_20: { q: string; a: string }[] = [
   { q: "Do you record classes I miss?",
     a: "For members, yes — a 48-hour catch-up recording is shared. But we strongly encourage attending live, because recordings cannot correct you." },
   { q: "How much do the classes cost?",
-    a: "Start with a free trial — 3 days of group class access plus one complimentary private session with Master Anil, no card required. After that, Small Group membership starts at $49/month. 1-on-1 Private is our premium personalized tier. We share the full pricing on your consultation call." },
+    a: "Start with a free trial — 3 days of live group access plus one complimentary private session with Master Anil, no card required. Memberships are then $19.99 for 1 month, $54.99 for 3 months, $99.99 for 6 months, or $179.99 for 12 months. 1-on-1 private and corporate packages are quoted on request." },
   { q: "How long until I see real results?",
     a: "Most students report better sleep and reduced back tension within 2 weeks, measurable flexibility gains by week 4, and clinical improvements (cycle regularity for PCOD, pain-free hours for back pain) by weeks 8–12." },
   { q: "Is this safe during pregnancy or postpartum?",
