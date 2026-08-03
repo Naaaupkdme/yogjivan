@@ -752,7 +752,7 @@ function OnlineYogaClassesPage() {
             </div>
             <div>
               <p className="text-foreground/90 leading-relaxed">
-                Master Anil Choudhary began his practice in India over two decades ago and has been teaching full-time since 2013. His work sits at the intersection of classical Indian yoga and modern therapeutic understanding — meaning every posture, breath and cue is chosen for a physiological outcome, not a photograph. He has personally guided more than 1,000 students in-studio and online, from complete beginners to Olympic-level athletes.
+                Master Anil Choudhary has taught authentic Indian yoga for over 12 years. His work sits at the intersection of classical Indian yoga and modern therapeutic understanding — meaning every posture, breath and cue is chosen for how it serves your body, not how it photographs. He has personally guided more than 1,000 students in-studio and online, most of whom arrived as complete beginners.
               </p>
               <p className="mt-4 text-foreground/90 leading-relaxed">
                 His teaching philosophy is simple: <span className="italic text-gold-gradient">"Yoga must fit the person — never force the person to fit the yoga."</span> He specializes in yoga therapy for chronic back pain, PCOD/PCOS, anxiety, insomnia and post-injury recovery, and refuses to teach a class larger than eight students online.
