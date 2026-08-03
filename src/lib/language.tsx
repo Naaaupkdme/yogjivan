@@ -82,7 +82,7 @@ const copy: Record<Lang, Copy> = {
         "1000+ Students",
         "Students from 20+ Countries",
         "Therapeutic Yoga Expert",
-        "Certified Indian Yoga Teacher",
+        "Founder & Lead Yoga Teacher",
       ],
     },
     story: {
