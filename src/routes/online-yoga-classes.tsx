@@ -100,11 +100,11 @@ const TRUST_STATS = [
 ];
 
 const CREDENTIALS = [
-  { icon: GraduationCap, label: "Certified in Classical Hatha, Ashtanga & Yoga Therapy — India" },
-  { icon: Stethoscope, label: "Therapeutic specialist: back pain, PCOD, anxiety, hypertension" },
-  { icon: Users, label: "1000+ students taught in studio & online since 2013" },
+  { icon: GraduationCap, label: "Trained in classical Hatha, Ashtanga & pranayama — Indian lineage" },
+  { icon: Stethoscope, label: "Therapeutic, safety-first sequencing — back, neck, cycle, stress and sleep support" },
+  { icon: Users, label: "1000+ students taught in studio & online" },
   { icon: Globe2, label: "Weekly students across 20+ countries — Asia, EU, Americas" },
-  { icon: Award, label: "Founder of Yog Jivan Sanctuary (Vietnam) & global online school" },
+  { icon: Award, label: "Founder & Lead Yoga Teacher, Yog Jivan Sanctuary (Vietnam) & global online school" },
   { icon: ShieldCheck, label: "Trauma-aware, injury-safe adjustments — no forced ranges" },
 ];
 
