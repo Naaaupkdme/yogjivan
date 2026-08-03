@@ -1,3 +1,6 @@
+// Sitewide FAQ content. All business facts come from src/lib/facts/*.
+import { CONTACT, LOCATIONS, ONLINE_CLASS, PRICING_SUMMARY, TRIAL } from "@/lib/facts";
+
 export const FAQS = [
   {
     q: "What styles of yoga do you teach?",
@@ -5,38 +8,50 @@ export const FAQS = [
   },
   {
     q: "I am a complete beginner — can I join?",
-    a: "Yes. Every program starts with a personal consultation. We design a safe entry point for absolute beginners and progress at your pace.",
+    a: "Yes. Every journey starts with a short 15-minute onboarding and health-assessment conversation, so we can design a safe entry point for absolute beginners and progress at your pace.",
   },
   {
     q: "Do you offer private one-on-one sessions?",
-    a: "Yes. Private transformation programs are our signature offering — fully personalized to your body, health history and goals, available in-studio or online.",
+    a: "Yes. Private programs are our signature offering — personalized to your body, health history and goals, available in-studio or online.",
   },
   {
     q: "Can yoga help with back pain, PCOD or anxiety?",
-    a: "Our therapeutic programs address back and neck pain, PCOD/hormonal balance, anxiety, sleep, post-injury recovery and stress-related conditions through evidence-informed practice.",
+    a: "Our therapeutic programs support back and neck comfort, PCOD and cycle-related concerns, stress, sleep and post-injury recovery. Yoga complements — it never replaces — care from your doctor, and we don't promise specific medical outcomes.",
   },
   {
     q: "Where are the studios located?",
-    a: "Our two studios are in Hai Duong City, Vietnam — Yog Jivan Sanctuary at Nha Thi Dau 1, Bui Thi Xuan, P. Le Thanh Nghi, Hai Duong City, Hai Duong Province, 170000, and Yog Jivan Wellness & Healing Center at W8R8+42R, 5 Ngo Quyen, Thanh Dong, Hai Duong, Hai Duong Province, 170000.",
+    a: `Both studios are in the ${LOCATIONS.studio1.localDescriptor} of Hai Phong, Vietnam — ${LOCATIONS.studio1.name} at ${LOCATIONS.studio1.full}, and ${LOCATIONS.studio2.name} at ${LOCATIONS.studio2.full}.`,
   },
   {
     q: "Do you offer online classes for students outside Vietnam?",
-    a: "Yes. We serve students in 20+ countries through live online classes and private online programs across multiple time zones.",
+    a: `Yes. We teach students in 20+ countries through live online classes across multiple time zones. Every live class runs ${ONLINE_CLASS.durationMinutes} minutes with a maximum of ${ONLINE_CLASS.maxGroupSize} students.`,
+  },
+  {
+    q: "Is camera on required in live online classes?",
+    a: ONLINE_CLASS.cameraNote,
+  },
+  {
+    q: "What if I miss a live class?",
+    a: ONLINE_CLASS.recordings.note,
   },
   {
     q: "What languages are classes taught in?",
-    a: "Classes are conducted primarily in English, with Vietnamese support available at our studios.",
+    a: "Classes are taught in English, Vietnamese and Hindi.",
   },
   {
     q: "Do you offer corporate wellness programs?",
-    a: "Yes. We design custom corporate wellness packages — on-site, hybrid or fully online — for teams seeking stress reduction, posture correction and resilience.",
+    a: "Yes. We design custom corporate wellness packages — on-site, hybrid or fully online — for teams seeking stress reduction, posture support and resilience.",
   },
   {
     q: "Is there a kids yoga program?",
     a: "Yes. Our kids program builds focus, flexibility, breath awareness and emotional regulation through age-appropriate practice.",
   },
   {
-    q: "How do I book a free trial?",
-    a: "Tap Book Free Trial or message us on WhatsApp at +84 782 046 066 — we typically reply within 5 minutes.",
+    q: "How much do online memberships cost?",
+    a: PRICING_SUMMARY,
+  },
+  {
+    q: "How do I start the free trial?",
+    a: `${TRIAL.summary} Tap ${TRIAL.ctaLabel} or message us on WhatsApp at ${CONTACT.phoneDisplay}.`,
   },
 ];

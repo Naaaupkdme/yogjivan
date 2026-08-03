@@ -22,9 +22,9 @@ const QUOTES = [
 ];
 
 const TRUST_STRIP = [
-  { value: "12+", label: "Years Experience" },
-  { value: "1000+", label: "Students" },
-  { value: "4.9★", label: "Google Rating" },
+  { value: "12+", label: "Years Teaching" },
+  { value: "1000+", label: "Students Taught" },
+  { value: "20+", label: "Countries" },
   { value: "Global", label: "International Community" },
 ];
 
@@ -88,10 +88,15 @@ export function SiteFooter() {
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
               Rooted in tradition. Refined for modern life.
             </p>
-            <div className="mt-5 flex items-center gap-2 text-xs text-muted-foreground">
+            <a
+              href={SOCIAL.googleMapsStudio1}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-primary"
+            >
               <Star className="h-3.5 w-3.5 text-primary fill-primary" />
-              <span>4.9 Google · 1000+ lives transformed</span>
-            </div>
+              <span>5.0 on Google · read the reviews →</span>
+            </a>
             <div className="mt-5 flex items-center gap-2">
               {[
                 { href: SOCIAL.whatsapp, Icon: MessageCircle, label: "Open WhatsApp chat" },

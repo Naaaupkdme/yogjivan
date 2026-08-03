@@ -132,7 +132,7 @@ function StressPage() {
         { src: masterImages.rabbitPose, alt: "Gentle restorative posture in the sanctuary studio", caption: "Restorative practice · Hai Duong studio" },
       ]}
       portrait={masterImages.meditationPortrait}
-      portraitAlt="Master Anil Choudhary — Certified Indian Yoga Master and meditation teacher"
+      portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, meditation teacher"
       masterIntro={
         <>
           <p>Master Anil has taught pranayama and meditation to students living through everything from exam pressure and postpartum anxiety to executive burnout and grief. His stress-work is unhurried and layered — physical release first, breath second, meditation third — because that specific order is what actually shifts a chronically activated nervous system.</p>

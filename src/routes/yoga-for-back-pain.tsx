@@ -10,7 +10,7 @@ const ANSWER_CAPSULE =
 const { GraduationCap, Stethoscope, Users, Globe2, Award, ShieldCheck } = SHARED_CREDENTIAL_ICONS;
 
 const CREDENTIALS = [
-  { icon: GraduationCap, label: "Certified Indian Yoga Master — Yoga Therapy specialization" },
+  { icon: GraduationCap, label: "Founder & Lead Yoga Teacher — therapeutic, safety-first sequencing" },
   { icon: Stethoscope, label: "12+ years working with back pain, sciatica, disc issues and postural collapse" },
   { icon: Users, label: "Hundreds of back-pain students guided out of daily discomfort" },
   { icon: Globe2, label: "Studio students in Hai Duong · Online students in 20+ countries" },
@@ -137,7 +137,7 @@ function BackPainPage() {
         { src: masterImages.wallSeated, alt: "Student in a supported seated stretch by the studio window for gentle spinal decompression", caption: "Supported spinal decompression" },
       ]}
       portrait={masterImages.meditationPortrait}
-      portraitAlt="Master Anil Choudhary — Certified Indian Yoga Master and yoga therapist"
+      portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, yoga therapist"
       masterIntro={
         <>
           <p>Master Anil has spent 12+ years working therapeutically with back-pain students — desk workers, post-pregnancy mothers, athletes recovering from disc injuries, and older students managing chronic stiffness. His methodology is unhurried, alignment-first, and grounded in the reality that no two backs are the same.</p>

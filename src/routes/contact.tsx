@@ -21,7 +21,7 @@ export const Route = createFileRoute("/contact")({
           "@type": "FAQPage",
           mainEntity: [
             { "@type": "Question", name: "Do you offer a free trial class?", acceptedAnswer: { "@type": "Answer", text: "Yes — every new student receives a complimentary consultation and trial session." } },
-            { "@type": "Question", name: "Where are your studios located?", acceptedAnswer: { "@type": "Answer", text: "Two premium studios in Hai Duong City, Vietnam." } },
+            { "@type": "Question", name: "Where are your studios located?", acceptedAnswer: { "@type": "Answer", text: "Two premium studios in the Hai Duong urban area of Hai Phong, Vietnam." } },
             { "@type": "Question", name: "Do you teach online?", acceptedAnswer: { "@type": "Answer", text: "Yes. Live cohort programs and on-demand series are available worldwide." } },
           ],
         }),

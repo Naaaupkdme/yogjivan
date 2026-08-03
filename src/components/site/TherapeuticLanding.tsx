@@ -39,7 +39,7 @@ const TRUST_STATS = [
   { k: "12+", v: "Years Teaching" },
   { k: "1000+", v: "Students Guided" },
   { k: "20+", v: "Countries" },
-  { k: "4.9★", v: "Google Rated" },
+  { k: "Max 8", v: "Per Live Class" },
   { k: "Free", v: "First Consultation" },
 ];
 
@@ -113,7 +113,7 @@ export function TherapeuticLanding(props: TherapeuticPageProps) {
           <SectionHead
             eyebrow="Your Teacher · E-E-A-T"
             title="Master Anil Choudhary"
-            sub="Certified Indian Yoga Master · Yoga Therapist · Founder, Yog Jivan Sanctuary"
+            sub="Founder & Lead Yoga Teacher, Yog Jivan Sanctuary"
           />
           <div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-[2fr_3fr] lg:items-center">
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10">

@@ -28,7 +28,7 @@ const schema = z.object({
 const TRUST = [
   { Icon: Sparkles, t: "12+ Years" },
   { Icon: Heart, t: "1000+ Transformed" },
-  { Icon: ShieldCheck, t: "4.9 Google" },
+  { Icon: ShieldCheck, t: "Small batches, max 8" },
   { Icon: Clock, t: "Reply < 5 min" },
 ];
 

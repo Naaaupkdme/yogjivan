@@ -138,7 +138,7 @@ function ThyroidPage() {
         { src: masterImages.savasanaClass, alt: "Students resting in Savasana at the close of a therapeutic class", caption: "Closing Savasana · nervous-system rest" },
       ]}
       portrait={masterImages.meditationPortrait}
-      portraitAlt="Master Anil Choudhary — Certified Indian Yoga Master and therapeutic yoga teacher"
+      portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, therapeutic yoga teacher"
       masterIntro={
         <>
           <p>Master Anil has supported many students living with hypo- and hyperthyroid conditions over 12+ years of teaching. His approach is patient and practical — coordinated with your medical team, adapted to your energy each day, and built for the long, quiet work that thyroid conditions actually require.</p>

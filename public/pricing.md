@@ -1,43 +1,46 @@
-# Pricing — Yog Jivan Sanctuary
+# Pricing — Yog Jivan
 
-Authentic Indian yoga with Certified Master Anil Choudhary. Studios in Hai Duong, Vietnam; live online classes worldwide. All prices in USD unless noted; VND rates apply at the Hai Duong studio.
+Authentic Indian yoga with Master Anil Choudhary, Founder & Lead Yoga Teacher. Two studios in the Hai Duong urban area of Hai Phong, Vietnam; live online classes worldwide. Online prices in USD. Studio (VND) rates are shared directly on request.
 
 Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/contact
 
 ## Free Trial
 - Price: $0
-- Includes: 3-day free trial access to live group online classes with Master Anil, plus one complimentary private session (Zoom or Google Meet)
-- Limits: One trial per new student · no credit card required
+- Includes: 3 days of free live group class access, plus one complimentary private session
+- Also included: a short 15-minute onboarding and health-assessment conversation before your first live class
+- Limits: One introductory offer per new student · no card required
 - Best for: First-time students evaluating fit before committing
 
-## Small-Group Online Classes
-- Price: starting at $49 / month
-- Includes: Live, small-batch online yoga classes (max 8 students) led personally by Master Anil; therapeutic sequencing; verbal alignment cueing
-- Limits: Class cap 8 students · live only (see note on recordings below)
+## Live Online Memberships (small-group)
+- 1 month — $19.99
+- 3 months — $54.99
+- 6 months — $99.99
+- 12 months — $179.99
+- Includes: Live, small-batch online classes (max 8 students) led personally by Master Anil; therapeutic, safety-first sequencing; real-time verbal alignment correction
+- Class length: 60 minutes · Camera on required for correction · Languages: English, Vietnamese, Hindi
 - Format: Zoom / Google Meet
 - Best for: Students worldwide wanting consistent, teacher-led practice
 
 ## 1-on-1 Private Sessions (Online or Studio)
 - Price: Custom — contact for a quote
-- Includes: Fully personalized program, intake assessment, written 4-week plan, bi-weekly outcome reviews, WhatsApp support between sessions
-- Format: Online (Zoom) or in-person at the Hai Duong studio
-- Best for: Therapeutic goals (back pain, PCOD, anxiety, post-injury) or advanced practitioners
+- Includes: Personalized program, onboarding health assessment, progress reviews, direct support between sessions
+- Format: Online or in-person at the studios
+- Best for: Therapeutic goals or advanced practitioners
 
-## Studio Membership — Hai Duong, Vietnam
+## Studio Membership — Hai Duong urban area, Hai Phong, Vietnam
 - Price: Contact for current rates (VND)
-- Includes: Unlimited group classes at Yog Jivan studios in Hai Duong; access to community events
+- Includes: Group classes at the Yog Jivan studios; community events
 - Format: In-person only
-- Best for: Local students in Hai Duong / Hai Phong area
 
 ## Corporate Wellness
 - Price: Custom — contact for a proposal
-- Includes: Onsite or online yoga programs for teams, workshops, wellness retreats
+- Includes: Onsite or online yoga programs for teams, workshops, wellness sessions
 - Format: Onsite (Vietnam) or online (worldwide)
-- Best for: Companies investing in employee wellbeing
 
 ## Notes
 - Every class — in-studio or online — is taught personally by Master Anil Choudhary. Yog Jivan does not use substitute or rotating teachers.
 - Session recordings: members receive a 48-hour catch-up recording for missed classes. Live attendance is strongly encouraged — recordings cannot correct your posture in real time.
+- Refunds: memberships are generally non-refundable once activated or after the first class is used. Exceptions always apply for duplicate payment, cancellation or non-delivery by Yog Jivan, material service failure, and any rights under applicable consumer law. Email hello@yogjivan.com.
 - Yoga is complementary to, not a substitute for, medical care.
 
-Last updated: 2026-07-24
+Last updated: 2026-08-04

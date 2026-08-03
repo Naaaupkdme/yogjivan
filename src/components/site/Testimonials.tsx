@@ -47,9 +47,9 @@ const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
 ];
 
 const TRUST = [
-  { value: "4.9★", label: "Google Rating" },
-  { value: "1000+", label: "Lives Transformed" },
-  { value: "12+", label: "Years Experience" },
+  { value: "12+", label: "Years Teaching" },
+  { value: "1000+", label: "Students Taught" },
+  { value: "20+", label: "Countries" },
   { value: "2", label: "Premium Studios" },
   { value: "Global", label: "Online Community" },
 ];
@@ -112,7 +112,7 @@ export function Testimonials({ items = DEFAULT_TESTIMONIALS }: { items?: Testimo
                 {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
               </div>
               <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[0.55rem] uppercase tracking-[0.22em] text-primary">
-                <BadgeCheck className="h-3 w-3" /> Verified Google Review
+                <BadgeCheck className="h-3 w-3" /> Student Story
               </div>
             </div>
             <p className="mt-5 text-[clamp(1.05rem,1.8vw,1.5rem)] leading-relaxed">"{item.quote}"</p>

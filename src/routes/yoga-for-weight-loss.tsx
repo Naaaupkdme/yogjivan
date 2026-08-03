@@ -132,7 +132,7 @@ function WeightLossPage() {
         { src: masterImages.studioSplit, alt: "Deep seated forward-fold work building endurance and body awareness", caption: "Endurance work · Hai Duong studio" },
       ]}
       portrait={masterImages.meditationPortrait}
-      portraitAlt="Master Anil Choudhary — Certified Indian Yoga Master and lifestyle mentor"
+      portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, lifestyle mentor"
       masterIntro={
         <>
           <p>Master Anil has guided long-term students through sustainable body-composition change without crash plans or shame-based coaching. The results that last, in his experience, are always the ones where sleep, meals and daily rhythm change alongside the practice — which is why every weight-loss journey at Yog Jivan is paired with a Holistic Lifestyle Consultation.</p>

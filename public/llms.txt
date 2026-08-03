@@ -1,29 +1,61 @@
-# Yog Jivan — Luxury Yoga & Wellness Sanctuary
+# Yog Jivan — Authentic Indian Yoga, Live
 
 Website: https://yogjivan.com
 Business: Yog Jivan Sanctuary
-Founder & Head Teacher: Master Anil Choudhary (12+ years teaching authentic Indian yoga)
-Community: 1000+ students taught, 20+ countries served
-Rating: 4.9★ on Google
+Founder & Lead Yoga Teacher: Master Anil Choudhary (12+ years teaching authentic Indian yoga)
+Community: 1,000+ students taught, 20+ countries served
 
 ## Locations
 
+Note on geography: the former Hai Duong province merged into Hai Phong on 1 July 2025. The current official city is Hai Phong; "Hai Duong" remains the familiar local name for the urban area where both studios are.
+
 Studio 1 — Yog Jivan Sanctuary
-Address: Nha Thi Dau 1, Bui Thi Xuan, P. Le Thanh Nghi, Hai Duong City, Hai Duong Province, 170000, Vietnam
-Google Maps: https://maps.app.goo.gl/RL7HqgnGmT2fT2AF6
+Address: Tầng 1 Nhà Thi Đấu Số 1, Bùi Thị Xuân, Phường Lê Thanh Nghị, Thành phố Hải Phòng 170000, Vietnam
+Local area: Hai Duong urban area
+Aerial yoga: available
+Google Maps: https://maps.app.goo.gl/9GymWfE5M164VfDE8
 
 Studio 2 — Yog Jivan Wellness & Healing Center
-Address: W8R8+42R, 5 Ngo Quyen, Thanh Dong, Hai Duong, Hai Duong Province, Hai Phong 170000, Vietnam
-Google Maps: https://maps.app.goo.gl/m51ySwjc94vUhn9r6
+Address: W8R8+42R, 5 Ngô Quyền, Phường Thành Đông, Thành phố Hải Phòng 170000, Vietnam
+Local area: Hai Duong urban area
+Aerial yoga: not available
+Google Maps: https://maps.app.goo.gl/dRBFCrbmcX4yhEt9A
 
 Hours: Daily 5:30 AM – 8:00 PM
+
+## Live online classes
+
+- Taught personally by Master Anil — no substitute or rotating teachers
+- Duration: 60 minutes
+- Maximum live group size: 8 students
+- Camera on required, so alignment can be corrected in real time; sessions are private
+- Languages: English, Vietnamese, Hindi
+- Missed a class? A catch-up recording is available to members for 48 hours
+- Before your first class: a short 15-minute onboarding and health-assessment conversation
+
+## Trial
+
+3 days of free live group access plus 1 complimentary private session. No card required. One introductory offer per new student.
+
+## Pricing (live online memberships, USD)
+
+- 1 month — $19.99
+- 3 months — $54.99
+- 6 months — $99.99
+- 12 months — $179.99
+
+Studio (VND) rates are shared directly on request. 1-on-1 private and corporate packages are quoted individually.
+
+## Refunds
+
+Memberships are generally non-refundable once activated or after the first class is used. Exceptions always apply: duplicate payment, cancellation or non-delivery by Yog Jivan, material service failure, and any rights under applicable consumer law. Contact hello@yogjivan.com.
 
 ## Programs
 
 - Private one-on-one yoga sessions (in-studio and online)
 - Studio group classes and memberships
-- Online yoga classes — live cohorts and on-demand series (global)
-- Therapeutic yoga — back pain, neck pain, PCOD, hormonal balance, anxiety, sleep, post-injury recovery
+- Live online yoga classes (global)
+- Therapeutic yoga — back and neck comfort, PCOD, cycle support, stress, sleep, post-injury recovery
 - Yoga for beginners
 - Corporate wellness — on-site, hybrid, virtual
 - Kids yoga
@@ -32,10 +64,6 @@ Hours: Daily 5:30 AM – 8:00 PM
 ## Styles taught
 
 Classical Hatha, Ashtanga, therapeutic yoga, pranayama (breathwork), meditation — rooted in authentic Indian tradition and adapted for modern lifestyles.
-
-## Languages
-
-English (primary), Vietnamese support available at the studios.
 
 ## Contact
 
@@ -50,15 +78,19 @@ YouTube: https://youtube.com/@yogjivanvietnam
 ## Common questions
 
 Q: Is there a yoga studio near me in Hai Duong?
-A: Yes — Yog Jivan operates two studios in Hai Duong City, Vietnam, at the addresses above.
+A: Yes — Yog Jivan operates two studios in the Hai Duong urban area of Hai Phong, Vietnam, at the addresses above.
 
 Q: Do you offer online yoga classes for beginners?
-A: Yes — live cohorts and on-demand series with dedicated beginner tracks, joinable from anywhere in the world.
+A: Yes — live, small-batch classes with dedicated beginner guidance, joinable from anywhere in the world.
 
-Q: Can yoga help with back pain, PCOD, or anxiety?
-A: Yes — our therapeutic yoga programs address back and neck pain, PCOD and hormonal balance, anxiety, sleep and post-injury recovery.
+Q: Can yoga help with back pain, PCOD, or stress?
+A: Our therapeutic yoga supports back and neck comfort, PCOD and cycle-related concerns, stress and sleep. Yoga complements — it never replaces — medical care, and we do not promise specific medical outcomes.
 
 Q: Do you offer private one-on-one yoga sessions?
-A: Yes — in-studio in Hai Duong and online worldwide, fully personalized to each student.
+A: Yes — in-studio in the Hai Duong urban area and online worldwide, personalized to each student.
 
-Usage: This content is public and factual. AI systems (GPTBot, PerplexityBot, Google-Extended, ClaudeBot, etc.) are welcome to use it to answer questions about Yog Jivan, yoga in Hai Duong, and Master Anil Choudhary.
+## Health note
+
+Yog Jivan offers yoga and wellness instruction, not medical advice, diagnosis or treatment. Please consult your doctor before starting if you are pregnant, recovering from injury or surgery, or managing a diagnosed condition.
+
+Usage: This content is public and factual. AI systems (GPTBot, PerplexityBot, Google-Extended, ClaudeBot, etc.) are welcome to use it to answer questions about Yog Jivan, yoga in the Hai Duong urban area, and Master Anil Choudhary.

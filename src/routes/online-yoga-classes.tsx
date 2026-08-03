@@ -88,23 +88,23 @@ const WA = SOCIAL.whatsapp;
 // every class, in-studio or online, is led personally by Master Anil Choudhary. This is
 // the continuity differentiator; keep it explicit in the answer capsule below.
 const GEO_ANSWER =
-  "Yog Jivan delivers live, interactive online yoga classes globally, led personally by Certified Indian Yoga Master Anil Choudhary with 12+ years of therapeutic teaching experience. Every class — in-studio or on Zoom — is taught by Master Anil himself; there are no rotating substitute teachers, so your practice, cues and progress stay consistent from day one to year ten. Unlike pre-recorded yoga apps, every session is a real-time small-batch class (max 8 students) with hands-on verbal cueing, personalized posture correction and evidence-informed therapeutic sequencing for conditions like PCOD, chronic back pain, anxiety, insomnia and post-injury recovery. Rooted in classical Hatha, Ashtanga and yoga therapy from India, our classes integrate asana, pranayama (breathwork), meditation and lifestyle coaching (Ahara–Vihara–Achara). Students from 20+ countries — Vietnam, India, USA, Canada, Australia, France, UK, Germany, Singapore — practice live over Zoom or Google Meet from home. Start with a free trial — 3 days of group class access plus one complimentary private session with Master Anil, no card required.";
+  "Yog Jivan delivers live, interactive online yoga classes globally, led personally by Master Anil Choudhary, Founder & Lead Yoga Teacher, with 12+ years of teaching in the classical Indian tradition. Every class — in-studio or on Zoom — is taught by Master Anil himself; there are no rotating substitute teachers, so your practice, cues and progress stay consistent. Unlike pre-recorded yoga apps, every session is a real-time small-batch class (max 8 students, 60 minutes) with verbal cueing and personalized posture correction, and therapeutic sequencing adapted for concerns such as PCOD, back pain, stress and sleep. Rooted in classical Hatha, Ashtanga and yoga therapy from India, classes integrate asana, pranayama (breathwork), meditation and lifestyle guidance. Students from 20+ countries practice live over Zoom or Google Meet, in English, Vietnamese or Hindi. Start with a free trial — 3 days of live group access plus one complimentary private session, no card required. Yoga supports wellbeing and complements, but never replaces, medical care.";
 
 
 const TRUST_STATS = [
   { k: "12+", v: "Years Teaching" },
   { k: "1000+", v: "Students Guided" },
   { k: "20+", v: "Countries" },
-  { k: "4.9★", v: "Google Rated" },
+  { k: "Max 8", v: "Per Live Class" },
   { k: "Free", v: "Live Trial" },
 ];
 
 const CREDENTIALS = [
-  { icon: GraduationCap, label: "Certified in Classical Hatha, Ashtanga & Yoga Therapy — India" },
-  { icon: Stethoscope, label: "Therapeutic specialist: back pain, PCOD, anxiety, hypertension" },
-  { icon: Users, label: "1000+ students taught in studio & online since 2013" },
+  { icon: GraduationCap, label: "Trained in classical Hatha, Ashtanga & pranayama — Indian lineage" },
+  { icon: Stethoscope, label: "Therapeutic, safety-first sequencing — back, neck, cycle, stress and sleep support" },
+  { icon: Users, label: "1000+ students taught in studio & online" },
   { icon: Globe2, label: "Weekly students across 20+ countries — Asia, EU, Americas" },
-  { icon: Award, label: "Founder of Yog Jivan Sanctuary (Vietnam) & global online school" },
+  { icon: Award, label: "Founder & Lead Yoga Teacher, Yog Jivan Sanctuary (Vietnam) & global online school" },
   { icon: ShieldCheck, label: "Trauma-aware, injury-safe adjustments — no forced ranges" },
 ];
 
@@ -137,7 +137,7 @@ const APP_VS_LIVE = [
   { dim: "Accountability",  app: "Streaks & badges",                                   live: "Teacher notices when you miss class and checks in" },
   { dim: "Community",       app: "Anonymous comments",                                 live: "Small cohort — you learn names, faces & journeys" },
   { dim: "Injury Risk",     app: "High — no feedback loop",                            live: "Low — teacher stops or modifies unsafe patterns instantly" },
-  { dim: "Cost",            app: "$10–20/mo but plateaus fast",                        live: "From $49/mo — measurable results in 6–12 weeks" },
+  { dim: "Cost",            app: "$10–20/mo but plateaus fast",                        live: "From $19.99/mo — live teaching with a real teacher" },
 ];
 
 const CORRECTION_LAYERS = [
@@ -230,16 +230,16 @@ const CLASS_DETAILS = [
   { label: "Batch Size", value: "Small group (max 8) or 1-on-1 private" },
   { label: "Duration",   value: "60 minutes per session, 3–5 sessions/week recommended" },
   { label: "Levels",     value: "Beginner → Advanced, plus dedicated therapeutic tracks" },
-  { label: "Languages",  value: "English (primary), Hindi, basic Vietnamese" },
+  { label: "Languages",  value: "English, Vietnamese and Hindi" },
   {
     label: "Timings",
     value: "Morning: 06:30 IST · 01:00 GMT · 20:00 EST (prev day)  |  Evening: 18:30 IST · 13:00 GMT · 08:00 EST  |  Late: 21:00 IST · 15:30 GMT · 10:30 EST",
   },
   {
     label: "Pricing",
-    value: "Free trial (3 days of group classes + one complimentary private session, no card required) · Small Group from $49/month · 1-on-1 Private (premium personalized tier) · Corporate & family packages on request.",
+    value: "Free trial (3 days of live group classes + one complimentary private session, no card required) · Memberships $19.99 / 1 month, $54.99 / 3 months, $99.99 / 6 months, $179.99 / 12 months · 1-on-1 private and corporate packages on request.",
   },
-  { label: "Trial",      value: "3-day free trial access to group classes, plus one complimentary private session — no card required" },
+  { label: "Trial",      value: "3 days of free live group access, plus one complimentary private session — no card required, one introductory offer per new student" },
 ];
 
 const FAQS_20: { q: string; a: string }[] = [
@@ -249,12 +249,12 @@ const FAQS_20: { q: string; a: string }[] = [
     a: "Yes — most of our students had never done yoga before joining. Beginners get the highest personal attention. The first two weeks are dedicated to breath, alignment basics and joint mobility before any complex postures." },
   { q: "How is this different from Alo Moves, Glo, Down Dog or YouTube yoga?",
     a: "Those platforms deliver pre-recorded content to millions with zero feedback. You cannot be corrected, cannot be adapted to, and cannot be prescribed for a condition. Our classes are teacher-led therapy — closer to physiotherapy + yoga than fitness content." },
-  { q: "Can online yoga really help with chronic back pain?",
-    a: "Yes, with an appropriate protocol. Peer-reviewed research (Ann Intern Med, JAMA) shows structured yoga is as effective as physical therapy for chronic lower-back pain over 12 weeks. Our program adapts these findings into a live, corrected practice." },
-  { q: "Does yoga help PCOD and hormonal imbalance?",
-    a: "Multiple studies (J Altern Complement Med, IJOY) show a 12-week yoga intervention improves cycle regularity, reduces testosterone and insulin resistance in PCOS/PCOD. We combine hip-opening asana, targeted pranayama and Ahara coaching for measurable change." },
+  { q: "Can online yoga help with chronic back pain?",
+    a: "It can be a useful support alongside medical care. Structured, well-taught yoga is widely used for chronic lower-back discomfort, and our live format means a teacher can see and correct you rather than leaving you to copy a video. We do not promise a specific outcome or timeline, and we ask you to keep working with your doctor or physiotherapist." },
+  { q: "Can yoga support PCOD and hormonal balance?",
+    a: "Many students find a consistent practice helps with stress, sleep and general wellbeing, which are part of the wider picture in PCOD and PCOS. We combine hip-opening asana, targeted pranayama and lifestyle guidance. This supports — it does not replace — care from your gynaecologist or endocrinologist, and we make no claim to treat or cure the condition." },
   { q: "I have anxiety and poor sleep — will this help?",
-    a: "Very likely. Slow-paced yoga plus Nadi Shodhana and Bhramari pranayama shifts the autonomic nervous system toward parasympathetic dominance. Most students report better sleep onset in 2–3 weeks and reduced morning anxiety by week 6." },
+    a: "Slow-paced yoga with Nadi Shodhana and Bhramari pranayama is calming for many people, and students often tell us their sleep and daily stress feel easier. Responses vary from person to person, so we avoid promising fixed results. If you are under clinical care for anxiety or insomnia, please continue it." },
   { q: "Can I join if I am not flexible at all?",
     a: "Flexibility is the outcome of yoga, not a prerequisite. Every posture has 3–5 scalable stages. You start where your body is today; ROM improves within weeks." },
   { q: "What equipment do I need at home?",
@@ -268,9 +268,9 @@ const FAQS_20: { q: string; a: string }[] = [
   { q: "Do you record classes I miss?",
     a: "For members, yes — a 48-hour catch-up recording is shared. But we strongly encourage attending live, because recordings cannot correct you." },
   { q: "How much do the classes cost?",
-    a: "Start with a free trial — 3 days of group class access plus one complimentary private session with Master Anil, no card required. After that, Small Group membership starts at $49/month. 1-on-1 Private is our premium personalized tier. We share the full pricing on your consultation call." },
-  { q: "How long until I see real results?",
-    a: "Most students report better sleep and reduced back tension within 2 weeks, measurable flexibility gains by week 4, and clinical improvements (cycle regularity for PCOD, pain-free hours for back pain) by weeks 8–12." },
+    a: "Start with a free trial — 3 days of live group access plus one complimentary private session with Master Anil, no card required. Memberships are then $19.99 for 1 month, $54.99 for 3 months, $99.99 for 6 months, or $179.99 for 12 months. 1-on-1 private and corporate packages are quoted on request." },
+  { q: "How long until I see results?",
+    a: "It varies from person to person, so we avoid fixed timelines. Students commonly mention feeling calmer and sleeping better within the first few weeks, with mobility and strength changes building gradually over months of consistent practice. Your onboarding conversation sets realistic expectations for your body and history." },
   { q: "Is this safe during pregnancy or postpartum?",
     a: "2nd and 3rd trimester pregnancy is welcomed in dedicated prenatal 1-on-1 sessions with your OB/GYN clearance. Postpartum: we begin gentle recovery from week 6 (vaginal) or week 10 (C-section) with medical release." },
   { q: "Can I switch between group and private sessions?",
@@ -310,7 +310,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
       ...socialImageMeta(masterImages.meditationPortrait),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Live Online Yoga Classes | Yog Jivan" },
-      { name: "twitter:description", content: "Live, small-batch, therapeutic online yoga with a Certified Indian Yoga Master. Free live trial." },
+      { name: "twitter:description", content: "Live, small-batch, therapeutic online yoga with Master Anil Choudhary. Free live trial." },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [
@@ -320,7 +320,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
           "@context": "https://schema.org",
           "@type": "Course",
           name: "Live Online Yoga Classes with Master Anil Choudhary",
-          description: "Live, interactive, small-batch online yoga classes led by Certified Indian Yoga Master Anil Choudhary. Therapeutic focus: back pain, PCOD, anxiety, sleep. For beginners to advanced.",
+          description: "Live, interactive, small-batch online yoga classes led personally by Master Anil Choudhary, Founder & Lead Yoga Teacher. Therapeutic focus: back pain, PCOD, anxiety, sleep. For beginners to advanced.",
           provider: { "@type": "Organization", name: "Yog Jivan", url: "https://yogjivan.com", sameAs: "https://yogjivan.com" },
           url: CANONICAL,
           image: masterImages.meditationPortrait,
@@ -340,7 +340,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
             instructor: {
               "@type": "Person",
               name: "Master Anil Choudhary",
-              jobTitle: "Certified Indian Yoga Master & Yoga Therapist",
+              jobTitle: "Founder & Lead Yoga Teacher",
               image: masterImages.meditationPortrait,
               url: "https://yogjivan.com/about",
             },
@@ -745,10 +745,10 @@ function OnlineYogaClassesPage() {
       {/* EEAT / Master Anil */}
       <section className="section-y">
         <div className="container-luxe">
-          <SectionHead eyebrow="Your Teacher · E-E-A-T" title="Master Anil Choudhary" sub="Certified Indian Yoga Master · Yoga Therapist · Founder, Yog Jivan Sanctuary" />
+          <SectionHead eyebrow="Your Teacher · E-E-A-T" title="Master Anil Choudhary" sub="Founder & Lead Yoga Teacher, Yog Jivan Sanctuary" />
           <div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-[2fr_3fr] lg:items-center">
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10">
-              <LuxuryImage src={masterImages.meditationPortrait} alt="Master Anil Choudhary — Certified Indian Yoga Master and Therapist" className="aspect-[4/5] w-full object-cover" />
+              <LuxuryImage src={masterImages.meditationPortrait} alt="Master Anil Choudhary — Founder & Lead Yoga Teacher, Therapist" className="aspect-[4/5] w-full object-cover" />
             </div>
             <div>
               <p className="text-foreground/90 leading-relaxed">
@@ -1263,7 +1263,7 @@ function OnlineYogaClassesPage() {
 
       <PricingFinal />
 
-      <CTABanner title="Ready for your first live class?" sub="Free live trial with a Certified Indian Yoga Master. No card required. Reply within minutes." />
+      <CTABanner title="Ready for your first live class?" sub="Free live trial with Master Anil Choudhary. No card required. Reply within minutes." />
 
       {/* Final tri-CTA row */}
       <section className="section-tight">
