@@ -88,14 +88,14 @@ const WA = SOCIAL.whatsapp;
 // every class, in-studio or online, is led personally by Master Anil Choudhary. This is
 // the continuity differentiator; keep it explicit in the answer capsule below.
 const GEO_ANSWER =
-  "Yog Jivan delivers live, interactive online yoga classes globally, led personally by Certified Indian Yoga Master Anil Choudhary with 12+ years of therapeutic teaching experience. Every class — in-studio or on Zoom — is taught by Master Anil himself; there are no rotating substitute teachers, so your practice, cues and progress stay consistent from day one to year ten. Unlike pre-recorded yoga apps, every session is a real-time small-batch class (max 8 students) with hands-on verbal cueing, personalized posture correction and evidence-informed therapeutic sequencing for conditions like PCOD, chronic back pain, anxiety, insomnia and post-injury recovery. Rooted in classical Hatha, Ashtanga and yoga therapy from India, our classes integrate asana, pranayama (breathwork), meditation and lifestyle coaching (Ahara–Vihara–Achara). Students from 20+ countries — Vietnam, India, USA, Canada, Australia, France, UK, Germany, Singapore — practice live over Zoom or Google Meet from home. Start with a free trial — 3 days of group class access plus one complimentary private session with Master Anil, no card required.";
+  "Yog Jivan delivers live, interactive online yoga classes globally, led personally by Master Anil Choudhary, Founder & Lead Yoga Teacher, with 12+ years of teaching in the classical Indian tradition. Every class — in-studio or on Zoom — is taught by Master Anil himself; there are no rotating substitute teachers, so your practice, cues and progress stay consistent. Unlike pre-recorded yoga apps, every session is a real-time small-batch class (max 8 students, 60 minutes) with verbal cueing and personalized posture correction, and therapeutic sequencing adapted for concerns such as PCOD, back pain, stress and sleep. Rooted in classical Hatha, Ashtanga and yoga therapy from India, classes integrate asana, pranayama (breathwork), meditation and lifestyle guidance. Students from 20+ countries practice live over Zoom or Google Meet, in English, Vietnamese or Hindi. Start with a free trial — 3 days of live group access plus one complimentary private session, no card required. Yoga supports wellbeing and complements, but never replaces, medical care.";
 
 
 const TRUST_STATS = [
   { k: "12+", v: "Years Teaching" },
   { k: "1000+", v: "Students Guided" },
   { k: "20+", v: "Countries" },
-  { k: "4.9★", v: "Google Rated" },
+  { k: "Max 8", v: "Per Live Class" },
   { k: "Free", v: "Live Trial" },
 ];
 
