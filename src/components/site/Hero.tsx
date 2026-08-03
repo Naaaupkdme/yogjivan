@@ -173,10 +173,14 @@ export function Hero() {
             <Link to="/contact" hash="consultation" className="btn-gold">
               {t.hero.primary} <ArrowRight className="h-4 w-4" />
             </Link>
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="btn-ghost-gold">
+            <Link to="/online-yoga-classes" className="btn-ghost-gold">
+              {t.hero.online}
+            </Link>
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground">
               <MessageCircle className="h-3.5 w-3.5 text-[#25D366]" /> {t.hero.secondary}
             </a>
           </div>
+
 
           <div className="hero-reveal mt-6 flex flex-wrap justify-center lg:justify-start gap-2">
             {t.hero.trust.map((item) => (
