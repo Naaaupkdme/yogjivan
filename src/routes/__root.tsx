@@ -17,8 +17,10 @@ import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { FloatingConsultationCTA } from "@/components/site/FloatingConsultationCTA";
 import { ExitIntentModal } from "@/components/site/ExitIntentModal";
-import { CookieConsent, getConsent, CONSENT_EVENT } from "@/components/site/CookieConsent";
+import { CookieConsent } from "@/components/site/CookieConsent";
+import { initAnalytics, trackPageView, trackCta, metaEvent, CONSENT_EVENT } from "@/lib/analytics";
 import { LanguageProvider } from "@/lib/language";
+
 
 function NotFoundComponent() {
   return (
