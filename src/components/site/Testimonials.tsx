@@ -47,9 +47,9 @@ const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
 ];
 
 const TRUST = [
-  { value: "4.9★", label: "Google Rating" },
-  { value: "1000+", label: "Lives Transformed" },
-  { value: "12+", label: "Years Experience" },
+  { value: "12+", label: "Years Teaching" },
+  { value: "1000+", label: "Students Taught" },
+  { value: "20+", label: "Countries" },
   { value: "2", label: "Premium Studios" },
   { value: "Global", label: "Online Community" },
 ];
