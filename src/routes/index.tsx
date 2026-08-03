@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 import { Hero } from "@/components/site/Hero";
+import { LocalIntro } from "@/components/site/LocalIntro";
 import { FAQS } from "@/lib/faqs";
 
 const Philosophy = lazy(() => import("@/components/site/Philosophy").then(m => ({ default: m.Philosophy })));
