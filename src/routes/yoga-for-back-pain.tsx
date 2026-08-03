@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
-import { masterImages } from "@/lib/images";
+import { masterImages, socialImageMeta } from "@/lib/images";
 
 const CANONICAL = "https://yogjivan.com/yoga-for-back-pain";
 
@@ -82,11 +82,10 @@ export const Route = createFileRoute("/yoga-for-back-pain")({
       { property: "og:description", content: "Personalized therapeutic yoga for back pain. Studio in Hai Duong & live online. Small-batch. Alignment-first. Book a free consultation with Master Anil." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: masterImages.wallSeated },
+      ...socialImageMeta(masterImages.wallSeated),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Yoga for Back Pain Relief | Yog Jivan" },
       { name: "twitter:description", content: "Therapeutic yoga for back pain — studio Hai Duong & online. Free consultation." },
-      { name: "twitter:image", content: masterImages.wallSeated },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [

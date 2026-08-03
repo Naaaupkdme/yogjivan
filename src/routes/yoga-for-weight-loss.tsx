@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
-import { masterImages } from "@/lib/images";
+import { masterImages, socialImageMeta } from "@/lib/images";
 
 const CANONICAL = "https://yogjivan.com/yoga-for-weight-loss";
 
@@ -79,11 +79,10 @@ export const Route = createFileRoute("/yoga-for-weight-loss")({
       { property: "og:description", content: "Yoga, breath, sleep and lifestyle — the honest way to lasting body composition change. Studio & online. Free consultation." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: masterImages.warriorClass },
+      ...socialImageMeta(masterImages.warriorClass),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Yoga for Weight Loss | Yog Jivan" },
       { name: "twitter:description", content: "Sustainable, whole-body approach to weight loss through yoga. Free consultation." },
-      { name: "twitter:image", content: masterImages.warriorClass },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [

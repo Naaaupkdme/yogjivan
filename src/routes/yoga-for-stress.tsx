@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
-import { masterImages } from "@/lib/images";
+import { masterImages, socialImageMeta } from "@/lib/images";
 
 const CANONICAL = "https://yogjivan.com/yoga-for-stress";
 
@@ -79,11 +79,10 @@ export const Route = createFileRoute("/yoga-for-stress")({
       { property: "og:description", content: "Pranayama, meditation and gentle asana for genuine stress relief. Studio in Hai Duong & live online. Free consultation." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: masterImages.savasanaClass },
+      ...socialImageMeta(masterImages.savasanaClass),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Yoga for Stress Relief | Yog Jivan" },
       { name: "twitter:description", content: "Yoga, breath work and meditation to shift out of chronic stress. Free consultation." },
-      { name: "twitter:image", content: masterImages.savasanaClass },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
-import { masterImages } from "@/lib/images";
+import { masterImages, socialImageMeta } from "@/lib/images";
 
 const CANONICAL = "https://yogjivan.com/yoga-for-expats-in-vietnam";
 
@@ -79,11 +79,10 @@ export const Route = createFileRoute("/yoga-for-expats-in-vietnam")({
       { property: "og:description", content: "English-speaking yoga sanctuary in Hai Duong — authentic Indian practice with Master Anil. Studio & online. Free consultation." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: masterImages.groupNamaste },
+      ...socialImageMeta(masterImages.groupNamaste),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Yoga for Expats in Vietnam | Yog Jivan" },
       { name: "twitter:description", content: "English-speaking yoga sanctuary in Hai Duong. Free consultation." },
-      { name: "twitter:image", content: masterImages.groupNamaste },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [

@@ -4,7 +4,7 @@ import { Testimonials } from "@/components/site/Testimonials";
 import { LuxuryImage } from "@/components/site/LuxuryImage";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SOCIAL } from "@/lib/social";
-import { masterImages } from "@/lib/images";
+import { masterImages, socialImageMeta } from "@/lib/images";
 import heroVideoAsset from "@/assets/hero-meditation.mp4.asset.json";
 import {
   Award, Users, Globe2, CheckCircle2, XCircle, Sparkles, Eye, Wind, Activity,
@@ -307,11 +307,10 @@ export const Route = createFileRoute("/online-yoga-classes")({
       { property: "og:description", content: "Authentic live online yoga worldwide. Small-batch, therapeutic, personalized. Free live trial — no card required." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: masterImages.meditationPortrait },
+      ...socialImageMeta(masterImages.meditationPortrait),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Live Online Yoga Classes | Yog Jivan" },
       { name: "twitter:description", content: "Live, small-batch, therapeutic online yoga with a Certified Indian Yoga Master. Free live trial." },
-      { name: "twitter:image", content: masterImages.meditationPortrait },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [
