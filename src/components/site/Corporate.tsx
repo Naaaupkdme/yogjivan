@@ -3,11 +3,14 @@ import { Briefcase, Building2, HeartPulse, TrendingUp } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import corporateA from "@/assets/img_20260621_105308.jpg.asset.json";
 import corporateB from "@/assets/img_20260622_114016.jpg.asset.json";
+import { PUBLIC_TRUST } from "@/lib/facts";
 
+// Only claims supported by confirmed facts. The "91% reported stress reduction"
+// and average-rating figures were removed — see UNPUBLISHED_CLAIMS in src/lib/facts/trust.ts.
 const stats = [
-  { Icon: Briefcase, value: "20+", label: "Countries served" },
-  { Icon: TrendingUp, value: "91%", label: "Reported stress reduction" },
-  { Icon: HeartPulse, value: "4.9", label: "Average student rating" },
+  { Icon: Briefcase, value: PUBLIC_TRUST.countries, label: "Countries served" },
+  { Icon: TrendingUp, value: PUBLIC_TRUST.yearsTeaching, label: "Years teaching" },
+  { Icon: HeartPulse, value: String(PUBLIC_TRUST.maxGroupSize), label: "Max students per live class" },
   { Icon: Building2, value: "2", label: "Premium studios" },
 ];
 
