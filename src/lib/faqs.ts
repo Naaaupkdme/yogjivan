@@ -54,4 +54,8 @@ export const FAQS = [
     q: "How do I start the free trial?",
     a: `${TRIAL.summary} Tap ${TRIAL.ctaLabel} or message us on WhatsApp at ${CONTACT.phoneDisplay}.`,
   },
+  {
+    q: "What is your refund and cancellation policy?",
+    a: `${REFUND_POLICY.summary} ${REFUND_POLICY.exceptions.join(" ")} ${REFUND_POLICY.howTo}`,
+  },
 ];
