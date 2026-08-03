@@ -9,136 +9,41 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as YogaForWeightLossRouteImport } from './routes/yoga-for-weight-loss'
-import { Route as YogaForThyroidRouteImport } from './routes/yoga-for-thyroid'
-import { Route as YogaForStressRouteImport } from './routes/yoga-for-stress'
-import { Route as YogaForPcodRouteImport } from './routes/yoga-for-pcod'
-import { Route as YogaForExpatsInVietnamRouteImport } from './routes/yoga-for-expats-in-vietnam'
-import { Route as YogaForBeginnersRouteImport } from './routes/yoga-for-beginners'
-import { Route as YogaForBackPainRouteImport } from './routes/yoga-for-back-pain'
-import { Route as TestimonialsRouteImport } from './routes/testimonials'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ProgramsRouteImport } from './routes/programs'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as PersonalTrainingRouteImport } from './routes/personal-training'
-import { Route as PeriodSafeYogaRouteImport } from './routes/period-safe-yoga'
-import { Route as OnlineYogaClassesRouteImport } from './routes/online-yoga-classes'
-import { Route as OnlineRouteImport } from './routes/online'
-import { Route as McpRouteImport } from './routes/mcp'
-import { Route as GalleryRouteImport } from './routes/gallery'
-import { Route as CorporateRouteImport } from './routes/corporate'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CorporateRouteImport } from './routes/corporate'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as McpRouteImport } from './routes/mcp'
+import { Route as OnlineRouteImport } from './routes/online'
+import { Route as OnlineYogaClassesRouteImport } from './routes/online-yoga-classes'
+import { Route as PeriodSafeYogaRouteImport } from './routes/period-safe-yoga'
+import { Route as PersonalTrainingRouteImport } from './routes/personal-training'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as TestimonialsRouteImport } from './routes/testimonials'
+import { Route as YogaForBackPainRouteImport } from './routes/yoga-for-back-pain'
+import { Route as YogaForBeginnersRouteImport } from './routes/yoga-for-beginners'
+import { Route as YogaForExpatsInVietnamRouteImport } from './routes/yoga-for-expats-in-vietnam'
+import { Route as YogaForPcodRouteImport } from './routes/yoga-for-pcod'
+import { Route as YogaForStressRouteImport } from './routes/yoga-for-stress'
+import { Route as YogaForThyroidRouteImport } from './routes/yoga-for-thyroid'
+import { Route as YogaForWeightLossRouteImport } from './routes/yoga-for-weight-loss'
+import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
-import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
-import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
-import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
-import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
+import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
+import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
+import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
-const YogaForWeightLossRoute = YogaForWeightLossRouteImport.update({
-  id: '/yoga-for-weight-loss',
-  path: '/yoga-for-weight-loss',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const YogaForThyroidRoute = YogaForThyroidRouteImport.update({
-  id: '/yoga-for-thyroid',
-  path: '/yoga-for-thyroid',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const YogaForStressRoute = YogaForStressRouteImport.update({
-  id: '/yoga-for-stress',
-  path: '/yoga-for-stress',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const YogaForPcodRoute = YogaForPcodRouteImport.update({
-  id: '/yoga-for-pcod',
-  path: '/yoga-for-pcod',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const YogaForExpatsInVietnamRoute = YogaForExpatsInVietnamRouteImport.update({
-  id: '/yoga-for-expats-in-vietnam',
-  path: '/yoga-for-expats-in-vietnam',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const YogaForBeginnersRoute = YogaForBeginnersRouteImport.update({
-  id: '/yoga-for-beginners',
-  path: '/yoga-for-beginners',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const YogaForBackPainRoute = YogaForBackPainRouteImport.update({
-  id: '/yoga-for-back-pain',
-  path: '/yoga-for-back-pain',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TestimonialsRoute = TestimonialsRouteImport.update({
-  id: '/testimonials',
-  path: '/testimonials',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProgramsRoute = ProgramsRouteImport.update({
-  id: '/programs',
-  path: '/programs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PersonalTrainingRoute = PersonalTrainingRouteImport.update({
-  id: '/personal-training',
-  path: '/personal-training',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PeriodSafeYogaRoute = PeriodSafeYogaRouteImport.update({
-  id: '/period-safe-yoga',
-  path: '/period-safe-yoga',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OnlineYogaClassesRoute = OnlineYogaClassesRouteImport.update({
-  id: '/online-yoga-classes',
-  path: '/online-yoga-classes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OnlineRoute = OnlineRouteImport.update({
-  id: '/online',
-  path: '/online',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GalleryRoute = GalleryRouteImport.update({
-  id: '/gallery',
-  path: '/gallery',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CorporateRoute = CorporateRouteImport.update({
-  id: '/corporate',
-  path: '/corporate',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -146,11 +51,118 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorporateRoute = CorporateRouteImport.update({
+  id: '/corporate',
+  path: '/corporate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineRoute = OnlineRouteImport.update({
+  id: '/online',
+  path: '/online',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineYogaClassesRoute = OnlineYogaClassesRouteImport.update({
+  id: '/online-yoga-classes',
+  path: '/online-yoga-classes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PeriodSafeYogaRoute = PeriodSafeYogaRouteImport.update({
+  id: '/period-safe-yoga',
+  path: '/period-safe-yoga',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PersonalTrainingRoute = PersonalTrainingRouteImport.update({
+  id: '/personal-training',
+  path: '/personal-training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsRoute = ProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestimonialsRoute = TestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaForBackPainRoute = YogaForBackPainRouteImport.update({
+  id: '/yoga-for-back-pain',
+  path: '/yoga-for-back-pain',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaForBeginnersRoute = YogaForBeginnersRouteImport.update({
+  id: '/yoga-for-beginners',
+  path: '/yoga-for-beginners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaForExpatsInVietnamRoute = YogaForExpatsInVietnamRouteImport.update({
+  id: '/yoga-for-expats-in-vietnam',
+  path: '/yoga-for-expats-in-vietnam',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaForPcodRoute = YogaForPcodRouteImport.update({
+  id: '/yoga-for-pcod',
+  path: '/yoga-for-pcod',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaForStressRoute = YogaForStressRouteImport.update({
+  id: '/yoga-for-stress',
+  path: '/yoga-for-stress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaForThyroidRoute = YogaForThyroidRouteImport.update({
+  id: '/yoga-for-thyroid',
+  path: '/yoga-for-thyroid',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaForWeightLossRoute = YogaForWeightLossRouteImport.update({
+  id: '/yoga-for-weight-loss',
+  path: '/yoga-for-weight-loss',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Char91DotmcpChar93ListToolsRoute =
+  Char91DotmcpChar93ListToolsRouteImport.update({
+    id: '/.mcp/list-tools',
+    path: '/.mcp/list-tools',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
@@ -161,27 +173,25 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
+const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
+  id: '/.lovable/oauth/consent',
+  path: '/.lovable/oauth/consent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
     id: '/.mcp/invoke-tool/$tool',
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
-const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
-  id: '/.lovable/oauth/consent',
-  path: '/.lovable/oauth/consent',
+const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
+  id: '/lovable/email/auth/preview',
+  path: '/lovable/email/auth/preview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LovableEmailAuthWebhookRoute = LovableEmailAuthWebhookRouteImport.update({
+  id: '/lovable/email/auth/webhook',
+  path: '/lovable/email/auth/webhook',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LovableEmailQueueProcessRoute =
@@ -190,16 +200,6 @@ const LovableEmailQueueProcessRoute =
     path: '/lovable/email/queue/process',
     getParentRoute: () => rootRouteImport,
   } as any)
-const LovableEmailAuthWebhookRoute = LovableEmailAuthWebhookRouteImport.update({
-  id: '/lovable/email/auth/webhook',
-  path: '/lovable/email/auth/webhook',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
-  id: '/lovable/email/auth/preview',
-  path: '/lovable/email/auth/preview',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -439,144 +439,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/yoga-for-weight-loss': {
-      id: '/yoga-for-weight-loss'
-      path: '/yoga-for-weight-loss'
-      fullPath: '/yoga-for-weight-loss'
-      preLoaderRoute: typeof YogaForWeightLossRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/yoga-for-thyroid': {
-      id: '/yoga-for-thyroid'
-      path: '/yoga-for-thyroid'
-      fullPath: '/yoga-for-thyroid'
-      preLoaderRoute: typeof YogaForThyroidRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/yoga-for-stress': {
-      id: '/yoga-for-stress'
-      path: '/yoga-for-stress'
-      fullPath: '/yoga-for-stress'
-      preLoaderRoute: typeof YogaForStressRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/yoga-for-pcod': {
-      id: '/yoga-for-pcod'
-      path: '/yoga-for-pcod'
-      fullPath: '/yoga-for-pcod'
-      preLoaderRoute: typeof YogaForPcodRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/yoga-for-expats-in-vietnam': {
-      id: '/yoga-for-expats-in-vietnam'
-      path: '/yoga-for-expats-in-vietnam'
-      fullPath: '/yoga-for-expats-in-vietnam'
-      preLoaderRoute: typeof YogaForExpatsInVietnamRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/yoga-for-beginners': {
-      id: '/yoga-for-beginners'
-      path: '/yoga-for-beginners'
-      fullPath: '/yoga-for-beginners'
-      preLoaderRoute: typeof YogaForBeginnersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/yoga-for-back-pain': {
-      id: '/yoga-for-back-pain'
-      path: '/yoga-for-back-pain'
-      fullPath: '/yoga-for-back-pain'
-      preLoaderRoute: typeof YogaForBackPainRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/testimonials': {
-      id: '/testimonials'
-      path: '/testimonials'
-      fullPath: '/testimonials'
-      preLoaderRoute: typeof TestimonialsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/programs': {
-      id: '/programs'
-      path: '/programs'
-      fullPath: '/programs'
-      preLoaderRoute: typeof ProgramsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/personal-training': {
-      id: '/personal-training'
-      path: '/personal-training'
-      fullPath: '/personal-training'
-      preLoaderRoute: typeof PersonalTrainingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/period-safe-yoga': {
-      id: '/period-safe-yoga'
-      path: '/period-safe-yoga'
-      fullPath: '/period-safe-yoga'
-      preLoaderRoute: typeof PeriodSafeYogaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/online-yoga-classes': {
-      id: '/online-yoga-classes'
-      path: '/online-yoga-classes'
-      fullPath: '/online-yoga-classes'
-      preLoaderRoute: typeof OnlineYogaClassesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/online': {
-      id: '/online'
-      path: '/online'
-      fullPath: '/online'
-      preLoaderRoute: typeof OnlineRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/gallery': {
-      id: '/gallery'
-      path: '/gallery'
-      fullPath: '/gallery'
-      preLoaderRoute: typeof GalleryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/corporate': {
-      id: '/corporate'
-      path: '/corporate'
-      fullPath: '/corporate'
-      preLoaderRoute: typeof CorporateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -586,11 +453,158 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corporate': {
+      id: '/corporate'
+      path: '/corporate'
+      fullPath: '/corporate'
+      preLoaderRoute: typeof CorporateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online': {
+      id: '/online'
+      path: '/online'
+      fullPath: '/online'
+      preLoaderRoute: typeof OnlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-yoga-classes': {
+      id: '/online-yoga-classes'
+      path: '/online-yoga-classes'
+      fullPath: '/online-yoga-classes'
+      preLoaderRoute: typeof OnlineYogaClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/period-safe-yoga': {
+      id: '/period-safe-yoga'
+      path: '/period-safe-yoga'
+      fullPath: '/period-safe-yoga'
+      preLoaderRoute: typeof PeriodSafeYogaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/personal-training': {
+      id: '/personal-training'
+      path: '/personal-training'
+      fullPath: '/personal-training'
+      preLoaderRoute: typeof PersonalTrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs': {
+      id: '/programs'
+      path: '/programs'
+      fullPath: '/programs'
+      preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/testimonials': {
+      id: '/testimonials'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-for-back-pain': {
+      id: '/yoga-for-back-pain'
+      path: '/yoga-for-back-pain'
+      fullPath: '/yoga-for-back-pain'
+      preLoaderRoute: typeof YogaForBackPainRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-for-beginners': {
+      id: '/yoga-for-beginners'
+      path: '/yoga-for-beginners'
+      fullPath: '/yoga-for-beginners'
+      preLoaderRoute: typeof YogaForBeginnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-for-expats-in-vietnam': {
+      id: '/yoga-for-expats-in-vietnam'
+      path: '/yoga-for-expats-in-vietnam'
+      fullPath: '/yoga-for-expats-in-vietnam'
+      preLoaderRoute: typeof YogaForExpatsInVietnamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-for-pcod': {
+      id: '/yoga-for-pcod'
+      path: '/yoga-for-pcod'
+      fullPath: '/yoga-for-pcod'
+      preLoaderRoute: typeof YogaForPcodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-for-stress': {
+      id: '/yoga-for-stress'
+      path: '/yoga-for-stress'
+      fullPath: '/yoga-for-stress'
+      preLoaderRoute: typeof YogaForStressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-for-thyroid': {
+      id: '/yoga-for-thyroid'
+      path: '/yoga-for-thyroid'
+      fullPath: '/yoga-for-thyroid'
+      preLoaderRoute: typeof YogaForThyroidRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-for-weight-loss': {
+      id: '/yoga-for-weight-loss'
+      path: '/yoga-for-weight-loss'
+      fullPath: '/yoga-for-weight-loss'
+      preLoaderRoute: typeof YogaForWeightLossRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.mcp/list-tools': {
+      id: '/.mcp/list-tools'
+      path: '/.mcp/list-tools'
+      fullPath: '/.mcp/list-tools'
+      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -607,18 +621,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/list-tools': {
-      id: '/.mcp/list-tools'
-      path: '/.mcp/list-tools'
-      fullPath: '/.mcp/list-tools'
-      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
+    '/.lovable/oauth/consent': {
+      id: '/.lovable/oauth/consent'
+      path: '/.lovable/oauth/consent'
+      fullPath: '/.lovable/oauth/consent'
+      preLoaderRoute: typeof DotlovableOauthConsentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.mcp/invoke-tool/$tool': {
@@ -628,18 +635,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/.lovable/oauth/consent': {
-      id: '/.lovable/oauth/consent'
-      path: '/.lovable/oauth/consent'
-      fullPath: '/.lovable/oauth/consent'
-      preLoaderRoute: typeof DotlovableOauthConsentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lovable/email/queue/process': {
-      id: '/lovable/email/queue/process'
-      path: '/lovable/email/queue/process'
-      fullPath: '/lovable/email/queue/process'
-      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
+    '/lovable/email/auth/preview': {
+      id: '/lovable/email/auth/preview'
+      path: '/lovable/email/auth/preview'
+      fullPath: '/lovable/email/auth/preview'
+      preLoaderRoute: typeof LovableEmailAuthPreviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lovable/email/auth/webhook': {
@@ -649,11 +649,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LovableEmailAuthWebhookRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lovable/email/auth/preview': {
-      id: '/lovable/email/auth/preview'
-      path: '/lovable/email/auth/preview'
-      fullPath: '/lovable/email/auth/preview'
-      preLoaderRoute: typeof LovableEmailAuthPreviewRouteImport
+    '/lovable/email/queue/process': {
+      id: '/lovable/email/queue/process'
+      path: '/lovable/email/queue/process'
+      fullPath: '/lovable/email/queue/process'
+      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
