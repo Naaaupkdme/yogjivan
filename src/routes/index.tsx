@@ -126,6 +126,7 @@ function Index() {
   return (
     <>
       <Hero />
+      <LocalIntro />
       <Lazy><Philosophy /></Lazy>
       <Lazy><TrustSection /></Lazy>
       <Lazy><WhyChoose /></Lazy>
