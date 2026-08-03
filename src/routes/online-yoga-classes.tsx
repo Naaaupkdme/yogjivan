@@ -310,7 +310,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
       ...socialImageMeta(masterImages.meditationPortrait),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Live Online Yoga Classes | Yog Jivan" },
-      { name: "twitter:description", content: "Live, small-batch, therapeutic online yoga with a Certified Indian Yoga Master. Free live trial." },
+      { name: "twitter:description", content: "Live, small-batch, therapeutic online yoga with Master Anil Choudhary. Free live trial." },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [
@@ -320,7 +320,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
           "@context": "https://schema.org",
           "@type": "Course",
           name: "Live Online Yoga Classes with Master Anil Choudhary",
-          description: "Live, interactive, small-batch online yoga classes led by Certified Indian Yoga Master Anil Choudhary. Therapeutic focus: back pain, PCOD, anxiety, sleep. For beginners to advanced.",
+          description: "Live, interactive, small-batch online yoga classes led personally by Master Anil Choudhary, Founder & Lead Yoga Teacher. Therapeutic focus: back pain, PCOD, anxiety, sleep. For beginners to advanced.",
           provider: { "@type": "Organization", name: "Yog Jivan", url: "https://yogjivan.com", sameAs: "https://yogjivan.com" },
           url: CANONICAL,
           image: masterImages.meditationPortrait,
@@ -340,7 +340,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
             instructor: {
               "@type": "Person",
               name: "Master Anil Choudhary",
-              jobTitle: "Certified Indian Yoga Master & Yoga Therapist",
+              jobTitle: "Founder & Lead Yoga Teacher",
               image: masterImages.meditationPortrait,
               url: "https://yogjivan.com/about",
             },
@@ -745,10 +745,10 @@ function OnlineYogaClassesPage() {
       {/* EEAT / Master Anil */}
       <section className="section-y">
         <div className="container-luxe">
-          <SectionHead eyebrow="Your Teacher · E-E-A-T" title="Master Anil Choudhary" sub="Certified Indian Yoga Master · Yoga Therapist · Founder, Yog Jivan Sanctuary" />
+          <SectionHead eyebrow="Your Teacher · E-E-A-T" title="Master Anil Choudhary" sub="Founder & Lead Yoga Teacher, Yog Jivan Sanctuary" />
           <div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-[2fr_3fr] lg:items-center">
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10">
-              <LuxuryImage src={masterImages.meditationPortrait} alt="Master Anil Choudhary — Certified Indian Yoga Master and Therapist" className="aspect-[4/5] w-full object-cover" />
+              <LuxuryImage src={masterImages.meditationPortrait} alt="Master Anil Choudhary — Founder & Lead Yoga Teacher, Therapist" className="aspect-[4/5] w-full object-cover" />
             </div>
             <div>
               <p className="text-foreground/90 leading-relaxed">
@@ -1263,7 +1263,7 @@ function OnlineYogaClassesPage() {
 
       <PricingFinal />
 
-      <CTABanner title="Ready for your first live class?" sub="Free live trial with a Certified Indian Yoga Master. No card required. Reply within minutes." />
+      <CTABanner title="Ready for your first live class?" sub="Free live trial with Master Anil Choudhary. No card required. Reply within minutes." />
 
       {/* Final tri-CTA row */}
       <section className="section-tight">

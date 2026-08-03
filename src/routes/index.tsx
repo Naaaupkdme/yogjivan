@@ -59,7 +59,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Person",
           name: "Master Anil Choudhary",
-          jobTitle: "Certified Indian Yoga Master & Therapeutic Yoga Teacher",
+          jobTitle: "Founder & Lead Yoga Teacher",
           url: "https://yogjivan.com/about",
           worksFor: { "@type": "Organization", name: "Yog Jivan", url: "https://yogjivan.com" },
           nationality: "Indian",
@@ -86,7 +86,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "Course",
           name: "Authentic Indian Online Yoga Classes",
-          description: "Live online yoga classes led by Certified Indian Yoga Master Anil Choudhary. Small-batch, therapeutic, and personalized for students worldwide.",
+          description: "Live online yoga classes led personally by Master Anil Choudhary, Founder & Lead Yoga Teacher. Small-batch, therapeutic, and personalized for students worldwide.",
           provider: { "@type": "Organization", name: "Yog Jivan", sameAs: "https://yogjivan.com" },
           url: "https://yogjivan.com/online-yoga-classes",
           hasCourseInstance: {

@@ -133,7 +133,7 @@ function PeriodSafePage() {
         { src: masterImages.savasanaClass, alt: "Students resting deeply at the close of a gentle class", caption: "Closing rest · unhurried, always" },
       ]}
       portrait={masterImages.meditationPortrait}
-      portraitAlt="Master Anil Choudhary — Certified Indian Yoga Master and therapeutic yoga teacher"
+      portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, therapeutic yoga teacher"
       masterIntro={
         <>
           <p>Master Anil has taught cycle-aware yoga for 12+ years — to teenagers, working women, mothers and students moving through perimenopause. His approach is grounded in respect: the body already knows what it needs, and a teacher's job is to notice that and adapt the class kindly, not to override it.</p>

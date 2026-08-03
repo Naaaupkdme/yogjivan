@@ -74,7 +74,7 @@ const copy: Record<Lang, Copy> = {
     hero: {
       eyebrow: "Authentic Indian Online Yoga · Live Worldwide",
       title: ["Authentic Indian", "Online Yoga", "Classes"],
-      sub: "Live therapeutic yoga classes with Certified Indian Yoga Master Anil Choudhary. Join students from Vietnam, India, USA, Canada, Australia and worldwide.",
+      sub: "Live therapeutic yoga classes with Master Anil Choudhary, Founder & Lead Yoga Teacher. Join students from Vietnam, India, USA, Canada, Australia and worldwide.",
       primary: "Book Free Live Trial",
       secondary: "WhatsApp Us",
       trust: [

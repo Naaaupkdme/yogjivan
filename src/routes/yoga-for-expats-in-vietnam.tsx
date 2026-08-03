@@ -10,7 +10,7 @@ const ANSWER_CAPSULE =
 const { GraduationCap, Stethoscope, Users, Globe2, Award, ShieldCheck } = SHARED_CREDENTIAL_ICONS;
 
 const CREDENTIALS = [
-  { icon: GraduationCap, label: "Certified Indian Yoga Master — teaches personally in clear English" },
+  { icon: GraduationCap, label: "Founder & Lead Yoga Teacher — teaches personally in clear English" },
   { icon: Users, label: "Community of students from 20+ countries already practising with us" },
   { icon: Globe2, label: "Studios in Hai Duong · Live online continues wherever you travel" },
   { icon: Stethoscope, label: "Small-batch classes — every student known personally by the teacher" },
@@ -132,7 +132,7 @@ function ExpatsPage() {
         { src: masterImages.groupCelebration, alt: "Yog Jivan community celebrating International Yoga Day with raised hands", caption: "Community · Hai Duong studios" },
       ]}
       portrait={masterImages.meditationPortrait}
-      portraitAlt="Master Anil Choudhary — Certified Indian Yoga Master, teaching in English in Hai Duong"
+      portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, teaching in English in Hai Duong"
       masterIntro={
         <>
           <p>Master Anil has taught expat students from more than 20 countries over 12+ years — many of them long-term, several of them still practising with him online years after leaving Vietnam. He teaches in clear, warm English, learns each new student personally, and treats every class — in-studio and online — with the same care.</p>

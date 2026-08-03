@@ -26,7 +26,7 @@ const TRUST_STATS = [
 ];
 
 const CREDENTIALS = [
-  { icon: GraduationCap, label: "Certified Indian Yoga Master — Classical Hatha, Ashtanga & Yoga Therapy" },
+  { icon: GraduationCap, label: "Founder & Lead Yoga Teacher — classical Hatha, Ashtanga & pranayama" },
   { icon: Stethoscope, label: "Trained to teach absolute beginners safely — no forced ranges, no injury shortcuts" },
   { icon: Users, label: "1000+ students taught — the majority arrived as complete beginners" },
   { icon: Globe2, label: "Beginner students in 20+ countries — Vietnam, India, USA, EU, Australia" },
@@ -228,13 +228,13 @@ function YogaForBeginnersPage() {
           <SectionHead
             eyebrow="Your Teacher · E-E-A-T"
             title="Master Anil Choudhary"
-            sub="Certified Indian Yoga Master · Yoga Therapist · Founder, Yog Jivan Sanctuary"
+            sub="Founder & Lead Yoga Teacher, Yog Jivan Sanctuary"
           />
           <div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-[2fr_3fr] lg:items-center">
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10">
               <LuxuryImage
                 src={masterImages.meditationPortrait}
-                alt="Master Anil Choudhary — Certified Indian Yoga Master teaching beginners"
+                alt="Master Anil Choudhary — Founder & Lead Yoga Teacher, teaching beginners"
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>

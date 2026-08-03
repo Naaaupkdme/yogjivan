@@ -138,7 +138,7 @@ function PCODPage() {
         { src: masterImages.savasanaClass, alt: "Students in deep restorative rest at the close of a therapeutic class", caption: "Closing rest · nervous-system reset" },
       ]}
       portrait={masterImages.meditationPortrait}
-      portraitAlt="Master Anil Choudhary — Certified Indian Yoga Master and therapeutic yoga teacher"
+      portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, therapeutic yoga teacher"
       masterIntro={
         <>
           <p>Master Anil has supported hundreds of women through PCOD, PCOS and cycle-related concerns over 12+ years of therapeutic teaching. His approach is patient and longitudinal — measured across months and cycles, not single sessions — because that is how hormonal systems actually respond.</p>
