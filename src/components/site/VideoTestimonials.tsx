@@ -9,16 +9,20 @@ type VideoTestimonial = {
   youtubeId: string;
 };
 
-const TESTIMONIALS: VideoTestimonial[] = [
-  { id: "1", name: "Sarah M.", role: "Online Student · UK", youtubeId: "dQw4w9WgXcQ" },
-  { id: "2", name: "Linh T.", role: "Studio Member · Hai Duong", youtubeId: "dQw4w9WgXcQ" },
-  { id: "3", name: "Marcus L.", role: "Private Student · Germany", youtubeId: "dQw4w9WgXcQ" },
-];
+/**
+ * Real student testimonial videos only.
+ * Intentionally empty until Yog Jivan supplies genuine, permissioned footage.
+ * Never add placeholder or stock YouTube IDs here — the section self-hides
+ * while the list is empty.
+ */
+const TESTIMONIALS: VideoTestimonial[] = [];
 
 export function VideoTestimonials() {
   const [idx, setIdx] = useState(0);
   const [playing, setPlaying] = useState(false);
   const current = TESTIMONIALS[idx];
+
+  if (!current) return null;
 
   const go = (dir: 1 | -1) => {
     setPlaying(false);
