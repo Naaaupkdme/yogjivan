@@ -109,7 +109,7 @@ const QUESTIONS: QA[] = [
       "Share injuries, surgeries, pregnancy and medication before your first class.",
       "Postures are adapted or substituted rather than forced.",
       "Master Anil teaches every class, so your history is not lost between teachers.",
-      HEALTH_DISCLAIMER,
+      HEALTH_DISCLAIMER.short,
     ],
   },
 ];
@@ -492,7 +492,7 @@ function YogaForBeginnersPage() {
               </Link>
               <Link to="/online-yoga-classes" className="btn-ghost-gold">See Live Online Classes</Link>
             </div>
-            <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-muted-foreground">{HEALTH_DISCLAIMER}</p>
+            <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-muted-foreground">{HEALTH_DISCLAIMER.long}</p>
           </div>
         </div>
       </section>
