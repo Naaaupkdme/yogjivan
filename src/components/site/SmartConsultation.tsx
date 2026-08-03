@@ -49,7 +49,6 @@ export function SmartConsultation() {
   const [done, setDone] = useState(false);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
-    trackFormStart("smart_consultation");
     setForm((s) => ({ ...s, [key]: value }));
   }
 
@@ -119,6 +118,7 @@ export function SmartConsultation() {
           <motion.form
             key="form"
             onSubmit={onSubmit}
+            onFocusCapture={() => trackFormStart("smart_consultation")}
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.4 }}
           >
