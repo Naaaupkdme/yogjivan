@@ -122,9 +122,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               priceRange: "$$$",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Nha Thi Dau 1, Bui Thi Xuan, P. Le Thanh Nghi",
-                addressLocality: "Hai Duong City",
-                addressRegion: "Hai Duong Province",
+                streetAddress: "Tầng 1 Nhà Thi Đấu Số 1, Bùi Thị Xuân",
+                addressLocality: "Phường Lê Thanh Nghị",
+                addressRegion: "Hai Phong",
                 postalCode: "170000",
                 addressCountry: "VN",
               },
@@ -139,9 +139,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 "https://www.instagram.com/anil_yog_jivan",
                 "https://youtube.com/@yogjivanvietnam",
                 "https://zalo.me/84782046066",
-                "https://maps.app.goo.gl/RL7HqgnGmT2fT2AF6",
+                "https://maps.app.goo.gl/9GymWfE5M164VfDE8",
               ],
-              aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "50" },
             },
             {
               "@type": "LocalBusiness",
