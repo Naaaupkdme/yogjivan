@@ -316,38 +316,75 @@ function RootComponent() {
     return () => { unsub(); window.removeEventListener("hashchange", onHash); };
   }, [router]);
 
-  // Meta Pixel conversion tracking: Contact (WhatsApp) & Lead (Book Free Trial CTAs)
+  // Unified CTA tracking (GA4 + Meta Contact). No PII: only page path,
+  // CTA location and destination type are sent. Meta "Lead" is NOT fired here —
+  // it only fires after a confirmed lead insert (see SmartConsultation).
   useEffect(() => {
     const WHATSAPP_RE = /wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i;
-    const LEAD_TEXT_RE = /(book\s+(a\s+)?free\s+trial|free\s+trial|book\s+trial|personal\s+consultation|personalize\s+my\s+recommendation)/i;
+    const TRIAL_RE = /(book\s+(a\s+)?free\s+trial|free\s+trial|book\s+trial|personal\s+consultation|personalize\s+my\s+recommendation)/i;
     let lastKey = "";
     let lastAt = 0;
-    const fire = (event: "Contact" | "Lead", key: string) => {
-      const w = window as unknown as { fbq?: (...args: unknown[]) => void };
-      if (typeof w.fbq !== "function") return;
+    const deduped = (key: string) => {
       const now = Date.now();
-      if (key === lastKey && now - lastAt < 800) return; // dedupe rapid double-fires
+      if (key === lastKey && now - lastAt < 800) return true;
       lastKey = key; lastAt = now;
-      w.fbq("track", event);
+      return false;
+    };
+    const locationOf = (el: HTMLElement): string => {
+      const explicit = el.closest("[data-cta-location]")?.getAttribute("data-cta-location");
+      if (explicit) return explicit;
+      const section = el.closest("section[id],div[id]");
+      const id = section?.getAttribute("id");
+      if (id) return id;
+      if (el.closest("header")) return "header";
+      if (el.closest("footer")) return "footer";
+      return "body";
     };
     const onClick = (e: MouseEvent) => {
       const target = e.target as Element | null;
       if (!target) return;
-      const el = (target.closest("a,button") as HTMLElement | null);
+      const el = target.closest("a,button") as HTMLElement | null;
       if (!el) return;
       const href = (el as HTMLAnchorElement).href || el.getAttribute("href") || "";
-      const label = `${el.getAttribute("aria-label") || ""} ${el.textContent || ""}`.trim();
-      if (WHATSAPP_RE.test(href) || /whatsapp/i.test(el.getAttribute("aria-label") || "")) {
-        fire("Contact", `contact:${href || label}`);
+      const aria = el.getAttribute("aria-label") || "";
+      const label = `${aria} ${el.textContent || ""}`.trim();
+      const where = locationOf(el);
+
+      if (WHATSAPP_RE.test(href) || /whatsapp/i.test(aria)) {
+        if (deduped(`wa:${href}`)) return;
+        trackCta("whatsapp_click", where);
+        metaEvent("Contact");
         return;
       }
-      if (LEAD_TEXT_RE.test(label) || /#consultation$/.test(href)) {
-        fire("Lead", `lead:${label || href}`);
+      if (/zalo\.me|zalo/i.test(href)) {
+        if (deduped(`zalo:${href}`)) return;
+        trackCta("zalo_click", where);
+        metaEvent("Contact");
+        return;
+      }
+      if (href.startsWith("tel:")) {
+        if (deduped(`tel:${href}`)) return;
+        trackCta("phone_click", where);
+        metaEvent("Contact");
+        return;
+      }
+      if (href.startsWith("mailto:")) {
+        if (deduped(`mail:${href}`)) return;
+        trackCta("email_click", where);
+        metaEvent("Contact");
+        return;
+      }
+      if (TRIAL_RE.test(label) || /#consultation$/.test(href)) {
+        if (deduped(`trial:${label || href}`)) return;
+        trackCta("book_trial_click", where, {
+          destination_type: /#consultation$/.test(href) ? "form_anchor" : href ? "internal_link" : "in_page",
+        });
       }
     };
     document.addEventListener("click", onClick, true);
     return () => document.removeEventListener("click", onClick, true);
   }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
