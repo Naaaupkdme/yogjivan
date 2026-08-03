@@ -240,7 +240,7 @@ function YogaForBeginnersPage() {
             </div>
             <div>
               <p className="text-foreground/90 leading-relaxed">
-                Master Anil began teaching in India and has been guiding students full-time since 2013. The majority of the 1000+ students he has taught arrived as absolute beginners — many had never rolled out a mat before. His beginner classes are unhurried, alignment-first and completely free of the pressure that makes newcomers quit yoga after one attempt.
+                Master Anil began teaching in India and has taught authentic Indian yoga for over 12 years. The majority of the 1000+ students he has taught arrived as absolute beginners — many had never rolled out a mat before. His beginner classes are unhurried, alignment-first and completely free of the pressure that makes newcomers quit yoga after one attempt.
               </p>
               <p className="mt-4 text-foreground/90 leading-relaxed">
                 His teaching philosophy for beginners is simple: <span className="italic text-gold-gradient">"Yoga must fit the person — never force the person to fit the yoga."</span> Every first-time student is taught breath, safe alignment and a handful of foundation postures before anything more demanding is introduced.

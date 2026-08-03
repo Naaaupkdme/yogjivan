@@ -301,7 +301,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
   head: () => ({
     meta: [
       { title: "Live Online Yoga Classes | Yog Jivan" },
-      { name: "description", content: "Live online yoga with Certified Indian Master Anil Choudhary. Small-batch therapeutic classes for back pain, PCOD, anxiety and sleep. Free live trial." },
+      { name: "description", content: "Live online yoga with Master Anil Choudhary, Founder & Lead Yoga Teacher. Small-batch therapeutic classes for back pain, PCOD, anxiety and sleep. Free live trial." },
       { name: "keywords", content: "online yoga classes, live online yoga, therapeutic yoga, yoga therapy online, Indian yoga teacher, yoga for back pain, yoga for PCOD, yoga for anxiety, online yoga Vietnam, online yoga worldwide, certified yoga master, small batch yoga" },
       { property: "og:title", content: "Online Yoga Classes with Master Anil Choudhary — Yog Jivan" },
       { property: "og:description", content: "Authentic live online yoga worldwide. Small-batch, therapeutic, personalized. Free live trial — no card required." },
@@ -310,7 +310,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
       ...socialImageMeta(masterImages.meditationPortrait),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Live Online Yoga Classes | Yog Jivan" },
-      { name: "twitter:description", content: "Live, small-batch, therapeutic online yoga with Master Anil Choudhary. Free live trial." },
+      { name: "twitter:description", content: "Live, small-batch, therapeutic online yoga taught personally by Master Anil Choudhary. Free live trial." },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [
@@ -668,7 +668,7 @@ function OnlineYogaClassesPage() {
     <>
       <PageHero
         eyebrow="Live · Global · Authentic Indian Yoga"
-        title="Live Online Yoga Classes with a Certified Indian Master"
+        title="Live Online Yoga Classes with Master Anil Choudhary"
         sub="Small-batch, therapeutic yoga taught live over Zoom by Master Anil Choudhary. Personalized for back pain, PCOD, anxiety and sleep. Students in 20+ countries. Free live trial — no card required."
       >
         <div className="mt-2 flex flex-wrap gap-3">
@@ -752,10 +752,10 @@ function OnlineYogaClassesPage() {
             </div>
             <div>
               <p className="text-foreground/90 leading-relaxed">
-                Master Anil Choudhary began his practice in India over two decades ago and has been teaching full-time since 2013. His work sits at the intersection of classical Indian yoga and modern therapeutic understanding — meaning every posture, breath and cue is chosen for a physiological outcome, not a photograph. He has personally guided more than 1,000 students in-studio and online, from complete beginners to Olympic-level athletes.
+                Master Anil Choudhary has taught authentic Indian yoga for over 12 years. His work sits at the intersection of classical Indian yoga and modern therapeutic understanding — meaning every posture, breath and cue is chosen for how it serves your body, not how it photographs. He has personally guided more than 1,000 students in-studio and online, most of whom arrived as complete beginners.
               </p>
               <p className="mt-4 text-foreground/90 leading-relaxed">
-                His teaching philosophy is simple: <span className="italic text-gold-gradient">"Yoga must fit the person — never force the person to fit the yoga."</span> He specializes in yoga therapy for chronic back pain, PCOD/PCOS, anxiety, insomnia and post-injury recovery, and refuses to teach a class larger than eight students online.
+                His teaching philosophy is simple: <span className="italic text-gold-gradient">"Yoga must fit the person — never force the person to fit the yoga."</span> He focuses on therapeutic, safety-first practice for back and neck comfort, PCOD and cycle-related concerns, stress, sleep and post-injury recovery, and refuses to teach a class larger than eight students online.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {CREDENTIALS.map(({ icon: Icon, label }) => (
