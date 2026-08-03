@@ -68,14 +68,27 @@ function PrivacyPage() {
 
           <Section title="3. Cookies & Analytics">
             <p>
-              We use <strong>Google Analytics (GA4)</strong> to understand how visitors use our site and <strong>Meta
-              Pixel</strong> to measure the performance of our ads. Both of these tools <strong>only load and fire after
-              you explicitly click "Accept"</strong> on our cookie banner. If you click "Reject", or do not choose at
-              all, no analytics or advertising scripts are loaded.
+              We use <strong>Google Analytics 4</strong> with{" "}
+              <strong>Google Advanced Consent Mode v2</strong>. Before you make a choice, all analytics and
+              advertising storage is set to <strong>denied</strong>: no analytics or advertising cookies are
+              written, and Google receives only cookieless, aggregated measurement signals (no identifiers).
             </p>
             <p>
-              You can change your choice anytime by clicking <strong>"Cookie Settings"</strong> in the footer of any
-              page. Rejecting cookies does not affect your ability to use the site or book a class.
+              If you choose <strong>Accept All</strong> (or enable Analytics in Cookie Settings), full Google
+              Analytics measurement is enabled. <strong>Meta Pixel</strong> is a separate, marketing-only tool: it
+              is not loaded at all unless you grant marketing consent, and it stops receiving events if you
+              withdraw it.
+            </p>
+            <p>
+              The events we record are limited to non-personal context — page path, page title, the location of a
+              button you clicked (e.g. header, footer, hero), a generic service category, and whether a
+              consultation request was completed. We <strong>never</strong> send your name, phone or WhatsApp
+              number, email address, health notes, injury or cycle details, or the content of your message to
+              Google or Meta.
+            </p>
+            <p>
+              You can change or withdraw your choice anytime via <strong>"Cookie Settings"</strong> in the footer of
+              any page. Rejecting non-essential cookies does not affect your ability to use the site or book a class.
             </p>
           </Section>
 
@@ -85,7 +98,7 @@ function PrivacyPage() {
               <li><strong>Make.com</strong> — routes your consultation form entries to our internal inbox so we can respond within minutes.</li>
               <li><strong>WhatsApp Business (Meta)</strong> — used to reply to you when you contact us via WhatsApp.</li>
               <li><strong>Zalo</strong> — used to reply to you when you contact us via Zalo.</li>
-              <li><strong>Google Analytics & Meta Pixel</strong> — only after cookie consent, as described above.</li>
+              <li><strong>Google Analytics</strong> — cookieless measurement by default, full measurement only after analytics consent. <strong>Meta Pixel</strong> — loaded only after marketing consent.</li>
             </ul>
             <p>We do not sell, rent or trade your personal information to any third party for their own marketing.</p>
           </Section>

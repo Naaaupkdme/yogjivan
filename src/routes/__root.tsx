@@ -206,9 +206,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           ],
         }),
       },
-      // NOTE: Google Analytics (gtag) and Meta Pixel are loaded conditionally
-      // in RootComponent AFTER the user grants cookie consent — do not add
-      // those scripts here or they will load on every visit before consent.
+      // NOTE: Google tag loads client-side in RootComponent with Advanced
+      // Consent Mode v2 (denied defaults); Meta Pixel loads only after
+      // marketing consent. Do not add either script tag here.
     ],
   }),
   shellComponent: RootShell,

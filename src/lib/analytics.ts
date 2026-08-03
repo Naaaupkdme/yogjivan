@@ -169,7 +169,7 @@ function bootMeta() {
   })(win, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
   /* eslint-enable */
   win.fbq!("init", META_PIXEL_ID);
-  win.fbq!("track", "PageView");
+  // PageView is sent by trackPageView() so it is never duplicated.
 }
 
 /** Applies a consent decision to both platforms. */
