@@ -567,9 +567,18 @@ function PricingCards() {
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground">
-          Choose the plan that fits your journey. New students are welcome to start with any plan.
-          All memberships include a free assessment call and a complimentary trial class.
+          {TRIAL.summary}
         </p>
+        <div className="mx-auto mt-6 max-w-2xl rounded-2xl border border-white/10 p-5 text-sm text-muted-foreground">
+          <p className="font-medium text-foreground">{REFUND_POLICY.title}</p>
+          <p className="mt-2">{REFUND_POLICY.summary}</p>
+          <ul className="mt-3 list-disc space-y-1 pl-5">
+            {REFUND_POLICY.exceptions.map((e) => (
+              <li key={e}>{e}</li>
+            ))}
+          </ul>
+          <p className="mt-3">{REFUND_POLICY.howTo}</p>
+        </div>
       </div>
     </section>
   );
