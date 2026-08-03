@@ -134,7 +134,7 @@ export function ContactSection() {
         <div className="mt-14">
           <div className="mb-6 flex flex-col gap-3">
             <div className="eyebrow"><span className="h-px w-8 bg-primary" />Visit our studios</div>
-            <h3 className="font-display text-3xl sm:text-4xl">Yoga studios in Hai Duong City, Vietnam</h3>
+            <h3 className="font-display text-3xl sm:text-4xl">Yoga studios in the Hai Duong urban area, Hai Phong</h3>
             <p className="text-sm text-muted-foreground">Two serene spaces. One transformative journey.</p>
             <div className="inline-flex items-center gap-2 self-start rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[0.55rem] uppercase tracking-[0.22em] text-primary">
               <Circle className="h-2 w-2 fill-primary text-primary" />
