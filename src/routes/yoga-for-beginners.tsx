@@ -4,9 +4,10 @@ import { LuxuryImage } from "@/components/site/LuxuryImage";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SOCIAL } from "@/lib/social";
 import { masterImages, socialImageMeta } from "@/lib/images";
+import { TEACHER, TRIAL, ONLINE_CLASS, STUDIO_LIST, PUBLIC_TRUST, HEALTH_DISCLAIMER } from "@/lib/facts";
 import {
   Award, Users, Globe2, CheckCircle2, Sparkles, MessageCircle,
-  ShieldCheck, GraduationCap, Stethoscope, Quote,
+  ShieldCheck, GraduationCap, Stethoscope, Quote, MapPin, Video,
 } from "lucide-react";
 
 const CANONICAL = "https://yogjivan.com/yoga-for-beginners";
@@ -14,101 +15,103 @@ const WA = SOCIAL.whatsapp;
 
 /* ---------- Content ---------- */
 
+const TITLE = "Yoga for Beginners in Hai Duong & Live Online | Yog Jivan";
+const DESCRIPTION =
+  "Beginner yoga classes at two studios serving the Hai Duong urban area, plus live online classes worldwide. No flexibility needed. Taught by Master Anil Choudhary.";
+
 const ANSWER_CAPSULE =
-  "New to yoga? Yog Jivan's beginner-friendly classes are designed for complete newcomers — no flexibility or experience required. Led personally by Master Anil Choudhary, every session focuses on safe alignment, breathing basics, and building confidence at your own pace. Available both in-studio in Hai Duong, Vietnam and live online worldwide. Join a small class where you're never lost in a crowd. Book your free trial class today.";
+  "Yoga for beginners at Yog Jivan is designed for people who have never practised before — no flexibility, strength or experience is required. You can start in person at either of our two studios serving the Hai Duong urban area of Hai Phong, Vietnam, or join a live online class from anywhere in the world. Every class is taught personally by Master Anil Choudhary, Founder & Lead Yoga Teacher, in small groups so you are corrected by name rather than left to copy a screen. The next step is simple: enquire about a studio class, or start the online introductory offer.";
+
+const QUICK_ANSWERS = [
+  { label: "Who it is for", text: "Complete beginners, returning practitioners, and people who feel stiff, stressed or unsure where to start." },
+  { label: "Flexibility needed", text: "None. Every posture is taught in stages and props are used from day one." },
+  { label: "Where", text: "Two studios serving the Hai Duong urban area, plus live online classes worldwide." },
+  { label: "Who teaches", text: `${TEACHER.name}, ${TEACHER.title} — ${TEACHER.yearsTeaching} years teaching.` },
+  { label: "Next step", text: "Enquire about a studio class, or start the online introductory offer." },
+];
 
 const TRUST_STATS = [
-  { k: "12+", v: "Years Teaching" },
-  { k: "1000+", v: "Students Guided" },
-  { k: "20+", v: "Countries" },
-  { k: "Max 8", v: "Per Live Class" },
-  { k: "Free", v: "First Class" },
+  { k: PUBLIC_TRUST.yearsTeaching, v: "Years Teaching" },
+  { k: PUBLIC_TRUST.studentsTaught, v: "Students Guided" },
+  { k: PUBLIC_TRUST.countries, v: "Countries" },
+  { k: `Max ${ONLINE_CLASS.maxGroupSize}`, v: "Per Live Class" },
+  { k: "2", v: "Hai Duong Studios" },
 ];
 
 const CREDENTIALS = [
-  { icon: GraduationCap, label: "Founder & Lead Yoga Teacher — classical Hatha, Ashtanga & pranayama" },
-  { icon: Stethoscope, label: "Trained to teach absolute beginners safely — no forced ranges, no injury shortcuts" },
-  { icon: Users, label: "1000+ students taught — the majority arrived as complete beginners" },
-  { icon: Globe2, label: "Beginner students in 20+ countries — Vietnam, India, USA, EU, Australia" },
-  { icon: Award, label: "Founder of Yog Jivan Sanctuary (Hai Duong, Vietnam) & global online school" },
-  { icon: ShieldCheck, label: "Trauma-aware, beginner-first pacing — you move only when your body is ready" },
+  { icon: GraduationCap, label: `${TEACHER.title} — classical Hatha, Ashtanga & pranayama` },
+  { icon: Stethoscope, label: "Teaches absolute beginners with safety-first sequencing — no forced ranges" },
+  { icon: Users, label: `${PUBLIC_TRUST.studentsTaught} students taught — many arrived as complete beginners` },
+  { icon: Globe2, label: `Students in ${PUBLIC_TRUST.countries} countries — Vietnam, India, USA, EU, Australia` },
+  { icon: Award, label: "Founder of Yog Jivan Sanctuary and the Yog Jivan online school" },
+  { icon: ShieldCheck, label: "Beginner-first pacing — you move only when your body is ready" },
 ];
 
 type QA = { q: string; bullets: string[]; answer: string };
 
 const QUESTIONS: QA[] = [
   {
-    q: "Do I Need to Be Flexible to Start Yoga?",
+    q: "Do I need to be flexible to start yoga?",
     answer:
-      "No. Flexibility is the outcome of yoga, not a prerequisite. Every posture is taught in 3–5 scalable stages so you begin exactly where your body is today, and range-of-motion improves within the first few weeks of consistent practice.",
+      "No. Flexibility is something practice develops over time, not something you need before you begin. Every posture is taught in scalable stages, so you start exactly where your body is today, and props such as blocks, straps, blankets and chairs make each pose accessible from your first class.",
     bullets: [
-      "Flexibility is a result of practice — not something you need to bring to class.",
-      "Every posture has 3–5 stages; you start at the stage your body allows today.",
-      "Props (blocks, straps, blankets, chairs) make every pose accessible from day one.",
-      "Most beginners see noticeable mobility gains within 2–4 weeks of regular classes.",
-      "Stiff hips, tight hamstrings and desk-shoulders are welcomed, not gate-kept.",
+      "Flexibility is a result of practice — not a requirement to attend.",
+      "Every posture has several stages; you work at the stage your body allows today.",
+      "Props (blocks, straps, blankets, chairs) are used from day one.",
+      "Stiff hips, tight hamstrings and desk-bound shoulders are welcome.",
+      "Progress differs from person to person; individual experience varies.",
     ],
   },
   {
-    q: "What Happens in a Beginner's First Class?",
+    q: "What happens in a beginner's first class?",
     answer:
-      "Your first class begins with a short intake, then a gentle breath-awareness session, guided joint warm-ups, a few foundational postures with hands-on cueing, closing pranayama and a full savasana rest. It is calm, unhurried, and there is no choreography to memorize.",
+      "A beginner class is calm and unhurried: gentle breath awareness, guided joint warm-ups, a handful of foundation postures taught with clear verbal cueing, closing pranayama and a guided savasana rest. There is no choreography to memorise. For live online students, a short 15-minute onboarding and health-assessment conversation happens before the first class.",
     bullets: [
-      "A 3-minute intake — goals, injuries, medications, sleep, cycle (if applicable).",
+      `Online students: a ${ONLINE_CLASS.onboarding.minutes}-minute onboarding and health-assessment conversation before the first live class.`,
       "Breath awareness and gentle centering to settle the nervous system.",
-      "Sukshma Vyayama — simple joint-mobility warm-ups to prepare your body safely.",
-      "3–5 foundation postures (Mountain, Cat-Cow, Child, gentle standing poses) with verbal cueing by name.",
-      "Closing pranayama (basic diaphragmatic breath) and a guided savasana rest.",
-      "A short debrief so you leave knowing exactly what worked and what to rest.",
+      "Sukshma Vyayama — simple joint-mobility warm-ups to prepare the body safely.",
+      "A few foundation postures (Mountain, Cat-Cow, Child, gentle standing poses) with cueing by name.",
+      "Closing pranayama and a guided savasana rest.",
+      "A short debrief so you leave knowing what to practise and what to rest.",
     ],
   },
   {
-    q: "Studio or Online — Which Is Better for Beginners?",
+    q: "Should a beginner choose the studio in Hai Duong or live online?",
     answer:
-      "Both work for beginners when the class is small and live. In-studio in Hai Duong gives you hands-on adjustments and community; live online gives you the same teacher, same small-batch attention and identical therapeutic sequencing from anywhere in the world.",
+      "Both work well for beginners because both are live and small. The studios serving the Hai Duong urban area give you in-person adjustments and community. Live online gives you the same teacher, the same small-group attention and the same sequencing from anywhere in the world, with camera on so your alignment can be corrected in real time.",
     bullets: [
-      "Studio (Hai Duong, Vietnam): hands-on adjustments, in-person energy, ideal if you are local.",
-      "Online (Zoom / Google Meet): live, small-batch, camera-on — verbal cueing by name every 60–90 seconds when needed.",
-      "Both formats are capped at a small group so beginners never disappear into a crowd.",
-      "Same teacher (Master Anil), same lineage, same beginner-first pacing in either format.",
-      "Many beginners combine one online session mid-week with a weekend studio class.",
-      "If you travel or work remotely, online keeps your practice consistent across timezones.",
+      "Studio: in-person adjustments and community — ideal if you are local to the Hai Duong urban area.",
+      `Live online: ${ONLINE_CLASS.platform}, maximum ${ONLINE_CLASS.maxGroupSize} students, ${ONLINE_CLASS.durationMinutes}-minute sessions.`,
+      "Camera on is required online so your alignment can be seen and corrected.",
+      "Same teacher and same beginner-first pacing in either format.",
+      "Classes are taught in English, Vietnamese and Hindi.",
+      "Many students combine a mid-week online session with a weekend studio class.",
     ],
   },
   {
-    q: "How Soon Will I See Results?",
+    q: "What should I wear or bring to my first class?",
     answer:
-      "Most beginners feel calmer breathing and better sleep in the first 1–2 weeks, notice reduced stiffness and improved posture within 3–4 weeks, and see measurable changes in flexibility, back-pain hours or cycle regularity between weeks 6 and 12 with 3 sessions per week.",
+      "Wear comfortable, stretchy clothing you can move and breathe in, and practise barefoot. For studio classes, bring water — mats and props are provided. For live online classes you will want a yoga mat, two blocks (or thick books), a strap (or belt), a bolster (or firm cushion) and roughly two metres of clear floor space.",
     bullets: [
-      "Weeks 1–2: calmer breathing, easier sleep onset, small energy shifts.",
-      "Weeks 3–4: reduced neck/shoulder tension, better posture awareness, first flexibility gains.",
-      "Weeks 6–8: consistent mood regulation, stronger core, real range-of-motion improvement.",
-      "Weeks 8–12: measurable therapeutic outcomes — pain-free hours, cycle regularity, HRV proxy.",
-      "Results scale with frequency — 3 sessions/week is the sweet spot for beginners.",
-      "You will receive a written 4-week practice map so progress is tracked, not guessed.",
+      "Comfortable, breathable clothing you can bend forward in.",
+      "Practise barefoot — no shoes or socks on the mat.",
+      "Studio: bring water; mats, blocks, straps and bolsters are provided.",
+      "Online: a mat, 2 blocks (or books), 1 strap (or belt), 1 bolster (or cushion).",
+      "About 2×2m of clear floor space with your device placed so your full body is visible.",
+      "Come lightly fed — nothing heavy for about two hours before class.",
     ],
   },
   {
-    q: "What Should I Wear or Bring to My First Class?",
+    q: "Is beginner yoga safe if I have an injury or a health condition?",
     answer:
-      "Wear comfortable, stretchy clothing you can move and breathe in. For studio, bring a water bottle — mats and props are provided. For online, you need a yoga mat, two blocks (or thick books), a strap (or belt), a bolster (or firm cushion), and about 2×2m of clear space.",
+      "Tell us before you practise. Live online students have a 15-minute health-assessment conversation before the first class, and studio students are asked about injuries, medication and goals on arrival, so postures can be adapted or substituted. Yoga is a wellness practice and is not a substitute for medical care — please consult your doctor about any medical condition.",
     bullets: [
-      "Comfortable, breathable clothing — leggings/shorts and a top you can bend forward in.",
-      "Practice barefoot — no shoes or socks on the mat.",
-      "Studio: just bring water; mats, blocks, straps and bolsters are provided.",
-      "Online: a yoga mat, 2 blocks (or thick books), 1 strap (or belt), 1 bolster (or firm cushion).",
-      "Roughly 2×2m of clear floor space and a laptop/tablet placed so the teacher can see your full body.",
-      "Come lightly fed — nothing heavy for 2 hours before class.",
+      "Share injuries, surgeries, pregnancy and medication before your first class.",
+      "Postures are adapted or substituted rather than forced.",
+      "Master Anil teaches every class, so your history is not lost between teachers.",
+      HEALTH_DISCLAIMER,
     ],
   },
-];
-
-const RELATED_LINKS = [
-  { to: "/online-yoga-classes", label: "Live Online Yoga Classes" },
-  { to: "/programs", label: "All Yoga Programs" },
-  { to: "/personal-training", label: "1-on-1 Personal Training" },
-  { to: "/about", label: "About Master Anil Choudhary" },
-  { to: "/contact", label: "Book Free Trial" },
 ];
 
 /* ---------- Route ---------- */
@@ -116,17 +119,16 @@ const RELATED_LINKS = [
 export const Route = createFileRoute("/yoga-for-beginners")({
   head: () => ({
     meta: [
-      { title: "Yoga for Beginners — Start with Confidence | Yog Jivan" },
-      { name: "description", content: "Beginner-friendly yoga in Hai Duong, Vietnam and live online. No flexibility needed. Taught by Master Anil Choudhary. Book a free trial class." },
-      { name: "keywords", content: "yoga for beginners, beginner yoga classes, first yoga class, learn yoga online, beginner yoga Hai Duong, beginner yoga Vietnam, online yoga for beginners, Indian yoga master, safe yoga for newcomers" },
-      { property: "og:title", content: "Yoga for Beginners — Start Your Practice with Confidence | Yog Jivan" },
-      { property: "og:description", content: "New to yoga? Small-batch, beginner-first classes in Hai Duong & live online. Personally taught by Master Anil Choudhary. Free trial — no experience needed." },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
       ...socialImageMeta(masterImages.meditationPortrait),
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Yoga for Beginners | Yog Jivan" },
-      { name: "twitter:description", content: "Beginner-friendly yoga in Hai Duong & live online worldwide. No flexibility required. Free trial class." },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [
@@ -160,19 +162,6 @@ export const Route = createFileRoute("/yoga-for-beginners")({
 
 /* ---------- Reusable bits ---------- */
 
-function InlineCTA({ variant = "gold" }: { variant?: "gold" | "ghost" }) {
-  return (
-    <div className="mt-6 flex flex-wrap gap-3">
-      <Link to="/contact" hash="consultation" className={variant === "gold" ? "btn-gold" : "btn-ghost-gold"}>
-        <Sparkles className="h-4 w-4" /> Book Free Trial Class
-      </Link>
-      <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
-        <MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp Master Anil
-      </a>
-    </div>
-  );
-}
-
 function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; sub?: string }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
@@ -183,19 +172,73 @@ function SectionHead({ eyebrow, title, sub }: { eyebrow: string; title: string; 
   );
 }
 
+/** Two visibly distinct paths: local studio enquiry vs. online introductory offer. */
+function PathCards() {
+  return (
+    <div className="mx-auto grid max-w-4xl gap-4 md:grid-cols-2">
+      <div className="glass-luxe rounded-[1.75rem] border border-[color:var(--gold)]/25 p-6">
+        <p className="flex items-center gap-2 text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">
+          <MapPin className="h-4 w-4" /> In the Hai Duong urban area
+        </p>
+        <h3 className="mt-3 font-display text-lg leading-snug">Enquire about a studio beginner class</h3>
+        <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+          Two studios serving the Hai Duong urban area of Hai Phong, Vietnam. Tell us your
+          schedule and any injuries, and we will recommend a beginner-appropriate class time.
+          Studio membership rates are shared directly.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Link to="/contact" hash="consultation" className="btn-gold">
+            <Sparkles className="h-4 w-4" /> Enquire About Studio Classes
+          </Link>
+          <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+            <MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div className="glass-luxe rounded-[1.75rem] border border-white/10 p-6">
+        <p className="flex items-center gap-2 text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">
+          <Video className="h-4 w-4" /> Live online, worldwide
+        </p>
+        <h3 className="mt-3 font-display text-lg leading-snug">Start the online introductory offer</h3>
+        <p className="mt-3 text-sm leading-relaxed text-foreground/85">{TRIAL.summary}</p>
+        <ul className="mt-3 space-y-2">
+          {TRIAL.bullets.map((b) => (
+            <li key={b} className="flex gap-2 text-xs leading-relaxed text-foreground/80">
+              <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-[color:var(--gold)]" />
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+          This introductory offer applies to live online classes only — it is not a studio membership offer.
+        </p>
+        <div className="mt-5">
+          <Link to="/online-yoga-classes" className="btn-ghost-gold">See Live Online Classes</Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ---------- Page ---------- */
 
 function YogaForBeginnersPage() {
   return (
     <>
       <PageHero
-        eyebrow="Beginner-Friendly · Studio & Online"
-        title="Yoga for Beginners — Start Your Practice with Confidence"
-        sub="Small-batch, beginner-first yoga taught personally by Master Anil Choudhary. In-studio in Hai Duong, Vietnam and live online worldwide. No flexibility or experience required."
+        eyebrow="Beginner-Friendly · Hai Duong Studios & Live Online"
+        title="Yoga for Beginners in Hai Duong and Live Online"
+        sub={`Small-group, beginner-first yoga taught personally by ${TEACHER.name}, ${TEACHER.title}. In person at two studios serving the Hai Duong urban area, and live online worldwide. No flexibility or experience required.`}
       >
         <div className="mt-2 flex flex-wrap gap-3">
-          <Link to="/contact" hash="consultation" className="btn-gold"><Sparkles className="h-4 w-4" /> Book Free Trial Class</Link>
-          <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold"><MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp Us</a>
+          <Link to="/contact" hash="consultation" className="btn-gold">
+            <Sparkles className="h-4 w-4" /> Enquire About Studio Classes
+          </Link>
+          <Link to="/online-yoga-classes" className="btn-ghost-gold">See Live Online Classes</Link>
+          <a href={WA} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground">
+            <MessageCircle className="h-3.5 w-3.5 text-[#25D366]" /> WhatsApp Us
+          </a>
         </div>
       </PageHero>
 
@@ -213,12 +256,27 @@ function YogaForBeginnersPage() {
         </div>
       </section>
 
-      {/* Answer capsule */}
+      {/* Answer capsule + quick answers */}
       <section className="section-tight">
         <div className="container-luxe">
           <div className="glass-luxe mx-auto max-w-4xl rounded-[2rem] border border-[color:var(--gold)]/25 p-6 md:p-10">
             <p className="text-base md:text-lg leading-relaxed text-foreground/90">{ANSWER_CAPSULE}</p>
+            <dl className="mt-6 grid gap-3 border-t border-white/10 pt-6 sm:grid-cols-2">
+              {QUICK_ANSWERS.map((a) => (
+                <div key={a.label} className="glass-soft rounded-2xl p-4">
+                  <dt className="text-[0.58rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">{a.label}</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-foreground/90">{a.text}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
+        </div>
+      </section>
+
+      {/* Opening CTA — two distinct paths */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <PathCards />
         </div>
       </section>
 
@@ -226,24 +284,29 @@ function YogaForBeginnersPage() {
       <section className="section-y">
         <div className="container-luxe">
           <SectionHead
-            eyebrow="Your Teacher · E-E-A-T"
-            title="Master Anil Choudhary"
-            sub="Founder & Lead Yoga Teacher, Yog Jivan Sanctuary"
+            eyebrow="Your Teacher"
+            title={TEACHER.name}
+            sub={`${TEACHER.title}, Yog Jivan Sanctuary`}
           />
           <div className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-[2fr_3fr] lg:items-center">
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10">
               <LuxuryImage
                 src={masterImages.meditationPortrait}
-                alt="Master Anil Choudhary — Founder & Lead Yoga Teacher, teaching beginners"
+                alt={`${TEACHER.name} — ${TEACHER.title}, teaching beginners`}
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>
             <div>
               <p className="text-foreground/90 leading-relaxed">
-                Master Anil began teaching in India and has taught authentic Indian yoga for over 12 years. The majority of the 1000+ students he has taught arrived as absolute beginners — many had never rolled out a mat before. His beginner classes are unhurried, alignment-first and completely free of the pressure that makes newcomers quit yoga after one attempt.
+                Master Anil began teaching in India and has taught authentic Indian yoga for over {PUBLIC_TRUST.yearsTeaching.replace("+", "")} years.
+                Many of the {PUBLIC_TRUST.studentsTaught} students he has taught arrived as absolute beginners — plenty of them
+                had never rolled out a mat before. His beginner classes are unhurried, alignment-first and free of the
+                pressure that makes newcomers give up after one attempt.
               </p>
               <p className="mt-4 text-foreground/90 leading-relaxed">
-                His teaching philosophy for beginners is simple: <span className="italic text-gold-gradient">"Yoga must fit the person — never force the person to fit the yoga."</span> Every first-time student is taught breath, safe alignment and a handful of foundation postures before anything more demanding is introduced.
+                His teaching principle for beginners is simple: <span className="italic text-gold-gradient">&ldquo;Yoga must fit the person — never force the person to fit the yoga.&rdquo;</span>{" "}
+                Every first-time student is taught breath, safe alignment and a handful of foundation postures before
+                anything more demanding is introduced.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {CREDENTIALS.map(({ icon: Icon, label }) => (
@@ -253,24 +316,27 @@ function YogaForBeginnersPage() {
                   </div>
                 ))}
               </div>
-              <InlineCTA />
+              <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
+                Read more <Link to="/about" className="text-[color:var(--gold)] hover:underline">about Master Anil Choudhary</Link>{" "}
+                or see how <Link to="/personal-training" className="text-[color:var(--gold)] hover:underline">1-on-1 personal training</Link> works.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Visual breather — studio life */}
+      {/* Visual breather */}
       <section className="section-tight">
         <div className="container-luxe">
           <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
             <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 md:col-span-2 md:aspect-[16/9]">
               <LuxuryImage
                 src={masterImages.studioAdjustment}
-                alt="Master Anil giving a gentle hands-on adjustment to a beginner student inside the Hai Duong studio"
+                alt="Master Anil giving a gentle hands-on adjustment to a beginner student in the studio"
                 className="h-full w-full object-cover"
               />
               <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-xs uppercase tracking-[0.22em] text-white/85">
-                Beginner-first adjustments · Hai Duong studio
+                Beginner-first adjustments · Hai Duong urban area
               </figcaption>
             </figure>
             <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 aspect-[4/5] md:aspect-auto">
@@ -287,69 +353,67 @@ function YogaForBeginnersPage() {
         </div>
       </section>
 
-      {/* Question-based H2 sections */}
+      {/* Studio vs online decision */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Choosing Your Format"
+            title="Studio or live online?"
+            sub="Both are live and small. The difference is in-person adjustment versus practising from wherever you are."
+          />
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-2">
+            <div className="glass-soft rounded-2xl p-6">
+              <h3 className="font-display text-lg">Studio — Hai Duong urban area</h3>
+              <ul className="mt-4 space-y-2 text-sm leading-relaxed text-foreground/85">
+                <li>In-person adjustments and community.</li>
+                <li>Mats, blocks, straps and bolsters provided.</li>
+                {STUDIO_LIST.map((s) => (
+                  <li key={s.id}>
+                    <a href={s.googleMaps} target="_blank" rel="noopener noreferrer" className="text-[color:var(--gold)] hover:underline">
+                      {s.name}
+                    </a>{" "}
+                    — {s.full}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="glass-soft rounded-2xl p-6">
+              <h3 className="font-display text-lg">Live online — worldwide</h3>
+              <ul className="mt-4 space-y-2 text-sm leading-relaxed text-foreground/85">
+                <li>{ONLINE_CLASS.durationMinutes}-minute live sessions on {ONLINE_CLASS.platform}.</li>
+                <li>Maximum {ONLINE_CLASS.maxGroupSize} students, so you are corrected by name.</li>
+                <li>Camera on is required for correction; your session is never shared.</li>
+                <li>Missed a class? A recording is available to members for {ONLINE_CLASS.recordings.windowHours} hours.</li>
+                <li>Taught in {ONLINE_CLASS.languages.join(", ")}.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Questions — single visible source, mirrored by the FAQ schema */}
       <section className="section-y">
         <div className="container-luxe">
           <SectionHead
             eyebrow="Everything Beginners Ask"
             title="Your first questions, answered honestly"
-            sub="No jargon. No pressure. Straight answers so you know exactly what to expect before you step on the mat."
+            sub="No jargon and no pressure — so you know what to expect before you step on the mat."
           />
-          <div className="mx-auto mt-10 grid max-w-5xl gap-6">
-            {QUESTIONS.map((qa) => (
-              <article
-                key={qa.q}
-                className="glass-luxe rounded-[2rem] border border-white/10 p-6 md:p-8"
-              >
-                <h2 className="font-display text-xl md:text-2xl leading-[1.2] text-foreground">
-                  {qa.q}
-                </h2>
-                <p className="mt-4 text-sm md:text-base leading-relaxed text-foreground/85">
-                  {qa.answer}
-                </p>
-                <ul className="mt-5 space-y-3 border-t border-white/10 pt-5">
-                  {qa.bullets.map((b) => (
-                    <li key={b} className="flex gap-3 text-sm leading-relaxed text-foreground/90">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-          <div className="mx-auto mt-10 max-w-5xl">
-            <InlineCTA />
-          </div>
-        </div>
-      </section>
-
-      {/* Pull-quote break */}
-      <section className="section-tight">
-        <div className="container-luxe">
-          <figure className="mx-auto max-w-3xl text-center">
-            <Quote className="mx-auto h-8 w-8 text-[color:var(--gold)]/70" />
-            <blockquote className="mt-4 font-display text-2xl md:text-3xl italic leading-[1.3] text-foreground/95">
-              "I came for flexibility, but what changed my life was the emotional calm. Yog Jivan feels premium, peaceful, and deeply authentic."
-            </blockquote>
-            <figcaption className="mt-5 text-xs uppercase tracking-[0.28em] text-[color:var(--gold)]">
-              Linh Pham · Studio Student · Vietnam
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      {/* Compact FAQ accordion mirroring the questions */}
-      <section className="section-y">
-        <div className="container-luxe">
-          <SectionHead eyebrow="Quick FAQ" title="Beginner questions at a glance" />
-          <div className="mx-auto mt-10 max-w-3xl">
+          <div className="mx-auto mt-10 max-w-4xl">
             <Accordion type="single" collapsible className="w-full">
               {QUESTIONS.map((qa, i) => (
                 <AccordionItem key={qa.q} value={`item-${i}`}>
-                  <AccordionTrigger className="text-left">{qa.q}</AccordionTrigger>
-                  <AccordionContent className="text-foreground/85 leading-relaxed">
-                    {qa.answer}
+                  <AccordionTrigger className="text-left font-display text-base md:text-lg">{qa.q}</AccordionTrigger>
+                  <AccordionContent>
+                    <p className="text-sm md:text-base leading-relaxed text-foreground/85">{qa.answer}</p>
+                    <ul className="mt-4 space-y-2 border-t border-white/10 pt-4">
+                      {qa.bullets.map((b) => (
+                        <li key={b} className="flex gap-3 text-sm leading-relaxed text-foreground/90">
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -358,59 +422,55 @@ function YogaForBeginnersPage() {
         </div>
       </section>
 
-      {/* Internal links */}
-      <section className="section-y">
+      {/* Mid-page CTA */}
+      <section className="section-tight">
         <div className="container-luxe">
-          <SectionHead eyebrow="Continue Exploring" title="Where beginners go next" />
-          <div className="mx-auto mt-8 flex max-w-4xl flex-wrap justify-center gap-3">
-            {RELATED_LINKS.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                className="glass-soft rounded-full border border-[color:var(--gold)]/25 px-5 py-2 text-sm text-foreground/90 hover:text-foreground hover:border-[color:var(--gold)]/60 transition-colors"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </div>
-          <p className="mx-auto mt-8 max-w-3xl text-center text-sm text-muted-foreground leading-relaxed">
-            Once you have a few beginner classes under your belt, most students continue with our{" "}
-            <Link to="/online-yoga-classes" className="text-[color:var(--gold)] hover:underline">live online yoga classes</Link>,
-            explore <Link to="/programs" className="text-[color:var(--gold)] hover:underline">condition-specific programs</Link>{" "}
-            (back pain, PCOD, anxiety), or accelerate results with{" "}
-            <Link to="/personal-training" className="text-[color:var(--gold)] hover:underline">1-on-1 personal training</Link>.
-          </p>
+          <PathCards />
         </div>
       </section>
 
-      {/* From the Journal — beginner-friendly reading */}
+      {/* Pull-quote */}
       <section className="section-tight">
         <div className="container-luxe">
-          <div className="mx-auto max-w-5xl">
-            <p className="eyebrow"><span className="h-px w-10 bg-primary" />From the Journal</p>
-            <div className="mt-5 grid gap-4 md:grid-cols-3">
-              {[
-                { slug: "building-a-home-practice-you-will-keep", title: "Building a home practice you'll keep for life", cat: "Lifestyle", read: "5 min" },
-                { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters in 2026", cat: "Yoga", read: "6 min" },
-                { slug: "beginners-guide-to-20-minutes-of-stillness", title: "A beginner's guide to 20 minutes of stillness", cat: "Meditation", read: "7 min" },
-              ].map((p) => (
-                <Link
-                  key={p.slug}
-                  to="/blog/$slug"
-                  params={{ slug: p.slug }}
-                  className="group block h-full rounded-2xl border border-white/8 bg-[linear-gradient(180deg,oklch(0.18_0.005_60/0.6),oklch(0.13_0.005_60/0.7))] p-6 transition-all hover:-translate-y-1 hover:border-[color:var(--gold)]/40"
-                >
-                  <div className="flex items-center justify-between text-[0.58rem] uppercase tracking-[0.22em]">
-                    <span className="text-[color:var(--gold)]">{p.cat}</span>
-                    <span className="text-muted-foreground">{p.read}</span>
-                  </div>
-                  <h3 className="mt-4 font-display text-lg leading-tight">{p.title}</h3>
-                  <div className="mt-4 inline-flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">
-                    Read journal →
-                  </div>
-                </Link>
-              ))}
-            </div>
+          <figure className="mx-auto max-w-3xl text-center">
+            <Quote className="mx-auto h-8 w-8 text-[color:var(--gold)]/70" />
+            <blockquote className="mt-4 font-display text-2xl md:text-3xl italic leading-[1.3] text-foreground/95">
+              &ldquo;I came for flexibility, but what changed things for me was the emotional calm. Yog Jivan feels premium, peaceful and deeply authentic.&rdquo;
+            </blockquote>
+            <figcaption className="mt-5 text-xs uppercase tracking-[0.28em] text-[color:var(--gold)]">
+              Linh Pham · Studio Student · Vietnam
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      {/* Contextual reading + next steps */}
+      <section className="section-y">
+        <div className="container-luxe">
+          <div className="mx-auto max-w-3xl">
+            <SectionHead eyebrow="Keep Reading" title="Helpful next steps for beginners" />
+            <p className="mt-6 text-sm md:text-base leading-relaxed text-foreground/85">
+              If you want to practise between classes, our journal entry on{" "}
+              <Link to="/blog/$slug" params={{ slug: "building-a-home-practice-you-will-keep" }} className="text-[color:var(--gold)] hover:underline">
+                building a home practice you&rsquo;ll keep
+              </Link>{" "}
+              is the most useful place to start, and{" "}
+              <Link to="/blog/$slug" params={{ slug: "beginners-guide-to-20-minutes-of-stillness" }} className="text-[color:var(--gold)] hover:underline">
+                a beginner&rsquo;s guide to 20 minutes of stillness
+              </Link>{" "}
+              explains the breathing and meditation side of the practice. To understand the
+              tradition behind what we teach, read{" "}
+              <Link to="/blog/$slug" params={{ slug: "why-traditional-hatha-still-matters" }} className="text-[color:var(--gold)] hover:underline">
+                why traditional Hatha still matters
+              </Link>.
+            </p>
+            <p className="mt-4 text-sm md:text-base leading-relaxed text-foreground/85">
+              Once you are comfortable with the basics, most students move on to a condition-specific{" "}
+              <Link to="/programs" className="text-[color:var(--gold)] hover:underline">yoga program</Link>{" "}
+              such as back pain, PCOD or stress, continue with{" "}
+              <Link to="/online-yoga-classes" className="text-[color:var(--gold)] hover:underline">live online yoga classes</Link>, or work privately through{" "}
+              <Link to="/personal-training" className="text-[color:var(--gold)] hover:underline">1-on-1 personal training</Link>.
+            </p>
           </div>
         </div>
       </section>
@@ -423,14 +483,16 @@ function YogaForBeginnersPage() {
               Your first yoga class should feel <span className="text-gold-gradient">welcoming</span>, not intimidating.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground leading-relaxed">
-              Book a free trial — in-studio in Hai Duong or live online — and experience an authentic Indian yoga class taught personally by Master Anil Choudhary.
+              Enquire about a beginner class at either studio serving the Hai Duong urban area, or start the
+              online introductory offer and practise live with Master Anil from anywhere in the world.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <Link to="/contact" hash="consultation" className="btn-gold"><Sparkles className="h-4 w-4" /> Book Free Trial Class</Link>
-              <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
-                <MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp Master Anil
-              </a>
+              <Link to="/contact" hash="consultation" className="btn-gold">
+                <Sparkles className="h-4 w-4" /> Enquire About Studio Classes
+              </Link>
+              <Link to="/online-yoga-classes" className="btn-ghost-gold">See Live Online Classes</Link>
             </div>
+            <p className="mx-auto mt-5 max-w-2xl text-xs leading-relaxed text-muted-foreground">{HEALTH_DISCLAIMER}</p>
           </div>
         </div>
       </section>
