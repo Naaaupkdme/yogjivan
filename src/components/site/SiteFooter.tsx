@@ -22,9 +22,9 @@ const QUOTES = [
 ];
 
 const TRUST_STRIP = [
-  { value: "12+", label: "Years Experience" },
-  { value: "1000+", label: "Students" },
-  { value: "4.9★", label: "Google Rating" },
+  { value: "12+", label: "Years Teaching" },
+  { value: "1000+", label: "Students Taught" },
+  { value: "20+", label: "Countries" },
   { value: "Global", label: "International Community" },
 ];
 
