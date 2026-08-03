@@ -72,3 +72,36 @@ export const masterAlts = {
   groupNamaste: "Large Yog Jivan community group in seated namaste outdoors",
   groupCelebration: "Yog Jivan community celebrating International Yoga Day with raised hands",
 } as const;
+
+// --- Social (Open Graph / Twitter) image helpers -------------------------
+// Social crawlers require ABSOLUTE URLs. Asset URLs are root-relative, so
+// route head() metadata must run them through absoluteAssetUrl().
+export const SITE_ORIGIN = "https://yogjivan.com";
+
+export function absoluteAssetUrl(url: string): string {
+  return /^https?:\/\//i.test(url) ? url : `${SITE_ORIGIN}${url.startsWith("/") ? "" : "/"}${url}`;
+}
+
+// Real intrinsic dimensions of each social image, so og:image:width/height
+// declared in __root.tsx (1200x630 for the branded card) is never inherited
+// incorrectly by routes that override og:image.
+const SOCIAL_DIMENSIONS: Record<string, [number, number]> = {
+  [masterImages.meditationPortrait]: [1080, 1920],
+  [masterImages.rabbitPose]: [1280, 853],
+  [masterImages.warriorClass]: [1920, 1440],
+  [masterImages.savasanaClass]: [1080, 810],
+  [masterImages.wallSeated]: [1920, 1689],
+  [masterImages.groupNamaste]: [1920, 711],
+};
+
+/** Returns the og:image / twitter:image / og:image:width / og:image:height meta entries for a route. */
+export function socialImageMeta(url: string) {
+  const abs = absoluteAssetUrl(url);
+  const [w, h] = SOCIAL_DIMENSIONS[url] ?? [1200, 630];
+  return [
+    { property: "og:image", content: abs },
+    { property: "og:image:width", content: String(w) },
+    { property: "og:image:height", content: String(h) },
+    { name: "twitter:image", content: abs },
+  ];
+}
