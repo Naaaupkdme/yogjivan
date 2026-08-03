@@ -72,11 +72,12 @@ const copy: Record<Lang, Copy> = {
       freeTrial: "Free Trial",
     },
     hero: {
-      eyebrow: "Authentic Indian Online Yoga · Live Worldwide",
-      title: ["Authentic Indian", "Online Yoga", "Classes"],
-      sub: "Live therapeutic yoga classes with Master Anil Choudhary, Founder & Lead Yoga Teacher. Join students from Vietnam, India, USA, Canada, Australia and worldwide.",
-      primary: "Book Free Live Trial",
+      eyebrow: "Authentic Indian Yoga · Hai Duong Studios & Live Online",
+      title: ["Yoga Classes in", "Hai Duong", "— and Live Online"],
+      sub: "Two yoga studios serving the Hai Duong urban area of Hai Phong, Vietnam. Beginner, therapeutic and personal yoga taught personally by Master Anil Choudhary, Founder & Lead Yoga Teacher — with live online classes for students worldwide.",
+      primary: "Enquire About Studio Classes",
       secondary: "WhatsApp Us",
+      online: "See Live Online Classes",
       trust: [
         "12+ Years Experience",
         "1000+ Students",
