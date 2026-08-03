@@ -230,16 +230,16 @@ const CLASS_DETAILS = [
   { label: "Batch Size", value: "Small group (max 8) or 1-on-1 private" },
   { label: "Duration",   value: "60 minutes per session, 3–5 sessions/week recommended" },
   { label: "Levels",     value: "Beginner → Advanced, plus dedicated therapeutic tracks" },
-  { label: "Languages",  value: "English (primary), Hindi, basic Vietnamese" },
+  { label: "Languages",  value: "English, Vietnamese and Hindi" },
   {
     label: "Timings",
     value: "Morning: 06:30 IST · 01:00 GMT · 20:00 EST (prev day)  |  Evening: 18:30 IST · 13:00 GMT · 08:00 EST  |  Late: 21:00 IST · 15:30 GMT · 10:30 EST",
   },
   {
     label: "Pricing",
-    value: "Free trial (3 days of group classes + one complimentary private session, no card required) · Small Group from $49/month · 1-on-1 Private (premium personalized tier) · Corporate & family packages on request.",
+    value: "Free trial (3 days of live group classes + one complimentary private session, no card required) · Memberships $19.99 / 1 month, $54.99 / 3 months, $99.99 / 6 months, $179.99 / 12 months · 1-on-1 private and corporate packages on request.",
   },
-  { label: "Trial",      value: "3-day free trial access to group classes, plus one complimentary private session — no card required" },
+  { label: "Trial",      value: "3 days of free live group access, plus one complimentary private session — no card required, one introductory offer per new student" },
 ];
 
 const FAQS_20: { q: string; a: string }[] = [
