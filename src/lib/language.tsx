@@ -21,6 +21,7 @@ type Copy = {
     sub: string;
     primary: string;
     secondary: string;
+    online: string;
     trust: string[];
   };
   story: {
