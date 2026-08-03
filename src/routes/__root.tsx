@@ -231,71 +231,46 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
 
-  // Conditionally load Google Analytics + Meta Pixel only AFTER cookie consent.
+  // Google Advanced Consent Mode v2: denied defaults are set before gtag.js
+  // loads (cookieless measurement), Meta Pixel stays blocked until marketing
+  // consent. See src/lib/analytics.ts.
   useEffect(() => {
-    let loaded = false;
-    const loadAnalytics = () => {
-      if (loaded) return;
-      loaded = true;
-      // Google Analytics (GA4)
-      const gtagScript = document.createElement("script");
-      gtagScript.async = true;
-      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-LFV05NVEJZ";
-      document.head.appendChild(gtagScript);
-      const gtagInit = document.createElement("script");
-      gtagInit.text =
-        "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','G-LFV05NVEJZ',{send_page_view:true});";
-      document.head.appendChild(gtagInit);
-      // Meta Pixel
-      const fbInit = document.createElement("script");
-      fbInit.text =
-        "!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1752860699056785');fbq('track','PageView');";
-      document.head.appendChild(fbInit);
-    };
-    if (getConsent() === "accepted") loadAnalytics();
-    const onConsent = (e: Event) => {
-      if ((e as CustomEvent).detail === "accepted") loadAnalytics();
-    };
-    window.addEventListener(CONSENT_EVENT, onConsent);
-    return () => window.removeEventListener(CONSENT_EVENT, onConsent);
-  }, []);
-
-  useEffect(() => {
-    const unsub = router.subscribe("onResolved", () => {
-      const w = window as unknown as { gtag?: (...args: unknown[]) => void; fbq?: (...args: unknown[]) => void };
-      if (typeof w.gtag === "function") {
-        w.gtag("event", "page_view", {
-          page_path: window.location.pathname + window.location.search,
-          page_location: window.location.href,
-          page_title: document.title,
+    initAnalytics();
+    let lastKey = "";
+    const sendPageView = () => {
+      const key = window.location.pathname + window.location.search;
+      if (key === lastKey) return; // ignore hash-only / repeat resolutions
+      lastKey = key;
+      trackPageView();
+      // Meta ViewContent on key service pages (consent-gated inside metaEvent).
+      const path = window.location.pathname.replace(/\/+$/, "") || "/";
+      const VIEW_CONTENT_MAP: Record<string, { content_name: string; content_category: string }> = {
+        "/": { content_name: "Home — Yog Jivan Sanctuary", content_category: "Home" },
+        "/online-yoga-classes": { content_name: "Online Yoga Classes", content_category: "Online Classes" },
+        "/personal-training": { content_name: "Personal Training", content_category: "Private Sessions" },
+        "/yoga-for-back-pain": { content_name: "Back Pain Yoga", content_category: "Therapeutic Yoga" },
+        "/yoga-for-stress": { content_name: "Stress Relief Yoga", content_category: "Therapeutic Yoga" },
+        "/yoga-for-weight-loss": { content_name: "Weight Loss Yoga", content_category: "Therapeutic Yoga" },
+        "/contact": { content_name: "Contact Yog Jivan", content_category: "Contact" },
+      };
+      const match = VIEW_CONTENT_MAP[path];
+      if (match) {
+        metaEvent("ViewContent", {
+          content_name: match.content_name,
+          content_category: match.content_category,
+          content_type: "product",
         });
       }
-      if (typeof w.fbq === "function") {
-        w.fbq("track", "PageView");
-        // Fire Meta standard ViewContent on key service pages (deduped per navigation).
-        const path = window.location.pathname.replace(/\/+$/, "") || "/";
-        const VIEW_CONTENT_MAP: Record<string, { content_name: string; content_category: string }> = {
-          "/": { content_name: "Home — Yog Jivan Sanctuary", content_category: "Home" },
-          "/online-yoga-classes": { content_name: "Online Yoga Classes", content_category: "Online Classes" },
-          "/personal-training": { content_name: "Personal Training", content_category: "Private Sessions" },
-          "/yoga-for-back-pain": { content_name: "Back Pain Yoga", content_category: "Therapeutic Yoga" },
-          "/yoga-for-stress": { content_name: "Stress Relief Yoga", content_category: "Therapeutic Yoga" },
-          "/yoga-for-weight-loss": { content_name: "Weight Loss Yoga", content_category: "Therapeutic Yoga" },
-          "/contact": { content_name: "Contact Yog Jivan", content_category: "Contact" },
-        };
-        const match = VIEW_CONTENT_MAP[path];
-        if (match) {
-          w.fbq("track", "ViewContent", {
-            content_name: match.content_name,
-            content_category: match.content_category,
-            content_type: "product",
-            page_location: window.location.href,
-          });
-        }
-      }
-    });
-    return () => unsub();
+    };
+    // Initial load (gtag config runs with send_page_view:false).
+    sendPageView();
+    const unsub = router.subscribe("onResolved", sendPageView);
+    // A consent grant mid-session should still record the current page once.
+    const onConsent = () => { lastKey = ""; sendPageView(); };
+    window.addEventListener(CONSENT_EVENT, onConsent);
+    return () => { unsub(); window.removeEventListener(CONSENT_EVENT, onConsent); };
   }, [router]);
+
 
   // Global hash-scroll: after any navigation or on initial load, if the URL has
   // a #hash, smoothly scroll that element into view once it exists in the DOM.
