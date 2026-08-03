@@ -137,7 +137,7 @@ const APP_VS_LIVE = [
   { dim: "Accountability",  app: "Streaks & badges",                                   live: "Teacher notices when you miss class and checks in" },
   { dim: "Community",       app: "Anonymous comments",                                 live: "Small cohort — you learn names, faces & journeys" },
   { dim: "Injury Risk",     app: "High — no feedback loop",                            live: "Low — teacher stops or modifies unsafe patterns instantly" },
-  { dim: "Cost",            app: "$10–20/mo but plateaus fast",                        live: "From $49/mo — measurable results in 6–12 weeks" },
+  { dim: "Cost",            app: "$10–20/mo but plateaus fast",                        live: "From $19.99/mo — live teaching with a real teacher" },
 ];
 
 const CORRECTION_LAYERS = [
