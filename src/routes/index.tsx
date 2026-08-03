@@ -21,19 +21,22 @@ const Lazy = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<Skeleton />}>{children}</Suspense>
 );
 
+const HOME_TITLE = "Yoga Classes in Hai Duong | Two Studios & Live Online — Yog Jivan";
+const HOME_DESC =
+  "Authentic Indian yoga at two studios serving the Hai Duong urban area, taught personally by Master Anil Choudhary. Beginner, therapeutic and personal yoga — plus live online classes worldwide.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Yog Jivan | Yoga Studio Hai Duong & Live Online" },
-      { name: "description", content: "Authentic Indian yoga in Hai Duong, Vietnam and live online. Therapeutic, private and studio classes with Master Anil. Book a free trial." },
-      { name: "keywords", content: "online yoga classes, authentic Indian yoga, live online yoga, therapeutic yoga, yoga for beginners, yoga for back pain, yoga for anxiety, yoga for PCOD, certified Indian yoga teacher, yoga near me, Master Anil Choudhary" },
-      { property: "og:title", content: "Yog Jivan | Yoga Studio Hai Duong & Live Online" },
-      { property: "og:description", content: "Authentic Indian yoga in Hai Duong, Vietnam and live online. Therapeutic, private and studio classes with Master Anil. Book a free trial." },
+      { title: HOME_TITLE },
+      { name: "description", content: HOME_DESC },
+      { property: "og:title", content: HOME_TITLE },
+      { property: "og:description", content: HOME_DESC },
       { property: "og:url", content: "https://yogjivan.com/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Yog Jivan | Yoga Studio Hai Duong & Live Online" },
-      { name: "twitter:description", content: "Authentic Indian yoga in Hai Duong, Vietnam and live online. Therapeutic, private and studio classes with Master Anil. Book a free trial." },
+      { name: "twitter:title", content: HOME_TITLE },
+      { name: "twitter:description", content: HOME_DESC },
     ],
     links: [
       { rel: "canonical", href: "https://yogjivan.com/" },
@@ -46,11 +49,6 @@ export const Route = createFileRoute("/")({
           "@type": "WebSite",
           name: "Yog Jivan",
           url: "https://yogjivan.com/",
-          potentialAction: {
-            "@type": "SearchAction",
-            target: "https://yogjivan.com/?q={search_term_string}",
-            "query-input": "required name=search_term_string",
-          },
         }),
       },
       {
