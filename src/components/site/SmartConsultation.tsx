@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
 import { submitLead } from "@/lib/leads";
 import { SOCIAL } from "@/lib/social";
+import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
 
 const SERVICES = [
   "Private Session",
@@ -48,6 +49,7 @@ export function SmartConsultation() {
   const [done, setDone] = useState(false);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
+    trackFormStart("smart_consultation");
     setForm((s) => ({ ...s, [key]: value }));
   }
 
@@ -71,8 +73,8 @@ export function SmartConsultation() {
         health_notes: parsed.data.message || undefined,
         status: "submitted",
       });
-      const w = window as unknown as { fbq?: (...args: unknown[]) => void };
-      if (typeof w.fbq === "function") w.fbq("track", "Lead");
+      // Only after the insert resolved successfully and the success state shows.
+      trackGenerateLead(parsed.data.service, "smart_consultation");
       setDone(true);
       setForm(empty);
     } catch (err) {
