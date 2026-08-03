@@ -1,5 +1,5 @@
 // Sitewide FAQ content. All business facts come from src/lib/facts/*.
-import { CONTACT, LOCATIONS, ONLINE_CLASS, PRICING_SUMMARY, TRIAL } from "@/lib/facts";
+import { CONTACT, LOCATIONS, ONLINE_CLASS, PRICING_SUMMARY, TRIAL, REFUND_POLICY } from "@/lib/facts";
 
 export const FAQS = [
   {
@@ -53,5 +53,9 @@ export const FAQS = [
   {
     q: "How do I start the free trial?",
     a: `${TRIAL.summary} Tap ${TRIAL.ctaLabel} or message us on WhatsApp at ${CONTACT.phoneDisplay}.`,
+  },
+  {
+    q: "What is your refund and cancellation policy?",
+    a: `${REFUND_POLICY.summary} ${REFUND_POLICY.exceptions.join(" ")} ${REFUND_POLICY.howTo}`,
   },
 ];
