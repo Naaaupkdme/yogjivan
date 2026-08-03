@@ -21,6 +21,7 @@ type Copy = {
     sub: string;
     primary: string;
     secondary: string;
+    online: string;
     trust: string[];
   };
   story: {
@@ -72,11 +73,12 @@ const copy: Record<Lang, Copy> = {
       freeTrial: "Free Trial",
     },
     hero: {
-      eyebrow: "Authentic Indian Online Yoga · Live Worldwide",
-      title: ["Authentic Indian", "Online Yoga", "Classes"],
-      sub: "Live therapeutic yoga classes with Master Anil Choudhary, Founder & Lead Yoga Teacher. Join students from Vietnam, India, USA, Canada, Australia and worldwide.",
-      primary: "Book Free Live Trial",
+      eyebrow: "Authentic Indian Yoga · Hai Duong Studios & Live Online",
+      title: ["Yoga Classes in", "Hai Duong", "— and Live Online"],
+      sub: "Two yoga studios serving the Hai Duong urban area of Hai Phong, Vietnam. Beginner, therapeutic and personal yoga taught personally by Master Anil Choudhary, Founder & Lead Yoga Teacher — with live online classes for students worldwide.",
+      primary: "Enquire About Studio Classes",
       secondary: "WhatsApp Us",
+      online: "See Live Online Classes",
       trust: [
         "12+ Years Experience",
         "1000+ Students",
@@ -132,11 +134,12 @@ const copy: Record<Lang, Copy> = {
       freeTrial: "Học thử",
     },
     hero: {
-      eyebrow: "Sanctuary wellness cao cấp · Hải Dương & Online",
-      title: ["Yoga cao cấp.", "Trị liệu chữa lành.", "Sanctuary wellness toàn cầu."],
-      sub: "Lớp riêng, lớp studio cao cấp, phục hồi trị liệu và các chương trình yoga online dẫn dắt bởi Master Anil Choudhary.",
-      primary: "Đặt buổi học thử",
-      secondary: "Khám phá chương trình",
+      eyebrow: "Yoga Ấn Độ chính thống · Studio Hải Dương & Online",
+      title: ["Lớp Yoga tại", "Hải Dương", "— và Online trực tiếp"],
+      sub: "Hai studio phục vụ khu vực đô thị Hải Dương, Thành phố Hải Phòng. Yoga cho người mới bắt đầu, yoga trị liệu và lớp cá nhân do Master Anil Choudhary trực tiếp giảng dạy — cùng các lớp online trực tiếp cho học viên toàn cầu.",
+      primary: "Tư vấn lớp tại studio",
+      secondary: "Nhắn WhatsApp",
+      online: "Xem lớp online trực tiếp",
       trust: ["12+ năm tinh hoa", "1000+ học viên chuyển hóa", "20+ quốc gia"],
     },
     story: {
