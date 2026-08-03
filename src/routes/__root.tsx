@@ -17,8 +17,10 @@ import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { FloatingConsultationCTA } from "@/components/site/FloatingConsultationCTA";
 import { ExitIntentModal } from "@/components/site/ExitIntentModal";
-import { CookieConsent, getConsent, CONSENT_EVENT } from "@/components/site/CookieConsent";
+import { CookieConsent } from "@/components/site/CookieConsent";
+import { initAnalytics, trackPageView, trackCta, metaEvent } from "@/lib/analytics";
 import { LanguageProvider } from "@/lib/language";
+
 
 function NotFoundComponent() {
   return (
@@ -204,9 +206,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           ],
         }),
       },
-      // NOTE: Google Analytics (gtag) and Meta Pixel are loaded conditionally
-      // in RootComponent AFTER the user grants cookie consent — do not add
-      // those scripts here or they will load on every visit before consent.
+      // NOTE: Google tag loads client-side in RootComponent with Advanced
+      // Consent Mode v2 (denied defaults); Meta Pixel loads only after
+      // marketing consent. Do not add either script tag here.
     ],
   }),
   shellComponent: RootShell,
@@ -231,71 +233,45 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
 
-  // Conditionally load Google Analytics + Meta Pixel only AFTER cookie consent.
+  // Google Advanced Consent Mode v2: denied defaults are set before gtag.js
+  // loads (cookieless measurement), Meta Pixel stays blocked until marketing
+  // consent. See src/lib/analytics.ts.
   useEffect(() => {
-    let loaded = false;
-    const loadAnalytics = () => {
-      if (loaded) return;
-      loaded = true;
-      // Google Analytics (GA4)
-      const gtagScript = document.createElement("script");
-      gtagScript.async = true;
-      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-LFV05NVEJZ";
-      document.head.appendChild(gtagScript);
-      const gtagInit = document.createElement("script");
-      gtagInit.text =
-        "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','G-LFV05NVEJZ',{send_page_view:true});";
-      document.head.appendChild(gtagInit);
-      // Meta Pixel
-      const fbInit = document.createElement("script");
-      fbInit.text =
-        "!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1752860699056785');fbq('track','PageView');";
-      document.head.appendChild(fbInit);
-    };
-    if (getConsent() === "accepted") loadAnalytics();
-    const onConsent = (e: Event) => {
-      if ((e as CustomEvent).detail === "accepted") loadAnalytics();
-    };
-    window.addEventListener(CONSENT_EVENT, onConsent);
-    return () => window.removeEventListener(CONSENT_EVENT, onConsent);
-  }, []);
-
-  useEffect(() => {
-    const unsub = router.subscribe("onResolved", () => {
-      const w = window as unknown as { gtag?: (...args: unknown[]) => void; fbq?: (...args: unknown[]) => void };
-      if (typeof w.gtag === "function") {
-        w.gtag("event", "page_view", {
-          page_path: window.location.pathname + window.location.search,
-          page_location: window.location.href,
-          page_title: document.title,
+    initAnalytics();
+    let lastKey = "";
+    const sendPageView = () => {
+      const key = window.location.pathname + window.location.search;
+      if (key === lastKey) return; // ignore hash-only / repeat resolutions
+      lastKey = key;
+      trackPageView();
+      // Meta ViewContent on key service pages (consent-gated inside metaEvent).
+      const path = window.location.pathname.replace(/\/+$/, "") || "/";
+      const VIEW_CONTENT_MAP: Record<string, { content_name: string; content_category: string }> = {
+        "/": { content_name: "Home — Yog Jivan Sanctuary", content_category: "Home" },
+        "/online-yoga-classes": { content_name: "Online Yoga Classes", content_category: "Online Classes" },
+        "/personal-training": { content_name: "Personal Training", content_category: "Private Sessions" },
+        "/yoga-for-back-pain": { content_name: "Back Pain Yoga", content_category: "Therapeutic Yoga" },
+        "/yoga-for-stress": { content_name: "Stress Relief Yoga", content_category: "Therapeutic Yoga" },
+        "/yoga-for-weight-loss": { content_name: "Weight Loss Yoga", content_category: "Therapeutic Yoga" },
+        "/contact": { content_name: "Contact Yog Jivan", content_category: "Contact" },
+      };
+      const match = VIEW_CONTENT_MAP[path];
+      if (match) {
+        metaEvent("ViewContent", {
+          content_name: match.content_name,
+          content_category: match.content_category,
+          content_type: "product",
         });
       }
-      if (typeof w.fbq === "function") {
-        w.fbq("track", "PageView");
-        // Fire Meta standard ViewContent on key service pages (deduped per navigation).
-        const path = window.location.pathname.replace(/\/+$/, "") || "/";
-        const VIEW_CONTENT_MAP: Record<string, { content_name: string; content_category: string }> = {
-          "/": { content_name: "Home — Yog Jivan Sanctuary", content_category: "Home" },
-          "/online-yoga-classes": { content_name: "Online Yoga Classes", content_category: "Online Classes" },
-          "/personal-training": { content_name: "Personal Training", content_category: "Private Sessions" },
-          "/yoga-for-back-pain": { content_name: "Back Pain Yoga", content_category: "Therapeutic Yoga" },
-          "/yoga-for-stress": { content_name: "Stress Relief Yoga", content_category: "Therapeutic Yoga" },
-          "/yoga-for-weight-loss": { content_name: "Weight Loss Yoga", content_category: "Therapeutic Yoga" },
-          "/contact": { content_name: "Contact Yog Jivan", content_category: "Contact" },
-        };
-        const match = VIEW_CONTENT_MAP[path];
-        if (match) {
-          w.fbq("track", "ViewContent", {
-            content_name: match.content_name,
-            content_category: match.content_category,
-            content_type: "product",
-            page_location: window.location.href,
-          });
-        }
-      }
-    });
+    };
+    // Initial load (gtag config runs with send_page_view:false).
+    sendPageView();
+    // A consent change never re-sends page_view — the current page was already
+    // measured once (cookielessly while denied), so no duplicates are produced.
+    const unsub = router.subscribe("onResolved", sendPageView);
     return () => unsub();
   }, [router]);
+
 
   // Global hash-scroll: after any navigation or on initial load, if the URL has
   // a #hash, smoothly scroll that element into view once it exists in the DOM.
@@ -341,38 +317,75 @@ function RootComponent() {
     return () => { unsub(); window.removeEventListener("hashchange", onHash); };
   }, [router]);
 
-  // Meta Pixel conversion tracking: Contact (WhatsApp) & Lead (Book Free Trial CTAs)
+  // Unified CTA tracking (GA4 + Meta Contact). No PII: only page path,
+  // CTA location and destination type are sent. Meta "Lead" is NOT fired here —
+  // it only fires after a confirmed lead insert (see SmartConsultation).
   useEffect(() => {
     const WHATSAPP_RE = /wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i;
-    const LEAD_TEXT_RE = /(book\s+(a\s+)?free\s+trial|free\s+trial|book\s+trial|personal\s+consultation|personalize\s+my\s+recommendation)/i;
+    const TRIAL_RE = /(book\s+(a\s+)?free\s+trial|free\s+trial|book\s+trial|personal\s+consultation|personalize\s+my\s+recommendation)/i;
     let lastKey = "";
     let lastAt = 0;
-    const fire = (event: "Contact" | "Lead", key: string) => {
-      const w = window as unknown as { fbq?: (...args: unknown[]) => void };
-      if (typeof w.fbq !== "function") return;
+    const deduped = (key: string) => {
       const now = Date.now();
-      if (key === lastKey && now - lastAt < 800) return; // dedupe rapid double-fires
+      if (key === lastKey && now - lastAt < 800) return true;
       lastKey = key; lastAt = now;
-      w.fbq("track", event);
+      return false;
+    };
+    const locationOf = (el: HTMLElement): string => {
+      const explicit = el.closest("[data-cta-location]")?.getAttribute("data-cta-location");
+      if (explicit) return explicit;
+      const section = el.closest("section[id],div[id]");
+      const id = section?.getAttribute("id");
+      if (id) return id;
+      if (el.closest("header")) return "header";
+      if (el.closest("footer")) return "footer";
+      return "body";
     };
     const onClick = (e: MouseEvent) => {
       const target = e.target as Element | null;
       if (!target) return;
-      const el = (target.closest("a,button") as HTMLElement | null);
+      const el = target.closest("a,button") as HTMLElement | null;
       if (!el) return;
       const href = (el as HTMLAnchorElement).href || el.getAttribute("href") || "";
-      const label = `${el.getAttribute("aria-label") || ""} ${el.textContent || ""}`.trim();
-      if (WHATSAPP_RE.test(href) || /whatsapp/i.test(el.getAttribute("aria-label") || "")) {
-        fire("Contact", `contact:${href || label}`);
+      const aria = el.getAttribute("aria-label") || "";
+      const label = `${aria} ${el.textContent || ""}`.trim();
+      const where = locationOf(el);
+
+      if (WHATSAPP_RE.test(href) || /whatsapp/i.test(aria)) {
+        if (deduped(`wa:${href}`)) return;
+        trackCta("whatsapp_click", where);
+        metaEvent("Contact");
         return;
       }
-      if (LEAD_TEXT_RE.test(label) || /#consultation$/.test(href)) {
-        fire("Lead", `lead:${label || href}`);
+      if (/zalo\.me|zalo/i.test(href)) {
+        if (deduped(`zalo:${href}`)) return;
+        trackCta("zalo_click", where);
+        metaEvent("Contact");
+        return;
+      }
+      if (href.startsWith("tel:")) {
+        if (deduped(`tel:${href}`)) return;
+        trackCta("phone_click", where);
+        metaEvent("Contact");
+        return;
+      }
+      if (href.startsWith("mailto:")) {
+        if (deduped(`mail:${href}`)) return;
+        trackCta("email_click", where);
+        metaEvent("Contact");
+        return;
+      }
+      if (TRIAL_RE.test(label) || /#consultation$/.test(href)) {
+        if (deduped(`trial:${label || href}`)) return;
+        trackCta("book_trial_click", where, {
+          destination_type: /#consultation$/.test(href) ? "form_anchor" : href ? "internal_link" : "in_page",
+        });
       }
     };
     document.addEventListener("click", onClick, true);
     return () => document.removeEventListener("click", onClick, true);
   }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
