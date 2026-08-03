@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
-import { masterImages } from "@/lib/images";
+import { masterImages, socialImageMeta } from "@/lib/images";
 
 const CANONICAL = "https://yogjivan.com/yoga-for-thyroid";
 
@@ -84,11 +84,10 @@ export const Route = createFileRoute("/yoga-for-thyroid")({
       { property: "og:description", content: "Gentle, consistent yoga supporting thyroid health alongside your medical care. Studio & online. Free consultation." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: masterImages.wallSeated },
+      ...socialImageMeta(masterImages.wallSeated),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Yoga for Thyroid Health | Yog Jivan" },
       { name: "twitter:description", content: "Therapeutic yoga supporting thyroid health. Free consultation." },
-      { name: "twitter:image", content: masterImages.wallSeated },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
-import { masterImages } from "@/lib/images";
+import { masterImages, socialImageMeta } from "@/lib/images";
 
 const CANONICAL = "https://yogjivan.com/period-safe-yoga";
 
@@ -80,11 +80,10 @@ export const Route = createFileRoute("/period-safe-yoga")({
       { property: "og:description", content: "Gentle, cycle-aware yoga — small-batch, personalized, in-studio and online. Free consultation." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: masterImages.rabbitPose },
+      ...socialImageMeta(masterImages.rabbitPose),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Period-Safe Yoga | Yog Jivan" },
       { name: "twitter:description", content: "Cycle-aware, period-safe yoga with Master Anil. Free consultation." },
-      { name: "twitter:image", content: masterImages.rabbitPose },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [

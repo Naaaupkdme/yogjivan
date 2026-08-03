@@ -3,7 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { LuxuryImage } from "@/components/site/LuxuryImage";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SOCIAL } from "@/lib/social";
-import { masterImages } from "@/lib/images";
+import { masterImages, socialImageMeta } from "@/lib/images";
 import {
   Award, Users, Globe2, CheckCircle2, Sparkles, MessageCircle,
   ShieldCheck, GraduationCap, Stethoscope, Quote,
@@ -123,11 +123,10 @@ export const Route = createFileRoute("/yoga-for-beginners")({
       { property: "og:description", content: "New to yoga? Small-batch, beginner-first classes in Hai Duong & live online. Personally taught by Master Anil Choudhary. Free trial — no experience needed." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: masterImages.meditationPortrait },
+      ...socialImageMeta(masterImages.meditationPortrait),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Yoga for Beginners | Yog Jivan" },
       { name: "twitter:description", content: "Beginner-friendly yoga in Hai Duong & live online worldwide. No flexibility required. Free trial class." },
-      { name: "twitter:image", content: masterImages.meditationPortrait },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [

@@ -25,17 +25,23 @@ import { LanguageProvider } from "@/lib/language";
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
+      {/* React 19 hoists this into <head> so the 404 shell is never indexable. */}
+      <meta name="robots" content="noindex, follow" />
+      <div className="max-w-lg text-center">
         <p className="eyebrow justify-center">404</p>
         <h1 className="mt-4 text-5xl">Page not found</h1>
-        <p className="mt-3 text-sm text-muted-foreground">This path drifted beyond the sanctuary. Return home.</p>
-        <div className="mt-8">
+        <p className="mt-3 text-sm text-muted-foreground">This path drifted beyond the sanctuary. Try one of these instead.</p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link to="/" className="btn-gold">Go home</Link>
+          <Link to="/programs" className="btn-ghost-gold">Programs</Link>
+          <Link to="/online-yoga-classes" className="btn-ghost-gold">Online classes</Link>
+          <Link to="/contact" className="btn-ghost-gold">Contact</Link>
         </div>
       </div>
     </div>
   );
 }
+
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
