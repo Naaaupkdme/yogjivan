@@ -7,7 +7,7 @@ import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 const PROGRAMS_FAQS = [
   {
     q: "Is there a yoga studio near me in Hai Duong?",
-    a: "Yes — Yog Jivan runs two premium yoga studios in Hai Duong City, Vietnam, plus outdoor and online programs, so you can practice near you whether you live in Le Thanh Nghi, Thanh Dong or elsewhere in Hai Duong Province.",
+    a: "Yes — Yog Jivan runs two premium yoga studios in the Hai Duong urban area of Hai Phong, Vietnam, plus outdoor and online programs, so you can practise near you whether you are in Lê Thanh Nghị, Thành Đông or elsewhere nearby.",
   },
   {
     q: "Do you offer online yoga classes for beginners?",
