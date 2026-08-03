@@ -1,5 +1,5 @@
 // Sitewide FAQ content. All business facts come from src/lib/facts/*.
-import { CONTACT, LOCATIONS, ONLINE_CLASS, PRICING_SUMMARY, TRIAL } from "@/lib/facts";
+import { CONTACT, LOCATIONS, ONLINE_CLASS, PRICING_SUMMARY, TRIAL, REFUND_POLICY } from "@/lib/facts";
 
 export const FAQS = [
   {
