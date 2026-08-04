@@ -422,12 +422,6 @@ function YogaForBeginnersPage() {
         </div>
       </section>
 
-      {/* Mid-page CTA */}
-      <section className="section-tight">
-        <div className="container-luxe">
-          <PathCards />
-        </div>
-      </section>
 
       {/* Pull-quote */}
       <section className="section-tight">
