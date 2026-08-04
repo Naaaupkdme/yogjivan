@@ -140,7 +140,7 @@ const copy: Record<Lang, Copy> = {
       primary: "Tư vấn lớp tại studio",
       secondary: "Nhắn WhatsApp",
       online: "Xem lớp online trực tiếp",
-      trust: ["12+ năm tinh hoa", "1000+ học viên chuyển hóa", "20+ quốc gia"],
+      trust: ["12+ năm tinh hoa", "1000+ học viên đã được hướng dẫn", "20+ quốc gia"],
     },
     story: {
       eyebrow: "Hành trình người sáng lập",
