@@ -92,6 +92,9 @@ const SOCIAL_DIMENSIONS: Record<string, [number, number]> = {
   [masterImages.savasanaClass]: [1080, 810],
   [masterImages.wallSeated]: [1920, 1689],
   [masterImages.groupNamaste]: [1920, 711],
+  [masterImages.groupCelebration]: [1920, 910],
+  [masterImages.founderPortrait]: [1920, 1280],
+  [masterImages.studioAdjustment]: [1060, 811],
 };
 
 /** Returns the og:image / twitter:image / og:image:width / og:image:height meta entries for a route. */

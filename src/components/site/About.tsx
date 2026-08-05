@@ -53,7 +53,7 @@ export function About() {
             A practice forged over <span className="italic text-gold-gradient">twelve years</span>, offered in stillness.
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Master Anil Choudhary brings the depth of classical Indian yoga to Vietnam — guiding seekers through a path of physical mastery, therapeutic healing and inner transformation. Every breath, every pose, every silence is intentional.
+            Master Anil Choudhary brings the depth of classical Indian yoga to Vietnam — guiding seekers through a path of physical mastery, therapeutic-style practice and inner steadiness. Every breath, every pose, every silence is intentional.
           </p>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2">

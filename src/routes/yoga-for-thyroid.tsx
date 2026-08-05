@@ -95,17 +95,6 @@ export const Route = createFileRoute("/yoga-for-thyroid")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: QUESTIONS.map((f) => ({
-            "@type": "Question", name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.answer },
-          })),
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },

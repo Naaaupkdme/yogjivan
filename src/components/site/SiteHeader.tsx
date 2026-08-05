@@ -7,12 +7,14 @@ import { SOCIAL } from "@/lib/social";
 
 const NAV = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/yoga-for-beginners", label: "Yoga for Beginners" },
-  { href: "/online-yoga-classes", label: "Online Yoga Classes" },
-  { href: "/blog", label: "Journal" },
+  { href: "/programs", label: "Programs & Pricing" },
+  { href: "/yoga-for-beginners", label: "For Beginners" },
+  { href: "/online-yoga-classes", label: "Live Online Yoga" },
+  { href: "/personal-training#private-online-yoga", label: "Private 1-on-1" },
+  { href: "/about", label: "About Master Anil" },
   { href: "/contact", label: "Contact" },
 ];
+
 
 const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] = [
   {
@@ -28,7 +30,8 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
     group: "Programs",
     items: [
       { href: "/programs", label: "All Programs" },
-      { href: "/personal-training", label: "Personal Training" },
+      { href: "/personal-training", label: "Private & Personal Training" },
+      { href: "/personal-training#private-online-yoga", label: "Private 1-on-1 Online Yoga" },
       { href: "/online-yoga-classes", label: "Online Yoga Classes" },
       { href: "/yoga-for-beginners", label: "Yoga for Beginners" },
       { href: "/yoga-for-back-pain", label: "Yoga for Back Pain" },
@@ -96,10 +99,10 @@ export function SiteHeader() {
           </div>
         </Link>
 
-        <nav className="hidden xl:flex items-center gap-7">
+        <nav className="hidden xl:flex items-center gap-4 2xl:gap-6">
           {NAV.map((item) => (
             <a key={item.href} href={item.href}
-              className="text-[0.68rem] uppercase tracking-[0.26em] text-muted-foreground transition-colors duration-300 hover:text-[color:var(--gold)]">
+              className="whitespace-nowrap text-[0.62rem] 2xl:text-[0.66rem] uppercase tracking-[0.18em] 2xl:tracking-[0.22em] text-muted-foreground transition-colors duration-300 hover:text-[color:var(--gold)]">
               {item.label}
             </a>
           ))}

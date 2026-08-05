@@ -22,7 +22,7 @@ const PLANS = [
       { label: "1 Month", price: "9,000,000", unit: "VND" },
       { label: "3 Months", price: "25,000,000", unit: "VND", best: true },
     ],
-    perks: ["Private sessions with Master Anil", "Custom 90-day transformation plan", "Therapeutic & lifestyle guidance", "Nutrition & breathwork protocols"],
+    perks: ["Private sessions with Master Anil", "Personalized practice plan", "Therapeutic & lifestyle guidance", "Nutrition & breathwork protocols"],
   },
 ];
 
