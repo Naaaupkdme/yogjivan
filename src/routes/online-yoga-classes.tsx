@@ -1119,47 +1119,15 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
-      {/* Live vs App-Based Comparison */}
-      <section className="section-y">
-        <div className="container-luxe">
-          <SectionHead
-            eyebrow="Two Approaches"
-            title="Live teacher vs app-based yoga"
-            sub="Both have their place. Here is the honest difference in shape and experience."
-          />
-          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 glass-luxe">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="border-b border-white/10 p-6 md:border-b-0 md:border-r md:p-8">
-                <p className="text-[0.6rem] uppercase tracking-[0.24em] text-muted-foreground">App-based yoga</p>
-                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-foreground/80">
-                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>Pre-recorded video with no feedback on how you're actually moving</span></li>
-                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>A rotating library of instructors — no continuity from class to class</span></li>
-                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>Generic content designed for thousands of anonymous users at once</span></li>
-                </ul>
-              </div>
-              <div className="bg-[color:var(--gold)]/5 p-6 md:p-8">
-                <p className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">Live teacher · Yog Jivan</p>
-                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-foreground/90">
-                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>Live teacher correcting you in real time, by name</span></li>
-                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>The same teacher — Master Anil — every class, every week</span></li>
-                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>Small batch of eight, personal attention on every posture</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <InlineCTA />
-        </div>
-      </section>
-
       {/* Testimonials */}
       <Testimonials
         items={[
           { name: "Tim", initial: "T", country: "USA", flag: "🇺🇸", category: "Online Student",
-            quote: "The real-time posture corrections and therapeutic approach eased my back pain within weeks. It feels as effective as being in a physical studio — from the other side of the world." },
+            quote: "The real-time posture corrections and the attention to detail make this feel as personal as being in a physical studio — from the other side of the world." },
           { name: "Sophie Laurent", initial: "S", country: "France", flag: "🇫🇷", category: "Online Client",
             quote: "Even from Europe, the online experience feels intimate and refined. The guidance is personal, elegant, and deeply grounding." },
           { name: "Emily Tran", initial: "E", country: "Canada", flag: "🇨🇦", category: "Therapeutic Program",
-            quote: "My chronic back pain eased within weeks. The therapeutic precision and warmth here are unlike any studio I've tried." },
+            quote: "The care and precision in every session are unlike any studio I've tried, and I look forward to each class." },
         ]}
       />
 
