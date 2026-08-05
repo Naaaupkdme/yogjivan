@@ -216,7 +216,7 @@ const CONDITIONS = [
     icon: Flower2,
     tag: "PCOD / PCOS",
     title: "Yoga for PCOD & Hormonal Balance",
-    body: "Hip-opening sequences, twists to stimulate ovarian circulation, Kapalabhati and Bhramari for endocrine downshift, plus Ahara (food) coaching for insulin sensitivity.",
+    body: "Gentle hip-opening sequences, twists, Kapalabhati and Bhramari pranayama, plus simple food and routine guidance. This supports general wellbeing alongside — never instead of — care from your doctor. Individual experiences vary.",
     to: "/programs",
     cta: "Explore programs",
   },
