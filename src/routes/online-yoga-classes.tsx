@@ -4,9 +4,9 @@ import { Testimonials } from "@/components/site/Testimonials";
 import { LuxuryImage } from "@/components/site/LuxuryImage";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SOCIAL } from "@/lib/social";
-import { TRIAL, REFUND_POLICY } from "@/lib/facts";
+import { TRIAL, REFUND_POLICY, ONLINE_CLASS } from "@/lib/facts";
 import { masterImages, socialImageMeta } from "@/lib/images";
-import heroVideoAsset from "@/assets/hero-meditation.mp4.asset.json";
+
 import {
   Award, Users, Globe2, CheckCircle2, XCircle, Sparkles, Eye, Wind, Activity,
   Brain, HeartPulse, Flower2, Sunrise, ClipboardCheck, TrendingUp, Leaf, Calendar,
@@ -80,7 +80,11 @@ function savingsVsMonthly(p: Plan) {
 }
 
 const CANONICAL = "https://yogjivan.com/online-yoga-classes";
+const ONLINE_TITLE = "Live Online Yoga Classes | Small Groups with Master Anil";
+const ONLINE_DESC =
+  "Join live online yoga classes with Master Anil in small groups of up to 8. Beginner-friendly guidance, real-time posture correction and a free introductory offer.";
 const WA = SOCIAL.whatsapp;
+
 
 /* ---------- Content Data ---------- */
 
@@ -123,7 +127,7 @@ const IDEAL_FOR = [
 const AVOID_IF = [
   "Uncontrolled cardiovascular condition without physician clearance",
   "Acute injury within the last 2 weeks — wait for medical release",
-  "1st trimester pregnancy without OB/GYN clearance (2nd/3rd trimester: prenatal-only sessions)",
+  "Pregnancy or postpartum without clearance from your doctor, midwife or OB/GYN (prenatal work is 1-on-1 only)",
   "Uncontrolled severe hypertension, retinal detachment or recent eye surgery (no inversions)",
   "Acute vertigo or inner-ear infection (no fast transitions or inversions)",
   "Severe untreated psychiatric episode — please stabilize with a clinician first",
@@ -133,7 +137,7 @@ const APP_VS_LIVE = [
   { dim: "Instruction",    app: "Pre-recorded video — same for everyone",              live: "Live teacher watching you — corrections in real time" },
   { dim: "Posture Correction", app: "None — you cannot be seen",                       live: "Verbal cues by name every 60–90 seconds when needed" },
   { dim: "Personalization", app: "Algorithmic, generic sequences",                     live: "Sequence adapted to your body, health history & goals" },
-  { dim: "Therapeutic Depth", app: "Fitness-first, low clinical accuracy",             live: "Yoga-therapy protocols: PCOD, back pain, anxiety, sleep" },
+  { dim: "Therapeutic Depth", app: "Fitness-first, generic sequencing",             live: "Supportive sequencing adapted to your body, health history and goals" },
   { dim: "Breathwork (Pranayama)", app: "Rarely taught correctly",                     live: "Nadi Shodhana, Bhramari, Ujjayi, Kapalabhati — taught in sequence" },
   { dim: "Accountability",  app: "Streaks & badges",                                   live: "Teacher notices when you miss class and checks in" },
   { dim: "Community",       app: "Anonymous comments",                                 live: "Small cohort — you learn names, faces & journeys" },
@@ -150,8 +154,8 @@ const CORRECTION_LAYERS = [
 ];
 
 const FIRST_CLASS = [
-  { step: "0", title: "Pre-class intake", body: "You fill a 3-minute health form: goals, injuries, medications, sleep, cycle (if applicable), timezone." },
-  { step: "1", title: "Video onboarding call", body: "15-minute Zoom with Master Anil — we discuss your body, mind and lifestyle. No sales pressure." },
+  { step: "0", title: "Onboarding & health-assessment conversation", body: `${ONLINE_CLASS.onboarding.minutes}-minute conversation with Master Anil about your health history, injuries, goals, sleep and timezone before your first live class. No sales pressure.` },
+  { step: "1", title: "Your practice is mapped", body: "Master Anil notes what to avoid, which props you'll need and how your first sessions should be paced for your body." },
   { step: "2", title: "First live class", body: "Camera on, mat down, 2m clear space. We open with breath awareness, then a body-appropriate warm-up." },
   { step: "3", title: "Guided sequence", body: "Sun salutations at your level, targeted asana for your condition, and a closing pranayama + savasana." },
   { step: "4", title: "Post-class debrief", body: "A short WhatsApp note: what worked, what to rest, home practice for the next 48 hours." },
@@ -180,14 +184,14 @@ const TRACKING = [
   { icon: ClipboardCheck, title: "Baseline intake", body: "Range-of-motion, pain scores (VAS), sleep quality (PSQI-informed), stress index, cycle log." },
   { icon: TrendingUp, title: "Bi-weekly check-ins", body: "10-minute WhatsApp voice/video review — we re-measure and adjust your protocol." },
   { icon: Calendar, title: "Weekly practice log", body: "Simple 3-question log after each class: sensation, breath, mood. Trends become visible in 2 weeks." },
-  { icon: HeartPulse, title: "Outcome markers", body: "PCOD: cycle regularity. Back pain: pain-free hours/day. Anxiety: sleep onset & morning HRV proxy." },
+  { icon: HeartPulse, title: "How you feel over time", body: "We simply check in on comfort, mobility, energy and sleep quality as you practise. Experiences differ from person to person, and we never treat this as a medical measurement." },
 ];
 
 const PRANAYAMA = [
   { name: "Diaphragmatic Breath", use: "Foundation — retrain shallow chest breathing (taught in Week 1)." },
   { name: "Nadi Shodhana (Alternate Nostril)", use: "Balances nervous system. Prescribed for anxiety, insomnia, hormonal disruption." },
   { name: "Ujjayi (Ocean Breath)", use: "Focus + heat generation during asana. Steadies the mind." },
-  { name: "Bhramari (Humming Bee)", use: "Instant vagal tone. Powerful for anxiety, blood pressure, thyroid support." },
+  { name: "Bhramari (Humming Bee)", use: "A calming, soothing breath many students use to settle the mind before rest." },
   { name: "Kapalabhati (Skull-Shining)", use: "Digestive fire, PCOD support (contraindicated in pregnancy, hypertension)." },
   { name: "Sheetali & Sitkari", use: "Cooling breaths — perimenopause, hot flashes, agitation." },
 ];
@@ -212,7 +216,7 @@ const CONDITIONS = [
     icon: Flower2,
     tag: "PCOD / PCOS",
     title: "Yoga for PCOD & Hormonal Balance",
-    body: "Hip-opening sequences, twists to stimulate ovarian circulation, Kapalabhati and Bhramari for endocrine downshift, plus Ahara (food) coaching for insulin sensitivity.",
+    body: "Gentle hip-opening sequences, twists, Kapalabhati and Bhramari pranayama, plus simple food and routine guidance. This supports general wellbeing alongside — never instead of — care from your doctor. Individual experiences vary.",
     to: "/programs",
     cta: "Explore programs",
   },
@@ -220,7 +224,7 @@ const CONDITIONS = [
     icon: Brain,
     tag: "Anxiety",
     title: "Yoga for Anxiety & Sleep",
-    body: "Slow forward folds, restorative supported poses, Nadi Shodhana, Bhramari, and a 15-minute Yoga Nidra protocol proven to shorten sleep onset within 3 weeks.",
+    body: "Slow forward folds, restorative supported poses, Nadi Shodhana, Bhramari and a 15-minute Yoga Nidra rest practice. Many students find this calming, though results vary; please continue any clinical care you are receiving.",
     to: "/programs",
     cta: "See anxiety protocol",
   },
@@ -257,7 +261,7 @@ const FAQS_20: { q: string; a: string }[] = [
   { q: "I have anxiety and poor sleep — will this help?",
     a: "Slow-paced yoga with Nadi Shodhana and Bhramari pranayama is calming for many people, and students often tell us their sleep and daily stress feel easier. Responses vary from person to person, so we avoid promising fixed results. If you are under clinical care for anxiety or insomnia, please continue it." },
   { q: "Can I join if I am not flexible at all?",
-    a: "Flexibility is the outcome of yoga, not a prerequisite. Every posture has 3–5 scalable stages. You start where your body is today; ROM improves within weeks." },
+    a: "Flexibility is the outcome of yoga, not a prerequisite. Every posture has 3–5 scalable stages. You start where your body is today, and range of motion builds gradually at your own pace." },
   { q: "What equipment do I need at home?",
     a: "A yoga mat, 2 blocks (or thick books), a strap (or a belt), a bolster (or firm cushion), and about 2×2m of clear space. A laptop or tablet gives the teacher a better view than a phone." },
   { q: "How do you correct my posture if I am on another continent?",
@@ -273,7 +277,7 @@ const FAQS_20: { q: string; a: string }[] = [
   { q: "How long until I see results?",
     a: "It varies from person to person, so we avoid fixed timelines. Students commonly mention feeling calmer and sleeping better within the first few weeks, with mobility and strength changes building gradually over months of consistent practice. Your onboarding conversation sets realistic expectations for your body and history." },
   { q: "Is this safe during pregnancy or postpartum?",
-    a: "2nd and 3rd trimester pregnancy is welcomed in dedicated prenatal 1-on-1 sessions with your OB/GYN clearance. Postpartum: we begin gentle recovery from week 6 (vaginal) or week 10 (C-section) with medical release." },
+    a: "Prenatal and postpartum students are welcome in dedicated 1-on-1 sessions once your doctor, midwife or OB/GYN has given clearance. There is no universal start date — we follow your clinician's guidance and adapt every session to how you feel." },
   { q: "Can I switch between group and private sessions?",
     a: "Yes. Many students combine 2 group classes + 1 private session per week — the private session addresses their specific condition, the group builds discipline and community." },
   { q: "Is this only for adults?",
@@ -283,7 +287,7 @@ const FAQS_20: { q: string; a: string }[] = [
   { q: "Do you offer certification or teacher training?",
     a: "Not currently as a certified 200-hour YTT. Our focus is student transformation and yoga therapy. We refer serious teacher-training aspirants to trusted Indian schools we personally trust." },
   { q: "How do I book my free live trial?",
-    a: "Message us on WhatsApp or use the contact form. We reply within a few hours (usually minutes), send a short intake, schedule a 15-min consultation, then place you in the right live class." },
+    a: "Message us on WhatsApp or use the contact form. We reply within a few hours (usually minutes), arrange your 15-minute onboarding and health-assessment conversation, then place you in the right live class." },
 ];
 
 const RELATED_LINKS = [
@@ -301,17 +305,16 @@ const RELATED_LINKS = [
 export const Route = createFileRoute("/online-yoga-classes")({
   head: () => ({
     meta: [
-      { title: "Live Online Yoga Classes | Yog Jivan" },
-      { name: "description", content: "Live online yoga with Master Anil Choudhary, Founder & Lead Yoga Teacher. Small-batch therapeutic classes for back pain, PCOD, anxiety and sleep. Free live trial." },
-      { name: "keywords", content: "online yoga classes, live online yoga, therapeutic yoga, yoga therapy online, Indian yoga teacher, yoga for back pain, yoga for PCOD, yoga for anxiety, online yoga Vietnam, online yoga worldwide, certified yoga master, small batch yoga" },
-      { property: "og:title", content: "Online Yoga Classes with Master Anil Choudhary — Yog Jivan" },
-      { property: "og:description", content: "Authentic live online yoga worldwide. Small-batch, therapeutic, personalized. Free live trial — no card required." },
+      { title: ONLINE_TITLE },
+      { name: "description", content: ONLINE_DESC },
+      { property: "og:title", content: ONLINE_TITLE },
+      { property: "og:description", content: ONLINE_DESC },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
       ...socialImageMeta(masterImages.meditationPortrait),
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Live Online Yoga Classes | Yog Jivan" },
-      { name: "twitter:description", content: "Live, small-batch, therapeutic online yoga taught personally by Master Anil Choudhary. Free live trial." },
+      { name: "twitter:title", content: ONLINE_TITLE },
+      { name: "twitter:description", content: ONLINE_DESC },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [
@@ -321,18 +324,13 @@ export const Route = createFileRoute("/online-yoga-classes")({
           "@context": "https://schema.org",
           "@type": "Course",
           name: "Live Online Yoga Classes with Master Anil Choudhary",
-          description: "Live, interactive, small-batch online yoga classes led personally by Master Anil Choudhary, Founder & Lead Yoga Teacher. Therapeutic focus: back pain, PCOD, anxiety, sleep. For beginners to advanced.",
+          description: "Live, interactive, small-batch online yoga classes led personally by Master Anil Choudhary, Founder & Lead Yoga Teacher. Supportive, therapeutic sequencing for beginners to advanced students.",
           provider: { "@type": "Organization", name: "Yog Jivan", url: "https://yogjivan.com", sameAs: "https://yogjivan.com" },
           url: CANONICAL,
           image: masterImages.meditationPortrait,
           educationalLevel: "Beginner to Advanced",
-          teaches: ["Hatha Yoga", "Ashtanga Yoga", "Therapeutic Yoga", "Pranayama", "Meditation", "Yoga for Back Pain", "Yoga for PCOD", "Yoga for Anxiety"],
-          inLanguage: ["en", "hi"],
-          offers: {
-            "@type": "Offer", price: "0", priceCurrency: "USD",
-            availability: "https://schema.org/InStock", category: "Free live trial",
-            url: CANONICAL,
-          },
+          teaches: ["Hatha Yoga", "Ashtanga Yoga", "Therapeutic Yoga", "Pranayama", "Meditation"],
+          inLanguage: ["en", "vi", "hi"],
           hasCourseInstance: {
             "@type": "CourseInstance",
             courseMode: "Online",
@@ -348,6 +346,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
           },
         }),
       },
+
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -369,40 +368,6 @@ export const Route = createFileRoute("/online-yoga-classes")({
             { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Online Yoga Classes", item: CANONICAL },
           ],
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Event",
-          name: "Live Online Yoga Class with Master Anil Choudhary",
-          description: "Daily live online yoga sessions. Small-batch, therapeutic, personalized. Free trial available.",
-          eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
-          eventStatus: "https://schema.org/EventScheduled",
-          location: { "@type": "VirtualLocation", url: CANONICAL },
-          organizer: { "@type": "Organization", name: "Yog Jivan", url: "https://yogjivan.com" },
-          offers: {
-            "@type": "Offer", price: "0", priceCurrency: "USD",
-            availability: "https://schema.org/InStock", description: "Free live trial class", url: CANONICAL,
-          },
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "MedicalWebPage",
-          name: "Therapeutic Online Yoga for Back Pain, PCOD & Anxiety",
-          url: CANONICAL,
-          about: [
-            { "@type": "MedicalCondition", name: "Chronic Lower Back Pain" },
-            { "@type": "MedicalCondition", name: "PCOD / PCOS" },
-            { "@type": "MedicalCondition", name: "Generalized Anxiety Disorder" },
-            { "@type": "MedicalCondition", name: "Insomnia" },
-          ],
-          audience: { "@type": "PeopleAudience", suggestedMinAge: 14 },
-          lastReviewed: "2026-07-14",
         }),
       },
     ],
@@ -726,31 +691,6 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
-      {/* Video breather — a live-class glimpse */}
-      <section className="section-tight">
-        <div className="container-luxe">
-          <div className="mx-auto max-w-5xl">
-            <div className="relative overflow-hidden rounded-[2rem] border border-[color:var(--gold)]/30 shadow-2xl">
-              <video
-                src={heroVideoAsset.url}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="A short cinematic glimpse of practice at Yog Jivan"
-                className="aspect-video w-full object-cover"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              <div className="pointer-events-none absolute bottom-0 left-0 right-0 p-4 md:p-5">
-                <p className="text-[0.65rem] uppercase tracking-[0.28em] text-white/80">
-                  A glimpse of practice · placeholder — a dedicated class-demo video will replace this shortly
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* EEAT / Master Anil */}
       <section className="section-y">
@@ -902,7 +842,7 @@ function OnlineYogaClassesPage() {
               { title: "1. Intake & assessment", body: "Health history, medications, sleep, cycle, pain map, functional ROM screen. Nothing prescribed before we know your body." },
               { title: "2. Individualized protocol", body: "A written 4-week plan built on Krishnamacharya-lineage principle: adapt the practice to the person, in this season of their life." },
               { title: "3. Corrected live practice", body: "Each class runs the protocol with real-time correction so the therapeutic dose actually lands in your body — not on a screen." },
-              { title: "4. Home practice cards", body: "Short 5–15 min sequences for non-class days. Consistency, not intensity, drives clinical change." },
+              { title: "4. Home practice cards", body: "Short 5–15 min sequences for non-class days. Consistency, not intensity, is what makes a practice stick." },
               { title: "5. Bi-weekly outcome review", body: "Re-measure ROM, pain, sleep, mood. Progress or plateau triggers a protocol update — no autopilot." },
               { title: "6. Lifestyle integration", body: "Food (Ahara), rhythm (Vihara) and conduct (Achara) coaching — the invisible 60% of every yoga therapy result." },
             ].map((b) => (
@@ -998,7 +938,7 @@ function OnlineYogaClassesPage() {
           <figure className="mx-auto max-w-3xl text-center">
             <Quote className="mx-auto h-8 w-8 text-[color:var(--gold)]/70" />
             <blockquote className="mt-4 font-display text-2xl md:text-3xl italic leading-[1.3] text-foreground/95">
-              "The real-time posture corrections and therapeutic approach eased my back pain within weeks. It feels as effective as being in a physical studio — from the other side of the world."
+              "The real-time posture corrections and the care behind the sequencing make this feel as personal as being in a physical studio — from the other side of the world."
             </blockquote>
             <figcaption className="mt-5 text-xs uppercase tracking-[0.28em] text-[color:var(--gold)]">
               Tim · Online Student · USA
@@ -1179,47 +1119,15 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
-      {/* Live vs App-Based Comparison */}
-      <section className="section-y">
-        <div className="container-luxe">
-          <SectionHead
-            eyebrow="Two Approaches"
-            title="Live teacher vs app-based yoga"
-            sub="Both have their place. Here is the honest difference in shape and experience."
-          />
-          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-[2rem] border border-white/10 glass-luxe">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="border-b border-white/10 p-6 md:border-b-0 md:border-r md:p-8">
-                <p className="text-[0.6rem] uppercase tracking-[0.24em] text-muted-foreground">App-based yoga</p>
-                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-foreground/80">
-                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>Pre-recorded video with no feedback on how you're actually moving</span></li>
-                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>A rotating library of instructors — no continuity from class to class</span></li>
-                  <li className="flex gap-3"><Circle className="mt-1.5 h-2 w-2 flex-shrink-0 fill-muted-foreground text-muted-foreground" /><span>Generic content designed for thousands of anonymous users at once</span></li>
-                </ul>
-              </div>
-              <div className="bg-[color:var(--gold)]/5 p-6 md:p-8">
-                <p className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">Live teacher · Yog Jivan</p>
-                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-foreground/90">
-                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>Live teacher correcting you in real time, by name</span></li>
-                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>The same teacher — Master Anil — every class, every week</span></li>
-                  <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--gold)]" /><span>Small batch of eight, personal attention on every posture</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <InlineCTA />
-        </div>
-      </section>
-
       {/* Testimonials */}
       <Testimonials
         items={[
           { name: "Tim", initial: "T", country: "USA", flag: "🇺🇸", category: "Online Student",
-            quote: "The real-time posture corrections and therapeutic approach eased my back pain within weeks. It feels as effective as being in a physical studio — from the other side of the world." },
+            quote: "The real-time posture corrections and the attention to detail make this feel as personal as being in a physical studio — from the other side of the world." },
           { name: "Sophie Laurent", initial: "S", country: "France", flag: "🇫🇷", category: "Online Client",
             quote: "Even from Europe, the online experience feels intimate and refined. The guidance is personal, elegant, and deeply grounding." },
           { name: "Emily Tran", initial: "E", country: "Canada", flag: "🇨🇦", category: "Therapeutic Program",
-            quote: "My chronic back pain eased within weeks. The therapeutic precision and warmth here are unlike any studio I've tried." },
+            quote: "The care and precision in every session are unlike any studio I've tried, and I look forward to each class." },
         ]}
       />
 
