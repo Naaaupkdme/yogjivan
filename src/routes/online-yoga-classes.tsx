@@ -80,7 +80,11 @@ function savingsVsMonthly(p: Plan) {
 }
 
 const CANONICAL = "https://yogjivan.com/online-yoga-classes";
+const ONLINE_TITLE = "Live Online Yoga Classes | Small Groups with Master Anil";
+const ONLINE_DESC =
+  "Join live online yoga classes with Master Anil in small groups of up to 8. Beginner-friendly guidance, real-time posture correction and a free introductory offer.";
 const WA = SOCIAL.whatsapp;
+
 
 /* ---------- Content Data ---------- */
 
