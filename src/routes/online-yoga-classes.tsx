@@ -127,7 +127,7 @@ const IDEAL_FOR = [
 const AVOID_IF = [
   "Uncontrolled cardiovascular condition without physician clearance",
   "Acute injury within the last 2 weeks — wait for medical release",
-  "1st trimester pregnancy without OB/GYN clearance (2nd/3rd trimester: prenatal-only sessions)",
+  "Pregnancy or postpartum without clearance from your doctor, midwife or OB/GYN (prenatal work is 1-on-1 only)",
   "Uncontrolled severe hypertension, retinal detachment or recent eye surgery (no inversions)",
   "Acute vertigo or inner-ear infection (no fast transitions or inversions)",
   "Severe untreated psychiatric episode — please stabilize with a clinician first",
