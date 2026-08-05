@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { SOCIAL } from "@/lib/social";
 import { TRIAL, REFUND_POLICY, ONLINE_CLASS } from "@/lib/facts";
 import { masterImages, socialImageMeta } from "@/lib/images";
-import heroVideoAsset from "@/assets/hero-meditation.mp4.asset.json";
+
 import {
   Award, Users, Globe2, CheckCircle2, XCircle, Sparkles, Eye, Wind, Activity,
   Brain, HeartPulse, Flower2, Sunrise, ClipboardCheck, TrendingUp, Leaf, Calendar,
