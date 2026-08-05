@@ -22,6 +22,37 @@ const QUOTES = [
   { q: "When you inhale, you are taking the strength from God. When you exhale, it represents the service you give.", a: "B.K.S. Iyengar" },
 ];
 
+// Precomputed, rounded sacred-geometry coordinates. Kept as literals so SSR and
+// client render byte-identical markup (Math.cos/sin drifted at the last decimal).
+const GEO_CIRCLES = [60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280] as const;
+const GEO_LINES = [
+  { k: 0, x: 580.0, y: 300.0 },
+  { k: 1, x: 570.459, y: 372.469 },
+  { k: 2, x: 542.487, y: 440.0 },
+  { k: 3, x: 497.99, y: 497.99 },
+  { k: 4, x: 440.0, y: 542.487 },
+  { k: 5, x: 372.469, y: 570.459 },
+  { k: 6, x: 300.0, y: 580.0 },
+  { k: 7, x: 227.531, y: 570.459 },
+  { k: 8, x: 160.0, y: 542.487 },
+  { k: 9, x: 102.01, y: 497.99 },
+  { k: 10, x: 57.513, y: 440.0 },
+  { k: 11, x: 29.541, y: 372.469 },
+  { k: 12, x: 20.0, y: 300.0 },
+  { k: 13, x: 29.541, y: 227.531 },
+  { k: 14, x: 57.513, y: 160.0 },
+  { k: 15, x: 102.01, y: 102.01 },
+  { k: 16, x: 160.0, y: 57.513 },
+  { k: 17, x: 227.531, y: 29.541 },
+  { k: 18, x: 300.0, y: 20.0 },
+  { k: 19, x: 372.469, y: 29.541 },
+  { k: 20, x: 440.0, y: 57.513 },
+  { k: 21, x: 497.99, y: 102.01 },
+  { k: 22, x: 542.487, y: 160.0 },
+  { k: 23, x: 570.459, y: 227.531 },
+] as const;
+
+
 function useIsDesktop() {
   const [isDesktop, set] = useState(false);
   useEffect(() => {
