@@ -184,7 +184,7 @@ const TRACKING = [
   { icon: ClipboardCheck, title: "Baseline intake", body: "Range-of-motion, pain scores (VAS), sleep quality (PSQI-informed), stress index, cycle log." },
   { icon: TrendingUp, title: "Bi-weekly check-ins", body: "10-minute WhatsApp voice/video review — we re-measure and adjust your protocol." },
   { icon: Calendar, title: "Weekly practice log", body: "Simple 3-question log after each class: sensation, breath, mood. Trends become visible in 2 weeks." },
-  { icon: HeartPulse, title: "Outcome markers", body: "PCOD: cycle regularity. Back pain: pain-free hours/day. Anxiety: sleep onset & morning HRV proxy." },
+  { icon: HeartPulse, title: "How you feel over time", body: "We simply check in on comfort, mobility, energy and sleep quality as you practise. Experiences differ from person to person, and we never treat this as a medical measurement." },
 ];
 
 const PRANAYAMA = [
