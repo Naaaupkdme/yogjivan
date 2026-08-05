@@ -938,7 +938,7 @@ function OnlineYogaClassesPage() {
           <figure className="mx-auto max-w-3xl text-center">
             <Quote className="mx-auto h-8 w-8 text-[color:var(--gold)]/70" />
             <blockquote className="mt-4 font-display text-2xl md:text-3xl italic leading-[1.3] text-foreground/95">
-              "The real-time posture corrections and therapeutic approach eased my back pain within weeks. It feels as effective as being in a physical studio — from the other side of the world."
+              "The real-time posture corrections and the care behind the sequencing make this feel as personal as being in a physical studio — from the other side of the world."
             </blockquote>
             <figcaption className="mt-5 text-xs uppercase tracking-[0.28em] text-[color:var(--gold)]">
               Tim · Online Student · USA
