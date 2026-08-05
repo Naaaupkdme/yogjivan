@@ -191,7 +191,7 @@ const PRANAYAMA = [
   { name: "Diaphragmatic Breath", use: "Foundation — retrain shallow chest breathing (taught in Week 1)." },
   { name: "Nadi Shodhana (Alternate Nostril)", use: "Balances nervous system. Prescribed for anxiety, insomnia, hormonal disruption." },
   { name: "Ujjayi (Ocean Breath)", use: "Focus + heat generation during asana. Steadies the mind." },
-  { name: "Bhramari (Humming Bee)", use: "Instant vagal tone. Powerful for anxiety, blood pressure, thyroid support." },
+  { name: "Bhramari (Humming Bee)", use: "A calming, soothing breath many students use to settle the mind before rest." },
   { name: "Kapalabhati (Skull-Shining)", use: "Digestive fire, PCOD support (contraindicated in pregnancy, hypertension)." },
   { name: "Sheetali & Sitkari", use: "Cooling breaths — perimenopause, hot flashes, agitation." },
 ];
