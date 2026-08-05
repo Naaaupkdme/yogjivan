@@ -31,7 +31,7 @@ export const Route = createFileRoute("/programs")({
   head: () => ({
     meta: [
       { title: "Yoga Programs & Pricing | Yog Jivan Sanctuary" },
-      { name: "description", content: "Studio memberships, private yoga sessions, online classes for beginners, therapeutic yoga for back pain and PCOD, pranayama, meditation, kids yoga, corporate wellness and retreats at Yog Jivan Hai Duong. Transparent premium pricing in VND." },
+      { name: "description", content: "Studio memberships, private sessions, beginner and therapeutic yoga, pranayama, meditation, kids and corporate programs at Yog Jivan, Hai Duong." },
       { property: "og:title", content: "Yoga Programs & Pricing — Yog Jivan Hai Duong" },
       { property: "og:description", content: "Studio, private, online, therapeutic and retreat yoga programs with Master Anil Choudhary." },
       { property: "og:url", content: "https://yogjivan.com/programs" },
