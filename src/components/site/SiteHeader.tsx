@@ -117,7 +117,10 @@ export function SiteHeader() {
             ))}
           </div>
 
+          <SiteSearchButton className="h-8 w-8 sm:h-9 sm:w-9" />
+
           <div className="flex shrink-0 items-center gap-0.5 sm:gap-1 md:border-l md:border-border/50 md:pl-1.5">
+
             {[
               { href: SOCIAL.facebook, Icon: Facebook, label: "Visit Yog Jivan Facebook" },
               { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram" },
