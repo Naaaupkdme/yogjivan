@@ -301,17 +301,16 @@ const RELATED_LINKS = [
 export const Route = createFileRoute("/online-yoga-classes")({
   head: () => ({
     meta: [
-      { title: "Live Online Yoga Classes | Yog Jivan" },
-      { name: "description", content: "Live online yoga with Master Anil Choudhary, Founder & Lead Yoga Teacher. Small-batch therapeutic classes for back pain, PCOD, anxiety and sleep. Free live trial." },
-      { name: "keywords", content: "online yoga classes, live online yoga, therapeutic yoga, yoga therapy online, Indian yoga teacher, yoga for back pain, yoga for PCOD, yoga for anxiety, online yoga Vietnam, online yoga worldwide, certified yoga master, small batch yoga" },
-      { property: "og:title", content: "Online Yoga Classes with Master Anil Choudhary — Yog Jivan" },
-      { property: "og:description", content: "Authentic live online yoga worldwide. Small-batch, therapeutic, personalized. Free live trial — no card required." },
+      { title: ONLINE_TITLE },
+      { name: "description", content: ONLINE_DESC },
+      { property: "og:title", content: ONLINE_TITLE },
+      { property: "og:description", content: ONLINE_DESC },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
       ...socialImageMeta(masterImages.meditationPortrait),
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Live Online Yoga Classes | Yog Jivan" },
-      { name: "twitter:description", content: "Live, small-batch, therapeutic online yoga taught personally by Master Anil Choudhary. Free live trial." },
+      { name: "twitter:title", content: ONLINE_TITLE },
+      { name: "twitter:description", content: ONLINE_DESC },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [
@@ -321,18 +320,13 @@ export const Route = createFileRoute("/online-yoga-classes")({
           "@context": "https://schema.org",
           "@type": "Course",
           name: "Live Online Yoga Classes with Master Anil Choudhary",
-          description: "Live, interactive, small-batch online yoga classes led personally by Master Anil Choudhary, Founder & Lead Yoga Teacher. Therapeutic focus: back pain, PCOD, anxiety, sleep. For beginners to advanced.",
+          description: "Live, interactive, small-batch online yoga classes led personally by Master Anil Choudhary, Founder & Lead Yoga Teacher. Supportive, therapeutic sequencing for beginners to advanced students.",
           provider: { "@type": "Organization", name: "Yog Jivan", url: "https://yogjivan.com", sameAs: "https://yogjivan.com" },
           url: CANONICAL,
           image: masterImages.meditationPortrait,
           educationalLevel: "Beginner to Advanced",
-          teaches: ["Hatha Yoga", "Ashtanga Yoga", "Therapeutic Yoga", "Pranayama", "Meditation", "Yoga for Back Pain", "Yoga for PCOD", "Yoga for Anxiety"],
-          inLanguage: ["en", "hi"],
-          offers: {
-            "@type": "Offer", price: "0", priceCurrency: "USD",
-            availability: "https://schema.org/InStock", category: "Free live trial",
-            url: CANONICAL,
-          },
+          teaches: ["Hatha Yoga", "Ashtanga Yoga", "Therapeutic Yoga", "Pranayama", "Meditation"],
+          inLanguage: ["en", "vi", "hi"],
           hasCourseInstance: {
             "@type": "CourseInstance",
             courseMode: "Online",
@@ -348,6 +342,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
           },
         }),
       },
+
       {
         type: "application/ld+json",
         children: JSON.stringify({
