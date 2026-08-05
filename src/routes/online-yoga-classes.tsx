@@ -224,7 +224,7 @@ const CONDITIONS = [
     icon: Brain,
     tag: "Anxiety",
     title: "Yoga for Anxiety & Sleep",
-    body: "Slow forward folds, restorative supported poses, Nadi Shodhana, Bhramari, and a 15-minute Yoga Nidra protocol proven to shorten sleep onset within 3 weeks.",
+    body: "Slow forward folds, restorative supported poses, Nadi Shodhana, Bhramari and a 15-minute Yoga Nidra rest practice. Many students find this calming, though results vary; please continue any clinical care you are receiving.",
     to: "/programs",
     cta: "See anxiety protocol",
   },
