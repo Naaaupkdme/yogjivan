@@ -287,7 +287,7 @@ const FAQS_20: { q: string; a: string }[] = [
   { q: "Do you offer certification or teacher training?",
     a: "Not currently as a certified 200-hour YTT. Our focus is student transformation and yoga therapy. We refer serious teacher-training aspirants to trusted Indian schools we personally trust." },
   { q: "How do I book my free live trial?",
-    a: "Message us on WhatsApp or use the contact form. We reply within a few hours (usually minutes), send a short intake, schedule a 15-min consultation, then place you in the right live class." },
+    a: "Message us on WhatsApp or use the contact form. We reply within a few hours (usually minutes), arrange your 15-minute onboarding and health-assessment conversation, then place you in the right live class." },
 ];
 
 const RELATED_LINKS = [
