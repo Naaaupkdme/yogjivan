@@ -261,7 +261,7 @@ const FAQS_20: { q: string; a: string }[] = [
   { q: "I have anxiety and poor sleep — will this help?",
     a: "Slow-paced yoga with Nadi Shodhana and Bhramari pranayama is calming for many people, and students often tell us their sleep and daily stress feel easier. Responses vary from person to person, so we avoid promising fixed results. If you are under clinical care for anxiety or insomnia, please continue it." },
   { q: "Can I join if I am not flexible at all?",
-    a: "Flexibility is the outcome of yoga, not a prerequisite. Every posture has 3–5 scalable stages. You start where your body is today; ROM improves within weeks." },
+    a: "Flexibility is the outcome of yoga, not a prerequisite. Every posture has 3–5 scalable stages. You start where your body is today, and range of motion builds gradually at your own pace." },
   { q: "What equipment do I need at home?",
     a: "A yoga mat, 2 blocks (or thick books), a strap (or a belt), a bolster (or firm cushion), and about 2×2m of clear space. A laptop or tablet gives the teacher a better view than a phone." },
   { q: "How do you correct my posture if I am on another continent?",
