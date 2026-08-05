@@ -137,10 +137,10 @@ function StressPage() {
         { to: "/yoga-for-beginners", label: "New to Yoga? Start Here" },
       ]}
       relatedPosts={[
-        { slug: "the-breath-you-didnt-know-you-were-holding", title: "The breath you didn't know you were holding", cat: "Wellness", read: "4 min" },
-        { slug: "beginners-guide-to-20-minutes-of-stillness", title: "A beginner's guide to 20 minutes of stillness", cat: "Meditation", read: "7 min" },
-        { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters in 2026", cat: "Yoga", read: "6 min" },
-        { slug: "therapeutic-yoga-benefits", title: "What is yoga therapy? A practical guide", cat: "Health", read: "8 min" },
+        { slug: "the-breath-you-didnt-know-you-were-holding", title: "A simple breathing practice for beginners", cat: "Wellness", read: "4 min" },
+        { slug: "beginners-guide-to-20-minutes-of-stillness", title: "Meditation for beginners: 5, 10 or 20 minutes", cat: "Meditation", read: "6 min" },
+        { slug: "desk-worker-yoga-back-neck-shoulders", title: "A practical yoga and mobility routine for desk workers", cat: "Mobility", read: "8 min" },
+        { slug: "therapeutic-yoga-benefits", title: "Personalised supportive yoga: what it is and what it is not", cat: "Health", read: "8 min" },
       ]}
       ctaTitle="Breathe. Rest. Come back to yourself."
       ctaSub="Book a free consultation with Master Anil to map a calming path for your nervous system."

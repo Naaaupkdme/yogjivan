@@ -28,7 +28,7 @@ const QUESTIONS: QA[] = [
       "Restores hip and hamstring mobility so the pelvis stops pulling the low back forward.",
       "Uses breath work to release protective muscle guarding around the injury.",
       "Teaches you the daily 10-minute reset you can do at home between sessions.",
-      "Progress is tracked weekly — pain-free hours, sitting tolerance, sleep quality.",
+      "Progress is reviewed together — how you are moving, sitting tolerance, and how you feel.",
     ],
   },
   {
@@ -141,10 +141,10 @@ function BackPainPage() {
         { to: "/yoga-for-beginners", label: "New to Yoga? Start Here" },
       ]}
       relatedPosts={[
-        { slug: "yoga-for-spine-longevity-12-minutes", title: "Yoga for spine longevity: the daily 12 minutes", cat: "Health", read: "5 min" },
-        { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters in 2026", cat: "Yoga", read: "6 min" },
-        { slug: "the-breath-you-didnt-know-you-were-holding", title: "The breath you didn't know you were holding", cat: "Wellness", read: "4 min" },
-        { slug: "therapeutic-yoga-benefits", title: "What is yoga therapy? A practical guide", cat: "Health", read: "8 min" },
+        { slug: "desk-worker-yoga-back-neck-shoulders", title: "A practical yoga and mobility routine for desk workers", cat: "Mobility", read: "8 min" },
+        { slug: "yoga-for-spine-longevity-12-minutes", title: "A daily 12-minute spine mobility routine", cat: "Health", read: "6 min" },
+        { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters", cat: "Yoga", read: "6 min" },
+        { slug: "therapeutic-yoga-benefits", title: "Personalised supportive yoga: what it is and what it is not", cat: "Health", read: "8 min" },
       ]}
       ctaTitle="Move without the ache."
       ctaSub="Book a free consultation with Master Anil to map a therapeutic path for your back."

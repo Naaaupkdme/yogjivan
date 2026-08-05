@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, CTABanner } from "@/components/site/PageHero";
 import { Programs } from "@/components/site/Programs";
 import { Services } from "@/components/site/Services";
+import { FurtherReading } from "@/components/site/FurtherReading";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 const TITLE = "Yoga Programs & Pricing in Hai Duong | Yog Jivan";
@@ -99,6 +100,11 @@ export const Route = createFileRoute("/programs")({
           </div>
         </div>
       </section>
+      <FurtherReading
+        heading="Choosing your first class"
+        intro="Guides that explain the studio, online and private options in more detail."
+        slugs={["yoga-classes-hai-duong-beginners-guide", "private-online-yoga-vs-group-classes", "live-online-yoga-vs-youtube"]}
+      />
       <CTABanner title="Not sure which path is yours?" sub="Book a free consultation — we'll guide you." />
     </>
   ),

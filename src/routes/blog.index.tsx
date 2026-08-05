@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
-import { BLOG_POSTS } from "@/lib/blog-posts";
+import { BLOG_POSTS, postsByDate } from "@/lib/blog-posts";
 import { breadcrumbSchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/blog/")({
@@ -38,10 +38,7 @@ function BlogIndex() {
   const [query, setQuery] = useState("");
 
   // Newest first
-  const sorted = useMemo(
-    () => [...BLOG_POSTS].sort((a, b) => (a.date < b.date ? 1 : -1)),
-    []
-  );
+  const sorted = useMemo(() => postsByDate(), []);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -65,8 +62,32 @@ function BlogIndex() {
         eyebrow="The Journal"
         title="Notes from the"
         accent="practice."
-        sub="Slow writing on yoga, health, wellness and the quiet art of transformation."
+        sub="Practical guides on starting yoga, live online classes, private one-to-one sessions and everyday mobility — written by Master Anil Choudhary."
       />
+
+      <section className="section-tight">
+        <div className="container-luxe">
+          <div className="mx-auto max-w-3xl text-sm leading-relaxed text-muted-foreground">
+            <p>
+              The Yog Jivan Journal answers the questions students actually ask before they begin: how to choose a first
+              class in the{" "}
+              <Link to="/blog/$slug" params={{ slug: "yoga-classes-hai-duong-beginners-guide" }} className="text-[color:var(--gold)] hover:underline">
+                Hai Duong urban area
+              </Link>
+              , what happens in a{" "}
+              <Link to="/blog/$slug" params={{ slug: "first-live-online-yoga-class" }} className="text-[color:var(--gold)] hover:underline">
+                first live online class
+              </Link>
+              , how{" "}
+              <Link to="/blog/$slug" params={{ slug: "private-online-yoga-vs-group-classes" }} className="text-[color:var(--gold)] hover:underline">
+                private and small-group formats compare
+              </Link>
+              , and how to move more comfortably if you sit at a desk all day. Every article is written by Master Anil
+              Choudhary, Founder &amp; Lead Yoga Teacher, and links to the relevant class or programme page.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Featured post — only on the unfiltered default view */}
       {active === "All" && !query.trim() && featured && (
@@ -78,7 +99,7 @@ function BlogIndex() {
               className="group glass-luxe mx-auto flex max-w-5xl flex-col overflow-hidden rounded-[2rem] border border-[color:var(--gold)]/25 p-8 md:p-12 transition-all hover:border-[color:var(--gold)]/50 hover:-translate-y-1"
             >
               <div className="flex items-center gap-3 text-[0.6rem] uppercase tracking-[0.28em]">
-                <span className="rounded-full border border-[color:var(--gold)]/40 px-3 py-1 text-[color:var(--gold)]">Featured</span>
+                <span className="rounded-full border border-[color:var(--gold)]/40 px-3 py-1 text-[color:var(--gold)]">Latest article</span>
                 <span className="text-[color:var(--gold)]/80">{featured.cat}</span>
                 <span className="text-muted-foreground">· {featured.read}</span>
               </div>

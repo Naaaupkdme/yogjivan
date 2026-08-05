@@ -22,48 +22,48 @@ const QUESTIONS: QA[] = [
   {
     q: "Does Yoga Actually Help With Weight Loss?",
     answer:
-      "Yes, but not the way most fitness marketing frames it. Yoga supports weight loss in four overlapping ways: it builds functional lean muscle (which lifts your resting metabolism), it reduces cortisol and improves sleep (both of which quietly drive weight gain when disrupted), it improves digestion through breath and twist work, and — most importantly — it changes the relationship to eating so overeating and stress-eating naturally fade. It works best as a lifestyle, not a weekly workout.",
+      "It can be a useful part of an active lifestyle, though not in the way fitness marketing usually frames it. A regular practice builds strength and mobility, supports a calmer wind-down at the end of the day, and helps many students become more aware of how they eat and move. It works best as a sustained habit rather than a weekly workout. Individual results vary, and we do not promise a particular amount of weight loss.",
     bullets: [
-      "Builds functional lean muscle that raises baseline metabolism.",
-      "Lowers cortisol and improves sleep — both major hidden drivers of weight gain.",
-      "Pranayama and twist sequences meaningfully improve digestion.",
+      "Builds functional strength and mobility that make other activity easier.",
+      "Supports a calmer end to the day, which many students find helps their sleep habits.",
+      "Breathing practice and gentle twists are a comfortable, low-impact part of the routine.",
       "Trains awareness around hunger, satiety and stress-eating.",
-      "Works as a lifestyle — the results compound quietly over months.",
+      "Works as a lifestyle habit rather than a short programme.",
     ],
   },
   {
     q: "What Type of Yoga Is Best for Weight Loss?",
     answer:
-      "A blended approach outperforms any single style. Ashtanga-inspired vinyasa builds cardiovascular demand and strength; classical Hatha with long holds builds deep muscular endurance; core-focused sequences reshape the midsection; and closing pranayama plus meditation regulates the appetite hormones (ghrelin, leptin) that dictate hunger. Master Anil weaves all four into one coherent weekly plan rather than making you pick a style.",
+      "A blended approach outperforms any single style. Ashtanga-inspired vinyasa builds cardiovascular demand and strength; classical Hatha with long holds builds deep muscular endurance; core-focused sequences reshape the midsection; and closing pranayama plus meditation gives the session a settled finish. Master Anil weaves these into one coherent weekly plan rather than making you pick a style.",
     bullets: [
       "Ashtanga-inspired vinyasa — cardiovascular demand, sweat, sustained flow.",
       "Classical Hatha long holds — deep muscular endurance and postural strength.",
-      "Core-focused sequences — real midsection re-shaping (not just crunches).",
-      "Closing pranayama & meditation — regulates hunger and satiety hormones.",
+      "Core-focused sequences — steady abdominal and postural strength work.",
+      "Closing pranayama & meditation — a calm, settled finish to each session.",
       "One coherent weekly plan, not a random pick from ten class types.",
     ],
   },
   {
     q: "How Is Yog Jivan's Approach Different From a Typical Gym Program?",
     answer:
-      "A typical gym program treats weight loss as calories in versus calories out and hopes willpower does the rest. Yog Jivan treats weight loss as a full-system project — asana for strength, pranayama for digestion and stress, meditation for the emotional side of eating, and our Holistic Lifestyle Consultation to align sleep, meals and daily rhythm. It is slower on the scale in the first month, more sustainable across the next twelve. There is no shaming, no punishing intensity, no rebound.",
+      "A typical gym program treats weight loss as calories in versus calories out and hopes willpower does the rest. Yog Jivan treats weight loss as a full-system project — asana for strength, pranayama for a calmer daily rhythm, meditation for the habit side of eating, and a conversation about sleep and daily routine. It is usually slower in the first month and easier to sustain over a year. There is no shaming and no punishing intensity. For individual dietary guidance, please speak to a registered dietitian or your doctor.",
     bullets: [
-      "Full-system: body, breath, mind, sleep, meals — not just calories.",
-      "Includes the Holistic Lifestyle Consultation to align rhythm and food.",
-      "No shaming, no punishing intensity, no crash-diet rebound cycle.",
-      "Slower month one, dramatically more sustainable across a year.",
+      "Considers movement, breathing, sleep and daily routine — not just training hours.",
+      "Includes a conversation about routine; personalised diet plans come from your dietitian.",
+      "No shaming and no punishing intensity.",
+      "Slower at first, and easier to sustain across a year.",
       "Small-batch coaching — form and consistency over ego and injury risk.",
     ],
   },
   {
     q: "How Soon Can I Expect Results?",
     answer:
-      "Realistic first: you'll feel changes long before you see them. In the first 2–3 weeks, most students report better sleep, calmer cravings, easier breathing and more energy through the day. Visible body-composition changes typically begin around weeks 6–8 with 3 sessions per week plus honest lifestyle work. Real, lasting change — the kind that doesn't reverse the moment life gets busy — settles in over 3–6 months. Anyone promising you a specific number in a specific week is selling, not teaching.",
+      "Honestly, it varies from person to person and we cannot give you a timeline. Some students say they notice easier movement or steadier energy fairly early; others notice change more slowly. Body composition depends on many factors beyond yoga, including nutrition, sleep, medical conditions and medication. Anyone promising a specific number in a specific week is selling, not teaching.",
     bullets: [
-      "Weeks 1–3: better sleep, calmer cravings, more daily energy.",
-      "Weeks 4–6: strength gains, posture change, clothes fitting differently.",
-      "Weeks 6–8: visible body-composition change with consistent practice.",
-      "Months 3–6: real, lasting change that doesn't reverse when life gets busy.",
+      "Early on, many students simply report that movement feels easier.",
+      "With consistency, strength and postural awareness generally improve.",
+      "Body-composition change depends on many personal factors, not yoga alone.",
+      "A routine you can keep through a busy month matters more than an intense one you drop.",
       "Anyone promising a specific number in a specific week is selling, not teaching.",
     ],
   },

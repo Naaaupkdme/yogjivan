@@ -438,10 +438,17 @@ function YogaForBeginnersPage() {
               </Link>{" "}
               is the most useful place to start, and{" "}
               <Link to="/blog/$slug" params={{ slug: "beginners-guide-to-20-minutes-of-stillness" }} className="text-[color:var(--gold)] hover:underline">
-                a beginner&rsquo;s guide to 20 minutes of stillness
+                meditation for beginners
               </Link>{" "}
-              explains the breathing and meditation side of the practice. To understand the
-              tradition behind what we teach, read{" "}
+              explains the breathing and meditation side of the practice. If you are choosing a first class locally, read{" "}
+              <Link to="/blog/$slug" params={{ slug: "yoga-classes-hai-duong-beginners-guide" }} className="text-[color:var(--gold)] hover:underline">
+                our beginner&rsquo;s guide to yoga classes in Hai Duong
+              </Link>
+              , or see{" "}
+              <Link to="/blog/$slug" params={{ slug: "first-live-online-yoga-class" }} className="text-[color:var(--gold)] hover:underline">
+                what happens in a first live online class
+              </Link>
+              . To understand the tradition behind what we teach, read{" "}
               <Link to="/blog/$slug" params={{ slug: "why-traditional-hatha-still-matters" }} className="text-[color:var(--gold)] hover:underline">
                 why traditional Hatha still matters
               </Link>.

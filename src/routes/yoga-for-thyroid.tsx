@@ -22,7 +22,7 @@ const QUESTIONS: QA[] = [
   {
     q: "Can Yoga Help With Thyroid Conditions?",
     answer:
-      "Yes, as a genuinely helpful supporting practice — not a cure. Both hypothyroidism and hyperthyroidism sit inside a wider system of stress, sleep, metabolism and inflammation, and yoga meaningfully influences that whole context. Consistent practice supports metabolism through movement, calms the chronic stress load that worsens most thyroid symptoms, encourages healthy circulation around the throat and endocrine centres, and supports the deep sleep that thyroid conditions so often disrupt. Combined with your medical treatment, it can noticeably improve day-to-day energy, mood and symptom stability.",
+      "Yoga can be a supportive practice alongside medical treatment — it is not a cure and it does not replace your prescribed care. Thyroid conditions are managed by your doctor. What a consistent, gentle practice can offer is regular movement, a calmer daily rhythm and time for rest. Many students find that helpful for general wellbeing; individual experience varies, and any change to medication or treatment is a decision for your clinician.",
     bullets: [
       "Supports metabolism through consistent, breath-led movement.",
       "Lowers chronic stress — a major driver of thyroid symptom flare-ups.",

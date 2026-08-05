@@ -9,6 +9,8 @@ export type SearchEntry = {
   category: string;
   href: string;
   keywords: string[];
+  /** Intent weighting so the most useful destination ranks first. Default 1. */
+  boost?: number;
 };
 
 const PAGES: SearchEntry[] = [
@@ -18,9 +20,9 @@ const PAGES: SearchEntry[] = [
     description: "Yog Jivan yoga studios serving the Hai Duong urban area, plus live online classes.",
     category: "Pages",
     href: "/",
+    boost: 0.85,
     keywords: [
-      "home", "yog jivan", "sanctuary", "yoga studio", "yoga near me", "yoga classes near me",
-      "hai duong", "hai duong yoga", "hai phong", "vietnam yoga", "trang chu", "yoga hai duong",
+      "home", "yog jivan", "sanctuary", "hai phong", "vietnam yoga", "trang chu",
     ],
   },
   {
@@ -29,9 +31,10 @@ const PAGES: SearchEntry[] = [
     description: "Studio membership options, private yoga by enquiry and live online class plans.",
     category: "Programs",
     href: "/programs",
+    boost: 1.3,
     keywords: [
       "programs", "pricing", "price", "prices", "cost", "fees", "membership", "plans", "packages",
-      "how much", "gia", "gia ca", "hoc phi", "bang gia", "chuong trinh",
+      "how much", "gia", "gia ca", "hoc phi", "bang gia", "chuong trinh", "gia lop yoga",
     ],
   },
   {
@@ -40,9 +43,13 @@ const PAGES: SearchEntry[] = [
     description: "Daily in-person group classes at the Yog Jivan studios in the Hai Duong urban area.",
     category: "Programs",
     href: "/programs",
+    boost: 1.35,
     keywords: [
       "studio", "studio classes", "in person", "group class", "offline", "walk in", "membership",
-      "hai duong", "hai duong studio", "lop tai phong tap", "lop nhom", "yoga hai duong",
+      "hai duong", "hai duong yoga", "yoga hai duong", "hai duong studio", "yoga studio",
+      "near me", "yoga near me", "yoga classes near me", "yoga class near me", "classes near me",
+      "lop tai phong tap", "lop nhom", "lop yoga hai duong", "trung tam yoga hai duong",
+      "lop yoga gan day", "yoga gan day", "gan day",
     ],
   },
   {
@@ -51,6 +58,7 @@ const PAGES: SearchEntry[] = [
     description: "A safety-first starting path for complete beginners, with alignment guidance from the first class.",
     category: "Programs",
     href: "/yoga-for-beginners",
+    boost: 1.25,
     keywords: [
       "beginner", "beginners", "new", "newbie", "starting", "start yoga", "first class", "not flexible",
       "basics", "foundation", "nguoi moi bat dau", "nguoi moi", "yoga co ban", "moi bat dau",
@@ -62,8 +70,9 @@ const PAGES: SearchEntry[] = [
     description: "Live small-group online classes of 60 minutes with a maximum of 8 students and real-time correction.",
     category: "Online",
     href: "/online-yoga-classes",
+    boost: 1.3,
     keywords: [
-      "online", "online class", "online classes", "live class", "live online", "zoom", "virtual",
+      "online yoga", "online yoga classes", "live online yoga", "online", "online class", "online classes", "live class", "live online", "zoom", "virtual",
       "remote", "small group", "group class online", "worldwide", "timezone",
       "lop yoga online", "yoga truc tuyen", "hoc online", "lop online",
     ],
@@ -92,10 +101,11 @@ const PAGES: SearchEntry[] = [
   },
   {
     id: "online-setup",
-    title: "Camera & Setup for Online Classes",
+    title: "Camera policy for live online classes",
     description: "How to position your device and space so live posture correction works during online classes.",
     category: "Online",
     href: "/online-yoga-classes",
+    boost: 0.8,
     keywords: [
       "camera", "camera on", "webcam", "setup", "equipment", "mat", "props", "internet", "device",
       "laptop", "phone", "privacy", "may quay", "thiet bi", "chuan bi",
@@ -119,8 +129,9 @@ const PAGES: SearchEntry[] = [
     description: "Fully individual live online sessions with personalised pacing and real-time guidance.",
     category: "Online",
     href: "/personal-training#private-online-yoga",
+    boost: 1.7,
     keywords: [
-      "private online", "online private", "1 on 1 online", "one to one online", "private live",
+      "private online", "private online yoga", "one to one online yoga", "online private", "1 on 1 online", "one to one online", "private live",
       "personal online", "individual online", "hoc rieng online", "mot kem mot online", "lop rieng truc tuyen",
     ],
   },
@@ -141,8 +152,9 @@ const PAGES: SearchEntry[] = [
     description: "Message the studio on WhatsApp, Zalo, phone or email, or request a free consultation.",
     category: "Contact",
     href: "/contact#consultation",
+    boost: 1.25,
     keywords: [
-      "contact", "book", "booking", "enquiry", "enquire", "consultation", "whatsapp", "zalo", "phone",
+      "contact", "locations", "studio address", "dia chi yoga", "book", "booking", "enquiry", "enquire", "consultation", "whatsapp", "zalo", "phone",
       "email", "call", "address", "location", "map", "directions", "where", "near me",
       "lien he", "dia chi", "dat lich", "so dien thoai",
     ],
@@ -276,7 +288,7 @@ const BLOG_ENTRIES: SearchEntry[] = BLOG_POSTS.map((post) => ({
   description: post.excerpt,
   category: `Blog · ${post.cat}`,
   href: `/blog/${post.slug}`,
-  keywords: [post.cat, ...post.slug.split("-")],
+  keywords: [post.cat, post.cluster ?? "", post.primaryKeyword ?? "", ...post.slug.split("-")].filter(Boolean),
 }));
 
 export const SEARCH_INDEX: SearchEntry[] = [...PAGES, ...BLOG_ENTRIES];
@@ -376,7 +388,7 @@ export function searchSite(query: string, limit = 8): SearchResult[] {
       score += s;
     }
 
-    if (matched && score > 0) results.push({ ...entry, score });
+    if (matched && score > 0) results.push({ ...entry, score: score * (entry.boost ?? 1) });
   }
 
   return results.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title)).slice(0, limit);
