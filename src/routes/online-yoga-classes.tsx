@@ -137,7 +137,7 @@ const APP_VS_LIVE = [
   { dim: "Instruction",    app: "Pre-recorded video — same for everyone",              live: "Live teacher watching you — corrections in real time" },
   { dim: "Posture Correction", app: "None — you cannot be seen",                       live: "Verbal cues by name every 60–90 seconds when needed" },
   { dim: "Personalization", app: "Algorithmic, generic sequences",                     live: "Sequence adapted to your body, health history & goals" },
-  { dim: "Therapeutic Depth", app: "Fitness-first, low clinical accuracy",             live: "Yoga-therapy protocols: PCOD, back pain, anxiety, sleep" },
+  { dim: "Therapeutic Depth", app: "Fitness-first, generic sequencing",             live: "Supportive sequencing adapted to your body, health history and goals" },
   { dim: "Breathwork (Pranayama)", app: "Rarely taught correctly",                     live: "Nadi Shodhana, Bhramari, Ujjayi, Kapalabhati — taught in sequence" },
   { dim: "Accountability",  app: "Streaks & badges",                                   live: "Teacher notices when you miss class and checks in" },
   { dim: "Community",       app: "Anonymous comments",                                 live: "Small cohort — you learn names, faces & journeys" },
