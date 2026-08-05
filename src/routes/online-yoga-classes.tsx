@@ -154,8 +154,8 @@ const CORRECTION_LAYERS = [
 ];
 
 const FIRST_CLASS = [
-  { step: "0", title: "Pre-class intake", body: "You fill a 3-minute health form: goals, injuries, medications, sleep, cycle (if applicable), timezone." },
-  { step: "1", title: "Video onboarding call", body: "15-minute Zoom with Master Anil — we discuss your body, mind and lifestyle. No sales pressure." },
+  { step: "0", title: "Onboarding & health-assessment conversation", body: `${ONLINE_CLASS.onboarding.minutes}-minute conversation with Master Anil about your health history, injuries, goals, sleep and timezone before your first live class. No sales pressure.` },
+  { step: "1", title: "Your practice is mapped", body: "Master Anil notes what to avoid, which props you'll need and how your first sessions should be paced for your body." },
   { step: "2", title: "First live class", body: "Camera on, mat down, 2m clear space. We open with breath awareness, then a body-appropriate warm-up." },
   { step: "3", title: "Guided sequence", body: "Sun salutations at your level, targeted asana for your condition, and a closing pranayama + savasana." },
   { step: "4", title: "Post-class debrief", body: "A short WhatsApp note: what worked, what to rest, home practice for the next 48 hours." },
