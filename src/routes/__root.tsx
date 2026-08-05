@@ -22,6 +22,15 @@ import { initAnalytics, trackPageView, trackCta, metaEvent } from "@/lib/analyti
 import { LanguageProvider } from "@/lib/language";
 
 
+// Factual sitewide fallback metadata. Page-specific head() entries override
+// title/description/og/twitter by name+property merge.
+const ROOT_TITLE = "Yog Jivan | Yoga Studios in Hai Duong & Live Online Yoga";
+const ROOT_DESC =
+  "Authentic Indian yoga with Master Anil at two studios serving Hai Duong, plus live small-group and private online yoga for beginners worldwide.";
+
+const ORG_ID = "https://yogjivan.com/#organization";
+
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -68,22 +77,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { title: "Yog Jivan — Ultra Luxury Wellness Sanctuary" },
-      { name: "description", content: "World-class luxury yoga, therapeutic healing, immersive wellness, and transformational programs with Yog Jivan in Hai Duong, Vietnam." },
+      // Global search-preview permissions. The 404 shell overrides this with
+      // its own noindex meta (see NotFoundComponent).
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { title: ROOT_TITLE },
+      { name: "description", content: ROOT_DESC },
       { name: "author", content: "Yog Jivan" },
       { property: "og:site_name", content: "Yog Jivan" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#151210" },
-      { property: "og:title", content: "Yog Jivan — Ultra Luxury Wellness Sanctuary" },
-      { name: "twitter:title", content: "Yog Jivan — Ultra Luxury Wellness Sanctuary" },
-      { property: "og:description", content: "World-class luxury yoga, therapeutic healing, immersive wellness, and transformational programs with Yog Jivan in Hai Duong, Vietnam." },
-      { name: "twitter:description", content: "World-class luxury yoga, therapeutic healing, immersive wellness, and transformational programs with Yog Jivan in Hai Duong, Vietnam." },
+      { property: "og:title", content: ROOT_TITLE },
+      { name: "twitter:title", content: ROOT_TITLE },
+      { property: "og:description", content: ROOT_DESC },
+      { name: "twitter:description", content: ROOT_DESC },
       { property: "og:image", content: "https://yogjivan.com/og-yog-jivan.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:image", content: "https://yogjivan.com/og-yog-jivan.jpg" },
     ],
+
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -97,12 +110,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://yogjivan.com/#website",
+          name: "Yog Jivan",
+          alternateName: ["Yog Jivan Sanctuary", "Yog Jivan Yoga Studio"],
+          url: "https://yogjivan.com/",
+          publisher: { "@id": ORG_ID },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "Organization",
+          "@id": ORG_ID,
           name: "Yog Jivan",
           url: "https://yogjivan.com",
           logo: "https://yogjivan.com/favicon.ico",
-          description: "Luxury yoga and wellness sanctuary in Hai Duong, Vietnam — private, studio, online, therapeutic and corporate programs led by Master Anil Choudhary.",
-          founder: { "@type": "Person", name: "Master Anil Choudhary" },
+          description: "Yoga studios serving the Hai Duong urban area of Hai Phong, Vietnam, plus live small-group and private online yoga classes taught by Master Anil Choudhary — Hatha, Ashtanga, pranayama, meditation and beginner yoga.",
+          founder: { "@id": "https://yogjivan.com/#master-anil-choudhary" },
+
           telephone: "+84782046066",
           email: "hello@yogjivan.com",
           sameAs: [
@@ -115,7 +142,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "LocalBusiness",
               "@id": "https://yogjivan.com/#studio-sanctuary",
+              parentOrganization: { "@id": ORG_ID },
               name: "Yog Jivan Sanctuary",
+
               image: "https://yogjivan.com/og-studio-1.jpg",
               url: "https://yogjivan.com",
               telephone: "+84782046066",
@@ -145,7 +174,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "LocalBusiness",
               "@id": "https://yogjivan.com/#studio-wellness",
+              parentOrganization: { "@id": ORG_ID },
               name: "Yog Jivan Wellness & Healing Center",
+
               image: "https://yogjivan.com/og-studio-2.jpg",
               url: "https://yogjivan.com",
               telephone: "+84782046066",
@@ -183,20 +214,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@id": "https://yogjivan.com/#master-anil-choudhary",
           name: "Master Anil Choudhary",
           jobTitle: "Founder & Lead Yoga Teacher",
-          worksFor: { "@type": "Organization", name: "Yog Jivan", url: "https://yogjivan.com" },
-          description: "Founder & Lead Yoga Teacher at Yog Jivan, with 12+ years of teaching in the classical Indian tradition — Hatha, Ashtanga, pranayama and therapeutic yoga. Studios in the Hai Duong urban area of Hai Phong, Vietnam, and live online classes worldwide.",
+          worksFor: { "@id": ORG_ID },
+          description: "Founder & Lead Yoga Teacher at Yog Jivan, with 12+ years of teaching in the classical Indian tradition — Hatha, Ashtanga, pranayama and meditation. Studios in the Hai Duong urban area of Hai Phong, Vietnam, and live online classes worldwide.",
           image: "https://yogjivan.com/og-master-anil.jpg",
           url: "https://yogjivan.com/about",
           nationality: "Indian",
           knowsAbout: [
-            "Therapeutic Yoga",
-            "Back Pain Recovery",
-            "PCOD Management",
-            "Anxiety Relief",
+            "Hatha Yoga",
+            "Ashtanga Yoga",
             "Pranayama",
             "Meditation",
-            "Corporate Wellness Yoga",
+            "Beginner Yoga",
+            "Live Online Yoga",
+            "Private Yoga",
+            "Yoga for Mobility",
+            "Stress Support",
           ],
+
           knowsLanguage: ["English", "Hindi", "Vietnamese"],
           sameAs: [
             "https://www.facebook.com/share/18ixNUN1J1/",

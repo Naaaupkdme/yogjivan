@@ -35,20 +35,7 @@ export const Route = createFileRoute("/blog/$slug")({
         }),
       },
     ];
-    if (post.faqs?.length) {
-      scripts.push({
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: post.faqs.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
-        }),
-      });
-    }
+
     return {
       meta: [
         { title: `${post.title} — Yog Jivan Journal` },

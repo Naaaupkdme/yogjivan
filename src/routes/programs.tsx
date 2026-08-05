@@ -1,3 +1,4 @@
+import { masterImages, socialImageMeta } from "@/lib/images";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, CTABanner } from "@/components/site/PageHero";
 import { Programs } from "@/components/site/Programs";
@@ -36,24 +37,13 @@ export const Route = createFileRoute("/programs")({
       { property: "og:description", content: "Studio, private, online, therapeutic and retreat yoga programs with Master Anil Choudhary." },
       { property: "og:url", content: "https://yogjivan.com/programs" },
       { property: "og:type", content: "website" },
+      ...socialImageMeta(masterImages.groupCelebration),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Yoga Programs & Pricing — Yog Jivan Hai Duong" },
       { name: "twitter:description", content: "Studio, private, online, therapeutic and retreat yoga programs with Master Anil Choudhary." },
     ],
     links: [{ rel: "canonical", href: "https://yogjivan.com/programs" }],
     scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: PROGRAMS_FAQS.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
-        }),
-      },
       {
         type: "application/ld+json",
         children: JSON.stringify(breadcrumbSchema("Programs", "/programs")),

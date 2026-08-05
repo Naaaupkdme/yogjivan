@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, CTABanner } from "@/components/site/PageHero";
 import { About } from "@/components/site/About";
 import { Transformation } from "@/components/site/Transformation";
-import { masterImages } from "@/lib/images";
+import { masterImages, socialImageMeta } from "@/lib/images";
 import { breadcrumbSchema } from "@/lib/schema";
 
 export const Route = createFileRoute("/about")({
@@ -14,6 +14,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:description", content: "Authentic Indian yoga rooted in tradition, taught in Hai Duong, Vietnam by Master Anil Choudhary." },
       { property: "og:url", content: "https://yogjivan.com/about" },
       { property: "og:type", content: "website" },
+      ...socialImageMeta(masterImages.founderPortrait),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "About Master Anil Choudhary — Yog Jivan" },
       { name: "twitter:description", content: "Authentic Indian yoga rooted in tradition, taught in Hai Duong, Vietnam by Master Anil Choudhary." },

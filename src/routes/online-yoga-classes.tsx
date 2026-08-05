@@ -351,18 +351,6 @@ export const Route = createFileRoute("/online-yoga-classes")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: FAQS_20.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
-        }),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
@@ -690,6 +678,42 @@ function OnlineYogaClassesPage() {
           </div>
         </div>
       </section>
+
+      {/* Group vs private decision path */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <div className="mx-auto max-w-5xl">
+            <p className="mx-auto max-w-3xl text-center text-sm leading-relaxed text-muted-foreground md:text-base">
+              Yog Jivan online classes are live, not prerecorded. Students choose small-group
+              practice or enquire about private 1-on-1 guidance.
+            </p>
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              <div className="glass-luxe rounded-[1.75rem] border border-[color:var(--gold)]/25 p-6">
+                <h2 className="font-display text-xl leading-snug">Live Small-Group Yoga</h2>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+                  Maximum {ONLINE_CLASS.maxGroupSize} students per live class, taught personally by
+                  Master Anil with real-time posture guidance. Confirmed monthly plans and the
+                  introductory offer apply to group classes.
+                </p>
+                <a href="#pricing" className="btn-gold mt-5 inline-flex">See Group Plans & Free Trial</a>
+              </div>
+              <div className="glass-luxe rounded-[1.75rem] border border-white/10 p-6">
+                <h2 className="font-display text-xl leading-snug">Private 1-on-1 Online Yoga</h2>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+                  A live {ONLINE_CLASS.durationMinutes}-minute session built entirely around you,
+                  with personal live guidance and scheduling arranged by enquiry. Private plans are
+                  separate from group membership.
+                </p>
+                <Link to="/personal-training" hash="private-online-yoga" className="btn-ghost-gold mt-5 inline-flex">
+                  Explore Private 1-on-1 Online Yoga
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
 
 
       {/* EEAT / Master Anil */}
