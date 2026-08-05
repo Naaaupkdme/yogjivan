@@ -277,7 +277,7 @@ const FAQS_20: { q: string; a: string }[] = [
   { q: "How long until I see results?",
     a: "It varies from person to person, so we avoid fixed timelines. Students commonly mention feeling calmer and sleeping better within the first few weeks, with mobility and strength changes building gradually over months of consistent practice. Your onboarding conversation sets realistic expectations for your body and history." },
   { q: "Is this safe during pregnancy or postpartum?",
-    a: "2nd and 3rd trimester pregnancy is welcomed in dedicated prenatal 1-on-1 sessions with your OB/GYN clearance. Postpartum: we begin gentle recovery from week 6 (vaginal) or week 10 (C-section) with medical release." },
+    a: "Prenatal and postpartum students are welcome in dedicated 1-on-1 sessions once your doctor, midwife or OB/GYN has given clearance. There is no universal start date — we follow your clinician's guidance and adapt every session to how you feel." },
   { q: "Can I switch between group and private sessions?",
     a: "Yes. Many students combine 2 group classes + 1 private session per week — the private session addresses their specific condition, the group builds discipline and community." },
   { q: "Is this only for adults?",
