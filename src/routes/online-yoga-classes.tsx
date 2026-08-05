@@ -4,7 +4,7 @@ import { Testimonials } from "@/components/site/Testimonials";
 import { LuxuryImage } from "@/components/site/LuxuryImage";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { SOCIAL } from "@/lib/social";
-import { TRIAL, REFUND_POLICY } from "@/lib/facts";
+import { TRIAL, REFUND_POLICY, ONLINE_CLASS } from "@/lib/facts";
 import { masterImages, socialImageMeta } from "@/lib/images";
 import heroVideoAsset from "@/assets/hero-meditation.mp4.asset.json";
 import {
