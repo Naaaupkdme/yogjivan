@@ -163,6 +163,14 @@ export function SiteHeader() {
                 <X className="h-4 w-4" />
               </button>
             </div>
+            <button
+              type="button"
+              onClick={() => { setFullOpen(false); openSiteSearch(); }}
+              className="mt-6 flex w-full items-center gap-2 rounded-xl border border-white/10 px-3 py-2.5 text-sm text-foreground/90 transition-colors hover:border-[color:var(--gold)]/40 hover:text-[color:var(--gold)]"
+            >
+              <Search className="h-4 w-4" strokeWidth={1.5} />
+              Search
+            </button>
             <div className="mt-8 space-y-8">
               {FULL_MENU.map((group) => (
                 <div key={group.group}>
@@ -185,6 +193,9 @@ export function SiteHeader() {
           </div>
         </div>
       )}
+
+      <SiteSearch />
     </header>
   );
 }
+
