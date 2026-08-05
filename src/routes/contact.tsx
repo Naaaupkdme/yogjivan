@@ -11,6 +11,10 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact Yog Jivan — Book a Free Consultation" },
       { property: "og:description", content: "Reach the studio in Hai Duong. Book a free yoga consultation." },
       { property: "og:url", content: "https://yogjivan.com/contact" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Contact Yog Jivan — Book a Free Consultation" },
+      { name: "twitter:description", content: "Reach the studio in Hai Duong. Book a free yoga consultation." },
     ],
     links: [{ rel: "canonical", href: "https://yogjivan.com/contact" }],
     scripts: [

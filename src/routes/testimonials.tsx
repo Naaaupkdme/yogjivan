@@ -12,6 +12,10 @@ export const Route = createFileRoute("/testimonials")({
       { property: "og:title", content: "Student Stories — Yog Jivan" },
       { property: "og:description", content: "Real transformations from Yog Jivan students." },
       { property: "og:url", content: "https://yogjivan.com/testimonials" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Student Stories — Yog Jivan" },
+      { name: "twitter:description", content: "Real transformations from Yog Jivan students." },
     ],
     links: [{ rel: "canonical", href: "https://yogjivan.com/testimonials" }],
     scripts: [{

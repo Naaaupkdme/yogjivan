@@ -35,6 +35,10 @@ export const Route = createFileRoute("/programs")({
       { property: "og:title", content: "Yoga Programs & Pricing — Yog Jivan Hai Duong" },
       { property: "og:description", content: "Studio, private, online, therapeutic and retreat yoga programs with Master Anil Choudhary." },
       { property: "og:url", content: "https://yogjivan.com/programs" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Yoga Programs & Pricing — Yog Jivan Hai Duong" },
+      { name: "twitter:description", content: "Studio, private, online, therapeutic and retreat yoga programs with Master Anil Choudhary." },
     ],
     links: [{ rel: "canonical", href: "https://yogjivan.com/programs" }],
     scripts: [
