@@ -11,6 +11,10 @@ export const Route = createFileRoute("/gallery")({
       { property: "og:title", content: "Studio Gallery — Yog Jivan Hai Duong" },
       { property: "og:description", content: "A visual journey through the Yog Jivan yoga studio in Hai Duong." },
       { property: "og:url", content: "https://yogjivan.com/gallery" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Studio Gallery — Yog Jivan Hai Duong" },
+      { name: "twitter:description", content: "A visual journey through the Yog Jivan yoga studio in Hai Duong." },
     ],
     links: [{ rel: "canonical", href: "https://yogjivan.com/gallery" }],
     scripts: [{

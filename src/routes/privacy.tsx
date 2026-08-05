@@ -13,6 +13,10 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:title", content: "Privacy Policy — Yog Jivan" },
       { property: "og:description", content: "Read how Yog Jivan protects the personal data of students and visitors." },
       { property: "og:url", content: "https://yogjivan.com/privacy" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Privacy Policy — Yog Jivan" },
+      { name: "twitter:description", content: "Read how Yog Jivan protects the personal data of students and visitors." },
     ],
     links: [{ rel: "canonical", href: "https://yogjivan.com/privacy" }],
     scripts: [

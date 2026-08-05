@@ -13,6 +13,10 @@ export const Route = createFileRoute("/blog/")({
       { property: "og:title", content: "Journal — Yog Jivan" },
       { property: "og:description", content: "Notes from the practice — yoga, wellness and meditation." },
       { property: "og:url", content: "https://yogjivan.com/blog" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Journal — Yog Jivan" },
+      { name: "twitter:description", content: "Notes from the practice — yoga, wellness and meditation." },
     ],
     links: [{ rel: "canonical", href: "https://yogjivan.com/blog" }],
     scripts: [{

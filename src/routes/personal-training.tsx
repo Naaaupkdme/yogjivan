@@ -30,6 +30,10 @@ export const Route = createFileRoute("/personal-training")({
       { property: "og:title", content: "Private Yoga Sessions & Therapeutic Yoga — Yog Jivan" },
       { property: "og:description", content: "Bespoke private yoga sessions and therapeutic yoga for back pain, PCOD, anxiety and recovery." },
       { property: "og:url", content: "https://yogjivan.com/personal-training" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Private Yoga Sessions & Therapeutic Yoga — Yog Jivan" },
+      { name: "twitter:description", content: "Bespoke private yoga sessions and therapeutic yoga for back pain, PCOD, anxiety and recovery." },
     ],
     links: [{ rel: "canonical", href: "https://yogjivan.com/personal-training" }],
     scripts: [

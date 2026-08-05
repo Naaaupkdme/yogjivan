@@ -12,6 +12,10 @@ export const Route = createFileRoute("/corporate")({
       { property: "og:title", content: "Corporate Yoga & Wellness — Yog Jivan Vietnam" },
       { property: "og:description", content: "Yoga and wellness programs designed for high-performing teams in Vietnam." },
       { property: "og:url", content: "https://yogjivan.com/corporate" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Corporate Yoga & Wellness — Yog Jivan Vietnam" },
+      { name: "twitter:description", content: "Yoga and wellness programs designed for high-performing teams in Vietnam." },
     ],
     links: [{ rel: "canonical", href: "https://yogjivan.com/corporate" }],
     scripts: [{

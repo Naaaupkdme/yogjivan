@@ -11,21 +11,15 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact Yog Jivan — Book a Free Consultation" },
       { property: "og:description", content: "Reach the studio in Hai Duong. Book a free yoga consultation." },
       { property: "og:url", content: "https://yogjivan.com/contact" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Contact Yog Jivan — Book a Free Consultation" },
+      { name: "twitter:description", content: "Reach the studio in Hai Duong. Book a free yoga consultation." },
     ],
     links: [{ rel: "canonical", href: "https://yogjivan.com/contact" }],
+    // No FAQPage schema here: this route renders no visible FAQ list, and
+    // FAQ markup must have exact parity with visible content.
     scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: [
-            { "@type": "Question", name: "Do you offer a free trial class?", acceptedAnswer: { "@type": "Answer", text: "Yes — every new student receives a complimentary consultation and trial session." } },
-            { "@type": "Question", name: "Where are your studios located?", acceptedAnswer: { "@type": "Answer", text: "Two premium studios in the Hai Duong urban area of Hai Phong, Vietnam." } },
-            { "@type": "Question", name: "Do you teach online?", acceptedAnswer: { "@type": "Answer", text: "Yes. Live cohort programs and on-demand series are available worldwide." } },
-          ],
-        }),
-      },
       {
         type: "application/ld+json",
         children: JSON.stringify(breadcrumbSchema("Contact", "/contact")),
