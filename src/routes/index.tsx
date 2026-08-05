@@ -3,6 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 import { Hero } from "@/components/site/Hero";
 import { LocalIntro } from "@/components/site/LocalIntro";
+import { DiscoverTopics } from "@/components/site/DiscoverTopics";
+
 import { FAQS } from "@/lib/faqs";
 
 const Philosophy = lazy(() => import("@/components/site/Philosophy").then(m => ({ default: m.Philosophy })));
@@ -68,6 +70,8 @@ function Index() {
     <>
       <Hero />
       <LocalIntro />
+      <DiscoverTopics />
+
       <Lazy><Philosophy /></Lazy>
       <Lazy><TrustSection /></Lazy>
       <Lazy><WhyChoose /></Lazy>

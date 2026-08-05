@@ -1,9 +1,11 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Facebook, Instagram, Menu, MessageCircle, X, Youtube } from "lucide-react";
+import { Facebook, Instagram, Menu, MessageCircle, Search, X, Youtube } from "lucide-react";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
 import { useLang } from "@/lib/language";
 import { SOCIAL } from "@/lib/social";
+import { SiteSearch, SiteSearchButton, openSiteSearch } from "@/components/site/SiteSearch";
+
 
 const NAV = [
   { href: "/", label: "Home" },
@@ -115,7 +117,10 @@ export function SiteHeader() {
             ))}
           </div>
 
+          <SiteSearchButton className="h-8 w-8 sm:h-9 sm:w-9" />
+
           <div className="flex shrink-0 items-center gap-0.5 sm:gap-1 md:border-l md:border-border/50 md:pl-1.5">
+
             {[
               { href: SOCIAL.facebook, Icon: Facebook, label: "Visit Yog Jivan Facebook" },
               { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram" },
@@ -158,6 +163,14 @@ export function SiteHeader() {
                 <X className="h-4 w-4" />
               </button>
             </div>
+            <button
+              type="button"
+              onClick={() => { setFullOpen(false); openSiteSearch(); }}
+              className="mt-6 flex w-full items-center gap-2 rounded-xl border border-white/10 px-3 py-2.5 text-sm text-foreground/90 transition-colors hover:border-[color:var(--gold)]/40 hover:text-[color:var(--gold)]"
+            >
+              <Search className="h-4 w-4" strokeWidth={1.5} />
+              Search
+            </button>
             <div className="mt-8 space-y-8">
               {FULL_MENU.map((group) => (
                 <div key={group.group}>
@@ -180,6 +193,9 @@ export function SiteHeader() {
           </div>
         </div>
       )}
+
+      <SiteSearch />
     </header>
   );
 }
+
