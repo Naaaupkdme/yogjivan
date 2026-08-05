@@ -22,9 +22,9 @@ const QUESTIONS: QA[] = [
   {
     q: "Can Yoga Really Help With PCOD or PCOS?",
     answer:
-      "Yes, as a consistent supporting practice. PCOD and PCOS are complex hormonal conditions driven by insulin sensitivity, chronic stress, inflammation and metabolic patterns — and yoga meaningfully influences three of those four levers. A regular practice improves insulin sensitivity through movement and breath, lowers cortisol (which directly worsens androgen levels when chronically elevated), and gently increases pelvic circulation. Research and clinical experience consistently show that women who combine yoga with medical care report calmer cycles, better sleep and reduced symptom flare-ups over months of practice.",
+      "Many women find a consistent, gentle practice a helpful support alongside their medical care. PCOD and PCOS are complex conditions managed by a doctor; yoga does not treat, cure or replace that care. What a steady practice can offer is regular movement, a calmer wind-down, and time set aside for your own wellbeing. Individual experience varies, so please keep your gynaecologist or endocrinologist involved in any decisions.",
     bullets: [
-      "Lowers chronic cortisol — a known driver of androgen elevation in PCOD/PCOS.",
+      "Offers a calmer, unhurried pace that many women find supportive during a busy week.",
       "Improves insulin sensitivity through consistent movement and breath work.",
       "Increases pelvic circulation with targeted seated postures and gentle twists.",
       "Supports better sleep — which itself regulates the hormonal cycle.",
@@ -34,12 +34,12 @@ const QUESTIONS: QA[] = [
   {
     q: "What Poses or Practices Help Most With Hormonal Balance?",
     answer:
-      "A balanced practice is more powerful than any single 'miracle pose'. Master Anil weaves gentle standing sequences for strength and metabolism, seated forward folds and hip openers for pelvic circulation, supported reclining postures for nervous-system rest, and pranayama that specifically down-regulates stress. Fast, aggressive flows are usually counter-productive for PCOD — they can spike cortisol further. The rhythm is steady, breath-led and unhurried.",
+      "A balanced practice is more powerful than any single 'miracle pose'. Master Anil weaves gentle standing sequences for strength and metabolism, seated forward folds and hip openers for pelvic circulation, supported reclining postures for nervous-system rest, and pranayama that specifically down-regulates stress. Fast, aggressive flows are usually counter-productive for PCOD — many students find them draining rather than restorative. The rhythm is steady, breath-led and unhurried.",
     bullets: [
       "Gentle standing sequences — strength and metabolic support without stress spikes.",
       "Seated forward folds and hip openers — encourage pelvic circulation.",
       "Supported reclining postures (bolster-based) — deep nervous-system rest.",
-      "Bhramari and nadi shodhana pranayama — down-regulate cortisol.",
+      "Bhramari and nadi shodhana pranayama — slow, comfortable breathing practices.",
       "Twists that gently massage the abdominal organs.",
       "Closing meditation to end grounded, not activated.",
     ],

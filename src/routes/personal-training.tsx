@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
+import { FurtherReading } from "@/components/site/FurtherReading";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import img from "@/assets/file_00000000704c71fb99f50d9c4f4b74ce.png.asset.json";
 import { masterImages, socialImageMeta } from "@/lib/images";
@@ -360,6 +361,12 @@ export const Route = createFileRoute("/personal-training")({
           </div>
         </div>
       </section>
+      <FurtherReading
+        heading="Deciding between private and group"
+        intro="Guides that explain how one-to-one sessions compare with our live small-group classes."
+        slugs={["private-online-yoga-vs-group-classes", "desk-worker-yoga-back-neck-shoulders", "therapeutic-yoga-benefits"]}
+      />
+
     </>
 
   ),

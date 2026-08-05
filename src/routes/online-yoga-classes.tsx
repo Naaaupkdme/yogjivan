@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, CTABanner } from "@/components/site/PageHero";
+import { FurtherReading } from "@/components/site/FurtherReading";
 import { Testimonials } from "@/components/site/Testimonials";
 import { LuxuryImage } from "@/components/site/LuxuryImage";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -1206,6 +1207,12 @@ function OnlineYogaClassesPage() {
       <PricingFinal />
 
       <CTABanner title="Ready for your first live class?" sub="Free live trial with Master Anil Choudhary. No card required. Reply within minutes." />
+
+      <FurtherReading
+        heading="Guides for new online students"
+        intro="Practical answers to the questions students ask before their first live online session."
+        slugs={["first-live-online-yoga-class", "online-yoga-camera-setup", "live-online-yoga-vs-youtube", "private-online-yoga-vs-group-classes"]}
+      />
 
       {/* Final tri-CTA row */}
       <section className="section-tight">
