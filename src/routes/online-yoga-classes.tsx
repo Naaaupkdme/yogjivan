@@ -842,7 +842,7 @@ function OnlineYogaClassesPage() {
               { title: "1. Intake & assessment", body: "Health history, medications, sleep, cycle, pain map, functional ROM screen. Nothing prescribed before we know your body." },
               { title: "2. Individualized protocol", body: "A written 4-week plan built on Krishnamacharya-lineage principle: adapt the practice to the person, in this season of their life." },
               { title: "3. Corrected live practice", body: "Each class runs the protocol with real-time correction so the therapeutic dose actually lands in your body — not on a screen." },
-              { title: "4. Home practice cards", body: "Short 5–15 min sequences for non-class days. Consistency, not intensity, drives clinical change." },
+              { title: "4. Home practice cards", body: "Short 5–15 min sequences for non-class days. Consistency, not intensity, is what makes a practice stick." },
               { title: "5. Bi-weekly outcome review", body: "Re-measure ROM, pain, sleep, mood. Progress or plateau triggers a protocol update — no autopilot." },
               { title: "6. Lifestyle integration", body: "Food (Ahara), rhythm (Vihara) and conduct (Achara) coaching — the invisible 60% of every yoga therapy result." },
             ].map((b) => (
