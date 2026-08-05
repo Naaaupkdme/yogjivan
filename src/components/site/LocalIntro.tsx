@@ -23,8 +23,9 @@ export function LocalIntro() {
 
           <p className="mt-4 text-sm md:text-base leading-relaxed text-foreground/90">
             Yog Jivan runs two yoga studios serving the Hai Duong urban area of Hai Phong,
-            Vietnam, teaching authentic Indian yoga to beginners, students recovering from
-            pain or stress, and people who want focused one-to-one guidance. Every class is
+            Vietnam, teaching authentic Indian yoga to beginners, students looking for
+            supportive movement, relaxation or a more comfortable practice, and people who
+            want focused one-to-one guidance. Every class is
             taught personally by {TEACHER.name}, {TEACHER.title}, with real-time verbal
             correction in small groups. If you cannot come to the studio, the same teaching
             is available in live online classes ({ONLINE_CLASS.durationMinutes} minutes, a
