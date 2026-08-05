@@ -136,15 +136,16 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 hidden lg:grid place-items-center opacity-[0.07]">
         <svg viewBox="0 0 600 600" className="h-[80vmin] w-[80vmin] animate-[spin_120s_linear_infinite]" aria-hidden>
           <g fill="none" stroke="currentColor" strokeWidth="0.6" className="text-primary">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <circle key={i} cx="300" cy="300" r={60 + i * 20} />
+            {GEO_CIRCLES.map((r) => (
+              <circle key={r} cx="300" cy="300" r={r} />
             ))}
-            {Array.from({ length: 24 }).map((_, i) => (
-              <line key={i} x1="300" y1="300" x2={300 + 280 * Math.cos((i * Math.PI) / 12)} y2={300 + 280 * Math.sin((i * Math.PI) / 12)} />
+            {GEO_LINES.map((l) => (
+              <line key={l.k} x1="300" y1="300" x2={l.x} y2={l.y} />
             ))}
           </g>
         </svg>
       </div>
+
 
       {/* Ambient three.js layer — desktop only, lazy-loaded after first paint */}
       {isDesktop && (
