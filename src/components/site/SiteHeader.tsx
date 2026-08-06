@@ -55,6 +55,10 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
   },
 ];
 
+const WHATSAPP = SOCIAL.whatsapp;
+
+
+
 /**
  * Sitewide stacking hierarchy (single source of truth):
  *  40  floating CTAs (WhatsApp, consultation, mobile sticky bar)
