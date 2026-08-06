@@ -120,8 +120,10 @@ export function SiteSearch() {
   };
 
   return (
-    <div className="fixed inset-0 z-[90]" onKeyDown={onKeyDown} data-search-dialog>
+    <BodyPortal>
+    <div className="fixed inset-0 z-[90] h-[100dvh] min-h-screen w-screen" onKeyDown={onKeyDown} data-search-dialog>
       <button aria-label="Close search" onClick={close} className="absolute inset-0 bg-black/75 backdrop-blur-md" />
+
       <div
         role="dialog"
         aria-modal="true"
