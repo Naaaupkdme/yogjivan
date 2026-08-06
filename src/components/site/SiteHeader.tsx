@@ -246,7 +246,7 @@ export function SiteHeader() {
               role="dialog"
               aria-modal="true"
               aria-label="Full site menu"
-              className="absolute right-0 top-0 flex h-full w-full max-w-full flex-col border-l border-[color:var(--gold)]/25 bg-[color-mix(in_oklab,var(--onyx)_97%,transparent)] backdrop-blur-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] lg:max-w-md"
+              className="absolute right-0 top-0 flex h-full w-full max-w-full flex-col border-l border-[color:var(--gold)]/25 bg-[color-mix(in_oklab,var(--onyx)_97%,transparent)] backdrop-blur-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] xl:max-w-md"
             >
               <div
                 className="flex shrink-0 items-center justify-between border-b border-white/8 px-6 py-4 sm:px-8"
@@ -271,7 +271,7 @@ export function SiteHeader() {
                   <Search className="h-4 w-4" strokeWidth={1.5} />
                   Search
                 </button>
-                <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-1">
+                <div className="mt-8 grid gap-8 sm:grid-cols-2 xl:grid-cols-1">
                   {FULL_MENU.map((group) => (
                     <div key={group.group}>
                       <div className="text-[0.6rem] uppercase tracking-[0.28em] text-[color:var(--gold)]/80 mb-3">{group.group}</div>
