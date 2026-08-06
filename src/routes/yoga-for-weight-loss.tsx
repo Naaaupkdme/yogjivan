@@ -72,7 +72,7 @@ const QUESTIONS: QA[] = [
 export const Route = createFileRoute("/yoga-for-weight-loss")({
   head: () => ({
     meta: [
-      { title: "Yoga for Weight Loss — Sustainable, Whole-Body Approach | Yog Jivan" },
+      { title: "Yoga for Weight Loss — Whole-Body Approach | Yog Jivan" },
       { name: "description", content: "Sustainable yoga for weight loss with Master Anil Choudhary — strength, breath, sleep and holistic lifestyle. Studio in Hai Duong & live online. Book a free consultation." },
       { name: "keywords", content: "yoga for weight loss, weight loss yoga, ashtanga weight loss, holistic weight loss, sustainable weight loss yoga, yoga fitness Hai Duong, online weight loss yoga" },
       { property: "og:title", content: "Yoga for Weight Loss — A Sustainable, Whole-Body Approach | Yog Jivan" },

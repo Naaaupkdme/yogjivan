@@ -72,7 +72,7 @@ const QUESTIONS: QA[] = [
 export const Route = createFileRoute("/yoga-for-stress")({
   head: () => ({
     meta: [
-      { title: "Yoga for Stress Relief — Calm Your Mind, Restore Balance | Yog Jivan" },
+      { title: "Yoga for Stress & Anxiety Relief | Yog Jivan" },
       { name: "description", content: "Yoga for stress and anxiety with Master Anil Choudhary — pranayama, meditation and gentle asana. Studio in Hai Duong & live online worldwide. Book a free consultation." },
       { name: "keywords", content: "yoga for stress, stress relief yoga, yoga for anxiety, pranayama for stress, meditation for stress, yoga for burnout, calming yoga, evening yoga online" },
       { property: "og:title", content: "Yoga for Stress Relief — Calm Your Mind, Restore Balance | Yog Jivan" },
