@@ -9,7 +9,7 @@ export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
       { title: "Privacy Policy — How Yog Jivan Handles Your Data" },
-      { name: "description", content: "How Yog Jivan collects, stores and uses the information you share through our consultation form, cookies (Google Analytics & Meta Pixel), and third-party tools like Make.com, WhatsApp and Zalo." },
+      { name: "description", content: "How Yog Jivan collects, stores and uses the information you share through our consultation form, cookies and messaging tools such as WhatsApp and Zalo." },
       { property: "og:title", content: "Privacy Policy — Yog Jivan" },
       { property: "og:description", content: "Read how Yog Jivan protects the personal data of students and visitors." },
       { property: "og:url", content: "https://yogjivan.com/privacy" },

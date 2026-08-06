@@ -9,7 +9,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About Master Anil Choudhary — Founder of Yog Jivan Hai Duong" },
-      { name: "description", content: "Meet Master Anil Choudhary, founder of Yog Jivan yoga studio in Hai Duong, Vietnam. 12+ years teaching authentic Indian yoga, therapeutic practice and holistic wellness to 1000+ students in 20+ countries." },
+      { name: "description", content: "Meet Master Anil Choudhary, founder and lead yoga teacher of Yog Jivan in the Hai Duong urban area — 12+ years teaching authentic Indian yoga, in studio and live online." },
       { property: "og:title", content: "About Master Anil Choudhary — Yog Jivan" },
       { property: "og:description", content: "Authentic Indian yoga rooted in tradition, taught in Hai Duong, Vietnam by Master Anil Choudhary." },
       { property: "og:url", content: "https://yogjivan.com/about" },
