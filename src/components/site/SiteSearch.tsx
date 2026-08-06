@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Search, X } from "lucide-react";
+import { BodyPortal } from "@/components/site/BodyPortal";
 import { FALLBACK_LINKS, POPULAR_SEARCHES, searchSite } from "@/lib/site-search";
 
 const OPEN_EVENT = "yj:open-search";
@@ -226,5 +227,6 @@ export function SiteSearch() {
         </div>
       </div>
     </div>
+    </BodyPortal>
   );
 }
