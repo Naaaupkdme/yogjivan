@@ -7,6 +7,7 @@ export function FloatingWhatsApp() {
       href={SOCIAL.whatsapp}
       target="_blank"
       rel="noopener noreferrer"
+      data-floating-cta
       aria-label="Open WhatsApp chat — book free trial or ask Master Anil a question"
       className="fixed left-4 z-40 grid h-14 w-14 place-items-center rounded-full border border-white/15 text-[color:var(--foreground)] shadow-[0_22px_60px_-18px_rgba(0,0,0,0.45)] transition-transform hover:scale-105 sm:left-5 bottom-[88px] md:bottom-5"
       style={{

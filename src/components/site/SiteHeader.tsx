@@ -1,10 +1,12 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Facebook, Instagram, Menu, MessageCircle, Search, X, Youtube } from "lucide-react";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
 import { useLang } from "@/lib/language";
 import { SOCIAL } from "@/lib/social";
 import { SiteSearch, SiteSearchButton, openSiteSearch } from "@/components/site/SiteSearch";
+import { BodyPortal } from "@/components/site/BodyPortal";
+
 
 
 const NAV = [
@@ -55,11 +57,25 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
 
 const WHATSAPP = SOCIAL.whatsapp;
 
+
+
+/**
+ * Sitewide stacking hierarchy (single source of truth):
+ *  40  floating CTAs (WhatsApp, consultation, mobile sticky bar)
+ *  50  site header
+ *  70  full-site menu overlay  <- portalled to <body>
+ *  80  gallery lightbox / cookie banner
+ *  90  search dialog
+ */
+const MENU_ID = "yj-full-menu";
+
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [fullOpen, setFullOpen] = useState(false);
   const { location } = useRouterState();
   const { lang, setLang } = useLang();
+  const panelRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -70,12 +86,75 @@ export function SiteHeader() {
 
   useEffect(() => { setFullOpen(false); }, [location.pathname]);
 
+  // Scroll lock that preserves and restores the exact scroll position, plus a
+  // body flag the floating CTAs use to step aside while the menu is open.
   useEffect(() => {
-    if (fullOpen) {
-      const prev = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      return () => { document.body.style.overflow = prev; };
-    }
+    if (!fullOpen) return;
+    const y = window.scrollY;
+    const body = document.body;
+    const prev = {
+      position: body.style.position,
+      top: body.style.top,
+      width: body.style.width,
+      overflow: body.style.overflow,
+    };
+    body.style.position = "fixed";
+    body.style.top = `-${y}px`;
+    body.style.width = "100%";
+    body.style.overflow = "hidden";
+    body.dataset["menuOpen"] = "true";
+    return () => {
+      body.style.position = prev.position;
+      body.style.top = prev.top;
+      body.style.width = prev.width;
+      body.style.overflow = prev.overflow;
+      delete body.dataset["menuOpen"];
+      window.scrollTo(0, y);
+    };
+  }, [fullOpen]);
+
+  // Escape to close + focus trap + focus restoration.
+  useEffect(() => {
+    if (!fullOpen) return;
+    const restoreTo = triggerRef.current;
+    const focusables = () =>
+      Array.from(
+        panelRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        ) ?? [],
+      ).filter((el) => el.offsetParent !== null);
+
+    const t = window.setTimeout(() => focusables()[0]?.focus(), 20);
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setFullOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const items = focusables();
+      if (!items.length) return;
+      const first = items[0]!;
+      const last = items[items.length - 1]!;
+      const activeEl = document.activeElement as HTMLElement | null;
+      if (!panelRef.current?.contains(activeEl)) {
+        e.preventDefault();
+        first.focus();
+      } else if (!e.shiftKey && activeEl === last) {
+        e.preventDefault();
+        first.focus();
+      } else if (e.shiftKey && activeEl === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      window.clearTimeout(t);
+      document.removeEventListener("keydown", onKey);
+      restoreTo?.focus();
+    };
   }, [fullOpen]);
 
   return (
@@ -139,63 +218,88 @@ export function SiteHeader() {
           </Link>
 
           {/* Single menu control at every width */}
-          <button onClick={() => setFullOpen(true)}
+          <button ref={triggerRef} onClick={() => setFullOpen(true)}
             className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border/60 transition-colors hover:border-primary/40"
+            aria-haspopup="dialog"
+            aria-expanded={fullOpen}
+            aria-controls={MENU_ID}
             aria-label="Open full menu">
             <Menu className="h-4 w-4" />
           </button>
         </div>
       </div>
 
-      {/* Full-site menu overlay */}
+      {/* Full-site menu overlay — portalled to <body> so the header's
+          backdrop-filter containing block cannot clip it to the header strip. */}
       {fullOpen && (
-        <div className="fixed inset-0 z-[60]" role="dialog" aria-modal="true" aria-label="Full site menu">
-          <button
-            aria-label="Close menu"
-            onClick={() => setFullOpen(false)}
-            className="absolute inset-0 bg-black/70 backdrop-blur-md"
-          />
-          <div className="absolute right-0 top-0 h-full w-full max-w-md overflow-y-auto border-l border-[color:var(--gold)]/25 bg-[color-mix(in_oklab,var(--onyx)_96%,transparent)] backdrop-blur-2xl p-6 sm:p-8 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)]">
-            <div className="flex items-center justify-between">
-              <div className="font-display tracking-[0.24em] text-sm uppercase text-gold-gradient">Full Menu</div>
-              <button onClick={() => setFullOpen(false)} aria-label="Close menu"
-                className="grid h-9 w-9 place-items-center rounded-full border border-border/60 hover:border-primary/40">
-                <X className="h-4 w-4" />
-              </button>
-            </div>
+        <BodyPortal>
+          <div className="fixed inset-0 z-[70] h-[100dvh] min-h-screen w-screen yj-menu-overlay">
             <button
-              type="button"
-              onClick={() => { setFullOpen(false); openSiteSearch(); }}
-              className="mt-6 flex w-full items-center gap-2 rounded-xl border border-white/10 px-3 py-2.5 text-sm text-foreground/90 transition-colors hover:border-[color:var(--gold)]/40 hover:text-[color:var(--gold)]"
+              aria-label="Close menu"
+              tabIndex={-1}
+              onClick={() => setFullOpen(false)}
+              className="absolute inset-0 h-full w-full bg-black/75 backdrop-blur-md"
+            />
+            <div
+              ref={panelRef}
+              id={MENU_ID}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Full site menu"
+              className="absolute right-0 top-0 flex h-full w-full max-w-full flex-col border-l border-[color:var(--gold)]/25 bg-[color-mix(in_oklab,var(--onyx)_97%,transparent)] backdrop-blur-2xl shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] xl:max-w-md"
             >
-              <Search className="h-4 w-4" strokeWidth={1.5} />
-              Search
-            </button>
-            <div className="mt-8 space-y-8">
-              {FULL_MENU.map((group) => (
-                <div key={group.group}>
-                  <div className="text-[0.6rem] uppercase tracking-[0.28em] text-[color:var(--gold)]/80 mb-3">{group.group}</div>
-                  <div className="grid gap-1">
-                    {group.items.map((item) => (
-                      <a key={item.href} href={item.href} onClick={() => setFullOpen(false)}
-                        className="rounded-xl px-3 py-2.5 text-sm text-foreground/90 hover:bg-white/5 hover:text-[color:var(--gold)] transition-colors">
-                        {item.label}
-                      </a>
-                    ))}
-                  </div>
+              <div
+                className="flex shrink-0 items-center justify-between border-b border-white/8 px-6 py-4 sm:px-8"
+                style={{ paddingTop: "calc(env(safe-area-inset-top,0px) + 1rem)" }}
+              >
+                <div className="font-display tracking-[0.24em] text-sm uppercase text-gold-gradient">Full Menu</div>
+                <button onClick={() => setFullOpen(false)} aria-label="Close menu"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-border/60 hover:border-primary/40">
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+
+              <div
+                className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 pb-8 pt-6 sm:px-8"
+                style={{ WebkitOverflowScrolling: "touch", paddingBottom: "calc(env(safe-area-inset-bottom,0px) + 2rem)" }}
+              >
+                <button
+                  type="button"
+                  onClick={() => { setFullOpen(false); openSiteSearch(); }}
+                  className="flex w-full items-center gap-2 rounded-xl border border-white/10 px-3 py-3 text-sm text-foreground/90 transition-colors hover:border-[color:var(--gold)]/40 hover:text-[color:var(--gold)]"
+                >
+                  <Search className="h-4 w-4" strokeWidth={1.5} />
+                  Search
+                </button>
+                <div className="mt-8 grid gap-8 sm:grid-cols-2 xl:grid-cols-1">
+                  {FULL_MENU.map((group) => (
+                    <div key={group.group}>
+                      <div className="text-[0.6rem] uppercase tracking-[0.28em] text-[color:var(--gold)]/80 mb-3">{group.group}</div>
+                      <div className="grid gap-1">
+                        {group.items.map((item) => (
+                          <a key={item.href} href={item.href} onClick={() => setFullOpen(false)}
+                            aria-current={location.pathname === item.href.split("#")[0] ? "page" : undefined}
+                            className="rounded-xl px-3 py-3 text-sm text-foreground/90 hover:bg-white/5 hover:text-[color:var(--gold)] transition-colors aria-[current=page]:text-[color:var(--gold)] aria-[current=page]:bg-white/5">
+                            {item.label}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            <div className="mt-10 grid gap-3">
-              <a href={WHATSAPP} target="_blank" rel="noreferrer" className="btn-ghost-gold w-full">Chat on WhatsApp</a>
-              <a href="/contact#consultation" onClick={() => setFullOpen(false)} className="btn-gold w-full">Book Free Trial</a>
+                <div className="mt-10 grid gap-3">
+                  <a href={WHATSAPP} target="_blank" rel="noreferrer" className="btn-ghost-gold w-full">Chat on WhatsApp</a>
+                  <a href="/contact#consultation" onClick={() => setFullOpen(false)} className="btn-gold w-full">Book Free Trial</a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </BodyPortal>
       )}
 
       <SiteSearch />
     </header>
   );
 }
+
 

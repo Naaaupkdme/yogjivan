@@ -57,7 +57,7 @@ export function CookieConsent() {
       aria-modal="false"
       aria-live="polite"
       aria-label="Cookie preferences"
-      className="fixed inset-x-0 bottom-0 z-[80] px-3 pb-3 sm:px-6 sm:pb-6"
+      className="fixed inset-x-0 bottom-0 z-[60] px-3 pb-3 sm:px-6 sm:pb-6"
       style={{ paddingBottom: "calc(env(safe-area-inset-bottom,0px) + 92px)" }}
     >
       <div
