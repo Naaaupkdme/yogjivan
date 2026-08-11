@@ -82,7 +82,10 @@ const CATEGORIES: Category[] = [
     images: [
       { src: masterImages.studioAdjustment, alt: masterAlts.studioAdjustment },
       { src: masterImages.kidsYoga, alt: masterAlts.kidsYoga },
+      { src: paidSmallGroup.url, alt: "A small Yog Jivan group class practising together in the studio" },
+      { src: paidLiveGuidance.url, alt: "Master Anil kneeling beside a student to guide a supported inversion" },
       { src: studio.url, alt: "Studio practice" },
+
       { src: masterGroup.url, alt: "Group practice" },
       { src: eventA.url, alt: "Community gathering" },
       { src: outdoor.url, alt: "Outdoor community session" },
