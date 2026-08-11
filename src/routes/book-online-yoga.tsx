@@ -32,10 +32,12 @@ export const Route = createFileRoute("/book-online-yoga")({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
-      // Paid-traffic landing page: intentionally excluded from search indexes
-      // so it never competes with /online-yoga-classes.
-      { name: "robots", content: "noindex, nofollow" },
-      { name: "googlebot", content: "noindex, nofollow" },
+      // Paid-traffic landing page: kept out of the index so it never competes
+      // with /online-yoga-classes. "follow" is intentional — crawlers must be
+      // able to reach the page to read this directive, so robots.txt does NOT
+      // disallow it, and internal links from here still pass value.
+      { name: "robots", content: "noindex, follow" },
+      { name: "googlebot", content: "noindex, follow" },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
@@ -44,6 +46,7 @@ export const Route = createFileRoute("/book-online-yoga")({
   }),
   component: BookOnlineYogaPage,
 });
+
 
 const PROOF = [
   { Icon: Users, label: `Max ${ONLINE_CLASS.maxGroupSize} students per live class` },
