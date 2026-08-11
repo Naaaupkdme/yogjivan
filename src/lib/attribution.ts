@@ -12,10 +12,22 @@ export type Attribution = {
   utm_campaign?: string;
   utm_term?: string;
   utm_content?: string;
+  utm_id?: string;
+  campaign_id?: string;
+  adset_id?: string;
+  ad_id?: string;
+  placement?: string;
+  keyword?: string;
+  matchtype?: string;
+  device?: string;
+  market?: string;
   gclid?: string;
+  gbraid?: string;
+  wbraid?: string;
   fbclid?: string;
   ttclid?: string;
   msclkid?: string;
+  li_fat_id?: string;
   referrer_host?: string;
   landing_path?: string;
   captured_at?: string;
@@ -27,11 +39,24 @@ const PARAMS = [
   "utm_campaign",
   "utm_term",
   "utm_content",
+  "utm_id",
+  "campaign_id",
+  "adset_id",
+  "ad_id",
+  "placement",
+  "keyword",
+  "matchtype",
+  "device",
+  "market",
   "gclid",
+  "gbraid",
+  "wbraid",
   "fbclid",
   "ttclid",
   "msclkid",
+  "li_fat_id",
 ] as const;
+
 
 function clean(v: string | null): string | undefined {
   if (!v) return undefined;
