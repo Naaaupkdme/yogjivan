@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Check, MessageCircle, ShieldCheck, Loader2 } from "lucide-react";
+import { Check, MessageCircle, ShieldCheck, Loader2, ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { defaultCountries, parseCountry } from "react-international-phone";
+import type { CountryIso2 } from "react-international-phone";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
 import { submitLead } from "@/lib/leads";
 import { CONTACT } from "@/lib/facts/contact";
 import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
-import { captureAttribution, type Attribution } from "@/lib/attribution";
+import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
+
 
 const GOALS = [
   "Start as a complete beginner",
