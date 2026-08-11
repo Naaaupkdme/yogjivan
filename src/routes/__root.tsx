@@ -419,6 +419,23 @@ function RootComponent() {
     return () => document.removeEventListener("click", onClick, true);
   }, []);
 
+  // Paid-traffic landing pages run without site navigation, footer or floating
+  // widgets so the page has exactly one conversion path.
+  const isBareLanding = pathname.replace(/\/+$/, "") === "/book-online-yoga";
+
+  if (isBareLanding) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <LanguageProvider>
+          <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+            <Outlet />
+            <CookieConsent />
+          </div>
+        </LanguageProvider>
+      </QueryClientProvider>
+    );
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
@@ -438,3 +455,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
