@@ -32,6 +32,17 @@ export function SearchablePhoneInput({
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const searchRef = useRef<HTMLInputElement | null>(null);
 
+  // The caller may resolve the visitor's market after mount (URL ?market= or
+  // browser locale). Adopt it as long as nothing has been typed yet.
+  useEffect(() => {
+    if (!defaultCountry) return;
+    if (inputValue) return;
+    if (country.iso2 === defaultCountry) return;
+    setCountry(defaultCountry);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [defaultCountry]);
+
+
   const parsed = useMemo(() => defaultCountries.map(parseCountry), []);
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();

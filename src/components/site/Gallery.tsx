@@ -29,6 +29,11 @@ import eventD from "@/assets/mg_1753.cr2.jpg.asset.json";
 import retreatA from "@/assets/fb_img_1690971312359.jpg.asset.json";
 import retreatB from "@/assets/fb_img_1691544924455.jpg.asset.json";
 import retreatC from "@/assets/8c8a04a521fc965966fa27bd93b84031.jpg.asset.json";
+import paidTeachingAdjustment from "@/assets/paid/teaching-adjustment.webp.asset.json";
+import paidLiveGuidance from "@/assets/paid/live-guidance-floor.webp.asset.json";
+import paidSmallGroup from "@/assets/paid/small-group-class.webp.asset.json";
+import paidMasterOutdoor from "@/assets/paid/master-anil-outdoor.webp.asset.json";
+
 
 type Category = {
   key: string;
@@ -56,6 +61,8 @@ const CATEGORIES: Category[] = [
       { src: masterImages.ploughPose, alt: masterAlts.ploughPose },
       { src: masterImages.outdoorBridge, alt: masterAlts.outdoorBridge },
       { src: master1.url, alt: "Master Anil in meditation" },
+      { src: paidMasterOutdoor.url, alt: "Master Anil practising a deep kneeling backbend outdoors" },
+      { src: paidTeachingAdjustment.url, alt: "Master Anil guiding a student through a supported backbend at the studio" },
       { src: masterGroup.url, alt: "Master Anil with students" },
       { src: masterAlt.url, alt: "Master Anil teaching" },
       { src: masterB.url, alt: "Master Anil portrait" },
@@ -75,7 +82,10 @@ const CATEGORIES: Category[] = [
     images: [
       { src: masterImages.studioAdjustment, alt: masterAlts.studioAdjustment },
       { src: masterImages.kidsYoga, alt: masterAlts.kidsYoga },
+      { src: paidSmallGroup.url, alt: "A small Yog Jivan group class practising together in the studio" },
+      { src: paidLiveGuidance.url, alt: "Master Anil kneeling beside a student to guide a supported inversion" },
       { src: studio.url, alt: "Studio practice" },
+
       { src: masterGroup.url, alt: "Group practice" },
       { src: eventA.url, alt: "Community gathering" },
       { src: outdoor.url, alt: "Outdoor community session" },

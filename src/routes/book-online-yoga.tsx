@@ -16,7 +16,7 @@ import { TEACHER } from "@/lib/facts/teacher";
 import { TRIAL } from "@/lib/facts/trial";
 import { ONLINE_CLASS } from "@/lib/facts/online-class";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
-import { ONLINE_PLANS, formatUSD } from "@/lib/facts/pricing";
+import { ONLINE_PLANS, formatUSD, perMonth } from "@/lib/facts/pricing";
 
 import teachingAdjustment from "@/assets/paid/teaching-adjustment.webp.asset.json";
 import liveGuidanceFloor from "@/assets/paid/live-guidance-floor.webp.asset.json";
@@ -32,10 +32,12 @@ export const Route = createFileRoute("/book-online-yoga")({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
-      // Paid-traffic landing page: intentionally excluded from search indexes
-      // so it never competes with /online-yoga-classes.
-      { name: "robots", content: "noindex, nofollow" },
-      { name: "googlebot", content: "noindex, nofollow" },
+      // Paid-traffic landing page: kept out of the index so it never competes
+      // with /online-yoga-classes. "follow" is intentional — crawlers must be
+      // able to reach the page to read this directive, so robots.txt does NOT
+      // disallow it, and internal links from here still pass value.
+      { name: "robots", content: "noindex, follow" },
+      { name: "googlebot", content: "noindex, follow" },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
@@ -44,6 +46,7 @@ export const Route = createFileRoute("/book-online-yoga")({
   }),
   component: BookOnlineYogaPage,
 });
+
 
 const PROOF = [
   { Icon: Users, label: `Max ${ONLINE_CLASS.maxGroupSize} students per live class` },
@@ -69,6 +72,43 @@ const HOW_IT_WORKS = [
     body: `You practise live with ${TEACHER.shortName} in a group of no more than ${ONLINE_CLASS.maxGroupSize} — corrected by voice, in real time, as you move.`,
   },
 ];
+
+// Only verified facts — no medical or outcome promises.
+const FAQS: { q: string; a: string }[] = [
+  {
+    q: "Are the classes really live?",
+    a: `Yes. Every class is live with ${TEACHER.name} on Zoom or Google Meet — never a pre-recorded video.`,
+  },
+  {
+    q: "Do I need my camera on?",
+    a: ONLINE_CLASS.cameraNote,
+  },
+  {
+    q: "I have never done yoga. Can I still join?",
+    a: "Yes. Classes are beginner-friendly and every posture has simpler stages. Your onboarding conversation covers your starting point before your first class.",
+  },
+  {
+    q: "How many people are in a class?",
+    a: `Live group classes are capped at ${ONLINE_CLASS.maxGroupSize} students so everyone can be seen and corrected. Each class runs ${ONLINE_CLASS.durationMinutes} minutes.`,
+  },
+  {
+    q: "What if I miss a class?",
+    a: ONLINE_CLASS.recordings.note,
+  },
+  {
+    q: "What do I need at home?",
+    a: "A mat, roughly 2×2m of clear space, and a laptop or tablet placed so your whole body is visible. Blocks, a strap and a cushion are useful but not essential.",
+  },
+  {
+    q: "Which languages are classes taught in?",
+    a: `Classes are taught in ${ONLINE_CLASS.languages.join(", ")}.`,
+  },
+  {
+    q: "Do I have to pay for the trial?",
+    a: TRIAL.summary,
+  },
+];
+
 
 function BookOnlineYogaPage() {
   return (
@@ -116,14 +156,17 @@ function BookOnlineYogaPage() {
               ))}
             </ul>
 
+            {/* Approachable, everyday-student image — an ordinary small class,
+                not an advanced pose, so beginners see themselves here. */}
             <div className="mt-8 overflow-hidden rounded-[1.5rem] border border-white/10">
               <LuxuryImage
-                src={teachingAdjustment.url}
-                alt={`${TEACHER.name} guiding a student through a supported backbend at the Yog Jivan studio`}
+                src={smallGroupClass.url}
+                alt="A small Yog Jivan group class practising together with the teacher guiding from the front"
                 className="h-[280px] w-full sm:h-[380px]"
                 eager
               />
             </div>
+
           </div>
 
           <div className="lg:sticky lg:top-8">
@@ -211,11 +254,12 @@ function BookOnlineYogaPage() {
               </div>
               <div className="overflow-hidden rounded-[1.25rem] border border-white/10">
                 <LuxuryImage
-                  src={smallGroupClass.url}
-                  alt="A small Yog Jivan class practising with hands-on guidance in the studio"
+                  src={teachingAdjustment.url}
+                  alt={`${TEACHER.name} guiding a student through a supported backbend at the Yog Jivan studio`}
                   className="h-[220px] w-full sm:h-[300px]"
                 />
               </div>
+
             </div>
           </div>
         </section>
@@ -226,13 +270,16 @@ function BookOnlineYogaPage() {
             After your trial
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Membership is optional and only starts if you choose to continue. Live group memberships:
+            Membership is optional and only starts if you choose to continue. Live group
+            memberships, in USD:
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {ONLINE_PLANS.map((p) => (
               <div
                 key={p.id}
-                className="rounded-[1.25rem] border border-white/10 bg-white/[0.03] p-5 text-center"
+                className={`rounded-[1.25rem] border bg-white/[0.03] p-5 text-center ${
+                  p.badge ? "border-[color:var(--gold)]/45" : "border-white/10"
+                }`}
               >
                 <p className="text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground">
                   {p.label}
@@ -240,7 +287,14 @@ function BookOnlineYogaPage() {
                 <p className="mt-2 font-display text-2xl text-[color:var(--gold)]">
                   {formatUSD(p.priceUSD)}
                 </p>
-                {p.badge && <p className="mt-1 text-[0.65rem] text-muted-foreground">{p.badge}</p>}
+                <p className="mt-1 text-[0.65rem] text-muted-foreground">
+                  {formatUSD(perMonth(p))} per month
+                </p>
+                {p.badge && (
+                  <p className="mt-2 text-[0.6rem] uppercase tracking-[0.2em] text-[color:var(--gold)]">
+                    {p.badge}
+                  </p>
+                )}
               </div>
             ))}
           </div>
@@ -249,6 +303,24 @@ function BookOnlineYogaPage() {
             session plans.
           </p>
         </section>
+
+        {/* FAQ — the eight questions paid visitors ask before booking */}
+        <section className="border-y border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-3xl px-5 py-12">
+            <h2 className="font-display text-[clamp(1.6rem,3.4vw,2.4rem)] leading-tight">
+              Questions people ask before booking
+            </h2>
+            <dl className="mt-6 space-y-5">
+              {FAQS.map((f) => (
+                <div key={f.q} className="rounded-[1.25rem] border border-white/10 p-5">
+                  <dt className="text-sm font-semibold">{f.q}</dt>
+                  <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
 
         {/* Closing CTA */}
         <section className="border-t border-white/10 bg-white/[0.02]">
