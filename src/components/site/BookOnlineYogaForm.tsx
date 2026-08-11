@@ -66,7 +66,6 @@ export function BookOnlineYogaForm() {
     const a = captureAttribution();
     setAttribution(a);
     const market = detectMarket(a);
-    console.log("[dbg market]", market, SUPPORTED_ISO2.has(market ?? ""));
     if (market && SUPPORTED_ISO2.has(market)) setCountry(market as CountryIso2);
   }, []);
 
@@ -237,8 +236,6 @@ export function BookOnlineYogaForm() {
             WhatsApp number *
           </label>
           <SearchablePhoneInput
-            /* Remount when the detected market resolves so the dial code updates. */
-            key={country}
             value={form.whatsapp}
             onChange={(v) => update("whatsapp", v)}
             defaultCountry={country}
