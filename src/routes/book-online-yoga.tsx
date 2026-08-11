@@ -119,14 +119,17 @@ function BookOnlineYogaPage() {
               ))}
             </ul>
 
+            {/* Approachable, everyday-student image — an ordinary small class,
+                not an advanced pose, so beginners see themselves here. */}
             <div className="mt-8 overflow-hidden rounded-[1.5rem] border border-white/10">
               <LuxuryImage
-                src={teachingAdjustment.url}
-                alt={`${TEACHER.name} guiding a student through a supported backbend at the Yog Jivan studio`}
+                src={smallGroupClass.url}
+                alt="A small Yog Jivan group class practising together with the teacher guiding from the front"
                 className="h-[280px] w-full sm:h-[380px]"
                 eager
               />
             </div>
+
           </div>
 
           <div className="lg:sticky lg:top-8">
