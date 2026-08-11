@@ -256,8 +256,17 @@ export function trackFormStart(formId: string) {
   gaEvent("form_start", { form_id: formId });
 }
 
-/** Only ever call after a confirmed successful lead insert + success state. */
-export function trackGenerateLead(serviceCategory: string, formId: string) {
-  gaEvent("generate_lead", { form_id: formId, service_category: serviceCategory || "unspecified" });
-  metaEvent("Lead", { content_category: serviceCategory || "unspecified" });
+/**
+ * Only ever call after a confirmed successful lead insert + success state.
+ * `eventId` is a per-submission UUID stored with the lead so a future Meta
+ * Conversions API call can be deduplicated against this browser event.
+ */
+export function trackGenerateLead(serviceCategory: string, formId: string, eventId?: string) {
+  gaEvent("generate_lead", {
+    form_id: formId,
+    service_category: serviceCategory || "unspecified",
+    ...(eventId ? { lead_event_id: eventId } : {}),
+  });
+  metaEvent("Lead", { content_category: serviceCategory || "unspecified" }, eventId);
 }
+
