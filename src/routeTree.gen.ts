@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BookOnlineYogaRouteImport } from './routes/book-online-yoga'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CorporateRouteImport } from './routes/corporate'
 import { Route as GalleryRouteImport } from './routes/gallery'
@@ -54,6 +55,11 @@ const AboutRoute = AboutRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookOnlineYogaRoute = BookOnlineYogaRouteImport.update({
+  id: '/book-online-yoga',
+  path: '/book-online-yoga',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -205,6 +211,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/book-online-yoga': typeof BookOnlineYogaRoute
   '/contact': typeof ContactRoute
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
@@ -238,6 +245,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/book-online-yoga': typeof BookOnlineYogaRoute
   '/contact': typeof ContactRoute
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
@@ -272,6 +280,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
+  '/book-online-yoga': typeof BookOnlineYogaRoute
   '/contact': typeof ContactRoute
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
@@ -307,6 +316,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/book-online-yoga'
     | '/contact'
     | '/corporate'
     | '/gallery'
@@ -340,6 +350,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/book-online-yoga'
     | '/contact'
     | '/corporate'
     | '/gallery'
@@ -373,6 +384,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/auth'
+    | '/book-online-yoga'
     | '/contact'
     | '/corporate'
     | '/gallery'
@@ -407,6 +419,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
+  BookOnlineYogaRoute: typeof BookOnlineYogaRoute
   ContactRoute: typeof ContactRoute
   CorporateRoute: typeof CorporateRoute
   GalleryRoute: typeof GalleryRoute
@@ -458,6 +471,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book-online-yoga': {
+      id: '/book-online-yoga'
+      path: '/book-online-yoga'
+      fullPath: '/book-online-yoga'
+      preLoaderRoute: typeof BookOnlineYogaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -663,6 +683,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
+  BookOnlineYogaRoute: BookOnlineYogaRoute,
   ContactRoute: ContactRoute,
   CorporateRoute: CorporateRoute,
   GalleryRoute: GalleryRoute,
