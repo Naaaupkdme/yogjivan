@@ -217,11 +217,12 @@ function BookOnlineYogaPage() {
               </div>
               <div className="overflow-hidden rounded-[1.25rem] border border-white/10">
                 <LuxuryImage
-                  src={smallGroupClass.url}
-                  alt="A small Yog Jivan class practising with hands-on guidance in the studio"
+                  src={teachingAdjustment.url}
+                  alt={`${TEACHER.name} guiding a student through a supported backbend at the Yog Jivan studio`}
                   className="h-[220px] w-full sm:h-[300px]"
                 />
               </div>
+
             </div>
           </div>
         </section>
