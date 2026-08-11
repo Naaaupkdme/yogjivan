@@ -6,7 +6,7 @@ import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
 import { submitLead } from "@/lib/leads";
 import { CONTACT } from "@/lib/facts/contact";
 import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
-import { captureAttribution, channelOf, type Attribution } from "@/lib/attribution";
+import { captureAttribution, type Attribution } from "@/lib/attribution";
 
 const GOALS = [
   "Start as a complete beginner",
@@ -295,4 +295,3 @@ function Select({
   );
 }
 
-export { channelOf };
