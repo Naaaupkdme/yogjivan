@@ -36,15 +36,37 @@ const empty: FormState = { name: "", whatsapp: "", email: "", goal: "", time: ""
 
 const FORM_ID = "book_online_yoga";
 
+const SUPPORTED_ISO2 = new Set(defaultCountries.map((c) => parseCountry(c).iso2 as string));
+
+/** Steps shown after a successful submission, in the order they happen. */
+const NEXT_STEPS = [
+  {
+    title: "We review your request",
+    body: "Master Anil reads what you're looking for and picks the live slot that fits your level and timezone.",
+  },
+  {
+    title: "We confirm on WhatsApp",
+    body: "You'll get a message from us to agree a start time and book your short 15-minute onboarding conversation.",
+  },
+  {
+    title: "You receive joining details",
+    body: "Class link, timing and a short setup note — camera, space and props — so your first live class runs smoothly.",
+  },
+];
+
 export function BookOnlineYogaForm() {
   const [form, setForm] = useState<FormState>(empty);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
   const [attribution, setAttribution] = useState<Attribution>({});
+  const [country, setCountry] = useState<CountryIso2>("vn");
 
   useEffect(() => {
-    setAttribution(captureAttribution());
+    const a = captureAttribution();
+    setAttribution(a);
+    const market = detectMarket(a);
+    if (market && SUPPORTED_ISO2.has(market)) setCountry(market as CountryIso2);
   }, []);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
@@ -64,6 +86,18 @@ export function BookOnlineYogaForm() {
     }
     setErrors({});
     setBusy(true);
+    // Deduplication key shared between the browser Pixel event and any future
+    // server-side Meta Conversions API call for the same lead.
+    const leadEventId =
+      typeof crypto !== "undefined" && "randomUUID" in crypto
+        ? crypto.randomUUID()
+        : `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    let timezone: string | null = null;
+    try {
+      timezone = Intl.DateTimeFormat().resolvedOptions().timeZone ?? null;
+    } catch {
+      /* timezone is optional context */
+    }
     try {
       await submitLead({
         name: parsed.data.name,
@@ -77,18 +111,36 @@ export function BookOnlineYogaForm() {
         meta: {
           funnel: "online_yoga_paid_landing",
           landing_page: "/book-online-yoga",
+          lead_event_id: leadEventId,
+          market: country,
+          timezone,
           utm_source: attribution.utm_source ?? null,
           utm_medium: attribution.utm_medium ?? null,
           utm_campaign: attribution.utm_campaign ?? null,
           utm_term: attribution.utm_term ?? null,
           utm_content: attribution.utm_content ?? null,
+          utm_id: attribution.utm_id ?? null,
+          campaign_id: attribution.campaign_id ?? null,
+          adset_id: attribution.adset_id ?? null,
+          ad_id: attribution.ad_id ?? null,
+          placement: attribution.placement ?? null,
+          keyword: attribution.keyword ?? null,
+          matchtype: attribution.matchtype ?? null,
+          device: attribution.device ?? null,
           gclid: attribution.gclid ?? null,
+          gbraid: attribution.gbraid ?? null,
+          wbraid: attribution.wbraid ?? null,
           fbclid: attribution.fbclid ?? null,
+          ttclid: attribution.ttclid ?? null,
+          msclkid: attribution.msclkid ?? null,
+          li_fat_id: attribution.li_fat_id ?? null,
           referrer_host: attribution.referrer_host ?? null,
+          landing_first_touch: attribution.landing_path ?? null,
+          first_touch_at: attribution.captured_at ?? null,
         },
       });
       // Fires only after a confirmed insert. No PII is sent — just intent + channel.
-      trackGenerateLead(parsed.data.goal, FORM_ID);
+      trackGenerateLead(parsed.data.goal, FORM_ID, leadEventId);
       setDone(true);
       setForm(empty);
     } catch (err) {
@@ -101,28 +153,56 @@ export function BookOnlineYogaForm() {
 
   if (done) {
     return (
-      <div className="glass-luxe rounded-[1.5rem] p-6 text-center sm:p-9">
-        <div className="mx-auto grid h-14 w-14 place-items-center rounded-full border-2 border-emerald-400/60 bg-emerald-400/10">
-          <Check className="h-7 w-7 text-emerald-300" />
+      <div className="glass-luxe rounded-[1.5rem] p-6 sm:p-9">
+        <div className="text-center">
+          <div className="mx-auto grid h-14 w-14 place-items-center rounded-full border-2 border-emerald-400/60 bg-emerald-400/10">
+            <Check className="h-7 w-7 text-emerald-300" />
+          </div>
+          <h2 className="mt-5 font-display text-2xl leading-tight sm:text-3xl">
+            Request received — you're on the list.
+          </h2>
+          <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
+            Here is exactly what happens next.
+          </p>
         </div>
-        <h2 className="mt-5 font-display text-2xl leading-tight sm:text-3xl">
-          Request received — you're on the list.
-        </h2>
-        <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-          We'll message you on WhatsApp to confirm a start time and arrange your short 15-minute
-          onboarding conversation before your first live class.
-        </p>
-        <a
-          href={CONTACT.whatsapp}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-gold mt-6 inline-flex justify-center"
-        >
-          <MessageCircle className="h-4 w-4" /> Message us now on WhatsApp
-        </a>
+
+        <ol className="mt-6 space-y-4 text-left">
+          {NEXT_STEPS.map((s, i) => (
+            <li key={s.title} className="flex gap-4">
+              <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10 text-[0.7rem] font-semibold text-[color:var(--gold)]">
+                {i + 1}
+              </span>
+              <div>
+                <h3 className="text-sm font-semibold">{s.title}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <div className="mt-7 flex flex-col gap-3">
+          <a
+            href={CONTACT.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cta-location="paid_success"
+            className="btn-gold justify-center"
+          >
+            <MessageCircle className="h-4 w-4" /> Message us now on WhatsApp
+          </a>
+          <Link
+            to="/online-yoga-classes"
+            data-cta-location="paid_success"
+            className="btn-ghost-gold justify-center"
+          >
+            See how live classes work <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
     );
   }
+
+
 
   return (
     <form
