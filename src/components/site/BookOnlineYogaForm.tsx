@@ -236,13 +236,16 @@ export function BookOnlineYogaForm() {
             WhatsApp number *
           </label>
           <SearchablePhoneInput
+            /* Remount when the detected market resolves so the dial code updates. */
+            key={country}
             value={form.whatsapp}
             onChange={(v) => update("whatsapp", v)}
-            defaultCountry="vn"
+            defaultCountry={country}
             placeholder="912 345 678"
             name="whatsapp"
             ariaLabel="WhatsApp number"
           />
+
           {errors.whatsapp && <p className="mt-1.5 text-xs text-red-300">{errors.whatsapp}</p>}
         </div>
 
