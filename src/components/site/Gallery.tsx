@@ -29,6 +29,11 @@ import eventD from "@/assets/mg_1753.cr2.jpg.asset.json";
 import retreatA from "@/assets/fb_img_1690971312359.jpg.asset.json";
 import retreatB from "@/assets/fb_img_1691544924455.jpg.asset.json";
 import retreatC from "@/assets/8c8a04a521fc965966fa27bd93b84031.jpg.asset.json";
+import paidTeachingAdjustment from "@/assets/paid/teaching-adjustment.webp.asset.json";
+import paidLiveGuidance from "@/assets/paid/live-guidance-floor.webp.asset.json";
+import paidSmallGroup from "@/assets/paid/small-group-class.webp.asset.json";
+import paidMasterOutdoor from "@/assets/paid/master-anil-outdoor.webp.asset.json";
+
 
 type Category = {
   key: string;
