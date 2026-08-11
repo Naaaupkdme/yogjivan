@@ -67,7 +67,7 @@ type SubmitPayload = Partial<Omit<LeadState, "step">> & {
   /** Must be an allowed source value (see leads insert policy). */
   source?: "website" | "website_paid_online_yoga";
   /** Non-PII campaign/attribution context. */
-  meta?: Record<string, unknown>;
+  meta?: Record<string, string | number | boolean | null>;
 };
 
 import { submitLeadToCrm } from "./submit-lead.functions";
