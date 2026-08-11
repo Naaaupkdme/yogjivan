@@ -66,6 +66,7 @@ export function BookOnlineYogaForm() {
     const a = captureAttribution();
     setAttribution(a);
     const market = detectMarket(a);
+    console.log("[dbg market]", market, SUPPORTED_ISO2.has(market ?? ""));
     if (market && SUPPORTED_ISO2.has(market)) setCountry(market as CountryIso2);
   }, []);
 
