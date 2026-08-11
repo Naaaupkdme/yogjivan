@@ -95,7 +95,7 @@ function BookOnlineYogaPage() {
 
       <main>
         {/* Hero + form */}
-        <section className="mx-auto grid max-w-6xl gap-10 px-5 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:py-16">
+        <section id="top" className="mx-auto grid max-w-6xl gap-10 px-5 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:py-16">
           <div>
             <p className="eyebrow">Live online yoga · Free 3-day trial</p>
             <h1 className="mt-4 font-display text-[clamp(2.1rem,5vw,3.4rem)] leading-[1.05]">
@@ -120,9 +120,8 @@ function BookOnlineYogaPage() {
               <LuxuryImage
                 src={teachingAdjustment.url}
                 alt={`${TEACHER.name} guiding a student through a supported backbend at the Yog Jivan studio`}
-                className="h-[280px] w-full object-cover sm:h-[380px]"
-                width={1440}
-                height={1920}
+                className="h-[280px] w-full sm:h-[380px]"
+                eager
               />
             </div>
           </div>
@@ -156,9 +155,7 @@ function BookOnlineYogaPage() {
               <LuxuryImage
                 src={liveGuidanceFloor.url}
                 alt={`${TEACHER.name} kneeling beside a student to guide an inversion with blocks`}
-                className="h-[260px] w-full object-cover sm:h-[360px]"
-                width={1920}
-                height={1440}
+                className="h-[260px] w-full sm:h-[360px]"
               />
             </div>
             <div>
@@ -209,18 +206,14 @@ function BookOnlineYogaPage() {
                 <LuxuryImage
                   src={masterAnilOutdoor.url}
                   alt={`${TEACHER.name} practising a deep kneeling backbend outdoors`}
-                  className="h-[220px] w-full object-cover sm:h-[300px]"
-                  width={1920}
-                  height={1280}
+                  className="h-[220px] w-full sm:h-[300px]"
                 />
               </div>
               <div className="overflow-hidden rounded-[1.25rem] border border-white/10">
                 <LuxuryImage
                   src={smallGroupClass.url}
                   alt="A small Yog Jivan class practising with hands-on guidance in the studio"
-                  className="h-[220px] w-full object-cover sm:h-[300px]"
-                  width={1440}
-                  height={1920}
+                  className="h-[220px] w-full sm:h-[300px]"
                 />
               </div>
             </div>
