@@ -204,12 +204,19 @@ export function gaEvent(name: string, params: Record<string, string | number | b
 }
 
 /** Meta event — only fires when marketing consent is granted. */
-export function metaEvent(name: string, params: Record<string, string | number> = {}) {
+export function metaEvent(
+  name: string,
+  params: Record<string, string | number> = {},
+  /** Meta CAPI deduplication key — the same value must be sent server-side. */
+  eventId?: string,
+) {
   const win = w();
   if (!win || typeof win.fbq !== "function") return;
   if (!readConsent().marketing) return;
-  win.fbq("track", name, params);
+  if (eventId) win.fbq("track", name, params, { eventID: eventId });
+  else win.fbq("track", name, params);
 }
+
 
 export function trackPageView() {
   const win = w();
