@@ -64,7 +64,13 @@ function clean(v: string | null): string | undefined {
   return t || undefined;
 }
 
-/** Reads campaign data from the current URL and stores it (first touch wins). */
+/**
+ * Reads campaign data from the current URL and stores it.
+ *
+ * First touch is preserved: once a campaign set has been recorded, later
+ * visits never overwrite it. New parameters only fill fields that are still
+ * empty, so a returning visitor keeps the campaign that originally found them.
+ */
 export function captureAttribution(): Attribution {
   if (typeof window === "undefined") return {};
   const existing = readAttribution();
@@ -75,9 +81,9 @@ export function captureAttribution(): Attribution {
     if (v) fresh[p] = v;
   }
   const hasFresh = Object.keys(fresh).length > 0;
+  const hasFirstTouch = Boolean(existing.captured_at);
 
-  // Keep the first touch unless this visit carries new campaign parameters.
-  if (!hasFresh && existing.captured_at) return existing;
+  if (!hasFresh && hasFirstTouch) return existing;
 
   let referrer_host: string | undefined;
   try {
@@ -89,12 +95,20 @@ export function captureAttribution(): Attribution {
     /* ignore malformed referrer */
   }
 
-  const next: Attribution = {
-    ...(hasFresh ? fresh : existing),
-    referrer_host: referrer_host ?? existing.referrer_host,
-    landing_path: existing.landing_path ?? url.pathname,
-    captured_at: existing.captured_at ?? new Date().toISOString(),
-  };
+  // First touch wins field-by-field: existing values are never replaced.
+  const next: Attribution = hasFirstTouch
+    ? { ...fresh, ...existing }
+    : {
+        ...fresh,
+        referrer_host,
+        landing_path: url.pathname,
+        captured_at: new Date().toISOString(),
+      };
+  if (hasFirstTouch) {
+    next.referrer_host = existing.referrer_host ?? referrer_host;
+    next.landing_path = existing.landing_path ?? url.pathname;
+    next.captured_at = existing.captured_at;
+  }
 
   try {
     window.localStorage.setItem(KEY, JSON.stringify(next));
@@ -103,6 +117,29 @@ export function captureAttribution(): Attribution {
   }
   return next;
 }
+
+/**
+ * Best-effort market hint for phone defaults, derived from the ?market= URL
+ * parameter (highest priority) then the browser locale region. Returns a
+ * lowercase ISO-3166 alpha-2 code, or undefined when nothing is reliable.
+ */
+export function detectMarket(attribution: Attribution = {}): string | undefined {
+  if (typeof window === "undefined") return undefined;
+  const fromUrl = clean(new URL(window.location.href).searchParams.get("market"));
+  const raw = fromUrl ?? attribution.market;
+  if (raw && /^[a-zA-Z]{2}$/.test(raw)) return raw.toLowerCase();
+
+  const locales = [
+    ...(navigator.languages ?? []),
+    navigator.language,
+  ].filter(Boolean) as string[];
+  for (const l of locales) {
+    const region = l.split("-")[1];
+    if (region && /^[a-zA-Z]{2}$/.test(region)) return region.toLowerCase();
+  }
+  return undefined;
+}
+
 
 export function readAttribution(): Attribution {
   if (typeof window === "undefined") return {};
