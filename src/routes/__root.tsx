@@ -289,6 +289,7 @@ function RootComponent() {
         "/yoga-for-stress": { content_name: "Stress Relief Yoga", content_category: "Therapeutic Yoga" },
         "/yoga-for-weight-loss": { content_name: "Weight Loss Yoga", content_category: "Therapeutic Yoga" },
         "/contact": { content_name: "Contact Yog Jivan", content_category: "Contact" },
+        "/book-online-yoga": { content_name: "Book Online Yoga (paid landing)", content_category: "Online Classes" },
       };
       const match = VIEW_CONTENT_MAP[path];
       if (match) {
