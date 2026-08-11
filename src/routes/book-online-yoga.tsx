@@ -16,7 +16,7 @@ import { TEACHER } from "@/lib/facts/teacher";
 import { TRIAL } from "@/lib/facts/trial";
 import { ONLINE_CLASS } from "@/lib/facts/online-class";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
-import { ONLINE_PLANS, formatUSD } from "@/lib/facts/pricing";
+import { ONLINE_PLANS, formatUSD, perMonth } from "@/lib/facts/pricing";
 
 import teachingAdjustment from "@/assets/paid/teaching-adjustment.webp.asset.json";
 import liveGuidanceFloor from "@/assets/paid/live-guidance-floor.webp.asset.json";
