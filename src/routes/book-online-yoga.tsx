@@ -233,13 +233,16 @@ function BookOnlineYogaPage() {
             After your trial
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Membership is optional and only starts if you choose to continue. Live group memberships:
+            Membership is optional and only starts if you choose to continue. Live group
+            memberships, in USD:
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {ONLINE_PLANS.map((p) => (
               <div
                 key={p.id}
-                className="rounded-[1.25rem] border border-white/10 bg-white/[0.03] p-5 text-center"
+                className={`rounded-[1.25rem] border bg-white/[0.03] p-5 text-center ${
+                  p.badge ? "border-[color:var(--gold)]/45" : "border-white/10"
+                }`}
               >
                 <p className="text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground">
                   {p.label}
@@ -247,7 +250,14 @@ function BookOnlineYogaPage() {
                 <p className="mt-2 font-display text-2xl text-[color:var(--gold)]">
                   {formatUSD(p.priceUSD)}
                 </p>
-                {p.badge && <p className="mt-1 text-[0.65rem] text-muted-foreground">{p.badge}</p>}
+                <p className="mt-1 text-[0.65rem] text-muted-foreground">
+                  {formatUSD(perMonth(p))} per month
+                </p>
+                {p.badge && (
+                  <p className="mt-2 text-[0.6rem] uppercase tracking-[0.2em] text-[color:var(--gold)]">
+                    {p.badge}
+                  </p>
+                )}
               </div>
             ))}
           </div>
@@ -256,6 +266,24 @@ function BookOnlineYogaPage() {
             session plans.
           </p>
         </section>
+
+        {/* FAQ — the eight questions paid visitors ask before booking */}
+        <section className="border-y border-white/10 bg-white/[0.02]">
+          <div className="mx-auto max-w-3xl px-5 py-12">
+            <h2 className="font-display text-[clamp(1.6rem,3.4vw,2.4rem)] leading-tight">
+              Questions people ask before booking
+            </h2>
+            <dl className="mt-6 space-y-5">
+              {FAQS.map((f) => (
+                <div key={f.q} className="rounded-[1.25rem] border border-white/10 p-5">
+                  <dt className="text-sm font-semibold">{f.q}</dt>
+                  <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+
 
         {/* Closing CTA */}
         <section className="border-t border-white/10 bg-white/[0.02]">
