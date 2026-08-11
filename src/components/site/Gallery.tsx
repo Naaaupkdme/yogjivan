@@ -64,7 +64,6 @@ const CATEGORIES: Category[] = [
       { src: paidMasterOutdoor.url, alt: "Master Anil practising a deep kneeling backbend outdoors" },
       { src: paidTeachingAdjustment.url, alt: "Master Anil guiding a student through a supported backbend at the studio" },
       { src: masterGroup.url, alt: "Master Anil with students" },
-
       { src: masterAlt.url, alt: "Master Anil teaching" },
       { src: masterB.url, alt: "Master Anil portrait" },
       { src: acroArch.url, alt: "Master Anil acro arch" },
