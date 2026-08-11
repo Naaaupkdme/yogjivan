@@ -61,7 +61,10 @@ const CATEGORIES: Category[] = [
       { src: masterImages.ploughPose, alt: masterAlts.ploughPose },
       { src: masterImages.outdoorBridge, alt: masterAlts.outdoorBridge },
       { src: master1.url, alt: "Master Anil in meditation" },
+      { src: paidMasterOutdoor.url, alt: "Master Anil practising a deep kneeling backbend outdoors" },
+      { src: paidTeachingAdjustment.url, alt: "Master Anil guiding a student through a supported backbend at the studio" },
       { src: masterGroup.url, alt: "Master Anil with students" },
+
       { src: masterAlt.url, alt: "Master Anil teaching" },
       { src: masterB.url, alt: "Master Anil portrait" },
       { src: acroArch.url, alt: "Master Anil acro arch" },
