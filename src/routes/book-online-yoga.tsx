@@ -73,6 +73,43 @@ const HOW_IT_WORKS = [
   },
 ];
 
+// Only verified facts — no medical or outcome promises.
+const FAQS: { q: string; a: string }[] = [
+  {
+    q: "Are the classes really live?",
+    a: `Yes. Every class is live with ${TEACHER.name} on Zoom or Google Meet — never a pre-recorded video.`,
+  },
+  {
+    q: "Do I need my camera on?",
+    a: ONLINE_CLASS.cameraNote,
+  },
+  {
+    q: "I have never done yoga. Can I still join?",
+    a: "Yes. Classes are beginner-friendly and every posture has simpler stages. Your onboarding conversation covers your starting point before your first class.",
+  },
+  {
+    q: "How many people are in a class?",
+    a: `Live group classes are capped at ${ONLINE_CLASS.maxGroupSize} students so everyone can be seen and corrected. Each class runs ${ONLINE_CLASS.durationMinutes} minutes.`,
+  },
+  {
+    q: "What if I miss a class?",
+    a: ONLINE_CLASS.recordings.note,
+  },
+  {
+    q: "What do I need at home?",
+    a: "A mat, roughly 2×2m of clear space, and a laptop or tablet placed so your whole body is visible. Blocks, a strap and a cushion are useful but not essential.",
+  },
+  {
+    q: "Which languages are classes taught in?",
+    a: `Classes are taught in ${ONLINE_CLASS.languages.join(", ")}.`,
+  },
+  {
+    q: "Do I have to pay for the trial?",
+    a: TRIAL.summary,
+  },
+];
+
+
 function BookOnlineYogaPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
