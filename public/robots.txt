@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-# Paid-traffic landing page — excluded from search so it never competes
-# with /online-yoga-classes.
-Disallow: /book-online-yoga
 
 Sitemap: https://yogjivan.com/sitemap.xml
