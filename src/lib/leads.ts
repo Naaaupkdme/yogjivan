@@ -64,6 +64,10 @@ type SubmitPayload = Partial<Omit<LeadState, "step">> & {
   name: string;
   whatsapp: string;
   status: string;
+  /** Must be an allowed source value (see leads insert policy). */
+  source?: "website" | "website_paid_online_yoga";
+  /** Non-PII campaign/attribution context. */
+  meta?: Record<string, unknown>;
 };
 
 import { submitLeadToCrm } from "./submit-lead.functions";
@@ -82,9 +86,11 @@ export async function submitLead(payload: SubmitPayload) {
     experience_level: payload.experience_level || null,
     status: payload.status,
     session_id,
-    source: "website",
+    source: payload.source ?? "website",
+    meta: payload.meta ?? {},
   });
   if (error) throw error;
+
 
   // CRM sync is a best-effort convenience — the lead is already saved.
   // If the webhook fails we log server-side but do NOT surface an error
