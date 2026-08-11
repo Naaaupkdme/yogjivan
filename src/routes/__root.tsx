@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -265,6 +266,7 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   // Google Advanced Consent Mode v2: denied defaults are set before gtag.js
   // loads (cookieless measurement), Meta Pixel stays blocked until marketing
@@ -287,6 +289,7 @@ function RootComponent() {
         "/yoga-for-stress": { content_name: "Stress Relief Yoga", content_category: "Therapeutic Yoga" },
         "/yoga-for-weight-loss": { content_name: "Weight Loss Yoga", content_category: "Therapeutic Yoga" },
         "/contact": { content_name: "Contact Yog Jivan", content_category: "Contact" },
+        "/book-online-yoga": { content_name: "Book Online Yoga (paid landing)", content_category: "Online Classes" },
       };
       const match = VIEW_CONTENT_MAP[path];
       if (match) {
@@ -419,6 +422,23 @@ function RootComponent() {
     return () => document.removeEventListener("click", onClick, true);
   }, []);
 
+  // Paid-traffic landing pages run without site navigation, footer or floating
+  // widgets so the page has exactly one conversion path.
+  const isBareLanding = pathname.replace(/\/+$/, "") === "/book-online-yoga";
+
+  if (isBareLanding) {
+    return (
+      <QueryClientProvider client={queryClient}>
+        <LanguageProvider>
+          <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+            <Outlet />
+            <CookieConsent />
+          </div>
+        </LanguageProvider>
+      </QueryClientProvider>
+    );
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
@@ -438,3 +458,4 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
