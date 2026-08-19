@@ -174,7 +174,7 @@ const HOW_IT_WORKS = [
 ];
 
 const SESSION_DETAILS = [
-  { t: "Format", d: `Live ${ONLINE_CLASS.durationMinutes}-minute one-to-one session on video — never a recording.` },
+  { t: "Format", d: `A live ${ONLINE_CLASS.durationMinutes}-minute one-to-one video session with your teacher.` },
   { t: "Where", d: "Online worldwide, wherever you have space for a mat and a stable connection." },
   { t: "Your teacher", d: "Matched from the Yog Jivan teaching team, then the same dedicated teacher continues with you." },
   { t: "Languages", d: `${ONLINE_CLASS.languages.join(", ")} — tell us your preference in your enquiry.` },
