@@ -779,3 +779,61 @@ body[data-menu-open="true"] [data-floating-cta] {
 @media (prefers-reduced-motion: reduce) {
   .yj-menu-overlay { animation: none; }
 }
+
+/* ---------------------------------------------------------------------------
+   Private-yoga depth layer (/personal-training)
+   Pure CSS gradient motion — no canvas, no WebGL, no new dependency.
+   Decorative only: every element using these is aria-hidden and pointer-none.
+--------------------------------------------------------------------------- */
+@keyframes yj-liquid-drift {
+  0%   { transform: translate3d(-4%, -2%, 0) scale(1.08); opacity: 0.55; }
+  50%  { transform: translate3d(4%, 3%, 0) scale(1.16); opacity: 0.8; }
+  100% { transform: translate3d(-4%, -2%, 0) scale(1.08); opacity: 0.55; }
+}
+
+@keyframes yj-liquid-drift-alt {
+  0%   { transform: translate3d(3%, 2%, 0) scale(1.12); opacity: 0.45; }
+  50%  { transform: translate3d(-3%, -3%, 0) scale(1.04); opacity: 0.7; }
+  100% { transform: translate3d(3%, 2%, 0) scale(1.12); opacity: 0.45; }
+}
+
+@utility liquid-veil {
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform, opacity;
+  background:
+    radial-gradient(38rem 26rem at 18% 22%, color-mix(in oklab, var(--gold) 13%, transparent), transparent 70%),
+    radial-gradient(30rem 22rem at 82% 68%, color-mix(in oklab, var(--gold) 9%, transparent), transparent 72%);
+  filter: blur(42px);
+  animation: yj-liquid-drift 34s ease-in-out infinite;
+}
+
+@utility liquid-veil-alt {
+  position: absolute;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  will-change: transform, opacity;
+  background:
+    radial-gradient(34rem 24rem at 70% 18%, color-mix(in oklab, var(--gold) 10%, transparent), transparent 72%),
+    radial-gradient(28rem 20rem at 24% 80%, color-mix(in oklab, var(--gold) 8%, transparent), transparent 74%);
+  filter: blur(50px);
+  animation: yj-liquid-drift-alt 46s ease-in-out infinite;
+}
+
+/* Gradient section separator with soft glow depth. */
+@utility rule-glow {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 45%, transparent), transparent);
+  box-shadow: 0 0 24px color-mix(in oklab, var(--gold) 18%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-veil,
+  .liquid-veil-alt {
+    animation: none !important;
+  }
+}
