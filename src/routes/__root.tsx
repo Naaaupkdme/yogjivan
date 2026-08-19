@@ -389,7 +389,13 @@ function RootComponent() {
 
       if (WHATSAPP_RE.test(href) || /whatsapp/i.test(aria)) {
         if (deduped(`wa:${href}`)) return;
-        trackCta("whatsapp_click", where);
+        // device_type + language_preference are added inside trackCta.
+        trackCta("whatsapp_click", where, {
+          contact_method: "whatsapp",
+          page_group: window.location.pathname.startsWith("/private-online-yoga")
+            ? "private_online_yoga"
+            : "site",
+        });
         metaEvent("Contact");
         return;
       }

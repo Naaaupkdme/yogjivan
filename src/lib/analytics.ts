@@ -236,12 +236,41 @@ export type CtaEvent =
   | "phone_click"
   | "email_click";
 
+/** Coarse device bucket — no fingerprinting, no PII. */
+export function deviceType(): "mobile" | "tablet" | "desktop" {
+  const win = w();
+  if (!win) return "desktop";
+  const ua = win.navigator?.userAgent || "";
+  if (/iPad|Tablet|PlayBook|Silk|(Android(?!.*Mobile))/i.test(ua)) return "tablet";
+  if (/Mobi|Android|iPhone|iPod|Windows Phone/i.test(ua)) return "mobile";
+  return win.innerWidth < 768 ? "mobile" : win.innerWidth < 1024 ? "tablet" : "desktop";
+}
+
+/** Site UI language preference (EN/VI toggle), falling back to browser locale. */
+export function languagePreference(): string {
+  const win = w();
+  if (!win) return "unknown";
+  try {
+    const saved = win.localStorage.getItem("yj_lang");
+    if (saved === "EN" || saved === "VI") return saved.toLowerCase();
+  } catch {
+    /* storage disabled */
+  }
+  const nav = (win.navigator?.language || "").slice(0, 2).toLowerCase();
+  return nav || "unknown";
+}
+
 export function trackCta(
   name: CtaEvent,
   ctaLocation: string,
   extra: Record<string, string> = {},
 ) {
-  gaEvent(name, { cta_location: ctaLocation, ...extra });
+  gaEvent(name, {
+    cta_location: ctaLocation,
+    device_type: deviceType(),
+    language_preference: languagePreference(),
+    ...extra,
+  });
 }
 
 /** Reusable for the future online-pricing page. */
