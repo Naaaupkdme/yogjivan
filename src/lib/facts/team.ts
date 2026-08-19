@@ -40,7 +40,7 @@ export type TeacherProfile = {
 };
 
 /**
- * THE single public teacher collection. /personal-training maps over this array
+ * THE single public teacher collection. /private-online-yoga maps over this array
  * to render its teacher cards, so adding one further fully verified
  * TeacherProfile record here renders a new card with no route changes.
  * Currently only the founder, because his facts are the only verified ones.

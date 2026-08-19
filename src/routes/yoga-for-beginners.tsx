@@ -306,7 +306,7 @@ function YogaForBeginnersPage() {
               </div>
               <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
                 Read more <Link to="/about" className="text-[color:var(--gold)] hover:underline">about Master Anil Choudhary</Link>{" "}
-                or see how <Link to="/personal-training" className="text-[color:var(--gold)] hover:underline">1-on-1 personal training</Link> works.
+                or see how <Link to="/private-online-yoga" className="text-[color:var(--gold)] hover:underline">1-on-1 personal training</Link> works.
               </p>
             </div>
           </div>
@@ -458,7 +458,7 @@ function YogaForBeginnersPage() {
               <Link to="/programs" className="text-[color:var(--gold)] hover:underline">yoga program</Link>{" "}
               such as back pain, PCOD or stress, continue with{" "}
               <Link to="/online-yoga-classes" className="text-[color:var(--gold)] hover:underline">live online yoga classes</Link>, or work privately through{" "}
-              <Link to="/personal-training" className="text-[color:var(--gold)] hover:underline">1-on-1 personal training</Link>.
+              <Link to="/private-online-yoga" className="text-[color:var(--gold)] hover:underline">1-on-1 personal training</Link>.
             </p>
           </div>
         </div>

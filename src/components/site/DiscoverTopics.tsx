@@ -20,7 +20,7 @@ const TOPICS: { title: string; href: string; text: string }[] = [
   },
   {
     title: "Private Yoga",
-    href: "/personal-training#private-online-yoga",
+    href: "/private-online-yoga",
     text: "One-to-one sessions with Master Anil, in studio or live online by enquiry.",
   },
   {

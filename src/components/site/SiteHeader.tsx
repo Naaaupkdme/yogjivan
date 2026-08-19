@@ -14,7 +14,7 @@ const NAV = [
   { href: "/programs", label: "Programs & Pricing" },
   { href: "/yoga-for-beginners", label: "For Beginners" },
   { href: "/online-yoga-classes", label: "Online Yoga Classes" },
-  { href: "/personal-training#private-online-yoga", label: "Private Yoga" },
+  { href: "/private-online-yoga", label: "Private Yoga" },
 ];
 
 
@@ -32,8 +32,8 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
     group: "Programs",
     items: [
       { href: "/programs", label: "All Programs" },
-      { href: "/personal-training", label: "Private & Personal Training" },
-      { href: "/personal-training#private-online-yoga", label: "Private 1-on-1 Online Yoga" },
+      { href: "/private-online-yoga", label: "Private & Personal Training" },
+      { href: "/private-online-yoga", label: "Private 1-on-1 Online Yoga" },
       { href: "/online-yoga-classes", label: "Online Yoga Classes" },
       { href: "/yoga-for-beginners", label: "Yoga for Beginners" },
       { href: "/yoga-for-back-pain", label: "Yoga for Back Pain" },

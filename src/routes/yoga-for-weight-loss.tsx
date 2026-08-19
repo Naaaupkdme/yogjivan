@@ -131,7 +131,7 @@ function WeightLossPage() {
       relatedLinks={[
         { to: "/programs", label: "Holistic Lifestyle Consultation" },
         { to: "/yoga-for-stress", label: "Yoga for Stress Relief" },
-        { to: "/personal-training", label: "1-on-1 Personal Training" },
+        { to: "/private-online-yoga", label: "1-on-1 Personal Training" },
         { to: "/online-yoga-classes", label: "Live Online Classes" },
       ]}
       relatedPosts={[

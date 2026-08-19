@@ -112,7 +112,7 @@ export const LEGACY_POSTS: BlogPost[] = [
     related: [
       { label: "Yoga for Back Pain", to: "/yoga-for-back-pain" },
       { label: "A practical routine for desk workers", to: "/blog/desk-worker-yoga-back-neck-shoulders" },
-      { label: "Private 1-on-1 Yoga", to: "/personal-training" },
+      { label: "Private 1-on-1 Yoga", to: "/private-online-yoga" },
       { label: "About Master Anil", to: "/about" },
     ],
     faqs: [
@@ -122,7 +122,7 @@ export const LEGACY_POSTS: BlogPost[] = [
     cta: {
       title: "Have the routine adapted to your back",
       sub: "A private 60-minute session lets Master Anil see how you move and adjust the sequence to you.",
-      primary: { label: "Private 1-on-1 Yoga", to: "/personal-training" },
+      primary: { label: "Private 1-on-1 Yoga", to: "/private-online-yoga" },
       secondary: { label: "Yoga for Back Pain", to: "/yoga-for-back-pain" },
     },
   },
@@ -289,7 +289,7 @@ export const LEGACY_POSTS: BlogPost[] = [
     ],
     related: [
       { label: "Yoga for Weight Loss", to: "/yoga-for-weight-loss" },
-      { label: "Private 1-on-1 Yoga", to: "/personal-training" },
+      { label: "Private 1-on-1 Yoga", to: "/private-online-yoga" },
       { label: "Live Online Yoga Classes", to: "/online-yoga-classes" },
       { label: "About Master Anil", to: "/about" },
     ],
@@ -407,7 +407,7 @@ export const LEGACY_POSTS: BlogPost[] = [
     related: [
       { label: "Yoga for Back Pain", to: "/yoga-for-back-pain" },
       { label: "Yoga for Stress & Anxiety", to: "/yoga-for-stress" },
-      { label: "Private 1-on-1 Yoga", to: "/personal-training" },
+      { label: "Private 1-on-1 Yoga", to: "/private-online-yoga" },
       { label: "About Master Anil", to: "/about" },
     ],
     faqs: [
@@ -418,7 +418,7 @@ export const LEGACY_POSTS: BlogPost[] = [
     cta: {
       title: "Talk to us about a private session",
       sub: "Live 60-minute one-to-one sessions in studio or online. Scheduling and pricing confirmed by enquiry.",
-      primary: { label: "Private 1-on-1 Yoga", to: "/personal-training" },
+      primary: { label: "Private 1-on-1 Yoga", to: "/private-online-yoga" },
       secondary: { label: "Contact the studio", to: "/contact", hash: "consultation" },
     },
   },

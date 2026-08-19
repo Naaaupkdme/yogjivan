@@ -68,7 +68,7 @@ export function LocalIntro() {
                 all yoga programs
               </Link>
               , arrange{" "}
-              <Link to="/personal-training" className="text-[color:var(--gold)] hover:underline">
+              <Link to="/private-online-yoga" className="text-[color:var(--gold)] hover:underline">
                 1-on-1 personal training
               </Link>
               , or{" "}

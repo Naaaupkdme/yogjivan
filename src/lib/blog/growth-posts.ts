@@ -111,7 +111,7 @@ export const GROWTH_POSTS: BlogPost[] = [
       { type: "p", text: "If you are new to online practice altogether, it is worth reading what happens in a first live online class before deciding." },
     ],
     related: [
-      { label: "Private 1-on-1 Online Yoga", to: "/personal-training", hash: "private-online-yoga" },
+      { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga", hash: "private-online-yoga" },
       { label: "Live Online Yoga Classes", to: "/online-yoga-classes" },
       { label: "What happens in your first live online class", to: "/blog/first-live-online-yoga-class" },
       { label: "About Master Anil", to: "/about" },
@@ -124,7 +124,7 @@ export const GROWTH_POSTS: BlogPost[] = [
     cta: {
       title: "Choose the format that fits your week",
       sub: "Live group classes capped at eight, or fully individual 60-minute private sessions.",
-      primary: { label: "Private 1-on-1 Online Yoga", to: "/personal-training", hash: "private-online-yoga" },
+      primary: { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga", hash: "private-online-yoga" },
       secondary: { label: "Live Online Yoga Classes", to: "/online-yoga-classes" },
     },
   },
@@ -301,7 +301,7 @@ export const GROWTH_POSTS: BlogPost[] = [
     ],
     related: [
       { label: "Yoga for Back Pain", to: "/yoga-for-back-pain" },
-      { label: "Private 1-on-1 Yoga", to: "/personal-training" },
+      { label: "Private 1-on-1 Yoga", to: "/private-online-yoga" },
       { label: "Live Online Yoga Classes", to: "/online-yoga-classes" },
       { label: "Daily 12-minute spine mobility routine", to: "/blog/yoga-for-spine-longevity-12-minutes" },
     ],
@@ -313,7 +313,7 @@ export const GROWTH_POSTS: BlogPost[] = [
       title: "Get the routine adjusted to your body",
       sub: "Live classes and private 60-minute sessions, in studio in the Hai Duong urban area or online.",
       primary: { label: "Yoga for Back Pain", to: "/yoga-for-back-pain" },
-      secondary: { label: "Private 1-on-1 Yoga", to: "/personal-training" },
+      secondary: { label: "Private 1-on-1 Yoga", to: "/private-online-yoga" },
     },
   },
   {
@@ -373,7 +373,7 @@ export const GROWTH_POSTS: BlogPost[] = [
     ],
     related: [
       { label: "Live Online Yoga Classes", to: "/online-yoga-classes" },
-      { label: "Private 1-on-1 Online Yoga", to: "/personal-training", hash: "private-online-yoga" },
+      { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga", hash: "private-online-yoga" },
       { label: "What happens in your first live online class", to: "/blog/first-live-online-yoga-class" },
     ],
     faqs: [
@@ -385,7 +385,7 @@ export const GROWTH_POSTS: BlogPost[] = [
       title: "Ready when you are",
       sub: "Live 60-minute online classes, maximum eight students, with real-time verbal guidance.",
       primary: { label: "Live Online Yoga Classes", to: "/online-yoga-classes" },
-      secondary: { label: "Private 1-on-1 Online Yoga", to: "/personal-training", hash: "private-online-yoga" },
+      secondary: { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga", hash: "private-online-yoga" },
     },
   },
 ];
