@@ -236,7 +236,9 @@ export function PrivateYogaEnquiryForm() {
         enquiry — no payment is requested here.
       </p>
 
-      <div className="mt-6 space-y-4">
+      {/* Compact paired layout from sm upward: Name+WhatsApp, Level+Time, Email+Focus.
+          Single column on mobile. Required fields stay Name, WhatsApp and Level only. */}
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <Field
           label="Full name *"
           value={form.name}
@@ -275,6 +277,15 @@ export function PrivateYogaEnquiryForm() {
           placeholder="Choose one"
         />
 
+        <Select
+          label="Preferred session time (optional)"
+          value={form.time}
+          onChange={(v) => update("time", v)}
+          options={TIMES}
+          name="pv-time"
+          placeholder="Any time works"
+        />
+
         <Field
           label="Email (optional)"
           value={form.email}
@@ -284,15 +295,6 @@ export function PrivateYogaEnquiryForm() {
           name="pv-email"
           type="email"
           autoComplete="email"
-        />
-
-        <Select
-          label="Preferred session time (optional)"
-          value={form.time}
-          onChange={(v) => update("time", v)}
-          options={TIMES}
-          name="pv-time"
-          placeholder="Any time works"
         />
 
         <Select
