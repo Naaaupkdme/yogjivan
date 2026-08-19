@@ -410,22 +410,6 @@ function YogaForBeginnersPage() {
         </div>
       </section>
 
-
-      {/* Pull-quote */}
-      <section className="section-tight">
-        <div className="container-luxe">
-          <figure className="mx-auto max-w-3xl text-center">
-            <Quote className="mx-auto h-8 w-8 text-[color:var(--gold)]/70" />
-            <blockquote className="mt-4 font-display text-2xl md:text-3xl italic leading-[1.3] text-foreground/95">
-              &ldquo;I came for flexibility, but what changed things for me was the emotional calm. Yog Jivan feels premium, peaceful and deeply authentic.&rdquo;
-            </blockquote>
-            <figcaption className="mt-5 text-xs uppercase tracking-[0.28em] text-[color:var(--gold)]">
-              Linh Pham · Studio Student · Vietnam
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
       {/* Contextual reading + next steps */}
       <section className="section-y">
         <div className="container-luxe">
