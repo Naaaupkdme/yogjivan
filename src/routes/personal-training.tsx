@@ -457,39 +457,44 @@ function PrivateYogaPage() {
             Who will teach your private sessions
           </h2>
           <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)]">
-            {/* MEDIA SLOT 3 — teacher portrait, 4:5, 1200x1500 WebP. */}
-            <article className="glass-soft overflow-hidden rounded-[1.75rem]">
-              <img
-                src={masterImages.founderPortrait}
-                alt={masterAlts.founderPortrait}
-                loading="lazy"
-                className="aspect-[4/5] w-full object-cover"
-              />
-              <div className="p-5">
-                <h3 className="font-display text-xl text-foreground">{TEACHER.name}</h3>
-                <p className="mt-1 text-[0.65rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">
-                  {TEACHER.title}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {TEACHER.yearsTeaching} years teaching. {TEACHER.groupClassNote}
-                </p>
-                <ul className="mt-3 grid gap-2">
-                  {TEACHER.qualifications.map((q) => (
-                    <li key={q} className="text-sm leading-relaxed text-muted-foreground">— {q}</li>
-                  ))}
-                </ul>
-                <Link to="/about" className="mt-4 inline-block text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)] hover:underline">
-                  Read the Yog Jivan story →
-                </Link>
-              </div>
-            </article>
-
             {/*
-              TEACHER ROSTER — deliberately not padded with placeholder cards.
-              To publish another teacher, add a verified TeacherProfile record to
-              src/lib/facts/team.ts (all fields required) and render it here in
-              the same <article> pattern. Never render an unverified teacher.
+              TEACHER CARDS — rendered from the single verified collection
+              TEACHING_TEAM in src/lib/facts/team.ts. MEDIA SLOT 3 per teacher:
+              real portrait, 4:5, 1200x1500 WebP. Adding another fully verified
+              TeacherProfile record renders another card here with no redesign.
+              Never add an unverified teacher.
             */}
+            {TEACHING_TEAM.map((t) => (
+              <article key={t.id} className="glass-soft overflow-hidden rounded-[1.75rem]">
+                <img
+                  src={t.photo}
+                  alt={t.photoAlt}
+                  loading="lazy"
+                  className="aspect-[4/5] w-full object-cover"
+                />
+                <div className="p-5">
+                  <h3 className="font-display text-xl text-foreground">{t.name}</h3>
+                  <p className="mt-1 text-[0.65rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+                    {t.role}
+                  </p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t.shortBio}</p>
+                  <ul className="mt-3 grid gap-2">
+                    {t.specialties.map((q) => (
+                      <li key={q} className="text-sm leading-relaxed text-muted-foreground">— {q}</li>
+                    ))}
+                  </ul>
+                  <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                    Teaches: {t.suitableLevels.join(" · ")} · {t.languages.join(", ")}
+                  </p>
+                  {t.profilePath === "/about" ? (
+                    <Link to="/about" className="mt-4 inline-block text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)] hover:underline">
+                      Read the Yog Jivan story →
+                    </Link>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+
             <div className="glass-luxe rounded-[1.75rem] border border-[color:var(--gold)]/25 p-6 md:p-8">
               <h3 className="font-display text-xl leading-snug text-foreground">
                 {TEAM_MODEL.headline}
@@ -498,10 +503,11 @@ function PrivateYogaPage() {
                 {TEAM_MODEL.body}
               </p>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                Private sessions are taught by the Yog Jivan teaching team under Master Anil's
-                direction. We match by level, goals and language, so the person teaching you is
-                genuinely suited to the practice you want to build.
+                Private sessions are taught by the Yog Jivan teaching team. We match by level, goals
+                and language, so the teacher you work with is suited to the practice you want to
+                build.
               </p>
+
               <a href="#private-enquiry" className="btn-ghost-gold mt-6">Request a teacher match</a>
             </div>
           </div>
