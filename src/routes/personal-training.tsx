@@ -4,9 +4,8 @@ import { PageHero } from "@/components/site/PageHero";
 import { FurtherReading } from "@/components/site/FurtherReading";
 import { PrivateYogaEnquiryForm } from "@/components/site/PrivateYogaEnquiryForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { masterImages, masterAlts, socialImageMeta } from "@/lib/images";
+import { masterImages, socialImageMeta } from "@/lib/images";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
-import { TEACHER } from "@/lib/facts/teacher";
 import { TEAM_MODEL, TEACHING_TEAM } from "@/lib/facts/team";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
 import { ONLINE_CLASS } from "@/lib/facts/online-class";
@@ -16,7 +15,7 @@ import liveGuidanceFloor from "@/assets/paid/live-guidance-floor.webp.asset.json
 
 /* ---------------------------------------------------------------------------
    MEDIA SLOTS — replaceable without redesign.
-   1) HERO BACKDROP  — currently masterImages.acroHero.
+   1) HERO BACKDROP  — currently masterImages.studioAdjustment (teacher attention).
       Ideal: 16:9 or 16:10, 1920x1080 / 1920x1200, WebP. Crop: teaching moment,
       space on the left for the headline. Optional later: muted 6-12s loop.
    2) LIVE-GUIDANCE DEMO — currently paid/live-guidance-floor.webp (authentic
@@ -268,7 +267,7 @@ function PrivateYogaPage() {
         title="Private Online Yoga Classes —"
         accent="1-on-1 live with the Yog Jivan team."
         sub="One student. One dedicated teacher. A live 60-minute practice shaped around your level, goals and schedule — from beginner foundations to advanced yoga progression."
-        image={masterImages.acroHero}
+        image={masterImages.studioAdjustment}
       >
         <p className="max-w-2xl text-sm leading-relaxed text-foreground/85">
           Matched with a Yog Jivan teacher. Continue with the same dedicated teacher session after
