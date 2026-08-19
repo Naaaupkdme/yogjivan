@@ -37,7 +37,7 @@ export type TherapeuticPageProps = {
 
 const TRUST_STATS = [
   { k: "12+", v: "Years Teaching" },
-  { k: "1000+", v: "Students Guided" },
+  { k: PUBLIC_TRUST.studentsTaught, v: "Students Guided" },
   { k: "20+", v: "Countries" },
   { k: "Max 8", v: "Per Live Class" },
   { k: "Free", v: "First Consultation" },

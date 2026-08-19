@@ -7,12 +7,13 @@ import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
 import { submitLead } from "@/lib/leads";
 import { SOCIAL } from "@/lib/social";
 import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
+import { PUBLIC_TRUST } from "@/lib/facts/trust";
 
 const SERVICES = [
   "Private Session",
   "Studio Classes",
   "Online Classes",
-  "Therapeutic Recovery",
+  "Personalized Wellness Yoga",
   "Corporate Wellness",
   "Not sure yet",
 ];
@@ -27,9 +28,9 @@ const schema = z.object({
 
 const TRUST = [
   { Icon: Sparkles, t: "12+ Years" },
-  { Icon: Heart, t: "1000+ Transformed" },
+  { Icon: Heart, t: `${PUBLIC_TRUST.studentsTaught} Students Guided` },
   { Icon: ShieldCheck, t: "Small batches, max 8" },
-  { Icon: Clock, t: "Reply < 5 min" },
+  { Icon: Clock, t: "WhatsApp follow-up" },
 ];
 
 type FormState = {
@@ -103,7 +104,7 @@ export function SmartConsultation() {
             </motion.div>
             <h3 className="mt-6 font-display text-2xl sm:text-3xl leading-tight">Thanks — we've received your request.</h3>
             <p className="mt-3 mx-auto max-w-md text-sm text-muted-foreground leading-relaxed">
-              We'll reach out on WhatsApp within 5 minutes.
+              We’ll follow up on WhatsApp.
             </p>
             <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
               <a href={SOCIAL.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-gold justify-center">
@@ -124,7 +125,7 @@ export function SmartConsultation() {
           >
             <h3 className="font-display text-3xl sm:text-4xl leading-tight">Book your free consultation.</h3>
             <p className="mt-3 max-w-xl text-sm text-muted-foreground leading-relaxed">
-              Share a few details — Master Anil and our team will reach out on WhatsApp within 5 minutes.
+              Share a few details — our team will follow up on WhatsApp.
             </p>
 
             <div className="mt-7 grid gap-4 sm:grid-cols-2">

@@ -16,6 +16,7 @@ import communityC from "@/assets/img_5066.jpg.asset.json";
 import communityD from "@/assets/dji_0014.jpg.asset.json";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
 import { useLang } from "@/lib/language";
+import { PUBLIC_TRUST } from "@/lib/facts/trust";
 
 const QUOTES = [
   { text: "In stillness, we remember who we are.", source: "Yog Jivan" },
@@ -23,7 +24,7 @@ const QUOTES = [
 
 const TRUST_STRIP = [
   { value: "12+", label: "Years Teaching" },
-  { value: "1000+", label: "Students Taught" },
+  { value: PUBLIC_TRUST.studentsTaught, label: "Students Guided" },
   { value: "20+", label: "Countries" },
   { value: "Global", label: "International Community" },
 ];
