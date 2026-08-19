@@ -234,8 +234,8 @@ const PT_FAQS_MORE = [
     a: "Yes. Continuity is the default, not a lock-in. If a different teacher would suit your practice better, tell us and we will arrange a new match.",
   },
   {
-    q: "Do you record my session?",
-    a: "No. Private sessions are live and are not recorded or shared by Yog Jivan.",
+    q: "Is the session live?",
+    a: "Yes. A private session is a live one-to-one video session with your teacher, so guidance happens in real time. If you have any questions about how your session data is handled, ask us before you book.",
   },
 ];
 
