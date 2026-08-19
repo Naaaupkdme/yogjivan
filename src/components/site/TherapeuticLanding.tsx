@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { LuxuryImage } from "@/components/site/LuxuryImage";
 import { SOCIAL } from "@/lib/social";
+import { PUBLIC_TRUST } from "@/lib/facts/trust";
 import {
   Award, Users, Globe2, CheckCircle2, Sparkles, MessageCircle,
   ShieldCheck, GraduationCap, Stethoscope, Quote,
@@ -37,7 +38,7 @@ export type TherapeuticPageProps = {
 
 const TRUST_STATS = [
   { k: "12+", v: "Years Teaching" },
-  { k: "1000+", v: "Students Guided" },
+  { k: PUBLIC_TRUST.studentsTaught, v: "Students Guided" },
   { k: "20+", v: "Countries" },
   { k: "Max 8", v: "Per Live Class" },
   { k: "Free", v: "First Consultation" },

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Quote, Star, BadgeCheck, ArrowRight } from "lucide-react";
+import { PUBLIC_TRUST } from "@/lib/facts/trust";
 
 type TestimonialItem = {
   name: string;
@@ -48,7 +49,7 @@ const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
 
 const TRUST = [
   { value: "12+", label: "Years Teaching" },
-  { value: "1000+", label: "Students Taught" },
+  { value: PUBLIC_TRUST.studentsTaught, label: "Students Guided" },
   { value: "20+", label: "Countries" },
   { value: "2", label: "Premium Studios" },
   { value: "Global", label: "Online Community" },

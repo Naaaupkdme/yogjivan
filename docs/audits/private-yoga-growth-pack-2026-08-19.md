@@ -210,3 +210,12 @@ release-gate test.
 
 - Publish status: **NOT PUBLISHED**
 - Search Console reindexing: **DEFERRED** until an approved production publish
+
+## Addendum — Final trust consistency pass (2026-08-19)
+
+- Hard-coded public `1000+` / `1,000+` total-student claims replaced with the single source of truth `PUBLIC_TRUST.studentsTaught` ("10,000+") in `SiteFooter.tsx`, `Testimonials.tsx`, `TherapeuticLanding.tsx`, `ContactSection.tsx`, `FounderStory.tsx`, `SmartConsultation.tsx`. `src/lib/language.tsx` (EN/VI) and `public/llms.txt` use literal factual wording ("10,000+ Students Guided" / "10.000+ học viên đã được hướng dẫn" / "10,000+ students guided").
+- Outcome wording removed where touched: "Lives Transformed" and "Transformed" replaced with neutral "Students Guided". No new outcome claim added.
+- `SmartConsultation.tsx`: unsupported reply-time SLA removed ("Reply < 5 min", "within 5 minutes" in intro and success copy) → neutral "WhatsApp follow-up" / "We’ll follow up on WhatsApp." Service option "Therapeutic Recovery" → "Personalized Wellness Yoga"; lead schema unchanged.
+- Toolchain: `@lovable.dev/vite-tanstack-config` is platform-managed and currently **2.13.1** at HEAD. Not manually downgraded; production build passes on this version.
+- Private-yoga page team/dedicated-teacher content unchanged. Typecheck and production build pass; browser smoke on `/`, `/contact`, `/personal-training` at 390/1280 shows zero console errors and zero horizontal overflow.
+- **NOT PUBLISHED.** Search Console reindexing remains deferred.

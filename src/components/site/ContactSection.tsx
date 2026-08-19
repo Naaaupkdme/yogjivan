@@ -4,6 +4,7 @@ import outdoorImg from "@/assets/dji_0014.jpg.asset.json";
 import { useLang } from "@/lib/language";
 import { SmartConsultation } from "./SmartConsultation";
 import { SOCIAL, STUDIO_ADDRESSES } from "@/lib/social";
+import { PUBLIC_TRUST } from "@/lib/facts/trust";
 
 const studios = [
   {
@@ -92,7 +93,7 @@ export function ContactSection() {
                   { Icon: Clock, t: "Average response · under 5 minutes" },
                   { Icon: Sparkles, t: "Personalized guidance · no scripts" },
                   { Icon: ShieldCheck, t: "Private & confidential consultation" },
-                  { Icon: Heart, t: "12+ years guiding 1000+ students" },
+                  { Icon: Heart, t: `12+ years guiding ${PUBLIC_TRUST.studentsTaught} students` },
                 ].map(({ Icon, t }) => (
                   <div key={t} className="flex items-center gap-3 rounded-xl border border-white/8 bg-white/[0.03] px-3.5 py-2.5">
                     <Icon className="h-4 w-4 shrink-0 text-[color:var(--gold)]" />
