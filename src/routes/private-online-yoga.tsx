@@ -174,7 +174,7 @@ const HOW_IT_WORKS = [
 ];
 
 const SESSION_DETAILS = [
-  { t: "Format", d: `Live ${ONLINE_CLASS.durationMinutes}-minute one-to-one session on video — never a recording.` },
+  { t: "Format", d: `A live ${ONLINE_CLASS.durationMinutes}-minute one-to-one video session with your teacher.` },
   { t: "Where", d: "Online worldwide, wherever you have space for a mat and a stable connection." },
   { t: "Your teacher", d: "Matched from the Yog Jivan teaching team, then the same dedicated teacher continues with you." },
   { t: "Languages", d: `${ONLINE_CLASS.languages.join(", ")} — tell us your preference in your enquiry.` },
@@ -234,8 +234,8 @@ const PT_FAQS_MORE = [
     a: "Yes. Continuity is the default, not a lock-in. If a different teacher would suit your practice better, tell us and we will arrange a new match.",
   },
   {
-    q: "Do you record my session?",
-    a: "No. Private sessions are live and are not recorded or shared by Yog Jivan.",
+    q: "Is the session live?",
+    a: "Yes. A private session is a live one-to-one video session with your teacher, so guidance happens in real time. If you have any questions about how your session data is handled, ask us before you book.",
   },
 ];
 
@@ -243,7 +243,7 @@ const CONTINUE_EXPLORING = [
   { to: "/yoga-for-beginners" as const, label: "Yoga for beginners", d: "A structured starting path if you have never practised." },
   { to: "/online-yoga-classes" as const, label: "Live online group classes", d: "Small live groups with published membership plans." },
   { to: "/programs" as const, label: "Programs & pricing", d: "Compare studio, online and private options." },
-  { to: "/about" as const, label: "About Yog Jivan", d: "The teaching approach and Indian lineage behind the studio." },
+  { to: "/about" as const, label: "About Yog Jivan", d: "The teaching approach and Indian yoga background behind Yog Jivan." },
   { to: "/yoga-for-back-pain" as const, label: "Yoga for back pain", d: "Alignment-led guidance for the spine, neck and posture." },
   { to: "/yoga-for-stress" as const, label: "Yoga for stress support", d: "Slower, breath-led practice for calmer weeks." },
 ];
@@ -615,7 +615,7 @@ function PrivateYogaPage() {
               </p>
               <p className="mt-3 text-sm leading-relaxed text-foreground/70">
                 {ONLINE_CLASS.cameraRequired ? "Camera on is required so your alignment can actually be seen. " : ""}
-                Your session is private and is not recorded or shared by Yog Jivan.
+                Your session is live and private — the hour belongs to you alone.
               </p>
 
               {/*
@@ -627,7 +627,7 @@ function PrivateYogaPage() {
               <div className="mt-6 rounded-2xl border border-dashed border-[color:var(--gold)]/35 bg-white/[0.02] p-5">
                 <p className="text-[0.68rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">Coming soon</p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground/75">
-                  A short recording of a real private online session will be published here once a
+                  A short clip of a real private online session will be published here once a
                   student has given written permission.
                 </p>
               </div>

@@ -35,8 +35,8 @@ export function Philosophy() {
               — restoring harmony between body, breath, mind and soul.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Rooted in authentic Indian yogic traditions and refined through therapeutic expertise,
-              every session is designed to support a sustainable practice in modern life.
+              Rooted in authentic Indian yoga teaching and refined for modern practice, every
+              session is designed to support a sustainable practice in modern life.
             </p>
             <div className="mt-6 h-px w-24 bg-gradient-to-r from-[color:var(--gold)] to-transparent" />
             <p
