@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Quote, Star, BadgeCheck, ArrowRight } from "lucide-react";
+import { PUBLIC_TRUST } from "@/lib/facts/trust";
 
 type TestimonialItem = {
   name: string;

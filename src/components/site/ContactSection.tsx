@@ -4,6 +4,7 @@ import outdoorImg from "@/assets/dji_0014.jpg.asset.json";
 import { useLang } from "@/lib/language";
 import { SmartConsultation } from "./SmartConsultation";
 import { SOCIAL, STUDIO_ADDRESSES } from "@/lib/social";
+import { PUBLIC_TRUST } from "@/lib/facts/trust";
 
 const studios = [
   {

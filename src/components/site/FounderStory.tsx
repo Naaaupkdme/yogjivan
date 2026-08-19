@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { LuxuryImage } from "./LuxuryImage";
 import { masterImages, masterAlts } from "@/lib/images";
+import { PUBLIC_TRUST } from "@/lib/facts/trust";
 
 const TIMELINE = [
   { year: "Pre-2017", title: "Formation in India", body: "Years of dedicated study — Diploma and Master's Degree in Yoga, rooted in the classical Indian lineage." },

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { LuxuryImage } from "@/components/site/LuxuryImage";
 import { SOCIAL } from "@/lib/social";
+import { PUBLIC_TRUST } from "@/lib/facts/trust";
 import {
   Award, Users, Globe2, CheckCircle2, Sparkles, MessageCircle,
   ShieldCheck, GraduationCap, Stethoscope, Quote,
