@@ -12,6 +12,7 @@ export type BlogBlock =
 export type BlogCluster =
   | "local"
   | "online"
+  | "private"
   | "beginner"
   | "deskwork"
   | "wellness"
