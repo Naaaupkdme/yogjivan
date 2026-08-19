@@ -52,6 +52,7 @@ export function MobileStickyCTA() {
           href={SOCIAL.whatsapp}
           target="_blank"
           rel="noopener noreferrer"
+          data-cta-location="mobile_sticky_whatsapp"
           aria-label="Open WhatsApp chat with Yog Jivan"
           className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-white/15 bg-white/5 px-3 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-foreground"
         >
