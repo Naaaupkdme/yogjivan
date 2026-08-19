@@ -403,7 +403,7 @@ function OnlineYogaClassesPage() {
                 </li>
                 <li className="flex gap-3">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--gold)]" />
-                  Individual corrections and pacing, taught by {TEACHER.shortName}
+                  Individual corrections and pacing with a dedicated Yog Jivan teacher
                 </li>
                 <li className="flex gap-3">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--gold)]" />
