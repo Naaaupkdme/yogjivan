@@ -41,10 +41,8 @@ export const GOOGLE_RATING = {
  * Publish only when documentary support / methodology is supplied.
  */
 export const UNPUBLISHED_CLAIMS = {
-  studentsTenThousand: {
-    claim: "10,000+ students",
-    reason: "No documentary support or stated methodology.",
-  },
+  // studentsTenThousand was RECLASSIFIED as public fact on 2026-08-19 by the
+  // business owner and now lives in PUBLIC_TRUST.studentsTaught. Do not re-add.
   stressReduction91: {
     claim: "91% reported stress reduction",
     reason: "No sample size, period or method provided.",
