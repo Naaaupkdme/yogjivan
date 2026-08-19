@@ -5,16 +5,19 @@
 
 import { LOCATIONS } from "./locations";
 
+// studentsTaught raised from 1,000+ to 10,000+ — confirmed by the business
+// owner on 2026-08-19. Publish as "students guided" / "students taught" only.
+// Never as "students transformed" (outcome claim).
 export const PUBLIC_TRUST = {
   yearsTeaching: "12+",
-  studentsTaught: "1,000+",
+  studentsTaught: "10,000+",
   countries: "20+",
   maxGroupSize: 8,
 } as const;
 
 export const PUBLIC_TRUST_METRICS = [
   { value: "12+", label: "Years teaching" },
-  { value: "1,000+", label: "Students taught" },
+  { value: "10,000+", label: "Students guided" },
   { value: "20+", label: "Countries" },
   { value: "8", label: "Max students per live class" },
 ] as const;
