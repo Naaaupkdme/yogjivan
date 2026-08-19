@@ -54,7 +54,7 @@ export function ContactSection() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/70" />
               <Circle className="relative h-2 w-2 fill-primary text-primary" />
             </span>
-            WhatsApp & Zalo replies usually within 5 minutes
+            We'll follow up on WhatsApp.
           </div>
         </div>
 
@@ -70,7 +70,7 @@ export function ContactSection() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366]/70" />
                   <Circle className="relative h-2 w-2 fill-[#25D366] text-[#25D366]" />
                 </span>
-                Online · Replies within 5 min
+                Online · WhatsApp & Zalo
               </div>
 
               <div className="mt-6 flex items-center gap-4">
@@ -90,7 +90,7 @@ export function ContactSection() {
 
               <div className="mt-6 grid gap-2.5">
                 {[
-                  { Icon: Clock, t: "Average response · under 5 minutes" },
+                  { Icon: Clock, t: "Our team will follow up on WhatsApp." },
                   { Icon: Sparkles, t: "Personalized guidance · no scripts" },
                   { Icon: ShieldCheck, t: "Private & confidential consultation" },
                   { Icon: Heart, t: `12+ years guiding ${PUBLIC_TRUST.studentsTaught} students` },
