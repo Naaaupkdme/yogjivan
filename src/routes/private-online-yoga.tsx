@@ -615,7 +615,7 @@ function PrivateYogaPage() {
               </p>
               <p className="mt-3 text-sm leading-relaxed text-foreground/70">
                 {ONLINE_CLASS.cameraRequired ? "Camera on is required so your alignment can actually be seen. " : ""}
-                Your session is private and is not recorded or shared by Yog Jivan.
+                Your session is live and private — the hour belongs to you alone.
               </p>
 
               {/*
