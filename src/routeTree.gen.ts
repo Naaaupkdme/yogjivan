@@ -23,6 +23,7 @@ import { Route as OnlineYogaClassesRouteImport } from './routes/online-yoga-clas
 import { Route as PeriodSafeYogaRouteImport } from './routes/period-safe-yoga'
 import { Route as PersonalTrainingRouteImport } from './routes/personal-training'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PrivateOnlineYogaRouteImport } from './routes/private-online-yoga'
 import { Route as PrivateYogaRouteImport } from './routes/private-yoga'
 import { Route as PrivateYogaClassesRouteImport } from './routes/private-yoga-classes'
 import { Route as ProgramsRouteImport } from './routes/programs'
@@ -113,6 +114,11 @@ const PersonalTrainingRoute = PersonalTrainingRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivateOnlineYogaRoute = PrivateOnlineYogaRouteImport.update({
+  id: '/private-online-yoga',
+  path: '/private-online-yoga',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivateYogaRoute = PrivateYogaRouteImport.update({
@@ -240,6 +246,7 @@ export interface FileRoutesByFullPath {
   '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
+  '/private-online-yoga': typeof PrivateOnlineYogaRoute
   '/private-yoga': typeof PrivateYogaRoute
   '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
@@ -277,6 +284,7 @@ export interface FileRoutesByTo {
   '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
+  '/private-online-yoga': typeof PrivateOnlineYogaRoute
   '/private-yoga': typeof PrivateYogaRoute
   '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
@@ -315,6 +323,7 @@ export interface FileRoutesById {
   '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
+  '/private-online-yoga': typeof PrivateOnlineYogaRoute
   '/private-yoga': typeof PrivateYogaRoute
   '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
@@ -354,6 +363,7 @@ export interface FileRouteTypes {
     | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
+    | '/private-online-yoga'
     | '/private-yoga'
     | '/private-yoga-classes'
     | '/programs'
@@ -391,6 +401,7 @@ export interface FileRouteTypes {
     | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
+    | '/private-online-yoga'
     | '/private-yoga'
     | '/private-yoga-classes'
     | '/programs'
@@ -428,6 +439,7 @@ export interface FileRouteTypes {
     | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
+    | '/private-online-yoga'
     | '/private-yoga'
     | '/private-yoga-classes'
     | '/programs'
@@ -466,6 +478,7 @@ export interface RootRouteChildren {
   PeriodSafeYogaRoute: typeof PeriodSafeYogaRoute
   PersonalTrainingRoute: typeof PersonalTrainingRoute
   PrivacyRoute: typeof PrivacyRoute
+  PrivateOnlineYogaRoute: typeof PrivateOnlineYogaRoute
   PrivateYogaRoute: typeof PrivateYogaRoute
   PrivateYogaClassesRoute: typeof PrivateYogaClassesRoute
   ProgramsRoute: typeof ProgramsRoute
@@ -587,6 +600,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/private-online-yoga': {
+      id: '/private-online-yoga'
+      path: '/private-online-yoga'
+      fullPath: '/private-online-yoga'
+      preLoaderRoute: typeof PrivateOnlineYogaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/private-yoga': {
@@ -754,6 +774,7 @@ const rootRouteChildren: RootRouteChildren = {
   PeriodSafeYogaRoute: PeriodSafeYogaRoute,
   PersonalTrainingRoute: PersonalTrainingRoute,
   PrivacyRoute: PrivacyRoute,
+  PrivateOnlineYogaRoute: PrivateOnlineYogaRoute,
   PrivateYogaRoute: PrivateYogaRoute,
   PrivateYogaClassesRoute: PrivateYogaClassesRoute,
   ProgramsRoute: ProgramsRoute,
