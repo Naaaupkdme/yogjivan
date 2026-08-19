@@ -21,6 +21,8 @@
 //   profilePath       — optional internal route once a profile page exists
 // Until every field is supplied and verified, do NOT add the record here.
 
+import { masterImages, masterAlts } from "@/lib/images";
+
 export type TeacherLevel = "Beginner" | "Intermediate" | "Advanced";
 
 export type TeacherProfile = {
@@ -38,11 +40,30 @@ export type TeacherProfile = {
 };
 
 /**
- * Publicly rendered teachers. Currently only the founder, because his facts are
- * the only ones verified. Add further verified TeacherProfile records here and
- * the team section renders them with no redesign required.
+ * THE single public teacher collection. /personal-training maps over this array
+ * to render its teacher cards, so adding one further fully verified
+ * TeacherProfile record here renders a new card with no route changes.
+ * Currently only the founder, because his facts are the only verified ones.
  */
-export const TEACHING_TEAM_IDS = ["master-anil"] as const;
+export const TEACHING_TEAM: readonly TeacherProfile[] = [
+  {
+    id: "master-anil",
+    name: "Master Anil Choudhary",
+    role: "Founder & Lead Yoga Teacher",
+    yearsExperience: "12+",
+    languages: ["English", "Hindi"],
+    specialties: [
+      "Classical Indian yoga — Hatha, Ashtanga and pranayama",
+      "Therapeutic, safety-first sequencing",
+    ],
+    suitableLevels: ["Beginner", "Intermediate", "Advanced"],
+    photo: masterImages.founderPortrait,
+    photoAlt: masterAlts.founderPortrait,
+    shortBio:
+      "12+ years teaching authentic yoga across beginner, intermediate and advanced practice.",
+    profilePath: "/about",
+  },
+];
 
 export const TEAM_MODEL = {
   headline: "Matched with a Yog Jivan teacher — then the same teacher, every session.",

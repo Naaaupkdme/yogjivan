@@ -18,15 +18,15 @@ navigation and header overlays.
 | --- | --- |
 | `src/lib/facts/trust.ts` | `studentsTaught` 1,000+ → **10,000+**; metric label "Students guided"; removed `studentsTenThousand` from `UNPUBLISHED_CLAIMS` (now approved public fact) |
 | `src/lib/facts/teacher.ts` | Removed false global `teachesEvery` / `teachesEveryNote`; added group-class-scoped `groupClassNote`; documented multi-teacher model |
-| `src/lib/facts/team.ts` | **New.** `TeacherProfile` type, `TEAM_MODEL` copy, roster contract + TODO of exact fields required per new teacher |
+| `src/lib/facts/team.ts` | **New.** `TeacherProfile` type, `TEAM_MODEL` copy, and `TEACHING_TEAM` — the single verified teacher collection the page maps over |
 | `src/components/site/PrivateYogaEnquiryForm.tsx` | **New.** Inline private enquiry form on the existing lead pipeline |
 | `src/routes/personal-training.tsx` | Full commercial restructure (below) |
 | `src/styles.css` | Added `liquid-veil`, `liquid-veil-alt`, `rule-glow` utilities + reduced-motion guard |
-| `src/routes/online-yoga-classes.tsx` | `teachesEveryNote` → `groupClassNote`; private card no longer says private is taught by Master Anil |
-| `src/routes/book-online-yoga.tsx` | `teachesEveryNote` → `groupClassNote` |
-| `src/routes/yoga-for-expats-in-vietnam.tsx` | Removed "Certified", "every class taught personally by Master Anil", "no rotating substitute teachers" |
+| `src/routes/online-yoga-classes.tsx` | Targeted factual copy only (`teachesEveryNote` → group-scoped `groupClassNote`; private card no longer says private is taught by Master Anil). Design and indexing architecture unchanged |
+| `src/routes/book-online-yoga.tsx` | Targeted factual copy only (`teachesEveryNote` → `groupClassNote`). Design, noindex isolation and robots rules unchanged |
+| `src/routes/yoga-for-expats-in-vietnam.tsx` | Removed "Certified", "no rotating substitute teachers", the bullet "Every class taught personally by Master Anil, in clear English." (now "Classes available in clear English with the Yog Jivan teaching team."), and broad general-class same-teacher continuity in the answer capsule, the travel Q&A answer and its bullet (continuity now scoped to private 1-on-1: "If teacher continuity matters while you travel, private online sessions can continue with the same dedicated teacher.") |
 
-No new dependencies. No migration. No schema/RLS change.
+No new dependencies, no dependency version changes, no lockfile change. `package.json` `@lovable.dev/vite-tanstack-config` remains **2.9.1** (an unrelated bump to 2.13.1 was reverted in the correction pass). No migration. No schema/RLS change.
 
 ## 3. Verified fact changes
 
@@ -93,8 +93,15 @@ medical care."
 
 ## 7. Teacher-profile architecture
 
-`src/lib/facts/team.ts` exports the `TeacherProfile` type and `TEAM_MODEL`.
-Publicly rendered today: Master Anil only (verified facts + real image).
+`src/lib/facts/team.ts` exports the `TeacherProfile` type, `TEAM_MODEL` and
+`TEACHING_TEAM` — one readonly, reusable collection carrying name, role,
+yearsExperience, languages, specialties, suitableLevels, photo, photoAlt,
+shortBio and optional profilePath. `/personal-training` maps over
+`TEACHING_TEAM` to render its teacher cards; no teacher is hardcoded in the
+route. Adding one further fully verified record renders another card with no
+route redesign. Publicly rendered today: Master Anil only (verified facts +
+real image), described with neutral founder copy — no group-class copy and no
+claim that he personally teaches every private session.
 To publish a further teacher the owner must supply, per teacher:
 name, public role, verified years of experience, teaching languages, verified
 specialties, suitable levels (Beginner/Intermediate/Advanced), real 4:5
@@ -105,8 +112,8 @@ link. Until every field exists, no card is rendered — no placeholders.
 
 | Slot | Current fallback | Required replacement |
 | --- | --- | --- |
-| Hero backdrop | `masterImages.acroHero` | 16:9 / 16:10, 1920×1080–1200 WebP; teaching moment, left space for headline; optional muted 6–12 s loop |
-| Live-guidance demo | `paid/live-guidance-floor.webp` (authentic studio photo used as poster, never labelled a video call) | Real private online session clip, 16:9 1920×1080, 30–60 s, MP4/WebM + 1600×900 WebP poster |
+| Hero backdrop | `masterImages.studioAdjustment` (changed from the acro trio, which read as group/acro yoga rather than individual teacher attention; QA at 390/1280 shows clean crop and readable headline) | 16:9 / 16:10, 1920×1080–1200 WebP; teaching moment, left space for headline; optional muted 6–12 s loop |
+| Live-guidance demo | `paid/live-guidance-floor.webp`, alt "A Yog Jivan teacher guiding a student through a floor posture in the studio" (authentic studio photo used as poster, never labelled a video call or online session) | Real private online session clip, 16:9 1920×1080, 30–60 s, MP4/WebM + 1600×900 WebP poster |
 | Teacher portrait | `masterImages.founderPortrait` | 4:5, 1200×1500 WebP, head to mid-torso |
 | Student proof | **not rendered** | 4:5 ~1000×1250 WebP (or 9:16 1080×1920 video) — only with written permission |
 
@@ -138,7 +145,7 @@ WhatsApp primary secondary action, group-classes link.
 ## 10. Schema
 
 - BreadcrumbList — "Private Online Yoga".
-- Service ×2 (online worldwide + in-studio Hai Duong). Provider is the Yog
+- Service ×2 (online worldwide + in-studio, `areaServed: "Hai Phong, Vietnam"` — formal current geography; visible copy may still say the Hai Duong urban area). Provider is the Yog
   Jivan Organization, **not** a single instructor. Descriptions match visible copy.
 - No FAQPage, no Review/AggregateRating, no MedicalTherapy, no credentials.
 - Self-canonical + og:url `https://yogjivan.com/personal-training`.
@@ -176,14 +183,17 @@ under `prefers-reduced-motion: reduce`.
 | Title / meta | correct, in-length |
 | JSON-LD blocks | 6 total (root + route); FAQPage absent (verified in DOM) |
 | "10,000+" visible as students guided | yes |
-| Master-Anil-only private claim | none remaining (repo grep clean) |
+| Targeted grep: `Every class taught personally`, `no rotating substitute`, `Certified Master Anil`, `under Master Anil's direction` | 0 matches in `src/` and `public/` |
+| Remaining "same teacher" occurrences | reviewed individually; kept only where scoped to live small-group online classes (owner-confirmed) or private 1-on-1. Pre-existing "Certified in classical …" credential lines on unrelated therapeutic routes are out of this pack's scope and unchanged |
 | Fake testimonials / teacher details | none |
 | Medical/treatment claims | none |
 | Form validation keeps good input | verified (name retained after invalid submit) |
 | Level & focus selects | functional |
 | Phone picker | renders, searchable, market default applied |
 | Reduced motion | veils disabled via media query |
-| `/online-yoga-classes`, `/book-online-yoga` | render unchanged; indexing rules untouched |
+| `/online-yoga-classes`, `/book-online-yoga` | design and indexing architecture unchanged (noindex isolation + robots rules intact); targeted factual copy updates only |
+| Teacher cards render from `TEACHING_TEAM` | verified at 390/430/768/1024/1280/1440 |
+| `package.json` version | verified back at 2.9.1 |
 
 Lead end-to-end: verified by code path and UI validation only. **No test lead
 was written to the production database** — end-to-end submission is marked as a
