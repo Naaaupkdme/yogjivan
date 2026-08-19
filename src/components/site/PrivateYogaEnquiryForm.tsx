@@ -12,7 +12,7 @@ import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
 
 /**
- * Compact private 1-on-1 enquiry form for /personal-training.
+ * Compact private 1-on-1 enquiry form for /private-online-yoga.
  *
  * Uses the EXISTING lead pipeline (submitLead -> leads table -> CRM webhook)
  * with source="website" so no RLS/migration change is required. The funnel is
@@ -128,7 +128,7 @@ export function PrivateYogaEnquiryForm() {
         source: "website",
         meta: {
           funnel: "private_yoga_organic",
-          landing_page: "/personal-training",
+          landing_page: "/private-online-yoga",
           lead_event_id: leadEventId,
           market: country,
           timezone,

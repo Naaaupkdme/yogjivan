@@ -47,7 +47,7 @@ export const Route = createFileRoute("/programs")({
           serviceType: "Private Yoga Session",
           description: "Live 60-minute one-on-one yoga sessions with Master Anil Choudhary, in studio or online, adapted to your experience and goals. Pricing and scheduling are confirmed by enquiry.",
           areaServed: "Hai Duong, Vietnam",
-          url: "/personal-training",
+          url: "/private-online-yoga",
         })),
       },
       {
@@ -87,7 +87,7 @@ export const Route = createFileRoute("/programs")({
           <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Explore further</p>
           <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
             <span>Practice from anywhere with <Link to="/online-yoga-classes" className="text-[color:var(--gold)] hover:underline">live online yoga classes</Link>.</span>
-            <span>Go one-on-one with <Link to="/personal-training" hash="private-online-yoga" className="text-[color:var(--gold)] hover:underline">private yoga</Link>.</span>
+            <span>Go one-on-one with <Link to="/private-online-yoga" className="text-[color:var(--gold)] hover:underline">private yoga</Link>.</span>
             <span>Bring practice to your team with <Link to="/corporate" className="text-[color:var(--gold)] hover:underline">corporate wellness yoga</Link>.</span>
           </div>
           <div className="mt-6">

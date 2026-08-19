@@ -116,7 +116,7 @@ const PAGES: SearchEntry[] = [
     title: "Private Yoga",
     description: "One-to-one 60-minute sessions with Master Anil, in studio or live online, arranged by enquiry.",
     category: "Programs",
-    href: "/personal-training",
+    href: "/private-online-yoga",
     keywords: [
       "private", "private yoga", "personal training", "personal trainer", "one to one", "one on one",
       "1 on 1", "1-1", "individual", "solo", "bespoke", "personal instructor", "private teacher",
@@ -128,7 +128,7 @@ const PAGES: SearchEntry[] = [
     title: "Private 1-on-1 Online Yoga",
     description: "Fully individual live online sessions with personalised pacing and real-time guidance.",
     category: "Online",
-    href: "/personal-training#private-online-yoga",
+    href: "/private-online-yoga",
     boost: 1.7,
     keywords: [
       "private online", "private online yoga", "one to one online yoga", "online private", "1 on 1 online", "one to one online", "private live",

@@ -133,7 +133,7 @@ function PeriodSafePage() {
         { to: "/yoga-for-pcod", label: "Yoga for PCOD & PCOS" },
         { to: "/online-yoga-classes", label: "Live Online Classes" },
         { to: "/yoga-for-stress", label: "Yoga for Stress Relief" },
-        { to: "/personal-training", label: "1-on-1 Sessions" },
+        { to: "/private-online-yoga", label: "1-on-1 Sessions" },
       ]}
       relatedPosts={[
         { slug: "the-breath-you-didnt-know-you-were-holding", title: "The breath you didn't know you were holding", cat: "Wellness", read: "4 min" },

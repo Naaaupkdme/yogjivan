@@ -7,7 +7,7 @@ import { BLOG_POSTS } from "@/lib/blog-posts";
 // machine-readable file for AI agents (linked from llms.txt), not an HTML page.
 type Entry = { path: string; lastmod?: string };
 
-const STATIC_PATHS = ["/", "/about", "/programs", "/personal-training", "/online-yoga-classes", "/yoga-for-beginners", "/yoga-for-back-pain", "/yoga-for-stress", "/yoga-for-weight-loss", "/yoga-for-pcod", "/yoga-for-thyroid", "/period-safe-yoga", "/yoga-for-expats-in-vietnam", "/corporate", "/gallery", "/testimonials", "/blog", "/contact", "/privacy"];
+const STATIC_PATHS = ["/", "/about", "/programs", "/private-online-yoga", "/online-yoga-classes", "/yoga-for-beginners", "/yoga-for-back-pain", "/yoga-for-stress", "/yoga-for-weight-loss", "/yoga-for-pcod", "/yoga-for-thyroid", "/period-safe-yoga", "/yoga-for-expats-in-vietnam", "/corporate", "/gallery", "/testimonials", "/blog", "/contact", "/privacy"];
 
 const ENTRIES: Entry[] = [
   ...STATIC_PATHS.map((path) => ({ path })),

@@ -284,7 +284,7 @@ function RootComponent() {
       const VIEW_CONTENT_MAP: Record<string, { content_name: string; content_category: string }> = {
         "/": { content_name: "Home — Yog Jivan Sanctuary", content_category: "Home" },
         "/online-yoga-classes": { content_name: "Online Yoga Classes", content_category: "Online Classes" },
-        "/personal-training": { content_name: "Personal Training", content_category: "Private Sessions" },
+        "/private-online-yoga": { content_name: "Personal Training", content_category: "Private Sessions" },
         "/yoga-for-back-pain": { content_name: "Back Pain Yoga", content_category: "Therapeutic Yoga" },
         "/yoga-for-stress": { content_name: "Stress Relief Yoga", content_category: "Therapeutic Yoga" },
         "/yoga-for-weight-loss": { content_name: "Weight Loss Yoga", content_category: "Therapeutic Yoga" },

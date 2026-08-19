@@ -64,7 +64,7 @@ type Service = {
   blurb: string;
   bullets: string[];
   cta: string;
-  to: "/personal-training" | "/programs" | "/corporate";
+  to: "/private-online-yoga" | "/programs" | "/corporate";
   Icon: typeof User;
   // image left optional — temporarily replaced by gradient placeholder.
   image?: string;
@@ -88,7 +88,7 @@ const SERVICES: Service[] = [
     blurb: "One-to-one transformation through individualized therapeutic guidance.",
     bullets: ["Personal Assessment", "Customized Plan", "Posture Correction", "Lifestyle Guidance"],
     cta: "Explore Program",
-    to: "/personal-training",
+    to: "/private-online-yoga",
     Icon: User,
     variant: "private",
     opacity: 0.16,
@@ -237,7 +237,7 @@ const SERVICES: Service[] = [
     blurb: "Personal guidance for sustainable transformation.",
     bullets: ["Health Assessment", "Lifestyle Planning", "Habit Transformation", "Wellness Roadmap"],
     cta: "Book Consultation",
-    to: "/personal-training",
+    to: "/private-online-yoga",
     Icon: ClipboardList,
     variant: "consultation",
     opacity: 0.15,

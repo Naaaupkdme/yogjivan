@@ -1,10 +1,7 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
-/**
- * Legacy URL. The private-yoga service page now lives at /private-online-yoga.
- * Permanent server-side redirect — never a client-only navigate.
- */
-export const Route = createFileRoute("/personal-training")({
+/** Alternate discovery URL → canonical private page. */
+export const Route = createFileRoute("/private-yoga-classes")({
   beforeLoad: () => {
     throw redirect({ to: "/private-online-yoga", statusCode: 301 });
   },

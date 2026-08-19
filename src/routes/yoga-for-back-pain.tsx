@@ -133,7 +133,7 @@ function BackPainPage() {
         </>
       }
       relatedLinks={[
-        { to: "/personal-training", label: "1-on-1 Therapeutic Sessions" },
+        { to: "/private-online-yoga", label: "1-on-1 Therapeutic Sessions" },
         { to: "/yoga-for-stress", label: "Yoga for Stress Relief" },
         { to: "/yoga-for-pcod", label: "Yoga for PCOD & PCOS" },
         { to: "/period-safe-yoga", label: "Period-Safe Yoga" },

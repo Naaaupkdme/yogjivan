@@ -158,7 +158,7 @@ const FAQS: { q: string; a: string }[] = [
 ];
 
 const RELATED_LINKS = [
-  { to: "/personal-training", label: "Private 1-on-1 yoga" },
+  { to: "/private-online-yoga", label: "Private 1-on-1 yoga" },
   { to: "/yoga-for-beginners", label: "Yoga for beginners" },
   { to: "/programs", label: "All programs" },
   { to: "/about", label: "About Master Anil" },
@@ -410,7 +410,7 @@ function OnlineYogaClassesPage() {
                   Contact us for private-session plans
                 </li>
               </ul>
-              <Link to="/personal-training" className="btn-ghost-gold mt-6 justify-center">
+              <Link to="/private-online-yoga" className="btn-ghost-gold mt-6 justify-center">
                 See private training <ArrowRight className="h-4 w-4" />
               </Link>
             </article>

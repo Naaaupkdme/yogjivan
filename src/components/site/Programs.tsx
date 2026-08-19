@@ -116,7 +116,7 @@ export function Programs() {
               Enquire About Private Yoga
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
-              <Link to="/personal-training" hash="private-online-yoga" className="text-[color:var(--gold)] hover:underline">
+              <Link to="/private-online-yoga" className="text-[color:var(--gold)] hover:underline">
                 See how private yoga works
               </Link>
             </p>
