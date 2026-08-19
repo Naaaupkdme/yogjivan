@@ -113,10 +113,6 @@ function PeriodSafePage() {
       h1="Period-Safe Yoga"
       credentials={CREDENTIALS}
       questions={QUESTIONS}
-      quote={{
-        text: "It's the first time a yoga class has ever treated my cycle like it's real. I don't dread heavier days on my mat anymore.",
-        source: "Online Student · Vietnam",
-      }}
       breatherImages={[
         { src: masterImages.rabbitPose, alt: "Gentle restorative posture supporting the pelvic area", caption: "Restorative practice · pelvic ease" },
         { src: masterImages.savasanaClass, alt: "Students resting deeply at the close of a gentle class", caption: "Closing rest · unhurried, always" },

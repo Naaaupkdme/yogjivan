@@ -24,7 +24,7 @@ export type TherapeuticPageProps = {
   h1: string; // used as H2 in EEAT section header
   credentials: { icon: React.ComponentType<{ className?: string }>; label: string }[];
   questions: QA[];
-  quote: { text: string; source: string };
+  quote?: { text: string; source: string };
   breatherImages: { src: string; alt: string; caption: string }[];
   cautionNote?: string;
   ctaTitle: string;

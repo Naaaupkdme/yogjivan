@@ -118,10 +118,6 @@ function ThyroidPage() {
       credentials={CREDENTIALS}
       questions={QUESTIONS}
       cautionNote={CAUTION}
-      quote={{
-        text: "I still take my medication and see my doctor every six months. But my energy is steadier, I sleep deeply, and the fog that used to define my mornings is mostly gone.",
-        source: "Long-term Student · Online Community",
-      }}
       breatherImages={[
         { src: masterImages.wallSeated, alt: "Student in a supported seated stretch by the studio window", caption: "Supported practice · gentle throat opening" },
         { src: masterImages.savasanaClass, alt: "Students resting in Savasana at the close of a therapeutic class", caption: "Closing Savasana · nervous-system rest" },
@@ -137,7 +133,7 @@ function ThyroidPage() {
       relatedLinks={[
         { to: "/yoga-for-pcod", label: "Yoga for PCOD & PCOS" },
         { to: "/yoga-for-stress", label: "Yoga for Stress Relief" },
-        { to: "/private-online-yoga", label: "1-on-1 Therapeutic Sessions" },
+        { to: "/private-online-yoga", label: "Private 1-on-1 Yoga" },
         { to: "/online-yoga-classes", label: "Live Online Classes" },
       ]}
       relatedPosts={[

@@ -118,10 +118,6 @@ function PCODPage() {
       credentials={CREDENTIALS}
       questions={QUESTIONS}
       cautionNote={CAUTION}
-      quote={{
-        text: "For the first time in years my cycle feels predictable again. My doctor is happy, and I finally feel like I'm doing something for myself — not just taking pills.",
-        source: "Online Student · India",
-      }}
       breatherImages={[
         { src: masterImages.rabbitPose, alt: "Gentle restorative posture supporting pelvic and hormonal balance", caption: "Restorative practice · pelvic circulation" },
         { src: masterImages.savasanaClass, alt: "Students in deep restorative rest at the close of a therapeutic class", caption: "Closing rest · nervous-system reset" },
@@ -138,7 +134,7 @@ function PCODPage() {
         { to: "/yoga-for-stress", label: "Yoga for Stress Relief" },
         { to: "/period-safe-yoga", label: "Period-Safe Yoga" },
         { to: "/yoga-for-thyroid", label: "Yoga for Thyroid Health" },
-        { to: "/private-online-yoga", label: "1-on-1 Therapeutic Sessions" },
+        { to: "/private-online-yoga", label: "Private 1-on-1 Yoga" },
         { to: "/online-yoga-classes", label: "Live Online Classes" },
       ]}
       relatedPosts={[

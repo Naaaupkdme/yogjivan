@@ -112,10 +112,6 @@ function StressPage() {
       h1="Yoga for Stress"
       credentials={CREDENTIALS}
       questions={QUESTIONS}
-      quote={{
-        text: "After eight weeks, I sleep through the night for the first time in three years. My inbox hasn't changed — I have.",
-        source: "Linh Pham · Online Student · Hanoi, Vietnam",
-      }}
       breatherImages={[
         { src: masterImages.savasanaClass, alt: "Students resting deeply in Savasana at the close of a stress-relief class", caption: "Closing Savasana · nervous-system rest" },
         { src: masterImages.rabbitPose, alt: "Gentle restorative posture in the sanctuary studio", caption: "Restorative practice · Hai Duong studio" },
