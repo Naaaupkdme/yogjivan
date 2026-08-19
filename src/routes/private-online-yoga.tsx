@@ -627,7 +627,7 @@ function PrivateYogaPage() {
               <div className="mt-6 rounded-2xl border border-dashed border-[color:var(--gold)]/35 bg-white/[0.02] p-5">
                 <p className="text-[0.68rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">Coming soon</p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground/75">
-                  A short recording of a real private online session will be published here once a
+                  A short clip of a real private online session will be published here once a
                   student has given written permission.
                 </p>
               </div>
