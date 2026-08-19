@@ -26,7 +26,7 @@ export const Route = createFileRoute("/about")({
   }),
   component: () => (
     <>
-      <PageHero eyebrow="The Founder" title="A life devoted to the" accent="path." sub="Master Anil Choudhary brings twelve years of traditional Indian yoga, therapeutic mastery and quiet authority to every student he touches." image={masterImages.meditationPortrait} />
+      <PageHero eyebrow="The Founder" title="A life devoted to the" accent="path." sub="Master Anil Choudhary brings 12+ years of authentic Indian yoga teaching, careful progression and safety-first guidance to every student." image={masterImages.meditationPortrait} />
       <About />
       <section className="section-pad-sm">
         <div className="container-luxe">
