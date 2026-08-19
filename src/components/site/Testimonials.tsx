@@ -26,8 +26,8 @@ type VerifiedQuote = {
 const VERIFIED_QUOTES: VerifiedQuote[] = [];
 
 const STUDIOS = [
-  { name: LOCATIONS.studio1.name, area: LOCATIONS.studio1.familiarArea, maps: LOCATIONS.studio1.googleMaps },
-  { name: LOCATIONS.studio2.name, area: LOCATIONS.studio2.familiarArea, maps: LOCATIONS.studio2.googleMaps },
+  { name: LOCATIONS.studio1.name, area: LOCATIONS.studio1.localDescriptor, maps: LOCATIONS.studio1.googleMaps },
+  { name: LOCATIONS.studio2.name, area: LOCATIONS.studio2.localDescriptor, maps: LOCATIONS.studio2.googleMaps },
 ];
 
 export function Testimonials() {
