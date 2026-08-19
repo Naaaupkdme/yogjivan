@@ -18,10 +18,13 @@ import { Route as CorporateRouteImport } from './routes/corporate'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as OnlineRouteImport } from './routes/online'
+import { Route as OnlinePrivateYogaRouteImport } from './routes/online-private-yoga'
 import { Route as OnlineYogaClassesRouteImport } from './routes/online-yoga-classes'
 import { Route as PeriodSafeYogaRouteImport } from './routes/period-safe-yoga'
 import { Route as PersonalTrainingRouteImport } from './routes/personal-training'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PrivateYogaRouteImport } from './routes/private-yoga'
+import { Route as PrivateYogaClassesRouteImport } from './routes/private-yoga-classes'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
@@ -87,6 +90,11 @@ const OnlineRoute = OnlineRouteImport.update({
   path: '/online',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OnlinePrivateYogaRoute = OnlinePrivateYogaRouteImport.update({
+  id: '/online-private-yoga',
+  path: '/online-private-yoga',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OnlineYogaClassesRoute = OnlineYogaClassesRouteImport.update({
   id: '/online-yoga-classes',
   path: '/online-yoga-classes',
@@ -105,6 +113,16 @@ const PersonalTrainingRoute = PersonalTrainingRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivateYogaRoute = PrivateYogaRouteImport.update({
+  id: '/private-yoga',
+  path: '/private-yoga',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivateYogaClassesRoute = PrivateYogaClassesRouteImport.update({
+  id: '/private-yoga-classes',
+  path: '/private-yoga-classes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProgramsRoute = ProgramsRouteImport.update({
@@ -217,10 +235,13 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
+  '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
+  '/private-yoga': typeof PrivateYogaRoute
+  '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
@@ -251,10 +272,13 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
+  '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
+  '/private-yoga': typeof PrivateYogaRoute
+  '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
@@ -286,10 +310,13 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
+  '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
+  '/private-yoga': typeof PrivateYogaRoute
+  '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
@@ -322,10 +349,13 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/mcp'
     | '/online'
+    | '/online-private-yoga'
     | '/online-yoga-classes'
     | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
+    | '/private-yoga'
+    | '/private-yoga-classes'
     | '/programs'
     | '/sitemap.xml'
     | '/testimonials'
@@ -356,10 +386,13 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/mcp'
     | '/online'
+    | '/online-private-yoga'
     | '/online-yoga-classes'
     | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
+    | '/private-yoga'
+    | '/private-yoga-classes'
     | '/programs'
     | '/sitemap.xml'
     | '/testimonials'
@@ -390,10 +423,13 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/mcp'
     | '/online'
+    | '/online-private-yoga'
     | '/online-yoga-classes'
     | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
+    | '/private-yoga'
+    | '/private-yoga-classes'
     | '/programs'
     | '/sitemap.xml'
     | '/testimonials'
@@ -425,10 +461,13 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   McpRoute: typeof McpRoute
   OnlineRoute: typeof OnlineRoute
+  OnlinePrivateYogaRoute: typeof OnlinePrivateYogaRoute
   OnlineYogaClassesRoute: typeof OnlineYogaClassesRoute
   PeriodSafeYogaRoute: typeof PeriodSafeYogaRoute
   PersonalTrainingRoute: typeof PersonalTrainingRoute
   PrivacyRoute: typeof PrivacyRoute
+  PrivateYogaRoute: typeof PrivateYogaRoute
+  PrivateYogaClassesRoute: typeof PrivateYogaClassesRoute
   ProgramsRoute: typeof ProgramsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TestimonialsRoute: typeof TestimonialsRoute
@@ -515,6 +554,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OnlineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/online-private-yoga': {
+      id: '/online-private-yoga'
+      path: '/online-private-yoga'
+      fullPath: '/online-private-yoga'
+      preLoaderRoute: typeof OnlinePrivateYogaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/online-yoga-classes': {
       id: '/online-yoga-classes'
       path: '/online-yoga-classes'
@@ -541,6 +587,20 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/private-yoga': {
+      id: '/private-yoga'
+      path: '/private-yoga'
+      fullPath: '/private-yoga'
+      preLoaderRoute: typeof PrivateYogaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/private-yoga-classes': {
+      id: '/private-yoga-classes'
+      path: '/private-yoga-classes'
+      fullPath: '/private-yoga-classes'
+      preLoaderRoute: typeof PrivateYogaClassesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/programs': {
@@ -689,10 +749,13 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   McpRoute: McpRoute,
   OnlineRoute: OnlineRoute,
+  OnlinePrivateYogaRoute: OnlinePrivateYogaRoute,
   OnlineYogaClassesRoute: OnlineYogaClassesRoute,
   PeriodSafeYogaRoute: PeriodSafeYogaRoute,
   PersonalTrainingRoute: PersonalTrainingRoute,
   PrivacyRoute: PrivacyRoute,
+  PrivateYogaRoute: PrivateYogaRoute,
+  PrivateYogaClassesRoute: PrivateYogaClassesRoute,
   ProgramsRoute: ProgramsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TestimonialsRoute: TestimonialsRoute,
