@@ -5,7 +5,7 @@ import { masterImages, socialImageMeta } from "@/lib/images";
 const CANONICAL = "https://yogjivan.com/yoga-for-expats-in-vietnam";
 
 const ANSWER_CAPSULE =
-  "Yog Jivan is the English-speaking home for the expat community in and around Hai Duong, Vietnam. Authentic Indian yoga led by Master Anil Choudhary and the Yog Jivan teaching team — taught in English, with the same teacher continuing with you — with a welcoming community of practitioners from 20+ countries already on the mats. Two premium studios in Hai Duong, easy WhatsApp and Zalo booking, and a live-online option that follows you anywhere travel takes you. Come as you are — no Vietnamese required and no gym-culture pressure.";
+  "Yog Jivan is the English-speaking home for the expat community in and around Hai Duong, Vietnam. Authentic Indian yoga led by Master Anil Choudhary and the Yog Jivan teaching team, taught in clear English, with a welcoming community of practitioners from 20+ countries already on the mats. Two premium studios in Hai Duong, easy WhatsApp and Zalo booking, and a live-online option that follows you anywhere travel takes you. Come as you are — no Vietnamese required and no gym-culture pressure.";
 
 const { GraduationCap, Stethoscope, Users, Globe2, Award, ShieldCheck } = SHARED_CREDENTIAL_ICONS;
 
@@ -24,7 +24,7 @@ const QUESTIONS: QA[] = [
     answer:
       "Yes — Yog Jivan Sanctuary is the established English-speaking yoga home in Hai Duong. Classes are taught in clear, warm English by Master Anil Choudhary and the Yog Jivan teaching team. No Vietnamese is required. You'll find yourself practising alongside professionals, teachers, families and long-term expats from India, the USA, Canada, Australia, France, the UK, Germany, Singapore and beyond — many of whom have been with us for years. It is a genuinely international, genuinely welcoming space.",
     bullets: [
-      "Every class taught personally by Master Anil, in clear English.",
+      "Classes available in clear English with the Yog Jivan teaching team.",
       "No Vietnamese required at any point — from first message to the mat.",
       "A settled international community — India, USA, UK, France, Australia, Singapore and more.",
       "Two premium studios in Hai Duong city, easy to reach.",
@@ -46,9 +46,9 @@ const QUESTIONS: QA[] = [
   {
     q: "Can I Continue Classes Online If I Travel or Move?",
     answer:
-      "Yes — and this is one of the quiet advantages of practising with Yog Jivan. Because the same teacher continues with you in-studio and online, students move between the two seamlessly. Travelling for work or a holiday? Continue live on Zoom from your hotel or Airbnb. Moving out of Vietnam? Your practice — the same teacher, the same cues, the same community — continues from your next city. Many of our current online students started in-studio in Hai Duong years ago and never wanted to leave the teacher behind.",
+      "Yes — and this is one of the quiet advantages of practising with Yog Jivan. Students move between the studios and live online seamlessly. Travelling for work or a holiday? Continue live on Zoom from your hotel or Airbnb. Moving out of Vietnam? Your practice and your community continue from your next city. If teacher continuity matters while you travel, private online sessions can continue with the same dedicated teacher. Many of our current online students started in-studio in Hai Duong years ago.",
     bullets: [
-      "Same teacher, same cues, same community — whether in-studio or online.",
+      "If teacher continuity matters while you travel, private online sessions continue with the same dedicated teacher.",
       "Travel-friendly: continue live from hotels, Airbnbs, extended trips.",
       "Relocation-friendly: your practice moves with you to the next country.",
       "Many long-term online students began in-studio in Hai Duong.",

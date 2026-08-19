@@ -250,7 +250,7 @@ export const Route = createFileRoute("/personal-training")({
           serviceType: "Private Yoga Session",
           description:
             "Private one-to-one yoga sessions at the Yog Jivan studios serving the Hai Duong urban area, taught by the Yog Jivan teaching team and shaped around your level and goals. Scheduling by enquiry.",
-          areaServed: "Hai Duong, Vietnam",
+          areaServed: "Hai Phong, Vietnam",
           url: "/personal-training",
         })),
       },
@@ -524,7 +524,7 @@ function PrivateYogaPage() {
               */}
               <img
                 src={liveGuidanceFloor.url}
-                alt="A Yog Jivan teacher guiding a student through a floor posture during a live session"
+                alt="A Yog Jivan teacher guiding a student through a floor posture in the studio"
                 loading="lazy"
                 className="aspect-video w-full object-cover"
               />
