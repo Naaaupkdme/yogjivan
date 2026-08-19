@@ -16,7 +16,7 @@ const FEATURES = [
   },
   {
     Icon: HeartPulse,
-    title: "Therapeutic Expertise",
+    title: "Therapeutic Focus",
     body: "Programs for back pain, PCOD, anxiety, recovery and post-injury healing.",
   },
   {

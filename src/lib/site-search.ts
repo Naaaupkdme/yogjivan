@@ -138,7 +138,7 @@ const PAGES: SearchEntry[] = [
   {
     id: "about",
     title: "About Master Anil",
-    description: "Master Anil Choudhary, Founder & Lead Yoga Teacher, and the Indian lineage behind Yog Jivan.",
+    description: "Master Anil Choudhary, Founder & Lead Yoga Teacher, and the Indian yoga background behind Yog Jivan.",
     category: "About",
     href: "/about",
     keywords: [

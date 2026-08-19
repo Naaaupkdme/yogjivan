@@ -4,7 +4,7 @@ import { masterImages, masterAlts } from "@/lib/images";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
 
 const TIMELINE = [
-  { year: "Pre-2017", title: "Formation in India", body: "Years of dedicated study — Diploma and Master's Degree in Yoga, rooted in the classical Indian lineage." },
+  { year: "Pre-2017", title: "Formation in India", body: "Years of dedicated study — Diploma and Master's Degree in Yoga, rooted in classical Indian yoga traditions." },
   { year: "2017", title: "Arrival in Vietnam", body: "Master Anil moved to Hai Duong with a mission: bring authentic Indian yoga to Vietnamese and international students." },
   { year: "2019", title: "Sanctuary Studio Opens", body: "Yog Jivan's first dedicated studio opens, becoming a refuge for consistent practice and supportive, therapeutic-style yoga." },
   { year: "2022", title: "Global Online Community", body: "Programs reach students in 20+ countries through live online classes and private mentorship." },

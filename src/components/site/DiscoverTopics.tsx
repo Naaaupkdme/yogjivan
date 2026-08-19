@@ -41,7 +41,7 @@ const TOPICS: { title: string; href: string; text: string }[] = [
   {
     title: "Meet Master Anil",
     href: "/about",
-    text: "The teacher, the Indian lineage and the approach behind Yog Jivan.",
+    text: "The teacher, the Indian yoga background and the approach behind Yog Jivan.",
   },
 ];
 

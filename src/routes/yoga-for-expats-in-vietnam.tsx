@@ -14,7 +14,7 @@ const CREDENTIALS = [
   { icon: Users, label: "Community of students from 20+ countries already practising with us" },
   { icon: Globe2, label: "Studios in Hai Duong · Live online continues wherever you travel" },
   { icon: Stethoscope, label: "Small-batch classes — every student known personally by the teacher" },
-  { icon: Award, label: "Authentic Indian lineage — Hatha, Ashtanga and yoga therapy" },
+  { icon: Award, label: "Authentic Indian yoga background — Hatha, Ashtanga and therapeutic practice" },
   { icon: ShieldCheck, label: "WhatsApp and Zalo booking · trial session before you commit" },
 ];
 
