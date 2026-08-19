@@ -228,7 +228,7 @@ function BookOnlineYogaPage() {
                 Taught by one teacher, every single class
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                {TEACHER.teachesEveryNote} {PUBLIC_TRUST.yearsTeaching} years of teaching,{" "}
+                {TEACHER.groupClassNote} {PUBLIC_TRUST.yearsTeaching} years of teaching,{" "}
                 {PUBLIC_TRUST.studentsTaught} students across {PUBLIC_TRUST.countries} countries.
               </p>
               <ul className="mt-5 space-y-2 text-sm text-foreground/90">

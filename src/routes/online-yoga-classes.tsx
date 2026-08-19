@@ -60,7 +60,7 @@ const WHY_LIVE = [
   },
   {
     title: "The same teacher every class",
-    body: TEACHER.teachesEveryNote,
+    body: TEACHER.groupClassNote,
   },
   {
     title: "Small enough to be personal",
