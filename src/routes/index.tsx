@@ -12,7 +12,6 @@ const TrustSection = lazy(() => import("@/components/site/TrustSection").then(m 
 const WhyChoose = lazy(() => import("@/components/site/WhyChoose").then(m => ({ default: m.WhyChoose })));
 const Services = lazy(() => import("@/components/site/Services").then(m => ({ default: m.Services })));
 const FounderStory = lazy(() => import("@/components/site/FounderStory").then(m => ({ default: m.FounderStory })));
-const Transformation = lazy(() => import("@/components/site/Transformation").then(m => ({ default: m.Transformation })));
 const Gallery = lazy(() => import("@/components/site/Gallery").then(m => ({ default: m.Gallery })));
 const VideoTestimonials = lazy(() => import("@/components/site/VideoTestimonials").then(m => ({ default: m.VideoTestimonials })));
 const Testimonials = lazy(() => import("@/components/site/Testimonials").then(m => ({ default: m.Testimonials })));
@@ -77,7 +76,6 @@ function Index() {
       <Lazy><WhyChoose /></Lazy>
       <Lazy><Services /></Lazy>
       <Lazy><FounderStory /></Lazy>
-      <Lazy><Transformation /></Lazy>
       <Lazy><Gallery /></Lazy>
       <Lazy><VideoTestimonials /></Lazy>
       <Lazy><Testimonials /></Lazy>

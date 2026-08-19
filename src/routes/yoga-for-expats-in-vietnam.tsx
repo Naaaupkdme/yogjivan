@@ -112,10 +112,6 @@ function ExpatsPage() {
       h1="Yoga for Expats in Vietnam"
       credentials={CREDENTIALS}
       questions={QUESTIONS}
-      quote={{
-        text: "It's the place in Hai Duong that actually feels like a sanctuary. When I travel back home I just switch to the online class — same teacher, same practice.",
-        source: "Long-term Expat Student · Hai Duong",
-      }}
       breatherImages={[
         { src: masterImages.groupNamaste, alt: "International Yog Jivan community seated in namaste at the studio", caption: "A quietly international community" },
         { src: masterImages.groupCelebration, alt: "Yog Jivan community celebrating International Yoga Day with raised hands", caption: "Community · Hai Duong studios" },

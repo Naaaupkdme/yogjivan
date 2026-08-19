@@ -112,10 +112,6 @@ function WeightLossPage() {
       h1="Yoga for Weight Loss"
       credentials={CREDENTIALS}
       questions={QUESTIONS}
-      quote={{
-        text: "I finally stopped starting over. The weight came off slowly, but this time it stayed — because everything else in my life got calmer too.",
-        source: "Long-term Student · Online Community",
-      }}
       breatherImages={[
         { src: masterImages.warriorClass, alt: "Master Anil leading a strong Warrior II sequence for a group class", caption: "Standing strength · warrior sequence" },
         { src: masterImages.studioSplit, alt: "Deep seated forward-fold work building endurance and body awareness", caption: "Endurance work · Hai Duong studio" },

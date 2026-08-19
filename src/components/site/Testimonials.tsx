@@ -1,74 +1,36 @@
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { Quote, Star, BadgeCheck, ArrowRight } from "lucide-react";
-import { PUBLIC_TRUST } from "@/lib/facts/trust";
+import { ArrowRight, ExternalLink, MapPin, ShieldCheck } from "lucide-react";
+import { PUBLIC_TRUST_METRICS, GOOGLE_RATING } from "@/lib/facts/trust";
+import { LOCATIONS } from "@/lib/facts/locations";
 
-type TestimonialItem = {
-  name: string;
-  initial: string;
-  country: string;
-  flag: string;
-  category: string;
+/**
+ * COMMUNITY & VERIFICATION SECTION (formerly the testimonial carousel).
+ *
+ * HARD RULE: no invented students, quotes, countries, initials or star rows.
+ * Every previous hardcoded testimonial was unverified and has been removed.
+ *
+ * VERIFIED_QUOTES stays EMPTY until Yog Jivan supplies a real student quote
+ * WITH written permission. Adding an entry renders the quote block again with
+ * no redesign. Never add a quote sourced from a draft, an example or an AI.
+ *
+ * Google ratings are shown only next to a direct Google Maps link so a visitor
+ * can verify them, and never as AggregateRating/Review JSON-LD on our own pages.
+ */
+
+type VerifiedQuote = {
+  /** Attribution exactly as the student permitted it. */
+  attribution: string;
   quote: string;
 };
 
-const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
-  {
-    name: "Linh Pham",
-    initial: "L",
-    country: "Vietnam",
-    flag: "🇻🇳",
-    category: "Studio Student",
-    quote: "I came for flexibility, but what changed my life was the emotional calm. Yog Jivan feels premium, peaceful, and deeply authentic.",
-  },
-  {
-    name: "Sophie Laurent",
-    initial: "S",
-    country: "France",
-    flag: "🇫🇷",
-    category: "Online Client",
-    quote: "Even from Europe, the online experience feels intimate and refined. The guidance is personal, elegant, and deeply grounding.",
-  },
-  {
-    name: "Arjun Mehta",
-    initial: "A",
-    country: "India",
-    flag: "🇮🇳",
-    category: "Therapeutic Program",
-    quote: "This is the rare place where Indian yoga lineage meets world-class presentation and true therapeutic intelligence.",
-  },
-  {
-    name: "Emily Tran",
-    initial: "E",
-    country: "Canada",
-    flag: "🇨🇦",
-    category: "Therapeutic Program",
-    quote: "My chronic back pain eased within weeks. The therapeutic precision and warmth here are unlike any studio I've tried.",
-  },
+const VERIFIED_QUOTES: VerifiedQuote[] = [];
+
+const STUDIOS = [
+  { name: LOCATIONS.studio1.name, area: LOCATIONS.studio1.localDescriptor, maps: LOCATIONS.studio1.googleMaps },
+  { name: LOCATIONS.studio2.name, area: LOCATIONS.studio2.localDescriptor, maps: LOCATIONS.studio2.googleMaps },
 ];
 
-const TRUST = [
-  { value: "12+", label: "Years Teaching" },
-  { value: PUBLIC_TRUST.studentsTaught, label: "Students Guided" },
-  { value: "20+", label: "Countries" },
-  { value: "2", label: "Premium Studios" },
-  { value: "Global", label: "Online Community" },
-];
-
-export function Testimonials({ items = DEFAULT_TESTIMONIALS }: { items?: TestimonialItem[] } = {}) {
-  const testimonials = items;
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => setIndex((c) => (c + 1) % testimonials.length), 8000);
-    return () => clearInterval(id);
-  }, [paused, testimonials.length]);
-
-  const item = testimonials[index];
-
+export function Testimonials() {
   return (
     <section
       className="relative overflow-hidden"
@@ -77,80 +39,88 @@ export function Testimonials({ items = DEFAULT_TESTIMONIALS }: { items?: Testimo
       <div className="container-luxe">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow justify-center">
-            <span className="h-px w-10 bg-primary" />Testimonials<span className="h-px w-10 bg-primary" />
+            <span className="h-px w-10 bg-primary" />Our community<span className="h-px w-10 bg-primary" />
           </p>
           <h2 className="mt-4 font-display leading-[1.1]" style={{ fontSize: "clamp(1.5rem, 3vw, 2.4rem)" }}>
-            Voices from those who <span className="italic text-gold-gradient">transformed.</span>
+            A practising community, in Vietnam and <span className="italic text-gold-gradient">worldwide.</span>
           </h2>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+            Two studios serving the Hai Duong urban area, plus live online classes for students in
+            other countries.
+          </p>
         </div>
 
-        {/* Trust strip */}
-        <div className="mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-2 sm:grid-cols-5 sm:gap-3">
-          {TRUST.map((t) => (
-            <div key={t.label} className="glass-soft rounded-[0.9rem] px-3 py-2.5 text-center">
+        {/* Trust strip — single source of truth: src/lib/facts/trust.ts */}
+        <div className="mx-auto mt-8 grid max-w-4xl grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
+          {PUBLIC_TRUST_METRICS.map((t) => (
+            <div key={t.label} className="glass-soft rounded-[0.9rem] px-3 py-3 text-center">
               <div className="font-display text-base leading-none text-gold-gradient sm:text-lg">{t.value}</div>
-              <div className="mt-1 text-[0.55rem] uppercase tracking-[0.22em] text-muted-foreground">{t.label}</div>
+              <div className="mt-1.5 text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">{t.label}</div>
             </div>
           ))}
         </div>
 
-        <div
-          ref={ref}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          className="mx-auto mt-8 max-w-4xl"
-        >
+        {/* Verifiable reviews — rating shown only with a direct Google Maps link. */}
+        {GOOGLE_RATING.displayable && (
           <motion.div
-            key={item.name}
             initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease: "easeOut" }}
-            className="glass-luxe relative rounded-[1.75rem] p-6 sm:p-9"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mx-auto mt-8 grid max-w-4xl gap-3 sm:grid-cols-2"
           >
-            <Quote className="absolute right-6 top-6 h-9 w-9 text-primary/30" />
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-1 text-primary">
-                {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
-              </div>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[0.55rem] uppercase tracking-[0.22em] text-primary">
-                <BadgeCheck className="h-3 w-3" /> Student Story
-              </div>
-            </div>
-            <p className="mt-5 text-[clamp(1.05rem,1.8vw,1.5rem)] leading-relaxed">"{item.quote}"</p>
-            <div className="mt-7 flex items-center gap-4">
-              <div className="grid h-12 w-12 place-items-center rounded-full border border-primary/30 bg-card/40 font-display text-lg text-gold-gradient">
-                {item.initial}
-              </div>
-              <div className="flex-1">
-                <div className="font-display text-lg leading-tight">{item.name}</div>
-                <div className="mt-0.5 text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
-                  <span className="mr-1">{item.flag}</span>{item.country} · {item.category}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-7 flex items-center justify-between gap-3">
-              <div className="flex gap-2">
-                {testimonials.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setIndex(i)}
-                    className={`h-1.5 rounded-full transition-all ${i === index ? "w-10 bg-primary" : "w-4 bg-border"}`}
-                    aria-label={`Go to testimonial ${i + 1}`}
-                  />
-                ))}
-              </div>
+            {STUDIOS.map((s) => (
               <a
-                href="https://youtube.com/@yogjivanvietnam?si=MClExD8wRgaoWbvR"
+                key={s.name}
+                href={s.maps}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Watch student transformation stories on the Yog Jivan YouTube channel"
-                className="inline-flex items-center gap-1.5 text-[0.7rem] uppercase tracking-[0.22em] text-primary hover:text-foreground transition-colors"
+                className="glass-luxe group rounded-[1.5rem] p-6 transition-colors hover:border-primary/40"
               >
-                Watch Student Stories <ArrowRight className="h-3 w-3" />
+                <div className="flex items-center gap-2 text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
+                  <MapPin className="h-3.5 w-3.5 text-primary" /> {s.area}
+                </div>
+                <div className="mt-3 font-display text-lg leading-snug">{s.name}</div>
+                <div className="mt-3 flex items-center gap-2 text-sm text-primary">
+                  <span className="font-display text-xl">{GOOGLE_RATING.value}</span>
+                  <span className="text-muted-foreground">on Google · {GOOGLE_RATING.reviewsLabel}</span>
+                </div>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-[0.65rem] uppercase tracking-[0.22em] text-primary group-hover:text-foreground">
+                  Read the reviews on Google <ExternalLink className="h-3 w-3" />
+                </span>
               </a>
-            </div>
+            ))}
           </motion.div>
+        )}
+
+        {/* Written student quotes appear here only once permission exists. */}
+        {VERIFIED_QUOTES.length > 0 && (
+          <div className="mx-auto mt-8 grid max-w-4xl gap-3 sm:grid-cols-2">
+            {VERIFIED_QUOTES.map((q) => (
+              <figure key={q.attribution} className="glass-luxe rounded-[1.5rem] p-6">
+                <blockquote className="text-base leading-relaxed text-foreground/90">"{q.quote}"</blockquote>
+                <figcaption className="mt-4 text-[0.6rem] uppercase tracking-[0.22em] text-muted-foreground">
+                  {q.attribution}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
+
+        <div className="mx-auto mt-8 flex max-w-4xl flex-wrap items-center justify-center gap-x-6 gap-y-3 text-center">
+          <p className="inline-flex items-center gap-2 text-xs leading-relaxed text-muted-foreground">
+            <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-primary" />
+            We publish student words only with written permission, so this page stays honest.
+          </p>
+          <a
+            href="https://youtube.com/@yogjivanvietnam?si=MClExD8wRgaoWbvR"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit the Yog Jivan YouTube channel"
+            className="inline-flex items-center gap-1.5 text-[0.7rem] uppercase tracking-[0.22em] text-primary transition-colors hover:text-foreground"
+          >
+            Visit our YouTube channel <ArrowRight className="h-3 w-3" />
+          </a>
         </div>
       </div>
     </section>

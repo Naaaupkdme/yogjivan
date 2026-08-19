@@ -24,7 +24,7 @@ export type TherapeuticPageProps = {
   h1: string; // used as H2 in EEAT section header
   credentials: { icon: React.ComponentType<{ className?: string }>; label: string }[];
   questions: QA[];
-  quote: { text: string; source: string };
+  quote?: { text: string; source: string };
   breatherImages: { src: string; alt: string; caption: string }[];
   cautionNote?: string;
   ctaTitle: string;
@@ -196,20 +196,22 @@ export function TherapeuticLanding(props: TherapeuticPageProps) {
         </div>
       </section>
 
-      {/* Pull-quote */}
-      <section className="section-tight">
-        <div className="container-luxe">
-          <figure className="mx-auto max-w-3xl text-center">
-            <Quote className="mx-auto h-8 w-8 text-[color:var(--gold)]/70" />
-            <blockquote className="mt-4 font-display text-2xl md:text-3xl italic leading-[1.3] text-foreground/95">
-              "{quote.text}"
-            </blockquote>
-            <figcaption className="mt-5 text-xs uppercase tracking-[0.28em] text-[color:var(--gold)]">
-              {quote.source}
-            </figcaption>
-          </figure>
-        </div>
-      </section>
+      {/* Pull-quote — rendered only when a verified, permissioned student quote exists. */}
+      {quote && (
+        <section className="section-tight">
+          <div className="container-luxe">
+            <figure className="mx-auto max-w-3xl text-center">
+              <Quote className="mx-auto h-8 w-8 text-[color:var(--gold)]/70" />
+              <blockquote className="mt-4 font-display text-2xl md:text-3xl italic leading-[1.3] text-foreground/95">
+                "{quote.text}"
+              </blockquote>
+              <figcaption className="mt-5 text-xs uppercase tracking-[0.28em] text-[color:var(--gold)]">
+                {quote.source}
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+      )}
 
       {/* From the Journal — related blog posts */}
       {relatedPosts && relatedPosts.length > 0 && (

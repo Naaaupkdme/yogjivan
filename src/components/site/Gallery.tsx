@@ -95,8 +95,8 @@ const CATEGORIES: Category[] = [
   },
   {
     key: "transformations",
-    label: "Transformations",
-    countLabel: "Stories",
+    label: "Advanced Practice",
+    countLabel: "Practice",
     cta: "Explore Gallery",
     cover: masterImages.advancedHeadstand,
     images: [
@@ -105,7 +105,7 @@ const CATEGORIES: Category[] = [
       { src: masterImages.studioBackbend, alt: masterAlts.studioBackbend },
       { src: masterImages.outdoorBridge, alt: masterAlts.outdoorBridge },
       { src: transform1.url, alt: "Advanced inversion" },
-      { src: transform2.url, alt: "Camel pose transformation" },
+      { src: transform2.url, alt: "Camel pose" },
       { src: transform3.url, alt: "Backbend expression" },
       { src: transform4.url, alt: "Mature yoga expression" },
       { src: transform5.url, alt: "Strength & balance" },
@@ -201,10 +201,10 @@ export function Gallery() {
           <h2 className="mt-4 font-display leading-[1.1]" style={{ fontSize: "clamp(1.6rem, 3.4vw, 2.7rem)" }}>
             Moments of Practice.
             <br />
-            <span className="italic text-gold-gradient">Stories of Transformation.</span>
+            <span className="italic text-gold-gradient">Depth of Practice.</span>
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-            Explore the journeys, people and sacred moments that shape Yog Jivan.
+            Real moments from our studios, community gatherings and outdoor sessions.
           </p>
         </div>
 

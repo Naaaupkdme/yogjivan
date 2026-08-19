@@ -116,10 +116,6 @@ function BackPainPage() {
       credentials={CREDENTIALS}
       questions={QUESTIONS}
       cautionNote={CAUTION}
-      quote={{
-        text: "Six weeks in, I can sit through a full workday without the burning ache in my low back. I didn't think that was possible again.",
-        source: "Tim · Studio + Online Student · USA",
-      }}
       breatherImages={[
         { src: masterImages.studioAdjustment, alt: "Master Anil giving a therapeutic hands-on adjustment for lower-back alignment", caption: "Hands-on alignment · therapeutic session" },
         { src: masterImages.wallSeated, alt: "Student in a supported seated stretch by the studio window for gentle spinal decompression", caption: "Supported spinal decompression" },
@@ -133,7 +129,7 @@ function BackPainPage() {
         </>
       }
       relatedLinks={[
-        { to: "/private-online-yoga", label: "1-on-1 Therapeutic Sessions" },
+        { to: "/private-online-yoga", label: "Private 1-on-1 Yoga" },
         { to: "/yoga-for-stress", label: "Yoga for Stress Relief" },
         { to: "/yoga-for-pcod", label: "Yoga for PCOD & PCOS" },
         { to: "/period-safe-yoga", label: "Period-Safe Yoga" },

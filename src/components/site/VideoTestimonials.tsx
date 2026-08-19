@@ -34,10 +34,10 @@ export function VideoTestimonials() {
       <div className="container-luxe relative">
         <div className="mx-auto mb-10 max-w-2xl text-center">
           <p className="eyebrow justify-center">
-            <span className="h-px w-10 bg-primary" /> Voices of transformation
+            <span className="h-px w-10 bg-primary" /> Student voices
             <span className="h-px w-10 bg-primary" />
           </p>
-          <h2 className="mt-5 fluid-title">Stories, in their words.</h2>
+          <h2 className="mt-5 fluid-title">In their words.</h2>
         </div>
 
         <div className="relative mx-auto max-w-4xl">

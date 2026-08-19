@@ -1,3 +1,4 @@
+import { PUBLIC_TRUST } from "@/lib/facts/trust";
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 export type Lang = "EN" | "VI";
@@ -80,9 +81,9 @@ const copy: Record<Lang, Copy> = {
       secondary: "WhatsApp Us",
       online: "See Live Online Classes",
       trust: [
-        "12+ Years Experience",
-        "10,000+ Students Guided",
-        "Students from 20+ Countries",
+        `${PUBLIC_TRUST.yearsTeaching} Years Experience`,
+        `${PUBLIC_TRUST.studentsTaught} Students Guided`,
+        `Students from ${PUBLIC_TRUST.countries} Countries`,
         "Therapeutic Yoga Expert",
         "Founder & Lead Yoga Teacher",
       ],

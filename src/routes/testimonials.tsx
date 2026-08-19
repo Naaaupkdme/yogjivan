@@ -1,34 +1,76 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, CTABanner } from "@/components/site/PageHero";
 import { Testimonials } from "@/components/site/Testimonials";
-import { Transformation } from "@/components/site/Transformation";
 import { breadcrumbSchema } from "@/lib/schema";
+
+const TITLE = "Student Community & Google Reviews — Yog Jivan Yoga";
+const DESC =
+  "See where Yog Jivan students practise: two studios serving the Hai Duong urban area, live online classes worldwide, and verifiable Google reviews for each studio.";
 
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
     meta: [
-      { title: "Student Stories & Testimonials — Yog Jivan Yoga Hai Duong" },
-      { name: "description", content: "Real transformation stories and testimonials from Yog Jivan yoga students across Vietnam, India and Europe." },
-      { property: "og:title", content: "Student Stories — Yog Jivan" },
-      { property: "og:description", content: "Real transformations from Yog Jivan students." },
+      { title: TITLE },
+      { name: "description", content: DESC },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESC },
       { property: "og:url", content: "https://yogjivan.com/testimonials" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Student Stories — Yog Jivan" },
-      { name: "twitter:description", content: "Real transformations from Yog Jivan students." },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESC },
     ],
     links: [{ rel: "canonical", href: "https://yogjivan.com/testimonials" }],
     scripts: [{
       type: "application/ld+json",
-      children: JSON.stringify(breadcrumbSchema("Testimonials", "/testimonials")),
+      children: JSON.stringify(breadcrumbSchema("Student Community", "/testimonials")),
     }],
   }),
-  component: () => (
-    <>
-      <PageHero eyebrow="Their Words" title="Stories of" accent="transformation." sub="From sceptics to seekers — these are the people who walked the path with us." />
-      <Testimonials />
-      <Transformation />
-      <CTABanner title="Your story begins here." />
-    </>
-  ),
+  component: CommunityPage,
 });
+
+function CommunityPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Our students"
+        title="The Yog Jivan"
+        accent="community."
+        sub="Rather than publishing quotes we cannot verify, we point you to reviews you can read yourself and to the classes where you can judge the teaching in person."
+      />
+      <Testimonials />
+
+      <section className="section-pad-sm">
+        <div className="container-luxe">
+          <div className="glass-luxe mx-auto max-w-3xl rounded-[2rem] border border-[color:var(--gold)]/25 p-6 md:p-10">
+            <h2 className="font-display leading-[1.15]" style={{ fontSize: "clamp(1.4rem, 2.6vw, 2rem)" }}>
+              Judge the teaching for yourself
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
+              The most reliable way to know whether Yog Jivan suits you is to practise with us. Start
+              with a{" "}
+              <Link to="/online-yoga-classes" className="text-[color:var(--gold)] hover:underline">
+                live online group class
+              </Link>{" "}
+              or a{" "}
+              <Link to="/private-online-yoga" className="text-[color:var(--gold)] hover:underline">
+                private 1-on-1 session
+              </Link>
+              , or read about{" "}
+              <Link to="/about" className="text-[color:var(--gold)] hover:underline">
+                the teaching approach behind the studio
+              </Link>
+              .
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Student photos, videos and written stories will be published here only as students give
+              us written permission to share them.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <CTABanner title="Your practice begins here." />
+    </>
+  );
+}

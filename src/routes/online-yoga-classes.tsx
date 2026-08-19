@@ -517,37 +517,7 @@ function OnlineYogaClassesPage() {
       </section>
 
       {/* Testimonials */}
-      <Testimonials
-        items={[
-          {
-            name: "Tim",
-            initial: "T",
-            country: "USA",
-            flag: "🇺🇸",
-            category: "Online Student",
-            quote:
-              "The real-time posture corrections and the attention to detail make this feel as personal as being in a physical studio — from the other side of the world.",
-          },
-          {
-            name: "Sophie Laurent",
-            initial: "S",
-            country: "France",
-            flag: "🇫🇷",
-            category: "Online Client",
-            quote:
-              "Even from Europe, the online experience feels intimate and refined. The guidance is personal, elegant, and deeply grounding.",
-          },
-          {
-            name: "Emily Tran",
-            initial: "E",
-            country: "Canada",
-            flag: "🇨🇦",
-            category: "Online Student",
-            quote:
-              "The care and precision in every session are unlike any studio I've tried, and I look forward to each class.",
-          },
-        ]}
-      />
+      <Testimonials />
 
       {/* FAQ */}
       <section className="section-y">

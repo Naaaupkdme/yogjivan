@@ -99,7 +99,7 @@ function PrivacyPage() {
           <Section title="4. Third Parties We Share Data With">
             <p>To operate the studio, we share the minimum necessary information with a few trusted tools:</p>
             <ul className="ml-5 list-disc space-y-2">
-              <li><strong>Make.com</strong> — routes your consultation form entries to our internal inbox so we can respond within minutes.</li>
+              <li><strong>Make.com</strong> — routes your consultation form entries to our internal inbox so our team can follow up with you.</li>
               <li><strong>WhatsApp Business (Meta)</strong> — used to reply to you when you contact us via WhatsApp.</li>
               <li><strong>Zalo</strong> — used to reply to you when you contact us via Zalo.</li>
               <li><strong>Google Analytics</strong> — cookieless measurement by default, full measurement only after analytics consent. <strong>Meta Pixel</strong> — loaded only after marketing consent.</li>

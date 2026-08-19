@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Sparkles } from "lucide-react";
@@ -79,13 +80,14 @@ export function ExitIntentModal() {
                 Discover personalized yoga designed for your body, your rhythm, and your goals.
               </p>
               <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:justify-center">
-                <a
-                  href="#consultation"
+                <Link
+                  to="/contact"
+                  hash="consultation"
                   onClick={() => close(true)}
                   className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[color:var(--gold)] to-amber-300 px-5 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-black"
                 >
                   Book Free Trial
-                </a>
+                </Link>
                 <button
                   onClick={() => close(true)}
                   className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-3 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-foreground hover:bg-white/10"
