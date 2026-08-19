@@ -177,7 +177,7 @@ const SESSION_DETAILS = [
   { t: "Format", d: `A live ${ONLINE_CLASS.durationMinutes}-minute one-to-one video session with your teacher.` },
   { t: "Where", d: "Online worldwide, wherever you have space for a mat and a stable connection." },
   { t: "Your teacher", d: "Matched from the Yog Jivan teaching team, then the same dedicated teacher continues with you." },
-  { t: "Languages", d: `${ONLINE_CLASS.languages.join(", ")} — tell us your preference in your enquiry.` },
+  { t: "Languages", d: "Teacher matching is available across English, Vietnamese and Hindi, subject to availability. Tell us your preference in your enquiry." },
   { t: "Camera & setup", d: "Camera on, positioned so your full body is visible from the side. A mat, clear floor space and optional blocks, strap or a chair." },
   { t: "Suitability", d: "Beginner, intermediate and advanced practitioners." },
   { t: "Pricing", d: "By enquiry. No payment is requested on this page." },
@@ -212,7 +212,7 @@ const PT_FAQS = [
   },
   {
     q: "How are session times and languages arranged?",
-    a: `Times are agreed directly with you rather than fixed to a group timetable, so your session is scheduled around your local time zone. Sessions are taught in ${ONLINE_CLASS.languages.join(", ")}.`,
+    a: "Times are agreed directly with you rather than fixed to a group timetable, so your session is scheduled around your local time zone. Yog Jivan offers teacher matching across English, Vietnamese and Hindi, subject to teacher availability.",
   },
   {
     q: "How much does private online yoga cost?",
@@ -333,7 +333,7 @@ function PrivateYogaPage() {
           ))}
         </dl>
         <p className="mt-4 text-sm text-foreground/70">
-          Taught in {ONLINE_CLASS.languages.join(", ")}.
+          Teacher matching available across English, Vietnamese and Hindi, subject to availability.
         </p>
       </PageHero>
 
@@ -624,13 +624,6 @@ function PrivateYogaPage() {
                 click-to-play only (no autoplay background video). No AI or stock
                 people, no fabricated video-call screenshots.
               */}
-              <div className="mt-6 rounded-2xl border border-dashed border-[color:var(--gold)]/35 bg-white/[0.02] p-5">
-                <p className="text-[0.68rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">Coming soon</p>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/75">
-                  A short clip of a real private online session will be published here once a
-                  student has given written permission.
-                </p>
-              </div>
 
               <img
                 src={teachingAdjustment.url}
