@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { masterImages, masterAlts, socialImageMeta } from "@/lib/images";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { TEACHER } from "@/lib/facts/teacher";
-import { TEAM_MODEL } from "@/lib/facts/team";
+import { TEAM_MODEL, TEACHING_TEAM } from "@/lib/facts/team";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
 import { ONLINE_CLASS } from "@/lib/facts/online-class";
 import { CONTACT } from "@/lib/facts/contact";
