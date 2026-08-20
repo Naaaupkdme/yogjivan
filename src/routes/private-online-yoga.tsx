@@ -86,7 +86,6 @@ const LEVELS = [
       "Understand plateaus and the practice habits behind them",
       "Build a clearer personal progression rather than a random practice",
     ],
-    read: { slug: "private-yoga-for-intermediate-and-advanced-students", label: "How intermediate and advanced students use private sessions" },
   },
   {
     key: "advanced",
@@ -99,7 +98,6 @@ const LEVELS = [
       "Precision, technique and individual feedback on what you are practising",
     ],
     note: "Progression depends on your body and your practice. We do not promise specific poses or fixed timelines.",
-    read: { slug: "private-yoga-for-intermediate-and-advanced-students", label: "How intermediate and advanced students use private sessions" },
   },
 ] as const;
 
@@ -842,15 +840,17 @@ function LevelSelector() {
           {"note" in current && current.note ? (
             <p className="mt-5 text-sm leading-relaxed text-foreground/70">{current.note}</p>
           ) : null}
-          <p className="mt-5 text-sm leading-relaxed text-foreground/75">
-            <Link
-              to="/blog/$slug"
-              params={{ slug: current.read.slug }}
-              className="text-[color:var(--gold)] hover:underline"
-            >
-              {current.read.label}
-            </Link>
-          </p>
+          {"read" in current && current.read ? (
+            <p className="mt-5 text-sm leading-relaxed text-foreground/75">
+              <Link
+                to="/blog/$slug"
+                params={{ slug: current.read.slug }}
+                className="text-[color:var(--gold)] hover:underline"
+              >
+                {current.read.label}
+              </Link>
+            </p>
+          ) : null}
 
         </div>
       </div>
