@@ -453,11 +453,19 @@ function PrivateYogaPage() {
               </div>
             ))}
           </div>
-          <p className="mt-8 max-w-3xl text-sm leading-relaxed text-foreground/70">
+          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-foreground/80">
+            Many students arrive with a specific focus — a spine that aches after desk work, or weeks
+            that feel relentless. Our guides on{" "}
+            <Link to="/yoga-for-back-pain" className="text-[color:var(--gold)] hover:underline">yoga for back pain</Link>{" "}
+            and <Link to="/yoga-for-stress" className="text-[color:var(--gold)] hover:underline">yoga for stress support</Link>{" "}
+            explain how those sessions are usually shaped.
+          </p>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/70">
             Yoga at Yog Jivan supports movement, breathing, relaxation and general wellbeing alongside
             medical care where relevant. It is not medical treatment and does not replace advice from
             your doctor.
           </p>
+
         </div>
       </section>
 
