@@ -528,6 +528,14 @@ function PrivateYogaPage() {
               </li>
             ))}
           </ol>
+          <p className="mt-8 max-w-3xl text-sm leading-relaxed text-foreground/75">
+            Curious about the hour itself? We have written a full walkthrough of{" "}
+            <Link to="/blog/$slug" params={{ slug: "what-happens-in-a-private-online-yoga-session" }} className="text-[color:var(--gold)] hover:underline">
+              what happens in a private online yoga session
+            </Link>
+            , from the first few minutes to how the practice closes.
+          </p>
+
         </div>
       </section>
 
