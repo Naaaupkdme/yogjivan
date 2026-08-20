@@ -795,6 +795,14 @@ function LevelSelector() {
         <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.4rem, 2.6vw, 2rem)" }}>
           Private yoga for every stage of practice
         </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/75">
+          If you already practise, see{" "}
+          <Link to="/blog/$slug" params={{ slug: "private-yoga-for-intermediate-and-advanced-students" }} className="text-[color:var(--gold)] hover:underline">
+            how intermediate and advanced students use private sessions
+          </Link>
+          .
+        </p>
+
 
         <div role="tablist" aria-label="Practice level" className="mt-6 flex flex-wrap gap-2">
           {LEVELS.map((l, i) => (
