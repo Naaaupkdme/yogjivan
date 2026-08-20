@@ -73,6 +73,7 @@ const LEVELS = [
       "Repeat a movement and ask questions without group pressure",
       "Build confidence at a pace that is entirely your own",
     ],
+    read: { slug: "private-online-yoga-for-beginners", label: "Read how a beginner's first private sessions are structured" },
   },
   {
     key: "intermediate",
@@ -85,6 +86,7 @@ const LEVELS = [
       "Understand plateaus and the practice habits behind them",
       "Build a clearer personal progression rather than a random practice",
     ],
+    read: { slug: "private-yoga-for-intermediate-and-advanced-students", label: "How intermediate and advanced students use private sessions" },
   },
   {
     key: "advanced",
@@ -97,8 +99,10 @@ const LEVELS = [
       "Precision, technique and individual feedback on what you are practising",
     ],
     note: "Progression depends on your body and your practice. We do not promise specific poses or fixed timelines.",
+    read: { slug: "private-yoga-for-intermediate-and-advanced-students", label: "How intermediate and advanced students use private sessions" },
   },
 ] as const;
+
 
 /** Three clusters instead of nine near-identical cards. */
 const FOCUS_CLUSTERS = [
