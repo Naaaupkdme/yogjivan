@@ -651,8 +651,12 @@ function PrivateYogaPage() {
               </p>
               <p className="mt-3 text-sm leading-relaxed text-foreground/70">
                 {ONLINE_CLASS.cameraRequired ? "Camera on is required so your alignment can actually be seen. " : ""}
-                Your session is live and private — the hour belongs to you alone.
+                Your session is live and private — the hour belongs to you alone.{" "}
+                <Link to="/blog/$slug" params={{ slug: "can-an-online-yoga-teacher-correct-your-posture" }} className="text-[color:var(--gold)] hover:underline">
+                  How much can a teacher actually see and correct on video?
+                </Link>
               </p>
+
 
               {/*
                 MEDIA SLOT 2 — replacement target: a real private ONLINE session
