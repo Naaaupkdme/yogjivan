@@ -83,44 +83,50 @@ export function CookieConsent() {
       <div
         ref={panelRef}
         tabIndex={-1}
-        className="mx-auto max-w-4xl rounded-2xl border border-[color:var(--gold)]/30 bg-background/95 p-4 shadow-2xl outline-none backdrop-blur-xl sm:p-5 md:mb-0"
+        className="mx-auto max-w-4xl rounded-2xl border border-[color:var(--gold)]/30 bg-background/95 p-3 shadow-2xl outline-none backdrop-blur-xl sm:p-5 md:mb-0"
       >
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-6">
           <div className="flex items-start gap-3 md:flex-1">
-            <span className="mt-0.5 grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10">
+            <span className="mt-0.5 hidden h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10 sm:grid">
               <Cookie className="h-4 w-4 text-[color:var(--gold)]" />
             </span>
-            <p className="text-sm leading-relaxed text-foreground/90">
-              We use essential cookies to run this site, and — only with your permission — analytics and
-              marketing cookies to understand traffic and measure our ads. See our{" "}
+            <p className="text-[0.78rem] leading-snug text-foreground/90 sm:text-sm sm:leading-relaxed">
+              <span className="hidden sm:inline">
+                We use essential cookies to run this site, and — only with your permission — analytics and
+                marketing cookies to understand traffic and measure our ads. See our{" "}
+              </span>
+              <span className="sm:hidden">
+                We use essential cookies. Analytics and marketing cookies only with your permission. See our{" "}
+              </span>
               <Link to="/privacy" className="text-[color:var(--gold)] underline-offset-4 hover:underline">Privacy Policy</Link>.
             </p>
           </div>
-          <div className="flex flex-shrink-0 flex-wrap gap-2">
+          <div className="grid flex-shrink-0 grid-cols-2 gap-2 sm:flex sm:flex-wrap">
             <button
               type="button"
               onClick={() => setSettings((s) => !s)}
               aria-expanded={settings}
-              className="min-w-[110px] rounded-full border border-white/15 bg-transparent px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-[color:var(--gold)]/60"
+              className="min-h-[40px] rounded-full border border-white/15 bg-transparent px-3 py-2 text-[0.76rem] font-medium text-foreground transition-colors hover:border-[color:var(--gold)]/60 sm:min-w-[110px] sm:px-4 sm:py-2.5 sm:text-sm"
             >
               Cookie Settings
             </button>
             <button
               type="button"
               onClick={() => decide({ analytics: false, marketing: false })}
-              className="min-w-[110px] rounded-full border border-[color:var(--gold)]/40 bg-transparent px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-[color:var(--gold)] hover:bg-[color:var(--gold)]/10"
+              className="min-h-[40px] rounded-full border border-[color:var(--gold)]/40 bg-transparent px-3 py-2 text-[0.76rem] font-medium text-foreground transition-colors hover:border-[color:var(--gold)] hover:bg-[color:var(--gold)]/10 sm:min-w-[110px] sm:px-4 sm:py-2.5 sm:text-sm"
             >
               Reject Non-Essential
             </button>
             <button
               type="button"
               onClick={() => decide({ analytics: true, marketing: true })}
-              className="min-w-[110px] rounded-full border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/15 px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-[color:var(--gold)] hover:bg-[color:var(--gold)]/25"
+              className="col-span-2 min-h-[40px] rounded-full border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/15 px-3 py-2 text-[0.76rem] font-medium text-foreground transition-colors hover:border-[color:var(--gold)] hover:bg-[color:var(--gold)]/25 sm:col-span-1 sm:min-w-[110px] sm:px-4 sm:py-2.5 sm:text-sm"
             >
               Accept All
             </button>
           </div>
         </div>
+
 
         {settings && (
           <div className="mt-4 space-y-3 border-t border-white/10 pt-4">
