@@ -243,14 +243,15 @@ const PT_FAQS_MORE = [
   },
 ];
 
+/** Kept deliberately short — the strongest four journey links only. Other
+ *  useful paths are linked contextually inside the page body. */
 const CONTINUE_EXPLORING = [
   { to: "/yoga-for-beginners" as const, label: "Yoga for beginners", d: "A structured starting path if you have never practised." },
   { to: "/online-yoga-classes" as const, label: "Live online group classes", d: "Small live groups with published membership plans." },
   { to: "/programs" as const, label: "Programs & pricing", d: "Compare studio, online and private options." },
   { to: "/about" as const, label: "About Yog Jivan", d: "The teaching approach and Indian yoga background behind Yog Jivan." },
-  { to: "/yoga-for-back-pain" as const, label: "Yoga for back pain", d: "Alignment-led guidance for the spine, neck and posture." },
-  { to: "/yoga-for-stress" as const, label: "Yoga for stress support", d: "Slower, breath-led practice for calmer weeks." },
 ];
+
 
 export const Route = createFileRoute("/private-online-yoga")({
   head: () => ({
