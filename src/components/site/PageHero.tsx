@@ -2,13 +2,16 @@ import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
-export function PageHero({ eyebrow, title, accent, sub, image, children }: {
+export function PageHero({ eyebrow, title, accent, sub, image, children, contrastVeil }: {
   eyebrow: string;
   title: string;
   accent?: string;
   sub?: string;
   image?: string;
   children?: ReactNode;
+  /** Adds a localized dark scrim behind the text column for pages whose hero
+   *  imagery has bright frames. Keeps the image itself at full brightness. */
+  contrastVeil?: boolean;
 }) {
   return (
     <section className="relative isolate overflow-hidden pt-[calc(var(--hdr-h,64px)+3.5rem)] pb-16 md:pt-[calc(var(--hdr-h,80px)+4.5rem)] md:pb-24">
@@ -18,21 +21,46 @@ export function PageHero({ eyebrow, title, accent, sub, image, children }: {
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_45%,transparent),color-mix(in_oklab,var(--onyx)_68%,transparent))]" />
         </>
       )}
+      {contrastVeil && (
+        <>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_90%_at_18%_45%,color-mix(in_oklab,var(--onyx)_78%,transparent),transparent_70%)]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-2/3 bg-[linear-gradient(180deg,transparent,color-mix(in_oklab,var(--onyx)_72%,transparent))]"
+          />
+        </>
+      )}
       <div className="pointer-events-none absolute inset-0 -z-10 ambient-grid opacity-20" />
       <div className="pointer-events-none absolute inset-x-0 top-14 -z-10 mx-auto h-64 w-[56rem] max-w-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_72%)] blur-3xl" />
+
 
       <div className="container-luxe">
         <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="eyebrow">
           <span className="h-px w-10 bg-primary" />{eyebrow}
         </motion.p>
-        <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.1 }} className="mt-5 max-w-5xl fluid-title">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.1 }}
+          className="mt-5 max-w-5xl fluid-title"
+          style={contrastVeil ? { textShadow: "0 2px 24px color-mix(in oklab, var(--onyx) 85%, transparent)" } : undefined}
+        >
           {title} {accent && <span className="italic text-gold-gradient">{accent}</span>}
         </motion.h1>
         {sub && (
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.25 }} className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.25 }}
+            className={`mt-5 max-w-2xl text-base leading-relaxed md:text-lg ${contrastVeil ? "text-foreground/85" : "text-muted-foreground"}`}
+          >
             {sub}
           </motion.p>
         )}
+
         {children && <div className="mt-8">{children}</div>}
       </div>
     </section>

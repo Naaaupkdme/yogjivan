@@ -51,7 +51,7 @@ function InlineCTA() {
         <Sparkles className="h-4 w-4" /> Book Free Consultation
       </Link>
       <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
-        <MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp Master Anil
+        <MessageCircle className="h-4 w-4 text-[#25D366]" /> WhatsApp the Yog Jivan team
       </a>
     </div>
   );

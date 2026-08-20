@@ -73,6 +73,7 @@ const LEVELS = [
       "Repeat a movement and ask questions without group pressure",
       "Build confidence at a pace that is entirely your own",
     ],
+    read: { slug: "private-online-yoga-for-beginners", label: "Read how a beginner's first private sessions are structured" },
   },
   {
     key: "intermediate",
@@ -99,6 +100,7 @@ const LEVELS = [
     note: "Progression depends on your body and your practice. We do not promise specific poses or fixed timelines.",
   },
 ] as const;
+
 
 /** Three clusters instead of nine near-identical cards. */
 const FOCUS_CLUSTERS = [
@@ -239,14 +241,15 @@ const PT_FAQS_MORE = [
   },
 ];
 
+/** Kept deliberately short — the strongest four journey links only. Other
+ *  useful paths are linked contextually inside the page body. */
 const CONTINUE_EXPLORING = [
   { to: "/yoga-for-beginners" as const, label: "Yoga for beginners", d: "A structured starting path if you have never practised." },
   { to: "/online-yoga-classes" as const, label: "Live online group classes", d: "Small live groups with published membership plans." },
   { to: "/programs" as const, label: "Programs & pricing", d: "Compare studio, online and private options." },
   { to: "/about" as const, label: "About Yog Jivan", d: "The teaching approach and Indian yoga background behind Yog Jivan." },
-  { to: "/yoga-for-back-pain" as const, label: "Yoga for back pain", d: "Alignment-led guidance for the spine, neck and posture." },
-  { to: "/yoga-for-stress" as const, label: "Yoga for stress support", d: "Slower, breath-led practice for calmer weeks." },
 ];
+
 
 export const Route = createFileRoute("/private-online-yoga")({
   head: () => ({
@@ -306,7 +309,9 @@ function PrivateYogaPage() {
         accent="1-on-1 live with the Yog Jivan team."
         sub="One student. One dedicated matched teacher. A live 60-minute practice shaped around your level, goals and schedule — beginner to advanced, worldwide."
         image={masterImages.studioAdjustment}
+        contrastVeil
       >
+
         <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
           You are matched with a Yog Jivan teacher, and the same teacher continues with you session
           after session.
@@ -446,11 +451,19 @@ function PrivateYogaPage() {
               </div>
             ))}
           </div>
-          <p className="mt-8 max-w-3xl text-sm leading-relaxed text-foreground/70">
+          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-foreground/80">
+            Many students arrive with a specific focus — a spine that aches after desk work, or weeks
+            that feel relentless. Our guides on{" "}
+            <Link to="/yoga-for-back-pain" className="text-[color:var(--gold)] hover:underline">yoga for back pain</Link>{" "}
+            and <Link to="/yoga-for-stress" className="text-[color:var(--gold)] hover:underline">yoga for stress support</Link>{" "}
+            explain how those sessions are usually shaped.
+          </p>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/70">
             Yoga at Yog Jivan supports movement, breathing, relaxation and general wellbeing alongside
             medical care where relevant. It is not medical treatment and does not replace advice from
             your doctor.
           </p>
+
         </div>
       </section>
 
@@ -462,6 +475,14 @@ function PrivateYogaPage() {
           <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.4rem, 2.6vw, 2rem)" }}>
             Private, small group or recorded — which fits you?
           </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/75">
+            If you are still weighing up teachers rather than formats, our guide to{" "}
+            <Link to="/blog/$slug" params={{ slug: "how-to-choose-a-private-online-yoga-teacher" }} className="text-[color:var(--gold)] hover:underline">
+              choosing a private online yoga teacher
+            </Link>{" "}
+            sets out what to ask before you commit.
+          </p>
+
           <div className="mt-6 grid gap-px overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/8 md:grid-cols-3">
             {COMPARISON.map((c) => (
               <div
@@ -505,6 +526,14 @@ function PrivateYogaPage() {
               </li>
             ))}
           </ol>
+          <p className="mt-8 max-w-3xl text-sm leading-relaxed text-foreground/75">
+            Curious about the hour itself? We have written a full walkthrough of{" "}
+            <Link to="/blog/$slug" params={{ slug: "what-happens-in-a-private-online-yoga-session" }} className="text-[color:var(--gold)] hover:underline">
+              what happens in a private online yoga session
+            </Link>
+            , from the first few minutes to how the practice closes.
+          </p>
+
         </div>
       </section>
 
@@ -518,8 +547,13 @@ function PrivateYogaPage() {
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/75">
             Private sessions are taught by the Yog Jivan teaching team — not exclusively by one
-            teacher. Only verified teachers are shown here.
+            teacher. Only verified teachers are shown here. You can read exactly{" "}
+            <Link to="/blog/$slug" params={{ slug: "how-yog-jivan-matches-your-private-yoga-teacher" }} className="text-[color:var(--gold)] hover:underline">
+              how we match your private yoga teacher
+            </Link>{" "}
+            before you enquire.
           </p>
+
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
             {/*
@@ -615,8 +649,12 @@ function PrivateYogaPage() {
               </p>
               <p className="mt-3 text-sm leading-relaxed text-foreground/70">
                 {ONLINE_CLASS.cameraRequired ? "Camera on is required so your alignment can actually be seen. " : ""}
-                Your session is live and private — the hour belongs to you alone.
+                Your session is live and private — the hour belongs to you alone.{" "}
+                <Link to="/blog/$slug" params={{ slug: "can-an-online-yoga-teacher-correct-your-posture" }} className="text-[color:var(--gold)] hover:underline">
+                  How much can a teacher actually see and correct on video?
+                </Link>
               </p>
+
 
               {/*
                 MEDIA SLOT 2 — replacement target: a real private ONLINE session
@@ -703,21 +741,25 @@ function PrivateYogaPage() {
             </div>
           </div>
 
-          <div className="mx-auto mt-10 max-w-5xl">
+          {/* Compact editorial related-content row — deliberately not another
+              card wall directly above the guides block below. */}
+          <div className="mx-auto mt-10 max-w-3xl border-t border-white/8 pt-6">
             <h2 className="text-[0.68rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">Continue exploring</h2>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-6">
               {CONTINUE_EXPLORING.map((l) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  className="rounded-2xl border border-white/10 p-4 transition-colors hover:border-[color:var(--gold)]/40"
-                >
-                  <div className="font-display text-base text-foreground">{l.label}</div>
-                  <p className="mt-1 text-sm leading-relaxed text-foreground/70">{l.d}</p>
-                </Link>
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    title={l.d}
+                    className="text-sm text-foreground/80 underline-offset-4 transition-colors hover:text-[color:var(--gold)] hover:underline"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
+
         </div>
       </section>
 
@@ -751,6 +793,14 @@ function LevelSelector() {
         <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.4rem, 2.6vw, 2rem)" }}>
           Private yoga for every stage of practice
         </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/75">
+          If you already practise, see{" "}
+          <Link to="/blog/$slug" params={{ slug: "private-yoga-for-intermediate-and-advanced-students" }} className="text-[color:var(--gold)] hover:underline">
+            how intermediate and advanced students use private sessions
+          </Link>
+          .
+        </p>
+
 
         <div role="tablist" aria-label="Practice level" className="mt-6 flex flex-wrap gap-2">
           {LEVELS.map((l, i) => (
@@ -790,6 +840,18 @@ function LevelSelector() {
           {"note" in current && current.note ? (
             <p className="mt-5 text-sm leading-relaxed text-foreground/70">{current.note}</p>
           ) : null}
+          {"read" in current && current.read ? (
+            <p className="mt-5 text-sm leading-relaxed text-foreground/75">
+              <Link
+                to="/blog/$slug"
+                params={{ slug: current.read.slug }}
+                className="text-[color:var(--gold)] hover:underline"
+              >
+                {current.read.label}
+              </Link>
+            </p>
+          ) : null}
+
         </div>
       </div>
     </section>

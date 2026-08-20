@@ -79,11 +79,12 @@ export function ContactSection() {
                 </div>
                 <div>
                   <div className="text-[0.6rem] uppercase tracking-[0.24em] text-primary">Direct Line</div>
-                  <div className="font-display text-lg leading-tight">Master Anil Choudhary</div>
+                  <div className="font-display text-lg leading-tight">The Yog Jivan team</div>
                 </div>
               </div>
 
-              <h3 className="mt-6 font-display text-3xl leading-tight sm:text-4xl">Speak directly with Master Anil.</h3>
+              <h3 className="mt-6 font-display text-3xl leading-tight sm:text-4xl">Speak directly with our team.</h3>
+
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 A short, private conversation to understand your goals and recommend the right practice for your body and life.
               </p>

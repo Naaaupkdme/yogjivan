@@ -7,7 +7,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact & Book a Free Yoga Consultation — Yog Jivan Hai Duong" },
-      { name: "description", content: "Book a free yoga consultation with Master Anil Choudhary. Two premium studios in Hai Duong, Vietnam. Reach us on WhatsApp, Zalo, phone or email." },
+      { name: "description", content: "Book a free yoga consultation with the Yog Jivan team. Two premium studios in Hai Duong, Vietnam. Reach us on WhatsApp, Zalo, phone or email." },
       { property: "og:title", content: "Contact Yog Jivan — Book a Free Consultation" },
       { property: "og:description", content: "Reach the studio in Hai Duong. Book a free yoga consultation." },
       { property: "og:url", content: "https://yogjivan.com/contact" },
