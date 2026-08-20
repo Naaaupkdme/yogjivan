@@ -834,6 +834,16 @@ function LevelSelector() {
           {"note" in current && current.note ? (
             <p className="mt-5 text-sm leading-relaxed text-foreground/70">{current.note}</p>
           ) : null}
+          <p className="mt-5 text-sm leading-relaxed text-foreground/75">
+            <Link
+              to="/blog/$slug"
+              params={{ slug: current.read.slug }}
+              className="text-[color:var(--gold)] hover:underline"
+            >
+              {current.read.label}
+            </Link>
+          </p>
+
         </div>
       </div>
     </section>
