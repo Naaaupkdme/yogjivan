@@ -549,8 +549,13 @@ function PrivateYogaPage() {
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/75">
             Private sessions are taught by the Yog Jivan teaching team — not exclusively by one
-            teacher. Only verified teachers are shown here.
+            teacher. Only verified teachers are shown here. You can read exactly{" "}
+            <Link to="/blog/$slug" params={{ slug: "how-yog-jivan-matches-your-private-yoga-teacher" }} className="text-[color:var(--gold)] hover:underline">
+              how we match your private yoga teacher
+            </Link>{" "}
+            before you enquire.
           </p>
+
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
             {/*
