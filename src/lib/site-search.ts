@@ -114,7 +114,7 @@ const PAGES: SearchEntry[] = [
   {
     id: "private",
     title: "Private Yoga",
-    description: "One-to-one 60-minute sessions with Master Anil, in studio or live online, arranged by enquiry.",
+    description: "One-to-one 60-minute sessions with the Yog Jivan teaching team, in studio or live online, arranged by enquiry.",
     category: "Programs",
     href: "/private-online-yoga",
     keywords: [

@@ -21,7 +21,7 @@ const TOPICS: { title: string; href: string; text: string }[] = [
   {
     title: "Private Yoga",
     href: "/private-online-yoga",
-    text: "One-to-one sessions with Master Anil, in studio or live online by enquiry.",
+    text: "One-to-one sessions with the Yog Jivan teaching team, in studio or live online by enquiry.",
   },
   {
     title: "Yoga for Back Pain",
