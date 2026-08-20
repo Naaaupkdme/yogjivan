@@ -42,7 +42,7 @@ const SUPPORTED_ISO2 = new Set(defaultCountries.map((c) => parseCountry(c).iso2 
 const NEXT_STEPS = [
   {
     title: "We review your request",
-    body: "Master Anil reads what you're looking for and picks the live slot that fits your level and timezone.",
+    body: "The Yog Jivan team reads what you're looking for and picks the live slot that fits your level and timezone.",
   },
   {
     title: "We confirm on WhatsApp",
