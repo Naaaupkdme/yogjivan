@@ -837,3 +837,9 @@ body[data-menu-open="true"] [data-floating-cta] {
     animation: none !important;
   }
 }
+
+/* While the cookie/consent banner is visible, reserve real space at the bottom
+   of the document so it can never cover form fields or a submit button. */
+body.consent-open {
+  padding-bottom: var(--consent-h, 0px);
+}
