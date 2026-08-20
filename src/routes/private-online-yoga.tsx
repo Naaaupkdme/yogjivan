@@ -311,7 +311,9 @@ function PrivateYogaPage() {
         accent="1-on-1 live with the Yog Jivan team."
         sub="One student. One dedicated matched teacher. A live 60-minute practice shaped around your level, goals and schedule — beginner to advanced, worldwide."
         image={masterImages.studioAdjustment}
+        contrastVeil
       >
+
         <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
           You are matched with a Yog Jivan teacher, and the same teacher continues with you session
           after session.
