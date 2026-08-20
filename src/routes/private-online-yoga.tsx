@@ -477,6 +477,14 @@ function PrivateYogaPage() {
           <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.4rem, 2.6vw, 2rem)" }}>
             Private, small group or recorded — which fits you?
           </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/75">
+            If you are still weighing up teachers rather than formats, our guide to{" "}
+            <Link to="/blog/$slug" params={{ slug: "how-to-choose-a-private-online-yoga-teacher" }} className="text-[color:var(--gold)] hover:underline">
+              choosing a private online yoga teacher
+            </Link>{" "}
+            sets out what to ask before you commit.
+          </p>
+
           <div className="mt-6 grid gap-px overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/8 md:grid-cols-3">
             {COMPARISON.map((c) => (
               <div
