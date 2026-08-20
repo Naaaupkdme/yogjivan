@@ -743,21 +743,25 @@ function PrivateYogaPage() {
             </div>
           </div>
 
-          <div className="mx-auto mt-10 max-w-5xl">
+          {/* Compact editorial related-content row — deliberately not another
+              card wall directly above the guides block below. */}
+          <div className="mx-auto mt-10 max-w-3xl border-t border-white/8 pt-6">
             <h2 className="text-[0.68rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">Continue exploring</h2>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-6">
               {CONTINUE_EXPLORING.map((l) => (
-                <Link
-                  key={l.to}
-                  to={l.to}
-                  className="rounded-2xl border border-white/10 p-4 transition-colors hover:border-[color:var(--gold)]/40"
-                >
-                  <div className="font-display text-base text-foreground">{l.label}</div>
-                  <p className="mt-1 text-sm leading-relaxed text-foreground/70">{l.d}</p>
-                </Link>
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    title={l.d}
+                    className="text-sm text-foreground/80 underline-offset-4 transition-colors hover:text-[color:var(--gold)] hover:underline"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
+
         </div>
       </section>
 
