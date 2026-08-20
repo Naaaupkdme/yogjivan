@@ -42,6 +42,25 @@ export function CookieConsent() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open, settings]);
 
+  // Reserve real bottom space while the banner is visible so it can never cover
+  // form fields or a submit button — the page simply scrolls a little further.
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!open || !el || typeof document === "undefined") return;
+    const apply = () => {
+      document.body.style.setProperty("--consent-h", `${Math.ceil(el.offsetHeight) + 24}px`);
+      document.body.classList.add("consent-open");
+    };
+    apply();
+    const ro = new ResizeObserver(apply);
+    ro.observe(el);
+    return () => {
+      ro.disconnect();
+      document.body.classList.remove("consent-open");
+      document.body.style.removeProperty("--consent-h");
+    };
+  }, [open, settings]);
+
   const decide = (next: Consent) => {
     writeConsent(next);
     setPrefs(next);
@@ -50,6 +69,7 @@ export function CookieConsent() {
   };
 
   if (!open) return null;
+
 
   return (
     <div
