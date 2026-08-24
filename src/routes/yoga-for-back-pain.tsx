@@ -79,7 +79,7 @@ export const Route = createFileRoute("/yoga-for-back-pain")({
       { name: "description", content: "Therapeutic yoga for back pain with Master Anil in Hai Duong, Vietnam and live online. Posture correction and gentle strengthening. Free consultation." },
       { name: "keywords", content: "yoga for back pain, therapeutic yoga back pain, back pain relief yoga, yoga for lower back pain, sciatica yoga, back pain yoga Hai Duong, online back pain yoga" },
       { property: "og:title", content: "Yoga for Back Pain Relief — A Therapeutic Approach | Yog Jivan" },
-      { property: "og:description", content: "Personalized therapeutic yoga for back pain. Studio in Hai Duong & live online. Small-batch. Alignment-first. Book a free consultation with Master Anil." },
+      { property: "og:description", content: "Personalized therapeutic yoga for back pain. Studio in Hai Duong & live online. Small-batch. Alignment-first. Book a free consultation with the Yog Jivan team." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
       ...socialImageMeta(masterImages.wallSeated),
@@ -143,7 +143,7 @@ function BackPainPage() {
         { slug: "therapeutic-yoga-benefits", title: "Personalised supportive yoga: what it is and what it is not", cat: "Health", read: "8 min" },
       ]}
       ctaTitle="Move without the ache."
-      ctaSub="Book a free consultation with Master Anil to map a therapeutic path for your back."
+      ctaSub="Book a free consultation with the Yog Jivan team to map a therapeutic path for your back."
     />
   );
 }

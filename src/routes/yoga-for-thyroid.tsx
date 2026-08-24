@@ -142,7 +142,7 @@ function ThyroidPage() {
         { slug: "building-a-home-practice-you-will-keep", title: "Building a home practice you'll keep for life", cat: "Lifestyle", read: "5 min" },
       ]}
       ctaTitle="Steadiness, not urgency."
-      ctaSub="Book a free consultation with Master Anil to design a thyroid-supportive practice around your medical plan."
+      ctaSub="Book a free consultation with the Yog Jivan team to design a thyroid-supportive practice around your medical plan."
     />
   );
 }

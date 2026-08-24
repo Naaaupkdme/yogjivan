@@ -139,7 +139,7 @@ function StressPage() {
         { slug: "therapeutic-yoga-benefits", title: "Personalised supportive yoga: what it is and what it is not", cat: "Health", read: "8 min" },
       ]}
       ctaTitle="Breathe. Rest. Come back to yourself."
-      ctaSub="Book a free consultation with Master Anil to map a calming path for your nervous system."
+      ctaSub="Book a free consultation with the Yog Jivan team to map a calming path for your nervous system."
     />
   );
 }

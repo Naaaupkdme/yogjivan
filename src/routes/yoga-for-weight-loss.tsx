@@ -136,7 +136,7 @@ function WeightLossPage() {
         { slug: "the-breath-you-didnt-know-you-were-holding", title: "The breath you didn't know you were holding", cat: "Wellness", read: "4 min" },
       ]}
       ctaTitle="Change that actually lasts."
-      ctaSub="Book a free consultation with Master Anil to design a sustainable weight and lifestyle plan."
+      ctaSub="Book a free consultation with the Yog Jivan team to design a sustainable weight and lifestyle plan."
     />
   );
 }
