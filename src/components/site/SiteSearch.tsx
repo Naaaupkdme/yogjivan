@@ -16,7 +16,7 @@ export function SiteSearchButton({ className = "" }: { className?: string }) {
       type="button"
       onClick={openSiteSearch}
       aria-label="Search Yog Jivan"
-      className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/60 text-muted-foreground/90 transition-colors hover:border-[color:var(--gold)]/40 hover:text-[color:var(--gold)] ${className}`}
+      className={`relative grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border/60 text-muted-foreground/90 transition-colors after:absolute after:left-1/2 after:top-1/2 after:h-11 after:w-11 after:-translate-x-1/2 after:-translate-y-1/2 after:content-[''] hover:border-[color:var(--gold)]/40 hover:text-[color:var(--gold)] ${className}`}
     >
       <Search className="h-4 w-4" strokeWidth={1.5} />
     </button>
