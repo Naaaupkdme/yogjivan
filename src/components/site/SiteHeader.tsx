@@ -219,7 +219,7 @@ export function SiteHeader() {
 
           {/* Single menu control at every width */}
           <button ref={triggerRef} onClick={() => setFullOpen(true)}
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border/60 transition-colors hover:border-primary/40"
+            className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border/60 transition-colors after:absolute after:left-1/2 after:top-1/2 after:h-11 after:w-11 after:-translate-x-1/2 after:-translate-y-1/2 after:content-['']  hover:border-primary/40"
             aria-haspopup="dialog"
             aria-expanded={fullOpen}
             aria-controls={MENU_ID}
