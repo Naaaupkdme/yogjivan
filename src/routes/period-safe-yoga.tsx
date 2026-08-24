@@ -137,7 +137,7 @@ function PeriodSafePage() {
         { slug: "building-a-home-practice-you-will-keep", title: "Building a home practice you'll keep for life", cat: "Lifestyle", read: "5 min" },
       ]}
       ctaTitle="Honour the rhythm."
-      ctaSub="Book a free consultation with Master Anil to begin a cycle-aware practice that meets you where you are."
+      ctaSub="Book a free consultation with the Yog Jivan team to begin a cycle-aware practice that meets you where you are."
     />
   );
 }

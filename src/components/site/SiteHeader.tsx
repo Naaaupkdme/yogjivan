@@ -207,7 +207,7 @@ export function SiteHeader() {
               { href: WHATSAPP, Icon: MessageCircle, label: "Open WhatsApp chat" },
             ].map(({ href, Icon, label }) => (
               <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
-                className="grid h-7 w-7 shrink-0 place-items-center rounded-full text-muted-foreground/80 transition-all duration-300 hover:text-[color:var(--gold)] hover:bg-[color-mix(in_oklab,var(--gold)_10%,transparent)] sm:h-8 sm:w-8">
+                className="relative grid h-7 w-7 shrink-0 place-items-center rounded-full text-muted-foreground/80 transition-all duration-300 after:absolute after:left-1/2 after:top-1/2 after:h-11 after:w-11 after:-translate-x-1/2 after:-translate-y-1/2 after:content-[''] hover:text-[color:var(--gold)] hover:bg-[color-mix(in_oklab,var(--gold)_10%,transparent)] sm:h-8 sm:w-8">
                 <Icon className="h-3.5 w-3.5" strokeWidth={1.5} />
               </a>
             ))}
@@ -219,7 +219,7 @@ export function SiteHeader() {
 
           {/* Single menu control at every width */}
           <button ref={triggerRef} onClick={() => setFullOpen(true)}
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border/60 transition-colors hover:border-primary/40"
+            className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border/60 transition-colors after:absolute after:left-1/2 after:top-1/2 after:h-11 after:w-11 after:-translate-x-1/2 after:-translate-y-1/2 after:content-['']  hover:border-primary/40"
             aria-haspopup="dialog"
             aria-expanded={fullOpen}
             aria-controls={MENU_ID}

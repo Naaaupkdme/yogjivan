@@ -58,10 +58,10 @@ const QUESTIONS: QA[] = [
   {
     q: "How Do I Get Started?",
     answer:
-      "The easiest way is to send a short message on WhatsApp or Zalo — the same channels the rest of our expat community uses. We'll set up a free consultation with Master Anil (a real conversation, not a sales call), understand what you're looking for and any health context that matters, and invite you to a complimentary trial: 3 days of group class access plus one private session, no card required. You can begin in-studio, online, or both. There is no long onboarding — most new expats are on the mat within the same week they first message us.",
+      "The easiest way is to send a short message on WhatsApp or Zalo — the same channels the rest of our expat community uses. We'll set up a free consultation with the Yog Jivan team (a real conversation, not a sales call), understand what you're looking for and any health context that matters, and invite you to a complimentary trial: 3 days of group class access plus one private session, no card required. You can begin in-studio, online, or both. There is no long onboarding — most new expats are on the mat within the same week they first message us.",
     bullets: [
       "Message us on WhatsApp or Zalo — the channels our community already uses.",
-      "Free consultation with Master Anil — a real conversation, not a sales call.",
+      "Free consultation with the Yog Jivan team — a real conversation, not a sales call.",
       "Complimentary trial: 3 days of group classes + one private session.",
       "Begin in-studio, online, or both — completely your choice.",
       "Most new expats are on the mat within the same week they first reach out.",

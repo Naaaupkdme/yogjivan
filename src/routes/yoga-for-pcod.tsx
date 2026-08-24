@@ -143,7 +143,7 @@ function PCODPage() {
         { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters in 2026", cat: "Yoga", read: "6 min" },
       ]}
       ctaTitle="Support your cycle. Support yourself."
-      ctaSub="Book a free consultation with Master Anil to design a therapeutic PCOD or PCOS practice that fits your body."
+      ctaSub="Book a free consultation with the Yog Jivan team to design a therapeutic PCOD or PCOS practice that fits your body."
     />
   );
 }
