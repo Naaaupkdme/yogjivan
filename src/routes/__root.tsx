@@ -31,6 +31,13 @@ const ROOT_DESC =
 
 const ORG_ID = "https://yogjivan.com/#organization";
 
+// Google Tag Manager container ID — infrastructure only. The existing GA4
+// (Measurement ID G-LFV05NVEJZ) and Meta Pixel (ID 1752860699056785) remain
+// direct-code implementations via src/lib/analytics.ts and MUST NOT also be
+// configured inside GTM unless a deliberate future migration/dedup plan is approved.
+const GTM_ID = "GTM-WPKJ5BWP";
+const GTM_HEAD_SCRIPT = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`;
+
 
 function NotFoundComponent() {
   return (
@@ -254,8 +261,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head><HeadContent /></head>
+      <head>
+        {/* Google Tag Manager — container infrastructure only. */}
+        <script
+          dangerouslySetInnerHTML={{ __html: GTM_HEAD_SCRIPT }}
+        />
+        <HeadContent />
+      </head>
       <body>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         {children}
         <Scripts />
       </body>
