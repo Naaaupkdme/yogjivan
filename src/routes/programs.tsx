@@ -45,7 +45,7 @@ export const Route = createFileRoute("/programs")({
         children: JSON.stringify(serviceSchema({
           name: "Private Yoga Sessions",
           serviceType: "Private Yoga Session",
-          description: "Live 60-minute one-on-one yoga sessions with a matched teacher from the Yog Jivan teaching team, in studio or online, adapted to your experience and goals. Your matched teacher then continues with you session after session. Pricing and scheduling are confirmed by enquiry.",
+          description: "Live 60-minute one-on-one yoga sessions with a matched teacher from the Yog Jivan teaching team, in studio or online, adapted to your experience and goals. Private sessions are generally kept with the same matched teacher for continuity. Pricing and scheduling are confirmed by enquiry.",
           areaServed: "Hai Duong, Vietnam",
           url: "/private-online-yoga",
         })),
