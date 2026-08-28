@@ -143,7 +143,7 @@ export const PRIVATE_POSTS: BlogPost[] = [
     date: PUB_DATE,
     keyTakeaways: [
       "Matching considers level, focus, language preference and time zone.",
-      "A dedicated teacher continues with you session after session by default.",
+      "Sessions are generally kept with the same matched teacher for continuity.",
       "If the match is not right, tell us and we will arrange a change.",
     ],
     body: [
@@ -161,7 +161,7 @@ export const PRIVATE_POSTS: BlogPost[] = [
       { type: "h2", text: "Step three: your first session and a short review" },
       { type: "p", text: "The first session is also a practical test of the match. Afterwards we check in: was the pace right, were the explanations clear, did the timing work. Small adjustments are normal at this stage and are easier to make early." },
       { type: "h2", text: "Why continuity matters" },
-      { type: "p", text: "Your dedicated teacher continues with you session after session by default. That continuity is much of the point of private work — your teacher remembers what you were working on last month and builds on the previous session instead of asking you to explain yourself again." },
+      { type: "p", text: "Sessions are generally kept with the same matched teacher for continuity. That continuity is much of the point of private work — your teacher remembers what you were working on last month and builds on the previous session instead of asking you to explain yourself again." },
       { type: "h2", text: "If the match is not right" },
       { type: "p", text: "Tell us. Preferring a different teacher, a different time or a different emphasis is a scheduling matter, not a complaint, and we would rather change it than have you quietly stop practising." },
     ],
@@ -173,7 +173,7 @@ export const PRIVATE_POSTS: BlogPost[] = [
     faqs: [
       { q: "Can I request a specific teacher?", a: "Yes. Mention it in your enquiry and we will accommodate it where availability allows." },
       { q: "Which languages are available?", a: "Yog Jivan offers matching across English, Vietnamese and Hindi, subject to teacher availability. Tell us your preference in your enquiry." },
-      { q: "Will I have the same teacher each session?", a: "Your dedicated teacher continues with you session after session by default, unless you and the team agree to a change or availability requires an agreed adjustment." },
+      { q: "Will I have the same teacher each session?", a: "Sessions are generally kept with the same matched teacher for continuity, unless you and the team agree to a change or availability requires an agreed adjustment." },
     ],
     cta: PRIVATE_CTA,
   },

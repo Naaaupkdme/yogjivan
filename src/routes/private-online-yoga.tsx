@@ -37,7 +37,7 @@ const PT_URL = "https://yogjivan.com/private-online-yoga";
 
 /** AEO/GEO direct-answer capsule. Fact-first and chunkable. */
 const DIRECT_ANSWER =
-  "Private online yoga at Yog Jivan is a live 60-minute one-to-one session with a teacher from the Yog Jivan team. You are matched with a dedicated teacher based on your level and goals, and that same teacher continues with you session after session. Sessions are live on video, available worldwide, and adapted for beginners, intermediate students and advanced practitioners. Pricing and scheduling are arranged by enquiry.";
+  "Private online yoga at Yog Jivan is a live 60-minute one-to-one session with a teacher from the Yog Jivan team. You are matched with a dedicated teacher based on your level and goals, and sessions are generally kept with that same teacher for continuity. Sessions are live on video, available worldwide, and adapted for beginners, intermediate students and advanced practitioners. Pricing and scheduling are arranged by enquiry.";
 
 const TRUST_STRIP = [
   { v: PUBLIC_TRUST.yearsTeaching, l: "Years teaching" },
@@ -57,7 +57,7 @@ const CONTINUITY = [
 const NEXT_STEPS = [
   { n: "1", t: "We read your request", d: "Your level, what you want to work on and the times that realistically suit you." },
   { n: "2", t: "We match a suitable teacher", d: "A Yog Jivan teacher is matched to your level, goals and language, and the match is agreed with you." },
-  { n: "3", t: "You start a live 60-minute session", d: "Your dedicated teacher guides the full hour live, then continues with you session after session." },
+  { n: "3", t: "You start a live 60-minute session", d: "Your matched teacher guides the full hour live, and sessions are generally kept with the same teacher for continuity." },
 ];
 
 const LEVELS = [
@@ -202,7 +202,7 @@ const PT_FAQS = [
   },
   {
     q: "Will I have the same teacher every session?",
-    a: "Yes. You are matched with a teacher from the Yog Jivan team based on your level and goals, and that same dedicated teacher continues with you session after session.",
+    a: "Yes. You are matched with a teacher from the Yog Jivan team based on your level and goals, and sessions are generally kept with that same teacher for continuity.",
   },
   {
     q: "Can a teacher really correct me online?",
