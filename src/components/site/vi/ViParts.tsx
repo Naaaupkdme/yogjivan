@@ -180,7 +180,7 @@ export function ViEnquiryCTA({
 }
 
 const VI_NAV = [
-  { to: "/vi/", label: "Trang chủ Tiếng Việt" },
+  { to: "/vi", label: "Trang chủ Tiếng Việt" },
   { to: "/vi/yoga-hai-duong", label: "Lớp Yoga tại Hải Dương" },
   { to: "/vi/lop-yoga-online", label: "Lớp Yoga Online Trực Tiếp" },
   { to: "/vi/yoga-1-kem-1-online", label: "Yoga 1 Kèm 1 Online" },

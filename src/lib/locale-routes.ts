@@ -14,14 +14,14 @@ export const SITE_ORIGIN = "https://yogjivan.com";
 export type LocalePair = { en: string; vi: string };
 
 export const LOCALE_PAIRS: readonly LocalePair[] = [
-  { en: "/", vi: "/vi/" },
+  { en: "/", vi: "/vi" },
   { en: "/online-yoga-classes", vi: "/vi/lop-yoga-online" },
   { en: "/private-online-yoga", vi: "/vi/yoga-1-kem-1-online" },
 ] as const;
 
 /** All indexable Vietnamese routes (used by the sitemap). */
 export const VI_ROUTES = [
-  "/vi/",
+  "/vi",
   "/vi/yoga-hai-duong",
   "/vi/lop-yoga-online",
   "/vi/yoga-1-kem-1-online",
@@ -47,7 +47,7 @@ export function enCounterpart(path: string): string | null {
 
 export function isViPath(path: string): boolean {
   const clean = normalise(path);
-  return clean === "/vi" || clean.startsWith("/vi/");
+  return clean === "/vi" || clean.startsWith("/vi");
 }
 
 /**
@@ -57,9 +57,9 @@ export function isViPath(path: string): boolean {
  */
 export function languageSwitchTarget(path: string): { en: string; vi: string } {
   if (isViPath(path)) {
-    return { en: enCounterpart(path) ?? "/", vi: normalise(path) === "/vi" ? "/vi/" : path };
+    return { en: enCounterpart(path) ?? "/", vi: normalise(path) === "/vi" ? "/vi" : path };
   }
-  return { en: path, vi: viCounterpart(path) ?? "/vi/" };
+  return { en: path, vi: viCounterpart(path) ?? "/vi" };
 }
 
 type HeadLink = { rel: string; href: string; hrefLang?: string };

@@ -5,7 +5,7 @@ import { ONLINE_CLASS } from "@/lib/facts/online-class";
 import { AREA_PHRASE_VI } from "@/lib/facts/vi-copy";
 import { CONTACT } from "@/lib/facts/contact";
 
-const CANONICAL = `${SITE_ORIGIN}/vi/`;
+const CANONICAL = `${SITE_ORIGIN}/vi`;
 const TITLE = "Yoga Hải Dương & Lớp Yoga Online | Yog Jivan";
 const DESC =
   "Yog Jivan có hai cơ sở yoga phục vụ khu vực Hải Dương, lớp yoga online trực tiếp theo nhóm nhỏ và yoga 1 kèm 1 online cùng giáo viên phù hợp với trình độ của bạn.";
@@ -99,7 +99,7 @@ function ViHome() {
         body="Hãy cho đội ngũ Yog Jivan biết bạn đang ở đâu trong hành trình tập luyện và bạn muốn tập tại studio hay online. Chúng tôi sẽ tư vấn hình thức phù hợp, lịch học và bước tiếp theo."
       />
 
-      <ViPageNav current="/vi/" />
+      <ViPageNav current="/vi" />
     </>
   );
 }
