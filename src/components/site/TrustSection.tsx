@@ -2,8 +2,15 @@ import { motion, useInView, useMotionValue, useTransform, animate } from "framer
 import { useEffect, useRef, type CSSProperties } from "react";
 import { Award, Globe2, Heart, Star, Trophy, Users2 } from "lucide-react";
 import { useLang } from "@/lib/language";
+import { PUBLIC_TRUST } from "@/lib/facts";
 // Background imagery temporarily replaced with luxury onyx + gold gradients.
 // New optimized imagery will be wired back through `metric.image` later.
+
+/** Parses a central trust literal such as "10,000+" into { value, suffix }. */
+function fromTrust(raw: string): { value: number; suffix?: string } {
+  const suffix = raw.replace(/[\d,.\s]/g, "") || undefined;
+  return { value: Number(raw.replace(/[^\d.]/g, "")), suffix };
+}
 
 type Metric = {
   Icon: typeof Star;
@@ -22,10 +29,10 @@ const ONYX_GOLD = (angle: number, accent: string) =>
 // Only confirmed, supportable metrics. Unsupported figures (95% retention,
 // self-reported average rating) removed — see src/lib/facts/trust.ts.
 const METRICS: Metric[] = [
-  { Icon: Heart, value: 12, suffix: "+", label: "Years Teaching", gradient: ONYX_GOLD(150, "28% 22%") },
-  { Icon: Users2, value: 1000, suffix: "+", label: "Students Taught", gradient: ONYX_GOLD(160, "72% 28%") },
-  { Icon: Globe2, value: 20, suffix: "+", label: "Countries Reached", gradient: ONYX_GOLD(140, "50% 18%") },
-  { Icon: Star, value: 8, label: "Max Students Per Live Class", gradient: ONYX_GOLD(170, "20% 70%") },
+  { Icon: Heart, ...fromTrust(PUBLIC_TRUST.yearsTeaching), label: "Years Teaching", gradient: ONYX_GOLD(150, "28% 22%") },
+  { Icon: Users2, ...fromTrust(PUBLIC_TRUST.studentsTaught), label: "Students Guided", gradient: ONYX_GOLD(160, "72% 28%") },
+  { Icon: Globe2, ...fromTrust(PUBLIC_TRUST.countries), label: "Countries Reached", gradient: ONYX_GOLD(140, "50% 18%") },
+  { Icon: Star, value: PUBLIC_TRUST.maxGroupSize, label: "Max Students Per Live Class", gradient: ONYX_GOLD(170, "20% 70%") },
   { Icon: Trophy, value: 2, label: "Studios In Vietnam", gradient: ONYX_GOLD(155, "50% 50%") },
   { Icon: Award, value: 60, label: "Minutes Per Live Session", gradient: ONYX_GOLD(165, "78% 76%") },
 ];
@@ -44,7 +51,7 @@ function CountUp({ value, decimals = 0, prefix = "", suffix = "" }: { value: num
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const mv = useMotionValue(0);
   const rounded = useTransform(mv, (v) => {
-    const formatted = decimals ? v.toFixed(decimals) : Math.round(v).toString();
+    const formatted = decimals ? v.toFixed(decimals) : Math.round(v).toLocaleString("en-US");
     return `${prefix}${formatted}${suffix}`;
   });
 
