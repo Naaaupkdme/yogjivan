@@ -314,7 +314,7 @@ function PrivateYogaPage() {
 
         <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
           You are matched with a Yog Jivan teacher, and sessions are generally kept with that same teacher
-          after session.
+          for continuity.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-4">
           <EnquiryButton ctaLocation="private_yoga_hero">Enquire About Private 1-on-1 Yoga</EnquiryButton>
