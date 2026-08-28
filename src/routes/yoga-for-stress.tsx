@@ -5,66 +5,66 @@ import { masterImages, socialImageMeta } from "@/lib/images";
 const CANONICAL = "https://yogjivan.com/yoga-for-stress";
 
 const ANSWER_CAPSULE =
-  "Yog Jivan's approach to stress combines pranayama (breath work), meditation, and gentle physical practice to shift your nervous system out of chronic fight-or-flight. According to Yoga Alliance's 2026 practitioner survey, stress relief has now overtaken flexibility as the #1 reason people practice yoga — 51% of practitioners cite it as their main motivation — and Master Anil's method is built exactly for that: specific breathing techniques (nadi shodhana, bhramari, extended-exhale breath) paired with a calming asana sequence and closing meditation. Sessions are small-batch or private, available in-studio in Hai Duong, Vietnam and live online worldwide. Individual experience varies; a steady practice over weeks is what makes the difference.";
+  "Yog Jivan's stress-support practice combines gentle movement, pranayama (breath work) and meditation as a calm, unhurried part of your week. Sessions typically pair a soft asana sequence with simple breathing practices such as nadi shodhana, bhramari and extended-exhale breath, and close with a settled meditation and rest. Available in-studio in Hai Duong, Vietnam with the Yog Jivan teaching team, and live online worldwide. This is a wellbeing practice, not treatment for anxiety, burnout or insomnia; individual experience varies, and for a diagnosed condition please continue care with your clinician.";
 
 const { GraduationCap, Stethoscope, Users, Globe2, Award, ShieldCheck } = SHARED_CREDENTIAL_ICONS;
 
 const CREDENTIALS = [
-  { icon: GraduationCap, label: "Certified in classical Pranayama and Meditation lineages" },
-  { icon: Stethoscope, label: "12+ years guiding students through anxiety, burnout and insomnia" },
-  { icon: Users, label: "Executives, mothers, students — real people, real overwhelm" },
+  { icon: GraduationCap, label: "Classical Indian yoga — Hatha, Ashtanga and pranayama" },
+  { icon: Stethoscope, label: "12+ years teaching yoga, breath work and meditation" },
+  { icon: Users, label: "Professionals, parents and students — practice adapted to real schedules" },
   { icon: Globe2, label: "Live-online support across timezones for a global community" },
-  { icon: Award, label: "Trauma-aware — practices are never forced, always titrated" },
-  { icon: ShieldCheck, label: "Every session ends grounded, not activated" },
+  { icon: Award, label: "Gentle pacing — practices are never forced, always optional" },
+  { icon: ShieldCheck, label: "Every session ends with rest, not intensity" },
 ];
 
 const QUESTIONS: QA[] = [
   {
-    q: "How Does Yoga Reduce Stress?",
+    q: "How Can Yoga Support You With Stress?",
     answer:
-      "Yoga reduces stress through three distinct mechanisms working together. First, physical practice discharges the tension held in the body — tight jaw, locked shoulders, gripped diaphragm — that keeps the stress response looping. Second, controlled breathing (pranayama) directly signals the vagus nerve to shift the nervous system from sympathetic (fight-or-flight) to parasympathetic (rest-and-digest). Third, meditation retrains the attention so daily stressors stop hijacking your inner state so easily. Together they change your baseline, not just how you feel in the room.",
+      "A yoga session gives you a set hour where the pace slows down. Gentle movement releases everyday physical tension, simple breathing practices give you something steady to hold on to, and a short meditation at the close lets the mind settle. Many people find this a useful part of looking after their general wellbeing. It is not a treatment for anxiety, burnout or insomnia, and individual experience varies.",
     bullets: [
-      "Physical practice discharges muscular armour that keeps the stress response looping.",
-      "Extended-exhale breathing activates the vagus nerve, shifting you into rest-and-digest.",
-      "Nadi shodhana (alternate-nostril breath) measurably balances autonomic tone.",
-      "Bhramari (humming breath) lowers heart rate and quiets rumination in minutes.",
-      "Meditation retrains attention so future stressors have less grip on you.",
+      "Gentle movement to ease everyday physical tension.",
+      "Simple, comfortable breathing practices you can also use at home.",
+      "A short closing meditation and unhurried rest.",
+      "A calm, predictable slot in a busy week.",
+      "Simple tools you can return to whenever you want them.",
     ],
   },
   {
-    q: "What's the Difference Between Yoga and Meditation for Stress?",
+    q: "What's the Difference Between Yoga and Meditation Here?",
     answer:
-      "Meditation alone is powerful, but it works best on a body that isn't already in high alarm. If you're chronically wound up, sitting still often makes the anxiety louder before it gets quieter — which is why so many stressed people quit meditation early. Yoga first discharges the physical tension, then the pranayama down-regulates the nervous system, and only then does meditation become deep and steady. That's why Master Anil's stress sessions always run in that specific order.",
+      "Meditation is one part of what we teach; yoga as we practise it also includes movement and breath work. Some people find that sitting still straight away is difficult, and that moving gently first makes the sitting easier. That is why our stress-support sessions usually run in that order — movement, then breathing, then meditation. If you prefer to sit straight away, that is fine too; the practice is offered, never imposed.",
     bullets: [
-      "Meditation on a wound-up body often amplifies anxiety before it calms it.",
-      "Physical practice first discharges the tension holding the alarm in place.",
-      "Pranayama bridges the body and the mind — the nervous system settles.",
-      "Then meditation lands deep, not brittle.",
-      "This layered sequence is why yoga-based stress work outperforms 'just meditate more'.",
+      "Movement first, breathing second, meditation last — a sequence many people find easier.",
+      "Meditation practices are kept short and approachable to start with.",
+      "Breath work bridges the two and gives the mind a simple focus.",
+      "No experience needed, and no expectation of stillness on day one.",
+      "You choose the depth and length that suits you.",
     ],
   },
   {
-    q: "How Often Should I Practice for Stress Relief?",
+    q: "How Often Should I Practise?",
     answer:
-      "For genuine, lasting stress reduction, three sessions per week is the practical sweet spot. Two is enough to feel a difference and start protecting your sleep. Once a week keeps you familiar with the tools but rarely shifts your baseline. If life allows only ten minutes daily, a short pranayama-and-meditation home reset — which Master Anil will teach you — outperforms one long weekly class you keep missing.",
+      "There is no required frequency and no promised outcome at any interval. Most people find that a rhythm they can actually keep matters more than an ambitious plan they abandon. Two or three sessions a week suits many schedules; one session a week plus a short home practice also works. If you want one, your teacher can suggest a simple daily routine of ten minutes as an optional habit.",
     bullets: [
-      "3× per week — the sweet spot for real nervous-system change within 4–6 weeks.",
-      "2× per week — noticeable sleep and mood improvement; slower baseline shift.",
-      "1× per week — good for tool-familiarity; rarely enough to shift baseline alone.",
-      "Daily 10-minute home reset outperforms one long class you keep missing.",
-      "Every student receives a personalized home practice map after the first session.",
+      "Choose a rhythm you can sustain through a busy month.",
+      "Two to three sessions a week suits many schedules.",
+      "One weekly session plus a short home practice is a reasonable start.",
+      "A ten-minute home routine is optional, not a requirement.",
+      "Your teacher can help you plan something realistic.",
     ],
   },
   {
-    q: "Can I Practice After a Long Work Day?",
+    q: "Can I Practise After a Long Work Day?",
     answer:
-      "Yes — in fact, evening practice is when stress relief lands most powerfully, because you're using the tools on the exact tension the day has just built. Master Anil's evening-friendly sessions are gentler, more grounding and end with restorative postures rather than energizing ones. You leave calmer than you arrived, sleep deeper that night, and start the next day with more capacity. Online classes make this feasible even after a 7 PM finish.",
+      "Yes. Evening sessions are deliberately gentler and more grounding, ending with supported postures and a longer rest rather than energising work. Live online classes make this practical even after a late finish, since there is no commute. Whether that helps you sleep is personal and varies from person to person — we would rather be honest about that than promise a result.",
     bullets: [
-      "Evening practice discharges the exact tension the day built up.",
-      "Sessions are gentle and grounding — restorative, not energizing.",
-      "Ends with supported postures and long exhales, primes you for deeper sleep.",
-      "Live online means you can join from home, no commute, right after work.",
-      "Most working students schedule 2 evening + 1 weekend session per week.",
+      "Evening sessions are gentler and more grounding by design.",
+      "Ends with supported postures, long exhales and an unhurried rest.",
+      "Live online means you can join from home right after work.",
+      "Choose the times that fit your week rather than a fixed schedule.",
+      "How it affects your evening is personal and varies.",
     ],
   },
 ];
@@ -72,17 +72,17 @@ const QUESTIONS: QA[] = [
 export const Route = createFileRoute("/yoga-for-stress")({
   head: () => ({
     meta: [
-      { title: "Yoga for Stress & Anxiety Relief | Yog Jivan" },
-      { name: "description", content: "Yoga for stress and anxiety with Master Anil — pranayama, meditation and gentle asana. Studio in Hai Duong and live online. Book a free consultation." },
-      { name: "keywords", content: "yoga for stress, stress relief yoga, yoga for anxiety, pranayama for stress, meditation for stress, yoga for burnout, calming yoga, evening yoga online" },
-      { property: "og:title", content: "Yoga for Stress Relief — Calm Your Mind, Restore Balance | Yog Jivan" },
-      { property: "og:description", content: "Pranayama, meditation and gentle asana for genuine stress relief. Studio in Hai Duong & live online. Free consultation." },
+      { title: "Yoga for Stress Support | Yog Jivan" },
+      { name: "description", content: "Gentle yoga, pranayama and meditation for stress support and general wellbeing. Studio in Hai Duong and live online. Book a free consultation." },
+      { name: "keywords", content: "yoga for stress, stress support yoga, pranayama for stress, meditation for stress, calming yoga, gentle evening yoga online" },
+      { property: "og:title", content: "Yoga for Stress Support — Gentle Movement, Breath & Meditation | Yog Jivan" },
+      { property: "og:description", content: "Gentle yoga, pranayama and meditation as part of looking after your wellbeing. Studio in Hai Duong & live online. Free consultation." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
       ...socialImageMeta(masterImages.savasanaClass),
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Yoga for Stress Relief | Yog Jivan" },
-      { name: "twitter:description", content: "Yoga, breath work and meditation to shift out of chronic stress. Free consultation." },
+      { name: "twitter:title", content: "Yoga for Stress Support | Yog Jivan" },
+      { name: "twitter:description", content: "Gentle yoga, breath work and meditation for stress support. Free consultation." },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [
@@ -93,7 +93,7 @@ export const Route = createFileRoute("/yoga-for-stress")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
-            { "@type": "ListItem", position: 2, name: "Yoga for Stress", item: CANONICAL },
+            { "@type": "ListItem", position: 2, name: "Yoga for Stress Support", item: CANONICAL },
           ],
         }),
       },
@@ -105,30 +105,31 @@ export const Route = createFileRoute("/yoga-for-stress")({
 function StressPage() {
   return (
     <TherapeuticLanding
-      eyebrow="Stress · Anxiety · Sleep"
-      heroTitle="Yoga for Stress Relief — Calm Your Mind, Restore Balance"
-      heroSub="Pranayama, meditation and gentle asana with Master Anil Choudhary — in-studio in Hai Duong, Vietnam and live online worldwide. Genuine nervous-system rest, not another wellness trend."
+      eyebrow="Gentle Movement · Breath · Meditation"
+      heroTitle="Yoga for Stress Support — Slow Down, Breathe, Rest"
+      heroSub="Pranayama, meditation and gentle asana with the Yog Jivan teaching team — in-studio in Hai Duong, Vietnam and live online worldwide. Unhurried practice for your general wellbeing."
       answerCapsule={ANSWER_CAPSULE}
-      h1="Yoga for Stress"
+      h1="Yoga for Stress Support"
       credentials={CREDENTIALS}
       questions={QUESTIONS}
+      cautionNote="Yoga at Yog Jivan is a wellbeing practice, not treatment for anxiety, burnout, insomnia or any medical condition. If you are living with a diagnosed condition, or your wellbeing is causing you concern, please continue care with a qualified clinician and tell your teacher about anything that affects how you practise."
       breatherImages={[
-        { src: masterImages.savasanaClass, alt: "Students resting deeply in Savasana at the close of a stress-relief class", caption: "Closing Savasana · nervous-system rest" },
+        { src: masterImages.savasanaClass, alt: "Students resting in Savasana at the close of a gentle class", caption: "Closing Savasana · unhurried rest" },
         { src: masterImages.rabbitPose, alt: "Gentle restorative posture in the sanctuary studio", caption: "Restorative practice · Hai Duong studio" },
       ]}
       portrait={masterImages.meditationPortrait}
-      portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, meditation teacher"
+      portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, Yog Jivan"
       masterIntro={
         <>
-          <p>Master Anil has taught pranayama and meditation to students living through everything from exam pressure and postpartum anxiety to executive burnout and grief. His stress-work is unhurried and layered — physical release first, breath second, meditation third — because that specific order is what actually shifts a chronically activated nervous system.</p>
-          <p>His teaching principle for stress: <span className="italic text-gold-gradient">"You cannot think your way out of a body in alarm. You breathe your way out."</span></p>
+          <p>Yog Jivan was founded and is led by Master Anil Choudhary, Founder & Lead Yoga Teacher, with 12+ years teaching classical Indian yoga — Hatha, Ashtanga, pranayama and meditation. Studio and private sessions are delivered by the Yog Jivan teaching team, with each student matched to a suitable teacher.</p>
+          <p>Stress-support sessions are unhurried and layered — gentle movement first, breath second, meditation third — because many people find that order easier to settle into than sitting still straight away.</p>
         </>
       }
       relatedLinks={[
-        { to: "/yoga-for-back-pain", label: "Yoga for Back Pain" },
+        { to: "/yoga-for-back-pain", label: "Yoga for Back Discomfort" },
         { to: "/yoga-for-pcod", label: "Yoga for PCOD & PCOS" },
-        { to: "/yoga-for-thyroid", label: "Yoga for Thyroid Health" },
-        { to: "/period-safe-yoga", label: "Period-Safe Yoga" },
+        { to: "/yoga-for-thyroid", label: "Yoga with a Thyroid Condition" },
+        { to: "/period-safe-yoga", label: "Cycle-Aware Yoga" },
         { to: "/online-yoga-classes", label: "Live Online Classes" },
         { to: "/yoga-for-beginners", label: "New to Yoga? Start Here" },
       ]}
@@ -139,7 +140,7 @@ function StressPage() {
         { slug: "therapeutic-yoga-benefits", title: "Personalised supportive yoga: what it is and what it is not", cat: "Health", read: "8 min" },
       ]}
       ctaTitle="Breathe. Rest. Come back to yourself."
-      ctaSub="Book a free consultation with the Yog Jivan team to map a calming path for your nervous system."
+      ctaSub="Book a free consultation with the Yog Jivan team to plan a calm, sustainable practice."
     />
   );
 }
