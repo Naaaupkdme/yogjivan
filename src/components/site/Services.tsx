@@ -235,7 +235,7 @@ const SERVICES: Service[] = [
     title: "Holistic Lifestyle",
     italic: "Consultation",
     blurb: "Personal guidance for building sustainable, healthy habits.",
-    bullets: ["Health Assessment", "Lifestyle Planning", "Habit Building", "Wellness Roadmap"],
+    bullets: ["Practice-Safety Conversation", "Lifestyle Planning", "Habit Building", "Wellness Roadmap"],
     cta: "Book Consultation",
     to: "/private-online-yoga",
     Icon: ClipboardList,
