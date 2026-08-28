@@ -49,10 +49,12 @@ export const LOCATIONS = {
 export const STUDIO_LIST = [LOCATIONS.studio1, LOCATIONS.studio2] as const;
 
 export const STUDIO_HOURS = {
-  label: "Daily · 5:00 AM – 9:00 PM",
+  label: "Mon–Sat · 5:00 AM – 9:00 PM",
   opens: "05:00",
   closes: "21:00",
-  days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+  days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  /** Owner-confirmed 2026-08-28: studios are CLOSED on Sunday. Never write "Daily". */
+  closedDays: ["Sunday"],
 } as const;
 
 /** Safe, human phrasing for "where are you" copy. */

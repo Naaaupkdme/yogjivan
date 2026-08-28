@@ -25,9 +25,8 @@ export function LocalIntro() {
             Yog Jivan runs two yoga studios serving the Hai Duong urban area of Hai Phong,
             Vietnam, teaching authentic Indian yoga to beginners, students looking for
             supportive movement, relaxation or a more comfortable practice, and people who
-            want focused one-to-one guidance. Every class is
-            taught personally by {TEACHER.name}, {TEACHER.title}, with real-time verbal
-            correction in small groups. If you cannot come to the studio, the same teaching
+            want focused one-to-one guidance. Studio classes are taught by the Yog Jivan teaching team, founded and led by
+            {" "}{TEACHER.name}, {TEACHER.title}, with real-time verbal correction in small groups. If you cannot come to the studio, the same teaching
             is available in live online classes ({ONLINE_CLASS.durationMinutes} minutes, a
             maximum of {ONLINE_CLASS.maxGroupSize} students) in English, Vietnamese and Hindi.
           </p>

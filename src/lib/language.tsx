@@ -76,7 +76,7 @@ const copy: Record<Lang, Copy> = {
     hero: {
       eyebrow: "Authentic Indian Yoga · Hai Duong Studios & Live Online",
       title: ["Yoga Classes in", "Hai Duong", "— and Live Online"],
-      sub: "Two yoga studios serving the Hai Duong urban area of Hai Phong, Vietnam. Beginner, therapeutic and personal yoga taught personally by Master Anil Choudhary, Founder & Lead Yoga Teacher — with live online classes for students worldwide.",
+      sub: "Two yoga studios serving the Hai Duong urban area of Hai Phong, Vietnam. Beginner, supportive and private yoga taught by the Yog Jivan teaching team, founded and led by Master Anil Choudhary, Founder & Lead Yoga Teacher — with live small-group online classes led by Master Anil for students worldwide.",
       primary: "Enquire About Studio Classes",
       secondary: "WhatsApp Us",
       online: "See Live Online Classes",
@@ -84,7 +84,7 @@ const copy: Record<Lang, Copy> = {
         `${PUBLIC_TRUST.yearsTeaching} Years Experience`,
         `${PUBLIC_TRUST.studentsTaught} Students Guided`,
         `Students from ${PUBLIC_TRUST.countries} Countries`,
-        "Therapeutic Yoga Expert",
+        "Classical Indian Yoga Tradition",
         "Founder & Lead Yoga Teacher",
       ],
     },
@@ -137,7 +137,7 @@ const copy: Record<Lang, Copy> = {
     hero: {
       eyebrow: "Yoga Ấn Độ chính thống · Studio Hải Dương & Online",
       title: ["Lớp Yoga tại", "Hải Dương", "— và Online trực tiếp"],
-      sub: "Hai studio phục vụ khu vực đô thị Hải Dương, Thành phố Hải Phòng. Yoga cho người mới bắt đầu, yoga trị liệu và lớp cá nhân do Master Anil Choudhary trực tiếp giảng dạy — cùng các lớp online trực tiếp cho học viên toàn cầu.",
+      sub: "Hai studio phục vụ khu vực đô thị Hải Dương, Thành phố Hải Phòng. Lớp cho người mới bắt đầu, lớp hỗ trợ nhẹ nhàng và lớp cá nhân do đội ngũ giáo viên Yog Jivan giảng dạy, được sáng lập và dẫn dắt bởi Master Anil Choudhary — cùng các lớp online nhóm nhỏ do Master Anil trực tiếp hướng dẫn cho học viên toàn cầu.",
       primary: "Tư vấn lớp tại studio",
       secondary: "Nhắn WhatsApp",
       online: "Xem lớp online trực tiếp",

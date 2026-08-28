@@ -5,7 +5,7 @@ export const ONLINE_CLASS = {
   maxGroupSize: 8,
   cameraRequired: true,
   cameraNote:
-    "Camera on is required so Master Anil can see your alignment and correct you in real time. Your session is private, never recorded for public use, and never shared.",
+    "Camera on is required so your teacher can see your alignment and correct you in real time. Members who miss a class can use the 48-hour catch-up recording.",
   languages: ["English", "Vietnamese", "Hindi"] as const,
   platform: "Zoom / Google Meet",
   recordings: {
@@ -16,9 +16,9 @@ export const ONLINE_CLASS = {
   },
   onboarding: {
     minutes: 15,
-    label: "Onboarding & health-assessment conversation",
+    label: "Onboarding & practice-safety conversation",
     note:
-      "Before your first live class we have a short 15-minute conversation about your health history, injuries and goals so your practice is safe from day one.",
+      "Before your first live class we have a short 15-minute conversation about any injuries or limitations and what you want from your practice, so we can keep it safe from day one. It is not a medical assessment and does not replace professional care.",
   },
   liveCorrection: true,
   sameTeacher: true,

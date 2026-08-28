@@ -13,7 +13,7 @@ export const TRIAL = {
     "3 days of free live group classes",
     "1 complimentary private session with Master Anil",
     "No credit card required",
-    "A short 15-minute onboarding and health-assessment conversation before your first class",
+    "A short 15-minute onboarding and practice-safety conversation before your first class",
     "One introductory offer per new student",
   ],
   ctaLabel: "Start your free trial",
