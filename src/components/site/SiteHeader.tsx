@@ -2,7 +2,6 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Facebook, Instagram, Menu, MessageCircle, Search, X, Youtube } from "lucide-react";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
-import { useLang } from "@/lib/language";
 import { isViPath, languageSwitchTarget } from "@/lib/locale-routes";
 import { SOCIAL } from "@/lib/social";
 import { SiteSearch, SiteSearchButton, openSiteSearch } from "@/components/site/SiteSearch";
@@ -74,7 +73,6 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [fullOpen, setFullOpen] = useState(false);
   const { location } = useRouterState();
-  const { lang, setLang } = useLang();
   const langTargets = languageSwitchTarget(location.pathname);
   const activeLang: "EN" | "VI" = isViPath(location.pathname) ? "VI" : "EN";
   const panelRef = useRef<HTMLDivElement>(null);
