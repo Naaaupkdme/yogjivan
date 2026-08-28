@@ -436,7 +436,7 @@ function YogaForBeginnersPage() {
               </Link>.
             </p>
             <p className="mt-4 text-sm md:text-base leading-relaxed text-foreground/85">
-              Once you are comfortable with the basics, most students move on to a condition-specific{" "}
+              Once you are comfortable with the basics, a natural next step is a condition-specific{" "}
               <Link to="/programs" className="text-[color:var(--gold)] hover:underline">yoga program</Link>{" "}
               such as back pain, PCOD or stress, continue with{" "}
               <Link to="/online-yoga-classes" className="text-[color:var(--gold)] hover:underline">live online yoga classes</Link>, or work privately through{" "}

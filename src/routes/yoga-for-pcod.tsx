@@ -126,7 +126,7 @@ function PCODPage() {
       portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, therapeutic yoga teacher"
       masterIntro={
         <>
-          <p>Master Anil has supported hundreds of women through PCOD, PCOS and cycle-related concerns over 12+ years of therapeutic teaching. His approach is patient and longitudinal — measured across months and cycles, not single sessions — because that is how hormonal systems actually respond.</p>
+          <p>Master Anil has guided women through PCOD, PCOS and cycle-related concerns over 12+ years of teaching. His approach is patient and longitudinal — measured across months and cycles, not single sessions — because that is how hormonal systems actually respond.</p>
           <p>His teaching principle for hormonal work: <span className="italic text-gold-gradient">"The endocrine system does not respond to urgency. It responds to rhythm — of breath, sleep, meals and practice — repeated kindly, over time."</span></p>
         </>
       }

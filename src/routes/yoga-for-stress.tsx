@@ -5,7 +5,7 @@ import { masterImages, socialImageMeta } from "@/lib/images";
 const CANONICAL = "https://yogjivan.com/yoga-for-stress";
 
 const ANSWER_CAPSULE =
-  "Yog Jivan's approach to stress combines pranayama (breath work), meditation, and gentle physical practice to shift your nervous system out of chronic fight-or-flight. According to Yoga Alliance's 2026 practitioner survey, stress relief has now overtaken flexibility as the #1 reason people practice yoga — 51% of practitioners cite it as their main motivation — and Master Anil's method is built exactly for that: specific breathing techniques (nadi shodhana, bhramari, extended-exhale breath) paired with a calming asana sequence and closing meditation. Sessions are small-batch or private, available in-studio in Hai Duong, Vietnam and live online worldwide. Most students notice measurably calmer sleep and mood in the first 1–2 weeks.";
+  "Yog Jivan's approach to stress combines pranayama (breath work), meditation, and gentle physical practice to shift your nervous system out of chronic fight-or-flight. According to Yoga Alliance's 2026 practitioner survey, stress relief has now overtaken flexibility as the #1 reason people practice yoga — 51% of practitioners cite it as their main motivation — and Master Anil's method is built exactly for that: specific breathing techniques (nadi shodhana, bhramari, extended-exhale breath) paired with a calming asana sequence and closing meditation. Sessions are small-batch or private, available in-studio in Hai Duong, Vietnam and live online worldwide. Individual experience varies; a steady practice over weeks is what makes the difference.";
 
 const { GraduationCap, Stethoscope, Users, Globe2, Award, ShieldCheck } = SHARED_CREDENTIAL_ICONS;
 

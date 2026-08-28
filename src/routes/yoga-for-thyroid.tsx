@@ -126,7 +126,7 @@ function ThyroidPage() {
       portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, therapeutic yoga teacher"
       masterIntro={
         <>
-          <p>Master Anil has supported many students living with hypo- and hyperthyroid conditions over 12+ years of teaching. His approach is patient and practical — coordinated with your medical team, adapted to your energy each day, and built for the long, quiet work that thyroid conditions actually require.</p>
+          <p>Master Anil has guided students living with hypo- and hyperthyroid conditions over 12+ years of teaching. His approach is patient and practical — coordinated with your medical team, adapted to your energy each day, and built for the long, quiet work that thyroid conditions actually require.</p>
           <p>His teaching principle for endocrine work: <span className="italic text-gold-gradient">"The glands do not respond to effort. They respond to steadiness — of breath, sleep and rhythm — kept up patiently over months."</span></p>
         </>
       }
