@@ -151,7 +151,7 @@ export function SiteFooter() {
                   <li className="flex gap-3">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                     <a href={SOCIAL.googleMapsStudio2} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
-                      <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">Studio 2 · Wellness & Healing</span>
+                      <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">Studio 2 · Yog Jivan Yoga Studio</span>
                       <span className="mt-0.5 block">{STUDIO_ADDRESSES.studio2.full}</span>
                     </a>
                   </li>

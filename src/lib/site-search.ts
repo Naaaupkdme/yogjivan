@@ -172,8 +172,8 @@ const PAGES: SearchEntry[] = [
   },
   {
     id: "studio-2",
-    title: "Yog Jivan Wellness & Healing Center (Studio 2)",
-    description: "Second studio at 5 Ngô Quyền, Phường Thành Đông, in the Hai Duong urban area.",
+    title: "Yog Jivan Yoga Studio (Studio 2)",
+    description: "Second studio at Tầng 3, Nhà Văn Hóa Lao Động, Ngô Quyền, in the Hai Duong urban area.",
     category: "Locations",
     href: "/contact",
     keywords: [
