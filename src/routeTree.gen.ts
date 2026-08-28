@@ -40,6 +40,10 @@ import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as ViIndexRouteImport } from './routes/vi.index'
+import { Route as ViLopYogaOnlineRouteImport } from './routes/vi.lop-yoga-online'
+import { Route as ViYoga1Kem1OnlineRouteImport } from './routes/vi.yoga-1-kem-1-online'
+import { Route as ViYogaHaiDuongRouteImport } from './routes/vi.yoga-hai-duong'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
@@ -203,6 +207,26 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ViIndexRoute = ViIndexRouteImport.update({
+  id: '/vi/',
+  path: '/vi/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ViLopYogaOnlineRoute = ViLopYogaOnlineRouteImport.update({
+  id: '/vi/lop-yoga-online',
+  path: '/vi/lop-yoga-online',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ViYoga1Kem1OnlineRoute = ViYoga1Kem1OnlineRouteImport.update({
+  id: '/vi/yoga-1-kem-1-online',
+  path: '/vi/yoga-1-kem-1-online',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ViYogaHaiDuongRoute = ViYogaHaiDuongRouteImport.update({
+  id: '/vi/yoga-hai-duong',
+  path: '/vi/yoga-hai-duong',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
   id: '/.lovable/oauth/consent',
   path: '/.lovable/oauth/consent',
@@ -262,7 +286,11 @@ export interface FileRoutesByFullPath {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
+  '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
+  '/vi/yoga-hai-duong': typeof ViYogaHaiDuongRoute
   '/blog/': typeof BlogIndexRoute
+  '/vi/': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -300,7 +328,11 @@ export interface FileRoutesByTo {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
+  '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
+  '/vi/yoga-hai-duong': typeof ViYogaHaiDuongRoute
   '/blog': typeof BlogIndexRoute
+  '/vi': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -339,7 +371,11 @@ export interface FileRoutesById {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
+  '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
+  '/vi/yoga-hai-duong': typeof ViYogaHaiDuongRoute
   '/blog/': typeof BlogIndexRoute
+  '/vi/': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -379,7 +415,11 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/vi/lop-yoga-online'
+    | '/vi/yoga-1-kem-1-online'
+    | '/vi/yoga-hai-duong'
     | '/blog/'
+    | '/vi/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/lovable/email/auth/preview'
@@ -417,7 +457,11 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/vi/lop-yoga-online'
+    | '/vi/yoga-1-kem-1-online'
+    | '/vi/yoga-hai-duong'
     | '/blog'
+    | '/vi'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/lovable/email/auth/preview'
@@ -455,7 +499,11 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/vi/lop-yoga-online'
+    | '/vi/yoga-1-kem-1-online'
+    | '/vi/yoga-hai-duong'
     | '/blog/'
+    | '/vi/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/lovable/email/auth/preview'
@@ -494,7 +542,11 @@ export interface RootRouteChildren {
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  ViLopYogaOnlineRoute: typeof ViLopYogaOnlineRoute
+  ViYoga1Kem1OnlineRoute: typeof ViYoga1Kem1OnlineRoute
+  ViYogaHaiDuongRoute: typeof ViYogaHaiDuongRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  ViIndexRoute: typeof ViIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
@@ -721,6 +773,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vi/': {
+      id: '/vi/'
+      path: '/vi'
+      fullPath: '/vi/'
+      preLoaderRoute: typeof ViIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vi/lop-yoga-online': {
+      id: '/vi/lop-yoga-online'
+      path: '/vi/lop-yoga-online'
+      fullPath: '/vi/lop-yoga-online'
+      preLoaderRoute: typeof ViLopYogaOnlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vi/yoga-1-kem-1-online': {
+      id: '/vi/yoga-1-kem-1-online'
+      path: '/vi/yoga-1-kem-1-online'
+      fullPath: '/vi/yoga-1-kem-1-online'
+      preLoaderRoute: typeof ViYoga1Kem1OnlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vi/yoga-hai-duong': {
+      id: '/vi/yoga-hai-duong'
+      path: '/vi/yoga-hai-duong'
+      fullPath: '/vi/yoga-hai-duong'
+      preLoaderRoute: typeof ViYogaHaiDuongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.lovable/oauth/consent': {
       id: '/.lovable/oauth/consent'
       path: '/.lovable/oauth/consent'
@@ -791,7 +871,11 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   BlogSlugRoute: BlogSlugRoute,
+  ViLopYogaOnlineRoute: ViLopYogaOnlineRoute,
+  ViYoga1Kem1OnlineRoute: ViYoga1Kem1OnlineRoute,
+  ViYogaHaiDuongRoute: ViYogaHaiDuongRoute,
   BlogIndexRoute: BlogIndexRoute,
+  ViIndexRoute: ViIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,

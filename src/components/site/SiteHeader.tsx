@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Facebook, Instagram, Menu, MessageCircle, Search, X, Youtube } from "lucide-react";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
-import { useLang } from "@/lib/language";
+import { isViPath, languageSwitchTarget } from "@/lib/locale-routes";
 import { SOCIAL } from "@/lib/social";
 import { SiteSearch, SiteSearchButton, openSiteSearch } from "@/components/site/SiteSearch";
 import { BodyPortal } from "@/components/site/BodyPortal";
@@ -73,7 +73,8 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [fullOpen, setFullOpen] = useState(false);
   const { location } = useRouterState();
-  const { lang, setLang } = useLang();
+  const langTargets = languageSwitchTarget(location.pathname);
+  const activeLang: "EN" | "VI" = isViPath(location.pathname) ? "VI" : "EN";
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -187,12 +188,21 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-1.5 md:gap-2">
+          {/* Language switch is URL-based: it navigates to the Vietnamese or
+              English URL for the current page (or the closest equivalent).
+              It never re-renders the same URL in another language. */}
           <div className="hidden md:flex shrink-0 items-center overflow-hidden rounded-full border border-border/60">
-            {(["EN", "VI"] as const).map((item) => (
-              <button key={item} onClick={() => setLang(item)}
-                className={`px-2 py-1.5 text-[0.58rem] uppercase tracking-[0.18em] transition-colors ${lang === item ? "bg-primary/15 text-primary" : "text-muted-foreground hover:text-foreground"}`}>
-                {item}
-              </button>
+            {(
+              [
+                { code: "EN" as const, href: langTargets.en, hrefLang: "en" },
+                { code: "VI" as const, href: langTargets.vi, hrefLang: "vi" },
+              ]
+            ).map((item) => (
+              <a key={item.code} href={item.href} hrefLang={item.hrefLang}
+                aria-current={activeLang === item.code ? "true" : undefined}
+                className={`px-2 py-1.5 text-[0.58rem] uppercase tracking-[0.18em] transition-colors ${activeLang === item.code ? "bg-primary/15 text-primary" : "text-muted-foreground hover:text-foreground"}`}>
+                {item.code}
+              </a>
             ))}
           </div>
 
@@ -271,6 +281,24 @@ export function SiteHeader() {
                   <Search className="h-4 w-4" strokeWidth={1.5} />
                   Search
                 </button>
+
+                {/* URL-based language switch (mobile / full menu). */}
+                <div className="mt-3 flex items-center gap-2">
+                  <span className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]/80">Ngôn ngữ</span>
+                  <div className="flex items-center overflow-hidden rounded-full border border-border/60">
+                    {([
+                      { code: "EN" as const, href: langTargets.en, hrefLang: "en" },
+                      { code: "VI" as const, href: langTargets.vi, hrefLang: "vi" },
+                    ]).map((item) => (
+                      <a key={item.code} href={item.href} hrefLang={item.hrefLang}
+                        onClick={() => setFullOpen(false)}
+                        aria-current={activeLang === item.code ? "true" : undefined}
+                        className={`px-3 py-2 text-[0.6rem] uppercase tracking-[0.18em] transition-colors ${activeLang === item.code ? "bg-primary/15 text-primary" : "text-muted-foreground hover:text-foreground"}`}>
+                        {item.code}
+                      </a>
+                    ))}
+                  </div>
+                </div>
                 <div className="mt-8 grid gap-8 sm:grid-cols-2 xl:grid-cols-1">
                   {FULL_MENU.map((group) => (
                     <div key={group.group}>

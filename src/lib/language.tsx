@@ -113,7 +113,7 @@ const copy: Record<Lang, Copy> = {
       title: "Enter with a conversation.",
       sub: "Tell us your goal. We will guide you to the right practice and studio.",
       formTitle: "Private consultation",
-      note: "Personal WhatsApp replies, usually within minutes.",
+      note: "Replies come from the Yog Jivan team on WhatsApp.",
       submit: "Send via WhatsApp",
     },
     footer: {
@@ -145,7 +145,7 @@ const copy: Record<Lang, Copy> = {
     },
     story: {
       eyebrow: "Hành trình người sáng lập",
-      title: "Một cuộc đời được xây dựng bằng kỷ luật, chữa lành và phụng sự.",
+      title: "Kỷ luật, sự bền bỉ và tinh thần phụng sự.",
       intro: "Từ Ấn Độ đến Việt Nam, Yog Jivan phát triển từ một hành trình tu tập cá nhân thành không gian wellness cao cấp dành cho những học viên tìm kiếm chuyển hóa, trị liệu, chiều sâu và sự kết nối.",
     },
     trust: {
@@ -210,7 +210,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (typeof document !== "undefined") {
-      document.documentElement.lang = lang === "VI" ? "vi" : "en";
+      // NOTE: <html lang> is owned by the URL (see src/lib/locale-routes.ts).
+      // The UI language toggle must not overwrite it.
       document.documentElement.dataset.theme = theme;
     }
     try {

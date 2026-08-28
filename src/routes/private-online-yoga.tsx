@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { hreflangLinks, PAIR_PRIVATE } from "@/lib/locale-routes";
 import { PageHero } from "@/components/site/PageHero";
 import { FurtherReading } from "@/components/site/FurtherReading";
 import { PrivateYogaEnquiryForm } from "@/components/site/PrivateYogaEnquiryForm";
@@ -270,7 +271,7 @@ export const Route = createFileRoute("/private-online-yoga")({
       { name: "twitter:title", content: PT_TITLE },
       { name: "twitter:description", content: PT_DESC },
     ],
-    links: [{ rel: "canonical", href: PT_URL }],
+    links: [{ rel: "canonical", href: PT_URL }, ...hreflangLinks(PAIR_PRIVATE)],
     scripts: [
       {
         type: "application/ld+json",
