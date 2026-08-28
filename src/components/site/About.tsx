@@ -10,7 +10,7 @@ const PILLARS = [
   { Icon: Sparkles, t: `${PUBLIC_TRUST.yearsTeaching} Years Teaching`, d: "Classical Indian yoga — Hatha, Ashtanga and pranayama — taught with careful progression and attention to alignment." },
   { Icon: Flower2, t: "Beginner to Advanced", d: "From first postures to inversions, arm balances and backbends, at the pace your practice actually allows." },
   { Icon: HeartHandshake, t: "A Teaching Standard", d: "As founder, Master Anil sets the approach every Yog Jivan teacher follows: safety first, steady progression, honest guidance." },
-  { Icon: Globe2, t: `${PUBLIC_TRUST.studentsTaught} Students Guided`, d: `Students from ${PUBLIC_TRUST.countries} countries practise with Yog Jivan, in our Hai Duong studios and live online.` },
+  { Icon: Globe2, t: `${PUBLIC_TRUST.studentsTaught} Students Guided`, d: `Yog Jivan has guided students from ${PUBLIC_TRUST.countries} countries, in our Hai Duong studios and live online.` },
 ];
 
 export function About() {

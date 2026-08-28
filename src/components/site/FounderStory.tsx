@@ -4,11 +4,11 @@ import { masterImages, masterAlts } from "@/lib/images";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
 
 const TIMELINE = [
-  { year: "Pre-2017", title: "Formation in India", body: "Years of dedicated study — Diploma and Master's Degree in Yoga, rooted in classical Indian yoga traditions." },
-  { year: "2017", title: "Arrival in Vietnam", body: "Master Anil moved to Hai Duong with a mission: bring authentic Indian yoga to Vietnamese and international students." },
-  { year: "2019", title: "Sanctuary Studio Opens", body: "Yog Jivan's first dedicated studio opens, becoming a home for consistent, carefully progressed practice." },
-  { year: "2022", title: "Global Online Community", body: "Programs reach students in 20+ countries through live online classes and private mentorship." },
-  { year: "Today", title: `${PUBLIC_TRUST.studentsTaught} Students Guided`, body: "A growing sanctuary — studio and private classes taught by the Yog Jivan teaching team, plus live online group classes led by Master Anil." },
+  { year: "Founder", title: "Master Anil Choudhary", body: "Founder & Lead Yoga Teacher of Yog Jivan. He sets the teaching approach the whole team follows." },
+  { year: "Experience", title: "12+ Years Teaching", body: "Classical Indian yoga — Hatha, Ashtanga and pranayama — taught with careful progression and attention to alignment." },
+  { year: "Reach", title: `${PUBLIC_TRUST.studentsTaught} Students Guided`, body: `Yog Jivan has guided students from ${PUBLIC_TRUST.countries} countries, in-studio and live online.` },
+  { year: "Studios", title: "Two Studios", body: "Serving the Hai Duong urban area with dedicated practice spaces." },
+  { year: "Model", title: "Live Online + Private Team", body: "Live online group classes led by Master Anil; private and studio sessions matched with the Yog Jivan teaching team." },
 ];
 
 export function FounderStory() {
@@ -22,7 +22,7 @@ export function FounderStory() {
           </p>
           <h2 className="mt-5 fluid-title">Meet Master Anil Choudhary.</h2>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground md:text-base">
-            12+ years of practice. Diploma and Master's Degree in Yoga. A mission to share authentic Indian wellness with the world.
+            Master Anil Choudhary is the Founder & Lead Yoga Teacher of Yog Jivan. 12+ years of teaching classical Indian yoga — Hatha, Ashtanga and pranayama — with a team-based approach that has guided 10,000+ students from 20+ countries.
           </p>
         </div>
 
