@@ -17,16 +17,16 @@ const WA = SOCIAL.whatsapp;
 
 const TITLE = "Yoga for Beginners in Hai Duong & Live Online | Yog Jivan";
 const DESCRIPTION =
-  "Beginner yoga classes at two studios in the Hai Duong urban area, plus live online classes worldwide. No flexibility needed. Taught by Master Anil.";
+  "Beginner yoga classes at two studios in the Hai Duong urban area, plus live online classes worldwide. No flexibility needed. Small groups, beginner-first pacing.";
 
 const ANSWER_CAPSULE =
-  "Yoga for beginners at Yog Jivan is designed for people who have never practised before — no flexibility, strength or experience is required. You can start in person at either of our two studios serving the Hai Duong urban area of Hai Phong, Vietnam, or join a live online class from anywhere in the world. Every class is taught personally by Master Anil Choudhary, Founder & Lead Yoga Teacher, in small groups so you are corrected by name rather than left to copy a screen. The next step is simple: enquire about a studio class, or start the online introductory offer.";
+  "Yoga for beginners at Yog Jivan is designed for people who have never practised before — no flexibility, strength or experience is required. You can start in person at either of our two studios serving the Hai Duong urban area of Hai Phong, Vietnam, or join a live online class from anywhere in the world. Classes are taught in small groups by the Yog Jivan teaching team, founded and led by Master Anil Choudhary, Founder & Lead Yoga Teacher, so you are corrected by name rather than left to copy a screen. The next step is simple: enquire about a studio class, or start the online introductory offer.";
 
 const QUICK_ANSWERS = [
   { label: "Who it is for", text: "Complete beginners, returning practitioners, and people who feel stiff, stressed or unsure where to start." },
   { label: "Flexibility needed", text: "None. Every posture is taught in stages and props are used from day one." },
   { label: "Where", text: "Two studios serving the Hai Duong urban area, plus live online classes worldwide." },
-  { label: "Who teaches", text: `${TEACHER.name}, ${TEACHER.title} — ${TEACHER.yearsTeaching} years teaching.` },
+  { label: "Who teaches", text: `The Yog Jivan teaching team, founded and led by ${TEACHER.name}, ${TEACHER.title} — ${TEACHER.yearsTeaching} years teaching.` },
   { label: "Next step", text: "Enquire about a studio class, or start the online introductory offer." },
 ];
 
@@ -41,7 +41,7 @@ const TRUST_STATS = [
 const CREDENTIALS = [
   { icon: GraduationCap, label: `${TEACHER.title} — classical Hatha, Ashtanga & pranayama` },
   { icon: Stethoscope, label: "Teaches absolute beginners with safety-first sequencing — no forced ranges" },
-  { icon: Users, label: `${PUBLIC_TRUST.studentsTaught} students taught — many arrived as complete beginners` },
+  { icon: Users, label: `${PUBLIC_TRUST.studentsTaught} students guided — many arrived as complete beginners` },
   { icon: Globe2, label: `Students in ${PUBLIC_TRUST.countries} countries — Vietnam, India, USA, EU, Australia` },
   { icon: Award, label: "Founder of Yog Jivan Sanctuary and the Yog Jivan online school" },
   { icon: ShieldCheck, label: "Beginner-first pacing — you move only when your body is ready" },
@@ -65,7 +65,7 @@ const QUESTIONS: QA[] = [
   {
     q: "What happens in a beginner's first class?",
     answer:
-      "A beginner class is calm and unhurried: gentle breath awareness, guided joint warm-ups, a handful of foundation postures taught with clear verbal cueing, closing pranayama and a guided savasana rest. There is no choreography to memorise. For live online students, a short 15-minute onboarding and health-assessment conversation happens before the first class.",
+      "A beginner class is calm and unhurried: gentle breath awareness, guided joint warm-ups, a handful of foundation postures taught with clear verbal cueing, closing pranayama and a guided savasana rest. There is no choreography to memorise. For live online students, a short onboarding conversation happens before the first class.",
     bullets: [
       `Online students: a ${ONLINE_CLASS.onboarding.minutes}-minute onboarding and health-assessment conversation before the first live class.`,
       "Breath awareness and gentle centering to settle the nervous system.",
@@ -82,7 +82,7 @@ const QUESTIONS: QA[] = [
     bullets: [
       "Studio: in-person adjustments and community — ideal if you are local to the Hai Duong urban area.",
       `Live online: ${ONLINE_CLASS.platform}, maximum ${ONLINE_CLASS.maxGroupSize} students, ${ONLINE_CLASS.durationMinutes}-minute sessions.`,
-      "Camera on is required online so your alignment can be seen and corrected.",
+      "Camera on is encouraged online so your alignment can be seen and corrected.",
       "Same teacher and same beginner-first pacing in either format.",
       "Classes are taught in English, Vietnamese and Hindi.",
       "Many students combine a mid-week online session with a weekend studio class.",
@@ -104,11 +104,11 @@ const QUESTIONS: QA[] = [
   {
     q: "Is beginner yoga safe if I have an injury or a health condition?",
     answer:
-      "Tell us before you practise. Live online students have a 15-minute health-assessment conversation before the first class, and studio students are asked about injuries, medication and goals on arrival, so postures can be adapted or substituted. Yoga is a wellness practice and is not a substitute for medical care — please consult your doctor about any medical condition.",
+      "Tell us before you practise. Live online students have a short onboarding conversation before the first class, and studio students can share anything relevant on arrival, so postures can be adapted or substituted. Yoga is a wellness practice and is not a substitute for medical care — please consult your doctor about any medical condition.",
     bullets: [
-      "Share injuries, surgeries, pregnancy and medication before your first class.",
+      "Tell us anything relevant to practising safely before your first class.",
       "Postures are adapted or substituted rather than forced.",
-      "Master Anil teaches every class, so your history is not lost between teachers.",
+      "What you share is passed on so your practice stays adapted from class to class.",
       HEALTH_DISCLAIMER.short,
     ],
   },
@@ -272,7 +272,7 @@ function YogaForBeginnersPage() {
       <section className="section-y">
         <div className="container-luxe">
           <SectionHead
-            eyebrow="Your Teacher"
+            eyebrow="Our Founder & Lead Teacher"
             title={TEACHER.name}
             sub={`${TEACHER.title}, Yog Jivan Sanctuary`}
           />
@@ -280,7 +280,7 @@ function YogaForBeginnersPage() {
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10">
               <LuxuryImage
                 src={masterImages.meditationPortrait}
-                alt={`${TEACHER.name} — ${TEACHER.title}, teaching beginners`}
+                alt={`${TEACHER.name} — ${TEACHER.title}`}
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>
@@ -320,7 +320,7 @@ function YogaForBeginnersPage() {
             <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 md:col-span-2 md:aspect-[16/9]">
               <LuxuryImage
                 src={masterImages.studioAdjustment}
-                alt="Master Anil giving a gentle hands-on adjustment to a beginner student in the studio"
+                alt="A gentle hands-on adjustment for a beginner student in the Yog Jivan studio"
                 className="h-full w-full object-cover"
               />
               <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-xs uppercase tracking-[0.22em] text-white/85">
@@ -370,9 +370,9 @@ function YogaForBeginnersPage() {
               <ul className="mt-4 space-y-2 text-sm leading-relaxed text-foreground/85">
                 <li>{ONLINE_CLASS.durationMinutes}-minute live sessions on {ONLINE_CLASS.platform}.</li>
                 <li>Maximum {ONLINE_CLASS.maxGroupSize} students, so you are corrected by name.</li>
-                <li>Camera on is required for correction; your session is never shared.</li>
+                <li>Camera on is encouraged for correction; your session is never shared.</li>
                 <li>Missed a class? A recording is available to members for {ONLINE_CLASS.recordings.windowHours} hours.</li>
-                <li>Taught in {ONLINE_CLASS.languages.join(", ")}.</li>
+                <li>Teaching available across {ONLINE_CLASS.languages.join(", ")}, subject to availability.</li>
               </ul>
             </div>
           </div>
@@ -457,7 +457,7 @@ function YogaForBeginnersPage() {
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground leading-relaxed">
               Enquire about a beginner class at either studio serving the Hai Duong urban area, or start the
-              online introductory offer and practise live with Master Anil from anywhere in the world.
+              online introductory offer and practise live with a Yog Jivan teacher from anywhere in the world.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <Link to="/contact" hash="consultation" className="btn-gold">
