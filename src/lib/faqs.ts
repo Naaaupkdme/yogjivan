@@ -8,7 +8,7 @@ export const FAQS = [
   },
   {
     q: "I am a complete beginner — can I join?",
-    a: "Yes. Every journey starts with a short 15-minute onboarding and health-assessment conversation, so we can design a safe entry point for absolute beginners and progress at your pace.",
+    a: "Yes. Every journey starts with a short 15-minute onboarding and practice-safety conversation, so we can design a safe entry point for absolute beginners and progress at your pace.",
   },
   {
     q: "Do you offer private one-on-one sessions?",

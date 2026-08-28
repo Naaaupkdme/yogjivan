@@ -363,7 +363,7 @@ function OnlineYogaClassesPage() {
           <SectionHead
             eyebrow="Choose your path"
             title="Live group classes or private 1-on-1 online"
-            sub="Both are live with Master Anil. Many students combine the two."
+            sub="Live group classes are led by Master Anil. Private 1-on-1 sessions are with a dedicated, matched Yog Jivan teacher."
           />
           <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-2">
             <article className="glass-luxe flex flex-col rounded-[1.75rem] border border-[color:var(--gold)]/25 p-7">

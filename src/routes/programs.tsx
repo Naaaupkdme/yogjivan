@@ -35,7 +35,7 @@ export const Route = createFileRoute("/programs")({
         children: JSON.stringify(serviceSchema({
           name: "Studio Yoga Classes in Hai Duong",
           serviceType: "Yoga Class",
-          description: "Group yoga classes at the Yog Jivan studios in the Hai Duong urban area of Hai Phong, taught personally by Master Anil Choudhary, with attention to alignment and steady progression.",
+          description: "Group yoga classes at the Yog Jivan studios in the Hai Duong urban area of Hai Phong, taught by the Yog Jivan teaching team founded and led by Master Anil Choudhary, with attention to alignment and steady progression.",
           areaServed: "Hai Duong, Vietnam",
           url: "/programs",
         })),
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/programs")({
         children: JSON.stringify(serviceSchema({
           name: "Private Yoga Sessions",
           serviceType: "Private Yoga Session",
-          description: "Live 60-minute one-on-one yoga sessions with Master Anil Choudhary, in studio or online, adapted to your experience and goals. Pricing and scheduling are confirmed by enquiry.",
+          description: "Live 60-minute one-on-one yoga sessions with a matched teacher from the Yog Jivan teaching team, in studio or online, adapted to your experience and goals. Your matched teacher then continues with you session after session. Pricing and scheduling are confirmed by enquiry.",
           areaServed: "Hai Duong, Vietnam",
           url: "/private-online-yoga",
         })),
@@ -78,7 +78,7 @@ export const Route = createFileRoute("/programs")({
         eyebrow="Yoga Programs & Pricing"
         title="Choose your"
         accent="pathway."
-        sub="Studio group classes in the Hai Duong urban area, private 1-on-1 yoga in studio or online, and live small-group online classes with Master Anil Choudhary."
+        sub="Studio group classes in the Hai Duong urban area, private 1-on-1 yoga with a matched Yog Jivan teacher in studio or online, and live small-group online classes with Master Anil Choudhary."
       />
       <Programs />
       <Services />

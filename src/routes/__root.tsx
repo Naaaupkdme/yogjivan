@@ -167,7 +167,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               geo: { "@type": "GeoCoordinates", latitude: 20.9373, longitude: 106.3316 },
               openingHoursSpecification: [{
                 "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
                 opens: "05:00", closes: "21:00",
               }],
               sameAs: [
@@ -198,7 +198,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               geo: { "@type": "GeoCoordinates", latitude: 20.9410, longitude: 106.3260 },
               openingHoursSpecification: [{
                 "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
                 opens: "05:00", closes: "21:00",
               }],
               sameAs: [

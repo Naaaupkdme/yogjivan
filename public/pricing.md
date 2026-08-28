@@ -7,7 +7,7 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 ## Free Trial
 - Price: $0
 - Includes: 3 days of free live group class access, plus one complimentary private session
-- Also included: a short 15-minute onboarding and health-assessment conversation before your first live class
+- Also included: a short 15-minute onboarding and practice-safety conversation before your first live class
 - Limits: One introductory offer per new student · no card required
 - Best for: First-time students evaluating fit before committing
 
@@ -23,7 +23,7 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 
 ## 1-on-1 Private Sessions (Online or Studio)
 - Price: Custom — contact for a quote
-- Includes: Personalized program, onboarding health assessment, progress reviews, direct support between sessions
+- Includes: Personalized program with a matched Yog Jivan teacher, onboarding and practice-safety conversation, progress reviews, direct support between sessions
 - Format: Online or in-person at the studios
 - Best for: Therapeutic goals or advanced practitioners
 

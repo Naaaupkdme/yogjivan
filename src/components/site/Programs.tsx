@@ -8,7 +8,7 @@ import { STUDIO_PRICING_NOTE } from "@/lib/facts/pricing";
 const STUDIO = {
   name: "Studio Membership",
   tag: "Group Classes",
-  blurb: "Daily group practice at our two studios serving the Hai Duong urban area.",
+  blurb: "Group practice Monday to Saturday at our two studios serving the Hai Duong urban area.",
   perks: [
     "In-person group classes with the Yog Jivan teaching team",
     "Guidance and modifications during live practice",

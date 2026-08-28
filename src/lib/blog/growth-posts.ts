@@ -81,10 +81,10 @@ export const GROWTH_POSTS: BlogPost[] = [
     keyTakeaways: [
       "Live group classes are 60 minutes with a maximum of eight students.",
       "Private sessions are 60 minutes, entirely built around one person, with pricing confirmed by enquiry.",
-      "Many students combine the two: group for routine, private for specific work.",
+      "The two formats can be combined: group for routine, private for specific work.",
     ],
     body: [
-      { type: "p", text: "Both formats are live, both are 60 minutes, and both are taught personally by Master Anil Choudhary. The difference is how much of the session is shaped around you, and how much flexibility you need in scheduling. Here is a plain comparison." },
+      { type: "p", text: "Both formats are live and both are 60 minutes. Live small-group classes are led by Master Anil Choudhary; private 1-on-1 sessions are taught by a matched Yog Jivan teacher who then continues with you session after session. The difference is how much of the session is shaped around you, and how much flexibility you need in scheduling. Here is a plain comparison." },
       { type: "h2", text: "Attention" },
       { type: "p", text: "In a live group class the cap is eight students, which is small enough for the teacher to see everyone and give verbal corrections by name during the session. In a private session, all the attention is on you: every posture can be adjusted, repeated or replaced on the spot." },
       { type: "h2", text: "Scheduling" },
@@ -142,12 +142,12 @@ export const GROWTH_POSTS: BlogPost[] = [
     read: "8 min",
     date: "2026-08-06",
     keyTakeaways: [
-      "A short 15-minute onboarding and health-assessment conversation comes first.",
+      "A short 15-minute onboarding and practice-safety conversation comes first.",
       "Classes are 60 minutes with a maximum of eight students and real-time verbal guidance.",
       "Members can catch up on a missed class recording for 48 hours.",
     ],
     body: [
-      { type: "p", text: "Your first live online class with Yog Jivan starts before the class itself. There is a short 15-minute onboarding and health-assessment conversation, then a 60-minute live session with a maximum of eight students. Here is the full sequence so nothing is a surprise." },
+      { type: "p", text: "Your first live online class with Yog Jivan starts before the class itself. There is a short 15-minute onboarding and practice-safety conversation, then a 60-minute live session with a maximum of eight students. Here is the full sequence so nothing is a surprise." },
       { type: "h2", text: "Step 1 — the 15-minute onboarding conversation" },
       { type: "p", text: "This is a short conversation, not a sales call. We ask about your experience, current activity level, any injuries, health conditions, surgeries or medication we should know about, and what you are hoping to get from practising. It also gives us a chance to check your setup and answer questions. If your situation needs medical clearance first, we will say so." },
       { type: "h2", text: "Step 2 — setting up your space" },

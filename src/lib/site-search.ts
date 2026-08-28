@@ -40,7 +40,7 @@ const PAGES: SearchEntry[] = [
   {
     id: "studio-classes",
     title: "Studio Classes in Hai Duong",
-    description: "Daily in-person group classes at the Yog Jivan studios in the Hai Duong urban area.",
+    description: "In-person group classes, Monday to Saturday, at the Yog Jivan studios in the Hai Duong urban area.",
     category: "Programs",
     href: "/programs",
     boost: 1.35,

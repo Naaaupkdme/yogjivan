@@ -35,7 +35,7 @@ export const LEGACY_POSTS: BlogPost[] = [
       ]},
       { type: "h2", text: "Why the slower foundation is useful" },
       { type: "p", text: "Three things become much easier when a class is not rushing. First, you notice where your own range genuinely ends, instead of borrowing movement from somewhere else in the body. Second, breathing becomes something you can actively work with rather than background noise. Third, a teacher can offer a correction and you have time to apply it — which is the whole point of a live class instead of a video." },
-      { type: "quote", text: "The pose is not the practice. The breath inside the pose is the practice.", cite: "Master Anil Choudhary" },
+      { type: "p", text: "A teaching principle we come back to at Yog Jivan: the pose is not the practice — the breath inside the pose is." },
       { type: "h2", text: "Who it suits" },
       { type: "p", text: "Hatha suits complete beginners, people who describe themselves as not flexible, desk workers who want to move more comfortably, and anyone returning after injury, illness or a long gap — with medical clearance where a health condition is involved. Many students find a steady practice supportive for general wellbeing; individual experience varies and yoga does not replace care from a qualified health professional." },
       { type: "h2", text: "How to start" },
@@ -45,7 +45,7 @@ export const LEGACY_POSTS: BlogPost[] = [
         "Aim for two or three short sessions a week rather than one long one.",
         "Give it several weeks before deciding whether the style fits you.",
       ]},
-      { type: "p", text: "At Yog Jivan, both the studio beginner path and the live online classes start from this Hatha foundation, taught personally by Master Anil Choudhary." },
+      { type: "p", text: "At Yog Jivan, both the studio beginner path and the live online classes start from this Hatha foundation. Studio classes are taught by the Yog Jivan teaching team; live small-group online classes are led personally by Master Anil Choudhary." },
     ],
     related: [
       { label: "Yoga for Beginners", to: "/yoga-for-beginners" },
@@ -60,7 +60,7 @@ export const LEGACY_POSTS: BlogPost[] = [
     ],
     cta: {
       title: "Begin with the foundations",
-      sub: "Beginner-friendly studio classes in the Hai Duong urban area and live online classes, taught personally by Master Anil.",
+      sub: "Beginner-friendly studio classes in the Hai Duong urban area with the Yog Jivan teaching team, and live online classes led by Master Anil.",
       primary: { label: "Yoga for Beginners", to: "/yoga-for-beginners" },
       secondary: { label: "See programs & pricing", to: "/programs" },
     },
@@ -107,7 +107,7 @@ export const LEGACY_POSTS: BlogPost[] = [
       { type: "h2", text: "Signs to see a clinician instead" },
       { type: "p", text: "Movement is not the right first step for everything. Please see a doctor rather than starting a routine if you have unexplained pain, pain following significant trauma, numbness or weakness in a leg or arm, loss of bladder or bowel control, fever with back pain, or pain that consistently wakes you at night. These need proper assessment." },
       { type: "h2", text: "Getting it adapted to you" },
-      { type: "p", text: "If you already have back discomfort, a general routine can only take you so far. In a private session, Master Anil can watch how you actually move, remove anything that provokes your symptoms, and adjust the sequence to your situation. Private sessions are 60 minutes, in studio or live online, with scheduling and pricing confirmed by enquiry." },
+      { type: "p", text: "If you already have back discomfort, a general routine can only take you so far. In a private session, your matched Yog Jivan teacher can watch how you actually move, remove anything that provokes your symptoms, and adjust the sequence to your situation. Private sessions are 60 minutes, in studio or live online, with scheduling and pricing confirmed by enquiry." },
     ],
     related: [
       { label: "Yoga for Back Pain", to: "/yoga-for-back-pain" },
@@ -121,7 +121,7 @@ export const LEGACY_POSTS: BlogPost[] = [
     ],
     cta: {
       title: "Have the routine adapted to your back",
-      sub: "A private 60-minute session lets Master Anil see how you move and adjust the sequence to you.",
+      sub: "A private 60-minute session lets your matched Yog Jivan teacher see how you move and adjust the sequence to you.",
       primary: { label: "Private 1-on-1 Yoga", to: "/private-online-yoga" },
       secondary: { label: "Yoga for Back Pain", to: "/yoga-for-back-pain" },
     },
@@ -380,7 +380,7 @@ export const LEGACY_POSTS: BlogPost[] = [
       "Some symptoms need a doctor first — we will say so rather than take the booking.",
     ],
     body: [
-      { type: "p", text: "Personalised supportive yoga means a practice built around one person's needs, preferences and limitations rather than a single sequence delivered to a full room. At Yog Jivan this takes the form of private 60-minute sessions with Master Anil Choudhary, in studio or live online. It is a wellness service. It is not medical treatment, and it does not diagnose or cure anything." },
+      { type: "p", text: "Personalised supportive yoga means a practice built around one person's needs, preferences and limitations rather than a single sequence delivered to a full room. At Yog Jivan this takes the form of private 60-minute sessions with a matched teacher from the Yog Jivan teaching team, in studio or live online. It is a wellness service. It is not medical treatment, and it does not diagnose or cure anything." },
       { type: "h2", text: "How it differs from a general class" },
       { type: "ul", items: [
         "The sequence is chosen for you rather than for the group.",
@@ -395,7 +395,7 @@ export const LEGACY_POSTS: BlogPost[] = [
         "Simple breathing practice and a period of rest.",
         "A short home sequence, usually 12 to 20 minutes, so the work continues between sessions.",
       ]},
-      { type: "quote", text: "We are not teaching a pose. We are teaching the person in front of us, and the pose is only the instrument.", cite: "Master Anil Choudhary" },
+      { type: "p", text: "A teaching principle we come back to at Yog Jivan: we are not teaching a pose, we are teaching the person in front of us, and the pose is only the instrument." },
       { type: "h2", text: "What it can reasonably support" },
       { type: "p", text: "Many students find that a steady, well-adapted practice helps them feel more comfortable moving, more aware of posture during the day, and calmer at the end of it. Those are the kinds of general wellbeing outcomes we can honestly describe. Individual experience varies, and we do not measure clinical outcomes, promise symptom reduction, or track medical baselines — that is the role of your healthcare team." },
       { type: "h2", text: "Where medical care must come first" },
