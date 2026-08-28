@@ -107,7 +107,7 @@ export const LEGACY_POSTS: BlogPost[] = [
       { type: "h2", text: "Signs to see a clinician instead" },
       { type: "p", text: "Movement is not the right first step for everything. Please see a doctor rather than starting a routine if you have unexplained pain, pain following significant trauma, numbness or weakness in a leg or arm, loss of bladder or bowel control, fever with back pain, or pain that consistently wakes you at night. These need proper assessment." },
       { type: "h2", text: "Getting it adapted to you" },
-      { type: "p", text: "If you already have back discomfort, a general routine can only take you so far. In a private session, Master Anil can watch how you actually move, remove anything that provokes your symptoms, and adjust the sequence to your situation. Private sessions are 60 minutes, in studio or live online, with scheduling and pricing confirmed by enquiry." },
+      { type: "p", text: "If you already have back discomfort, a general routine can only take you so far. In a private session, your matched Yog Jivan teacher can watch how you actually move, remove anything that provokes your symptoms, and adjust the sequence to your situation. Private sessions are 60 minutes, in studio or live online, with scheduling and pricing confirmed by enquiry." },
     ],
     related: [
       { label: "Yoga for Back Pain", to: "/yoga-for-back-pain" },
@@ -121,7 +121,7 @@ export const LEGACY_POSTS: BlogPost[] = [
     ],
     cta: {
       title: "Have the routine adapted to your back",
-      sub: "A private 60-minute session lets Master Anil see how you move and adjust the sequence to you.",
+      sub: "A private 60-minute session lets your matched Yog Jivan teacher see how you move and adjust the sequence to you.",
       primary: { label: "Private 1-on-1 Yoga", to: "/private-online-yoga" },
       secondary: { label: "Yoga for Back Pain", to: "/yoga-for-back-pain" },
     },
