@@ -51,7 +51,7 @@ export const TEACHING_TEAM: readonly TeacherProfile[] = [
     name: "Master Anil Choudhary",
     role: "Founder & Lead Yoga Teacher",
     yearsExperience: "12+",
-    languages: ["English", "Hindi"],
+    languages: ["English", "Hindi", "Vietnamese"],
     specialties: [
       "Classical Indian yoga — Hatha, Ashtanga and pranayama",
       "Therapeutic, safety-first sequencing",

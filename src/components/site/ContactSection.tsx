@@ -140,7 +140,7 @@ export function ContactSection() {
             <p className="text-sm text-muted-foreground">Two serene spaces. One transformative journey.</p>
             <div className="inline-flex items-center gap-2 self-start rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[0.55rem] uppercase tracking-[0.22em] text-primary">
               <Circle className="h-2 w-2 fill-primary text-primary" />
-              Daily · 5:30 AM – 8:00 PM
+              Daily · 5:00 AM – 9:00 PM
             </div>
           </div>
 

@@ -38,7 +38,7 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 - Format: Onsite (Vietnam) or online (worldwide)
 
 ## Notes
-- Every class — in-studio or online — is taught personally by Master Anil Choudhary. Yog Jivan does not use substitute or rotating teachers.
+- Studio and private sessions are taught by the Yog Jivan teaching team, founded and led by Master Anil Choudhary. Live small-group online classes are led by Master Anil.
 - Session recordings: members receive a 48-hour catch-up recording for missed classes. Live attendance is strongly encouraged — recordings cannot correct your posture in real time.
 - Refunds: memberships are generally non-refundable once activated or after the first class is used. Exceptions always apply for duplicate payment, cancellation or non-delivery by Yog Jivan, material service failure, and any rights under applicable consumer law. Email hello@yogjivan.com.
 - Yoga is complementary to, not a substitute for, medical care.

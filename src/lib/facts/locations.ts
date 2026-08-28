@@ -28,15 +28,15 @@ export const LOCATIONS = {
   },
   studio2: {
     id: "wellness",
-    name: "Yog Jivan Wellness & Healing Center",
-    street: "W8R8+42R, 5 Ngô Quyền",
+    name: "Yog Jivan Yoga Studio",
+    street: "Tầng 3, Nhà Văn Hóa Lao Động, Ngô Quyền",
     ward: "Phường Thành Đông",
     city: "Thành phố Hải Phòng",
     cityEn: "Hai Phong",
     postal: "170000",
     country: "VN",
     countryName: "Vietnam",
-    full: "W8R8+42R, 5 Ngô Quyền, Phường Thành Đông, Thành phố Hải Phòng 170000, Vietnam",
+    full: "Tầng 3, Nhà Văn Hóa Lao Động, Ngô Quyền, Phường Thành Đông, Thành phố Hải Phòng 170000, Vietnam",
     localDescriptor: "Hai Duong urban area",
     aerialYoga: false,
     googleMaps: "https://maps.app.goo.gl/dRBFCrbmcX4yhEt9A",
@@ -49,9 +49,9 @@ export const LOCATIONS = {
 export const STUDIO_LIST = [LOCATIONS.studio1, LOCATIONS.studio2] as const;
 
 export const STUDIO_HOURS = {
-  label: "Daily · 5:30 AM – 8:00 PM",
-  opens: "05:30",
-  closes: "20:00",
+  label: "Daily · 5:00 AM – 9:00 PM",
+  opens: "05:00",
+  closes: "21:00",
   days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
 } as const;
 

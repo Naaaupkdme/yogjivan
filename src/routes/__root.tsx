@@ -156,7 +156,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               image: "https://yogjivan.com/og-studio-1.jpg",
               url: "https://yogjivan.com",
               telephone: "+84782046066",
-              priceRange: "$$$",
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Tầng 1 Nhà Thi Đấu Số 1, Bùi Thị Xuân",
@@ -169,7 +168,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               openingHoursSpecification: [{
                 "@type": "OpeningHoursSpecification",
                 dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-                opens: "05:30", closes: "20:00",
+                opens: "05:00", closes: "21:00",
               }],
               sameAs: [
                 "https://www.facebook.com/share/18ixNUN1J1/",
@@ -183,15 +182,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               "@type": "LocalBusiness",
               "@id": "https://yogjivan.com/#studio-wellness",
               parentOrganization: { "@id": ORG_ID },
-              name: "Yog Jivan Wellness & Healing Center",
+              name: "Yog Jivan Yoga Studio",
 
               image: "https://yogjivan.com/og-studio-2.jpg",
               url: "https://yogjivan.com",
               telephone: "+84782046066",
-              priceRange: "$$$",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "W8R8+42R, 5 Ngô Quyền",
+                streetAddress: "Tầng 3, Nhà Văn Hóa Lao Động, Ngô Quyền",
                 addressLocality: "Phường Thành Đông",
                 addressRegion: "Hai Phong",
                 postalCode: "170000",
@@ -201,7 +199,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               openingHoursSpecification: [{
                 "@type": "OpeningHoursSpecification",
                 dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-                opens: "05:30", closes: "20:00",
+                opens: "05:00", closes: "21:00",
               }],
               sameAs: [
                 "https://www.facebook.com/share/18ixNUN1J1/",

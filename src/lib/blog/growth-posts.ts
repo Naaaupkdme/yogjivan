@@ -23,7 +23,7 @@ export const GROWTH_POSTS: BlogPost[] = [
     body: [
       { type: "p", text: "If you are looking for yoga classes in the Hai Duong urban area and you have never practised before, the main decision is simple: a group class or a private session. This guide explains the difference, what a first class is actually like, what to bring, and how to arrange it with Yog Jivan." },
       { type: "h2", text: "Where Yog Jivan teaches" },
-      { type: "p", text: "Yog Jivan runs two studios serving the Hai Duong urban area of Hai Phong. Studio 1 is Yog Jivan Sanctuary on Bùi Thị Xuân in Phường Lê Thanh Nghị, and it is the studio where aerial yoga is available. Studio 2 is the Yog Jivan Wellness & Healing Center at 5 Ngô Quyền in Phường Thành Đông; aerial yoga is not offered there. Every class at both studios is taught personally by Master Anil Choudhary, Founder & Lead Yoga Teacher." },
+      { type: "p", text: "Yog Jivan runs two studios serving the Hai Duong urban area of Hai Phong. Studio 1 is Yog Jivan Sanctuary on Bùi Thị Xuân in Phường Lê Thanh Nghị, and it is the studio where aerial yoga is available. Studio 2 is Yog Jivan Yoga Studio at Nhà Văn Hóa Lao Động, Ngô Quyền in Phường Thành Đông; aerial yoga is not offered there. Classes at both studios are taught by the Yog Jivan teaching team, founded and led by Master Anil Choudhary, Founder & Lead Yoga Teacher." },
       { type: "h2", text: "Group classes or private sessions?" },
       { type: "ul", items: [
         "Group classes: a shared, structured session with other students. Good for routine, motivation and cost, and suitable for most beginners.",
