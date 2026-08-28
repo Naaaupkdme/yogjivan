@@ -46,9 +46,9 @@ const QUESTIONS: QA[] = [
   {
     q: "Can I Continue Classes Online If I Travel or Move?",
     answer:
-      "Yes — and this is one of the quiet advantages of practising with Yog Jivan. Students move between the studios and live online seamlessly. Travelling for work or a holiday? Continue live on Zoom from your hotel or Airbnb. Moving out of Vietnam? Your practice and your community continue from your next city. If teacher continuity matters while you travel, private online sessions can continue with the same dedicated teacher. Many of our current online students started in-studio in Hai Duong years ago.",
+      "Yes — and this is one of the quiet advantages of practising with Yog Jivan. Students move between the studios and live online seamlessly. Travelling for work or a holiday? Continue live on Zoom from your hotel or Airbnb. Moving out of Vietnam? Your practice and your community continue from your next city. If teacher continuity matters while you travel, private online sessions are generally kept with the same matched teacher. Many of our current online students started in-studio in Hai Duong years ago.",
     bullets: [
-      "If teacher continuity matters while you travel, private online sessions continue with the same dedicated teacher.",
+      "If teacher continuity matters while you travel, private online sessions are generally kept with the same matched teacher.",
       "Travel-friendly: continue live from hotels, Airbnbs, extended trips.",
       "Relocation-friendly: your practice moves with you to the next country.",
       "Many long-term online students began in-studio in Hai Duong.",

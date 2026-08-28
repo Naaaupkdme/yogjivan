@@ -18,7 +18,7 @@ const STUDIO = {
 
 const PRIVATE_PERKS = [
   "Live 60-minute private sessions with a matched Yog Jivan teacher",
-  "You normally continue with the same dedicated teacher session after session",
+  "Sessions are generally kept with the same matched teacher for continuity",
   "Practice adapted to your experience and goals",
   "Real-time posture guidance",
   "Available in the Hai Duong studios or live online",

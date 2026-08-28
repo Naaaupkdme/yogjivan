@@ -56,7 +56,7 @@ export const PRIVATE_POSTS: BlogPost[] = [
         "Timing is arranged around your schedule and time zone.",
       ]},
       { type: "h2", text: "After the session" },
-      { type: "p", text: "Your teacher will often suggest one or two things to practise between sessions — usually short and specific rather than a long home routine. Because you continue with the same teacher, the next session builds on the last one instead of starting over." },
+      { type: "p", text: "Your teacher will often suggest one or two things to practise between sessions — usually short and specific rather than a long home routine. Because sessions are generally kept with the same teacher, the next session builds on the last one instead of starting over." },
       { type: "h2", text: "What we do not promise" },
       { type: "p", text: "We do not promise a fixed number of sessions to a fixed result, and we do not treat yoga as a substitute for medical care. What we can commit to is live attention, honest guidance and a practice that fits your situation." },
     ],
@@ -330,7 +330,7 @@ export const PRIVATE_POSTS: BlogPost[] = [
         "Be sceptical of promised cures, guaranteed timelines or dramatic percentage claims from anyone.",
       ]},
       { type: "h2", text: "How Yog Jivan approaches these points" },
-      { type: "p", text: "For transparency, here are our own answers. Private sessions are live, 60 minutes, camera on, with a dedicated teacher who continues with you by default, preceded by a short onboarding conversation. Yog Jivan offers matching across English, Vietnamese and Hindi subject to teacher availability. Private scheduling and pricing are confirmed by enquiry because they depend on frequency and format, and our studio reviews are published on Google where you can read them yourself. Apply the same nine checks to anyone else you are considering." },
+      { type: "p", text: "For transparency, here are our own answers. Private sessions are live, 60 minutes, camera on, with a matched teacher, generally kept the same for continuity, preceded by a short onboarding conversation. Yog Jivan offers matching across English, Vietnamese and Hindi subject to teacher availability. Private scheduling and pricing are confirmed by enquiry because they depend on frequency and format, and our studio reviews are published on Google where you can read them yourself. Apply the same nine checks to anyone else you are considering." },
     ],
     related: [
       { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga" },
