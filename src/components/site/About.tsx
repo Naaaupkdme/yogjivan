@@ -3,12 +3,14 @@ import { masterImages, masterAlts } from "@/lib/images";
 const aboutImg = { url: masterImages.advancedHeadstand };
 const aboutImg2 = { url: masterImages.armBalance };
 import { Sparkles, HeartHandshake, Flower2, Globe2 } from "lucide-react";
+import { PUBLIC_TRUST } from "@/lib/facts/trust";
+import { TEACHER } from "@/lib/facts/teacher";
 
 const PILLARS = [
-  { Icon: Sparkles, t: "12+ Years Teaching", d: "Authentic practice rooted in traditional Hatha, Ashtanga and pranayama, taught with careful progression." },
-  { Icon: Flower2, t: "Personalised Practice", d: "Movement, mobility, breath and posture guidance adapted to your body, experience and goals." },
-  { Icon: HeartHandshake, t: "Holistic Wellness", d: "Mind, body and breath — woven into a daily ritual you can sustain for life." },
-  { Icon: Globe2, t: "Global Community", d: "Students across Vietnam, India, Europe and beyond — one circle of unity." },
+  { Icon: Sparkles, t: `${PUBLIC_TRUST.yearsTeaching} Years Teaching`, d: "Classical Indian yoga — Hatha, Ashtanga and pranayama — taught with careful progression and attention to alignment." },
+  { Icon: Flower2, t: "Beginner to Advanced", d: "From first postures to inversions, arm balances and backbends, at the pace your practice actually allows." },
+  { Icon: HeartHandshake, t: "A Teaching Standard", d: "As founder, Master Anil sets the approach every Yog Jivan teacher follows: safety first, steady progression, honest guidance." },
+  { Icon: Globe2, t: `${PUBLIC_TRUST.studentsTaught} Students Guided`, d: `Students from ${PUBLIC_TRUST.countries} countries practise with Yog Jivan, in our Hai Duong studios and live online.` },
 ];
 
 export function About() {
@@ -53,7 +55,15 @@ export function About() {
             A practice forged over <span className="italic text-gold-gradient">twelve years</span>, offered in stillness.
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Master Anil Choudhary brings the depth of classical Indian yoga to Vietnam — guiding seekers through a path of steady physical practice, safety-first alignment and inner steadiness. Every breath, every pose, every silence is intentional.
+            Master Anil Choudhary, {TEACHER.title}, brings the depth of classical Indian yoga to
+            Vietnam — {PUBLIC_TRUST.yearsTeaching} years of teaching Hatha, Ashtanga and pranayama,
+            from a beginner's first posture to advanced practice. He teaches in English, Hindi and
+            Vietnamese.
+          </p>
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            Yog Jivan is founded and led by Master Anil; studio and private 1-on-1 sessions are
+            taught by the Yog Jivan teaching team, and live online small-group classes are currently
+            led by Master Anil himself.
           </p>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2">

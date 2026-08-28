@@ -4,13 +4,11 @@ import { lazy, Suspense } from "react";
 import { Hero } from "@/components/site/Hero";
 import { LocalIntro } from "@/components/site/LocalIntro";
 import { DiscoverTopics } from "@/components/site/DiscoverTopics";
+import { PrimaryPaths } from "@/components/site/PrimaryPaths";
 
 import { FAQS } from "@/lib/faqs";
 
-const Philosophy = lazy(() => import("@/components/site/Philosophy").then(m => ({ default: m.Philosophy })));
 const TrustSection = lazy(() => import("@/components/site/TrustSection").then(m => ({ default: m.TrustSection })));
-const WhyChoose = lazy(() => import("@/components/site/WhyChoose").then(m => ({ default: m.WhyChoose })));
-const Services = lazy(() => import("@/components/site/Services").then(m => ({ default: m.Services })));
 const FounderStory = lazy(() => import("@/components/site/FounderStory").then(m => ({ default: m.FounderStory })));
 const Gallery = lazy(() => import("@/components/site/Gallery").then(m => ({ default: m.Gallery })));
 const VideoTestimonials = lazy(() => import("@/components/site/VideoTestimonials").then(m => ({ default: m.VideoTestimonials })));
@@ -26,7 +24,7 @@ const Lazy = ({ children }: { children: React.ReactNode }) => (
 
 const HOME_TITLE = "Yoga Classes in Hai Duong | Yog Jivan Studios & Online";
 const HOME_DESC =
-  "Authentic Indian yoga at two studios serving Hai Duong. Beginner, therapeutic and personal classes with Master Anil, plus live online yoga worldwide.";
+  "Authentic Indian yoga in Hai Duong: studio classes with the Yog Jivan teaching team, private 1-on-1 with a matched teacher, and live online group classes led by Master Anil.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -68,14 +66,12 @@ function Index() {
   return (
     <>
       <Hero />
+      <PrimaryPaths />
       <LocalIntro />
-      <DiscoverTopics />
 
-      <Lazy><Philosophy /></Lazy>
       <Lazy><TrustSection /></Lazy>
-      <Lazy><WhyChoose /></Lazy>
-      <Lazy><Services /></Lazy>
       <Lazy><FounderStory /></Lazy>
+      <DiscoverTopics />
       <Lazy><Gallery /></Lazy>
       <Lazy><VideoTestimonials /></Lazy>
       <Lazy><Testimonials /></Lazy>
