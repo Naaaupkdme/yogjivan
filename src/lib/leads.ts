@@ -70,8 +70,11 @@ type SubmitPayload = Partial<Omit<LeadState, "step">> & {
   meta?: Record<string, string | number | boolean | null>;
 };
 
-import { submitLeadToCrm } from "./submit-lead.functions";
-
+/**
+ * Supabase is the single source of truth for leads. The legacy Make.com
+ * webhook forward was retired on 2026-08-28 — do NOT reintroduce a third-party
+ * CRM forward here without an approved replacement.
+ */
 export async function submitLead(payload: SubmitPayload) {
   const session_id = getSessionId();
   const { error } = await supabase.from("leads").insert({
@@ -90,30 +93,5 @@ export async function submitLead(payload: SubmitPayload) {
     meta: payload.meta ?? {},
   });
   if (error) throw error;
-
-
-  // CRM sync is a best-effort convenience — the lead is already saved.
-  // If the webhook fails we log server-side but do NOT surface an error
-  // to the visitor (they'd see a scary error even though their data was
-  // captured). Server logs remain the source of truth for CRM sync health.
-  try {
-    await submitLeadToCrm({
-      data: {
-        name: payload.name,
-        whatsapp: payload.whatsapp,
-        email: payload.email || "",
-        goals: payload.goals,
-        preferred_experience: payload.preferred_experience,
-        preferred_time: payload.preferred_time,
-        health_notes: payload.health_notes,
-        health_tags: payload.health_tags,
-        experience_level: payload.experience_level,
-        status: payload.status,
-      },
-    });
-  } catch (e) {
-    // Non-fatal — logged server-side inside submitLeadToCrm too.
-    console.warn("CRM webhook sync failed (lead still saved):", e);
-  }
 }
 

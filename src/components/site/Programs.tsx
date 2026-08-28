@@ -1,23 +1,28 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { STUDIO_PRICING_NOTE } from "@/lib/facts/pricing";
 
+// Studio (VND) rates are deliberately NOT published — see src/lib/facts/pricing.ts.
+// Never reintroduce hard-coded VND price cards here.
 const STUDIO = {
   name: "Studio Membership",
   tag: "Group Classes",
-  blurb: "Daily group practice in our Hai Duong sanctuaries.",
-  tiers: [
-    { label: "1 Month", price: "700,000", unit: "VND" },
-    { label: "3 Months", price: "1,900,000", unit: "VND", best: true },
+  blurb: "Daily group practice at our two studios serving the Hai Duong urban area.",
+  perks: [
+    "Group classes taught in person by the Yog Jivan teaching team",
+    "Mats, blocks, straps and bolsters provided",
+    "Small groups with alignment-first cueing",
+    "Beginners welcome — every posture is taught in stages",
   ],
-  perks: ["Unlimited weekly classes", "Heated & candlelit studios", "Therapeutic alignment focus", "Community circles"],
 };
 
 const PRIVATE_PERKS = [
-  "Live 60-minute sessions with Master Anil",
+  "Live 60-minute private sessions with a matched Yog Jivan teacher",
+  "You normally continue with the same dedicated teacher session after session",
   "Practice adapted to your experience and goals",
   "Real-time posture guidance",
-  "Available in Hai Duong or live online",
+  "Available in the Hai Duong studios or live online",
 ];
 
 export function Programs() {
@@ -31,9 +36,9 @@ export function Programs() {
             Begin your <span className="italic text-gold-gradient">journey</span> — your way.
           </h2>
           <p className="mt-5 text-muted-foreground md:text-lg">
-            Yog Jivan offers studio group classes in Hai Duong, private 60-minute yoga in studio or online by enquiry,
-            and live small-group online classes for up to 8 students. Studio membership prices are shown below;
-            private-session pricing is confirmed before booking.
+            Yog Jivan offers studio group classes in the Hai Duong urban area, private 60-minute yoga in studio or
+            online by enquiry, and live small-group online classes for up to 8 students. Studio and private-session
+            rates are shared directly and confirmed before you decide.
           </p>
         </div>
 
@@ -50,23 +55,9 @@ export function Programs() {
             <h3 className="mt-3 font-display text-3xl md:text-4xl">{STUDIO.name}</h3>
             <p className="mt-3 max-w-md text-sm text-muted-foreground">{STUDIO.blurb}</p>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {STUDIO.tiers.map((tier) => (
-                <div
-                  key={tier.label}
-                  className={`rounded-2xl border p-5 transition-all ${
-                    tier.best
-                      ? "border-[color:var(--gold)]/50 bg-[color:var(--onyx)]/60"
-                      : "border-white/8 bg-[color:var(--onyx)]/30"
-                  }`}
-                >
-                  <div className="text-[0.65rem] uppercase tracking-[0.22em] text-muted-foreground">{tier.label}</div>
-                  <div className="mt-2 font-display text-3xl leading-none text-foreground">
-                    {tier.price} <span className="ml-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">{tier.unit}</span>
-                  </div>
-                  {tier.best && <div className="mt-2 text-[0.6rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">Best Value</div>}
-                </div>
-              ))}
+            <div className="mt-8 rounded-2xl border border-white/10 bg-[color:var(--onyx)]/40 p-6">
+              <div className="font-display text-2xl leading-none text-foreground">Rates shared directly</div>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{STUDIO_PRICING_NOTE}</p>
             </div>
 
             <ul className="mt-8 space-y-3">
@@ -93,12 +84,13 @@ export function Programs() {
           >
             <p className="eyebrow">Private 1-on-1 Yoga</p>
             <h3 className="mt-3 font-display text-3xl md:text-4xl">Personal Training</h3>
-            <p className="mt-3 max-w-md text-sm text-muted-foreground">Bespoke sessions designed entirely around you.</p>
+            <p className="mt-3 max-w-md text-sm text-muted-foreground">Bespoke sessions designed entirely around you, with a Yog Jivan teacher matched to your goals.</p>
 
             <div className="mt-8 rounded-2xl border border-[color:var(--gold)]/40 bg-[color:var(--onyx)]/60 p-6">
               <div className="font-display text-2xl leading-none text-foreground">Pricing by enquiry</div>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Private sessions are arranged around your goals, preferred format and scheduling needs. Current pricing
+                Private sessions are arranged around your goals, preferred format and scheduling needs, and are taught
+                by a matched Yog Jivan teacher you normally continue with. Current pricing
                 and available times are confirmed before you decide. No payment is requested on this page.
               </p>
             </div>
