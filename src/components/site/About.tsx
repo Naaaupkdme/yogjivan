@@ -5,8 +5,8 @@ const aboutImg2 = { url: masterImages.armBalance };
 import { Sparkles, HeartHandshake, Flower2, Globe2 } from "lucide-react";
 
 const PILLARS = [
-  { Icon: Sparkles, t: "12+ Years of Mastery", d: "A lifetime of authentic practice rooted in traditional Hatha and modern therapeutic yoga." },
-  { Icon: Flower2, t: "Therapeutic Yoga", d: "Targeted protocols for spine health, mobility, hormonal balance and chronic pain." },
+  { Icon: Sparkles, t: "12+ Years Teaching", d: "Authentic practice rooted in traditional Hatha, Ashtanga and pranayama, taught with careful progression." },
+  { Icon: Flower2, t: "Personalised Practice", d: "Movement, mobility, breath and posture guidance adapted to your body, experience and goals." },
   { Icon: HeartHandshake, t: "Holistic Wellness", d: "Mind, body and breath — woven into a daily ritual you can sustain for life." },
   { Icon: Globe2, t: "Global Community", d: "Students across Vietnam, India, Europe and beyond — one circle of unity." },
 ];
@@ -53,7 +53,7 @@ export function About() {
             A practice forged over <span className="italic text-gold-gradient">twelve years</span>, offered in stillness.
           </h2>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Master Anil Choudhary brings the depth of classical Indian yoga to Vietnam — guiding seekers through a path of physical mastery, therapeutic-style practice and inner steadiness. Every breath, every pose, every silence is intentional.
+            Master Anil Choudhary brings the depth of classical Indian yoga to Vietnam — guiding seekers through a path of steady physical practice, safety-first alignment and inner steadiness. Every breath, every pose, every silence is intentional.
           </p>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
