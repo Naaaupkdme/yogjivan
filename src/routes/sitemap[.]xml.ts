@@ -3,6 +3,7 @@ import type {} from "@tanstack/react-start";
 
 const BASE_URL = "https://yogjivan.com";
 import { BLOG_POSTS } from "@/lib/blog-posts";
+import { VI_ROUTES } from "@/lib/locale-routes";
 // Only canonical, 200-status, indexable HTML routes. /pricing.md is a raw
 // machine-readable file for AI agents (linked from llms.txt), not an HTML page.
 type Entry = { path: string; lastmod?: string };
@@ -11,6 +12,8 @@ const STATIC_PATHS = ["/", "/about", "/programs", "/private-online-yoga", "/onli
 
 const ENTRIES: Entry[] = [
   ...STATIC_PATHS.map((path) => ({ path })),
+  // Indexable Vietnamese routes (see src/lib/locale-routes.ts).
+  ...VI_ROUTES.map((path) => ({ path })),
   ...BLOG_POSTS.map((p) => ({ path: `/blog/${p.slug}`, lastmod: p.updated ?? p.date })),
 ];
 

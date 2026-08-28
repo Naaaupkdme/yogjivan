@@ -281,6 +281,24 @@ export function SiteHeader() {
                   <Search className="h-4 w-4" strokeWidth={1.5} />
                   Search
                 </button>
+
+                {/* URL-based language switch (mobile / full menu). */}
+                <div className="mt-3 flex items-center gap-2">
+                  <span className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]/80">Ngôn ngữ</span>
+                  <div className="flex items-center overflow-hidden rounded-full border border-border/60">
+                    {([
+                      { code: "EN" as const, href: langTargets.en, hrefLang: "en" },
+                      { code: "VI" as const, href: langTargets.vi, hrefLang: "vi" },
+                    ]).map((item) => (
+                      <a key={item.code} href={item.href} hrefLang={item.hrefLang}
+                        onClick={() => setFullOpen(false)}
+                        aria-current={activeLang === item.code ? "true" : undefined}
+                        className={`px-3 py-2 text-[0.6rem] uppercase tracking-[0.18em] transition-colors ${activeLang === item.code ? "bg-primary/15 text-primary" : "text-muted-foreground hover:text-foreground"}`}>
+                        {item.code}
+                      </a>
+                    ))}
+                  </div>
+                </div>
                 <div className="mt-8 grid gap-8 sm:grid-cols-2 xl:grid-cols-1">
                   {FULL_MENU.map((group) => (
                     <div key={group.group}>

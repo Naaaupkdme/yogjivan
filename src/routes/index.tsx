@@ -1,5 +1,6 @@
 import { masterImages, socialImageMeta } from "@/lib/images";
 import { createFileRoute } from "@tanstack/react-router";
+import { hreflangLinks, PAIR_HOME } from "@/lib/locale-routes";
 import { lazy, Suspense } from "react";
 import { Hero } from "@/components/site/Hero";
 import { LocalIntro } from "@/components/site/LocalIntro";
@@ -42,6 +43,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://yogjivan.com/" },
+      ...hreflangLinks(PAIR_HOME),
     ],
     scripts: [
       // WebSite, Organization, Person and LocalBusiness nodes are emitted once

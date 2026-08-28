@@ -1,3 +1,4 @@
+import { hreflangLinks, PAIR_ONLINE_GROUP } from "@/lib/locale-routes";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, CTABanner } from "@/components/site/PageHero";
 import { FurtherReading } from "@/components/site/FurtherReading";
@@ -183,7 +184,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
       { name: "twitter:title", content: ONLINE_TITLE },
       { name: "twitter:description", content: ONLINE_DESC },
     ],
-    links: [{ rel: "canonical", href: CANONICAL }],
+    links: [{ rel: "canonical", href: CANONICAL }, ...hreflangLinks(PAIR_ONLINE_GROUP)],
     scripts: [
       {
         type: "application/ld+json",
