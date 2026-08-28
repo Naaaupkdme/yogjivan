@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Facebook, Instagram, Menu, MessageCircle, Search, X, Youtube } from "lucide-react";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
 import { useLang } from "@/lib/language";
+import { isViPath, languageSwitchTarget } from "@/lib/locale-routes";
 import { SOCIAL } from "@/lib/social";
 import { SiteSearch, SiteSearchButton, openSiteSearch } from "@/components/site/SiteSearch";
 import { BodyPortal } from "@/components/site/BodyPortal";
