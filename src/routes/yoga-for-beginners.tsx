@@ -67,7 +67,7 @@ const QUESTIONS: QA[] = [
     answer:
       "A beginner class is calm and unhurried: gentle breath awareness, guided joint warm-ups, a handful of foundation postures taught with clear verbal cueing, closing pranayama and a guided savasana rest. There is no choreography to memorise. For live online students, a short onboarding conversation happens before the first class.",
     bullets: [
-      `Online students: a ${ONLINE_CLASS.onboarding.minutes}-minute onboarding and health-assessment conversation before the first live class.`,
+      `Online students: a ${ONLINE_CLASS.onboarding.minutes}-minute onboarding conversation before the first live class.`,
       "Breath awareness and gentle centering to settle the nervous system.",
       "Sukshma Vyayama — simple joint-mobility warm-ups to prepare the body safely.",
       "A few foundation postures (Mountain, Cat-Cow, Child, gentle standing poses) with cueing by name.",
