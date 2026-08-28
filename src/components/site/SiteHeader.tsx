@@ -4,6 +4,9 @@ import { Facebook, Instagram, Menu, MessageCircle, Search, X, Youtube } from "lu
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
 import { isViPath, languageSwitchTarget } from "@/lib/locale-routes";
 import { SOCIAL } from "@/lib/social";
+import { CONTACT } from "@/lib/facts/contact";
+import { ZaloIcon } from "@/components/icons/ZaloIcon";
+import { VI_LABELS, VI_NAV_ITEMS } from "@/lib/local-contact";
 import { SiteSearch, SiteSearchButton, openSiteSearch } from "@/components/site/SiteSearch";
 import { BodyPortal } from "@/components/site/BodyPortal";
 
@@ -57,6 +60,11 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
 
 const WHATSAPP = SOCIAL.whatsapp;
 
+/** Vietnamese full-menu structure — VI routes only, no English condition pages. */
+const VI_FULL_MENU: { group: string; items: { href: string; label: string }[] }[] = [
+  { group: "Yog Jivan", items: VI_NAV_ITEMS.map((i) => ({ href: i.href, label: i.label })) },
+];
+
 
 
 /**
@@ -74,7 +82,10 @@ export function SiteHeader() {
   const [fullOpen, setFullOpen] = useState(false);
   const { location } = useRouterState();
   const langTargets = languageSwitchTarget(location.pathname);
-  const activeLang: "EN" | "VI" = isViPath(location.pathname) ? "VI" : "EN";
+  const isVi = isViPath(location.pathname);
+  const activeLang: "EN" | "VI" = isVi ? "VI" : "EN";
+  const navItems = isVi ? VI_NAV_ITEMS.map((i) => ({ href: i.href, label: i.label })) : NAV;
+  const menuGroups = isVi ? VI_FULL_MENU : FULL_MENU;
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -170,16 +181,16 @@ export function SiteHeader() {
       <style>{`:root{--hdr-h:70px}@media(min-width:768px){:root{--hdr-h:80px}}@media(min-width:1024px){:root{--hdr-h:90px}}`}</style>
 
       <div className="mx-auto flex h-full max-w-[1600px] items-center justify-between gap-3 px-4 sm:px-6 lg:px-8 2xl:px-12">
-        <Link to="/" className="flex min-w-0 items-center gap-3 group" aria-label="Yog Jivan Sanctuary home">
+        <a href={isVi ? "/vi" : "/"} className="flex min-w-0 items-center gap-3 group" aria-label={isVi ? "Yog Jivan — trang chủ tiếng Việt" : "Yog Jivan Sanctuary home"}>
           <img src={logo.url} alt="Yog Jivan Sanctuary logo" className="h-11 w-11 shrink-0 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full object-cover ring-1 ring-[color-mix(in_oklab,var(--gold)_40%,transparent)] shadow-[0_8px_24px_-10px_color-mix(in_oklab,var(--gold)_55%,transparent)] transition-transform duration-500 group-hover:scale-105" />
           <div className="hidden sm:block xl:hidden 2xl:block min-w-0 leading-none">
             <div className="truncate font-display tracking-[0.24em] text-[0.95rem] uppercase text-gold-gradient">YOG JIVAN</div>
             <div className="truncate font-display tracking-[0.4em] text-[0.55rem] uppercase text-muted-foreground mt-1.5">SANCTUARY</div>
           </div>
-        </Link>
+        </a>
 
         <nav className="hidden lg:flex min-w-0 items-center gap-3 xl:gap-5">
-          {NAV.map((item) => (
+          {navItems.map((item) => (
             <a key={item.href} href={item.href}
               className="whitespace-nowrap text-[0.6rem] xl:text-[0.64rem] uppercase tracking-[0.14em] xl:tracking-[0.18em] text-muted-foreground transition-colors duration-300 hover:text-[color:var(--gold)]">
               {item.label}
@@ -212,20 +223,34 @@ export function SiteHeader() {
 
             {[
               { href: SOCIAL.facebook, Icon: Facebook, label: "Visit Yog Jivan Facebook" },
-              { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram" },
-              { href: SOCIAL.youtube, Icon: Youtube, label: "Visit Yog Jivan YouTube" },
-              { href: WHATSAPP, Icon: MessageCircle, label: "Open WhatsApp chat" },
-            ].map(({ href, Icon, label }) => (
-              <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
+              { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram", loc: undefined },
+              { href: SOCIAL.youtube, Icon: Youtube, label: "Visit Yog Jivan YouTube", loc: undefined },
+              isVi
+                ? { href: CONTACT.zalo, Icon: ZaloIcon, label: "Nhắn Zalo cho Yog Jivan", loc: "vi_header_zalo" }
+                : { href: WHATSAPP, Icon: MessageCircle, label: "Open WhatsApp chat", loc: "header_whatsapp" },
+            ].map(({ href, Icon, label, loc }) => (
+              <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} data-cta-location={loc}
                 className="relative grid h-7 w-7 shrink-0 place-items-center rounded-full text-muted-foreground/80 transition-all duration-300 after:absolute after:left-1/2 after:top-1/2 after:h-11 after:w-11 after:-translate-x-1/2 after:-translate-y-1/2 after:content-[''] hover:text-[color:var(--gold)] hover:bg-[color-mix(in_oklab,var(--gold)_10%,transparent)] sm:h-8 sm:w-8">
                 <Icon className="h-3.5 w-3.5" strokeWidth={1.5} />
               </a>
             ))}
           </div>
 
-          <Link to="/contact" hash="consultation" className="btn-gold hidden 2xl:inline-flex !min-h-[2.4rem] !py-2 !px-5 !text-[0.62rem]">
-            Book Free Trial
-          </Link>
+          {isVi ? (
+            <a
+              href={CONTACT.zalo}
+              target="_blank"
+              rel="noreferrer"
+              data-cta-location="vi_header_zalo_cta"
+              className="btn-gold hidden 2xl:inline-flex !min-h-[2.4rem] !py-2 !px-5 !text-[0.62rem]"
+            >
+              {VI_LABELS.chatLong}
+            </a>
+          ) : (
+            <Link to="/contact" hash="consultation" className="btn-gold hidden 2xl:inline-flex !min-h-[2.4rem] !py-2 !px-5 !text-[0.62rem]">
+              Book Free Trial
+            </Link>
+          )}
 
           {/* Single menu control at every width */}
           <button ref={triggerRef} onClick={() => setFullOpen(true)}
@@ -233,7 +258,7 @@ export function SiteHeader() {
             aria-haspopup="dialog"
             aria-expanded={fullOpen}
             aria-controls={MENU_ID}
-            aria-label="Open full menu">
+            aria-label={isVi ? "Mở menu" : "Open full menu"}>
             <Menu className="h-4 w-4" />
           </button>
         </div>
@@ -262,7 +287,7 @@ export function SiteHeader() {
                 className="flex shrink-0 items-center justify-between border-b border-white/8 px-6 py-4 sm:px-8"
                 style={{ paddingTop: "calc(env(safe-area-inset-top,0px) + 1rem)" }}
               >
-                <div className="font-display tracking-[0.24em] text-sm uppercase text-gold-gradient">Full Menu</div>
+                <div className="font-display tracking-[0.24em] text-sm uppercase text-gold-gradient">{isVi ? "Menu" : "Full Menu"}</div>
                 <button onClick={() => setFullOpen(false)} aria-label="Close menu"
                   className="grid h-10 w-10 place-items-center rounded-full border border-border/60 hover:border-primary/40">
                   <X className="h-4 w-4" />
@@ -279,7 +304,7 @@ export function SiteHeader() {
                   className="flex w-full items-center gap-2 rounded-xl border border-white/10 px-3 py-3 text-sm text-foreground/90 transition-colors hover:border-[color:var(--gold)]/40 hover:text-[color:var(--gold)]"
                 >
                   <Search className="h-4 w-4" strokeWidth={1.5} />
-                  Search
+                  {isVi ? "Tìm kiếm" : "Search"}
                 </button>
 
                 {/* URL-based language switch (mobile / full menu). */}
@@ -300,7 +325,7 @@ export function SiteHeader() {
                   </div>
                 </div>
                 <div className="mt-8 grid gap-8 sm:grid-cols-2 xl:grid-cols-1">
-                  {FULL_MENU.map((group) => (
+                  {menuGroups.map((group) => (
                     <div key={group.group}>
                       <div className="text-[0.6rem] uppercase tracking-[0.28em] text-[color:var(--gold)]/80 mb-3">{group.group}</div>
                       <div className="grid gap-1">
@@ -316,8 +341,29 @@ export function SiteHeader() {
                   ))}
                 </div>
                 <div className="mt-10 grid gap-3">
-                  <a href={WHATSAPP} target="_blank" rel="noreferrer" className="btn-ghost-gold w-full">Chat on WhatsApp</a>
-                  <a href="/contact#consultation" onClick={() => setFullOpen(false)} className="btn-gold w-full">Book Free Trial</a>
+                  {isVi ? (
+                    <>
+                      <a
+                        href={CONTACT.zalo}
+                        target="_blank"
+                        rel="noreferrer"
+                        data-cta-location="vi_menu_zalo"
+                        aria-label="Nhắn tin cho đội ngũ Yog Jivan qua Zalo"
+                        className="btn-gold w-full inline-flex items-center justify-center gap-2"
+                      >
+                        <ZaloIcon className="h-4 w-4" />
+                        {VI_LABELS.chat}
+                      </a>
+                      <a href={`tel:${CONTACT.phoneTel}`} data-cta-location="vi_menu_call" className="btn-ghost-gold w-full">
+                        {VI_LABELS.call} {CONTACT.phoneDisplay}
+                      </a>
+                    </>
+                  ) : (
+                    <>
+                      <a href={WHATSAPP} target="_blank" rel="noreferrer" className="btn-ghost-gold w-full">Chat on WhatsApp</a>
+                      <a href="/contact#consultation" onClick={() => setFullOpen(false)} className="btn-gold w-full">Book Free Trial</a>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

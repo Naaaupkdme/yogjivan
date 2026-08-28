@@ -36,7 +36,7 @@ function ViOnlineGroup() {
         title="Lớp Yoga Online Trực Tiếp Nhóm Nhỏ"
         lead={`Buổi tập trực tuyến ${ONLINE_CLASS.durationMinutes} phút, tối đa ${ONLINE_CLASS.maxGroupSize} học viên, hiện do Master Anil trực tiếp hướng dẫn. Đây là lớp trực tiếp qua video — giáo viên nhìn thấy bạn tập và hướng dẫn bằng lời trong buổi học, không phải video quay sẵn.`}
         primary={{ href: "#hoc-phi", label: "Xem học phí" }}
-        secondary={{ href: CONTACT.whatsapp, label: "Nhắn WhatsApp" }}
+        secondary={{ href: CONTACT.zalo, label: "Nhắn Zalo" }}
       />
 
       <ViSection heading="Lớp học diễn ra như thế nào">
@@ -47,8 +47,8 @@ function ViOnlineGroup() {
         </p>
         <p>
           Bạn chỉ cần một tấm thảm, khoảng trống bằng chiều dài cơ thể và thiết bị có camera đặt sao cho giáo viên nhìn
-          được toàn thân. Bật camera giúp giáo viên chỉnh tư thế cho bạn; nếu bạn không thể bật, hãy trao đổi trước với
-          đội ngũ Yog Jivan.
+          được toàn thân. Bật camera giúp giáo viên quan sát và đưa hướng dẫn bằng lời trong buổi tập; nếu bạn không thể bật, hãy trao
+          đổi trước với đội ngũ Yog Jivan.
         </p>
         <p>{SAFETY_NOTE_VI}</p>
       </ViSection>
@@ -92,7 +92,7 @@ function ViOnlineGroup() {
 
       <ViEnquiryCTA
         heading="Đăng ký lớp online trực tiếp"
-        body="Nhắn cho đội ngũ Yog Jivan để biết khung giờ lớp hiện tại, cách tham gia và gói phù hợp với bạn."
+        body="Nhắn Zalo cho đội ngũ Yog Jivan để biết khung giờ lớp hiện tại, cách tham gia và gói phù hợp với bạn."
       />
 
       <ViPageNav current="/vi/lop-yoga-online" />

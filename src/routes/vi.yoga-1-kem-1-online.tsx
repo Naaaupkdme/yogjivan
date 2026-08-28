@@ -8,7 +8,7 @@ import { CONTACT } from "@/lib/facts/contact";
 const CANONICAL = `${SITE_ORIGIN}/vi/yoga-1-kem-1-online`;
 const TITLE = "Yoga 1 Kèm 1 Online | Giáo Viên Riêng | Yog Jivan";
 const DESC =
-  "Yoga 1 kèm 1 online cùng giáo viên Yog Jivan được ghép phù hợp với trình độ và mục tiêu của bạn: buổi tập trực tiếp, lộ trình riêng, lịch học linh hoạt.";
+  "Yoga 1 kèm 1 online cùng giáo viên Yog Jivan được ghép phù hợp với trình độ và mục tiêu của bạn: buổi tập trực tiếp, lộ trình riêng, lịch học được sắp xếp qua trao đổi.";
 
 export const Route = createFileRoute("/vi/yoga-1-kem-1-online")({
   head: () => ({
@@ -34,11 +34,11 @@ const STEPS = [
   },
   {
     t: "Ghép giáo viên phù hợp",
-    d: "Yog Jivan chọn một giáo viên phù hợp với trình độ, mục tiêu và ngôn ngữ của bạn. Các buổi tập sau đó thường được giữ cùng một giáo viên đã ghép.",
+    d: "Yog Jivan chọn một giáo viên phù hợp với trình độ, mục tiêu và ngôn ngữ của bạn. Các buổi tập sau đó thường được giữ cùng giáo viên đã ghép.",
   },
   {
     t: "Buổi tập riêng trực tiếp",
-    d: `Mỗi buổi kéo dài khoảng ${ONLINE_CLASS.durationMinutes} phút qua video, chỉ có bạn và giáo viên, với hướng dẫn và chỉnh sửa theo thời gian thực.`,
+    d: `Mỗi buổi kéo dài khoảng ${ONLINE_CLASS.durationMinutes} phút qua video, chỉ có bạn và giáo viên, với hướng dẫn bằng lời theo thời gian thực.`,
   },
   {
     t: "Lộ trình luyện tập cá nhân",
@@ -58,7 +58,7 @@ function ViPrivate() {
         title="Yoga 1 Kèm 1 Online"
         lead={`Buổi tập yoga trực tiếp ${ONLINE_CLASS.durationMinutes} phút dành riêng cho bạn, cùng một giáo viên Yog Jivan được ghép phù hợp với trình độ, mục tiêu và ngôn ngữ của bạn. Học phí và lịch học được tư vấn riêng theo nhu cầu.`}
         primary={{ href: "#tu-van", label: "Đăng ký tư vấn" }}
-        secondary={{ href: CONTACT.whatsapp, label: "Nhắn WhatsApp" }}
+        secondary={{ href: CONTACT.zalo, label: "Nhắn Zalo" }}
       />
 
       <ViSection heading="Phù hợp với ai">
@@ -103,7 +103,7 @@ function ViPrivate() {
       <div id="tu-van">
         <ViEnquiryCTA
           heading="Nhận tư vấn buổi tập riêng"
-          body="Nhắn cho đội ngũ Yog Jivan qua WhatsApp hoặc Zalo. Chúng tôi sẽ hỏi về kinh nghiệm tập, mục tiêu và lịch của bạn, sau đó tư vấn giáo viên phù hợp cùng học phí cho chương trình 1 kèm 1."
+          body="Nhắn Zalo cho đội ngũ Yog Jivan. Chúng tôi sẽ hỏi về kinh nghiệm tập, mục tiêu và lịch của bạn, sau đó tư vấn giáo viên phù hợp cùng học phí cho chương trình 1 kèm 1."
         />
       </div>
 
