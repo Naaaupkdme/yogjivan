@@ -1,4 +1,5 @@
 import { ArrowRight, MapPin, Clock, Phone } from "lucide-react";
+import { ZaloIcon } from "@/components/icons/ZaloIcon";
 import { STUDIO_LIST, STUDIO_HOURS } from "@/lib/facts/locations";
 import { CONTACT } from "@/lib/facts/contact";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
@@ -152,24 +153,21 @@ export function ViEnquiryCTA({
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-foreground/85">{body}</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href={CONTACT.whatsapp}
-              target="_blank"
-              rel="noreferrer"
-              data-cta-location="vi_page_whatsapp"
-              className="btn-gold min-h-[44px]"
-            >
-              Nhắn WhatsApp
-            </a>
-            <a
               href={CONTACT.zalo}
               target="_blank"
               rel="noreferrer"
               data-cta-location="vi_page_zalo"
-              className="btn-ghost-gold min-h-[44px]"
+              aria-label="Nhắn tin cho đội ngũ Yog Jivan qua Zalo"
+              className="btn-gold min-h-[44px] inline-flex items-center gap-2"
             >
+              <ZaloIcon className="h-4 w-4" />
               Nhắn Zalo
             </a>
-            <a href={`tel:${CONTACT.phoneTel}`} className="btn-ghost-gold min-h-[44px]">
+            <a
+              href={`tel:${CONTACT.phoneTel}`}
+              data-cta-location="vi_page_call"
+              className="btn-ghost-gold min-h-[44px]"
+            >
               Gọi {CONTACT.phoneDisplay}
             </a>
           </div>

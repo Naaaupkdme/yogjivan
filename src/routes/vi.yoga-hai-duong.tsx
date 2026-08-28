@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ViHero, ViSection, ViStudioCards, ViEnquiryCTA, ViPageNav } from "@/components/site/vi/ViParts";
+import { ViScheduleSection } from "@/components/site/vi/ViSchedule";
 import { SITE_ORIGIN } from "@/lib/locale-routes";
 import { AREA_PHRASE_VI, ADMIN_NOTE_VI, SAFETY_NOTE_VI } from "@/lib/facts/vi-copy";
 import { STUDIO_HOURS } from "@/lib/facts/locations";
@@ -50,14 +51,16 @@ function ViHaiDuong() {
         eyebrow="Studio tại khu vực Hải Dương"
         title="Lớp Yoga tại Hải Dương"
         lead={`Yog Jivan có hai cơ sở tập yoga phục vụ ${AREA_PHRASE_VI}. Các lớp được đội ngũ giáo viên Yog Jivan hướng dẫn trực tiếp trên sàn tập, phù hợp từ người mới bắt đầu đến học viên đã tập lâu năm, mở cửa Thứ Hai đến Thứ Bảy từ ${STUDIO_HOURS.opens} đến ${STUDIO_HOURS.closes}.`}
-        primary={{ href: "#lien-he", label: "Hỏi về lịch lớp" }}
-        secondary={{ href: CONTACT.whatsapp, label: "Nhắn WhatsApp" }}
+        primary={{ href: "#lich-lop", label: "Xem lịch lớp" }}
+        secondary={{ href: CONTACT.zalo, label: "Nhắn Zalo" }}
       />
 
       <ViSection heading="Hai cơ sở Yog Jivan">
         <ViStudioCards />
         <p className="text-xs leading-relaxed text-foreground/65">{ADMIN_NOTE_VI}</p>
       </ViSection>
+
+      <ViScheduleSection />
 
       <ViSection heading="Lớp học phù hợp với ai">
         <p>
@@ -86,7 +89,7 @@ function ViHaiDuong() {
       <div id="lien-he">
         <ViEnquiryCTA
           heading="Hỏi về lịch lớp và lớp phù hợp với bạn"
-          body="Nhắn cho đội ngũ Yog Jivan qua WhatsApp hoặc Zalo để biết lịch lớp hiện tại tại từng cơ sở, lớp nào phù hợp với trình độ của bạn và cách bắt đầu."
+          body="Nhắn Zalo cho đội ngũ Yog Jivan để biết lịch lớp hiện tại tại từng cơ sở, lớp nào phù hợp với trình độ của bạn và cách bắt đầu."
         />
       </div>
 

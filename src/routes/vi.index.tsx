@@ -35,7 +35,7 @@ function ViHome() {
         title="Yoga tại Hải Dương và trực tuyến cùng Yog Jivan"
         lead={`Yog Jivan là trung tâm yoga do Master Anil Choudhary — Founder & Lead Yoga Teacher — sáng lập và dẫn dắt. Chúng tôi có hai cơ sở tại ${AREA_PHRASE_VI}, các lớp yoga online trực tiếp theo nhóm nhỏ và chương trình yoga 1 kèm 1 online với giáo viên Yog Jivan được ghép phù hợp với trình độ, mục tiêu và ngôn ngữ của bạn.`}
         primary={{ href: "/vi/yoga-1-kem-1-online", label: "Tìm hiểu Yoga 1 Kèm 1" }}
-        secondary={{ href: CONTACT.whatsapp, label: "Nhắn WhatsApp" }}
+        secondary={{ href: CONTACT.zalo, label: "Nhắn Zalo" }}
       />
 
       <ViSection heading="Ba hình thức tập cùng Yog Jivan">

@@ -3,13 +3,9 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube, MessageCircle, MapPin, Mail, Phone } from "lucide-react";
 import { SOCIAL, STUDIO_ADDRESSES } from "@/lib/social";
 
-function ZaloIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden className={className} fill="currentColor">
-      <path d="M12 2C6.5 2 2 5.9 2 10.7c0 2.6 1.4 5 3.7 6.6-.2 1-.7 2.5-1.6 3.5-.2.2 0 .5.3.5 1.9-.1 3.6-.9 4.7-1.7 1 .2 2 .4 2.9.4 5.5 0 10-3.9 10-8.7C22 5.9 17.5 2 12 2zm-4.5 11H6V8h1.5v5zm5.5 0h-1.3l-2.3-3v3H8V8h1.4l2.3 3V8H13v5zm3.5 0H15c-.6 0-1-.4-1-1V8h1.5v3.5H17V13zm3.7-1.4c0 .9-.7 1.6-1.6 1.6s-1.6-.7-1.6-1.6.7-1.6 1.6-1.6 1.6.7 1.6 1.6z"/>
-    </svg>
-  );
-}
+import { ZaloIcon } from "@/components/icons/ZaloIcon";
+import { isViPath } from "@/lib/locale-routes";
+import { VI_NAV_ITEMS } from "@/lib/local-contact";
 import communityA from "@/assets/img_20260621_105308.jpg.asset.json";
 import communityB from "@/assets/img_20260622_114016.jpg.asset.json";
 import communityC from "@/assets/img_5066.jpg.asset.json";
@@ -35,6 +31,7 @@ export function SiteFooter() {
   const qi = 0;
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const hideLocal = pathname === "/online-yoga-classes";
+  const isVi = isViPath(pathname);
   useEffect(() => {}, []);
 
   return (
@@ -79,15 +76,15 @@ export function SiteFooter() {
 
         <div className={`grid gap-8 border-b border-border/60 pb-10 ${hideLocal ? "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]" : "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]"}`}>
           <div>
-            <div className="flex items-center gap-3">
+            <a href={isVi ? "/vi" : "/"} className="flex items-center gap-3" aria-label={isVi ? "Yog Jivan — trang chủ tiếng Việt" : "Yog Jivan home"}>
               <img src={logo.url} alt="Yog Jivan Sanctuary logo" className="h-11 w-11 rounded-full object-cover" />
               <div>
                 <div className="font-display text-xl">Yog Jivan</div>
                 <div className="text-[0.6rem] uppercase tracking-[0.28em] text-muted-foreground">Sanctuary</div>
               </div>
-            </div>
+            </a>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-              Rooted in tradition. Refined for modern life.
+              {isVi ? "Yoga Ấn Độ chính thống — tại Hải Dương và trực tuyến." : "Rooted in tradition. Refined for modern life."}
             </p>
             <a
               href={SOCIAL.googleMapsStudio1}
@@ -96,17 +93,22 @@ export function SiteFooter() {
               className="mt-5 inline-flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-primary"
             >
               <MapPin className="h-3.5 w-3.5 text-primary" />
-              <span>View Studio 1 on Google Maps →</span>
+              <span>{isVi ? "Xem Cơ sở 1 trên Google Maps →" : "View Studio 1 on Google Maps →"}</span>
             </a>
             <div className="mt-5 flex items-center gap-2">
               {[
-                { href: SOCIAL.whatsapp, Icon: MessageCircle, label: "Open WhatsApp chat" },
-                { href: SOCIAL.zalo, Icon: ZaloIcon, label: "Chat on Zalo" },
+                ...(isVi
+                  ? [{ href: SOCIAL.zalo, Icon: ZaloIcon, label: "Nhắn Zalo cho Yog Jivan" }]
+                  : [
+                      { href: SOCIAL.whatsapp, Icon: MessageCircle, label: "Open WhatsApp chat" },
+                      { href: SOCIAL.zalo, Icon: ZaloIcon, label: "Chat on Zalo" },
+                    ]),
                 { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram" },
                 { href: SOCIAL.facebook, Icon: Facebook, label: "Visit Yog Jivan Facebook" },
                 { href: SOCIAL.youtube, Icon: Youtube, label: "Visit Yog Jivan YouTube" },
               ].map(({ href, Icon, label }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                  data-cta-location={href === SOCIAL.zalo && isVi ? "vi_footer_zalo" : undefined}
                   className="grid h-11 w-11 place-items-center rounded-full border border-border bg-card/40 text-muted-foreground transition-all hover:text-primary hover:border-primary/40 hover:-translate-y-0.5">
                   <Icon className="h-4 w-4" />
                 </a>
@@ -115,7 +117,15 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h4 className="eyebrow mb-4">Explore</h4>
+            <h4 className="eyebrow mb-4">{isVi ? "Khám phá" : "Explore"}</h4>
+            {isVi ? (
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                {VI_NAV_ITEMS.map((i) => (
+                  <li key={i.href}><a href={i.href} className="hover:text-foreground">{i.label}</a></li>
+                ))}
+                <li><a href="/" hrefLang="en" className="hover:text-foreground">English website</a></li>
+              </ul>
+            ) : (
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><Link to="/about" className="hover:text-foreground">About</Link></li>
               <li><Link to="/programs" className="hover:text-foreground">Programs</Link></li>
@@ -134,32 +144,35 @@ export function SiteFooter() {
               <li><Link to="/blog" className="hover:text-foreground">Journal</Link></li>
               <li><Link to="/contact" className="hover:text-foreground">Contact & Book</Link></li>
             </ul>
+            )}
           </div>
 
           <div>
-            <h4 className="eyebrow mb-4">{hideLocal ? "Contact" : "Sanctuary"}</h4>
+            <h4 className="eyebrow mb-4">{isVi ? "Liên hệ" : hideLocal ? "Contact" : "Sanctuary"}</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
               {!hideLocal && (
                 <>
                   <li className="flex gap-3">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                     <a href={SOCIAL.googleMapsStudio1} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
-                      <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">Studio 1 · Sanctuary</span>
+                      <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">{isVi ? "Cơ sở 1 · Yog Jivan Sanctuary" : "Studio 1 · Sanctuary"}</span>
                       <span className="mt-0.5 block">{STUDIO_ADDRESSES.studio1.full}</span>
                     </a>
                   </li>
                   <li className="flex gap-3">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                     <a href={SOCIAL.googleMapsStudio2} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">
-                      <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">Studio 2 · Yog Jivan Yoga Studio</span>
+                      <span className="block text-[0.6rem] uppercase tracking-[0.22em] text-primary">{isVi ? "Cơ sở 2 · Yog Jivan Yoga Studio" : "Studio 2 · Yog Jivan Yoga Studio"}</span>
                       <span className="mt-0.5 block">{STUDIO_ADDRESSES.studio2.full}</span>
                     </a>
                   </li>
                   <li className="flex gap-3"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`tel:${SOCIAL.phoneTel}`} className="hover:text-foreground">{SOCIAL.phone}</a></li>
                 </>
               )}
-              <li className="flex gap-3"><MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">WhatsApp {SOCIAL.phone}</a></li>
-              <li className="flex gap-3"><ZaloIcon className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.zalo} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Zalo {SOCIAL.phone}</a></li>
+              {!isVi && (
+                <li className="flex gap-3"><MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">WhatsApp {SOCIAL.phone}</a></li>
+              )}
+              <li className="flex gap-3"><ZaloIcon className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.zalo} target="_blank" rel="noopener noreferrer" data-cta-location={isVi ? "vi_footer_zalo" : undefined} className="hover:text-foreground">Zalo {SOCIAL.phone}</a></li>
               <li className="flex gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`mailto:${SOCIAL.email}`} className="hover:text-foreground">{SOCIAL.email}</a></li>
             </ul>
           </div>
@@ -197,14 +210,14 @@ export function SiteFooter() {
           <p>© {new Date().getFullYear()} Yog Jivan. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Link to="/privacy" className="underline-offset-4 hover:text-foreground hover:underline">
-              Privacy Policy
+              {isVi ? "Chính sách bảo mật" : "Privacy Policy"}
             </Link>
             <button
               type="button"
               onClick={() => window.dispatchEvent(new Event("yj:open-cookie-settings"))}
               className="underline-offset-4 hover:text-foreground hover:underline"
             >
-              Cookie Settings
+              {isVi ? "Cài đặt cookie" : "Cookie Settings"}
             </button>
             <p className="uppercase tracking-[0.28em]">Rooted in tradition. Refined for modern life.</p>
           </div>

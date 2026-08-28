@@ -47,7 +47,8 @@ export function enCounterpart(path: string): string | null {
 
 export function isViPath(path: string): boolean {
   const clean = normalise(path);
-  return clean === "/vi" || clean.startsWith("/vi");
+  // Boundary-safe: "/video" or "/vietnam" must NOT classify as Vietnamese.
+  return clean === "/vi" || clean.startsWith("/vi/");
 }
 
 /**
