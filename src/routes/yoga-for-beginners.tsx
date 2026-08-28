@@ -41,7 +41,7 @@ const TRUST_STATS = [
 const CREDENTIALS = [
   { icon: GraduationCap, label: `${TEACHER.title} — classical Hatha, Ashtanga & pranayama` },
   { icon: Stethoscope, label: "Teaches absolute beginners with safety-first sequencing — no forced ranges" },
-  { icon: Users, label: `${PUBLIC_TRUST.studentsTaught} students guided — many arrived as complete beginners` },
+  { icon: Users, label: `${PUBLIC_TRUST.studentsTaught} students guided across studio and live online practice` },
   { icon: Globe2, label: `Students in ${PUBLIC_TRUST.countries} countries — Vietnam, India, USA, EU, Australia` },
   { icon: Award, label: "Founder of Yog Jivan Sanctuary and the Yog Jivan online school" },
   { icon: ShieldCheck, label: "Beginner-first pacing — you move only when your body is ready" },
@@ -53,11 +53,11 @@ const QUESTIONS: QA[] = [
   {
     q: "Do I need to be flexible to start yoga?",
     answer:
-      "No. Flexibility is something practice develops over time, not something you need before you begin. Every posture is taught in scalable stages, so you start exactly where your body is today, and props such as blocks, straps, blankets and chairs make each pose accessible from your first class.",
+      "No. Flexibility is something practice develops over time, not something you need before you begin. Every posture is taught in scalable stages, so you start exactly where your body is today, and props are used where appropriate to make each pose accessible from your first class.",
     bullets: [
       "Flexibility is a result of practice — not a requirement to attend.",
       "Every posture has several stages; you work at the stage your body allows today.",
-      "Props (blocks, straps, blankets, chairs) are used from day one.",
+      "Props are used where appropriate from day one.",
       "Stiff hips, tight hamstrings and desk-bound shoulders are welcome.",
       "Progress differs from person to person; individual experience varies.",
     ],
@@ -78,14 +78,12 @@ const QUESTIONS: QA[] = [
   {
     q: "Should a beginner choose the studio in Hai Duong or live online?",
     answer:
-      "Both work well for beginners because both are live and small. The studios serving the Hai Duong urban area give you in-person adjustments and community. Live online gives you the same teacher, the same small-group attention and the same sequencing from anywhere in the world, with camera on so your alignment can be corrected in real time.",
+      "Both work well for beginners because both are live and small. The studios serving the Hai Duong urban area give you in-person guidance and community. Live online gives you the same small-group attention and beginner-first sequencing from anywhere in the world, with your camera on so your alignment can be seen and corrected in real time.",
     bullets: [
-      "Studio: in-person adjustments and community — ideal if you are local to the Hai Duong urban area.",
+      "Studio: in-person guidance and community — ideal if you are local to the Hai Duong urban area.",
       `Live online: ${ONLINE_CLASS.platform}, maximum ${ONLINE_CLASS.maxGroupSize} students, ${ONLINE_CLASS.durationMinutes}-minute sessions.`,
       "Camera on is encouraged online so your alignment can be seen and corrected.",
-      "Same teacher and same beginner-first pacing in either format.",
-      "Classes are taught in English, Vietnamese and Hindi.",
-      "Many students combine a mid-week online session with a weekend studio class.",
+      "Teaching is available across English, Vietnamese and Hindi, subject to teacher availability.",
     ],
   },
   {
@@ -95,7 +93,7 @@ const QUESTIONS: QA[] = [
     bullets: [
       "Comfortable, breathable clothing you can bend forward in.",
       "Practise barefoot — no shoes or socks on the mat.",
-      "Studio: bring water; mats, blocks, straps and bolsters are provided.",
+      "Studio: bring water; props are provided for studio classes.",
       "Online: a mat, 2 blocks (or books), 1 strap (or belt), 1 bolster (or cushion).",
       "About 2×2m of clear floor space with your device placed so your full body is visible.",
       "Come lightly fed — nothing heavy for about two hours before class.",
@@ -217,7 +215,7 @@ function YogaForBeginnersPage() {
       <PageHero
         eyebrow="Beginner-Friendly · Hai Duong Studios & Live Online"
         title="Yoga for Beginners in Hai Duong and Live Online"
-        sub={`Small-group, beginner-first yoga taught personally by ${TEACHER.name}, ${TEACHER.title}. In person at two studios serving the Hai Duong urban area, and live online worldwide. No flexibility or experience required.`}
+        sub={`Small-group, beginner-first yoga with the Yog Jivan teaching team, founded and led by ${TEACHER.name}, ${TEACHER.title}. In person at two studios serving the Hai Duong urban area, and live online worldwide. No flexibility or experience required.`}
       >
         <div className="mt-2 flex flex-wrap gap-3">
           <Link to="/contact" hash="consultation" className="btn-gold">
@@ -287,12 +285,12 @@ function YogaForBeginnersPage() {
             <div>
               <p className="text-foreground/90 leading-relaxed">
                 Master Anil began teaching in India and has taught authentic Indian yoga for over {PUBLIC_TRUST.yearsTeaching.replace("+", "")} years.
-                Many of the {PUBLIC_TRUST.studentsTaught} students he has taught arrived as absolute beginners — plenty of them
-                had never rolled out a mat before. His beginner classes are unhurried, alignment-first and free of the
-                pressure that makes newcomers give up after one attempt.
+                Yog Jivan has guided {PUBLIC_TRUST.studentsTaught} students across studio and live online practice.
+                Beginner classes are unhurried, alignment-first and free of the pressure that makes newcomers give up
+                after one attempt.
               </p>
               <p className="mt-4 text-foreground/90 leading-relaxed">
-                His teaching principle for beginners is simple: <span className="italic text-gold-gradient">&ldquo;Yoga must fit the person — never force the person to fit the yoga.&rdquo;</span>{" "}
+                The teaching principle for beginners is simple: <span className="italic text-gold-gradient">yoga should fit the person, not the other way round.</span>{" "}
                 Every first-time student is taught breath, safe alignment and a handful of foundation postures before
                 anything more demanding is introduced.
               </p>
@@ -320,11 +318,11 @@ function YogaForBeginnersPage() {
             <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 md:col-span-2 md:aspect-[16/9]">
               <LuxuryImage
                 src={masterImages.studioAdjustment}
-                alt="A gentle hands-on adjustment for a beginner student in the Yog Jivan studio"
+                alt="A Yog Jivan teacher guiding a beginner student in the studio"
                 className="h-full w-full object-cover"
               />
               <figcaption className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-xs uppercase tracking-[0.22em] text-white/85">
-                Beginner-first adjustments · Hai Duong urban area
+                Beginner-first guidance · Hai Duong urban area
               </figcaption>
             </figure>
             <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/10 aspect-[4/5] md:aspect-auto">
@@ -347,14 +345,14 @@ function YogaForBeginnersPage() {
           <SectionHead
             eyebrow="Choosing Your Format"
             title="Studio or live online?"
-            sub="Both are live and small. The difference is in-person adjustment versus practising from wherever you are."
+            sub="Both are live and small. The difference is in-person guidance versus practising from wherever you are."
           />
           <div className="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-2">
             <div className="glass-soft rounded-2xl p-6">
               <h3 className="font-display text-lg">Studio — Hai Duong urban area</h3>
               <ul className="mt-4 space-y-2 text-sm leading-relaxed text-foreground/85">
-                <li>In-person adjustments and community.</li>
-                <li>Mats, blocks, straps and bolsters provided.</li>
+                <li>In-person guidance and community.</li>
+                <li>Props are provided for studio classes.</li>
                 {STUDIO_LIST.map((s) => (
                   <li key={s.id}>
                     <a href={s.googleMaps} target="_blank" rel="noopener noreferrer" className="text-[color:var(--gold)] hover:underline">
@@ -370,7 +368,7 @@ function YogaForBeginnersPage() {
               <ul className="mt-4 space-y-2 text-sm leading-relaxed text-foreground/85">
                 <li>{ONLINE_CLASS.durationMinutes}-minute live sessions on {ONLINE_CLASS.platform}.</li>
                 <li>Maximum {ONLINE_CLASS.maxGroupSize} students, so you are corrected by name.</li>
-                <li>Camera on is encouraged for correction; your session is never shared.</li>
+                <li>Camera on is encouraged so your alignment can be corrected.</li>
                 <li>Missed a class? A recording is available to members for {ONLINE_CLASS.recordings.windowHours} hours.</li>
                 <li>Teaching available across {ONLINE_CLASS.languages.join(", ")}, subject to availability.</li>
               </ul>

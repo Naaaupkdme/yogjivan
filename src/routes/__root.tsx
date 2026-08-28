@@ -27,7 +27,7 @@ import { LanguageProvider } from "@/lib/language";
 // title/description/og/twitter by name+property merge.
 const ROOT_TITLE = "Yog Jivan | Yoga Studios in Hai Duong & Live Online Yoga";
 const ROOT_DESC =
-  "Authentic Indian yoga with Master Anil at two studios serving Hai Duong, plus live small-group and private online yoga for beginners worldwide.";
+  "Authentic Indian yoga at two Yog Jivan studios serving Hai Duong, plus live small-group and private online yoga for beginners worldwide.";
 
 const ORG_ID = "https://yogjivan.com/#organization";
 
@@ -135,7 +135,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Yog Jivan",
           url: "https://yogjivan.com",
           logo: "https://yogjivan.com/favicon.ico",
-          description: "Yoga studios serving the Hai Duong urban area of Hai Phong, Vietnam, plus live small-group and private online yoga classes taught by Master Anil Choudhary — Hatha, Ashtanga, pranayama, meditation and beginner yoga.",
+          description: "Yoga studios serving the Hai Duong urban area of Hai Phong, Vietnam, plus live small-group and private online yoga classes taught by the Yog Jivan teaching team, founded and led by Master Anil Choudhary — Hatha, Ashtanga, pranayama, meditation and beginner yoga.",
           founder: { "@id": "https://yogjivan.com/#master-anil-choudhary" },
 
           telephone: "+84782046066",

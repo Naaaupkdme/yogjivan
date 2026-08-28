@@ -10,10 +10,9 @@ const STUDIO = {
   tag: "Group Classes",
   blurb: "Daily group practice at our two studios serving the Hai Duong urban area.",
   perks: [
-    "Group classes taught in person by the Yog Jivan teaching team",
-    "Mats, blocks, straps and bolsters provided",
-    "Small groups with alignment-first cueing",
-    "Beginners welcome — every posture is taught in stages",
+    "In-person group classes with the Yog Jivan teaching team",
+    "Guidance and modifications during live practice",
+    "Two studios serving the Hai Duong urban area",
   ],
 };
 
