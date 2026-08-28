@@ -21,6 +21,7 @@ import { ExitIntentModal } from "@/components/site/ExitIntentModal";
 import { CookieConsent } from "@/components/site/CookieConsent";
 import { initAnalytics, trackPageView, trackCta, metaEvent } from "@/lib/analytics";
 import { LanguageProvider } from "@/lib/language";
+import { isViPath } from "@/lib/locale-routes";
 
 
 // Factual sitewide fallback metadata. Page-specific head() entries override
