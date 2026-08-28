@@ -16,8 +16,8 @@ const FEATURES = [
   },
   {
     Icon: HeartPulse,
-    title: "Therapeutic Focus",
-    body: "Programs for back pain, PCOD, anxiety, recovery and post-injury healing.",
+    title: "Supportive Focus",
+    body: "Gentle practice for back discomfort, PCOD, stress support and general mobility.",
   },
   {
     Icon: Sparkles,

@@ -16,7 +16,7 @@ export const FAQS = [
   },
   {
     q: "Can yoga help with back pain, PCOD or anxiety?",
-    a: "Our therapeutic programs support back and neck comfort, PCOD and cycle-related concerns, stress, sleep and post-injury recovery. Yoga complements — it never replaces — care from your doctor, and we don't promise specific medical outcomes.",
+    a: "Our supportive yoga programs are suitable for people with back and neck discomfort, PCOD, cycle-related preferences and stress support. Yoga complements — it never replaces — care from your doctor, and we don't promise specific medical outcomes.",
   },
   {
     q: "Where are the studios located?",

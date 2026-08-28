@@ -90,7 +90,7 @@ const copy: Record<Lang, Copy> = {
     },
     story: {
       eyebrow: "Founder journey",
-      title: "Discipline. Healing. Service.",
+      title: "Discipline. Wellbeing. Service.",
       intro: "From India to Vietnam — a personal practice became a sanctuary for global students.",
     },
     trust: {

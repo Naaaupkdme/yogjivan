@@ -16,7 +16,7 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 - 3 months — $54.99
 - 6 months — $99.99
 - 12 months — $179.99
-- Includes: Live, small-batch online classes (max 8 students) led personally by Master Anil; therapeutic, safety-first sequencing; real-time verbal alignment correction
+- Includes: Live, small-batch online classes (max 8 students) led personally by Master Anil; safety-first sequencing; real-time verbal alignment correction
 - Class length: 60 minutes · Camera on required for correction · Languages: English, Vietnamese, Hindi
 - Format: Zoom / Google Meet
 - Best for: Students worldwide wanting consistent, teacher-led practice

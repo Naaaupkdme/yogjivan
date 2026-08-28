@@ -119,11 +119,11 @@ const SERVICES: Service[] = [
   },
   {
     num: "03",
-    title: "Therapeutic",
-    italic: "Recovery",
-    blurb: "Restorative healing for recovery, relief and nervous system balance.",
-    bullets: ["Back & Neck Relief", "Stress Relief", "Posture Support", "Mobility & Flexibility"],
-    cta: "Discover Healing",
+    title: "Supportive",
+    italic: "Practice",
+    blurb: "Gentle, restorative practice for comfort, mobility and unhurried rest.",
+    bullets: ["Back & Neck Comfort", "Stress Support", "Posture Support", "Mobility & Flexibility"],
+    cta: "Discover Supportive Yoga",
     to: "/programs",
     Icon: HeartPulse,
     variant: "therapeutic",
@@ -417,7 +417,7 @@ export function Services() {
       <div className="container-luxe relative">
         <div className="mx-auto flex max-w-3xl items-center justify-center gap-3 text-center">
           <Sparkles className="h-3.5 w-3.5 text-[color:var(--gold)]" />
-          <p className="eyebrow">Transform your body, heal your mind, elevate your soul</p>
+          <p className="eyebrow">Move your body, settle your mind, practise with intention</p>
           <Sparkles className="h-3.5 w-3.5 text-[color:var(--gold)]" />
         </div>
 
