@@ -171,7 +171,7 @@ const COMPARISON = [
 const METHOD_NAME = "Yog Jivan Personal Practice Method";
 
 const METHOD = [
-  { n: "01", t: "Understand", d: "Your current practice level, what you want to work on, the times that fit your week, and any limitation or clinician instruction that affects how you move. We do not collect a medical history." },
+  { n: "01", t: "Understand", d: "Your current practice level, what you want to work on, the times that fit your week, and any limitation or clinician instruction that affects how you move. A full medical history is not required; share only relevant limitations or clinician instructions that affect movement." },
   { n: "02", t: "Match", d: "A Yog Jivan teacher is matched to your level, goals, language and availability. The match is agreed with you before anything is confirmed." },
   { n: "03", t: "Build", d: "Your starting practice is shaped around movement, mobility, strength, balance, breath and relaxation — at the level you are actually at today." },
   { n: "04", t: "Guide", d: "A live 60-minute 1-on-1 session with real-time verbal guidance while you practise. Your teacher watches the whole hour and adapts as you move." },

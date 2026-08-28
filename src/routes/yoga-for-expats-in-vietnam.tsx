@@ -5,7 +5,7 @@ import { masterImages, socialImageMeta } from "@/lib/images";
 const CANONICAL = "https://yogjivan.com/yoga-for-expats-in-vietnam";
 
 const ANSWER_CAPSULE =
-  "Yog Jivan is the English-speaking home for the expat community in and around Hai Duong, Vietnam. Authentic Indian yoga led by Master Anil Choudhary and the Yog Jivan teaching team, taught in clear English, with a welcoming community of practitioners from 20+ countries already on the mats. Two premium studios in Hai Duong, easy WhatsApp and Zalo booking, and a live-online option that follows you anywhere travel takes you. Come as you are — no Vietnamese required and no gym-culture pressure.";
+  "Yog Jivan offers English-speaking yoga classes in the Hai Duong urban area. Authentic Indian yoga led by Master Anil Choudhary and the Yog Jivan teaching team, taught in clear English, with in-studio and live-online options. Two studios in Hai Duong, easy WhatsApp and Zalo booking, and a live-online option that follows you when you travel. You can enquire and practise in English.";
 
 const { GraduationCap, Stethoscope, Users, Globe2, Award, ShieldCheck } = SHARED_CREDENTIAL_ICONS;
 
@@ -13,7 +13,7 @@ const CREDENTIALS = [
   { icon: GraduationCap, label: "Founder & Lead Yoga Teacher — teaches personally in clear English" },
   { icon: Users, label: "Community of students from 20+ countries already practising with us" },
   { icon: Globe2, label: "Studios in Hai Duong · Live online continues wherever you travel" },
-  { icon: Stethoscope, label: "Small groups — every student known personally by the teacher" },
+  { icon: Stethoscope, label: "Small groups — verbal guidance and modifications for your level" },
   { icon: Award, label: "Classical Indian yoga — Hatha, Ashtanga and pranayama" },
   { icon: ShieldCheck, label: "WhatsApp and Zalo booking · trial session before you commit" },
 ];
@@ -22,25 +22,25 @@ const QUESTIONS: QA[] = [
   {
     q: "Is There an English-Speaking Yoga Studio in Hai Duong?",
     answer:
-      "Yes — Yog Jivan Sanctuary is the established English-speaking yoga home in Hai Duong. Classes are taught in clear, warm English by Master Anil Choudhary and the Yog Jivan teaching team. No Vietnamese is required. Yog Jivan has guided students from 20+ countries, and classes are open to residents and international students alike. It is a genuinely international, genuinely welcoming space.",
+      "Yes — Yog Jivan offers English-speaking yoga classes in the Hai Duong urban area. Classes are taught in clear, warm English by Master Anil Choudhary and the Yog Jivan teaching team. You can enquire and practise in English. Yog Jivan has guided students from 20+ countries, and classes are open to residents and international students alike.",
     bullets: [
       "Classes available in clear English with the Yog Jivan teaching team.",
-      "No Vietnamese required at any point — from first message to the mat.",
-      "A settled international community — India, USA, UK, France, Australia, Singapore and more.",
-      "Two premium studios in Hai Duong city, easy to reach.",
-      "Small groups so you are known by name from day one.",
+      "You can enquire and practise in English.",
+      "A welcoming international mix of students.",
+      "Two studios in Hai Duong city, easy to reach.",
+      "Small groups with verbal guidance and modifications for your level.",
     ],
   },
   {
     q: "What's It Like Practicing Yoga as an Expat Here?",
     answer:
-      "Warm, unhurried and quietly international. The studios in Hai Duong were built as a sanctuary — soft light, natural materials, silence between the classes — and the community that fills them is people who have chosen to live thoughtfully. There is no gym-culture pressure, no comparison, no rushed check-in. Master Anil learns each new student personally — your history, what you're working with, what you're hoping for — before any class begins, so you are met exactly where you are. Expats often tell us it becomes the calmest hour of their week.",
+      "Warm, unhurried and quietly international. The studios in Hai Duong were built as a sanctuary — soft light, natural materials, silence between the classes — and the community that fills them is people who have chosen to live thoughtfully. There is no gym-culture pressure, no comparison, no rushed check-in. The Yog Jivan team learns about each new student — your history, what you're working with, what you're hoping for — before any class begins, so you are met where you are. Many expats tell us it becomes a calm, steady hour in their week.",
     bullets: [
       "Small, welcoming international community — you'll recognise faces quickly.",
       "Sanctuary-style studios — soft light, natural materials, quiet arrivals.",
       "No gym-culture pressure or performance mindset.",
-      "Master Anil learns each student personally before you step on the mat.",
-      "Often becomes 'the calmest hour of the week' for people navigating expat life.",
+      "The Yog Jivan team learns about each student before you step on the mat.",
+      "Often becomes a calm, steady hour for people navigating expat life.",
     ],
   },
   {
@@ -58,13 +58,13 @@ const QUESTIONS: QA[] = [
   {
     q: "How Do I Get Started?",
     answer:
-      "The easiest way is to send a short message on WhatsApp or Zalo — the same channels the rest of our expat community uses. We'll set up a free consultation with the Yog Jivan team (a real conversation, not a sales call), understand what you're looking for and any health context that matters, and invite you to a complimentary trial: 3 days of group class access plus one private session, no card required. You can begin in-studio, online, or both. There is no long onboarding — most new expats are on the mat within the same week they first message us.",
+      "The easiest way is to send a short message on WhatsApp or Zalo. We'll set up a free consultation with the Yog Jivan team (a real conversation, not a sales call), understand what you're looking for and any practice-safety context that matters, and invite you to a complimentary trial: 3 days of group class access plus one private session, no card required. You can begin in-studio, online, or both. There is no long onboarding — you can start as soon as a suitable time is arranged.",
     bullets: [
       "Message us on WhatsApp or Zalo — the channels our community already uses.",
       "Free consultation with the Yog Jivan team — a real conversation, not a sales call.",
       "Complimentary trial: 3 days of group classes + one private session.",
       "Begin in-studio, online, or both — completely your choice.",
-      "Most new expats are on the mat within the same week they first reach out.",
+      "You can start as soon as a suitable time is arranged.",
     ],
   },
 ];
@@ -73,10 +73,10 @@ export const Route = createFileRoute("/yoga-for-expats-in-vietnam")({
   head: () => ({
     meta: [
       { title: "Yoga for Expats in Hai Duong Vietnam | Yog Jivan" },
-      { name: "description", content: "The English-speaking yoga sanctuary for the expat community in Hai Duong. Authentic Indian yoga with Master Anil — in-studio and live online." },
+      { name: "description", content: "English-speaking yoga classes in Hai Duong for the expat community. Authentic Indian yoga with Master Anil — in-studio and live online." },
       { name: "keywords", content: "yoga for expats vietnam, english yoga hai duong, expat yoga vietnam, english-speaking yoga studio, foreigners yoga hai duong, international yoga vietnam" },
       { property: "og:title", content: "Yoga for Expats in Hai Duong, Vietnam | Yog Jivan" },
-      { property: "og:description", content: "English-speaking yoga sanctuary in Hai Duong — authentic Indian practice with Master Anil. Studio & online. Free consultation." },
+      { property: "og:description", content: "English-speaking yoga classes in Hai Duong — authentic Indian practice with Master Anil. Studio & online. Free consultation." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
       ...socialImageMeta(masterImages.groupNamaste),
@@ -107,7 +107,7 @@ function ExpatsPage() {
     <TherapeuticLanding
       eyebrow="Expat Community · English-Speaking"
       heroTitle="Yoga for Expats in Hai Duong, Vietnam"
-      heroSub="An English-speaking yoga sanctuary with Master Anil Choudhary — authentic Indian practice, small international community, in-studio and live online. Come as you are."
+      heroSub="English-speaking yoga classes in the Hai Duong urban area with Master Anil Choudhary — authentic Indian practice, small international community, in-studio and live online. Come as you are."
       answerCapsule={ANSWER_CAPSULE}
       h1="Yoga for Expats in Vietnam"
       credentials={CREDENTIALS}
@@ -136,7 +136,7 @@ function ExpatsPage() {
         { slug: "the-breath-you-didnt-know-you-were-holding", title: "The breath you didn't know you were holding", cat: "Wellness", read: "4 min" },
       ]}
       ctaTitle="Welcome to the sanctuary."
-      ctaSub="Message us on WhatsApp or Zalo to book your free consultation and complimentary trial with Master Anil."
+      ctaSub="Message us on WhatsApp or Zalo to book your free consultation and complimentary trial with the Yog Jivan team."
     />
   );
 }

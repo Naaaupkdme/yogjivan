@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Instagram, Facebook, Youtube, MessageCircle, MapPin, Mail, Phone, Star } from "lucide-react";
+import { Instagram, Facebook, Youtube, MessageCircle, MapPin, Mail, Phone } from "lucide-react";
 import { SOCIAL, STUDIO_ADDRESSES } from "@/lib/social";
 
 function ZaloIcon({ className = "" }: { className?: string }) {
@@ -95,8 +95,8 @@ export function SiteFooter() {
               rel="noreferrer"
               className="mt-5 inline-flex items-center gap-2 text-xs text-muted-foreground transition-colors hover:text-primary"
             >
-              <Star className="h-3.5 w-3.5 text-primary fill-primary" />
-              <span>5.0 on Google · read the reviews →</span>
+              <MapPin className="h-3.5 w-3.5 text-primary" />
+              <span>View Studio 1 on Google Maps →</span>
             </a>
             <div className="mt-5 flex items-center gap-2">
               {[
