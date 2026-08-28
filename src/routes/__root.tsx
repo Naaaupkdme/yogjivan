@@ -257,8 +257,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  // Language is determined by the URL, never by client state or geo-IP:
+  // /vi/* serves Vietnamese, everything else English.
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
   return (
-    <html lang="en">
+    <html lang={isViPath(pathname) ? "vi" : "en"}>
       <head>
         {/* Google Tag Manager — container infrastructure only. */}
         <script
