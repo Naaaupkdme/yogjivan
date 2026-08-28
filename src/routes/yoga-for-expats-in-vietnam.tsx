@@ -22,7 +22,7 @@ const QUESTIONS: QA[] = [
   {
     q: "Is There an English-Speaking Yoga Studio in Hai Duong?",
     answer:
-      "Yes — Yog Jivan Sanctuary is the established English-speaking yoga home in Hai Duong. Classes are taught in clear, warm English by Master Anil Choudhary and the Yog Jivan teaching team. No Vietnamese is required. You'll find yourself practising alongside professionals, teachers, families and long-term expats from India, the USA, Canada, Australia, France, the UK, Germany, Singapore and beyond — many of whom have been with us for years. It is a genuinely international, genuinely welcoming space.",
+      "Yes — Yog Jivan Sanctuary is the established English-speaking yoga home in Hai Duong. Classes are taught in clear, warm English by Master Anil Choudhary and the Yog Jivan teaching team. No Vietnamese is required. Yog Jivan has guided students from 20+ countries, and classes are open to residents and international students alike. It is a genuinely international, genuinely welcoming space.",
     bullets: [
       "Classes available in clear English with the Yog Jivan teaching team.",
       "No Vietnamese required at any point — from first message to the mat.",
@@ -120,7 +120,7 @@ function ExpatsPage() {
       portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, teaching in English in Hai Duong"
       masterIntro={
         <>
-          <p>Master Anil has taught expat students from more than 20 countries over 12+ years — many of them long-term, several of them still practising with him online years after leaving Vietnam. He teaches in clear, warm English, learns each new student personally, and treats every class — in-studio and online — with the same care.</p>
+          <p>Yog Jivan has guided students from 20+ countries. Master Anil brings 12+ years of yoga teaching and leads the teaching approach, and classes are taught in clear, warm English by Master Anil and the Yog Jivan teaching team — with the same care in the studio and online.</p>
           <p>The idea behind the online option is simple: wherever life takes you, the practice can travel with you.</p>
         </>
       }

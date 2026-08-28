@@ -50,7 +50,6 @@ const CONTINUITY = [
   { t: "Learns how you move", d: "Your teacher sees your range, habits and what you are currently working on, rather than starting from zero each time." },
   { t: "Remembers the last session", d: "What needed more attention last week is picked up again, instead of being explained from scratch." },
   { t: "Consistent cues and progression", d: "The same language, the same alignment references and a progression that follows on from where you stopped." },
-  { t: "Adapts pace and explanation", d: "Over time your teacher learns how much detail you like, how fast you absorb new movements and when to slow down." },
   { t: "Easier to ask questions", d: "A familiar teacher makes it far more comfortable to say what feels difficult, unclear or uncomfortable." },
 ];
 
@@ -167,12 +166,18 @@ const COMPARISON = [
   },
 ];
 
-const HOW_IT_WORKS = [
-  { n: "01", t: "Send a short enquiry", d: "Your name, WhatsApp number and current level are enough to begin." },
-  { n: "02", t: "Understand level & schedule", d: "A short conversation about what you want to work on and which times fit your week." },
-  { n: "03", t: "Match your teacher", d: "A teacher from the team is matched to your level and goals, and the match is agreed with you." },
-  { n: "04", t: "Live 60-minute session", d: "Your dedicated teacher guides the full hour live on video with real-time verbal guidance." },
-  { n: "05", t: "Continue with continuity", d: "Sessions are generally kept with the same matched teacher, so each session builds on the last and adapts as your practice develops." },
+/** The Yog Jivan Personal Practice Method — the seven steps that replace the
+ *  former generic "how it works" list. Non-clinical wording only. */
+const METHOD_NAME = "Yog Jivan Personal Practice Method";
+
+const METHOD = [
+  { n: "01", t: "Understand", d: "Your current practice level, what you want to work on, the times that fit your week, and any limitation or clinician instruction that affects how you move. We do not collect a medical history." },
+  { n: "02", t: "Match", d: "A Yog Jivan teacher is matched to your level, goals, language and availability. The match is agreed with you before anything is confirmed." },
+  { n: "03", t: "Build", d: "Your starting practice is shaped around movement, mobility, strength, balance, breath and relaxation — at the level you are actually at today." },
+  { n: "04", t: "Guide", d: "A live 60-minute 1-on-1 session with real-time verbal guidance while you practise. Your teacher watches the whole hour and adapts as you move." },
+  { n: "05", t: "Integrate", d: "An optional short home practice, plus general non-clinical guidance on practice rhythm, sleep routine and everyday habits. No prescribed diets or clinical nutrition." },
+  { n: "06", t: "Review", d: "Consistency, technique, confidence, comfort and range in practice, your questions and the practice goals you agreed — reviewed together, without medical claims." },
+  { n: "07", t: "Evolve", d: "Difficulty, sequencing and focus change as your practice develops, so the next session follows on from the last." },
 ];
 
 const SESSION_DETAILS = [
@@ -511,18 +516,23 @@ function PrivateYogaPage() {
         <div className="container-luxe">
           <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />How private 1-on-1 works</p>
           <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.4rem, 2.6vw, 2rem)" }}>
-            From enquiry to your dedicated teacher
+            The {METHOD_NAME}
           </h2>
-          <ol className="relative mt-8 grid gap-8 border-l border-[color:var(--gold)]/25 pl-8 lg:grid-cols-5 lg:gap-6 lg:border-l-0 lg:border-t lg:pl-0 lg:pt-10">
-            {HOW_IT_WORKS.map((s) => (
-              <li key={s.n} className="relative">
-                <span
-                  aria-hidden="true"
-                  className="absolute -left-[2.4rem] top-1 h-3 w-3 rounded-full bg-[color:var(--gold)] lg:left-0 lg:-top-[2.9rem]"
-                />
-                <div className="text-[0.7rem] tracking-[0.24em] text-[color:var(--gold)]">{s.n}</div>
-                <div className="mt-2 font-display text-lg text-foreground">{s.t}</div>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/75">{s.d}</p>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-foreground/80 md:text-base">
+            A video can show a posture. A live teacher can see how you are practising and adapt the
+            next step. These seven steps are how a Yog Jivan private practice is set up, taught,
+            reviewed and progressed — from your first enquiry onwards.
+          </p>
+          <ol className="mt-8 grid border-t border-white/10 sm:grid-cols-2">
+            {METHOD.map((s) => (
+              <li key={s.n} className="flex gap-4 border-b border-white/8 py-5 sm:pr-8">
+                <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[color:var(--gold)]/40 text-[0.7rem] text-[color:var(--gold)]">
+                  {s.n}
+                </span>
+                <div>
+                  <div className="font-display text-lg text-foreground">{s.t}</div>
+                  <p className="mt-1 text-sm leading-relaxed text-foreground/75">{s.d}</p>
+                </div>
               </li>
             ))}
           </ol>
@@ -602,16 +612,6 @@ function PrivateYogaPage() {
               <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
                 {TEAM_MODEL.body}
               </p>
-              <ol className="mt-6 grid gap-3">
-                {["Your level", "Your goals", "Language & availability", "Your dedicated teacher"].map((s, i, arr) => (
-                  <li key={s} className="flex items-center gap-3">
-                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[color:var(--gold)]/40 text-[0.7rem] text-[color:var(--gold)]">
-                      {i + 1}
-                    </span>
-                    <span className={`text-sm ${i === arr.length - 1 ? "text-[color:var(--gold)]" : "text-foreground/85"}`}>{s}</span>
-                  </li>
-                ))}
-              </ol>
               <EnquiryButton className="btn-ghost-gold mt-7" ctaLocation="private_yoga_team">
                 Request a teacher match
               </EnquiryButton>

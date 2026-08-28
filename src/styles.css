@@ -840,6 +840,12 @@ body[data-menu-open="true"] [data-floating-cta] {
 
 /* While the cookie/consent banner is visible, reserve real space at the bottom
    of the document so it can never cover form fields or a submit button. */
+/* While the cookie banner is open, floating CTAs step aside so the consent UI
+   has clean space on small screens. Consent logic itself is untouched. */
+body.consent-open [data-floating-cta] {
+  display: none !important;
+}
+
 body.consent-open {
   padding-bottom: var(--consent-h, 0px);
 }

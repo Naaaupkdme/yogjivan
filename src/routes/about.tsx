@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, CTABanner } from "@/components/site/PageHero";
+import { PageHero } from "@/components/site/PageHero";
 import { About } from "@/components/site/About";
 import { masterImages, socialImageMeta } from "@/lib/images";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/about")({
   }),
   component: () => (
     <>
-      <PageHero eyebrow="The Founder" title="A life devoted to the" accent="path." sub="Master Anil Choudhary brings 12+ years of authentic Indian yoga teaching, careful progression and safety-first guidance to every student." image={masterImages.meditationPortrait} />
+      <PageHero eyebrow="The Founder" title="A life devoted to the" accent="path." sub="Master Anil Choudhary brings 12+ years of authentic Indian yoga teaching, careful progression and safety-first guidance — and sets the teaching standard every Yog Jivan teacher follows." image={masterImages.meditationPortrait} />
       <About />
       <section className="section-pad-sm">
         <div className="container-luxe">
@@ -37,7 +37,24 @@ export const Route = createFileRoute("/about")({
           </div>
         </div>
       </section>
-      <CTABanner title="Meet Master Anil in person." sub="A free consultation is the first step on the path." />
+      <section className="section-tight">
+        <div className="container-luxe">
+          <div className="glass-luxe relative overflow-hidden rounded-[2rem] p-8 text-center md:p-14">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_16%,transparent),transparent_70%)]" />
+            <p className="eyebrow justify-center">Begin Today</p>
+            <h2 className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] leading-tight">Practise the Yog Jivan way.</h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+              Start with a private 1-on-1 practice shaped around you, or join a live class. Private
+              pricing and scheduling are arranged by enquiry.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Link to="/private-online-yoga" data-cta-location="about_private_primary" className="btn-gold">Enquire About Private 1-on-1 Yoga</Link>
+              <Link to="/online-yoga-classes" data-cta-location="about_online_secondary" className="btn-ghost-gold">Live Online Group Classes</Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   ),
 });
+
