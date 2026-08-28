@@ -5,65 +5,65 @@ import { masterImages, socialImageMeta } from "@/lib/images";
 const CANONICAL = "https://yogjivan.com/period-safe-yoga";
 
 const ANSWER_CAPSULE =
-  "Master Anil teaches period-safe yoga as a gentle, cycle-aware practice — softer sequencing during menstruation, restorative postures that ease common discomfort, and clear guidance on which practices to modify or skip on heavier days. Sessions are small-batch or private so nothing is generic; your teacher knows where you are in your cycle and adapts the class accordingly. In-studio in Hai Duong, Vietnam and live online worldwide. This is yoga that honours the body, not overrides it.";
+  "Yog Jivan teaches cycle-aware yoga as a matter of comfort and choice: softer sequencing when you want it, supported postures, and clear guidance on which practices are traditionally modified or set aside during menstruation. You are never required to share anything about your cycle — if you would like a gentler class on any day, simply say so and your teacher will offer modifications. In-studio in Hai Duong, Vietnam with the Yog Jivan teaching team, and live online worldwide. This is a movement and rest practice, not treatment; if you have symptoms that concern you, please speak with your clinician.";
 
 const { GraduationCap, Stethoscope, Users, Globe2, Award, ShieldCheck } = SHARED_CREDENTIAL_ICONS;
 
 const CREDENTIALS = [
-  { icon: GraduationCap, label: "Trained in classical Hatha and therapeutic sequencing for women" },
-  { icon: Stethoscope, label: "12+ years teaching cycle-aware practice — from teens to menopause" },
-  { icon: Users, label: "Small-batch and private — every practice adapted to your cycle" },
+  { icon: GraduationCap, label: "Classical Indian yoga — Hatha, Ashtanga and pranayama" },
+  { icon: Stethoscope, label: "12+ years teaching yoga — beginner to advanced practice" },
+  { icon: Users, label: "Private and group sessions — a gentler option available on any day" },
   { icon: Globe2, label: "Studio in Hai Duong · Live online for global students" },
-  { icon: Award, label: "Trauma-aware, dignity-first — no forced ranges, no shame" },
-  { icon: ShieldCheck, label: "Clear guidance on what to modify or skip on heavier days" },
+  { icon: Award, label: "Dignity-first teaching — no forced ranges, no pressure, no shame" },
+  { icon: ShieldCheck, label: "Clear guidance on what is traditionally modified or set aside" },
 ];
 
 const QUESTIONS: QA[] = [
   {
-    q: "Is It Safe to Practice Yoga During Your Period?",
+    q: "Can I Practise Yoga During My Period?",
     answer:
-      "Yes, for most women — and for many it actively helps. A gentle, well-sequenced practice can ease cramps, lower back tension, mood swings and heavy fatigue. The important word is 'gentle'. During menstruation, the body's natural downward energy (apana) should be supported, not disrupted, so we set aside the strong inversions and intense abdominal work and focus instead on soft, grounding postures. If bleeding is very heavy, painful beyond your normal, or a doctor has advised rest, please honour that guidance first — yoga can always resume in a few days.",
+      "That is a personal decision, and comfort is the best guide. Many people choose a gentler practice on those days; others prefer to rest completely. Traditional Hatha teaching suggests setting aside strong inversions and intense abdominal work during menstruation, and we follow that convention — as a practice preference, not a medical rule. If bleeding is unusually heavy or painful for you, or a clinician has advised rest, please follow that guidance first.",
     bullets: [
-      "Yes for most women — a gentle practice often eases cramps and low-back tension.",
-      "Support the body's natural downward flow (apana) rather than disrupting it.",
-      "Skip strong inversions and intense abdominal work on bleeding days.",
-      "Rest fully if bleeding is unusually heavy, painful, or a doctor advises so.",
-      "Return to your normal practice gently over 2–3 days as bleeding settles.",
+      "Comfort is the guide — practise, soften, or rest as you prefer.",
+      "Traditional teaching sets aside strong inversions and intense core work.",
+      "A gentler, supported option is always available in class.",
+      "Follow your clinician's advice if you have symptoms that concern you.",
+      "Return to your usual practice whenever it feels right to you.",
     ],
   },
   {
-    q: "What Poses Should Be Avoided or Modified?",
+    q: "What Is Traditionally Modified or Set Aside?",
     answer:
-      "During menstruation, the traditional guidance is to avoid or modify anything that strongly reverses the body's natural downward energy. That means skipping full inversions like Sarvangasana (shoulder stand), Sirsasana (headstand) and Halasana (plough), setting aside strong abdominal work like Navasana and intense core sequences, and skipping deep twists or long-held strong backbends. Fast, heating flows are usually not helpful on heavier days. If you're unsure about a pose, the honest rule is: if it feels effortful today, choose a softer version — nothing is worth being pushed through.",
+      "In classical Hatha teaching, practices that strongly reverse or compress the abdomen are usually set aside during menstruation. In practical terms that means full inversions such as Sarvangasana, Sirsasana and Halasana; strong abdominal work such as Navasana and intense core sequences; and deep twists or long-held strong backbends. Fast, heating flows are often swapped for slower, breath-led sequencing. These are traditional practice preferences rather than medical necessity, and the honest rule is simple: if it feels effortful today, choose a softer version.",
     bullets: [
-      "Skip: full inversions — Sarvangasana, Sirsasana, Halasana.",
-      "Skip: strong core work — Navasana and intense abdominal sequences.",
+      "Traditionally set aside: full inversions — Sarvangasana, Sirsasana, Halasana.",
+      "Traditionally set aside: strong core work such as Navasana.",
       "Modify: deep twists and long-held strong backbends — go gentler or skip.",
       "Modify: fast heating flows — swap for slower, breath-led sequencing.",
       "General rule: if it feels effortful today, choose a softer version.",
     ],
   },
   {
-    q: "What Poses Can Help With Period Discomfort?",
+    q: "Which Gentle Practices Are Usually Offered?",
     answer:
-      "Several gentle postures reliably help with the most common period symptoms. Supported forward folds (Balasana — child's pose, Upavistha Konasana — wide-leg forward fold) ease lower-back tension and cramps. Reclining postures with a bolster (supported Supta Baddha Konasana) settle the nervous system and calm the pelvic area. Gentle cat-cow and hip circles keep the low back moving without strain. Bhramari and long exhale pranayama noticeably reduce mood irritability. And a longer closing rest — even ten quiet minutes on your back with a folded blanket over the belly — is often the single most helpful thing you can do.",
+      "Supported forward folds such as Balasana (child's pose) and Upavistha Konasana (wide-leg seated fold); reclining postures with a bolster such as supported Supta Baddha Konasana; gentle cat-cow and hip circles to keep the low back moving; slow bhramari and long-exhale breathing; and a longer closing rest. Whether any of these feels helpful is personal — we offer them as comfortable options, not as remedies.",
     bullets: [
-      "Supported Child's Pose (Balasana) — releases lower-back tension.",
-      "Supported Supta Baddha Konasana — calms the pelvic area and nervous system.",
-      "Gentle Cat-Cow and hip circles — keep the low back mobile without strain.",
-      "Upavistha Konasana (wide-leg seated fold) — soft, unforced hip release.",
-      "Bhramari and long-exhale breath — measurably eases mood irritability.",
-      "A longer closing rest — often the most helpful thing of all.",
+      "Supported Child's Pose (Balasana) — a soft, restful shape.",
+      "Supported Supta Baddha Konasana — reclining and bolster-supported.",
+      "Gentle Cat-Cow and hip circles — keep the low back moving without strain.",
+      "Upavistha Konasana (wide-leg seated fold) — soft, unforced.",
+      "Bhramari and long-exhale breathing — slow and comfortable.",
+      "A longer closing rest, whenever you want it.",
     ],
   },
   {
-    q: "How Does Yog Jivan Adapt Classes for This?",
+    q: "How Does Yog Jivan Adapt Classes?",
     answer:
-      "Every student at Yog Jivan is invited (never pressured) to share where they are in their cycle before class — a quick, private note. Master Anil then offers modifications in real time — a gentler variation, a supported alternative, or a soft rest — so no one is ever left choosing between practising strongly on a heavier day or skipping class entirely. Because our batches are small (max 8) and every online student is on camera, adaptations are personal, not generic. This is the whole point of small-batch teaching.",
+      "You never have to disclose anything about your cycle. If you would like a gentler class on any given day, just tell your teacher — no explanation needed — and modifications will be offered in real time: a softer variation, a supported alternative, or simply rest. This applies equally to in-studio and live online sessions, so nobody has to choose between practising strongly on an uncomfortable day and skipping class entirely.",
     bullets: [
-      "Invited (never required) to share where you are in your cycle at the start of class.",
-      "Real-time modifications offered — softer variations, supported alternatives, or rest.",
-      "Small batches (max 8) means adaptation is personal, not generic.",
+      "No requirement to share cycle details — ever.",
+      "Ask for a gentler class on any day, without explaining why.",
+      "Real-time modifications — softer variations, supported alternatives, or rest.",
       "Applies equally to in-studio and live online students.",
       "You never have to choose between practising strongly or skipping entirely.",
     ],
@@ -73,17 +73,17 @@ const QUESTIONS: QA[] = [
 export const Route = createFileRoute("/period-safe-yoga")({
   head: () => ({
     meta: [
-      { title: "Period-Safe Yoga — Cycle-Aware Practice | Yog Jivan" },
-      { name: "description", content: "Cycle-aware, period-safe yoga with Master Anil — which poses to modify, which to skip, which to lean into. Hai Duong studio & live online." },
-      { name: "keywords", content: "period-safe yoga, yoga during period, menstruation yoga, cycle-aware yoga, yoga for cramps, safe yoga on period, women's yoga Hai Duong" },
-      { property: "og:title", content: "Period-Safe Yoga — Practice Safely Through Your Cycle | Yog Jivan" },
-      { property: "og:description", content: "Gentle, cycle-aware yoga — small-batch, personalized, in-studio and online. Free consultation." },
+      { title: "Cycle-Aware Yoga — Gentle Practice Choices | Yog Jivan" },
+      { name: "description", content: "Cycle-aware yoga with the Yog Jivan team — which practices are traditionally modified, which are set aside, and how to ask for a gentler class. Hai Duong & online." },
+      { name: "keywords", content: "period-safe yoga, yoga during period, menstruation yoga, cycle-aware yoga, gentle yoga, women's yoga Hai Duong" },
+      { property: "og:title", content: "Cycle-Aware Yoga — Gentle Practice Choices | Yog Jivan" },
+      { property: "og:description", content: "Gentle, cycle-aware yoga — personal, unpressured, in-studio and online. Free consultation." },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
       ...socialImageMeta(masterImages.rabbitPose),
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Period-Safe Yoga | Yog Jivan" },
-      { name: "twitter:description", content: "Cycle-aware, period-safe yoga with Master Anil. Free consultation." },
+      { name: "twitter:title", content: "Cycle-Aware Yoga | Yog Jivan" },
+      { name: "twitter:description", content: "Cycle-aware, gentle yoga practice choices. Free consultation." },
     ],
     links: [{ rel: "canonical", href: CANONICAL }],
     scripts: [
@@ -94,7 +94,7 @@ export const Route = createFileRoute("/period-safe-yoga")({
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
-            { "@type": "ListItem", position: 2, name: "Period-Safe Yoga", item: CANONICAL },
+            { "@type": "ListItem", position: 2, name: "Cycle-Aware Yoga", item: CANONICAL },
           ],
         }),
       },
@@ -107,28 +107,29 @@ function PeriodSafePage() {
   return (
     <TherapeuticLanding
       eyebrow="Cycle-Aware · Dignity-First"
-      heroTitle="Period-Safe Yoga — Practice Safely Through Your Cycle"
-      heroSub="A gentle, cycle-aware practice with Master Anil Choudhary — small-batch modifications, no shame, no pressure. Studio in Hai Duong and live online worldwide."
+      heroTitle="Cycle-Aware Yoga — Gentle Practice Choices"
+      heroSub="A gentle, cycle-aware practice with the Yog Jivan teaching team — modifications on request, no pressure, no disclosure required. Studio in Hai Duong and live online worldwide."
       answerCapsule={ANSWER_CAPSULE}
-      h1="Period-Safe Yoga"
+      h1="Cycle-Aware Yoga"
       credentials={CREDENTIALS}
       questions={QUESTIONS}
+      cautionNote="Yoga at Yog Jivan is a movement and rest practice, not medical treatment, and we make no claims about cramps, mood, fatigue or hormonal changes. If you have symptoms that concern you, please speak with a qualified clinician, and tell your teacher only what you want to share about how you would like to practise."
       breatherImages={[
-        { src: masterImages.rabbitPose, alt: "Gentle restorative posture supporting the pelvic area", caption: "Restorative practice · pelvic ease" },
+        { src: masterImages.rabbitPose, alt: "Gentle restorative posture during a Yog Jivan studio session", caption: "Restorative practice · soft and supported" },
         { src: masterImages.savasanaClass, alt: "Students resting deeply at the close of a gentle class", caption: "Closing rest · unhurried, always" },
       ]}
       portrait={masterImages.meditationPortrait}
-      portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, therapeutic yoga teacher"
+      portraitAlt="Master Anil Choudhary — Founder & Lead Yoga Teacher, Yog Jivan"
       masterIntro={
         <>
-          <p>Master Anil has taught cycle-aware yoga for 12+ years — to teenagers, working women, mothers and students moving through perimenopause. His approach is grounded in respect: the body already knows what it needs, and a teacher's job is to notice that and adapt the class kindly, not to override it.</p>
-          <p>His teaching principle for period work: <span className="italic text-gold-gradient">"A period is not a problem to solve. It is a rhythm to honour."</span></p>
+          <p>Yog Jivan was founded and is led by Master Anil Choudhary, Founder & Lead Yoga Teacher, with 12+ years teaching classical Indian yoga — Hatha, Ashtanga and pranayama. Studio and private sessions are delivered by the Yog Jivan teaching team, with each student matched to a suitable teacher.</p>
+          <p>The approach here is grounded in respect: you know your own body, and a teacher's job is to offer a gentler option kindly whenever you want one — without questions and without pressure.</p>
         </>
       }
       relatedLinks={[
         { to: "/yoga-for-pcod", label: "Yoga for PCOD & PCOS" },
         { to: "/online-yoga-classes", label: "Live Online Classes" },
-        { to: "/yoga-for-stress", label: "Yoga for Stress Relief" },
+        { to: "/yoga-for-stress", label: "Yoga for Stress Support" },
         { to: "/private-online-yoga", label: "1-on-1 Sessions" },
       ]}
       relatedPosts={[
@@ -136,7 +137,7 @@ function PeriodSafePage() {
         { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters in 2026", cat: "Yoga", read: "6 min" },
         { slug: "building-a-home-practice-you-will-keep", title: "Building a home practice you'll keep for life", cat: "Lifestyle", read: "5 min" },
       ]}
-      ctaTitle="Honour the rhythm."
+      ctaTitle="Practise the way that suits you."
       ctaSub="Book a free consultation with the Yog Jivan team to begin a cycle-aware practice that meets you where you are."
     />
   );

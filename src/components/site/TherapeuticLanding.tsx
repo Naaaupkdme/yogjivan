@@ -40,7 +40,7 @@ const TRUST_STATS = [
   { k: "12+", v: "Years Teaching" },
   { k: PUBLIC_TRUST.studentsTaught, v: "Students Guided" },
   { k: "20+", v: "Countries" },
-  { k: "Max 8", v: "Per Live Class" },
+  { k: "Max 8", v: "Per Live Online Class" },
   { k: "Free", v: "First Consultation" },
 ];
 
@@ -162,7 +162,7 @@ export function TherapeuticLanding(props: TherapeuticPageProps) {
           <SectionHead
             eyebrow="Real Questions · Honest Answers"
             title="What people actually want to know"
-            sub="No jargon. Straight answers grounded in 12+ years of therapeutic teaching."
+            sub="No jargon. Straight answers grounded in 12+ years of teaching yoga."
           />
           <div className="mx-auto mt-10 grid max-w-5xl gap-6">
             {questions.map((qa) => (
