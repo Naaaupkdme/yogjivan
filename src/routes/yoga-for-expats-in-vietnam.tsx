@@ -13,8 +13,8 @@ const CREDENTIALS = [
   { icon: GraduationCap, label: "Founder & Lead Yoga Teacher — teaches personally in clear English" },
   { icon: Users, label: "Community of students from 20+ countries already practising with us" },
   { icon: Globe2, label: "Studios in Hai Duong · Live online continues wherever you travel" },
-  { icon: Stethoscope, label: "Small-batch classes — every student known personally by the teacher" },
-  { icon: Award, label: "Authentic Indian yoga background — Hatha, Ashtanga and therapeutic practice" },
+  { icon: Stethoscope, label: "Small groups — every student known personally by the teacher" },
+  { icon: Award, label: "Classical Indian yoga — Hatha, Ashtanga and pranayama" },
   { icon: ShieldCheck, label: "WhatsApp and Zalo booking · trial session before you commit" },
 ];
 
@@ -28,7 +28,7 @@ const QUESTIONS: QA[] = [
       "No Vietnamese required at any point — from first message to the mat.",
       "A settled international community — India, USA, UK, France, Australia, Singapore and more.",
       "Two premium studios in Hai Duong city, easy to reach.",
-      "Small batches (max 8) so you are known by name from day one.",
+      "Small groups so you are known by name from day one.",
     ],
   },
   {
@@ -121,7 +121,7 @@ function ExpatsPage() {
       masterIntro={
         <>
           <p>Master Anil has taught expat students from more than 20 countries over 12+ years — many of them long-term, several of them still practising with him online years after leaving Vietnam. He teaches in clear, warm English, learns each new student personally, and treats every class — in-studio and online — with the same care.</p>
-          <p>His teaching principle for the expat community: <span className="italic text-gold-gradient">"Wherever life takes you, the mat can travel with you. And so can I."</span></p>
+          <p>The idea behind the online option is simple: wherever life takes you, the practice can travel with you.</p>
         </>
       }
       relatedLinks={[
