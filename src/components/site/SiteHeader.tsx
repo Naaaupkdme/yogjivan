@@ -187,12 +187,21 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-1.5 md:gap-2">
+          {/* Language switch is URL-based: it navigates to the Vietnamese or
+              English URL for the current page (or the closest equivalent).
+              It never re-renders the same URL in another language. */}
           <div className="hidden md:flex shrink-0 items-center overflow-hidden rounded-full border border-border/60">
-            {(["EN", "VI"] as const).map((item) => (
-              <button key={item} onClick={() => setLang(item)}
-                className={`px-2 py-1.5 text-[0.58rem] uppercase tracking-[0.18em] transition-colors ${lang === item ? "bg-primary/15 text-primary" : "text-muted-foreground hover:text-foreground"}`}>
-                {item}
-              </button>
+            {(
+              [
+                { code: "EN" as const, href: langTargets.en, hrefLang: "en" },
+                { code: "VI" as const, href: langTargets.vi, hrefLang: "vi" },
+              ]
+            ).map((item) => (
+              <a key={item.code} href={item.href} hrefLang={item.hrefLang}
+                aria-current={activeLang === item.code ? "true" : undefined}
+                className={`px-2 py-1.5 text-[0.58rem] uppercase tracking-[0.18em] transition-colors ${activeLang === item.code ? "bg-primary/15 text-primary" : "text-muted-foreground hover:text-foreground"}`}>
+                {item.code}
+              </a>
             ))}
           </div>
 
