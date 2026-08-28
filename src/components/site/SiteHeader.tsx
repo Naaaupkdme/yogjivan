@@ -74,6 +74,8 @@ export function SiteHeader() {
   const [fullOpen, setFullOpen] = useState(false);
   const { location } = useRouterState();
   const { lang, setLang } = useLang();
+  const langTargets = languageSwitchTarget(location.pathname);
+  const activeLang: "EN" | "VI" = isViPath(location.pathname) ? "VI" : "EN";
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
