@@ -5,14 +5,14 @@ import { masterImages, socialImageMeta } from "@/lib/images";
 const CANONICAL = "https://yogjivan.com/yoga-for-back-pain";
 
 const ANSWER_CAPSULE =
-  "Master Anil's therapeutic approach to back pain begins with a careful intake — where the pain is, what triggers it, and how long you've lived with it — followed by posture correction, gentle spinal decompression, targeted core and glute strengthening, and breath work to release protective muscle guarding. Sessions are small-batch or private so every posture is scaled to your body. Available in-studio in Hai Duong, Vietnam and live online worldwide. Most students feel meaningful relief within 3–6 weeks of consistent practice.";
+  "Master Anil's therapeutic approach to back pain begins with a careful intake — where the pain is, what triggers it, and how long you've lived with it — followed by posture correction, gentle spinal decompression, targeted core and glute strengthening, and breath work to release protective muscle guarding. Sessions are small-batch or private so every posture is scaled to your body. Available in-studio in Hai Duong, Vietnam and live online worldwide. Individual experience varies, and progress depends on consistent practice and, where relevant, medical guidance.";
 
 const { GraduationCap, Stethoscope, Users, Globe2, Award, ShieldCheck } = SHARED_CREDENTIAL_ICONS;
 
 const CREDENTIALS = [
   { icon: GraduationCap, label: "Founder & Lead Yoga Teacher — therapeutic, safety-first sequencing" },
   { icon: Stethoscope, label: "12+ years working with back pain, sciatica, disc issues and postural collapse" },
-  { icon: Users, label: "Hundreds of back-pain students guided out of daily discomfort" },
+  { icon: Users, label: "Small-batch or private sessions — every posture scaled to your body" },
   { icon: Globe2, label: "Studio students in Hai Duong · Online students in 20+ countries" },
   { icon: Award, label: "Trauma-aware, alignment-first — no forced ranges, no injury shortcuts" },
   { icon: ShieldCheck, label: "Written practice map + weekly progress check-ins" },
