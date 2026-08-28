@@ -11,7 +11,7 @@ export const TRIAL = {
     "3 days of free live group access plus 1 complimentary private session. No card required. One introductory offer per new student.",
   bullets: [
     "3 days of free live group classes",
-    "1 complimentary private session with Master Anil",
+    "1 complimentary private 1-on-1 session",
     "No credit card required",
     "A short 15-minute onboarding and practice-safety conversation before your first class",
     "One introductory offer per new student",

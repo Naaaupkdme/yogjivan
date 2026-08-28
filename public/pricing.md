@@ -25,7 +25,7 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 - Price: Custom — contact for a quote
 - Includes: Personalized program with a matched Yog Jivan teacher, onboarding and practice-safety conversation, progress reviews, direct support between sessions
 - Format: Online or in-person at the studios
-- Best for: Therapeutic goals or advanced practitioners
+- Best for: Personalized goals, specific limitations, or advanced practice
 
 ## Studio Membership — Hai Duong urban area, Hai Phong, Vietnam
 - Price: Contact for current rates (VND)
