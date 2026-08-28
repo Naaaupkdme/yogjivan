@@ -65,7 +65,7 @@ const NEXT_STEPS = [
   },
   {
     title: "Your first live 1-on-1 session",
-    body: "Your dedicated teacher guides a live 60-minute session, and the same teacher continues with you afterwards.",
+    body: "Your matched teacher guides a live 60-minute session, and sessions are generally kept with that same teacher for continuity.",
   },
 ];
 

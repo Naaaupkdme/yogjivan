@@ -140,7 +140,7 @@ const COMPARISON = [
     rows: [
       "One student",
       "Full individual attention for the whole hour",
-      "Same dedicated teacher, session after session",
+      "Generally the same matched teacher for continuity",
       "Your pace and your goals",
       "Live feedback as you move",
       "Scheduling and pricing by enquiry",
@@ -172,13 +172,13 @@ const HOW_IT_WORKS = [
   { n: "02", t: "Understand level & schedule", d: "A short conversation about what you want to work on and which times fit your week." },
   { n: "03", t: "Match your teacher", d: "A teacher from the team is matched to your level and goals, and the match is agreed with you." },
   { n: "04", t: "Live 60-minute session", d: "Your dedicated teacher guides the full hour live on video with real-time verbal guidance." },
-  { n: "05", t: "Continue with the same teacher", d: "Future sessions build on the last one and adapt as your practice develops." },
+  { n: "05", t: "Continue with continuity", d: "Sessions are generally kept with the same matched teacher, so each session builds on the last and adapts as your practice develops." },
 ];
 
 const SESSION_DETAILS = [
   { t: "Format", d: `A live ${ONLINE_CLASS.durationMinutes}-minute one-to-one video session with your teacher.` },
   { t: "Where", d: "Online worldwide, wherever you have space for a mat and a stable connection." },
-  { t: "Your teacher", d: "Matched from the Yog Jivan teaching team, then the same dedicated teacher continues with you." },
+  { t: "Your teacher", d: "Matched from the Yog Jivan teaching team, and sessions are generally kept with that same teacher for continuity." },
   { t: "Languages", d: "Teacher matching is available across English, Vietnamese and Hindi, subject to availability. Tell us your preference in your enquiry." },
   { t: "Camera & setup", d: "Camera on, positioned so your full body is visible from the side. A mat, clear floor space and optional blocks, strap or a chair." },
   { t: "Suitability", d: "Beginner, intermediate and advanced practitioners." },
@@ -202,7 +202,7 @@ const PT_FAQS = [
   },
   {
     q: "Will I have the same teacher every session?",
-    a: "Yes. You are matched with a teacher from the Yog Jivan team based on your level and goals, and sessions are generally kept with that same teacher for continuity.",
+    a: "Usually. You are matched with a teacher from the Yog Jivan team based on your level and goals, and sessions are generally kept with that same teacher for continuity, unless you and the team agree to a change or availability requires an adjustment.",
   },
   {
     q: "Can a teacher really correct me online?",
@@ -278,7 +278,7 @@ export const Route = createFileRoute("/private-online-yoga")({
           name: "Private Online Yoga Classes (1-on-1)",
           serviceType: "Online Private Yoga Session",
           description:
-            "Live 60-minute one-to-one online yoga sessions taught by the Yog Jivan teaching team. Students are matched with a dedicated teacher who continues with them session after session, for beginner, intermediate and advanced practice. Pricing and scheduling by enquiry.",
+            "Live 60-minute one-to-one online yoga sessions taught by the Yog Jivan teaching team. Students are matched with a teacher from the team and sessions are generally kept with that same teacher for continuity, for beginner, intermediate and advanced practice. Pricing and scheduling by enquiry.",
           areaServed: "Worldwide",
           url: "/private-online-yoga",
         })),
@@ -313,8 +313,8 @@ function PrivateYogaPage() {
       >
 
         <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
-          You are matched with a Yog Jivan teacher, and the same teacher continues with you session
-          after session.
+          You are matched with a Yog Jivan teacher, and sessions are generally kept with that same teacher
+          for continuity.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-4">
           <EnquiryButton ctaLocation="private_yoga_hero">Enquire About Private 1-on-1 Yoga</EnquiryButton>
@@ -413,7 +413,7 @@ function PrivateYogaPage() {
             <div>
               <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Dedicated teacher continuity</p>
               <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.4rem, 2.6vw, 2rem)" }}>
-                Why the same teacher, session after session, matters
+                Why continuity with the same matched teacher matters
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-foreground/80 md:text-base">
                 {TEAM_MODEL.continuityShort} It is the difference between being taught and being known.

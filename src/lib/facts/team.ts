@@ -4,7 +4,8 @@
 // RULES
 // - Private 1-on-1 sessions are taught by a MATCHED teacher from the Yog Jivan
 //   teaching team — NOT exclusively by Master Anil.
-// - Once matched, the SAME dedicated teacher continues with the member.
+// - Private sessions are generally kept with the same matched teacher for
+//   continuity; availability or an agreed change may require an adjustment.
 // - NEVER render a teacher record that is not fully verified. No placeholder
 //   names, invented years, invented specialties, stock photos or fake bios.
 //
@@ -66,9 +67,9 @@ export const TEACHING_TEAM: readonly TeacherProfile[] = [
 ];
 
 export const TEAM_MODEL = {
-  headline: "Matched with a Yog Jivan teacher — then the same teacher, every session.",
+  headline: "Matched with a Yog Jivan teacher — with continuity where possible.",
   body:
-    "We match you with a teacher from the Yog Jivan teaching team based on your current level and what you want to work on. Once matched, your private sessions continue with the same dedicated teacher for consistency. We do not confirm a specific teacher until the match is agreed with you.",
-  continuityShort: "Same dedicated teacher, session after session.",
+    "We match you with a teacher from the Yog Jivan teaching team based on your current level and what you want to work on. Sessions are generally kept with that same matched teacher for consistency, with an adjustment only if availability or an agreed teacher change requires it. We do not confirm a specific teacher until the match is agreed with you.",
+  continuityShort: "Generally the same matched teacher for continuity.",
   providerWording: "the Yog Jivan teaching team",
 } as const;
