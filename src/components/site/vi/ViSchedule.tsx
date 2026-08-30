@@ -139,14 +139,19 @@ function WeekTable({ id, title }: { id: StudioScheduleId; title: string }) {
               <th scope="col" className="py-2 pr-3 font-medium">
                 Giờ
               </th>
-              {DAY_KEYS.map((d) => (
-                <th key={d} scope="col" className="py-2 pr-3 font-medium">
-                  <span className="block">{DAY_LABELS_VI[d]}</span>
-                  <span className="block text-[0.58rem] normal-case tracking-normal text-foreground/55">
-                    {teachers[d]}
-                  </span>
-                </th>
-              ))}
+              {DAY_KEYS.map((d) => {
+                const status = WEEKLY_TIMETABLE.dayStatus[d];
+                return (
+                  <th key={d} scope="col" className="py-2 pr-3 font-medium">
+                    <span className="block">
+                      {DAY_LABELS_VI[d]} <span className="text-foreground/45">{status.date}</span>
+                    </span>
+                    <span className="block text-[0.58rem] normal-case tracking-normal text-foreground/55">
+                      {status.state === "active" ? teachers[d] : (status.noteVi ?? "Nghỉ")}
+                    </span>
+                  </th>
+                );
+              })}
             </tr>
           </thead>
           <tbody>
@@ -155,14 +160,26 @@ function WeekTable({ id, title }: { id: StudioScheduleId; title: string }) {
                 <th scope="row" className="whitespace-nowrap py-2.5 pr-3 font-medium tabular-nums text-foreground/90">
                   {row.slot}
                 </th>
-                {DAY_KEYS.map((d) => (
-                  <td key={d} className="py-2.5 pr-3 text-foreground/80">
-                    <span className="block">{row.classes[d].vi}</span>
-                    <span className="block text-[0.62rem] text-foreground/50">{row.classes[d].en}</span>
-                  </td>
-                ))}
+                {DAY_KEYS.map((d) => {
+                  const status = WEEKLY_TIMETABLE.dayStatus[d];
+                  const cls = row.classes[d];
+                  if (status.state !== "active" || !cls) {
+                    return (
+                      <td key={d} className="py-2.5 pr-3 text-foreground/45">
+                        <span className="block">{status.noteVi ?? "Nghỉ"}</span>
+                      </td>
+                    );
+                  }
+                  return (
+                    <td key={d} className="py-2.5 pr-3 text-foreground/80">
+                      <span className="block">{cls.vi}</span>
+                      <span className="block text-[0.62rem] text-foreground/50">{cls.en}</span>
+                    </td>
+                  );
+                })}
               </tr>
             ))}
+
           </tbody>
         </table>
       </div>
