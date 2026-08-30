@@ -30,7 +30,7 @@ export function ViScheduleSection() {
     <section id="lich-lop" className="section-tight">
       <div className="container-luxe max-w-5xl">
         <h2 className="font-display leading-tight" style={{ fontSize: "clamp(1.4rem, 3vw, 2.1rem)" }}>
-          Lịch lớp nhóm tại Hải Dương
+          Lịch lớp Yoga Hải Dương tuần này
         </h2>
         <p className="mt-5 text-sm leading-relaxed text-foreground/85">
           Yog Jivan có các khung giờ lớp nhóm từ sáng sớm đến buổi tối tại cả hai cơ sở yoga Hải Dương. Chủ đề lớp và

@@ -7,7 +7,7 @@ import { STUDIO_HOURS } from "@/lib/facts/locations";
 import { CONTACT } from "@/lib/facts/contact";
 
 const CANONICAL = `${SITE_ORIGIN}/vi/yoga-hai-duong`;
-const TITLE = "Yoga Hải Dương | 2 Cơ Sở Yog Jivan";
+const TITLE = "Yoga Hải Dương | Lớp Yoga & 2 Cơ Sở Yog Jivan";
 const DESC =
   "Yog Jivan có hai cơ sở yoga phục vụ khu vực Hải Dương, Hải Phòng. Lớp cho người mới bắt đầu đến nâng cao, do đội ngũ giáo viên Yog Jivan hướng dẫn trực tiếp.";
 
