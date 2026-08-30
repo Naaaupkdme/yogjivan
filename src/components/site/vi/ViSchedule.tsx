@@ -86,6 +86,16 @@ export function ViScheduleSection() {
             <p className="mt-2 text-xs leading-relaxed text-foreground/65">
               Đây là lịch của riêng tuần {WEEKLY_TIMETABLE.weekLabelVi}. Tuần sau chủ đề lớp và giáo viên có thể khác.
             </p>
+            {closedDays.length > 0 && (
+              <p className="mt-3 rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-3 text-sm leading-relaxed text-foreground/90">
+                Tuần này nghỉ:{" "}
+                {closedDays
+                  .map((d) => `${DAY_LABELS_VI[d.day]} ${d.status.date} — ${d.status.noteVi ?? "Nghỉ"}`)
+                  .join(" · ")}
+                . Các ngày còn lại vẫn học bình thường.
+              </p>
+            )}
+
             <div className="mt-4 grid gap-5">
               {(["studio1", "studio2"] as StudioScheduleId[]).map((id, i) => (
                 <WeekTable key={id} id={id} title={`Cơ sở ${i + 1} — ${STUDIO_LIST[i]!.name}`} />
