@@ -10,6 +10,7 @@ import {
   SCHEDULE_ZALO_CTA_VI,
   WEEKLY_TIMETABLE,
   isWeeklyTimetableCurrent,
+  closedDaysThisWeek,
   type StudioScheduleId,
 } from "@/lib/facts/local-class-schedule";
 
@@ -23,6 +24,7 @@ import {
  */
 export function ViScheduleSection() {
   const showWeek = isWeeklyTimetableCurrent();
+  const closedDays = closedDaysThisWeek();
 
   return (
     <section id="lich-lop" className="section-tight">
