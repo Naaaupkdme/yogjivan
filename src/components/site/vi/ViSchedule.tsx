@@ -10,6 +10,7 @@ import {
   SCHEDULE_ZALO_CTA_VI,
   WEEKLY_TIMETABLE,
   isWeeklyTimetableCurrent,
+  closedDaysThisWeek,
   type StudioScheduleId,
 } from "@/lib/facts/local-class-schedule";
 
@@ -23,12 +24,13 @@ import {
  */
 export function ViScheduleSection() {
   const showWeek = isWeeklyTimetableCurrent();
+  const closedDays = closedDaysThisWeek();
 
   return (
     <section id="lich-lop" className="section-tight">
       <div className="container-luxe max-w-5xl">
         <h2 className="font-display leading-tight" style={{ fontSize: "clamp(1.4rem, 3vw, 2.1rem)" }}>
-          Lịch lớp nhóm tại Hải Dương
+          Lịch lớp Yoga Hải Dương tuần này
         </h2>
         <p className="mt-5 text-sm leading-relaxed text-foreground/85">
           Yog Jivan có các khung giờ lớp nhóm từ sáng sớm đến buổi tối tại cả hai cơ sở yoga Hải Dương. Chủ đề lớp và
@@ -86,6 +88,16 @@ export function ViScheduleSection() {
             <p className="mt-2 text-xs leading-relaxed text-foreground/65">
               Đây là lịch của riêng tuần {WEEKLY_TIMETABLE.weekLabelVi}. Tuần sau chủ đề lớp và giáo viên có thể khác.
             </p>
+            {closedDays.length > 0 && (
+              <p className="mt-3 rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-3 text-sm leading-relaxed text-foreground/90">
+                Tuần này nghỉ:{" "}
+                {closedDays
+                  .map((d) => `${DAY_LABELS_VI[d.day]} ${d.status.date} — ${d.status.noteVi ?? "Nghỉ"}`)
+                  .join(" · ")}
+                . Các ngày còn lại vẫn học bình thường.
+              </p>
+            )}
+
             <div className="mt-4 grid gap-5">
               {(["studio1", "studio2"] as StudioScheduleId[]).map((id, i) => (
                 <WeekTable key={id} id={id} title={`Cơ sở ${i + 1} — ${STUDIO_LIST[i]!.name}`} />
@@ -139,14 +151,19 @@ function WeekTable({ id, title }: { id: StudioScheduleId; title: string }) {
               <th scope="col" className="py-2 pr-3 font-medium">
                 Giờ
               </th>
-              {DAY_KEYS.map((d) => (
-                <th key={d} scope="col" className="py-2 pr-3 font-medium">
-                  <span className="block">{DAY_LABELS_VI[d]}</span>
-                  <span className="block text-[0.58rem] normal-case tracking-normal text-foreground/55">
-                    {teachers[d]}
-                  </span>
-                </th>
-              ))}
+              {DAY_KEYS.map((d) => {
+                const status = WEEKLY_TIMETABLE.dayStatus[d];
+                return (
+                  <th key={d} scope="col" className="py-2 pr-3 font-medium">
+                    <span className="block">
+                      {DAY_LABELS_VI[d]} <span className="text-foreground/45">{status.date}</span>
+                    </span>
+                    <span className="block text-[0.58rem] normal-case tracking-normal text-foreground/55">
+                      {status.state === "active" ? teachers[d] : (status.noteVi ?? "Nghỉ")}
+                    </span>
+                  </th>
+                );
+              })}
             </tr>
           </thead>
           <tbody>
@@ -155,14 +172,26 @@ function WeekTable({ id, title }: { id: StudioScheduleId; title: string }) {
                 <th scope="row" className="whitespace-nowrap py-2.5 pr-3 font-medium tabular-nums text-foreground/90">
                   {row.slot}
                 </th>
-                {DAY_KEYS.map((d) => (
-                  <td key={d} className="py-2.5 pr-3 text-foreground/80">
-                    <span className="block">{row.classes[d].vi}</span>
-                    <span className="block text-[0.62rem] text-foreground/50">{row.classes[d].en}</span>
-                  </td>
-                ))}
+                {DAY_KEYS.map((d) => {
+                  const status = WEEKLY_TIMETABLE.dayStatus[d];
+                  const cls = row.classes[d];
+                  if (status.state !== "active" || !cls) {
+                    return (
+                      <td key={d} className="py-2.5 pr-3 text-foreground/45">
+                        <span className="block">{status.noteVi ?? "Nghỉ"}</span>
+                      </td>
+                    );
+                  }
+                  return (
+                    <td key={d} className="py-2.5 pr-3 text-foreground/80">
+                      <span className="block">{cls.vi}</span>
+                      <span className="block text-[0.62rem] text-foreground/50">{cls.en}</span>
+                    </td>
+                  );
+                })}
               </tr>
             ))}
+
           </tbody>
         </table>
       </div>
