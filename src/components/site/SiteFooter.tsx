@@ -142,6 +142,7 @@ export function SiteFooter() {
               <li><Link to="/gallery" className="hover:text-foreground">Gallery</Link></li>
               <li><Link to="/testimonials" className="hover:text-foreground">Testimonials</Link></li>
               <li><Link to="/blog" className="hover:text-foreground">Journal</Link></li>
+              <li><Link to="/research/yoga-participation-statistics" className="hover:text-foreground">Research & Statistics</Link></li>
               <li><Link to="/contact" className="hover:text-foreground">Contact & Book</Link></li>
             </ul>
             )}
