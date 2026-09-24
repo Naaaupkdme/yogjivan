@@ -53,8 +53,8 @@ const TABLE_ROWS = [
   {
     geography: "United States",
     year: "2022",
-    population: "Adults age 18+, by age group (age-adjusted)",
-    metric: "Ages 18–44: 21.3%; ages 45–64: 14.1%; age 65+: 8.0%.",
+    population: "Adults age 18+, by age group (age-specific, not age-adjusted)",
+    metric: "Ages 18–44: 21.3%; ages 45–64: 14.1%; age 65+: 8.0%. Age-specific percentages are not age-adjusted.",
     source: SOURCES.cdc,
   },
   {
@@ -207,7 +207,7 @@ function ResearchPage() {
             </div>
             <div className="mt-7 space-y-4 text-base leading-relaxed text-foreground/85">
               <p>
-                CDC’s National Center for Health Statistics reports that an age-adjusted 16.9% of U.S. adults age 18 and older practiced yoga in the past 12 months in 2022. Women were at 23.3% and men at 10.3%. By age, the estimates were 21.3% for ages 18–44, 14.1% for ages 45–64, and 8.0% for age 65 and older. <SourceLink source={SOURCES.cdc} />
+                CDC’s National Center for Health Statistics reports that an age-adjusted 16.9% of U.S. adults age 18 and older practiced yoga in the past 12 months in 2022. Women were at 23.3% and men at 10.3%, also age-adjusted. By age, the estimates were 21.3% for ages 18–44, 14.1% for ages 45–64, and 8.0% for age 65 and older; as age-specific percentages, these are not age-adjusted. <SourceLink source={SOURCES.cdc} />
               </p>
               <p>
                 Among U.S. adult yoga practitioners, age-adjusted estimates show 80.0% used yoga to restore overall health, 57.4% practiced meditation as part of yoga, and 28.8% used yoga to treat or manage pain. These are percentages of yoga practitioners, not of all U.S. adults, and the wording describes respondents’ reported reasons rather than proof of an outcome. <SourceLink source={SOURCES.cdc} />
@@ -266,7 +266,7 @@ function ResearchPage() {
             <h2 id="limitations" className="font-display text-3xl">Limitations and update policy</h2>
             <ul className="mt-5 space-y-3 text-base leading-relaxed text-foreground/85">
               <li>U.S. yoga estimates are self-reported and refer to practice during the past 12 months.</li>
-              <li>CDC figures reproduced here are age-adjusted; age adjustment matters when figures are compared.</li>
+              <li>The overall and sex-specific CDC figures reproduced here are age-adjusted; the age-group percentages are age-specific and not age-adjusted.</li>
               <li>The sources use different age ranges, questionnaires, reference periods and geographic scopes, so the U.S., Viet Nam and global percentages are not directly comparable.</li>
               <li>The Viet Nam STEPS measure covers overall physical activity and does not report yoga as a separate activity.</li>
               <li>The global WHO estimate concerns recommended physical activity levels, not yoga.</li>
