@@ -85,6 +85,13 @@ function BlogIndex() {
               , and how to move more comfortably if you sit at a desk all day. Every article is written by Master Anil
               Choudhary, Founder &amp; Lead Yoga Teacher, and links to the relevant class or programme page.
             </p>
+            <p className="mt-4">
+              Looking for figures rather than practice guidance? Read our citation-ready review of{" "}
+              <Link to="/research/yoga-participation-statistics" className="text-[color:var(--gold)] hover:underline">
+                yoga participation statistics from primary sources
+              </Link>
+              , prepared by the Yog Jivan Editorial Team.
+            </p>
           </div>
         </div>
       </section>

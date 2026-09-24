@@ -280,6 +280,18 @@ const PAGES: SearchEntry[] = [
     href: "/blog",
     keywords: ["blog", "articles", "guides", "reading", "tips", "bai viet"],
   },
+  {
+    id: "yoga-participation-statistics",
+    title: "Yoga Participation Statistics — Primary Sources",
+    description: "Citation-ready U.S. yoga participation figures and clearly separated Viet Nam and global physical-activity context.",
+    category: "Research",
+    href: "/research/yoga-participation-statistics",
+    boost: 1.1,
+    keywords: [
+      "yoga statistics", "yoga participation", "yoga data", "yoga research", "how many people do yoga",
+      "cdc yoga", "nhis yoga", "vietnam physical activity", "global physical activity", "primary sources",
+    ],
+  },
 ];
 
 const BLOG_ENTRIES: SearchEntry[] = BLOG_POSTS.map((post) => ({
