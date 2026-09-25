@@ -3,7 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { breadcrumbSchema } from "@/lib/schema";
 import { SOCIAL } from "@/lib/social";
 
-const LAST_UPDATED = "July 19, 2026";
+const LAST_UPDATED = "September 25, 2026";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -63,10 +63,9 @@ function PrivacyPage() {
 
           <Section title="2. How We Store & Use It">
             <p>
-              Your information is stored securely in our managed database (hosted on Supabase / Lovable Cloud) and is used
-              only to (a) respond to your inquiry, (b) deliver the classes or services you request, and (c) send you
-              essential updates about your scheduled sessions. We do not use your data to train AI models, and we do not
-              sell personal data to anyone — ever.
+              Information submitted through our consultation forms is stored in our managed site database. We use it to
+              review and respond to your inquiry, arrange the classes or services you request, and send relevant updates
+              about those services.
             </p>
           </Section>
 
@@ -96,35 +95,30 @@ function PrivacyPage() {
             </p>
           </Section>
 
-          <Section title="4. Third Parties We Share Data With">
-            <p>To operate the studio, we share the minimum necessary information with a few trusted tools:</p>
+          <Section title="4. Services Used on This Website">
+            <p>The website uses the following services for communication and consent-based measurement:</p>
             <ul className="ml-5 list-disc space-y-2">
-              <li><strong>Make.com</strong> — routes your consultation form entries to our internal inbox so our team can follow up with you.</li>
-              <li><strong>WhatsApp Business (Meta)</strong> — used to reply to you when you contact us via WhatsApp.</li>
-              <li><strong>Zalo</strong> — used to reply to you when you contact us via Zalo.</li>
+              <li><strong>WhatsApp</strong> — used when you choose to contact or continue a conversation with us there.</li>
+              <li><strong>Zalo</strong> — used when you choose to contact or continue a conversation with us there.</li>
               <li><strong>Google Analytics</strong> — cookieless measurement by default, full measurement only after analytics consent. <strong>Meta Pixel</strong> — loaded only after marketing consent.</li>
             </ul>
-            <p>We do not sell, rent or trade your personal information to any third party for their own marketing.</p>
           </Section>
 
-          <Section title="5. Your Rights">
+          <Section title="5. Your Choices and Requests">
             <p>
-              You can request to <strong>see, correct, export or delete</strong> the personal data we hold about you at
-              any time. Just email <a href={`mailto:${SOCIAL.email}`} className="text-primary hover:underline">{SOCIAL.email}</a> from
-              the address you originally used to contact us, and we will action your request within 30 days.
+              To ask about, correct, export or request deletion of information you submitted, email{" "}
+              <a href={`mailto:${SOCIAL.email}`} className="text-primary hover:underline">{SOCIAL.email}</a>. We may need
+              to verify that the request relates to you before acting on it.
             </p>
             <p>
-              You also have the right to withdraw consent (via Cookie Settings), opt out of any future email
-              communication, and lodge a complaint with your local data protection authority if you believe we have
-              mishandled your data.
+              You can change or withdraw your analytics and marketing consent through Cookie Settings in the footer.
             </p>
           </Section>
 
           <Section title="6. How Long We Keep Your Data">
             <p>
-              Consultation form entries and student contact details are kept for as long as you remain an active or
-              prospective student. If you go quiet for more than 24 months, we periodically archive or delete inactive
-              records unless you have asked us to stay in touch.
+              We do not state a fixed retention period for consultation entries or student contact details. You can
+              contact us using the details below to ask about information you submitted or request its deletion.
             </p>
           </Section>
 
@@ -138,8 +132,8 @@ function PrivacyPage() {
 
           <Section title="8. Updates to This Policy">
             <p>
-              If we materially change how we handle your data, we will update this page and revise the "Last updated"
-              date above. Continued use of the site after those changes means you accept the updated policy.
+              If we change how we describe our data handling, we will update this page and revise the "Last updated"
+              date above.
             </p>
           </Section>
         </div>
