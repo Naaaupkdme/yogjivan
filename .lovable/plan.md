@@ -1,30 +1,35 @@
-# Yoga participation statistics research page
+# Truth-maintenance patch
 
 ## Objective
-Create a durable, citation-ready first edition at `/research/yoga-participation-statistics`, reviewed 24 September 2026, using only the four specified primary sources and preserving Yog Jivan’s current visual system.
+Apply a narrow, no-publish factual cleanup to the current Yog Jivan site without changing integrations, routes, dependencies, language behavior, schedules, or the research page.
 
-## Current-state findings
-- The site uses TanStack file routes with per-page canonical, Open Graph, Twitter, breadcrumb, and JSON-LD metadata.
-- Journal articles use a reusable data model, but their template attributes every article to Master Anil and cannot express source tables or claim-level citations. This research page therefore needs a dedicated route rather than being forced into the standard blog template.
-- The sitemap explicitly lists canonical routes. The Journal and site search are the most natural discovery paths without adding another primary-navigation item.
-- Existing analytics, language routing, Vietnamese Zalo behavior, contact flows, and business facts will remain unchanged.
+## Verified current state
+- The editable checkout reports `bfd0a0dbe4a45fb35c755e305fcd7305cd4a52f4`; requested commit `84de78908a3e839d49fe1f21dfdf0e1094c01c73` is a descendant whose differences are limited to unrelated package/lockfile/generated database-type cleanup.
+- The target content files match the requested scope, so this patch will not touch those unrelated differences.
+- Lead forms currently write directly to the managed site database; the retired Make.com forward is not active.
+- The free-trial offer exists as a centralized site constant and appears throughout the site, but the supplied scope requires removing it from the two machine-readable public documents unless independently verified by a current explicit source.
 
-## Implementation
-1. Add the dedicated research route with:
-   - Exact requested title and Yog Jivan Editorial Team byline.
-   - “Reviewed 24 Sep 2026” and a clear first-edition/update note.
-   - Short methodology defining primary-source selection, denominator checks, age adjustment, and scope rules.
-   - Claim-by-claim external links beside every statistic.
-   - A responsive writer-focused table covering geography, surveyed year, population, exact metric, and source.
-   - Separate U.S., Viet Nam, and global sections; the Viet Nam and global physical-activity figures will be explicitly labelled as non-yoga estimates.
-   - Limitations covering survey comparability, geography, age ranges, self-reporting, age adjustment, and the absence of a verified Viet Nam yoga participation estimate.
-   - A simple copyable attribution in plain text with a copy control and non-JavaScript-readable fallback.
-2. Add `Article` and breadcrumb structured data with Yog Jivan Editorial Team as the organization author; set canonical, self-referencing `og:url`, unique description, `og:type=article`, and Twitter metadata. No invented share image.
-3. Add the route to the XML sitemap and make it discoverable from the Journal and site search using restrained contextual links.
-4. Verify primary-source wording and source titles directly against CDC/NCHS, NCCIH, WHO Viet Nam, and WHO global materials before finalizing copy.
+## Changes
+1. **Privacy page**
+   - Remove Make.com.
+   - Describe only the confirmed direct database submission and stated uses.
+   - Remove unsupported fixed retention and response-time promises, and avoid broad legal guarantees.
+   - Preserve the existing GA4, Meta Pixel, consent controls, contact channels, canonical, and metadata structure.
 
-## Quality and release checks
-- Confirm every number, denominator, year, and qualifier against the supplied source.
-- Verify the route, links, citation copy action, metadata, structured data, sitemap entry, keyboard access, and layouts at mobile, tablet, and desktop widths.
-- Run focused tests and the project build checks.
-- Do not publish. Return the preview URL and exact edited-file list for review.
+2. **Corporate page**
+   - Replace productivity, retention, stress-reduction, posture-outcome, and “genuinely effective” wording with neutral service descriptions.
+   - Remove the max-eight live online class metric from generic corporate content.
+   - Keep the verified organization formats, experience, countries served, studios, imagery, enquiry path, canonical, and metadata.
+
+3. **Public factual documents**
+   - Remove the unverified trial sections from `public/llms.txt` and `public/pricing.md` only.
+   - Reframe therapeutic/condition wording as non-medical practice support without treatment, cure, diagnosis, or outcome implications.
+   - Preserve confirmed online membership prices, class format, private/studio/corporate enquiry pricing, locations, hours, contacts, and teacher facts.
+   - Update the pricing document’s review date to the patch date.
+
+## Verification
+- Run the project’s TypeScript check and production build without dependency changes.
+- Test `/privacy`, `/corporate`, `/llms.txt`, `/pricing.md`, `/`, `/vi`, and `/research/yoga-participation-statistics` at desktop and mobile widths.
+- Verify HTTP status, canonical/title/description where applicable, no horizontal overflow, no console errors, the research page remains intact, and Vietnamese Zalo-first behavior remains present.
+- Review the final diff and report exact changed paths, actual checkout commit SHA, preview URL, test evidence, remaining factual holds, and READY/HOLD recommendation.
+- Do not publish or deploy.
