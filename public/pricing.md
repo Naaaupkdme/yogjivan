@@ -4,19 +4,12 @@ Authentic Indian yoga with Master Anil Choudhary, Founder & Lead Yoga Teacher. T
 
 Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/contact
 
-## Free Trial
-- Price: $0
-- Includes: 3 days of free live group class access, plus one complimentary private session
-- Also included: a short 15-minute onboarding and practice-safety conversation before your first live class
-- Limits: One introductory offer per new student · no card required
-- Best for: First-time students evaluating fit before committing
-
 ## Live Online Memberships (small-group)
 - 1 month — $19.99
 - 3 months — $54.99
 - 6 months — $99.99
 - 12 months — $179.99
-- Includes: Live, small-batch online classes (max 8 students) led personally by Master Anil; safety-first sequencing; real-time verbal alignment correction
+- Includes: Live, small-batch online classes (max 8 students) led personally by Master Anil; teacher-led sequencing; real-time verbal alignment correction
 - Class length: 60 minutes · Camera on required for correction · Languages: English, Vietnamese, Hindi
 - Format: Zoom / Google Meet
 - Best for: Students worldwide wanting consistent, teacher-led practice
@@ -25,7 +18,7 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 - Price: Custom — contact for a quote
 - Includes: Personalized program with a matched Yog Jivan teacher, onboarding and practice-safety conversation, progress reviews, direct support between sessions
 - Format: Online or in-person at the studios
-- Best for: Personalized goals, specific limitations, or advanced practice
+- Best for: Personalized practice goals, individual pacing, or advanced practice
 
 ## Studio Membership — Hai Duong urban area, Hai Phong, Vietnam
 - Price: Contact for current rates (VND)
@@ -43,4 +36,4 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 - Refunds: memberships are generally non-refundable once activated or after the first class is used. Exceptions always apply for duplicate payment, cancellation or non-delivery by Yog Jivan, material service failure, and any rights under applicable consumer law. Email hello@yogjivan.com.
 - Yoga is complementary to, not a substitute for, medical care.
 
-Last updated: 2026-08-04
+Last updated: 2026-09-25

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Briefcase, Building2, HeartPulse, TrendingUp } from "lucide-react";
+import { Briefcase, Building2, TrendingUp } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import corporateA from "@/assets/img_20260621_105308.jpg.asset.json";
 import corporateB from "@/assets/img_20260622_114016.jpg.asset.json";
@@ -10,7 +10,6 @@ import { PUBLIC_TRUST } from "@/lib/facts";
 const stats = [
   { Icon: Briefcase, value: PUBLIC_TRUST.countries, label: "Countries served" },
   { Icon: TrendingUp, value: PUBLIC_TRUST.yearsTeaching, label: "Years teaching" },
-  { Icon: HeartPulse, value: String(PUBLIC_TRUST.maxGroupSize), label: "Max students per live class" },
   { Icon: Building2, value: "2", label: "Premium studios" },
 ];
 
@@ -26,9 +25,9 @@ export function Corporate() {
             </div>
             <div>
               <p className="eyebrow"><span className="h-px w-10 bg-primary" />Corporate wellness</p>
-              <h2 className="mt-5 fluid-title max-w-[12ch]">Wellness programs that feel premium enough to keep.</h2>
+              <h2 className="mt-5 fluid-title max-w-[12ch]">Corporate yoga, shaped around your team.</h2>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                Yog Jivan can serve leadership teams, institutions, and private communities with a wellness experience that feels polished, calm, and genuinely effective.
+                Yog Jivan offers tailored on-site, hybrid and virtual yoga sessions for organizations, institutions and private communities.
               </p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
