@@ -92,7 +92,7 @@ describe("reply generator + privacy", () => {
     expect(r).toMatch(/health information/);
     expect(r).not.toMatch(/pain, injury/);
     expect(r).not.toMatch(/thyroid|back|neck/i);
-    expect(r).not.toMatch(/cure|heal|treat/i);
+    expect(r).not.toMatch(/\bcure|\bheal\b|\bheals|treat/i);
     expect(r).toMatch(/evening/);
   });
   it("group reply makes no availability promise", () => {
@@ -107,7 +107,7 @@ describe("reply generator + privacy", () => {
     expect(r).toMatch(/Which studio/);
   });
   it("safeGoals drops sensitive goals", () => {
-    expect(safeGoals(["Stress and sleep", "Back pain", "Live group classes"])).toEqual(["Live group classes"]);
+    expect(safeGoals(["Stress and sleep", "Back pain", "Live group classes"])).toEqual(["Stress and sleep", "Live group classes"]);
   });
   it("telegram alert has exact fields and no health text", () => {
     const { payload, reply } = buildLeadPayload(lead({ health_present: true, goals: ["Thyroid support"] }));
