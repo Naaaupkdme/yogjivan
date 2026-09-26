@@ -41,9 +41,11 @@ export function buildWaClickFields(intent: string, cta: string): Record<string, 
 export function installWaClickHandler(): () => void {
   const onClick = (e: MouseEvent) => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    const a = (e.target as Element | null)?.closest?.("a[href^='/go/whatsapp']") as HTMLAnchorElement | null;
+    const a = (e.target as Element | null)?.closest?.("a[href*='/go/whatsapp']") as HTMLAnchorElement | null;
     if (!a) return;
+    // Analytics link decoration may rewrite the href to an absolute URL.
     const url = new URL(a.href, window.location.origin);
+    if (url.origin !== window.location.origin || url.pathname !== "/go/whatsapp") return;
     const intent = url.searchParams.get("i") ?? "general";
     const cta = a.closest("[data-cta-location]")?.getAttribute("data-cta-location") ?? "";
     e.preventDefault();
