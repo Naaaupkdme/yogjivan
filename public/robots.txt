@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /go/
 
 # AI answer engines and assistants are explicitly welcome to read and cite
 # this site. Public, factual summaries live at /llms.txt and /pricing.md.
