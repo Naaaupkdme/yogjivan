@@ -27,6 +27,7 @@ export const Route = createFileRoute("/about")({
   component: () => (
     <>
       <PageHero eyebrow="The Founder" title="A life devoted to the" accent="path." sub="Master Anil Choudhary brings 12+ years of authentic Indian yoga teaching, careful progression and safety-first guidance — and sets the teaching standard every Yog Jivan teacher follows." image={masterImages.meditationPortrait} />
+      <AnswerCapsule />
       <About />
       <section className="section-pad-sm">
         <div className="container-luxe">
