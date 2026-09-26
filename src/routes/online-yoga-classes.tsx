@@ -31,9 +31,8 @@ import {
 } from "lucide-react";
 
 const CANONICAL = "https://yogjivan.com/online-yoga-classes";
-const ONLINE_TITLE = `Live Online Yoga Classes [Max ${8} Students • 2-Way Video] | Yog Jivan`;
-const ONLINE_DESC =
-  "Interactive live online yoga on Zoom with real-time posture correction. Small groups capped at 8 students. Taught in English, Vietnamese and Hindi. Free introductory offer — see the schedule and join.";
+const ONLINE_TITLE = `Live Online Yoga Classes [Max ${ONLINE_CLASS.maxGroupSize} Students • 2-Way Video] | Yog Jivan`;
+const ONLINE_DESC = `Interactive live online yoga with real-time posture correction — never pre-recorded. Groups capped at ${ONLINE_CLASS.maxGroupSize} students, ${ONLINE_CLASS.durationMinutes} minutes, taught in ${ONLINE_CLASS.languages.join(", ")}. Free introductory offer, or choose private 1-on-1.`;
 const WA = SOCIAL.whatsapp;
 
 /* ---------- Content (verified facts only — no medical or outcome promises) ---------- */
