@@ -292,6 +292,93 @@ function OnlineYogaClassesPage() {
         </div>
       </PageHero>
 
+      {/* Decision fork — live group vs private 1-on-1 */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Choose your path"
+            title="Live group class, or private 1-on-1?"
+            sub="Both are live online with a Yog Jivan teacher. The difference is how much of the hour is built around you."
+          />
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-2">
+            <div className="glass-luxe rounded-[1.75rem] p-6 md:p-8">
+              <Users className="h-5 w-5 text-[color:var(--gold)]" />
+              <h3 className="mt-3 font-display text-xl">Live group classes</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                A shared {ONLINE_CLASS.durationMinutes}-minute class with no more than{" "}
+                {ONLINE_CLASS.maxGroupSize} students, on a fixed schedule, with corrections called
+                out by name. Best if you want steady practice at a set time and a lower monthly cost.
+              </p>
+              <Link to="/contact" hash="consultation" className="btn-gold mt-6">
+                <Sparkles className="h-4 w-4" /> {TRIAL.ctaLabel}
+              </Link>
+            </div>
+            <div className="glass-luxe rounded-[1.75rem] p-6 md:p-8">
+              <UserRound className="h-5 w-5 text-[color:var(--gold)]" />
+              <h3 className="mt-3 font-display text-xl">Private 1-on-1 online yoga</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                A live {ONLINE_CLASS.durationMinutes}-minute session for you alone, with one matched
+                teacher kept session after session, times arranged around your week. Best if you
+                want a practice shaped entirely to your body, level and goals.
+              </p>
+              <Link to="/private-online-yoga" className="btn-ghost-gold mt-6">
+                See private 1-on-1 yoga <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Comparison table */}
+          <div className="mx-auto mt-8 max-w-4xl overflow-x-auto rounded-[1.5rem] border border-white/10">
+            <table className="w-full min-w-[640px] text-left text-sm">
+              <thead>
+                <tr className="border-b border-white/10 bg-white/[0.03]">
+                  <th className="p-4 font-normal text-muted-foreground">&nbsp;</th>
+                  <th className="p-4 font-display">Live group class</th>
+                  <th className="p-4 font-display">Private 1-on-1</th>
+                  <th className="p-4 font-display">Pre-recorded app</th>
+                </tr>
+              </thead>
+              <tbody className="[&>tr]:border-b [&>tr]:border-white/5 [&>tr:last-child]:border-0">
+                {[
+                  ["Teacher can see and correct you", "Yes, live", "Yes, the full hour", "No"],
+                  [
+                    "People in the session",
+                    `Up to ${ONLINE_CLASS.maxGroupSize}`,
+                    "Just you",
+                    "Unlimited viewers",
+                  ],
+                  ["Session built around your body", "Partly", "Entirely", "No"],
+                  ["Timing", "Fixed schedule", "Arranged with you", "Anytime"],
+                  [
+                    "Languages",
+                    ONLINE_CLASS.languages.join(", "),
+                    ONLINE_CLASS.languages.join(", "),
+                    "Varies",
+                  ],
+                  ["Same teacher each time", "Yes", "Yes, generally your matched teacher", "No teacher"],
+                  [
+                    "Cost",
+                    `From ${formatUSD(ONLINE_PLANS[0].priceUSD)} / ${ONLINE_PLANS[0].label.toLowerCase()}`,
+                    "By enquiry",
+                    "Varies",
+                  ],
+                ].map((row) => (
+                  <tr key={row[0]}>
+                    <th scope="row" className="p-4 font-normal text-muted-foreground">
+                      {row[0]}
+                    </th>
+                    <td className="p-4">{row[1]}</td>
+                    <td className="p-4">{row[2]}</td>
+                    <td className="p-4 text-muted-foreground">{row[3]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+
       {/* Answer capsule — the plain-language summary of what this is */}
       <section className="section-tight">
         <div className="container-luxe">
