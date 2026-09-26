@@ -7,6 +7,7 @@
 import { useRouterState } from "@tanstack/react-router";
 import { CONTACT } from "@/lib/facts/contact";
 import { isViPath } from "@/lib/locale-routes";
+import { waHref, waIntentForPath } from "@/lib/wa";
 
 export const VI_LABELS = {
   chat: "Nhắn Zalo",
