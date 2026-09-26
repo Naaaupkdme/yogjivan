@@ -432,6 +432,31 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
+      {/* Quick answers — short, self-contained answers for search and answer engines */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Quick answers"
+            title="Online yoga classes, answered simply"
+            sub="The questions people ask most before their first live class."
+          />
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-2">
+            {QUICK_ANSWERS.map(({ q, a }) => (
+              <article
+                key={q}
+                className="rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-6"
+              >
+                <h3 className="font-display text-lg leading-snug">{q}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mx-auto mt-6 max-w-4xl text-xs leading-relaxed text-muted-foreground">
+            {HEALTH_DISCLAIMER.short}
+          </p>
+        </div>
+      </section>
+
       {/* Trust stats */}
       <section className="section-tight">
         <div className="container-luxe">
