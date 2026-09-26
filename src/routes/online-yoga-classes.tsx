@@ -238,6 +238,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
             courseMode: "Online",
             courseWorkload: `PT${ONLINE_CLASS.durationMinutes}M`,
             location: { "@type": "VirtualLocation", url: CANONICAL },
+            maximumAttendeeCapacity: ONLINE_CLASS.maxGroupSize,
             instructor: {
               "@type": "Person",
               name: TEACHER.name,
@@ -246,6 +247,15 @@ export const Route = createFileRoute("/online-yoga-classes")({
               url: "https://yogjivan.com/about",
             },
           },
+          offers: ONLINE_PLANS.map((p) => ({
+            "@type": "Offer",
+            name: `${p.label} membership`,
+            price: p.priceUSD.toFixed(2),
+            priceCurrency: "USD",
+            category: "Membership",
+            availability: "https://schema.org/InStock",
+            url: CANONICAL,
+          })),
         }),
       },
       {
@@ -734,6 +744,8 @@ function OnlineYogaClassesPage() {
         heading="Guides for new online students"
         intro="Practical answers to the questions students ask before their first live online session."
         slugs={[
+          "how-much-do-online-yoga-classes-cost",
+          "online-yoga-with-posture-correction",
           "first-live-online-yoga-class",
           "online-yoga-camera-setup",
           "live-online-yoga-vs-youtube",
