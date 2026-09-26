@@ -269,14 +269,20 @@ export const Route = createFileRoute("/online-yoga-classes")({
 function InlineCTA({ variant = "gold" }: { variant?: "gold" | "ghost" }) {
   return (
     <div className="mt-8 flex flex-wrap justify-center gap-3">
-      <Link
-        to="/contact"
-        hash="consultation"
+      <a
+        href={`#${ENQUIRY_ANCHOR}`}
+        data-cta-location="online_group_inline_cta"
         className={variant === "gold" ? "btn-gold" : "btn-ghost-gold"}
       >
         <Sparkles className="h-4 w-4" /> {TRIAL.ctaLabel}
-      </Link>
-      <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+      </a>
+      <a
+        href={WA}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cta-location="online_group_inline_whatsapp"
+        className="btn-ghost-gold"
+      >
         <MessageCircle className="h-4 w-4 text-[#25D366]" /> Ask a question on WhatsApp
       </a>
     </div>
