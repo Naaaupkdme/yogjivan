@@ -31,9 +31,9 @@ import {
 } from "lucide-react";
 
 const CANONICAL = "https://yogjivan.com/online-yoga-classes";
-const ONLINE_TITLE = "Live Online Yoga Classes | Small Groups with Master Anil";
+const ONLINE_TITLE = `Live Online Yoga Classes [Max ${8} Students • 2-Way Video] | Yog Jivan`;
 const ONLINE_DESC =
-  "Join live online yoga classes with Master Anil in small groups of up to 8. Beginner-friendly guidance, real-time posture correction and a free introductory offer.";
+  "Interactive live online yoga on Zoom with real-time posture correction. Small groups capped at 8 students. Taught in English, Vietnamese and Hindi. Free introductory offer — see the schedule and join.";
 const WA = SOCIAL.whatsapp;
 
 /* ---------- Content (verified facts only — no medical or outcome promises) ---------- */
