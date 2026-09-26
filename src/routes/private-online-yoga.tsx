@@ -40,6 +40,31 @@ const PT_URL = "https://yogjivan.com/private-online-yoga";
 const DIRECT_ANSWER =
   "Private online yoga at Yog Jivan is a live 60-minute one-to-one session with a teacher from the Yog Jivan team. You are matched with a dedicated teacher based on your level and goals, and sessions are generally kept with that same teacher for continuity. Sessions are live on video, available worldwide, and adapted for beginners, intermediate students and advanced practitioners. Pricing and scheduling are arranged by enquiry.";
 
+/** Short, self-contained answers (40–60 words) for search and answer engines. */
+const QUICK_ANSWERS: { q: string; a: string }[] = [
+  {
+    q: "How does a private 1-on-1 online yoga session work?",
+    a: `You are matched with a Yog Jivan teacher based on your level, goals and language. Sessions run live on video for ${ONLINE_CLASS.durationMinutes} minutes, with the full hour shaped around you. Times are arranged around your week, and sessions are generally kept with the same matched teacher.`,
+  },
+  {
+    q: "How much does private online yoga cost?",
+    a: "Private 1-on-1 online yoga is arranged individually, so plans and times are quoted by enquiry rather than sold as a fixed package. Send your level, what you want to work on and the times that suit you, and we reply with suitable options for your schedule.",
+  },
+  {
+    q: "Is private online yoga better than a group class?",
+    a: `It depends on what you want. A private session gives you the whole hour, a practice built around your body and level, and flexible timing. A live group class costs less each month, follows a fixed schedule and is capped at ${ONLINE_CLASS.maxGroupSize} students so corrections are still personal.`,
+  },
+  {
+    q: "Can complete beginners take private online yoga?",
+    a: "Yes. Beginners often benefit most, because the pace, the postures and the cues are set entirely by what you can do today. No flexibility or previous experience is needed, and your teacher adapts each movement as your practice develops session by session.",
+  },
+  {
+    q: "What language are private online yoga sessions taught in?",
+    a: `Sessions are taught in ${ONLINE_CLASS.languages.join(", ")}, depending on the teacher you are matched with. Tell us your preferred language when you enquire and we match you with a teacher who genuinely teaches in it, so instructions and corrections stay clear throughout the session.`,
+  },
+];
+
+
 const TRUST_STRIP = [
   { v: PUBLIC_TRUST.yearsTeaching, l: "Years teaching" },
   { v: PUBLIC_TRUST.studentsTaught, l: "Students guided" },
@@ -407,6 +432,25 @@ function PrivateYogaPage() {
           </div>
         </div>
       </section>
+
+      {/* 3b — QUICK ANSWERS (AEO/GEO) */}
+      <section className="section-pad-sm">
+        <div className="container-luxe">
+          <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Quick answers</p>
+          <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.4rem, 2.6vw, 2rem)" }}>
+            Private online yoga, answered simply
+          </h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {QUICK_ANSWERS.map(({ q, a }) => (
+              <article key={q} className="rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-6">
+                <h3 className="font-display text-lg leading-snug">{q}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/75">{a}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* 4 — LEVELS */}
       <LevelSelector />

@@ -53,6 +53,32 @@ const TRUST_STATS = [
   { k: `Max ${ONLINE_CLASS.maxGroupSize}`, v: "Per live class" },
 ];
 
+/** Short, self-contained answers (40–60 words) for search and answer engines. */
+const QUICK_ANSWERS: { q: string; a: string }[] = [
+  {
+    q: "How do live online yoga classes work?",
+    a: `Classes run live on ${ONLINE_CLASS.platform} with a Yog Jivan teacher, never pre-recorded. Each class lasts ${ONLINE_CLASS.durationMinutes} minutes in a group capped at ${ONLINE_CLASS.maxGroupSize} students. Your camera stays on so your alignment is corrected in real time, and you can ask questions during the class.`,
+  },
+  {
+    q: "How much do online yoga classes cost?",
+    a: `Live group memberships are ${ONLINE_PLANS.map((p) => `${formatUSD(p.priceUSD)} for ${p.label.toLowerCase()}`).join(", ")}. Longer plans lower the monthly cost. Private 1-on-1 online sessions are arranged individually and quoted by enquiry, so message us with your goals and preferred times for a plan.`,
+  },
+  {
+    q: "Are online yoga classes suitable for complete beginners?",
+    a: `Yes. Flexibility and experience are not required. Every posture is offered in simpler stages and with props, and groups are capped at ${ONLINE_CLASS.maxGroupSize} students so beginners get direct attention. A short onboarding conversation happens before your first class so the practice is paced for you.`,
+  },
+  {
+    q: "What do I need to join an online yoga class?",
+    a: `A yoga mat, roughly 2×2m of clear floor space, and a laptop or tablet placed so your whole body is visible. Blocks, a strap and a cushion are optional. A quiet spot and a stable internet connection are the only other requirements.`,
+  },
+  {
+    q: "Should I choose a live group class or private 1-on-1 yoga?",
+    a: `Choose live group classes for a fixed schedule, shared energy and a lower monthly cost. Choose private 1-on-1 online yoga if you want the full session built around your body, level and goals, with one matched teacher kept session after session and times arranged around your week.`,
+  },
+];
+
+
+
 const WHY_LIVE = [
   {
     title: "A teacher who can actually see you",
@@ -403,6 +429,31 @@ function OnlineYogaClassesPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Quick answers — short, self-contained answers for search and answer engines */}
+      <section className="section-tight">
+        <div className="container-luxe">
+          <SectionHead
+            eyebrow="Quick answers"
+            title="Online yoga classes, answered simply"
+            sub="The questions people ask most before their first live class."
+          />
+          <div className="mx-auto mt-8 grid max-w-4xl gap-4 md:grid-cols-2">
+            {QUICK_ANSWERS.map(({ q, a }) => (
+              <article
+                key={q}
+                className="rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-6"
+              >
+                <h3 className="font-display text-lg leading-snug">{q}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a}</p>
+              </article>
+            ))}
+          </div>
+          <p className="mx-auto mt-6 max-w-4xl text-xs leading-relaxed text-muted-foreground">
+            {HEALTH_DISCLAIMER.short}
+          </p>
         </div>
       </section>
 
