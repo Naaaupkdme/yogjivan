@@ -5,6 +5,24 @@ Business: Yog Jivan Sanctuary
 Founder & Lead Yoga Teacher: Master Anil Choudhary (12+ years teaching authentic Indian yoga)
 Community: 10,000+ students guided, 20+ countries served
 
+## In one paragraph
+
+Yog Jivan is an authentic Indian yoga school founded by Master Anil Choudhary, Founder & Lead Yoga Teacher. It runs two studios in the Hai Duong urban area of Hai Phong, Vietnam, live small-group online classes worldwide (maximum 8 students, 60 minutes, camera on for real-time correction), and private 1-on-1 online yoga with a matched teacher from the Yog Jivan teaching team. Teaching is available in English, Vietnamese and Hindi, subject to teacher availability.
+
+## Key pages
+
+- https://yogjivan.com/ — Overview of studio classes, private 1-on-1 yoga and live online group classes.
+- https://yogjivan.com/online-yoga-classes — Live online group classes: 60 minutes, maximum 8 students, two-way video with real-time posture correction, memberships from $36 per month.
+- https://yogjivan.com/private-online-yoga — Private 1-on-1 online yoga with a matched teacher kept for continuity; assessment, personalized progression and live feedback. Pricing and scheduling are arranged by enquiry.
+- https://yogjivan.com/personal-training — How the personal practice coaching method is structured, session by session.
+- https://yogjivan.com/yoga-for-beginners — Beginner classes in the Hai Duong urban area and live online. No flexibility or experience required; postures are taught in stages with props.
+- https://yogjivan.com/programs — Full list of programs: studio classes, online classes, private sessions, corporate wellness, kids yoga and retreats.
+- https://yogjivan.com/research/yoga-participation-statistics — Yog Jivan Editorial Team summary of primary-source yoga participation data (CDC NCHS NHIS 2022, NCCIH, WHO), with direct links and copyable citations.
+- https://yogjivan.com/blog — Practical articles on cost, posture correction, desk stiffness, home practice and classical Hatha.
+- https://yogjivan.com/contact — Enquiry form, WhatsApp, Zalo, email and both studio locations.
+- https://yogjivan.com/pricing.md — Machine-readable pricing summary.
+- https://yogjivan.com/vi/ — Vietnamese-language pages, including https://yogjivan.com/vi/lop-yoga-online and https://yogjivan.com/vi/yoga-1-kem-1-online.
+
 ## Locations
 
 Note on geography: the former Hai Duong province merged into Hai Phong on 1 July 2025. The current official city is Hai Phong; "Hai Duong" remains the familiar local name for the urban area where both studios are.
@@ -84,6 +102,21 @@ A: Yes. Yog Jivan can adapt non-medical yoga instruction around a student's expe
 
 Q: Do you offer private one-on-one yoga sessions?
 A: Yes — in-studio in the Hai Duong urban area and online worldwide, personalized to each student.
+
+Q: How much do Yog Jivan live online yoga classes cost?
+A: Live online group memberships are $36 for 1 month, $99 for 3 months, $180 for 6 months and $300 for 12 months (USD). Private 1-on-1 and corporate pricing is quoted individually by enquiry.
+
+Q: What makes Yog Jivan different from a pre-recorded yoga app?
+A: Classes are live, not recorded. Group size is capped at 8 students with camera on, so a teacher sees your alignment and corrects you by name during the session.
+
+Q: Which languages are classes taught in?
+A: English, Vietnamese and Hindi, subject to teacher availability. Master Anil Choudhary personally teaches and communicates in all three.
+
+Q: Who teaches private 1-on-1 online sessions?
+A: A teacher from the Yog Jivan teaching team is matched to the student, and sessions are generally kept with that same teacher for continuity. Master Anil Choudhary is the founder and sets the teaching standard.
+
+Q: Can I join Yog Jivan online classes from outside Vietnam?
+A: Yes. Live online classes are joined from anywhere in the world; students span 20+ countries, and session times are arranged around your time zone for private sessions.
 
 ## Health note
 
