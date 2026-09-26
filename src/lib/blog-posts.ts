@@ -4,11 +4,12 @@
 import { LEGACY_POSTS } from "@/lib/blog/legacy-posts";
 import { GROWTH_POSTS } from "@/lib/blog/growth-posts";
 import { PRIVATE_POSTS } from "@/lib/blog/private-posts";
+import { BUYER_POSTS } from "@/lib/blog/buyer-posts";
 import type { BlogPost } from "@/lib/blog/types";
 
 export type { BlogPost, BlogFaq, BlogBlock, BlogCluster, BlogCta } from "@/lib/blog/types";
 
-export const BLOG_POSTS: BlogPost[] = [...PRIVATE_POSTS, ...GROWTH_POSTS, ...LEGACY_POSTS];
+export const BLOG_POSTS: BlogPost[] = [...BUYER_POSTS, ...PRIVATE_POSTS, ...GROWTH_POSTS, ...LEGACY_POSTS];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
