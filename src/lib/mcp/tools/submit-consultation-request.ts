@@ -64,7 +64,7 @@ export default defineTool({
       content: [
         {
           type: "text",
-          text: "Thanks — the consultation request was received. The Yog Jivan team will reach out on WhatsApp within 5 minutes.",
+          text: "Thanks — the consultation request was received. The Yog Jivan team will follow up on WhatsApp.",
         },
       ],
       structuredContent: { ok: true },
