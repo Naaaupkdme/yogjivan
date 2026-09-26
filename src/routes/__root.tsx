@@ -22,6 +22,7 @@ import { CookieConsent } from "@/components/site/CookieConsent";
 import { initAnalytics, trackPageView, trackCta, metaEvent } from "@/lib/analytics";
 import { LanguageProvider } from "@/lib/language";
 import { isViPath } from "@/lib/locale-routes";
+import { installWaClickHandler } from "@/lib/wa-click-client";
 
 
 // Factual sitewide fallback metadata. Page-specific head() entries override
@@ -382,7 +383,7 @@ function RootComponent() {
   // CTA location and destination type are sent. Meta "Lead" is NOT fired here —
   // it only fires after a confirmed lead insert (see SmartConsultation).
   useEffect(() => {
-    const WHATSAPP_RE = /wa\.me|api\.whatsapp\.com|whatsapp\.com\/send/i;
+    const WHATSAPP_RE = /wa\.me|api\.whatsapp\.com|whatsapp\.com\/send|\/go\/whatsapp/i;
     const TRIAL_RE = /(book\s+(a\s+)?free\s+trial|free\s+trial|book\s+trial|personal\s+consultation|personalize\s+my\s+recommendation)/i;
     let lastKey = "";
     let lastAt = 0;
@@ -450,7 +451,11 @@ function RootComponent() {
       }
     };
     document.addEventListener("click", onClick, true);
-    return () => document.removeEventListener("click", onClick, true);
+    const uninstallWa = installWaClickHandler();
+    return () => {
+      document.removeEventListener("click", onClick, true);
+      uninstallWa();
+    };
   }, []);
 
   // Paid-traffic landing pages run without site navigation, footer or floating
