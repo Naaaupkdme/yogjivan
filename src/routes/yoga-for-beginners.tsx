@@ -1,3 +1,4 @@
+import { waHref } from "@/lib/wa";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { LuxuryImage } from "@/components/site/LuxuryImage";
@@ -11,7 +12,7 @@ import {
 } from "lucide-react";
 
 const CANONICAL = "https://yogjivan.com/yoga-for-beginners";
-const WA = SOCIAL.whatsapp;
+const WA = waHref("beginner");
 
 /* ---------- Content ---------- */
 

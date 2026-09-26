@@ -9,6 +9,7 @@ import { ZaloIcon } from "@/components/icons/ZaloIcon";
 import { VI_LABELS, VI_NAV_ITEMS } from "@/lib/local-contact";
 import { SiteSearch, SiteSearchButton, openSiteSearch } from "@/components/site/SiteSearch";
 import { BodyPortal } from "@/components/site/BodyPortal";
+import { waHref, waIntentForPath } from "@/lib/wa";
 
 
 
@@ -58,7 +59,6 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
   },
 ];
 
-const WHATSAPP = SOCIAL.whatsapp;
 
 /** Vietnamese full-menu structure — VI routes only, no English condition pages. */
 const VI_FULL_MENU: { group: string; items: { href: string; label: string }[] }[] = [
@@ -84,6 +84,8 @@ export function SiteHeader() {
   const langTargets = languageSwitchTarget(location.pathname);
   const isVi = isViPath(location.pathname);
   const activeLang: "EN" | "VI" = isVi ? "VI" : "EN";
+  // Pre-filled opening line so a tap on WhatsApp never lands on a blank thread.
+  const WHATSAPP = waHref(waIntentForPath(location.pathname));
   const navItems = isVi ? VI_NAV_ITEMS.map((i) => ({ href: i.href, label: i.label })) : NAV;
   const menuGroups = isVi ? VI_FULL_MENU : FULL_MENU;
   const panelRef = useRef<HTMLDivElement>(null);

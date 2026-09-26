@@ -1,3 +1,4 @@
+import { waHref } from "@/lib/wa";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Check,
@@ -120,7 +121,7 @@ function BookOnlineYogaPage() {
             Yog Jivan
           </span>
           <a
-            href={CONTACT.whatsapp}
+            href={waHref("group")}
             target="_blank"
             rel="noopener noreferrer"
             data-cta-location="paid_header"
@@ -336,7 +337,7 @@ function BookOnlineYogaPage() {
                 {TRIAL.ctaLabel}
               </a>
               <a
-                href={CONTACT.whatsapp}
+                href={waHref("group")}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cta-location="paid_closing"

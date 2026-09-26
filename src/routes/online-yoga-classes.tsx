@@ -16,6 +16,8 @@ import { TEACHER } from "@/lib/facts/teacher";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
 import { ONLINE_PLANS, formatUSD, perMonth } from "@/lib/facts/pricing";
 import { masterImages, masterAlts, socialImageMeta } from "@/lib/images";
+import { waHref } from "@/lib/wa";
+import { QuickEnquiryForm } from "@/components/site/QuickEnquiryForm";
 
 import {
   Users,
@@ -33,7 +35,8 @@ import {
 const CANONICAL = "https://yogjivan.com/online-yoga-classes";
 const ONLINE_TITLE = `Live Online Yoga Classes [Max ${ONLINE_CLASS.maxGroupSize} Students • 2-Way Video] | Yog Jivan`;
 const ONLINE_DESC = `Interactive live online yoga with real-time posture correction — never pre-recorded. Groups capped at ${ONLINE_CLASS.maxGroupSize} students, ${ONLINE_CLASS.durationMinutes} minutes, taught in ${ONLINE_CLASS.languages.join(", ")}. Free introductory offer, or choose private 1-on-1.`;
-const WA = SOCIAL.whatsapp;
+const WA = waHref("group");
+const ENQUIRY_ANCHOR = "start-live-online-yoga";
 
 /* ---------- Content (verified facts only — no medical or outcome promises) ---------- */
 
@@ -266,14 +269,20 @@ export const Route = createFileRoute("/online-yoga-classes")({
 function InlineCTA({ variant = "gold" }: { variant?: "gold" | "ghost" }) {
   return (
     <div className="mt-8 flex flex-wrap justify-center gap-3">
-      <Link
-        to="/contact"
-        hash="consultation"
+      <a
+        href={`#${ENQUIRY_ANCHOR}`}
+        data-cta-location="online_group_inline_cta"
         className={variant === "gold" ? "btn-gold" : "btn-ghost-gold"}
       >
         <Sparkles className="h-4 w-4" /> {TRIAL.ctaLabel}
-      </Link>
-      <a href={WA} target="_blank" rel="noopener noreferrer" className="btn-ghost-gold">
+      </a>
+      <a
+        href={WA}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cta-location="online_group_inline_whatsapp"
+        className="btn-ghost-gold"
+      >
         <MessageCircle className="h-4 w-4 text-[#25D366]" /> Ask a question on WhatsApp
       </a>
     </div>
@@ -472,6 +481,15 @@ function OnlineYogaClassesPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Inline enquiry — no redirect, so the visitor never leaves the page */}
+      <section className="section-tight" id={ENQUIRY_ANCHOR} style={{ scrollMarginTop: "6rem" }}>
+        <div className="container-luxe">
+          <div className="mx-auto max-w-3xl">
+            <QuickEnquiryForm />
           </div>
         </div>
       </section>

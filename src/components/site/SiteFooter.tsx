@@ -1,3 +1,4 @@
+import { waHref } from "@/lib/wa";
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube, MessageCircle, MapPin, Mail, Phone } from "lucide-react";
@@ -100,7 +101,7 @@ export function SiteFooter() {
                 ...(isVi
                   ? [{ href: SOCIAL.zalo, Icon: ZaloIcon, label: "Nhắn Zalo cho Yog Jivan" }]
                   : [
-                      { href: SOCIAL.whatsapp, Icon: MessageCircle, label: "Open WhatsApp chat" },
+                      { href: waHref("general"), Icon: MessageCircle, label: "Open WhatsApp chat" },
                       { href: SOCIAL.zalo, Icon: ZaloIcon, label: "Chat on Zalo" },
                     ]),
                 { href: SOCIAL.instagram, Icon: Instagram, label: "Visit Yog Jivan Instagram" },
@@ -171,7 +172,7 @@ export function SiteFooter() {
                 </>
               )}
               {!isVi && (
-                <li className="flex gap-3"><MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">WhatsApp {SOCIAL.phone}</a></li>
+                <li className="flex gap-3"><MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={waHref("general")} target="_blank" rel="noopener noreferrer" className="hover:text-foreground">WhatsApp {SOCIAL.phone}</a></li>
               )}
               <li className="flex gap-3"><ZaloIcon className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={SOCIAL.zalo} target="_blank" rel="noopener noreferrer" data-cta-location={isVi ? "vi_footer_zalo" : undefined} className="hover:text-foreground">Zalo {SOCIAL.phone}</a></li>
               <li className="flex gap-3"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`mailto:${SOCIAL.email}`} className="hover:text-foreground">{SOCIAL.email}</a></li>

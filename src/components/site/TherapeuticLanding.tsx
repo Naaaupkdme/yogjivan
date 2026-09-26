@@ -1,3 +1,4 @@
+import { waHref } from "@/lib/wa";
 import { Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { LuxuryImage } from "@/components/site/LuxuryImage";
@@ -8,7 +9,7 @@ import {
   ShieldCheck, GraduationCap, Stethoscope, Quote,
 } from "lucide-react";
 
-const WA = SOCIAL.whatsapp;
+const WA = waHref("wellbeing");
 
 export type QA = { q: string; answer: string; bullets: string[] };
 

@@ -1,3 +1,4 @@
+import { waHref } from "@/lib/wa";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, ShieldCheck, Sparkles, Clock, Heart, MessageCircle } from "lucide-react";
@@ -107,7 +108,7 @@ export function SmartConsultation() {
               We’ll follow up on WhatsApp.
             </p>
             <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:flex-row">
-              <a href={SOCIAL.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-gold justify-center">
+              <a href={waHref("general")} target="_blank" rel="noopener noreferrer" className="btn-gold justify-center">
                 <MessageCircle className="h-4 w-4" /> Open WhatsApp Now
               </a>
               <button type="button" onClick={() => setDone(false)} className="btn-ghost-gold justify-center">

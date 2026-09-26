@@ -1,3 +1,4 @@
+import { waHref } from "@/lib/wa";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
@@ -182,7 +183,7 @@ export function BookOnlineYogaForm() {
 
         <div className="mt-7 flex flex-col gap-3">
           <a
-            href={CONTACT.whatsapp}
+            href={waHref("group")}
             target="_blank"
             rel="noopener noreferrer"
             data-cta-location="paid_success"

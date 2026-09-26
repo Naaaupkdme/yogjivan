@@ -7,6 +7,7 @@
 import { useRouterState } from "@tanstack/react-router";
 import { CONTACT } from "@/lib/facts/contact";
 import { isViPath } from "@/lib/locale-routes";
+import { waHref, waIntentForPath } from "@/lib/wa";
 
 export const VI_LABELS = {
   chat: "Nhắn Zalo",
@@ -48,7 +49,7 @@ export function chatChannelFor(pathname: string): ChatChannel {
   }
   return {
     isVi: false,
-    href: CONTACT.whatsapp,
+    href: waHref(waIntentForPath(pathname)),
     label: "WhatsApp",
     ariaLabel: "Chat with the Yog Jivan team on WhatsApp — book a free trial or ask a question",
     channel: "whatsapp",

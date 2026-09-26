@@ -7,7 +7,7 @@ import { defaultCountries, parseCountry } from "react-international-phone";
 import type { CountryIso2 } from "react-international-phone";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
 import { submitLead } from "@/lib/leads";
-import { CONTACT } from "@/lib/facts/contact";
+import { waHref } from "@/lib/wa";
 import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
 
@@ -200,7 +200,7 @@ export function PrivateYogaEnquiryForm() {
 
         <div className="mt-7 flex flex-col gap-3">
           <a
-            href={CONTACT.whatsapp}
+            href={waHref("private")}
             target="_blank"
             rel="noopener noreferrer"
             data-cta-location="private_yoga_success"
