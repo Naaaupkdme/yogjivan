@@ -14,6 +14,60 @@ export type Database = {
   }
   public: {
     Tables: {
+      automation_locks: {
+        Row: {
+          expires_at: string
+          name: string
+          owner: string
+        }
+        Insert: {
+          expires_at: string
+          name: string
+          owner: string
+        }
+        Update: {
+          expires_at?: string
+          name?: string
+          owner?: string
+        }
+        Relationships: []
+      }
+      automation_settings: {
+        Row: {
+          dispatch_token: string
+          id: number
+          sheet_enabled: boolean
+          sheet_gid: number | null
+          sheet_tab: string | null
+          spreadsheet_id: string | null
+          telegram_chat_id: string | null
+          telegram_enabled: boolean
+          updated_at: string
+        }
+        Insert: {
+          dispatch_token?: string
+          id?: number
+          sheet_enabled?: boolean
+          sheet_gid?: number | null
+          sheet_tab?: string | null
+          spreadsheet_id?: string | null
+          telegram_chat_id?: string | null
+          telegram_enabled?: boolean
+          updated_at?: string
+        }
+        Update: {
+          dispatch_token?: string
+          id?: number
+          sheet_enabled?: boolean
+          sheet_gid?: number | null
+          sheet_tab?: string | null
+          spreadsheet_id?: string | null
+          telegram_chat_id?: string | null
+          telegram_enabled?: boolean
+          updated_at?: string
+        }
+        Relationships: []
+      }
       email_send_log: {
         Row: {
           created_at: string
@@ -101,17 +155,110 @@ export type Database = {
         }
         Relationships: []
       }
-      leads: {
+      lead_outbox: {
         Row: {
           created_at: string
+          crm_lead_id: string
+          lead_id: string
+          payload: Json | null
+          prepared_at: string | null
+          reply_text: string | null
+          sheet_last_error: string | null
+          sheet_lease_owner: string | null
+          sheet_lease_until: string | null
+          sheet_next_attempt_at: string
+          sheet_retry_count: number
+          sheet_row: number | null
+          sheet_status: string
+          sheet_synced_at: string | null
+          telegram_last_error: string | null
+          telegram_lease_owner: string | null
+          telegram_lease_until: string | null
+          telegram_message_id: number | null
+          telegram_next_attempt_at: string
+          telegram_retry_count: number
+          telegram_sent_at: string | null
+          telegram_status: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          crm_lead_id: string
+          lead_id: string
+          payload?: Json | null
+          prepared_at?: string | null
+          reply_text?: string | null
+          sheet_last_error?: string | null
+          sheet_lease_owner?: string | null
+          sheet_lease_until?: string | null
+          sheet_next_attempt_at?: string
+          sheet_retry_count?: number
+          sheet_row?: number | null
+          sheet_status?: string
+          sheet_synced_at?: string | null
+          telegram_last_error?: string | null
+          telegram_lease_owner?: string | null
+          telegram_lease_until?: string | null
+          telegram_message_id?: number | null
+          telegram_next_attempt_at?: string
+          telegram_retry_count?: number
+          telegram_sent_at?: string | null
+          telegram_status?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          crm_lead_id?: string
+          lead_id?: string
+          payload?: Json | null
+          prepared_at?: string | null
+          reply_text?: string | null
+          sheet_last_error?: string | null
+          sheet_lease_owner?: string | null
+          sheet_lease_until?: string | null
+          sheet_next_attempt_at?: string
+          sheet_retry_count?: number
+          sheet_row?: number | null
+          sheet_status?: string
+          sheet_synced_at?: string | null
+          telegram_last_error?: string | null
+          telegram_lease_owner?: string | null
+          telegram_lease_until?: string | null
+          telegram_message_id?: number | null
+          telegram_next_attempt_at?: string
+          telegram_retry_count?: number
+          telegram_sent_at?: string | null
+          telegram_status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_outbox_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: true
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      leads: {
+        Row: {
+          country_code: string | null
+          created_at: string
+          crm_lead_id: string | null
           email: string | null
           experience_level: string | null
           goals: string[] | null
           health_notes: string | null
+          health_present: boolean | null
           health_tags: string[] | null
           id: string
           meta: Json | null
+          mobile_number: string | null
           name: string
+          phone_normalized_at: string | null
+          phone_original: string | null
+          phone_validation: string | null
           preferred_experience: string | null
           preferred_time: string | null
           session_id: string | null
@@ -119,17 +266,25 @@ export type Database = {
           status: string
           updated_at: string
           whatsapp: string
+          whatsapp_full_number: string | null
         }
         Insert: {
+          country_code?: string | null
           created_at?: string
+          crm_lead_id?: string | null
           email?: string | null
           experience_level?: string | null
           goals?: string[] | null
           health_notes?: string | null
+          health_present?: boolean | null
           health_tags?: string[] | null
           id?: string
           meta?: Json | null
+          mobile_number?: string | null
           name: string
+          phone_normalized_at?: string | null
+          phone_original?: string | null
+          phone_validation?: string | null
           preferred_experience?: string | null
           preferred_time?: string | null
           session_id?: string | null
@@ -137,17 +292,25 @@ export type Database = {
           status?: string
           updated_at?: string
           whatsapp: string
+          whatsapp_full_number?: string | null
         }
         Update: {
+          country_code?: string | null
           created_at?: string
+          crm_lead_id?: string | null
           email?: string | null
           experience_level?: string | null
           goals?: string[] | null
           health_notes?: string | null
+          health_present?: boolean | null
           health_tags?: string[] | null
           id?: string
           meta?: Json | null
+          mobile_number?: string | null
           name?: string
+          phone_normalized_at?: string | null
+          phone_original?: string | null
+          phone_validation?: string | null
           preferred_experience?: string | null
           preferred_time?: string | null
           session_id?: string | null
@@ -155,6 +318,7 @@ export type Database = {
           status?: string
           updated_at?: string
           whatsapp?: string
+          whatsapp_full_number?: string | null
         }
         Relationships: []
       }
@@ -182,11 +346,119 @@ export type Database = {
         }
         Relationships: []
       }
+      whatsapp_clicks: {
+        Row: {
+          consent: string | null
+          created_at: string
+          cta_location: string | null
+          device_type: string | null
+          fbclid: string | null
+          gclid: string | null
+          id: string
+          intent: string
+          landing_path: string | null
+          market: string | null
+          page_path: string | null
+          ref: string
+          referrer_host: string | null
+          session_id: string | null
+          timezone: string | null
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+        }
+        Insert: {
+          consent?: string | null
+          created_at?: string
+          cta_location?: string | null
+          device_type?: string | null
+          fbclid?: string | null
+          gclid?: string | null
+          id?: string
+          intent: string
+          landing_path?: string | null
+          market?: string | null
+          page_path?: string | null
+          ref: string
+          referrer_host?: string | null
+          session_id?: string | null
+          timezone?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Update: {
+          consent?: string | null
+          created_at?: string
+          cta_location?: string | null
+          device_type?: string | null
+          fbclid?: string | null
+          gclid?: string | null
+          id?: string
+          intent?: string
+          landing_path?: string | null
+          market?: string | null
+          page_path?: string | null
+          ref?: string
+          referrer_host?: string | null
+          session_id?: string | null
+          timezone?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      claim_lead_outbox: {
+        Args: {
+          p_channel: string
+          p_lease_seconds?: number
+          p_limit?: number
+          p_owner: string
+        }
+        Returns: {
+          created_at: string
+          crm_lead_id: string
+          lead_id: string
+          payload: Json | null
+          prepared_at: string | null
+          reply_text: string | null
+          sheet_last_error: string | null
+          sheet_lease_owner: string | null
+          sheet_lease_until: string | null
+          sheet_next_attempt_at: string
+          sheet_retry_count: number
+          sheet_row: number | null
+          sheet_status: string
+          sheet_synced_at: string | null
+          telegram_last_error: string | null
+          telegram_lease_owner: string | null
+          telegram_lease_until: string | null
+          telegram_message_id: number | null
+          telegram_next_attempt_at: string
+          telegram_retry_count: number
+          telegram_sent_at: string | null
+          telegram_status: string
+          updated_at: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "lead_outbox"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       delete_email: {
         Args: { message_id: number; queue_name: string }
         Returns: boolean
@@ -196,6 +468,8 @@ export type Database = {
         Args: { payload: Json; queue_name: string }
         Returns: number
       }
+      format_crm_lead_id: { Args: { n: number }; Returns: string }
+      lead_outbox_wake: { Args: never; Returns: undefined }
       move_to_dlq: {
         Args: {
           dlq_name: string
@@ -212,6 +486,15 @@ export type Database = {
           msg_id: number
           read_ct: number
         }[]
+      }
+      recover_lead_outbox_leases: { Args: never; Returns: undefined }
+      release_automation_lock: {
+        Args: { p_name: string; p_owner: string }
+        Returns: undefined
+      }
+      try_automation_lock: {
+        Args: { p_name: string; p_owner: string; p_seconds: number }
+        Returns: boolean
       }
     }
     Enums: {
