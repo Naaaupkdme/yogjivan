@@ -269,6 +269,20 @@ export const Route = createFileRoute("/online-yoga-classes")({
           ],
         }),
       },
+      {
+        // Mirrors the Q&A visible on this page (Quick answers + FAQ accordion).
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          url: CANONICAL,
+          mainEntity: [...QUICK_ANSWERS, ...FAQS].map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
     ],
   }),
   component: OnlineYogaClassesPage,

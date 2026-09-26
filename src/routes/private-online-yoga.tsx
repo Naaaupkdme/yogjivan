@@ -304,6 +304,20 @@ export const Route = createFileRoute("/private-online-yoga")({
         children: JSON.stringify(breadcrumbSchema("Private Online Yoga", "/private-online-yoga")),
       },
       {
+        // Mirrors the Q&A visible on this page (Quick answers + both FAQ lists).
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          url: PT_URL,
+          mainEntity: [...QUICK_ANSWERS, ...PT_FAQS, ...PT_FAQS_MORE].map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+      {
         type: "application/ld+json",
         // Provider is Yog Jivan (the organisation / teaching team) — NOT a single instructor.
         children: JSON.stringify(serviceSchema({
