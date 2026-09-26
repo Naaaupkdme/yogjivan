@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1790442628735,
+      "tag": "0000_lead_automation_phase1",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790442680856,
+      "tag": "0001_lead_outbox_self_arming_retry",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790443109439,
+      "tag": "0002_lead_automation_revoke_public_defaults",
+      "breakpoints": true
+    }
+  ]
+}

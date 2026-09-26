@@ -40,6 +40,7 @@ import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as GoWhatsappRouteImport } from './routes/go/whatsapp'
 import { Route as ResearchYogaParticipationStatisticsRouteImport } from './routes/research.yoga-participation-statistics'
 import { Route as ViIndexRouteImport } from './routes/vi.index'
 import { Route as ViLopYogaOnlineRouteImport } from './routes/vi.lop-yoga-online'
@@ -47,6 +48,7 @@ import { Route as ViYoga1Kem1OnlineRouteImport } from './routes/vi.yoga-1-kem-1-
 import { Route as ViYogaHaiDuongRouteImport } from './routes/vi.yoga-hai-duong'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as ApiPublicLeadsDispatchRouteImport } from './routes/api/public/leads/dispatch'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
@@ -208,6 +210,11 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GoWhatsappRoute = GoWhatsappRouteImport.update({
+  id: '/go/whatsapp',
+  path: '/go/whatsapp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResearchYogaParticipationStatisticsRoute =
   ResearchYogaParticipationStatisticsRouteImport.update({
     id: '/research/yoga-participation-statistics',
@@ -245,6 +252,11 @@ const Char91DotmcpChar93InvokeToolToolRoute =
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicLeadsDispatchRoute = ApiPublicLeadsDispatchRouteImport.update({
+  id: '/api/public/leads/dispatch',
+  path: '/api/public/leads/dispatch',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
   id: '/lovable/email/auth/preview',
   path: '/lovable/email/auth/preview',
@@ -293,6 +305,7 @@ export interface FileRoutesByFullPath {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
@@ -301,6 +314,7 @@ export interface FileRoutesByFullPath {
   '/vi/': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
@@ -336,6 +350,7 @@ export interface FileRoutesByTo {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
@@ -344,6 +359,7 @@ export interface FileRoutesByTo {
   '/vi': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
@@ -380,6 +396,7 @@ export interface FileRoutesById {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
@@ -388,6 +405,7 @@ export interface FileRoutesById {
   '/vi/': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
@@ -425,6 +443,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
@@ -433,6 +452,7 @@ export interface FileRouteTypes {
     | '/vi/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/public/leads/dispatch'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
@@ -468,6 +488,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
@@ -476,6 +497,7 @@ export interface FileRouteTypes {
     | '/vi'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/public/leads/dispatch'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
@@ -511,6 +533,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
@@ -519,6 +542,7 @@ export interface FileRouteTypes {
     | '/vi/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/public/leads/dispatch'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
@@ -555,6 +579,7 @@ export interface RootRouteChildren {
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  GoWhatsappRoute: typeof GoWhatsappRoute
   ResearchYogaParticipationStatisticsRoute: typeof ResearchYogaParticipationStatisticsRoute
   ViLopYogaOnlineRoute: typeof ViLopYogaOnlineRoute
   ViYoga1Kem1OnlineRoute: typeof ViYoga1Kem1OnlineRoute
@@ -563,6 +588,7 @@ export interface RootRouteChildren {
   ViIndexRoute: typeof ViIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  ApiPublicLeadsDispatchRoute: typeof ApiPublicLeadsDispatchRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
@@ -787,6 +813,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/go/whatsapp': {
+      id: '/go/whatsapp'
+      path: '/go/whatsapp'
+      fullPath: '/go/whatsapp'
+      preLoaderRoute: typeof GoWhatsappRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/research/yoga-participation-statistics': {
       id: '/research/yoga-participation-statistics'
       path: '/research/yoga-participation-statistics'
@@ -834,6 +867,13 @@ declare module '@tanstack/react-router' {
       path: '/.mcp/invoke-tool/$tool'
       fullPath: '/.mcp/invoke-tool/$tool'
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/leads/dispatch': {
+      id: '/api/public/leads/dispatch'
+      path: '/api/public/leads/dispatch'
+      fullPath: '/api/public/leads/dispatch'
+      preLoaderRoute: typeof ApiPublicLeadsDispatchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lovable/email/auth/preview': {
@@ -892,6 +932,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   BlogSlugRoute: BlogSlugRoute,
+  GoWhatsappRoute: GoWhatsappRoute,
   ResearchYogaParticipationStatisticsRoute:
     ResearchYogaParticipationStatisticsRoute,
   ViLopYogaOnlineRoute: ViLopYogaOnlineRoute,
@@ -901,6 +942,7 @@ const rootRouteChildren: RootRouteChildren = {
   ViIndexRoute: ViIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  ApiPublicLeadsDispatchRoute: ApiPublicLeadsDispatchRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
