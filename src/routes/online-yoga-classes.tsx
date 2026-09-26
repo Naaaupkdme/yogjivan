@@ -485,6 +485,15 @@ function OnlineYogaClassesPage() {
         </div>
       </section>
 
+      {/* Inline enquiry — no redirect, so the visitor never leaves the page */}
+      <section className="section-tight" id={ENQUIRY_ANCHOR} style={{ scrollMarginTop: "6rem" }}>
+        <div className="container-luxe">
+          <div className="mx-auto max-w-3xl">
+            <QuickEnquiryForm />
+          </div>
+        </div>
+      </section>
+
       {/* Why live */}
       <section className="section-y">
         <div className="container-luxe">
