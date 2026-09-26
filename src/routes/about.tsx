@@ -24,7 +24,44 @@ export const Route = createFileRoute("/about")({
       children: JSON.stringify(breadcrumbSchema("About", "/about")),
     }],
   }),
-  component: () => (
+  component: AboutPage,
+});
+
+const ABOUT_CAPSULE =
+  "Master Anil Choudhary is the Founder & Lead Yoga Teacher of Yog Jivan, an authentic Indian yoga school with two studios in the Hai Duong urban area of Hai Phong, Vietnam, and live classes online worldwide. He has taught classical Hatha, Ashtanga, pranayama and meditation for over 12 years, and Yog Jivan has guided 10,000+ students across 20+ countries. He teaches in English, Hindi and Vietnamese, and sets the teaching standard every Yog Jivan teacher follows.";
+
+const ABOUT_FACTS = [
+  { label: "Role", text: "Founder & Lead Yoga Teacher, Yog Jivan Sanctuary." },
+  { label: "Experience", text: "12+ years teaching authentic Indian yoga, beginning in India." },
+  { label: "Tradition taught", text: "Classical Hatha, Ashtanga, pranayama and meditation, adapted for modern lifestyles." },
+  { label: "Languages", text: "English, Hindi and Vietnamese." },
+  { label: "Where he teaches", text: "Two studios serving the Hai Duong urban area of Hai Phong, Vietnam, and live online worldwide." },
+  { label: "Teaching team", text: "Private 1-on-1 sessions are taught by a matched Yog Jivan teacher, generally kept the same for continuity." },
+];
+
+function AnswerCapsule() {
+  return (
+    <section className="section-tight">
+      <div className="container-luxe">
+        <div className="glass-luxe mx-auto max-w-4xl rounded-[2rem] border border-[color:var(--gold)]/25 p-6 md:p-10">
+          <h2 className="sr-only">Who is Master Anil Choudhary?</h2>
+          <p className="text-base leading-relaxed text-foreground/90 md:text-lg">{ABOUT_CAPSULE}</p>
+          <dl className="mt-6 grid gap-3 border-t border-white/10 pt-6 sm:grid-cols-2">
+            {ABOUT_FACTS.map((f) => (
+              <div key={f.label} className="glass-soft rounded-2xl p-4">
+                <dt className="text-[0.58rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">{f.label}</dt>
+                <dd className="mt-1.5 text-sm leading-relaxed text-foreground/90">{f.text}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AboutPage() {
+  return (
     <>
       <PageHero eyebrow="The Founder" title="A life devoted to the" accent="path." sub="Master Anil Choudhary brings 12+ years of authentic Indian yoga teaching, careful progression and safety-first guidance — and sets the teaching standard every Yog Jivan teacher follows." image={masterImages.meditationPortrait} />
       <AnswerCapsule />
