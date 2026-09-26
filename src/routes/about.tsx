@@ -93,6 +93,7 @@ function AboutPage() {
         </div>
       </section>
     </>
-  ),
-});
+  );
+}
+
 
