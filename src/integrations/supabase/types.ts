@@ -469,6 +469,8 @@ export type Database = {
         Returns: number
       }
       format_crm_lead_id: { Args: { n: number }; Returns: string }
+      lead_outbox_arm_retry: { Args: never; Returns: undefined }
+      lead_outbox_retry_tick: { Args: never; Returns: undefined }
       lead_outbox_wake: { Args: never; Returns: undefined }
       move_to_dlq: {
         Args: {
