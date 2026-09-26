@@ -9,6 +9,7 @@ import { ZaloIcon } from "@/components/icons/ZaloIcon";
 import { VI_LABELS, VI_NAV_ITEMS } from "@/lib/local-contact";
 import { SiteSearch, SiteSearchButton, openSiteSearch } from "@/components/site/SiteSearch";
 import { BodyPortal } from "@/components/site/BodyPortal";
+import { waHref, waIntentForPath } from "@/lib/wa";
 
 
 
