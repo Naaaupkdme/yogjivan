@@ -1,12 +1,7 @@
 # Roadmap — Phase 1 lead automation (no publish)
-- [ ] Audit live schema/policies/cron/connectors
-- [ ] Migration: crm_lead_id sequence + seed map, phone columns, internal-column guard
-- [ ] Fix mcp source policy + remove 5-minute claim
-- [ ] Phone normalization (libphonenumber-js) + results for 6 leads
-- [ ] Outbox table, submitted-only triggers, atomic claim
-- [ ] Reply generator (rule-based)
-- [ ] Telegram formatter + Sheets upsert (manual columns preserved)
-- [ ] Authenticated dispatcher + 1-min sweep (delivery disabled by default)
-- [ ] /go/whatsapp click tracking + replace public WA CTAs
-- [ ] Tests, typecheck, build
-- [ ] Blocked: connect Telegram + Google Sheets (user), privacy copy approval
+- [x] Schema: CRM IDs, phone fields, health boolean, guard trigger, MCP policy fix
+- [x] Outbox + submitted-only triggers + claims/leases + self-arming retry
+- [x] Phone normalization, reply generator, Telegram format, Sheets planner, dispatcher
+- [x] /go/whatsapp + CTA replacement; tests, typecheck, build
+- [ ] BLOCKED (user): link Telegram + Google Sheets connectors; give private group chat_id
+- [ ] BLOCKED (user): approve privacy-policy copy; approve publish; coordinate one synthetic E2E lead
