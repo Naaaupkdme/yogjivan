@@ -1,3 +1,4 @@
+import { waHref } from "@/lib/wa";
 import { Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
@@ -13,7 +14,7 @@ const AmbientCanvas = lazy(() =>
   import("@/components/site/AmbientCanvas").then((m) => ({ default: m.AmbientCanvas })),
 );
 
-const WHATSAPP_URL = SOCIAL.whatsapp;
+const WHATSAPP_URL = waHref("general");
 
 const QUOTES = [
   { q: "Yoga is the journey of the self, through the self, to the self.", a: "Bhagavad Gita" },

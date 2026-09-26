@@ -1,3 +1,4 @@
+import { waHref } from "@/lib/wa";
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { hreflangLinks, PAIR_PRIVATE } from "@/lib/locale-routes";
@@ -350,7 +351,7 @@ function PrivateYogaPage() {
         <div className="mt-6 flex flex-wrap items-center gap-4">
           <EnquiryButton ctaLocation="private_yoga_hero">Enquire About Private 1-on-1 Yoga</EnquiryButton>
           <a
-            href={CONTACT.whatsapp}
+            href={waHref("private")}
             target="_blank"
             rel="noopener noreferrer"
             data-cta-location="private_yoga_hero"

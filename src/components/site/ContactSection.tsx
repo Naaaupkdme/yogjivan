@@ -1,3 +1,4 @@
+import { waHref } from "@/lib/wa";
 import { MapPin, MessageCircle, Mail, Circle, Clock, ShieldCheck, Sparkles, Heart } from "lucide-react";
 import studioImg from "@/assets/4253.jpg.asset.json";
 import outdoorImg from "@/assets/dji_0014.jpg.asset.json";
@@ -104,7 +105,7 @@ export function ContactSection() {
               </div>
 
               <a
-                href={SOCIAL.whatsapp}
+                href={waHref("general")}
                 target="_blank"
                 rel="noreferrer"
                 className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] px-5 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-[0_18px_50px_-12px_rgba(37,211,102,0.55)] transition-transform hover:scale-[1.02]"
@@ -192,7 +193,7 @@ export function ContactSection() {
 
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             {[
-              { Icon: MessageCircle, title: "WhatsApp", body: SOCIAL.phone, href: SOCIAL.whatsapp },
+              { Icon: MessageCircle, title: "WhatsApp", body: SOCIAL.phone, href: waHref("general") },
               { Icon: ZaloIcon, title: "Zalo", body: SOCIAL.phone, href: SOCIAL.zalo },
               { Icon: Mail, title: "Email", body: SOCIAL.email, href: `mailto:${SOCIAL.email}` },
             ].map(({ Icon, title, body, href }) => (
