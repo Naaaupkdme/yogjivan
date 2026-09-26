@@ -31,9 +31,9 @@ import liveGuidanceFloor from "@/assets/paid/live-guidance-floor.webp.asset.json
    4) STUDENT PROOF (NOT RENDERED) — only once written permission exists.
 --------------------------------------------------------------------------- */
 
-const PT_TITLE = "Private Online Yoga Classes & 1-on-1 Yoga | Yog Jivan";
+const PT_TITLE = "Private Online Yoga Classes (1-on-1) | Personal Practice Coaching | Yog Jivan";
 const PT_DESC =
-  "Live private online yoga with the Yog Jivan teaching team. One dedicated teacher, 60-minute 1-on-1 sessions for beginner, intermediate and advanced practitioners worldwide.";
+  "Live 1-on-1 private online yoga, built around your body, level and goals. One dedicated teacher kept session after session, 60 minutes, worldwide. Enquire for plans and times.";
 const PT_URL = "https://yogjivan.com/private-online-yoga";
 
 /** AEO/GEO direct-answer capsule. Fact-first and chunkable. */
