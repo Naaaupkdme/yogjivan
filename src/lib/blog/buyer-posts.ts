@@ -14,11 +14,11 @@ export const BUYER_POSTS: BlogPost[] = [
     excerpt:
       "What live online yoga actually costs, how membership lengths compare per month, why private 1-on-1 sessions are quoted separately, and what is included.",
     metaDescription:
-      "Live online yoga membership prices from $19.99 per month, with per-month costs for 3, 6 and 12-month plans, what is included, and how private 1-on-1 pricing works.",
+      "Live online yoga membership prices from $36 per month, with per-month costs for 3, 6 and 12-month plans, what is included, and how private 1-on-1 pricing works.",
     read: "6 min",
     date: "2026-09-26",
     keyTakeaways: [
-      "Yog Jivan live online memberships start at $19.99 for one month, dropping to about $15 a month on the 12-month plan.",
+      "Yog Jivan live online memberships are $36 for one month, dropping to about $25 a month on the 12-month plan.",
       "Every membership includes live 60-minute classes with a maximum of eight students and real-time correction.",
       "Private 1-on-1 online sessions are quoted by enquiry, because they depend on frequency and format.",
     ],
@@ -26,10 +26,10 @@ export const BUYER_POSTS: BlogPost[] = [
       { type: "p", text: "Most people comparing online yoga are really comparing two different products: a video library you watch alone, and a live class where a teacher can see you and correct you. The prices below are for live classes with a real teacher on screen, which is the only format Yog Jivan teaches online." },
       { type: "h2", text: "Live online membership prices" },
       { type: "ul", items: [
-        "1 month — $19.99",
-        "3 months — $54.99 (about $18.33 per month)",
-        "6 months — $99.99 (about $16.67 per month)",
-        "12 months — $179.99 (about $15.00 per month)",
+        "1 month — $36",
+        "3 months — $99 (about $33 per month)",
+        "6 months — $180 (about $30 per month)",
+        "12 months — $300 (about $25 per month)",
       ]},
       { type: "p", text: "Prices are in USD. Longer memberships cost less per month because they reflect a commitment to a regular weekly rhythm, which is also what makes practice work." },
       { type: "h2", text: "What the price includes" },
@@ -54,7 +54,7 @@ export const BUYER_POSTS: BlogPost[] = [
       { label: "Live online yoga vs YouTube", to: "/blog/live-online-yoga-vs-youtube" },
     ],
     faqs: [
-      { q: "How much does a live online yoga class cost?", a: "Yog Jivan live online memberships start at $19.99 for one month. The 12-month plan works out to about $15.00 per month. All plans include live 60-minute classes capped at eight students." },
+      { q: "How much does a live online yoga class cost?", a: "Yog Jivan live online memberships are $36 for one month. The 12-month plan works out to about $25 per month. All plans include live 60-minute classes capped at eight students." },
       { q: "Do you charge for a trial class?", a: "New students start with our introductory offer for the live online group classes. Message us and we will arrange it." },
       { q: "How much is a private 1-on-1 online yoga session?", a: "Private sessions are quoted by enquiry, because pricing depends on frequency and format. No payment is requested when you enquire." },
       { q: "Are there refunds?", a: "Memberships are generally non-refundable once activated or after the first class is used, with exceptions for duplicate payment, cancellation by Yog Jivan, service failure and your rights under applicable consumer law." },
