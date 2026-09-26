@@ -812,7 +812,13 @@ function PrivateYogaPage() {
       <FurtherReading
         heading="Deciding between private and group"
         intro="Guides that explain how one-to-one sessions compare with our live small-group classes."
-        slugs={["private-online-yoga-vs-group-classes", "online-yoga-camera-setup", "first-live-online-yoga-class"]}
+        slugs={[
+          "private-online-yoga-vs-group-classes",
+          "how-much-do-online-yoga-classes-cost",
+          "online-yoga-with-posture-correction",
+          "online-yoga-camera-setup",
+          "first-live-online-yoga-class",
+        ]}
       />
     </>
   );

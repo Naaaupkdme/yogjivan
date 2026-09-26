@@ -134,6 +134,7 @@ function StressPage() {
         { to: "/yoga-for-beginners", label: "New to Yoga? Start Here" },
       ]}
       relatedPosts={[
+        { slug: "online-yoga-for-desk-stiffness-and-back-tension", title: "Online yoga for desk stiffness and back tension", cat: "Mobility", read: "7 min" },
         { slug: "the-breath-you-didnt-know-you-were-holding", title: "A simple breathing practice for beginners", cat: "Wellness", read: "4 min" },
         { slug: "beginners-guide-to-20-minutes-of-stillness", title: "Meditation for beginners: 5, 10 or 20 minutes", cat: "Meditation", read: "6 min" },
         { slug: "desk-worker-yoga-back-neck-shoulders", title: "A practical yoga and mobility routine for desk workers", cat: "Mobility", read: "8 min" },

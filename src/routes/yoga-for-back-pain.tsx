@@ -138,6 +138,7 @@ function BackPainPage() {
         { to: "/yoga-for-beginners", label: "New to Yoga? Start Here" },
       ]}
       relatedPosts={[
+        { slug: "online-yoga-for-desk-stiffness-and-back-tension", title: "Online yoga for desk stiffness and back tension", cat: "Mobility", read: "7 min" },
         { slug: "desk-worker-yoga-back-neck-shoulders", title: "A practical yoga and mobility routine for desk workers", cat: "Mobility", read: "8 min" },
         { slug: "yoga-for-spine-longevity-12-minutes", title: "A daily 12-minute spine mobility routine", cat: "Health", read: "6 min" },
         { slug: "why-traditional-hatha-still-matters", title: "Why traditional Hatha still matters", cat: "Yoga", read: "6 min" },
