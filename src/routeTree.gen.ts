@@ -40,6 +40,7 @@ import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as GoWhatsappRouteImport } from './routes/go/whatsapp'
 import { Route as ResearchYogaParticipationStatisticsRouteImport } from './routes/research.yoga-participation-statistics'
 import { Route as ViIndexRouteImport } from './routes/vi.index'
 import { Route as ViLopYogaOnlineRouteImport } from './routes/vi.lop-yoga-online'
@@ -209,6 +210,11 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GoWhatsappRoute = GoWhatsappRouteImport.update({
+  id: '/go/whatsapp',
+  path: '/go/whatsapp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResearchYogaParticipationStatisticsRoute =
   ResearchYogaParticipationStatisticsRouteImport.update({
     id: '/research/yoga-participation-statistics',
@@ -299,6 +305,7 @@ export interface FileRoutesByFullPath {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
@@ -343,6 +350,7 @@ export interface FileRoutesByTo {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
@@ -388,6 +396,7 @@ export interface FileRoutesById {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
@@ -434,6 +443,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
@@ -478,6 +488,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
@@ -522,6 +533,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
@@ -567,6 +579,7 @@ export interface RootRouteChildren {
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  GoWhatsappRoute: typeof GoWhatsappRoute
   ResearchYogaParticipationStatisticsRoute: typeof ResearchYogaParticipationStatisticsRoute
   ViLopYogaOnlineRoute: typeof ViLopYogaOnlineRoute
   ViYoga1Kem1OnlineRoute: typeof ViYoga1Kem1OnlineRoute
@@ -800,6 +813,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/go/whatsapp': {
+      id: '/go/whatsapp'
+      path: '/go/whatsapp'
+      fullPath: '/go/whatsapp'
+      preLoaderRoute: typeof GoWhatsappRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/research/yoga-participation-statistics': {
       id: '/research/yoga-participation-statistics'
       path: '/research/yoga-participation-statistics'
@@ -912,6 +932,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   BlogSlugRoute: BlogSlugRoute,
+  GoWhatsappRoute: GoWhatsappRoute,
   ResearchYogaParticipationStatisticsRoute:
     ResearchYogaParticipationStatisticsRoute,
   ViLopYogaOnlineRoute: ViLopYogaOnlineRoute,

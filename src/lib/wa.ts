@@ -29,8 +29,17 @@ export const WA_MESSAGES = {
 
 export type WaIntent = keyof typeof WA_MESSAGES;
 
-/** WhatsApp deep link with the opening message already typed for the visitor. */
+/**
+ * Public WhatsApp CTA link. Goes through the first-party /go/whatsapp route,
+ * which records an anonymous click (on a real click, via POST) and redirects
+ * to the business number with the opening message pre-typed.
+ */
 export function waHref(intent: WaIntent = "general"): string {
+  return `/go/whatsapp?i=${intent}`;
+}
+
+/** Direct wa.me link (no tracking) — only for server-side / non-CTA uses. */
+export function waDirectHref(intent: WaIntent = "general"): string {
   return `${CONTACT.whatsapp}?text=${encodeURIComponent(WA_MESSAGES[intent])}`;
 }
 
