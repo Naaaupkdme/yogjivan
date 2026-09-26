@@ -6,6 +6,7 @@ import { ZaloIcon } from "@/components/icons/ZaloIcon";
 import { VI_LABELS } from "@/lib/local-contact";
 import { isViPath } from "@/lib/locale-routes";
 import { PRIVATE_ROUTE, scrollToEnquiry, useEnquiryInView } from "@/components/site/EnquiryScroll";
+import { waHref, waIntentForPath } from "@/lib/wa";
 
 const BTN =
   "inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-[color:var(--gold)] to-amber-300 px-3 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-black";
@@ -104,7 +105,7 @@ export function MobileStickyCTA() {
           </Link>
         )}
         <a
-          href={SOCIAL.whatsapp}
+          href={waHref(waIntentForPath(clean))}
           target="_blank"
           rel="noopener noreferrer"
           data-cta-location="mobile_sticky_whatsapp"
