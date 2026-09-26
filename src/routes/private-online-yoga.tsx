@@ -433,6 +433,25 @@ function PrivateYogaPage() {
         </div>
       </section>
 
+      {/* 3b — QUICK ANSWERS (AEO/GEO) */}
+      <section className="section-pad-sm">
+        <div className="container-luxe">
+          <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Quick answers</p>
+          <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.4rem, 2.6vw, 2rem)" }}>
+            Private online yoga, answered simply
+          </h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {QUICK_ANSWERS.map(({ q, a }) => (
+              <article key={q} className="rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-6">
+                <h3 className="font-display text-lg leading-snug">{q}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/75">{a}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       {/* 4 — LEVELS */}
       <LevelSelector />
 
