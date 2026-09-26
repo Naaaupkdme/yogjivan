@@ -5,10 +5,10 @@ Authentic Indian yoga with Master Anil Choudhary, Founder & Lead Yoga Teacher. T
 Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/contact
 
 ## Live Online Memberships (small-group)
-- 1 month — $19.99
-- 3 months — $54.99
-- 6 months — $99.99
-- 12 months — $179.99
+- 1 month — $36
+- 3 months — $99 (about $33 per month)
+- 6 months — $180 (about $30 per month)
+- 12 months — $300 (about $25 per month)
 - Includes: Live, small-batch online classes (max 8 students) led personally by Master Anil; teacher-led sequencing; real-time verbal alignment correction
 - Class length: 60 minutes · Camera on required for correction · Languages: English, Vietnamese, Hindi
 - Format: Zoom / Google Meet
