@@ -83,6 +83,8 @@ export function SiteHeader() {
   const langTargets = languageSwitchTarget(location.pathname);
   const isVi = isViPath(location.pathname);
   const activeLang: "EN" | "VI" = isVi ? "VI" : "EN";
+  // Pre-filled opening line so a tap on WhatsApp never lands on a blank thread.
+  const WHATSAPP = waHref(waIntentForPath(location.pathname));
   const navItems = isVi ? VI_NAV_ITEMS.map((i) => ({ href: i.href, label: i.label })) : NAV;
   const menuGroups = isVi ? VI_FULL_MENU : FULL_MENU;
   const panelRef = useRef<HTMLDivElement>(null);
