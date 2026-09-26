@@ -58,7 +58,6 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
   },
 ];
 
-const WHATSAPP = SOCIAL.whatsapp;
 
 /** Vietnamese full-menu structure — VI routes only, no English condition pages. */
 const VI_FULL_MENU: { group: string; items: { href: string; label: string }[] }[] = [
