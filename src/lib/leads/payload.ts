@@ -2,6 +2,7 @@
 // Input deliberately excludes health_notes / health_tags; only health_present.
 
 import { normalizePhone, waMeLink, type NormalizedPhone } from "./phone";
+import { PLAYBOOK_VERSION } from "./playbook";
 import { classifyService, generateReply, isBeginner, safeGoals, type ServiceKind } from "./reply";
 
 export type LeadRow = {
@@ -52,6 +53,7 @@ export type LeadPayload = {
   created_at: string;
   updated_at: string;
   reply_link: string | null;
+  playbook_version: string;
 };
 
 function str(v: unknown, max = 120): string | null {
@@ -121,6 +123,7 @@ export function buildLeadPayload(l: LeadRow): { payload: LeadPayload; reply: str
     created_at: l.created_at,
     updated_at: l.updated_at,
     reply_link: waMeLink(phone.whatsapp_full_number, reply),
+    playbook_version: PLAYBOOK_VERSION,
   };
   return { payload, reply };
 }
