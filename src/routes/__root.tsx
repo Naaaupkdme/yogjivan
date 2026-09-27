@@ -23,6 +23,7 @@ import { initAnalytics, trackPageView, trackCta, metaEvent } from "@/lib/analyti
 import { LanguageProvider } from "@/lib/language";
 import { isViPath } from "@/lib/locale-routes";
 import { installWaClickHandler } from "@/lib/wa-click-client";
+import { CAPTURE_SCRIPT, installPreHydrationReplay } from "@/lib/pre-hydration-input";
 
 
 // Factual sitewide fallback metadata. Page-specific head() entries override
@@ -116,6 +117,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" },
     ],
     scripts: [
+      { children: CAPTURE_SCRIPT },
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -452,9 +454,11 @@ function RootComponent() {
     };
     document.addEventListener("click", onClick, true);
     const uninstallWa = installWaClickHandler();
+    const uninstallReplay = installPreHydrationReplay();
     return () => {
       document.removeEventListener("click", onClick, true);
       uninstallWa();
+      uninstallReplay();
     };
   }, []);
 
