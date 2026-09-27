@@ -146,10 +146,11 @@ export function SearchablePhoneInput({
                     role="option"
                     aria-selected={active}
                     onClick={() => {
-                      setCountry(c.iso2, { focusOnInput: true });
+                      selectCountry(c.iso2 as CountryIso2, c.dialCode);
                       setOpen(false);
                       setQuery("");
                     }}
+
                     className={`flex w-full items-center gap-3 px-3 py-2 text-left text-sm hover:bg-white/[0.05] ${
                       active ? "bg-white/[0.04] text-[color:var(--gold)]" : "text-foreground/90"
                     }`}
