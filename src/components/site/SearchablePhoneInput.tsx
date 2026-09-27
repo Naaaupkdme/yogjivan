@@ -33,14 +33,32 @@ export function SearchablePhoneInput({
   const searchRef = useRef<HTMLInputElement | null>(null);
 
   // The caller may resolve the visitor's market after mount (URL ?market= or
-  // browser locale). Adopt it as long as nothing has been typed yet.
+  // browser locale). Adopt it as long as nothing has been typed yet — never
+  // overwrite a number the visitor (or their browser autofill) already entered.
   useEffect(() => {
     if (!defaultCountry) return;
     if (inputValue) return;
+    if (value) return;
     if (country.iso2 === defaultCountry) return;
     setCountry(defaultCountry);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultCountry]);
+
+  /**
+   * Change the country WITHOUT losing the digits already typed.
+   *
+   * react-international-phone v4 resets `inputValue` to "" inside setCountry
+   * when `disableDialCodeAndPrefix` is on, and emits a phone of just
+   * "+<dialCode>". That silently wipes the visitor's number. We keep the
+   * national digits and re-emit them under the new dial code; the hook's
+   * value-sync effect then reformats the input for the new country.
+   */
+  function selectCountry(iso2: CountryIso2, dialCode: string) {
+    const nationalDigits = inputValue.replace(/\D/g, "");
+    setCountry(iso2, { focusOnInput: true });
+    onChange(`+${dialCode}${nationalDigits}`);
+  }
+
 
 
   const parsed = useMemo(() => defaultCountries.map(parseCountry), []);
