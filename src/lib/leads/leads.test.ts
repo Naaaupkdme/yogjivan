@@ -109,17 +109,31 @@ describe("reply generator + privacy", () => {
   it("safeGoals drops sensitive goals", () => {
     expect(safeGoals(["Stress and sleep", "Back pain", "Live group classes"])).toEqual(["Stress and sleep", "Live group classes"]);
   });
-  it("telegram alert has exact fields and no health text", () => {
+  it("telegram alert has HTML sections, fields and no health text", () => {
     const { payload, reply } = buildLeadPayload(lead({ health_present: true, goals: ["Thyroid support"] }));
     const m = formatTelegramAlert(payload, reply, "https://docs.google.com/x");
-    for (const f of ["NEW YOG JIVAN LEAD","ID:","Name:","Country/Market + Timezone:","Country Code:","Mobile Number:",
-      "WhatsApp Full Number:","Service:","Goals:","Experience:","Preferred time:","Source + landing page:","Priority:",
-      "WhatsApp link:","Open CRM link:","Health information provided: Yes","Suggested First Reply:"]) {
+    expect(m.parse_mode).toBe("HTML");
+    for (const f of ["🚨 <b>NEW YOG JIVAN LEAD</b>\n\n🆔 <b>ID:</b>", "👤 <b>Name:</b>", "🌍 <b>Location:</b>",
+      "\n\n📞 <b>PHONE</b>\n• Country Code: <code>", "• Mobile Number: <code>", "• WhatsApp Full Number:",
+      "\n\n🎯 <b>ENQUIRY</b>\n• Service / Preferred Experience:", "• Goal(s):", "• Experience:", "• Preferred Time:",
+      "• Source + Landing Page:", "• Priority:", "\n\n🔒 <b>Health information provided:</b> Yes",
+      "\n\n💬 <b>SUGGESTED FIRST REPLY</b>\n<blockquote>"]) {
       expect(m.text).toContain(f);
     }
     expect(m.text).not.toMatch(/thyroid/i);
     expect(m.text.length).toBeLessThan(4096);
-    expect(m.reply_markup?.inline_keyboard[0].length).toBe(2);
+    expect(m.reply_markup?.inline_keyboard[0].map((b) => b.text)).toEqual(["Open WhatsApp", "Open CRM"]);
+  });
+  it("telegram alert escapes user content and shows dashes for missing values", () => {
+    const { payload } = buildLeadPayload(lead({ name: "<b>Evil</b> & co", preferred_time: null, experience_level: null }));
+    const m = formatTelegramAlert(payload, "Hi <script>x</script>", null);
+    expect(m.text).toContain("&lt;b&gt;Evil&lt;/b&gt; &amp; co");
+    expect(m.text).not.toContain("<script>");
+    expect(m.text).toContain("&lt;script&gt;");
+    expect(m.text).toContain("• Preferred Time: —");
+    expect(m.reply_markup?.inline_keyboard[0].map((b) => b.text)).not.toContain("Open CRM");
+    const tags = m.text.match(/<\/?[a-z]+>/g) ?? [];
+    expect(tags.every((t) => ["<b>", "</b>", "<code>", "</code>", "<blockquote>", "</blockquote>"].includes(t))).toBe(true);
   });
   it("payload never contains health note fields", () => {
     const { payload } = buildLeadPayload({ ...lead(), health_notes: "SECRET", health_tags: ["x"] } as never);
