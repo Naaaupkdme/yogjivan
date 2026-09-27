@@ -2,7 +2,11 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Facebook, Instagram, Menu, MessageCircle, Search, X, Youtube } from "lucide-react";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
-import { isViPath, languageSwitchTarget } from "@/lib/locale-routes";
+import { isViPath, LANG_STORAGE_KEY, languageSwitchTarget } from "@/lib/locale-routes";
+
+function saveLangPreference(code: "EN" | "VI") {
+  try { localStorage.setItem(LANG_STORAGE_KEY, code); } catch {}
+}
 import { SOCIAL } from "@/lib/social";
 import { CONTACT } from "@/lib/facts/contact";
 import { ZaloIcon } from "@/components/icons/ZaloIcon";
@@ -212,6 +216,7 @@ export function SiteHeader() {
               ]
             ).map((item) => (
               <a key={item.code} href={item.href} hrefLang={item.hrefLang}
+                onClick={() => saveLangPreference(item.code)}
                 aria-current={activeLang === item.code ? "true" : undefined}
                 className={`px-2 py-1.5 text-[0.58rem] uppercase tracking-[0.18em] transition-colors ${activeLang === item.code ? "bg-primary/15 text-primary" : "text-muted-foreground hover:text-foreground"}`}>
                 {item.code}
@@ -318,7 +323,7 @@ export function SiteHeader() {
                       { code: "VI" as const, href: langTargets.vi, hrefLang: "vi" },
                     ]).map((item) => (
                       <a key={item.code} href={item.href} hrefLang={item.hrefLang}
-                        onClick={() => setFullOpen(false)}
+                        onClick={() => { saveLangPreference(item.code); setFullOpen(false); }}
                         aria-current={activeLang === item.code ? "true" : undefined}
                         className={`px-3 py-2 text-[0.6rem] uppercase tracking-[0.18em] transition-colors ${activeLang === item.code ? "bg-primary/15 text-primary" : "text-muted-foreground hover:text-foreground"}`}>
                         {item.code}

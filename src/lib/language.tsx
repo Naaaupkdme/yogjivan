@@ -1,5 +1,7 @@
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useRouter, useRouterState } from "@tanstack/react-router";
+import { LANG_STORAGE_KEY, langForPath, preferredLocaleRedirect } from "@/lib/locale-routes";
 
 export type Lang = "EN" | "VI";
 export type ThemeName = "midnight" | "earth" | "ivory";
@@ -196,37 +198,56 @@ const Ctx = createContext<ContextValue>({
 });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("EN");
+  const router = useRouter();
+  const location = useRouterState({ select: (s) => s.location });
+  // The URL owns the rendered language: English URLs always render English copy.
+  const lang = langForPath(location.pathname);
   const [theme, setThemeState] = useState<ThemeName>("midnight");
+  const checkedPreference = useRef(false);
 
   useEffect(() => {
     try {
-      const savedLang = localStorage.getItem("yj_lang") as Lang | null;
-      if (savedLang === "EN" || savedLang === "VI") setLangState(savedLang);
       const savedTheme = localStorage.getItem("yj_theme") as ThemeName | null;
       if (savedTheme === "midnight" || savedTheme === "earth" || savedTheme === "ivory") setThemeState(savedTheme);
     } catch {}
   }, []);
 
+  // Initial client mount only: honour a saved "VI" preference on an English
+  // route that has a true Vietnamese counterpart. No server/IP/header redirects.
+  useEffect(() => {
+    if (checkedPreference.current) return;
+    checkedPreference.current = true;
+    try {
+      const target = preferredLocaleRedirect(
+        window.location.pathname,
+        localStorage.getItem(LANG_STORAGE_KEY),
+        window.location.search,
+        window.location.hash,
+      );
+      if (target) router.history.replace(target);
+    } catch {}
+  }, [router]);
+
   useEffect(() => {
     if (typeof document !== "undefined") {
       // NOTE: <html lang> is owned by the URL (see src/lib/locale-routes.ts).
-      // The UI language toggle must not overwrite it.
       document.documentElement.dataset.theme = theme;
     }
-    try {
-      localStorage.setItem("yj_lang", lang);
-      localStorage.setItem("yj_theme", theme);
-    } catch {}
-  }, [lang, theme]);
+    try { localStorage.setItem("yj_theme", theme); } catch {}
+  }, [theme]);
+
+  /** Saves the preference only; navigation is done by the EN/VI links. */
+  const setLang = useCallback((next: Lang) => {
+    try { localStorage.setItem(LANG_STORAGE_KEY, next); } catch {}
+  }, []);
 
   const value = useMemo<ContextValue>(() => ({
     lang,
-    setLang: setLangState,
+    setLang,
     theme,
     setTheme: setThemeState,
     t: copy[lang],
-  }), [lang, theme]);
+  }), [lang, setLang, theme]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

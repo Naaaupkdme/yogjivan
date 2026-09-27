@@ -82,3 +82,29 @@ export function hreflangLinks(pair: LocalePair): HeadLink[] {
 export const PAIR_HOME = LOCALE_PAIRS[0]!;
 export const PAIR_ONLINE_GROUP = LOCALE_PAIRS[1]!;
 export const PAIR_PRIVATE = LOCALE_PAIRS[2]!;
+
+export const LANG_STORAGE_KEY = "yj_lang";
+
+/** URL owns the rendered language: /vi/* is Vietnamese, everything else English. */
+export function langForPath(path: string): "EN" | "VI" {
+  return isViPath(path) ? "VI" : "EN";
+}
+
+/**
+ * Initial-mount-only preference redirect. Returns the Vietnamese counterpart
+ * (preserving search + hash) when a visitor saved "VI" and lands on an English
+ * route that has a TRUE Vietnamese equivalent; otherwise null. Never redirects
+ * VI routes, unmapped routes, or when the preference is absent/EN.
+ */
+export function preferredLocaleRedirect(
+  pathname: string,
+  stored: string | null,
+  search = "",
+  hash = "",
+): string | null {
+  if (stored !== "VI" || isViPath(pathname)) return null;
+  const vi = viCounterpart(pathname);
+  if (!vi || normalise(vi) === normalise(pathname)) return null;
+  const h = hash && !hash.startsWith("#") ? `#${hash}` : hash;
+  return `${vi}${search}${h}`;
+}
