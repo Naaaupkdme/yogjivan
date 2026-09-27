@@ -1,6 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-import { createClient } from "@supabase/supabase-js";
 
 export default defineTool({
   name: "submit_consultation_request",
@@ -29,35 +28,30 @@ export default defineTool({
   },
   annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: true },
   handler: async ({ name, whatsapp, email, preferred_experience, message }) => {
-    const url = process.env.SUPABASE_URL;
-    const key = process.env.SUPABASE_PUBLISHABLE_KEY;
-    if (!url || !key) {
+    // Same trusted intake as the website (rate limits, duplicate suppression, audit).
+    // MCP calls carry no end-user IP, so all MCP submissions share one "mcp" bucket.
+    const { acceptLead } = await import("@/lib/leads/intake.server");
+    const r = await acceptLead(
+      {
+        name, whatsapp, email: email || null, goals: [],
+        preferred_experience: preferred_experience || null,
+        health_notes: message || null, source: "website",
+        session_id: crypto.randomUUID(),
+      },
+      { ip: "mcp-gateway", source: "mcp" },
+      { requireTurnstile: false },
+    );
+    const outcome = (r.body as { outcome?: string }).outcome;
+    if (r.status !== 200) {
       return {
-        content: [{ type: "text", text: "Backend is not configured." }],
+        content: [{ type: "text", text: (r.body as { error?: string }).error ?? "Could not submit the request." }],
         isError: true,
       };
     }
-    const supabase = createClient(url, key, {
-      auth: { persistSession: false, autoRefreshToken: false },
-    });
-    const { error } = await supabase.from("leads").insert({
-      name: name.slice(0, 120),
-      whatsapp: whatsapp.slice(0, 40),
-      email: email?.slice(0, 200) || null,
-      goals: [],
-      preferred_experience: preferred_experience || null,
-      preferred_time: null,
-      health_notes: message?.slice(0, 1000) || null,
-      health_tags: [],
-      experience_level: null,
-      status: "submitted",
-      session_id: crypto.randomUUID(),
-      source: "mcp",
-    });
-    if (error) {
+    if (outcome === "duplicate") {
       return {
-        content: [{ type: "text", text: `Could not submit: ${error.message}` }],
-        isError: true,
+        content: [{ type: "text", text: "This request was already received. The Yog Jivan team will follow up on WhatsApp." }],
+        structuredContent: { ok: true, duplicate: true },
       };
     }
     return {

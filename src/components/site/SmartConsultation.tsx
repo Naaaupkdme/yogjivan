@@ -5,7 +5,8 @@ import { ArrowRight, Check, ShieldCheck, Sparkles, Clock, Heart, MessageCircle }
 import { z } from "zod";
 import { toast } from "sonner";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
-import { submitLead } from "@/lib/leads";
+import { submitLead, leadErrorMessage } from "@/lib/leads";
+import { LeadGuardFields } from "@/components/site/LeadGuardFields";
 import { SOCIAL } from "@/lib/social";
 import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
@@ -66,7 +67,7 @@ export function SmartConsultation() {
     setErrors({});
     setBusy(true);
     try {
-      await submitLead({
+      const result = await submitLead({
         name: parsed.data.name,
         whatsapp: parsed.data.whatsapp,
         email: parsed.data.email || undefined,
@@ -75,12 +76,12 @@ export function SmartConsultation() {
         status: "submitted",
       });
       // Only after the insert resolved successfully and the success state shows.
-      trackGenerateLead(parsed.data.service, "smart_consultation");
+      if (result.outcome === "accepted") trackGenerateLead(parsed.data.service, "smart_consultation");
       setDone(true);
       setForm(empty);
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong. Please try again.");
+      toast.error(leadErrorMessage(err));
     } finally {
       setBusy(false);
     }
@@ -124,6 +125,7 @@ export function SmartConsultation() {
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.4 }}
           >
+            <LeadGuardFields />
             <h3 className="font-display text-3xl sm:text-4xl leading-tight">Book your free consultation.</h3>
             <p className="mt-3 max-w-xl text-sm text-muted-foreground leading-relaxed">
               Share a few details — our team will follow up on WhatsApp.

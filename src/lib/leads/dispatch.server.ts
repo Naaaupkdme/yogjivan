@@ -158,7 +158,7 @@ async function runTelegram(admin: Admin, s: Settings, owner: string) {
       const r = await gw("/telegram/sendMessage", key, {
         method: "POST",
         timeoutMs: 10000,
-        body: JSON.stringify({ chat_id: s.telegram_chat_id, text: msg.text, reply_markup: msg.reply_markup, disable_web_page_preview: true }),
+        body: JSON.stringify({ chat_id: s.telegram_chat_id, text: msg.text, parse_mode: msg.parse_mode, reply_markup: msg.reply_markup, disable_web_page_preview: true }),
       });
       let body: any = null;
       try { body = await r.json(); } catch { body = null; }

@@ -22,6 +22,13 @@
       "when": 1790443109439,
       "tag": "0002_lead_automation_revoke_public_defaults",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1790492870910,
+      "tag": "0003_lead_intake_antispam",
+      "breakpoints": true
     }
   ]
 }

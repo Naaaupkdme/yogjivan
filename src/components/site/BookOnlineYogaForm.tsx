@@ -7,7 +7,8 @@ import { Link } from "@tanstack/react-router";
 import { defaultCountries, parseCountry } from "react-international-phone";
 import type { CountryIso2 } from "react-international-phone";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
-import { submitLead } from "@/lib/leads";
+import { submitLead, leadErrorMessage } from "@/lib/leads";
+import { LeadGuardFields } from "@/components/site/LeadGuardFields";
 import { CONTACT } from "@/lib/facts/contact";
 import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
@@ -100,7 +101,7 @@ export function BookOnlineYogaForm() {
       /* timezone is optional context */
     }
     try {
-      await submitLead({
+      const result = await submitLead({
         name: parsed.data.name,
         whatsapp: parsed.data.whatsapp,
         email: parsed.data.email || undefined,
@@ -141,12 +142,12 @@ export function BookOnlineYogaForm() {
         },
       });
       // Fires only after a confirmed insert. No PII is sent — just intent + channel.
-      trackGenerateLead(parsed.data.goal, FORM_ID, leadEventId);
+      if (result.outcome === "accepted") trackGenerateLead(parsed.data.goal, FORM_ID, leadEventId);
       setDone(true);
       setForm(empty);
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong. Please try again or message us on WhatsApp.");
+      toast.error(leadErrorMessage(err));
     } finally {
       setBusy(false);
     }
@@ -213,6 +214,7 @@ export function BookOnlineYogaForm() {
       className="glass-luxe rounded-[1.5rem] p-6 sm:p-8"
       noValidate
     >
+      <LeadGuardFields />
       <h2 className="font-display text-2xl leading-tight sm:text-3xl">Claim your free trial</h2>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
         3 days of free live group classes plus 1 complimentary private session. No card required.
