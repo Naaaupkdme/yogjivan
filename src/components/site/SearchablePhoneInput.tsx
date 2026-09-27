@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { usePhoneInput, defaultCountries, parseCountry, FlagImage } from "react-international-phone";
 import type { CountryIso2 } from "react-international-phone";
 import { ChevronDown, Search } from "lucide-react";
+import { phoneAfterCountryChange } from "@/lib/phone-input";
+
 
 type Props = {
   value: string;
@@ -33,14 +35,33 @@ export function SearchablePhoneInput({
   const searchRef = useRef<HTMLInputElement | null>(null);
 
   // The caller may resolve the visitor's market after mount (URL ?market= or
-  // browser locale). Adopt it as long as nothing has been typed yet.
+  // browser locale). Adopt it as long as nothing has been typed yet — never
+  // overwrite a number the visitor (or their browser autofill) already entered.
   useEffect(() => {
     if (!defaultCountry) return;
     if (inputValue) return;
+    if (value) return;
     if (country.iso2 === defaultCountry) return;
     setCountry(defaultCountry);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultCountry]);
+
+  /**
+   * Change the country WITHOUT losing the digits already typed.
+   *
+   * react-international-phone v4 resets `inputValue` to "" inside setCountry
+   * when `disableDialCodeAndPrefix` is on, and emits a phone of just
+   * "+<dialCode>". That silently wipes the visitor's number. We keep the
+   * national digits and re-emit them under the new dial code; the hook's
+   * value-sync effect then reformats the input for the new country.
+   */
+  function selectCountry(iso2: CountryIso2, dialCode: string) {
+    const next = phoneAfterCountryChange(inputValue, dialCode);
+    setCountry(iso2, { focusOnInput: true });
+    onChange(next);
+  }
+
+
 
 
   const parsed = useMemo(() => defaultCountries.map(parseCountry), []);
@@ -89,7 +110,10 @@ export function SearchablePhoneInput({
         </button>
         <input
           ref={inputRef}
+          id={name}
           type="tel"
+          inputMode="tel"
+          autoComplete="tel-national"
           name={name}
           aria-label={ariaLabel}
           placeholder={placeholder}
@@ -97,6 +121,7 @@ export function SearchablePhoneInput({
           onChange={handlePhoneValueChange}
           className="flex-1 bg-transparent px-3 py-3 text-sm outline-none"
         />
+
       </div>
 
       {open && (
@@ -124,10 +149,11 @@ export function SearchablePhoneInput({
                     role="option"
                     aria-selected={active}
                     onClick={() => {
-                      setCountry(c.iso2, { focusOnInput: true });
+                      selectCountry(c.iso2 as CountryIso2, c.dialCode);
                       setOpen(false);
                       setQuery("");
                     }}
+
                     className={`flex w-full items-center gap-3 px-3 py-2 text-left text-sm hover:bg-white/[0.05] ${
                       active ? "bg-white/[0.04] text-[color:var(--gold)]" : "text-foreground/90"
                     }`}
