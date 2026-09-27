@@ -77,63 +77,94 @@ describe("phone normalization", () => {
 });
 
 describe("reply generator + privacy", () => {
-  it("private beginner gets Master Anil assessment and asks timing + restrictions", () => {
+  const qCount = (r: string) => (r.match(/\?/g) ?? []).length;
+  it("private beginner: Master Anil assessment, asks only timing", () => {
     const r = generateReply({ name: "Asha K", preferred_experience: "Private 1-on-1 online yoga", funnel: null, source: "website",
       goals: [], preferred_time: null, timezone: "Asia/Dubai", experience_level: "Beginner", health_present: false });
     expect(r).toMatch(/Master Anil/);
     expect(r).toMatch(/Asia\/Dubai/);
-    expect(r).toMatch(/pain, injury or physical restriction/);
+    expect(r).not.toMatch(/pain|injury|restriction/i);
+    expect(qCount(r)).toBe(1);
     expect(r).not.toMatch(/\$|USD|price/i);
   });
-  it("health present => care-first, no questionnaire, no conditions", () => {
+  it("health present => care-first, no conditions, one question max", () => {
     const r = generateReply({ name: "B", preferred_experience: "Private", funnel: null, source: null,
       goals: ["Back, neck or posture support", "Thyroid"], preferred_time: "Evening", timezone: null,
       experience_level: null, health_present: true });
     expect(r).toMatch(/health information/);
-    expect(r).not.toMatch(/pain, injury/);
     expect(r).not.toMatch(/thyroid|back|neck/i);
     expect(r).not.toMatch(/\bcure|\bheal\b|\bheals|treat/i);
     expect(r).toMatch(/evening/);
+    expect(qCount(r)).toBeLessThanOrEqual(1);
   });
-  it("group reply makes no availability promise", () => {
-    const r = generateReply({ name: "C", preferred_experience: "Live online group classes", funnel: "online_group_inline",
-      source: "website", goals: [], preferred_time: "Morning", timezone: null, experience_level: null, health_present: false });
-    expect(r).toMatch(/check the current class times/);
-    expect(r).not.toMatch(/guarantee|spot is reserved|available now/i);
+  it("group: no availability promise, asks only days/time (YJ-WEB-0008 style)", () => {
+    const r = generateReply({ name: "Simra", preferred_experience: "Live online group classes", funnel: "online_group_inline",
+      source: "website", goals: [], preferred_time: null, timezone: null, experience_level: null, health_present: false });
+    expect(r).toBe("Hi Simra 😊 Thank you for your interest in Yog Jivan's live online group classes.\nWhich days and times usually suit you best? 🙏");
+    expect(r).not.toMatch(/guarantee|reserved|available now|injury|practised/i);
   });
-  it("studio reply asks studio", () => {
+  it("studio asks studio + time as one question", () => {
     const r = generateReply({ name: "D", preferred_experience: "Studio classes", funnel: null, source: null, goals: [],
       preferred_time: null, timezone: null, experience_level: null, health_present: false });
-    expect(r).toMatch(/Which studio/);
+    expect(r).toMatch(/Which studio and time/);
+    expect(qCount(r)).toBe(1);
+  });
+  it("every reply is 2–4 lines with at most one question", () => {
+    for (const pe of ["Private 1-on-1", "Live online group classes", "Studio classes", null]) for (const t of [null, "Morning"]) for (const h of [true, false]) {
+      const r = generateReply({ name: "E", preferred_experience: pe, funnel: null, source: null, goals: ["Flexibility"],
+        preferred_time: t, timezone: "Asia/Ho_Chi_Minh", experience_level: null, health_present: h });
+      const n = r.split("\n").length;
+      expect(n).toBeGreaterThanOrEqual(2); expect(n).toBeLessThanOrEqual(4);
+      expect(qCount(r)).toBeLessThanOrEqual(1);
+    }
   });
   it("safeGoals drops sensitive goals", () => {
     expect(safeGoals(["Stress and sleep", "Back pain", "Live group classes"])).toEqual(["Stress and sleep", "Live group classes"]);
   });
-  it("telegram alert has HTML sections, fields and no health text", () => {
+  it("telegram alert: exact blank-line sections, no body URLs, no health text, both buttons when valid", () => {
     const { payload, reply } = buildLeadPayload(lead({ health_present: true, goals: ["Thyroid support"] }));
     const m = formatTelegramAlert(payload, reply, "https://docs.google.com/x");
     expect(m.parse_mode).toBe("HTML");
-    for (const f of ["🚨 <b>NEW YOG JIVAN LEAD</b>\n\n🆔 <b>ID:</b>", "👤 <b>Name:</b>", "🌍 <b>Location:</b>",
-      "\n\n📞 <b>PHONE</b>\n• Country Code: <code>", "• Mobile Number: <code>", "• WhatsApp Full Number:",
-      "\n\n🎯 <b>ENQUIRY</b>\n• Service / Preferred Experience:", "• Goal(s):", "• Experience:", "• Preferred Time:",
-      "• Source + Landing Page:", "• Priority:", "\n\n🔒 <b>Health information provided:</b> Yes",
-      "\n\n💬 <b>SUGGESTED FIRST REPLY</b>\n<blockquote>"]) {
-      expect(m.text).toContain(f);
-    }
+    const sections = m.text.split("\n\n");
+    expect(sections[0]).toBe("🚨 <b>NEW YOG JIVAN LEAD</b>");
+    expect(sections[1]).toMatch(/^🆔 <b>ID:<\/b> YJ-WEB-0007\n👤 <b>Name:<\/b> .+\n🌍 <b>Location:<\/b> /);
+    expect(sections[2]).toMatch(/^📞 <b>PHONE<\/b>\n• Country Code: <code>\+1<\/code>\n• Entered Number: <code>\+12025550123<\/code>\n• WhatsApp Number: <code>\+12025550123<\/code>\n• Validation: Valid$/);
+    expect(sections[3]).toMatch(/^🎯 <b>ENQUIRY<\/b>\n• Service: .+\n• Goal: .+\n• Experience: .+\n• Preferred Time: .+\n• Source: .+\n• Priority: .+$/);
+    expect(sections[4]).toBe("🔒 <b>Health information provided:</b> Yes");
+    expect(sections[5]).toMatch(/^💬 <b>READY TO COPY<\/b>\n<blockquote>[\s\S]+<\/blockquote>$/);
+    expect(m.text).not.toMatch(/https?:|wa\.me/);
     expect(m.text).not.toMatch(/thyroid/i);
-    expect(m.text.length).toBeLessThan(4096);
-    expect(m.reply_markup?.inline_keyboard[0].map((b) => b.text)).toEqual(["Open WhatsApp", "Open CRM"]);
+    expect(m.reply_markup?.inline_keyboard[0].map((b) => b.text)).toEqual(["Reply on WhatsApp", "Open CRM"]);
+  });
+  it("invalid phone (YJ-WEB-0008 style): original digits kept, needs review, CRM button only", () => {
+    const { payload, reply } = buildLeadPayload(lead({ name: "Simra", whatsapp: "+84 0505 477 892", preferred_experience: "Live online group classes", goals: [], experience_level: null }));
+    const m = formatTelegramAlert(payload, reply, "https://docs.google.com/x");
+    expect(m.text).toContain("• Entered Number: <code>+840505477892</code>");
+    expect(m.text).toContain("• WhatsApp Number: <b>Needs review</b>");
+    expect(m.text).toContain("• Validation: Invalid");
+    expect(m.text).toContain("⚠️ <b>Verify phone number</b>");
+    expect(m.text).not.toMatch(/Entered Number: —/);
+    expect(m.reply_markup?.inline_keyboard[0].map((b) => b.text)).toEqual(["Open CRM"]);
+    expect(reply.match(/\?/g)?.length).toBe(1);
+  });
+  it("national number without country code => Ambiguous", () => {
+    const { payload } = buildLeadPayload(lead({ whatsapp: "0905 123 456" }));
+    const m = formatTelegramAlert(payload, "", null);
+    expect(m.text).toContain("• Validation: Ambiguous");
+    expect(m.text).toContain("• Entered Number: <code>0905123456</code>");
+    expect(m.reply_markup).toBeUndefined();
   });
   it("telegram alert escapes user content and shows dashes for missing values", () => {
     const { payload } = buildLeadPayload(lead({ name: "<b>Evil</b> & co", preferred_time: null, experience_level: null }));
     const m = formatTelegramAlert(payload, "Hi <script>x</script>", null);
     expect(m.text).toContain("&lt;b&gt;Evil&lt;/b&gt; &amp; co");
     expect(m.text).not.toContain("<script>");
-    expect(m.text).toContain("&lt;script&gt;");
     expect(m.text).toContain("• Preferred Time: —");
-    expect(m.reply_markup?.inline_keyboard[0].map((b) => b.text)).not.toContain("Open CRM");
     const tags = m.text.match(/<\/?[a-z]+>/g) ?? [];
     expect(tags.every((t) => ["<b>", "</b>", "<code>", "</code>", "<blockquote>", "</blockquote>"].includes(t))).toBe(true);
+  });
+  it("payload stores the playbook version", () => {
+    expect(buildLeadPayload(lead()).payload.playbook_version).toMatch(/^yj-first-reply-v2/);
   });
   it("payload never contains health note fields", () => {
     const { payload } = buildLeadPayload({ ...lead(), health_notes: "SECRET", health_tags: ["x"] } as never);
