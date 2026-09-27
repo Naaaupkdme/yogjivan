@@ -3,7 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { breadcrumbSchema } from "@/lib/schema";
 import { SOCIAL } from "@/lib/social";
 
-const LAST_UPDATED = "September 25, 2026";
+const LAST_UPDATED = "September 27, 2026";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -66,6 +66,9 @@ function PrivacyPage() {
               Information submitted through our consultation forms is stored in our managed site database. We use it to
               review and respond to your inquiry, arrange the classes or services you request, and send relevant updates
               about those services.
+            </p>
+            <p>
+              When you submit an enquiry, we store it securely in our database and may mirror limited contact and enquiry details to a restricted Google Sheet and send an operational alert to a private Telegram group used by authorized Yog Jivan team members. Detailed health notes are not included in Telegram alerts. When you choose a WhatsApp button, we may record an anonymous click reference with page and campaign attribution to help us connect your message with your enquiry; a click alone is not treated as a confirmed lead. We use this information to respond to your enquiry, manage follow-up, and improve our services. Access is restricted, and you may contact us to request access or deletion where applicable.
             </p>
           </Section>
 
