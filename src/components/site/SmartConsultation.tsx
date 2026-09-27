@@ -76,7 +76,7 @@ export function SmartConsultation() {
         status: "submitted",
       });
       // Only after the insert resolved successfully and the success state shows.
-      if (result.outcome === \"accepted\") trackGenerateLead(parsed.data.service, "smart_consultation");
+      if (result.outcome === "accepted") trackGenerateLead(parsed.data.service, "smart_consultation");
       setDone(true);
       setForm(empty);
     } catch (err) {
@@ -121,11 +121,11 @@ export function SmartConsultation() {
           <motion.form
             key="form"
             onSubmit={onSubmit}
-            onFocusCapture={() =>
-            <LeadGuardFields /> trackFormStart("smart_consultation")}
+            onFocusCapture={() => trackFormStart("smart_consultation")}
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.4 }}
           >
+            <LeadGuardFields />
             <h3 className="font-display text-3xl sm:text-4xl leading-tight">Book your free consultation.</h3>
             <p className="mt-3 max-w-xl text-sm text-muted-foreground leading-relaxed">
               Share a few details — our team will follow up on WhatsApp.

@@ -142,7 +142,7 @@ export function BookOnlineYogaForm() {
         },
       });
       // Fires only after a confirmed insert. No PII is sent — just intent + channel.
-      if (result.outcome === \"accepted\") trackGenerateLead(parsed.data.goal, FORM_ID, leadEventId);
+      if (result.outcome === "accepted") trackGenerateLead(parsed.data.goal, FORM_ID, leadEventId);
       setDone(true);
       setForm(empty);
     } catch (err) {
@@ -209,12 +209,12 @@ export function BookOnlineYogaForm() {
   return (
     <form
       onSubmit={onSubmit}
-      onFocusCapture={() =>
-            <LeadGuardFields /> trackFormStart(FORM_ID)}
+      onFocusCapture={() => trackFormStart(FORM_ID)}
       data-cta-location="book_online_yoga_form"
       className="glass-luxe rounded-[1.5rem] p-6 sm:p-8"
       noValidate
     >
+      <LeadGuardFields />
       <h2 className="font-display text-2xl leading-tight sm:text-3xl">Claim your free trial</h2>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
         3 days of free live group classes plus 1 complimentary private session. No card required.

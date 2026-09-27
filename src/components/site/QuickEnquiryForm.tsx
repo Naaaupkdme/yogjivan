@@ -103,7 +103,7 @@ export function QuickEnquiryForm({ id = "quick-enquiry" }: { id?: string }) {
           first_touch_at: attribution.captured_at ?? null,
         },
       });
-      if (result.outcome === \"accepted\") trackGenerateLead("Live online group classes", FORM_ID, leadEventId);
+      if (result.outcome === "accepted") trackGenerateLead("Live online group classes", FORM_ID, leadEventId);
       setDone(true);
       setName("");
       setWhatsapp("");
@@ -143,12 +143,12 @@ export function QuickEnquiryForm({ id = "quick-enquiry" }: { id?: string }) {
     <form
       id={id}
       onSubmit={onSubmit}
-      onFocusCapture={() =>
-            <LeadGuardFields /> trackFormStart(FORM_ID)}
+      onFocusCapture={() => trackFormStart(FORM_ID)}
       data-cta-location="online_group_quick_form"
       className="glass-luxe rounded-[1.5rem] p-6 sm:p-8"
       noValidate
     >
+      <LeadGuardFields />
       <h2 className="font-display text-2xl leading-tight sm:text-3xl">
         Ask about your first live class
       </h2>

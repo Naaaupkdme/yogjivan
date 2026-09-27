@@ -159,7 +159,7 @@ export function PrivateYogaEnquiryForm() {
         },
       });
       // Conversion events fire ONLY after a confirmed insert. No PII is sent.
-      if (result.outcome === \"accepted\") trackGenerateLead("Private 1-on-1 online yoga", FORM_ID, leadEventId);
+      if (result.outcome === "accepted") trackGenerateLead("Private 1-on-1 online yoga", FORM_ID, leadEventId);
       setDone(true);
       setForm(empty);
     } catch (err) {
@@ -224,12 +224,12 @@ export function PrivateYogaEnquiryForm() {
   return (
     <form
       onSubmit={onSubmit}
-      onFocusCapture={() =>
-            <LeadGuardFields /> trackFormStart(FORM_ID)}
+      onFocusCapture={() => trackFormStart(FORM_ID)}
       data-cta-location="private_yoga_form"
       className="glass-luxe rounded-[1.5rem] p-6 sm:p-8"
       noValidate
     >
+      <LeadGuardFields />
       <h2 className="font-display text-2xl leading-tight sm:text-3xl">
         Enquire about private 1-on-1 yoga
       </h2>
