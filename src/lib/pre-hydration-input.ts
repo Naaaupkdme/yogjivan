@@ -51,7 +51,13 @@ export function replayPreHydrationInputs(store: Store): number {
  * restoring emptied fields while lazily-hydrated sections finish (up to 10s).
  * Any real keystroke in a field after this point hands it back to the visitor.
  */
+let installed = false;
+
 export function installPreHydrationReplay(): () => void {
+  // Runs once per page load and owns its own 10s lifetime, so effect
+  // re-runs (StrictMode, root remounts) cannot cancel the rescue early.
+  if (installed) return () => {};
+  installed = true;
   const w = window as unknown as { __yjPreInput?: Store; __yjPreDone?: boolean };
   const snapshot: Store = { ...(w.__yjPreInput ?? {}) };
   w.__yjPreDone = true;
@@ -72,5 +78,5 @@ export function installPreHydrationReplay(): () => void {
     document.removeEventListener("input", release, true);
     document.removeEventListener("change", release, true);
   }
-  return cleanup;
+  return () => {};
 }
