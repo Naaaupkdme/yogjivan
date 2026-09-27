@@ -1,6 +1,8 @@
 // Free, rule-based first-reply generator (no AI API).
 // Never receives health note text — only a boolean.
 
+import { PLAYBOOK } from "./playbook";
+
 export type LeadForReply = {
   name: string;
   preferred_experience: string | null;
@@ -47,52 +49,31 @@ function lowerFirst(s: string): string {
   return s ? s[0].toLowerCase() + s.slice(1) : s;
 }
 
+/**
+ * First WhatsApp reply from the versioned playbook (see ./playbook.ts).
+ * At most ONE question; 2–4 short lines.
+ */
 export function generateReply(l: LeadForReply): string {
   const kind = classifyService(l);
   const beginner = isBeginner(l);
-  const goals = safeGoals(l.goals).filter(
-    (g) => !/private|group|1-on-1|live|beginner/i.test(g),
-  );
+  const goals = safeGoals(l.goals).filter((g) => !/private|group|1-on-1|live|beginner|studio|online/i.test(g));
   const tz = l.timezone ? l.timezone.slice(0, 40) : null;
   const time = l.preferred_time ? l.preferred_time.slice(0, 40) : null;
-  const parts: string[] = [`Hi ${firstName(l.name)}, thank you for reaching out to Yog Jivan! 🙏`];
+  const lines: string[] = [`${PLAYBOOK.greeting(firstName(l.name))} ${PLAYBOOK.intro[kind]}`];
 
-  if (kind === "private") {
-    parts.push(
-      beginner
-        ? "As you're starting out, we'd love to offer you a complimentary assessment session with Master Anil, so we understand your level and match you with the right teacher."
-        : "We'd love to start with a short complimentary assessment so we can match you with the right teacher for your private sessions.",
-    );
-  } else if (kind === "group") {
-    parts.push("Thank you for your interest in our live online group classes. Our team will check the current class times for you.");
-  } else if (kind === "studio") {
-    parts.push("Thank you for your interest in classes at our Hai Duong studios.");
-  } else {
-    parts.push("Our team will guide you to the class that suits you best.");
-  }
+  if (kind === "private") lines.push(beginner ? PLAYBOOK.privateBeginnerOffer : PLAYBOOK.privateOffer);
+  if (goals.length && kind !== "group") lines.push(PLAYBOOK.goalLine(lowerFirst(goals[0])));
+  if (l.health_present) lines.push(PLAYBOOK.healthLine);
 
-  if (goals.length) parts.push(`It's great that you'd like to focus on ${lowerFirst(goals[0])}.`);
+  let question: string | null = null;
+  if (kind === "studio") question = PLAYBOOK.question.studio;
+  else if (!time) question = PLAYBOOK.question.timing(tz);
+  else if (kind === "other") question = PLAYBOOK.question.general;
+  else if (kind === "group" && !l.experience_level && !beginner) question = PLAYBOOK.question.experience;
 
-  if (l.health_present) {
-    parts.push("Thank you for sharing your health information — our team will review it carefully so your practice is adapted to you.");
-  }
-
-  const questions: string[] = [];
-  if (kind === "studio") questions.push("Which studio is most convenient for you?");
-  if (time) {
-    parts.push(`We've noted your preference for ${lowerFirst(time)}${tz ? ` (${tz} time)` : ""}.`);
-  } else {
-    questions.push(`Which days and times usually suit you${tz ? ` (${tz} time)` : ""}?`);
-  }
-  if (kind === "group" && !l.experience_level && !beginner) {
-    questions.push("Have you practised yoga before?");
-  }
-  if (kind === "studio" && !goals.length) questions.push("What would you like to focus on?");
-  if (!l.health_present) {
-    questions.push("Is there any pain, injury or physical restriction we should know about?");
-  }
-
-  if (questions.length) parts.push(questions.slice(0, 3).join(" "));
-  parts.push("— Yog Jivan Team");
-  return parts.join(" ").slice(0, 900);
+  if (time && kind !== "studio") lines.push(PLAYBOOK.timeNoted(lowerFirst(time), tz));
+  // Keep to 4 lines max: question + sign-off share the last line.
+  const body = lines.slice(0, 3);
+  body.push(question ? `${question} ${PLAYBOOK.signoff}` : `Our team will be in touch shortly. ${PLAYBOOK.signoff}`);
+  return body.join("\n").slice(0, 900);
 }
