@@ -54,10 +54,11 @@ export function SearchablePhoneInput({
    * value-sync effect then reformats the input for the new country.
    */
   function selectCountry(iso2: CountryIso2, dialCode: string) {
-    const nationalDigits = inputValue.replace(/\D/g, "");
+    const next = phoneAfterCountryChange(inputValue, dialCode);
     setCountry(iso2, { focusOnInput: true });
-    onChange(`+${dialCode}${nationalDigits}`);
+    onChange(next);
   }
+
 
 
 
