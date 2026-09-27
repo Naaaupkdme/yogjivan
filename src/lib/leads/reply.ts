@@ -62,7 +62,6 @@ export function generateReply(l: LeadForReply): string {
   const lines: string[] = [`${PLAYBOOK.greeting(firstName(l.name))} ${PLAYBOOK.intro[kind]}`];
 
   if (kind === "private") lines.push(beginner ? PLAYBOOK.privateBeginnerOffer : PLAYBOOK.privateOffer);
-  if (goals.length && kind !== "group") lines.push(PLAYBOOK.goalLine(lowerFirst(goals[0])));
   if (l.health_present) lines.push(PLAYBOOK.healthLine);
 
   let question: string | null = null;
@@ -72,6 +71,8 @@ export function generateReply(l: LeadForReply): string {
   else if (kind === "group" && !l.experience_level && !beginner) question = PLAYBOOK.question.experience;
 
   if (time && kind !== "studio") lines.push(PLAYBOOK.timeNoted(lowerFirst(time), tz));
+  // Goal line is the first thing dropped when space is short.
+  if (goals.length && kind !== "group" && lines.length < 3) lines.splice(1, 0, PLAYBOOK.goalLine(lowerFirst(goals[0])));
   // Keep to 4 lines max: question + sign-off share the last line.
   const body = lines.slice(0, 3);
   body.push(question ? `${question} ${PLAYBOOK.signoff}` : `Our team will be in touch shortly. ${PLAYBOOK.signoff}`);
