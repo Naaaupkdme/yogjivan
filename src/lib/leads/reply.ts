@@ -70,11 +70,12 @@ export function generateReply(l: LeadForReply): string {
   else if (kind === "other") question = PLAYBOOK.question.general;
   else if (kind === "group" && !l.experience_level && !beginner) question = PLAYBOOK.question.experience;
 
-  if (time && kind !== "studio") lines.push(PLAYBOOK.timeNoted(lowerFirst(time), tz));
+  const noted = time && kind !== "studio" ? PLAYBOOK.timeNoted(lowerFirst(time), tz) : null;
   // Goal line is the first thing dropped when space is short.
   if (goals.length && kind !== "group" && lines.length < 3) lines.splice(1, 0, PLAYBOOK.goalLine(lowerFirst(goals[0])));
   // Keep to 4 lines max: question + sign-off share the last line.
   const body = lines.slice(0, 3);
-  body.push(question ? `${question} ${PLAYBOOK.signoff}` : `Our team will be in touch shortly. ${PLAYBOOK.signoff}`);
+  if (question && noted) body.splice(Math.min(body.length, 2), body.length >= 3 ? 1 : 0, noted);
+  body.push(question ? `${question} ${PLAYBOOK.signoff}` : `${noted ?? "Our team will be in touch shortly."} ${PLAYBOOK.signoff}`);
   return body.join("\n").slice(0, 900);
 }
