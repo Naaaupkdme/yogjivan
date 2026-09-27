@@ -221,18 +221,20 @@ export function SmartConsultation() {
 }
 
 function Field({
-  label, name, placeholder, error, value, onChange, type = "text",
+  label, name, placeholder, error, value, onChange, type = "text", autoComplete,
 }: {
   label: string; name: string; placeholder: string; error?: string;
-  value: string; onChange: (v: string) => void; type?: string;
+  value: string; onChange: (v: string) => void; type?: string; autoComplete?: string;
 }) {
   return (
     <div>
-      <label className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">{label}</label>
+      <label htmlFor={name} className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">{label}</label>
       <input
+        id={name}
         name={name}
         type={type}
-        value={value}
+        autoComplete={autoComplete}
+        value={value ?? ""}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         className="w-full rounded-[1rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm outline-none transition-colors focus:border-[color:var(--gold)]/60"
@@ -241,3 +243,4 @@ function Field({
     </div>
   );
 }
+
