@@ -7,7 +7,8 @@ import { Link } from "@tanstack/react-router";
 import { defaultCountries, parseCountry } from "react-international-phone";
 import type { CountryIso2 } from "react-international-phone";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
-import { submitLead } from "@/lib/leads";
+import { submitLead, leadErrorMessage } from "@/lib/leads";
+import { LeadGuardFields } from "@/components/site/LeadGuardFields";
 import { CONTACT } from "@/lib/facts/contact";
 import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
@@ -100,7 +101,7 @@ export function BookOnlineYogaForm() {
       /* timezone is optional context */
     }
     try {
-      await submitLead({
+      const result = await submitLead({
         name: parsed.data.name,
         whatsapp: parsed.data.whatsapp,
         email: parsed.data.email || undefined,
@@ -141,12 +142,12 @@ export function BookOnlineYogaForm() {
         },
       });
       // Fires only after a confirmed insert. No PII is sent — just intent + channel.
-      trackGenerateLead(parsed.data.goal, FORM_ID, leadEventId);
+      if (result.outcome === \"accepted\") trackGenerateLead(parsed.data.goal, FORM_ID, leadEventId);
       setDone(true);
       setForm(empty);
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong. Please try again or message us on WhatsApp.");
+      toast.error(leadErrorMessage(err));
     } finally {
       setBusy(false);
     }
@@ -208,7 +209,8 @@ export function BookOnlineYogaForm() {
   return (
     <form
       onSubmit={onSubmit}
-      onFocusCapture={() => trackFormStart(FORM_ID)}
+      onFocusCapture={() =>
+            <LeadGuardFields /> trackFormStart(FORM_ID)}
       data-cta-location="book_online_yoga_form"
       className="glass-luxe rounded-[1.5rem] p-6 sm:p-8"
       noValidate

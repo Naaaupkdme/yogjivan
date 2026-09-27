@@ -6,7 +6,8 @@ import { Link } from "@tanstack/react-router";
 import { defaultCountries, parseCountry } from "react-international-phone";
 import type { CountryIso2 } from "react-international-phone";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
-import { submitLead } from "@/lib/leads";
+import { submitLead, leadErrorMessage } from "@/lib/leads";
+import { LeadGuardFields } from "@/components/site/LeadGuardFields";
 import { waHref } from "@/lib/wa";
 import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
@@ -116,7 +117,7 @@ export function PrivateYogaEnquiryForm() {
     }
 
     try {
-      await submitLead({
+      const result = await submitLead({
         name: parsed.data.name,
         whatsapp: parsed.data.whatsapp,
         email: parsed.data.email || undefined,
@@ -158,12 +159,12 @@ export function PrivateYogaEnquiryForm() {
         },
       });
       // Conversion events fire ONLY after a confirmed insert. No PII is sent.
-      trackGenerateLead("Private 1-on-1 online yoga", FORM_ID, leadEventId);
+      if (result.outcome === \"accepted\") trackGenerateLead("Private 1-on-1 online yoga", FORM_ID, leadEventId);
       setDone(true);
       setForm(empty);
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong. Please try again or message us on WhatsApp.");
+      toast.error(leadErrorMessage(err));
     } finally {
       setBusy(false);
     }
@@ -223,7 +224,8 @@ export function PrivateYogaEnquiryForm() {
   return (
     <form
       onSubmit={onSubmit}
-      onFocusCapture={() => trackFormStart(FORM_ID)}
+      onFocusCapture={() =>
+            <LeadGuardFields /> trackFormStart(FORM_ID)}
       data-cta-location="private_yoga_form"
       className="glass-luxe rounded-[1.5rem] p-6 sm:p-8"
       noValidate
