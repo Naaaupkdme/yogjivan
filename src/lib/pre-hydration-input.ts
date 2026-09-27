@@ -12,7 +12,7 @@
  * Values stay in page memory only — never stored, logged or sent anywhere.
  */
 
-export const CAPTURE_SCRIPT = `(function(){var s=window.__yjPreInput={};function r(e){var t=e.target;if(!t||!t.name||!t.form)return;if(t.type==="hidden"||t.type==="checkbox"||t.type==="radio"||t.type==="file"||t.type==="password")return;s[t.name]=t.value;}document.addEventListener("input",r,true);document.addEventListener("change",r,true);})();`;
+export const CAPTURE_SCRIPT = `(function(){var s=window.__yjPreInput={};function r(e){if(window.__yjPreDone)return;var t=e.target;if(!t||!t.name||!t.form)return;if(t.type==="hidden"||t.type==="checkbox"||t.type==="radio"||t.type==="file"||t.type==="password")return;s[t.name]=t.value;}document.addEventListener("input",r,true);document.addEventListener("change",r,true);})();`;
 
 type Store = Record<string, string>;
 
@@ -29,10 +29,7 @@ function setNativeValue(el: HTMLInputElement | HTMLTextAreaElement | HTMLSelectE
 }
 
 /** Restore captured values into fields React emptied. Returns how many were restored. */
-export function replayPreHydrationInputs(): number {
-  if (typeof window === "undefined") return 0;
-  const store = (window as unknown as { __yjPreInput?: Store }).__yjPreInput;
-  if (!store) return 0;
+export function replayPreHydrationInputs(store: Store): number {
   let restored = 0;
   for (const [name, value] of Object.entries(store)) {
     if (!value) continue;
@@ -49,12 +46,31 @@ export function replayPreHydrationInputs(): number {
   return restored;
 }
 
-/** Replay now and shortly after (late hydration / deferred sections), then stop tracking. */
+/**
+ * Snapshot what was typed before hydration, stop capturing, then keep
+ * restoring emptied fields while lazily-hydrated sections finish (up to 10s).
+ * Any real keystroke in a field after this point hands it back to the visitor.
+ */
 export function installPreHydrationReplay(): () => void {
-  const timers = [0, 300, 1200].map((ms) => window.setTimeout(replayPreHydrationInputs, ms));
-  const clear = window.setTimeout(() => {
-    const w = window as unknown as { __yjPreInput?: Store };
-    if (w.__yjPreInput) for (const k of Object.keys(w.__yjPreInput)) delete w.__yjPreInput[k];
-  }, 1500);
-  return () => [...timers, clear].forEach((t) => window.clearTimeout(t));
+  const w = window as unknown as { __yjPreInput?: Store; __yjPreDone?: boolean };
+  const snapshot: Store = { ...(w.__yjPreInput ?? {}) };
+  w.__yjPreDone = true;
+  w.__yjPreInput = {};
+  if (Object.keys(snapshot).length === 0) return () => {};
+  const release = (e: Event) => {
+    const t = e.target as HTMLInputElement | null;
+    if (e.isTrusted && t?.name) delete snapshot[t.name];
+  };
+  document.addEventListener("input", release, true);
+  document.addEventListener("change", release, true);
+  replayPreHydrationInputs(snapshot);
+  const iv = window.setInterval(() => replayPreHydrationInputs(snapshot), 200);
+  const stop = window.setTimeout(cleanup, 10000);
+  function cleanup() {
+    window.clearInterval(iv);
+    window.clearTimeout(stop);
+    document.removeEventListener("input", release, true);
+    document.removeEventListener("change", release, true);
+  }
+  return cleanup;
 }
