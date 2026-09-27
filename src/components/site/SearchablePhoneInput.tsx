@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { usePhoneInput, defaultCountries, parseCountry, FlagImage } from "react-international-phone";
 import type { CountryIso2 } from "react-international-phone";
 import { ChevronDown, Search } from "lucide-react";
+import { phoneAfterCountryChange } from "@/lib/phone-input";
+
 
 type Props = {
   value: string;
