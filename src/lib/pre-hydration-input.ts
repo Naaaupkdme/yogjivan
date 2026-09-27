@@ -38,7 +38,6 @@ export function replayPreHydrationInputs(store: Store): number {
     );
     fields.forEach((el) => {
       if (el.value === "") {
-        console.debug("[yjreplay] restore", name, performance.now());
         setNativeValue(el, value);
         restored++;
       }
@@ -50,7 +49,7 @@ export function replayPreHydrationInputs(store: Store): number {
 /**
  * Snapshot what was typed before hydration, stop capturing, then keep
  * restoring emptied fields while lazily-hydrated sections finish (up to 10s).
- * Any real keystroke in a field after this point hands it back to the visitor.
+ * Any real keystroke (trusted input event; focus-loss "change" events are ignored) in a field after this point hands it back to the visitor.
  */
 let installed = false;
 
@@ -66,19 +65,16 @@ export function installPreHydrationReplay(): () => void {
   if (Object.keys(snapshot).length === 0) return () => {};
   const release = (e: Event) => {
     const t = e.target as HTMLInputElement | null;
-    if (e.isTrusted && t?.name) { console.debug("[yjreplay] release", t.name, e.type); delete snapshot[t.name]; }
+    if (e.isTrusted && t?.name) delete snapshot[t.name];
   };
   document.addEventListener("input", release, true);
-  document.addEventListener("change", release, true);
   replayPreHydrationInputs(snapshot);
   const iv = window.setInterval(() => replayPreHydrationInputs(snapshot), 200);
   const stop = window.setTimeout(cleanup, 10000);
-  console.debug("[yjreplay] install", JSON.stringify(Object.keys(snapshot)), performance.now());
   function cleanup() {
     window.clearInterval(iv);
     window.clearTimeout(stop);
     document.removeEventListener("input", release, true);
-    document.removeEventListener("change", release, true);
   }
   return () => {};
 }
