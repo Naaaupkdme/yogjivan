@@ -135,13 +135,14 @@ export function SmartConsultation() {
               <Field
                 label="Full Name *"
                 name="name"
+                autoComplete="name"
                 placeholder="Your full name"
                 value={form.name}
                 onChange={(v) => update("name", v)}
                 error={errors.name}
               />
               <div>
-                <label className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">
+                <label htmlFor="whatsapp" className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">
                   WhatsApp Number *
                 </label>
                 <SearchablePhoneInput
@@ -160,11 +161,13 @@ export function SmartConsultation() {
                 label="Email (optional)"
                 name="email"
                 type="email"
+                autoComplete="email"
                 placeholder="you@example.com"
                 value={form.email}
                 onChange={(v) => update("email", v)}
                 error={errors.email}
               />
+
               <div>
                 <label className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">
                   What are you interested in? *
