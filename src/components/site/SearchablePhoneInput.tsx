@@ -107,7 +107,10 @@ export function SearchablePhoneInput({
         </button>
         <input
           ref={inputRef}
+          id={name}
           type="tel"
+          inputMode="tel"
+          autoComplete="tel-national"
           name={name}
           aria-label={ariaLabel}
           placeholder={placeholder}
@@ -115,6 +118,7 @@ export function SearchablePhoneInput({
           onChange={handlePhoneValueChange}
           className="flex-1 bg-transparent px-3 py-3 text-sm outline-none"
         />
+
       </div>
 
       {open && (
