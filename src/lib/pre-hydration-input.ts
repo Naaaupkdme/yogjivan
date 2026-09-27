@@ -40,7 +40,7 @@ export function replayPreHydrationInputs(): number {
       `form [name="${CSS.escape(name)}"]`,
     );
     fields.forEach((el) => {
-      if (el.value === "" || el.value !== value && el.value.replace(/\D/g, "") === "") {
+      if (el.value === "") {
         setNativeValue(el, value);
         restored++;
       }
