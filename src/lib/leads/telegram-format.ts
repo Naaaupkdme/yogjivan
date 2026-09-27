@@ -27,37 +27,53 @@ const SERVICE_LABEL: Record<LeadPayload["service"], string> = {
   other: "General enquiry",
 };
 
+/** Sanitized digits as the visitor typed them (keeps a leading +). */
+export function enteredDigits(original: string | null | undefined): string | null {
+  const t = (original ?? "").trim();
+  const d = t.replace(/[^\d]/g, "").slice(0, 20);
+  if (!d) return null;
+  return (t.startsWith("+") || t.startsWith("00") ? "+" : "") + (t.startsWith("00") ? d.slice(2) : d);
+}
+
+export function validationLabel(p: LeadPayload["phone"]): "Valid" | "Invalid" | "Ambiguous" {
+  if (p.phone_validation === "valid") return "Valid";
+  return p.reason === "no_country_code_ambiguous" ? "Ambiguous" : "Invalid";
+}
+
 export function formatTelegramAlert(p: LeadPayload, reply: string, crmUrl: string | null) {
-  const service = SERVICE_LABEL[p.service] + (p.preferred_experience ? ` — ${p.preferred_experience}` : "");
+  const valid = p.phone.phone_validation === "valid" && Boolean(p.phone.whatsapp_full_number);
+  const entered = enteredDigits(p.phone.phone_original);
   const replyText = (reply ?? "").trim().slice(0, 900);
-  const lines = [
-    "🚨 <b>NEW YOG JIVAN LEAD</b>",
-    "",
-    `🆔 <b>ID:</b> ${clip(p.crm_lead_id, 20)}`,
-    `👤 <b>Name:</b> ${clip(p.name, 60)}`,
-    `🌍 <b>Location:</b> ${clip([p.phone.country_iso ?? p.market?.toUpperCase(), p.timezone].filter(Boolean).join(" · "), 70)}`,
-    "",
-    "📞 <b>PHONE</b>",
-    `• Country Code: <code>${clip(p.phone.country_code, 8)}</code>`,
-    `• Mobile Number: <code>${clip(p.phone.mobile_number, 20)}</code>`,
-    `• WhatsApp Full Number: ${p.phone.whatsapp_full_number ? `<code>${clip(p.phone.whatsapp_full_number, 20)}</code>` : `needs review (${clip(p.phone.reason, 40)})`}`,
-    "",
-    "🎯 <b>ENQUIRY</b>",
-    `• Service / Preferred Experience: ${clip(service, 90)}`,
-    `• Goal(s): ${clip(p.safe_goals.join(", "), 120)}`,
-    `• Experience: ${clip(p.experience_level ?? (p.beginner ? "Beginner" : null), 40)}`,
-    `• Preferred Time: ${clip(p.preferred_time, 40)}`,
-    `• Source + Landing Page: ${clip([p.source, p.landing_page].filter(Boolean).join(" · "), 100)}`,
-    `• Priority: ${clip(p.priority, 10)}`,
-    "",
-    `🔒 <b>Health information provided:</b> ${p.health_present ? "Yes" : "No"}`,
-    "",
-    "💬 <b>SUGGESTED FIRST REPLY</b>",
-    `<blockquote>${replyText ? escapeHtml(replyText) : "—"}</blockquote>`,
+  const sections: string[][] = [
+    ["🚨 <b>NEW YOG JIVAN LEAD</b>"],
+    [
+      `🆔 <b>ID:</b> ${clip(p.crm_lead_id, 20)}`,
+      `👤 <b>Name:</b> ${clip(p.name, 60)}`,
+      `🌍 <b>Location:</b> ${clip([p.phone.country_iso ?? p.market?.toUpperCase(), p.timezone].filter(Boolean).join(" · "), 70)}`,
+    ],
+    [
+      "📞 <b>PHONE</b>",
+      `• Country Code: ${p.phone.country_code ? `<code>${clip(p.phone.country_code, 8)}</code>` : "—"}`,
+      `• Entered Number: ${entered ? `<code>${escapeHtml(entered)}</code>` : "—"}`,
+      `• WhatsApp Number: ${valid ? `<code>${clip(p.phone.whatsapp_full_number, 20)}</code>` : "<b>Needs review</b>"}`,
+      `• Validation: ${validationLabel(p.phone)}`,
+      ...(valid ? [] : ["⚠️ <b>Verify phone number</b> before contacting."]),
+    ],
+    [
+      "🎯 <b>ENQUIRY</b>",
+      `• Service: ${clip(p.preferred_experience ?? SERVICE_LABEL[p.service], 60)}`,
+      `• Goal: ${clip(p.safe_goals.join(", "), 80)}`,
+      `• Experience: ${clip(p.experience_level ?? (p.beginner ? "Beginner" : null), 40)}`,
+      `• Preferred Time: ${clip(p.preferred_time, 40)}`,
+      `• Source: ${clip(p.landing_page ?? p.source, 60)}`,
+      `• Priority: ${clip(p.priority, 10)}`,
+    ],
+    [`🔒 <b>Health information provided:</b> ${p.health_present ? "Yes" : "No"}`],
+    ["💬 <b>READY TO COPY</b>", `<blockquote>${replyText ? escapeHtml(replyText) : "—"}</blockquote>`],
   ];
-  const text = lines.join("\n");
+  const text = sections.map((l) => l.join("\n")).join("\n\n");
   const buttons: { text: string; url: string }[] = [];
-  if (p.reply_link) buttons.push({ text: "Open WhatsApp", url: p.reply_link });
+  if (valid && p.reply_link) buttons.push({ text: "Reply on WhatsApp", url: p.reply_link });
   if (crmUrl) buttons.push({ text: "Open CRM", url: crmUrl });
   return {
     text,
