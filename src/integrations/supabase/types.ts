@@ -35,6 +35,7 @@ export type Database = {
       automation_settings: {
         Row: {
           dispatch_token: string
+          fingerprint_key: string
           id: number
           sheet_enabled: boolean
           sheet_gid: number | null
@@ -46,6 +47,7 @@ export type Database = {
         }
         Insert: {
           dispatch_token?: string
+          fingerprint_key?: string
           id?: number
           sheet_enabled?: boolean
           sheet_gid?: number | null
@@ -57,6 +59,7 @@ export type Database = {
         }
         Update: {
           dispatch_token?: string
+          fingerprint_key?: string
           id?: number
           sheet_enabled?: boolean
           sheet_gid?: number | null
@@ -240,6 +243,83 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      lead_submission_attempts: {
+        Row: {
+          contact_fps: string[]
+          created_at: string
+          expires_at: string
+          id: string
+          idem_key: string | null
+          ip_fp: string | null
+          lead_id: string | null
+          outcome: string
+          payload_hash: string | null
+          reason: string | null
+          session_fp: string | null
+          source: string | null
+        }
+        Insert: {
+          contact_fps?: string[]
+          created_at?: string
+          expires_at?: string
+          id?: string
+          idem_key?: string | null
+          ip_fp?: string | null
+          lead_id?: string | null
+          outcome: string
+          payload_hash?: string | null
+          reason?: string | null
+          session_fp?: string | null
+          source?: string | null
+        }
+        Update: {
+          contact_fps?: string[]
+          created_at?: string
+          expires_at?: string
+          id?: string
+          idem_key?: string | null
+          ip_fp?: string | null
+          lead_id?: string | null
+          outcome?: string
+          payload_hash?: string | null
+          reason?: string | null
+          session_fp?: string | null
+          source?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_submission_attempts_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lead_submission_blocks: {
+        Row: {
+          blocked_until: string
+          created_at: string
+          id: string
+          ip_fp: string
+          reason: string
+        }
+        Insert: {
+          blocked_until: string
+          created_at?: string
+          id?: string
+          ip_fp: string
+          reason: string
+        }
+        Update: {
+          blocked_until?: string
+          created_at?: string
+          id?: string
+          ip_fp?: string
+          reason?: string
+        }
+        Relationships: []
       }
       leads: {
         Row: {
@@ -493,6 +573,18 @@ export type Database = {
       release_automation_lock: {
         Args: { p_name: string; p_owner: string }
         Returns: undefined
+      }
+      submit_lead_guarded: {
+        Args: {
+          p_contact_fps: string[]
+          p_idem_key: string
+          p_ip_fp: string
+          p_lead: Json
+          p_now?: string
+          p_payload_hash: string
+          p_session_fp: string
+        }
+        Returns: Json
       }
       try_automation_lock: {
         Args: { p_name: string; p_owner: string; p_seconds: number }
