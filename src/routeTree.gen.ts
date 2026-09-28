@@ -52,6 +52,7 @@ import { Route as ViYoga1Kem1OnlineRouteImport } from './routes/vi.yoga-1-kem-1-
 import { Route as ViYogaHaiDuongRouteImport } from './routes/vi.yoga-hai-duong'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as ApiPublicN8nCrmControlRouteImport } from './routes/api/public/n8n-crm-control'
 import { Route as ApiPublicLeadsDispatchRouteImport } from './routes/api/public/leads/dispatch'
 import { Route as ApiPublicLeadsSubmitRouteImport } from './routes/api/public/leads/submit'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
@@ -277,6 +278,11 @@ const Char91DotmcpChar93InvokeToolToolRoute =
     path: '/.mcp/invoke-tool/$tool',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiPublicN8nCrmControlRoute = ApiPublicN8nCrmControlRouteImport.update({
+  id: '/api/public/n8n-crm-control',
+  path: '/api/public/n8n-crm-control',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicLeadsDispatchRoute = ApiPublicLeadsDispatchRouteImport.update({
   id: '/api/public/leads/dispatch',
   path: '/api/public/leads/dispatch',
@@ -348,6 +354,7 @@ export interface FileRoutesByFullPath {
   '/vi/': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/public/n8n-crm-control': typeof ApiPublicN8nCrmControlRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -398,6 +405,7 @@ export interface FileRoutesByTo {
   '/vi': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/public/n8n-crm-control': typeof ApiPublicN8nCrmControlRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -449,6 +457,7 @@ export interface FileRoutesById {
   '/vi/': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
+  '/api/public/n8n-crm-control': typeof ApiPublicN8nCrmControlRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -501,6 +510,7 @@ export interface FileRouteTypes {
     | '/vi/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/public/n8n-crm-control'
     | '/api/public/leads/dispatch'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
@@ -551,6 +561,7 @@ export interface FileRouteTypes {
     | '/vi'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/public/n8n-crm-control'
     | '/api/public/leads/dispatch'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
@@ -601,6 +612,7 @@ export interface FileRouteTypes {
     | '/vi/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
+    | '/api/public/n8n-crm-control'
     | '/api/public/leads/dispatch'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
@@ -652,6 +664,7 @@ export interface RootRouteChildren {
   ViIndexRoute: typeof ViIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  ApiPublicN8nCrmControlRoute: typeof ApiPublicN8nCrmControlRoute
   ApiPublicLeadsDispatchRoute: typeof ApiPublicLeadsDispatchRoute
   ApiPublicLeadsSubmitRoute: typeof ApiPublicLeadsSubmitRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
@@ -962,6 +975,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/n8n-crm-control': {
+      id: '/api/public/n8n-crm-control'
+      path: '/api/public/n8n-crm-control'
+      fullPath: '/api/public/n8n-crm-control'
+      preLoaderRoute: typeof ApiPublicN8nCrmControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/leads/dispatch': {
       id: '/api/public/leads/dispatch'
       path: '/api/public/leads/dispatch'
@@ -1046,6 +1066,7 @@ const rootRouteChildren: RootRouteChildren = {
   ViIndexRoute: ViIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  ApiPublicN8nCrmControlRoute: ApiPublicN8nCrmControlRoute,
   ApiPublicLeadsDispatchRoute: ApiPublicLeadsDispatchRoute,
   ApiPublicLeadsSubmitRoute: ApiPublicLeadsSubmitRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
