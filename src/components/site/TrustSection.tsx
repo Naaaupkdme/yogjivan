@@ -49,7 +49,8 @@ const PARTICLES = [
 function CountUp({ value, decimals = 0, prefix = "", suffix = "" }: { value: number; decimals?: number; prefix?: string; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const mv = useMotionValue(0);
+  // SSR/no-JS fallback shows the real figure; the count-up only replays client-side.
+  const mv = useMotionValue(value);
   const rounded = useTransform(mv, (v) => {
     const formatted = decimals ? v.toFixed(decimals) : Math.round(v).toLocaleString("en-US");
     return `${prefix}${formatted}${suffix}`;
@@ -57,6 +58,7 @@ function CountUp({ value, decimals = 0, prefix = "", suffix = "" }: { value: num
 
   useEffect(() => {
     if (!inView) return;
+    mv.set(0);
     const controls = animate(mv, value, {
       duration: 2.5,
       ease: [0.16, 1, 0.3, 1],
