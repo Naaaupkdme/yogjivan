@@ -158,6 +158,50 @@ export type Database = {
         }
         Relationships: []
       }
+      lead_crm_events: {
+        Row: {
+          action: string
+          created_at: string
+          crm_lead_id: string
+          id: string
+          lead_id: string
+          note: string | null
+          request_id: string
+          telegram_chat_id: string
+          telegram_user_id: string
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          crm_lead_id: string
+          id?: string
+          lead_id: string
+          note?: string | null
+          request_id: string
+          telegram_chat_id: string
+          telegram_user_id: string
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          crm_lead_id?: string
+          id?: string
+          lead_id?: string
+          note?: string | null
+          request_id?: string
+          telegram_chat_id?: string
+          telegram_user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_crm_events_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       lead_outbox: {
         Row: {
           created_at: string
@@ -326,6 +370,9 @@ export type Database = {
           country_code: string | null
           created_at: string
           crm_lead_id: string | null
+          crm_status: string | null
+          crm_status_updated_at: string | null
+          crm_updated_by: string | null
           email: string | null
           experience_level: string | null
           goals: string[] | null
@@ -352,6 +399,9 @@ export type Database = {
           country_code?: string | null
           created_at?: string
           crm_lead_id?: string | null
+          crm_status?: string | null
+          crm_status_updated_at?: string | null
+          crm_updated_by?: string | null
           email?: string | null
           experience_level?: string | null
           goals?: string[] | null
@@ -378,6 +428,9 @@ export type Database = {
           country_code?: string | null
           created_at?: string
           crm_lead_id?: string | null
+          crm_status?: string | null
+          crm_status_updated_at?: string | null
+          crm_updated_by?: string | null
           email?: string | null
           experience_level?: string | null
           goals?: string[] | null
@@ -538,6 +591,17 @@ export type Database = {
           isOneToOne: false
           isSetofReturn: true
         }
+      }
+      crm_apply_action: {
+        Args: {
+          p_action: string
+          p_crm_lead_id: string
+          p_note: string
+          p_request_id: string
+          p_tg_chat: string
+          p_tg_user: string
+        }
+        Returns: Json
       }
       delete_email: {
         Args: { message_id: number; queue_name: string }
