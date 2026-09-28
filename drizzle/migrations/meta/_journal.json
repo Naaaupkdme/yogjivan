@@ -29,6 +29,13 @@
       "when": 1790492870910,
       "tag": "0003_lead_intake_antispam",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790606936770,
+      "tag": "0004_n8n_crm_bridge",
+      "breakpoints": true
     }
   ]
 }
