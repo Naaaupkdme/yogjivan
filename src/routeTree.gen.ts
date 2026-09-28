@@ -14,12 +14,14 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BookOnlineYogaRouteImport } from './routes/book-online-yoga'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as CorporateRouteImport } from './routes/corporate'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as OnlineRouteImport } from './routes/online'
 import { Route as OnlinePrivateYogaRouteImport } from './routes/online-private-yoga'
 import { Route as OnlineYogaClassesRouteImport } from './routes/online-yoga-classes'
+import { Route as OnlineYogaProgramsRouteImport } from './routes/online-yoga-programs'
 import { Route as PeriodSafeYogaRouteImport } from './routes/period-safe-yoga'
 import { Route as PersonalTrainingRouteImport } from './routes/personal-training'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -27,8 +29,10 @@ import { Route as PrivateOnlineYogaRouteImport } from './routes/private-online-y
 import { Route as PrivateYogaRouteImport } from './routes/private-yoga'
 import { Route as PrivateYogaClassesRouteImport } from './routes/private-yoga-classes'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
+import { Route as YogaClassesRouteImport } from './routes/yoga-classes'
 import { Route as YogaForBackPainRouteImport } from './routes/yoga-for-back-pain'
 import { Route as YogaForBeginnersRouteImport } from './routes/yoga-for-beginners'
 import { Route as YogaForExpatsInVietnamRouteImport } from './routes/yoga-for-expats-in-vietnam'
@@ -79,6 +83,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CorporateRoute = CorporateRouteImport.update({
   id: '/corporate',
   path: '/corporate',
@@ -107,6 +116,11 @@ const OnlinePrivateYogaRoute = OnlinePrivateYogaRouteImport.update({
 const OnlineYogaClassesRoute = OnlineYogaClassesRouteImport.update({
   id: '/online-yoga-classes',
   path: '/online-yoga-classes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineYogaProgramsRoute = OnlineYogaProgramsRouteImport.update({
+  id: '/online-yoga-programs',
+  path: '/online-yoga-programs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PeriodSafeYogaRoute = PeriodSafeYogaRouteImport.update({
@@ -144,6 +158,11 @@ const ProgramsRoute = ProgramsRouteImport.update({
   path: '/programs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -152,6 +171,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const TestimonialsRoute = TestimonialsRouteImport.update({
   id: '/testimonials',
   path: '/testimonials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YogaClassesRoute = YogaClassesRouteImport.update({
+  id: '/yoga-classes',
+  path: '/yoga-classes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const YogaForBackPainRoute = YogaForBackPainRouteImport.update({
@@ -286,12 +310,14 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/book-online-yoga': typeof BookOnlineYogaRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
   '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
+  '/online-yoga-programs': typeof OnlineYogaProgramsRoute
   '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
@@ -299,8 +325,10 @@ export interface FileRoutesByFullPath {
   '/private-yoga': typeof PrivateYogaRoute
   '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
+  '/yoga-classes': typeof YogaClassesRoute
   '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
   '/yoga-for-expats-in-vietnam': typeof YogaForExpatsInVietnamRoute
@@ -332,12 +360,14 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/book-online-yoga': typeof BookOnlineYogaRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
   '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
+  '/online-yoga-programs': typeof OnlineYogaProgramsRoute
   '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
@@ -345,8 +375,10 @@ export interface FileRoutesByTo {
   '/private-yoga': typeof PrivateYogaRoute
   '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
+  '/yoga-classes': typeof YogaClassesRoute
   '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
   '/yoga-for-expats-in-vietnam': typeof YogaForExpatsInVietnamRoute
@@ -379,12 +411,14 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/book-online-yoga': typeof BookOnlineYogaRoute
   '/contact': typeof ContactRoute
+  '/contact-us': typeof ContactUsRoute
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
   '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
+  '/online-yoga-programs': typeof OnlineYogaProgramsRoute
   '/period-safe-yoga': typeof PeriodSafeYogaRoute
   '/personal-training': typeof PersonalTrainingRoute
   '/privacy': typeof PrivacyRoute
@@ -392,8 +426,10 @@ export interface FileRoutesById {
   '/private-yoga': typeof PrivateYogaRoute
   '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
+  '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
+  '/yoga-classes': typeof YogaClassesRoute
   '/yoga-for-back-pain': typeof YogaForBackPainRoute
   '/yoga-for-beginners': typeof YogaForBeginnersRoute
   '/yoga-for-expats-in-vietnam': typeof YogaForExpatsInVietnamRoute
@@ -427,12 +463,14 @@ export interface FileRouteTypes {
     | '/auth'
     | '/book-online-yoga'
     | '/contact'
+    | '/contact-us'
     | '/corporate'
     | '/gallery'
     | '/mcp'
     | '/online'
     | '/online-private-yoga'
     | '/online-yoga-classes'
+    | '/online-yoga-programs'
     | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
@@ -440,8 +478,10 @@ export interface FileRouteTypes {
     | '/private-yoga'
     | '/private-yoga-classes'
     | '/programs'
+    | '/services'
     | '/sitemap.xml'
     | '/testimonials'
+    | '/yoga-classes'
     | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
     | '/yoga-for-expats-in-vietnam'
@@ -473,12 +513,14 @@ export interface FileRouteTypes {
     | '/auth'
     | '/book-online-yoga'
     | '/contact'
+    | '/contact-us'
     | '/corporate'
     | '/gallery'
     | '/mcp'
     | '/online'
     | '/online-private-yoga'
     | '/online-yoga-classes'
+    | '/online-yoga-programs'
     | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
@@ -486,8 +528,10 @@ export interface FileRouteTypes {
     | '/private-yoga'
     | '/private-yoga-classes'
     | '/programs'
+    | '/services'
     | '/sitemap.xml'
     | '/testimonials'
+    | '/yoga-classes'
     | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
     | '/yoga-for-expats-in-vietnam'
@@ -519,12 +563,14 @@ export interface FileRouteTypes {
     | '/auth'
     | '/book-online-yoga'
     | '/contact'
+    | '/contact-us'
     | '/corporate'
     | '/gallery'
     | '/mcp'
     | '/online'
     | '/online-private-yoga'
     | '/online-yoga-classes'
+    | '/online-yoga-programs'
     | '/period-safe-yoga'
     | '/personal-training'
     | '/privacy'
@@ -532,8 +578,10 @@ export interface FileRouteTypes {
     | '/private-yoga'
     | '/private-yoga-classes'
     | '/programs'
+    | '/services'
     | '/sitemap.xml'
     | '/testimonials'
+    | '/yoga-classes'
     | '/yoga-for-back-pain'
     | '/yoga-for-beginners'
     | '/yoga-for-expats-in-vietnam'
@@ -566,12 +614,14 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BookOnlineYogaRoute: typeof BookOnlineYogaRoute
   ContactRoute: typeof ContactRoute
+  ContactUsRoute: typeof ContactUsRoute
   CorporateRoute: typeof CorporateRoute
   GalleryRoute: typeof GalleryRoute
   McpRoute: typeof McpRoute
   OnlineRoute: typeof OnlineRoute
   OnlinePrivateYogaRoute: typeof OnlinePrivateYogaRoute
   OnlineYogaClassesRoute: typeof OnlineYogaClassesRoute
+  OnlineYogaProgramsRoute: typeof OnlineYogaProgramsRoute
   PeriodSafeYogaRoute: typeof PeriodSafeYogaRoute
   PersonalTrainingRoute: typeof PersonalTrainingRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -579,8 +629,10 @@ export interface RootRouteChildren {
   PrivateYogaRoute: typeof PrivateYogaRoute
   PrivateYogaClassesRoute: typeof PrivateYogaClassesRoute
   ProgramsRoute: typeof ProgramsRoute
+  ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TestimonialsRoute: typeof TestimonialsRoute
+  YogaClassesRoute: typeof YogaClassesRoute
   YogaForBackPainRoute: typeof YogaForBackPainRoute
   YogaForBeginnersRoute: typeof YogaForBeginnersRoute
   YogaForExpatsInVietnamRoute: typeof YogaForExpatsInVietnamRoute
@@ -644,6 +696,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/corporate': {
       id: '/corporate'
       path: '/corporate'
@@ -684,6 +743,13 @@ declare module '@tanstack/react-router' {
       path: '/online-yoga-classes'
       fullPath: '/online-yoga-classes'
       preLoaderRoute: typeof OnlineYogaClassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-yoga-programs': {
+      id: '/online-yoga-programs'
+      path: '/online-yoga-programs'
+      fullPath: '/online-yoga-programs'
+      preLoaderRoute: typeof OnlineYogaProgramsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/period-safe-yoga': {
@@ -735,6 +801,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -747,6 +820,13 @@ declare module '@tanstack/react-router' {
       path: '/testimonials'
       fullPath: '/testimonials'
       preLoaderRoute: typeof TestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yoga-classes': {
+      id: '/yoga-classes'
+      path: '/yoga-classes'
+      fullPath: '/yoga-classes'
+      preLoaderRoute: typeof YogaClassesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/yoga-for-back-pain': {
@@ -926,12 +1006,14 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BookOnlineYogaRoute: BookOnlineYogaRoute,
   ContactRoute: ContactRoute,
+  ContactUsRoute: ContactUsRoute,
   CorporateRoute: CorporateRoute,
   GalleryRoute: GalleryRoute,
   McpRoute: McpRoute,
   OnlineRoute: OnlineRoute,
   OnlinePrivateYogaRoute: OnlinePrivateYogaRoute,
   OnlineYogaClassesRoute: OnlineYogaClassesRoute,
+  OnlineYogaProgramsRoute: OnlineYogaProgramsRoute,
   PeriodSafeYogaRoute: PeriodSafeYogaRoute,
   PersonalTrainingRoute: PersonalTrainingRoute,
   PrivacyRoute: PrivacyRoute,
@@ -939,8 +1021,10 @@ const rootRouteChildren: RootRouteChildren = {
   PrivateYogaRoute: PrivateYogaRoute,
   PrivateYogaClassesRoute: PrivateYogaClassesRoute,
   ProgramsRoute: ProgramsRoute,
+  ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TestimonialsRoute: TestimonialsRoute,
+  YogaClassesRoute: YogaClassesRoute,
   YogaForBackPainRoute: YogaForBackPainRoute,
   YogaForBeginnersRoute: YogaForBeginnersRoute,
   YogaForExpatsInVietnamRoute: YogaForExpatsInVietnamRoute,
