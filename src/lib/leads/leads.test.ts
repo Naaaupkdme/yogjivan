@@ -121,7 +121,7 @@ describe("reply generator + privacy", () => {
   it("safeGoals drops sensitive goals", () => {
     expect(safeGoals(["Stress and sleep", "Back pain", "Live group classes"])).toEqual(["Stress and sleep", "Live group classes"]);
   });
-  it("telegram alert: exact blank-line sections, no body URLs, no health text, both buttons when valid", () => {
+  it("telegram alert: exact blank-line sections, no body URLs, no health text, full CRM keyboard", () => {
     const { payload, reply } = buildLeadPayload(lead({ health_present: true, goals: ["Thyroid support"] }));
     const m = formatTelegramAlert(payload, reply, "https://docs.google.com/x");
     expect(m.parse_mode).toBe("HTML");
@@ -134,9 +134,23 @@ describe("reply generator + privacy", () => {
     expect(sections[5]).toMatch(/^💬 <b>READY TO COPY<\/b>\n<blockquote>[\s\S]+<\/blockquote>$/);
     expect(m.text).not.toMatch(/https?:|wa\.me/);
     expect(m.text).not.toMatch(/thyroid/i);
-    expect(m.reply_markup?.inline_keyboard[0].map((b) => b.text)).toEqual(["Reply on WhatsApp", "Open CRM"]);
+    expect(m.reply_markup.inline_keyboard).toEqual([
+      [
+        { text: "📞 Contacted", callback_data: "Contacted:YJ-WEB-0007" },
+        { text: "⏳ No Response", callback_data: "No Response:YJ-WEB-0007" },
+      ],
+      [
+        { text: "🌟 Interested", callback_data: "Interested:YJ-WEB-0007" },
+        { text: "📅 Trial Booked", callback_data: "Trial Booked:YJ-WEB-0007" },
+      ],
+      [
+        { text: "✅ Converted", callback_data: "Converted:YJ-WEB-0007" },
+        { text: "❌ Lost", callback_data: "Lost:YJ-WEB-0007" },
+      ],
+      [{ text: "📊 Open CRM", url: "https://docs.google.com/x" }],
+    ]);
   });
-  it("invalid phone (YJ-WEB-0008 style): original digits kept, needs review, CRM button only", () => {
+  it("invalid phone (YJ-WEB-0008 style): original digits kept, needs review, same CRM controls", () => {
     const { payload, reply } = buildLeadPayload(lead({ name: "Simra", whatsapp: "+84 0505 477 892", preferred_experience: "Live online group classes", goals: [], experience_level: null }));
     const m = formatTelegramAlert(payload, reply, "https://docs.google.com/x");
     expect(m.text).toContain("• Entered Number: <code>+840505477892</code>");
@@ -144,7 +158,9 @@ describe("reply generator + privacy", () => {
     expect(m.text).toContain("• Validation: Invalid");
     expect(m.text).toContain("⚠️ <b>Verify phone number</b>");
     expect(m.text).not.toMatch(/Entered Number: —/);
-    expect(m.reply_markup?.inline_keyboard[0].map((b) => b.text)).toEqual(["Open CRM"]);
+    expect(m.reply_markup.inline_keyboard).toHaveLength(4);
+    expect(m.reply_markup.inline_keyboard[0].map((b) => b.text)).toEqual(["📞 Contacted", "⏳ No Response"]);
+    expect(m.reply_markup.inline_keyboard[3]).toEqual([{ text: "📊 Open CRM", url: "https://docs.google.com/x" }]);
     expect(reply.match(/\?/g)?.length).toBe(1);
   });
   it("national number without country code => Ambiguous", () => {
@@ -152,7 +168,8 @@ describe("reply generator + privacy", () => {
     const m = formatTelegramAlert(payload, "", null);
     expect(m.text).toContain("• Validation: Ambiguous");
     expect(m.text).toContain("• Entered Number: <code>0905123456</code>");
-    expect(m.reply_markup).toBeUndefined();
+    expect(m.reply_markup.inline_keyboard).toHaveLength(3);
+    expect(m.reply_markup.inline_keyboard.flat().every((b) => "callback_data" in b)).toBe(true);
   });
   it("telegram alert escapes user content and shows dashes for missing values", () => {
     const { payload } = buildLeadPayload(lead({ name: "<b>Evil</b> & co", preferred_time: null, experience_level: null }));
