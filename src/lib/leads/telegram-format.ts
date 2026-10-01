@@ -72,12 +72,19 @@ export function formatTelegramAlert(p: LeadPayload, reply: string, crmUrl: strin
     ["💬 <b>READY TO COPY</b>", `<blockquote>${replyText ? escapeHtml(replyText) : "—"}</blockquote>`],
   ];
   const text = sections.map((l) => l.join("\n")).join("\n\n");
-  const buttons: { text: string; url: string }[] = [];
-  if (valid && p.reply_link) buttons.push({ text: "Reply on WhatsApp", url: p.reply_link });
-  if (crmUrl) buttons.push({ text: "Open CRM", url: crmUrl });
+  const statusButton = (text: string, status: string) => ({
+    text,
+    callback_data: `${status}:${p.crm_lead_id}`,
+  });
+  const inlineKeyboard: Array<Array<{ text: string; callback_data?: string; url?: string }>> = [
+    [statusButton("📞 Contacted", "Contacted"), statusButton("⏳ No Response", "No Response")],
+    [statusButton("🌟 Interested", "Interested"), statusButton("📅 Trial Booked", "Trial Booked")],
+    [statusButton("✅ Converted", "Converted"), statusButton("❌ Lost", "Lost")],
+  ];
+  if (crmUrl) inlineKeyboard.push([{ text: "📊 Open CRM", url: crmUrl }]);
   return {
     text,
     parse_mode: "HTML" as const,
-    reply_markup: buttons.length ? { inline_keyboard: [buttons] } : undefined,
+    reply_markup: { inline_keyboard: inlineKeyboard },
   };
 }
