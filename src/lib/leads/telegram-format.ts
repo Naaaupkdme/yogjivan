@@ -76,12 +76,19 @@ export function formatTelegramAlert(p: LeadPayload, reply: string, crmUrl: strin
     text,
     callback_data: `${status}:${p.crm_lead_id}`,
   });
-  const inlineKeyboard: Array<Array<{ text: string; callback_data?: string; url?: string }>> = [
+  const inlineKeyboard: Array<Array<{ text: string; callback_data?: string; url?: string }>> = [];
+  const links: Array<{ text: string; url: string }> = [];
+  if (valid && p.phone.whatsapp_full_number) {
+    links.push({ text: "💬 Reply on WhatsApp", url: `https://wa.me/${p.phone.whatsapp_full_number.replace(/^\+/, "")}` });
+  }
+  if (crmUrl) links.push({ text: "📊 Open CRM", url: crmUrl });
+  if (links.length) inlineKeyboard.push(links);
+  inlineKeyboard.push(
     [statusButton("📞 Contacted", "Contacted"), statusButton("⏳ No Response", "No Response")],
     [statusButton("🌟 Interested", "Interested"), statusButton("📅 Trial Booked", "Trial Booked")],
-    [statusButton("✅ Converted", "Converted"), statusButton("❌ Lost", "Lost")],
-  ];
-  if (crmUrl) inlineKeyboard.push([{ text: "📊 Open CRM", url: crmUrl }]);
+    [statusButton("🧘 Trial Attended", "Trial Attended"), statusButton("🎉 Converted", "Converted")],
+    [statusButton("❌ Lost", "Lost")],
+  );
   return {
     text,
     parse_mode: "HTML" as const,
