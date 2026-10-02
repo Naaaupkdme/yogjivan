@@ -367,6 +367,8 @@ export type Database = {
       }
       leads: {
         Row: {
+          archived: boolean
+          archived_at: string | null
           country_code: string | null
           created_at: string
           crm_lead_id: string | null
@@ -396,6 +398,8 @@ export type Database = {
           whatsapp_full_number: string | null
         }
         Insert: {
+          archived?: boolean
+          archived_at?: string | null
           country_code?: string | null
           created_at?: string
           crm_lead_id?: string | null
@@ -425,6 +429,8 @@ export type Database = {
           whatsapp_full_number?: string | null
         }
         Update: {
+          archived?: boolean
+          archived_at?: string | null
           country_code?: string | null
           created_at?: string
           crm_lead_id?: string | null

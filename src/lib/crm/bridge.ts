@@ -4,7 +4,7 @@ import { z } from "zod";
 
 export const CRM_ACTIONS = [
   "Contacted", "Interested", "No Response", "Trial Booked", "Trial Attended",
-  "Reschedule", "Hold", "Converted", "Lost", "Add Note",
+  "Reschedule", "Hold", "Converted", "Lost", "Add Note", "Archive Lead", "Restore Lead",
 ] as const;
 
 const id = (max: number) => z.union([z.string().trim().min(1).max(max), z.number().int()]).transform(String);
