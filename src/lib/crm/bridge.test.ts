@@ -83,6 +83,19 @@ describe("n8n CRM bridge", () => {
     expect(db.events.get("req-00000002").note).toBe("Call back");
   });
 
+  it("accepts Archive Lead / Restore Lead and keeps response shape", async () => {
+    const db = fakeDb();
+    for (const [action, rid] of [["Archive Lead", "req-a0000001"], ["Restore Lead", "req-a0000002"]]) {
+      const r = await handleCrmControl({ authorization: auth, body: body({ action, note: "dup", request_id: rid }) }, { secret: SECRET, rpc: db.rpc });
+      expect(r.status).toBe(200);
+      expect(r.body).toMatchObject({ ok: true, duplicate: false, crm_lead_id: "YJ-WEB-0007", source_uuid: db.leads[0].id });
+    }
+    const sql = readFileSync("drizzle/migrations/" + require("fs").readdirSync("drizzle/migrations").find((f: string) => f.includes("crm_archive_restore")), "utf8");
+    expect(sql).toMatch(/'Archived: '/);
+    expect(sql).toMatch(/'Lead Restored'/);
+    expect(sql).not.toMatch(/DELETE\s+FROM\s+leads|SET\s+status\s*=/i);
+  });
+
   it("hides raw DB errors", async () => {
     const r = await handleCrmControl({ authorization: auth, body: body() }, { secret: SECRET, rpc: async () => ({ data: null, error: { message: "permission denied for leads" } }) });
     expect(r).toEqual({ status: 500, body: { ok: false, error: "Update failed" } });

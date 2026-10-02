@@ -36,6 +36,13 @@
       "when": 1790606936770,
       "tag": "0004_n8n_crm_bridge",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1790938409734,
+      "tag": "0005_crm_archive_restore",
+      "breakpoints": true
     }
   ]
 }
