@@ -11,7 +11,7 @@ import {
   ShieldCheck, GraduationCap, Stethoscope, Quote, MapPin, Video,
 } from "lucide-react";
 
-const CANONICAL = "https://yogjivan.com/yoga-for-beginners";
+const CANONICAL = "https://www.yogjivan.com/yoga-for-beginners";
 const WA = waHref("beginner");
 
 /* ---------- Content ---------- */
@@ -137,7 +137,7 @@ export const Route = createFileRoute("/yoga-for-beginners")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Yoga for Beginners", item: CANONICAL },
           ],
         }),

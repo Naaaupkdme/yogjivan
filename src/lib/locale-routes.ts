@@ -9,7 +9,7 @@
 // Only TRUE equivalents are paired. /vi/yoga-hai-duong has no English
 // equivalent and is deliberately absent from this table.
 
-export const SITE_ORIGIN = "https://yogjivan.com";
+export const SITE_ORIGIN = "https://www.yogjivan.com";
 
 export type LocalePair = { en: string; vi: string };
 

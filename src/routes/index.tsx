@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
       { name: "description", content: HOME_DESC },
       { property: "og:title", content: HOME_TITLE },
       { property: "og:description", content: HOME_DESC },
-      { property: "og:url", content: "https://yogjivan.com/" },
+      { property: "og:url", content: "https://www.yogjivan.com/" },
       { property: "og:type", content: "website" },
       ...socialImageMeta(masterImages.warriorClass),
       { name: "twitter:card", content: "summary_large_image" },
@@ -42,7 +42,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:description", content: HOME_DESC },
     ],
     links: [
-      { rel: "canonical", href: "https://yogjivan.com/" },
+      { rel: "canonical", href: "https://www.yogjivan.com/" },
       ...hreflangLinks(PAIR_HOME),
     ],
     scripts: [
@@ -55,7 +55,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
           ],
         }),
       },

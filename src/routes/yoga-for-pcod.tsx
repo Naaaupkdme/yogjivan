@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages, socialImageMeta } from "@/lib/images";
 
-const CANONICAL = "https://yogjivan.com/yoga-for-pcod";
+const CANONICAL = "https://www.yogjivan.com/yoga-for-pcod";
 
 const ANSWER_CAPSULE =
   "Yog Jivan offers a gentle, supportive yoga practice for people living with PCOD or PCOS — alongside medical care, never in place of it. Sessions combine steady movement, strength and mobility as appropriate, simple pranayama, relaxation and a sustainable weekly rhythm. Practice is private or small-group for personal attention, available in-studio in Hai Duong, Vietnam with the Yog Jivan teaching team, and live online worldwide. We make no claims about yoga affecting hormones, insulin or the menstrual cycle; PCOD and PCOS are managed by your doctor, and individual experience varies.";
@@ -96,7 +96,7 @@ export const Route = createFileRoute("/yoga-for-pcod")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Yoga for PCOD & PCOS", item: CANONICAL },
           ],
         }),

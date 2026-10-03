@@ -17,14 +17,14 @@ export const Route = createFileRoute("/programs")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
-      { property: "og:url", content: "https://yogjivan.com/programs" },
+      { property: "og:url", content: "https://www.yogjivan.com/programs" },
       { property: "og:type", content: "website" },
       ...socialImageMeta(masterImages.groupCelebration),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
     ],
-    links: [{ rel: "canonical", href: "https://yogjivan.com/programs" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/programs" }],
     scripts: [
       {
         type: "application/ld+json",

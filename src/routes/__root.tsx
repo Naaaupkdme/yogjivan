@@ -33,7 +33,7 @@ const ROOT_TITLE = "Yog Jivan | Yoga Studios in Hai Duong & Live Online Yoga";
 const ROOT_DESC =
   "Authentic Indian yoga at two Yog Jivan studios serving Hai Duong, plus live small-group and private online yoga for beginners worldwide.";
 
-const ORG_ID = "https://yogjivan.com/#organization";
+const ORG_ID = "https://www.yogjivan.com/#organization";
 
 // Google Tag Manager container ID — infrastructure only. The existing GA4
 // (Measurement ID G-LFV05NVEJZ) and Meta Pixel (ID 1752860699056785) remain
@@ -103,10 +103,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:title", content: ROOT_TITLE },
       { property: "og:description", content: ROOT_DESC },
       { name: "twitter:description", content: ROOT_DESC },
-      { property: "og:image", content: "https://yogjivan.com/og-yog-jivan.jpg" },
+      { property: "og:image", content: "https://www.yogjivan.com/og-yog-jivan.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { name: "twitter:image", content: "https://yogjivan.com/og-yog-jivan.jpg" },
+      { name: "twitter:image", content: "https://www.yogjivan.com/og-yog-jivan.jpg" },
     ],
 
     links: [
@@ -124,10 +124,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "@id": "https://yogjivan.com/#website",
+          "@id": "https://www.yogjivan.com/#website",
           name: "Yog Jivan",
           alternateName: ["Yog Jivan Sanctuary", "Yog Jivan Yoga Studio"],
-          url: "https://yogjivan.com/",
+          url: "https://www.yogjivan.com/",
           publisher: { "@id": ORG_ID },
         }),
       },
@@ -138,10 +138,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "Organization",
           "@id": ORG_ID,
           name: "Yog Jivan",
-          url: "https://yogjivan.com",
-          logo: "https://yogjivan.com/favicon.ico",
+          url: "https://www.yogjivan.com",
+          logo: "https://www.yogjivan.com/favicon.ico",
           description: "Yoga studios serving the Hai Duong urban area of Hai Phong, Vietnam, plus live small-group and private online yoga classes taught by the Yog Jivan teaching team, founded and led by Master Anil Choudhary — Hatha, Ashtanga, pranayama, meditation and beginner yoga.",
-          founder: { "@id": "https://yogjivan.com/#master-anil-choudhary" },
+          founder: { "@id": "https://www.yogjivan.com/#master-anil-choudhary" },
 
           telephone: "+84782046066",
           email: "hello@yogjivan.com",
@@ -154,12 +154,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           location: [
             {
               "@type": "LocalBusiness",
-              "@id": "https://yogjivan.com/#studio-sanctuary",
+              "@id": "https://www.yogjivan.com/#studio-sanctuary",
               parentOrganization: { "@id": ORG_ID },
               name: "Yog Jivan Sanctuary",
 
-              image: "https://yogjivan.com/og-studio-1.jpg",
-              url: "https://yogjivan.com",
+              image: "https://www.yogjivan.com/og-studio-1.jpg",
+              url: "https://www.yogjivan.com",
               telephone: "+84782046066",
               address: {
                 "@type": "PostalAddress",
@@ -185,12 +185,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             },
             {
               "@type": "LocalBusiness",
-              "@id": "https://yogjivan.com/#studio-wellness",
+              "@id": "https://www.yogjivan.com/#studio-wellness",
               parentOrganization: { "@id": ORG_ID },
               name: "Yog Jivan Yoga Studio",
 
-              image: "https://yogjivan.com/og-studio-2.jpg",
-              url: "https://yogjivan.com",
+              image: "https://www.yogjivan.com/og-studio-2.jpg",
+              url: "https://www.yogjivan.com",
               telephone: "+84782046066",
               address: {
                 "@type": "PostalAddress",
@@ -222,13 +222,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          "@id": "https://yogjivan.com/#master-anil-choudhary",
+          "@id": "https://www.yogjivan.com/#master-anil-choudhary",
           name: "Master Anil Choudhary",
           jobTitle: "Founder & Lead Yoga Teacher",
           worksFor: { "@id": ORG_ID },
           description: "Founder & Lead Yoga Teacher at Yog Jivan, with 12+ years of teaching in the classical Indian tradition — Hatha, Ashtanga, pranayama and meditation. Studios in the Hai Duong urban area of Hai Phong, Vietnam, and live online classes worldwide.",
-          image: "https://yogjivan.com/og-master-anil.jpg",
-          url: "https://yogjivan.com/about",
+          image: "https://www.yogjivan.com/og-master-anil.jpg",
+          url: "https://www.yogjivan.com/about",
           nationality: "Indian",
           knowsAbout: [
             "Hatha Yoga",

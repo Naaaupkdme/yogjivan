@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages, socialImageMeta } from "@/lib/images";
 
-const CANONICAL = "https://yogjivan.com/yoga-for-weight-loss";
+const CANONICAL = "https://www.yogjivan.com/yoga-for-weight-loss";
 
 const ANSWER_CAPSULE =
   "Yoga can be one part of an active, sustainable lifestyle rather than a weight-loss programme. At Yog Jivan the focus is movement, strength, mobility, consistency and body awareness — a stronger asana practice (Ashtanga-inspired flows, standing holds, core work), breath work, and a calm close to each session. Available in-studio in Hai Duong, Vietnam with the Yog Jivan teaching team, and live online worldwide. We do not promise weight or body-composition change; individual results vary, and personalised nutrition or diet planning belongs with a registered dietitian or your doctor.";
@@ -92,7 +92,7 @@ export const Route = createFileRoute("/yoga-for-weight-loss")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Yoga for Weight Management", item: CANONICAL },
           ],
         }),

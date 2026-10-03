@@ -5,7 +5,7 @@ export const BRAND = {
   name: "Yog Jivan",
   legalName: "Yog Jivan Sanctuary",
   tagline: "The Circle of Unity",
-  site: "https://yogjivan.com",
+  site: "https://www.yogjivan.com",
   positioning:
     "Authentic Indian yoga lineage taught live by a human teacher — small batches, real-time verbal posture correction, therapeutic and safety-first.",
   /** Primary commercial page. Every trial/pricing CTA should point here. */

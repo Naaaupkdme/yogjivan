@@ -59,4 +59,4 @@ Allow: /
 User-agent: meta-externalagent
 Allow: /
 
-Sitemap: https://yogjivan.com/sitemap.xml
+Sitemap: https://www.yogjivan.com/sitemap.xml

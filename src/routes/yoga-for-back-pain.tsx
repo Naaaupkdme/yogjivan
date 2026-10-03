@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages, socialImageMeta } from "@/lib/images";
 
-const CANONICAL = "https://yogjivan.com/yoga-for-back-pain";
+const CANONICAL = "https://www.yogjivan.com/yoga-for-back-pain";
 
 const ANSWER_CAPSULE =
   "Yog Jivan teaches gentle, supportive yoga for people living with back discomfort or stiffness — a movement practice, not medical treatment. Sessions focus on comfortable mobility, steady strength work, alignment awareness and calm breathing, with each posture scaled to what feels safe for you today. Available in-studio in Hai Duong, Vietnam with the Yog Jivan teaching team, and live online worldwide. Individual experience varies. If your pain is severe, recent or medically diagnosed, please follow your doctor's or physiotherapist's guidance first.";
@@ -96,7 +96,7 @@ export const Route = createFileRoute("/yoga-for-back-pain")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Yoga for Back Discomfort", item: CANONICAL },
           ],
         }),

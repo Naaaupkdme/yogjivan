@@ -4,7 +4,7 @@ import { Check, Copy, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { breadcrumbSchema } from "@/lib/schema";
 
-const SITE = "https://yogjivan.com";
+const SITE = "https://www.yogjivan.com";
 const PATH = "/research/yoga-participation-statistics";
 const TITLE = "Yoga Participation Statistics: What Primary Sources Actually Say (2026 edition)";
 const DESCRIPTION =

@@ -7,7 +7,7 @@ export const Route = createFileRoute("/online-yoga-programs")({
   },
   head: () => ({
     meta: [{ name: "robots", content: "noindex" }],
-    links: [{ rel: "canonical", href: "https://yogjivan.com/online-yoga-classes" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/online-yoga-classes" }],
   }),
   component: () => null,
 });

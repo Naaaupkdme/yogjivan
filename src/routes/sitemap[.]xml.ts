@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "https://yogjivan.com";
+const BASE_URL = "https://www.yogjivan.com";
 import { BLOG_POSTS } from "@/lib/blog-posts";
 import { VI_ROUTES } from "@/lib/locale-routes";
 // Only canonical, 200-status, indexable HTML routes. /pricing.md is a raw
