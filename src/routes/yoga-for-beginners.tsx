@@ -18,7 +18,7 @@ const WA = waHref("beginner");
 
 const TITLE = "Yoga for Beginners in Hai Duong & Live Online | Yog Jivan";
 const DESCRIPTION =
-  "Beginner yoga classes at two studios in the Hai Duong urban area, plus live online classes worldwide. No flexibility needed. Small groups, beginner-first pacing.";
+  "No flexibility or experience required. Join beginner yoga at 2 Hai Duong studios or live online — small groups, patient pacing and personal alignment coaching.";
 
 const ANSWER_CAPSULE =
   "Yoga for beginners at Yog Jivan is designed for people who have never practised before — no flexibility, strength or experience is required. You can start in person at either of our two studios serving the Hai Duong urban area of Hai Phong, Vietnam, or join a live online class from anywhere in the world. Classes are taught in small groups by the Yog Jivan teaching team, founded and led by Master Anil Choudhary, Founder & Lead Yoga Teacher, so you are corrected by name rather than left to copy a screen. The next step is simple: enquire about a studio class, or start the online introductory offer.";
