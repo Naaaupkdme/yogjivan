@@ -14,7 +14,7 @@ export default defineTool({
       whatsapp: `https://wa.me/${SOCIAL.whatsappE164}`,
       zalo: SOCIAL.zalo,
       email: SOCIAL.email,
-      website: "https://yogjivan.com",
+      website: "https://www.yogjivan.com",
       social: {
         facebook: SOCIAL.facebook,
         instagram: SOCIAL.instagram,

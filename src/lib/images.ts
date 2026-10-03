@@ -76,7 +76,7 @@ export const masterAlts = {
 // --- Social (Open Graph / Twitter) image helpers -------------------------
 // Social crawlers require ABSOLUTE URLs. Asset URLs are root-relative, so
 // route head() metadata must run them through absoluteAssetUrl().
-export const SITE_ORIGIN = "https://yogjivan.com";
+export const SITE_ORIGIN = "https://www.yogjivan.com";
 
 export function absoluteAssetUrl(url: string): string {
   return /^https?:\/\//i.test(url) ? url : `${SITE_ORIGIN}${url.startsWith("/") ? "" : "/"}${url}`;

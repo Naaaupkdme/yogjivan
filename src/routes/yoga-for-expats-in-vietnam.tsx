@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages, socialImageMeta } from "@/lib/images";
 
-const CANONICAL = "https://yogjivan.com/yoga-for-expats-in-vietnam";
+const CANONICAL = "https://www.yogjivan.com/yoga-for-expats-in-vietnam";
 
 const ANSWER_CAPSULE =
   "Yog Jivan offers English-speaking yoga classes in the Hai Duong urban area. Authentic Indian yoga led by Master Anil Choudhary and the Yog Jivan teaching team, taught in clear English, with in-studio and live-online options. Two studios in Hai Duong, easy WhatsApp and Zalo booking, and a live-online option that follows you when you travel. You can enquire and practise in English.";
@@ -92,7 +92,7 @@ export const Route = createFileRoute("/yoga-for-expats-in-vietnam")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Yoga for Expats in Vietnam", item: CANONICAL },
           ],
         }),

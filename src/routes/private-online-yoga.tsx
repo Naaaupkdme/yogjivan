@@ -35,7 +35,7 @@ import liveGuidanceFloor from "@/assets/paid/live-guidance-floor.webp.asset.json
 const PT_TITLE = "Private Online Yoga Classes (1-on-1) | Personal Practice Coaching | Yog Jivan";
 const PT_DESC =
   "Live 1-on-1 private online yoga, built around your body, level and goals. One dedicated teacher kept session after session, 60 minutes, worldwide. Enquire for plans and times.";
-const PT_URL = "https://yogjivan.com/private-online-yoga";
+const PT_URL = "https://www.yogjivan.com/private-online-yoga";
 
 /** AEO/GEO direct-answer capsule. Fact-first and chunkable. */
 const DIRECT_ANSWER =

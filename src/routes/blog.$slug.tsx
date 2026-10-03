@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { getPostBySlug, relatedPosts, type BlogPost } from "@/lib/blog-posts";
 import { breadcrumbSchema } from "@/lib/schema";
 
-const SITE = "https://yogjivan.com";
+const SITE = "https://www.yogjivan.com";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }): { post: BlogPost } => {

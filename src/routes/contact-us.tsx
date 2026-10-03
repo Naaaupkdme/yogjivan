@@ -7,7 +7,7 @@ export const Route = createFileRoute("/contact-us")({
   },
   head: () => ({
     meta: [{ name: "robots", content: "noindex" }],
-    links: [{ rel: "canonical", href: "https://yogjivan.com/contact" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/contact" }],
   }),
   component: () => null,
 });

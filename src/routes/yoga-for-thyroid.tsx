@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages, socialImageMeta } from "@/lib/images";
 
-const CANONICAL = "https://yogjivan.com/yoga-for-thyroid";
+const CANONICAL = "https://www.yogjivan.com/yoga-for-thyroid";
 
 const ANSWER_CAPSULE =
   "Yog Jivan offers a gentle, supportive yoga practice for people living with a thyroid condition — alongside medical care, never in place of it. Thyroid diagnosis, medication and lab monitoring belong with your doctor. What a consistent practice can offer is regular gentle movement, simple breathing, relaxation and a sustainable weekly routine, adapted to your energy and comfort on the day. Available in-studio in Hai Duong, Vietnam with the Yog Jivan teaching team, and live online worldwide. We make no claims about yoga affecting thyroid function, hormones or metabolism, and individual experience varies.";
@@ -96,7 +96,7 @@ export const Route = createFileRoute("/yoga-for-thyroid")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Yoga With a Thyroid Condition", item: CANONICAL },
           ],
         }),

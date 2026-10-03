@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages, socialImageMeta } from "@/lib/images";
 
-const CANONICAL = "https://yogjivan.com/yoga-for-stress";
+const CANONICAL = "https://www.yogjivan.com/yoga-for-stress";
 
 const ANSWER_CAPSULE =
   "Yog Jivan's stress-support practice combines gentle movement, pranayama (breath work) and meditation as a calm, unhurried part of your week. Sessions typically pair a soft asana sequence with simple breathing practices such as nadi shodhana, bhramari and extended-exhale breath, and close with a settled meditation and rest. Available in-studio in Hai Duong, Vietnam with the Yog Jivan teaching team, and live online worldwide. This is a wellbeing practice, not treatment for anxiety, burnout or insomnia; individual experience varies, and for a diagnosed condition please continue care with your clinician.";
@@ -92,7 +92,7 @@ export const Route = createFileRoute("/yoga-for-stress")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Yoga for Stress Support", item: CANONICAL },
           ],
         }),

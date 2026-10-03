@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TherapeuticLanding, SHARED_CREDENTIAL_ICONS, type QA } from "@/components/site/TherapeuticLanding";
 import { masterImages, socialImageMeta } from "@/lib/images";
 
-const CANONICAL = "https://yogjivan.com/period-safe-yoga";
+const CANONICAL = "https://www.yogjivan.com/period-safe-yoga";
 
 const ANSWER_CAPSULE =
   "Yog Jivan teaches cycle-aware yoga as a matter of comfort and choice: softer sequencing when you want it, supported postures, and clear guidance on which practices are traditionally modified or set aside during menstruation. You are never required to share anything about your cycle — if you would like a gentler class on any day, simply say so and your teacher will offer modifications. In-studio in Hai Duong, Vietnam with the Yog Jivan teaching team, and live online worldwide. This is a movement and rest practice, not treatment; if you have symptoms that concern you, please speak with your clinician.";
@@ -93,7 +93,7 @@ export const Route = createFileRoute("/period-safe-yoga")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Cycle-Aware Yoga", item: CANONICAL },
           ],
         }),

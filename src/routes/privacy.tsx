@@ -12,13 +12,13 @@ export const Route = createFileRoute("/privacy")({
       { name: "description", content: "How Yog Jivan collects, stores and uses the information you share through our consultation form, cookies and messaging tools such as WhatsApp and Zalo." },
       { property: "og:title", content: "Privacy Policy — Yog Jivan" },
       { property: "og:description", content: "Read how Yog Jivan protects the personal data of students and visitors." },
-      { property: "og:url", content: "https://yogjivan.com/privacy" },
+      { property: "og:url", content: "https://www.yogjivan.com/privacy" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Privacy Policy — Yog Jivan" },
       { name: "twitter:description", content: "Read how Yog Jivan protects the personal data of students and visitors." },
     ],
-    links: [{ rel: "canonical", href: "https://yogjivan.com/privacy" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/privacy" }],
     scripts: [
       {
         type: "application/ld+json",

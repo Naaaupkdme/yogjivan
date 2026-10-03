@@ -32,7 +32,7 @@ import {
   UserRound,
 } from "lucide-react";
 
-const CANONICAL = "https://yogjivan.com/online-yoga-classes";
+const CANONICAL = "https://www.yogjivan.com/online-yoga-classes";
 const ONLINE_TITLE = `Live Online Yoga Classes [Max ${ONLINE_CLASS.maxGroupSize} Students • 2-Way Video] | Yog Jivan`;
 const ONLINE_DESC = `Interactive live online yoga with real-time posture correction — never pre-recorded. Groups capped at ${ONLINE_CLASS.maxGroupSize} students, ${ONLINE_CLASS.durationMinutes} minutes, taught in ${ONLINE_CLASS.languages.join(", ")}. Free introductory offer, or choose private 1-on-1.`;
 const WA = waHref("group");
@@ -225,8 +225,8 @@ export const Route = createFileRoute("/online-yoga-classes")({
           provider: {
             "@type": "Organization",
             name: "Yog Jivan",
-            url: "https://yogjivan.com",
-            sameAs: "https://yogjivan.com",
+            url: "https://www.yogjivan.com",
+            sameAs: "https://www.yogjivan.com",
           },
           url: CANONICAL,
           image: masterImages.meditationPortrait,
@@ -244,7 +244,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
               name: TEACHER.name,
               jobTitle: TEACHER.title,
               image: masterImages.meditationPortrait,
-              url: "https://yogjivan.com/about",
+              url: "https://www.yogjivan.com/about",
             },
           },
           offers: ONLINE_PLANS.map((p) => ({
@@ -264,7 +264,7 @@ export const Route = createFileRoute("/online-yoga-classes")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://yogjivan.com/" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.yogjivan.com/" },
             { "@type": "ListItem", position: 2, name: "Online Yoga Classes", item: CANONICAL },
           ],
         }),
