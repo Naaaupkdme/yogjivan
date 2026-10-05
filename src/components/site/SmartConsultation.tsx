@@ -1,5 +1,5 @@
 import { waHref } from "@/lib/wa";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, ShieldCheck, Sparkles, Clock, Heart, MessageCircle } from "lucide-react";
 import { z } from "zod";
@@ -50,6 +50,7 @@ export function SmartConsultation() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
+  const leadEventIdRef = useRef<string | null>(null);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((s) => ({ ...s, [key]: value }));
@@ -66,6 +67,15 @@ export function SmartConsultation() {
     }
     setErrors({});
     setBusy(true);
+
+    if (!leadEventIdRef.current) {
+      leadEventIdRef.current =
+        typeof crypto !== "undefined" && "randomUUID" in crypto
+          ? crypto.randomUUID()
+          : `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    }
+    const leadEventId = leadEventIdRef.current;
+
     try {
       const result = await submitLead({
         name: parsed.data.name,
@@ -74,11 +84,17 @@ export function SmartConsultation() {
         preferred_experience: parsed.data.service,
         health_notes: parsed.data.message || undefined,
         status: "submitted",
+        meta: {
+          lead_event_id: leadEventId,
+        },
       });
       // Only after the insert resolved successfully and the success state shows.
-      if (result.outcome === "accepted") trackGenerateLead(parsed.data.service, "smart_consultation");
+      if (result.outcome === "accepted") {
+        trackGenerateLead(parsed.data.service, "smart_consultation", leadEventId);
+      }
       setDone(true);
       setForm(empty);
+      leadEventIdRef.current = null;
     } catch (err) {
       console.error(err);
       toast.error(leadErrorMessage(err));

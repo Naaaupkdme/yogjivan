@@ -285,17 +285,63 @@ export function trackFormStart(formId: string) {
   gaEvent("form_start", { form_id: formId });
 }
 
+export type LeadProductCategory = "studio" | "online_group" | "private_online" | "general";
+
+const ALLOWED_CATEGORIES: Set<LeadProductCategory> = new Set([
+  "studio",
+  "online_group",
+  "private_online",
+  "general",
+]);
+
 /**
- * Only ever call after a confirmed successful lead insert + success state.
- * `eventId` is a per-submission UUID stored with the lead so a future Meta
- * Conversions API call can be deduplicated against this browser event.
+ * Normalizes any category string into one of the four allowed, non-health
+ * product categories before dispatching to analytics.
+ * Protects against forwarding raw health goals, medical notes, or unreviewed text.
+ */
+export function sanitizeLeadCategory(category?: string | null): LeadProductCategory {
+  if (!category) return "general";
+  const normalized = category.trim().toLowerCase();
+  if (ALLOWED_CATEGORIES.has(normalized as LeadProductCategory)) {
+    return normalized as LeadProductCategory;
+  }
+  if (normalized.includes("studio") || normalized.includes("hai duong")) {
+    return "studio";
+  }
+  if (
+    normalized.includes("online group") ||
+    normalized.includes("group") ||
+    normalized.includes("online-yoga") ||
+    normalized.includes("online class") ||
+    normalized.includes("online classes") ||
+    normalized.includes("live online")
+  ) {
+    return "online_group";
+  }
+  if (
+    normalized.includes("private") ||
+    normalized.includes("1-on-1") ||
+    normalized.includes("personal")
+  ) {
+    return "private_online";
+  }
+  return "general";
+}
+
+/**
+ * Only ever call after a confirmed successful lead insert (result.outcome === 'accepted') + success state.
+ * Emits ONLY an allowlisted LeadProductCategory to analytics.
+ * `eventId` is a per-submission UUID stored with the lead so browser and future
+ * server event deduplication can match on eventID.
  */
 export function trackGenerateLead(serviceCategory: string, formId: string, eventId?: string) {
+  const safeCategory = sanitizeLeadCategory(serviceCategory);
   gaEvent("generate_lead", {
     form_id: formId,
-    service_category: serviceCategory || "unspecified",
+    service_category: safeCategory,
     ...(eventId ? { lead_event_id: eventId } : {}),
   });
-  metaEvent("Lead", { content_category: serviceCategory || "unspecified" }, eventId);
+  metaEvent("Lead", { content_category: safeCategory }, eventId);
 }
+
 

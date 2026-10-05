@@ -142,7 +142,7 @@ export function BookOnlineYogaForm() {
         },
       });
       // Fires only after a confirmed insert. No PII is sent — just intent + channel.
-      if (result.outcome === "accepted") trackGenerateLead(parsed.data.goal, FORM_ID, leadEventId);
+      if (result.outcome === "accepted") trackGenerateLead("online_group", FORM_ID, leadEventId);
       setDone(true);
       setForm(empty);
     } catch (err) {

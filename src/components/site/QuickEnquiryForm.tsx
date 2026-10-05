@@ -103,7 +103,7 @@ export function QuickEnquiryForm({ id = "quick-enquiry" }: { id?: string }) {
           first_touch_at: attribution.captured_at ?? null,
         },
       });
-      if (result.outcome === "accepted") trackGenerateLead("Live online group classes", FORM_ID, leadEventId);
+      if (result.outcome === "accepted") trackGenerateLead("online_group", FORM_ID, leadEventId);
       setDone(true);
       setName("");
       setWhatsapp("");

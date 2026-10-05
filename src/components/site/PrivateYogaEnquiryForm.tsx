@@ -159,7 +159,7 @@ export function PrivateYogaEnquiryForm() {
         },
       });
       // Conversion events fire ONLY after a confirmed insert. No PII is sent.
-      if (result.outcome === "accepted") trackGenerateLead("Private 1-on-1 online yoga", FORM_ID, leadEventId);
+      if (result.outcome === "accepted") trackGenerateLead("private_online", FORM_ID, leadEventId);
       setDone(true);
       setForm(empty);
     } catch (err) {
