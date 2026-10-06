@@ -92,6 +92,7 @@ export function PrivateYogaEnquiryForm() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (busy) return;
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       const next: typeof errors = {};

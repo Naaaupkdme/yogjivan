@@ -54,6 +54,7 @@ export function QuickEnquiryForm({ id = "quick-enquiry" }: { id?: string }) {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (busy) return;
     const parsed = schema.safeParse({ name, whatsapp });
     if (!parsed.success) {
       const next: typeof errors = {};

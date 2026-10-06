@@ -50,7 +50,7 @@ export function SmartConsultation() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
-  const leadEventIdRef = useRef<string | null>(null);
+  const submissionRef = useRef<{ id: string; fingerprint: string } | null>(null);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((s) => ({ ...s, [key]: value }));
@@ -58,6 +58,8 @@ export function SmartConsultation() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (busy) return;
+
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       const next: typeof errors = {};
@@ -68,13 +70,17 @@ export function SmartConsultation() {
     setErrors({});
     setBusy(true);
 
-    if (!leadEventIdRef.current) {
-      leadEventIdRef.current =
-        typeof crypto !== "undefined" && "randomUUID" in crypto
-          ? crypto.randomUUID()
-          : `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    const currentFingerprint = JSON.stringify(parsed.data);
+    if (!submissionRef.current || submissionRef.current.fingerprint !== currentFingerprint) {
+      submissionRef.current = {
+        id:
+          typeof crypto !== "undefined" && "randomUUID" in crypto
+            ? crypto.randomUUID()
+            : `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`,
+        fingerprint: currentFingerprint,
+      };
     }
-    const leadEventId = leadEventIdRef.current;
+    const leadEventId = submissionRef.current.id;
 
     try {
       const result = await submitLead({
@@ -94,7 +100,7 @@ export function SmartConsultation() {
       }
       setDone(true);
       setForm(empty);
-      leadEventIdRef.current = null;
+      submissionRef.current = null;
     } catch (err) {
       console.error(err);
       toast.error(leadErrorMessage(err));
