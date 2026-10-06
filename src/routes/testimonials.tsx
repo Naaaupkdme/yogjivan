@@ -3,9 +3,9 @@ import { PageHero, CTABanner } from "@/components/site/PageHero";
 import { Testimonials } from "@/components/site/Testimonials";
 import { breadcrumbSchema } from "@/lib/schema";
 
-const TITLE = "Student Community & Google Reviews — Yog Jivan Yoga";
+const TITLE = "Student Community & Google Reviews — Yog Jivan";
 const DESC =
-  "See where Yog Jivan students practise: two studios serving the Hai Duong urban area, live online classes worldwide, and verifiable Google reviews for each studio.";
+  "See where Yog Jivan students practise across 2 studios in Hai Duong and live online classes worldwide. Verified Google reviews linked directly for each studio.";
 
 export const Route = createFileRoute("/testimonials")({
   head: () => ({

@@ -23,9 +23,9 @@ const Lazy = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<Skeleton />}>{children}</Suspense>
 );
 
-const HOME_TITLE = "Yoga Classes in Hai Duong | Yog Jivan Studios & Online";
+const HOME_TITLE = "Yoga Classes in Hai Duong & Live Online | Yog Jivan";
 const HOME_DESC =
-  "Authentic Indian yoga in Hai Duong: studio classes with the Yog Jivan teaching team, private 1-on-1 with a matched teacher, and live online group classes led by Master Anil.";
+  "Authentic Indian yoga for beginners to advanced — 2 studios in Hai Duong & live group classes online with Master Anil. No experience needed. Book a free consultation.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
