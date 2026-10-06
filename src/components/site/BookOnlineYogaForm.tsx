@@ -7,11 +7,12 @@ import { Link } from "@tanstack/react-router";
 import { defaultCountries, parseCountry } from "react-international-phone";
 import type { CountryIso2 } from "react-international-phone";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
-import { submitLead, leadErrorMessage } from "@/lib/leads";
+import { leadErrorMessage } from "@/lib/leads";
 import { LeadGuardFields } from "@/components/site/LeadGuardFields";
 import { CONTACT } from "@/lib/facts/contact";
-import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
+import { trackFormStart } from "@/lib/analytics";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
+import { useLeadSubmission, getTimezone } from "@/lib/leads/form-submission";
 
 
 const GOALS = [
@@ -60,6 +61,7 @@ export function BookOnlineYogaForm() {
   const [form, setForm] = useState<FormState>(empty);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [busy, setBusy] = useState(false);
+  const submission = useLeadSubmission();
   const [done, setDone] = useState(false);
   const [attribution, setAttribution] = useState<Attribution>({});
   const [country, setCountry] = useState<CountryIso2>("vn");
@@ -88,69 +90,64 @@ export function BookOnlineYogaForm() {
       return;
     }
     setErrors({});
-    setBusy(true);
-    // Deduplication key shared between the browser Pixel event and any future
-    // server-side Meta Conversions API call for the same lead.
-    const leadEventId =
-      typeof crypto !== "undefined" && "randomUUID" in crypto
-        ? crypto.randomUUID()
-        : `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-    let timezone: string | null = null;
+
     try {
-      timezone = Intl.DateTimeFormat().resolvedOptions().timeZone ?? null;
-    } catch {
-      /* timezone is optional context */
-    }
-    try {
-      const result = await submitLead({
-        name: parsed.data.name,
-        whatsapp: parsed.data.whatsapp,
-        email: parsed.data.email || undefined,
-        preferred_experience: parsed.data.goal,
-        preferred_time: parsed.data.time || undefined,
-        goals: [parsed.data.goal],
-        status: "submitted",
-        source: "website_paid_online_yoga",
-        meta: {
-          funnel: "online_yoga_paid_landing",
-          landing_page: "/book-online-yoga",
-          lead_event_id: leadEventId,
-          market: country,
-          timezone,
-          utm_source: attribution.utm_source ?? null,
-          utm_medium: attribution.utm_medium ?? null,
-          utm_campaign: attribution.utm_campaign ?? null,
-          utm_term: attribution.utm_term ?? null,
-          utm_content: attribution.utm_content ?? null,
-          utm_id: attribution.utm_id ?? null,
-          campaign_id: attribution.campaign_id ?? null,
-          adset_id: attribution.adset_id ?? null,
-          ad_id: attribution.ad_id ?? null,
-          placement: attribution.placement ?? null,
-          keyword: attribution.keyword ?? null,
-          matchtype: attribution.matchtype ?? null,
-          device: attribution.device ?? null,
-          gclid: attribution.gclid ?? null,
-          gbraid: attribution.gbraid ?? null,
-          wbraid: attribution.wbraid ?? null,
-          fbclid: attribution.fbclid ?? null,
-          ttclid: attribution.ttclid ?? null,
-          msclkid: attribution.msclkid ?? null,
-          li_fat_id: attribution.li_fat_id ?? null,
-          referrer_host: attribution.referrer_host ?? null,
-          landing_first_touch: attribution.landing_path ?? null,
-          first_touch_at: attribution.captured_at ?? null,
+      await submission.submit({
+        data: parsed.data,
+        formId: FORM_ID,
+        category: "online_group",
+        setBusy,
+        buildPayload: (data, leadEventId) => ({
+          name: data.name,
+          whatsapp: data.whatsapp,
+          email: data.email || undefined,
+          preferred_experience: data.goal,
+          preferred_time: data.time || undefined,
+          goals: [data.goal],
+          status: "submitted",
+          source: "website_paid_online_yoga",
+          meta: {
+            funnel: "online_yoga_paid_landing",
+            landing_page: "/book-online-yoga",
+            lead_event_id: leadEventId,
+            market: country,
+            timezone: getTimezone(),
+            utm_source: attribution.utm_source ?? null,
+            utm_medium: attribution.utm_medium ?? null,
+            utm_campaign: attribution.utm_campaign ?? null,
+            utm_term: attribution.utm_term ?? null,
+            utm_content: attribution.utm_content ?? null,
+            utm_id: attribution.utm_id ?? null,
+            campaign_id: attribution.campaign_id ?? null,
+            adset_id: attribution.adset_id ?? null,
+            ad_id: attribution.ad_id ?? null,
+            placement: attribution.placement ?? null,
+            keyword: attribution.keyword ?? null,
+            matchtype: attribution.matchtype ?? null,
+            device: attribution.device ?? null,
+            gclid: attribution.gclid ?? null,
+            gbraid: attribution.gbraid ?? null,
+            wbraid: attribution.wbraid ?? null,
+            fbclid: attribution.fbclid ?? null,
+            ttclid: attribution.ttclid ?? null,
+            msclkid: attribution.msclkid ?? null,
+            li_fat_id: attribution.li_fat_id ?? null,
+            referrer_host: attribution.referrer_host ?? null,
+            landing_first_touch: attribution.landing_path ?? null,
+            first_touch_at: attribution.captured_at ?? null,
+          },
+        }),
+        onSuccess: () => {
+          setDone(true);
+          setForm(empty);
+        },
+        onError: (err) => {
+          console.error(err);
+          toast.error(leadErrorMessage(err));
         },
       });
-      // Fires only after a confirmed insert. No PII is sent — just intent + channel.
-      if (result.outcome === "accepted") trackGenerateLead("online_group", FORM_ID, leadEventId);
-      setDone(true);
-      setForm(empty);
-    } catch (err) {
-      console.error(err);
-      toast.error(leadErrorMessage(err));
-    } finally {
-      setBusy(false);
+    } catch {
+      /* handled in onError */
     }
   }
 

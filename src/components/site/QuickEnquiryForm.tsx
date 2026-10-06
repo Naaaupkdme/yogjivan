@@ -5,13 +5,14 @@ import { Check, Loader2, MessageCircle, ShieldCheck, Sparkles } from "lucide-rea
 import { defaultCountries, parseCountry } from "react-international-phone";
 import type { CountryIso2 } from "react-international-phone";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
-import { submitLead, leadErrorMessage } from "@/lib/leads";
+import { leadErrorMessage } from "@/lib/leads";
 import { LeadGuardFields } from "@/components/site/LeadGuardFields";
-import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
+import { trackFormStart } from "@/lib/analytics";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
 import { waHref } from "@/lib/wa";
 import { ONLINE_CLASS, TRIAL } from "@/lib/facts";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
+import { useLeadSubmission, getTimezone } from "@/lib/leads/form-submission";
 
 /**
  * Two-field inline enquiry form for the live online group funnel.
@@ -44,6 +45,7 @@ export function QuickEnquiryForm({ id = "quick-enquiry" }: { id?: string }) {
   const [done, setDone] = useState(false);
   const [attribution, setAttribution] = useState<Attribution>({});
   const [country, setCountry] = useState<CountryIso2>("vn");
+  const submission = useLeadSubmission();
 
   useEffect(() => {
     const a = captureAttribution();
@@ -65,54 +67,50 @@ export function QuickEnquiryForm({ id = "quick-enquiry" }: { id?: string }) {
       return;
     }
     setErrors({});
-    setBusy(true);
-
-    const leadEventId =
-      typeof crypto !== "undefined" && "randomUUID" in crypto
-        ? crypto.randomUUID()
-        : `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-    let timezone: string | null = null;
-    try {
-      timezone = Intl.DateTimeFormat().resolvedOptions().timeZone ?? null;
-    } catch {
-      /* timezone is optional context */
-    }
 
     try {
-      const result = await submitLead({
-        name: parsed.data.name,
-        whatsapp: parsed.data.whatsapp,
-        preferred_experience: "Live online group classes",
-        status: "submitted",
-        source: "website",
-        meta: {
-          funnel: "online_group_inline",
-          landing_page: "/online-yoga-classes",
-          lead_event_id: leadEventId,
-          market: country,
-          timezone,
-          utm_source: attribution.utm_source ?? null,
-          utm_medium: attribution.utm_medium ?? null,
-          utm_campaign: attribution.utm_campaign ?? null,
-          utm_term: attribution.utm_term ?? null,
-          utm_content: attribution.utm_content ?? null,
-          utm_id: attribution.utm_id ?? null,
-          gclid: attribution.gclid ?? null,
-          fbclid: attribution.fbclid ?? null,
-          referrer_host: attribution.referrer_host ?? null,
-          landing_first_touch: attribution.landing_path ?? null,
-          first_touch_at: attribution.captured_at ?? null,
+      await submission.submit({
+        data: parsed.data,
+        formId: FORM_ID,
+        category: "online_group",
+        setBusy,
+        buildPayload: (data, leadEventId) => ({
+          name: data.name,
+          whatsapp: data.whatsapp,
+          preferred_experience: "Live online group classes",
+          status: "submitted",
+          source: "website",
+          meta: {
+            funnel: "online_group_inline",
+            landing_page: "/online-yoga-classes",
+            lead_event_id: leadEventId,
+            market: country,
+            timezone: getTimezone(),
+            utm_source: attribution.utm_source ?? null,
+            utm_medium: attribution.utm_medium ?? null,
+            utm_campaign: attribution.utm_campaign ?? null,
+            utm_term: attribution.utm_term ?? null,
+            utm_content: attribution.utm_content ?? null,
+            utm_id: attribution.utm_id ?? null,
+            gclid: attribution.gclid ?? null,
+            fbclid: attribution.fbclid ?? null,
+            referrer_host: attribution.referrer_host ?? null,
+            landing_first_touch: attribution.landing_path ?? null,
+            first_touch_at: attribution.captured_at ?? null,
+          },
+        }),
+        onSuccess: () => {
+          setDone(true);
+          setName("");
+          setWhatsapp("");
+        },
+        onError: (err) => {
+          console.error(err);
+          toast.error(leadErrorMessage(err));
         },
       });
-      if (result.outcome === "accepted") trackGenerateLead("online_group", FORM_ID, leadEventId);
-      setDone(true);
-      setName("");
-      setWhatsapp("");
-    } catch (err) {
-      console.error(err);
-      toast.error(leadErrorMessage(err));
-    } finally {
-      setBusy(false);
+    } catch {
+      /* handled in onError */
     }
   }
 

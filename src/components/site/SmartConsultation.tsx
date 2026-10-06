@@ -1,15 +1,16 @@
 import { waHref } from "@/lib/wa";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, ShieldCheck, Sparkles, Clock, Heart, MessageCircle } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
-import { submitLead, leadErrorMessage } from "@/lib/leads";
+import { leadErrorMessage } from "@/lib/leads";
 import { LeadGuardFields } from "@/components/site/LeadGuardFields";
 import { SOCIAL } from "@/lib/social";
-import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
+import { trackFormStart } from "@/lib/analytics";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
+import { useLeadSubmission } from "@/lib/leads/form-submission";
 
 const SERVICES = [
   "Private Session",
@@ -50,7 +51,7 @@ export function SmartConsultation() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
-  const submissionRef = useRef<{ id: string; fingerprint: string } | null>(null);
+  const submission = useLeadSubmission();
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((s) => ({ ...s, [key]: value }));
@@ -68,44 +69,35 @@ export function SmartConsultation() {
       return;
     }
     setErrors({});
-    setBusy(true);
-
-    const currentFingerprint = JSON.stringify(parsed.data);
-    if (!submissionRef.current || submissionRef.current.fingerprint !== currentFingerprint) {
-      submissionRef.current = {
-        id:
-          typeof crypto !== "undefined" && "randomUUID" in crypto
-            ? crypto.randomUUID()
-            : `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`,
-        fingerprint: currentFingerprint,
-      };
-    }
-    const leadEventId = submissionRef.current.id;
 
     try {
-      const result = await submitLead({
-        name: parsed.data.name,
-        whatsapp: parsed.data.whatsapp,
-        email: parsed.data.email || undefined,
-        preferred_experience: parsed.data.service,
-        health_notes: parsed.data.message || undefined,
-        status: "submitted",
-        meta: {
-          lead_event_id: leadEventId,
+      await submission.submit({
+        data: parsed.data,
+        formId: "smart_consultation",
+        category: parsed.data.service,
+        setBusy,
+        buildPayload: (data, leadEventId) => ({
+          name: data.name,
+          whatsapp: data.whatsapp,
+          email: data.email || undefined,
+          preferred_experience: data.service,
+          health_notes: data.message || undefined,
+          status: "submitted",
+          meta: {
+            lead_event_id: leadEventId,
+          },
+        }),
+        onSuccess: () => {
+          setDone(true);
+          setForm(empty);
+        },
+        onError: (err) => {
+          console.error(err);
+          toast.error(leadErrorMessage(err));
         },
       });
-      // Only after the insert resolved successfully and the success state shows.
-      if (result.outcome === "accepted") {
-        trackGenerateLead(parsed.data.service, "smart_consultation", leadEventId);
-      }
-      setDone(true);
-      setForm(empty);
-      submissionRef.current = null;
-    } catch (err) {
-      console.error(err);
-      toast.error(leadErrorMessage(err));
-    } finally {
-      setBusy(false);
+    } catch {
+      /* handled in onError */
     }
   }
 
