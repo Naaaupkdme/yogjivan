@@ -6,11 +6,12 @@ import { Link } from "@tanstack/react-router";
 import { defaultCountries, parseCountry } from "react-international-phone";
 import type { CountryIso2 } from "react-international-phone";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
-import { submitLead, leadErrorMessage } from "@/lib/leads";
+import { leadErrorMessage } from "@/lib/leads";
 import { LeadGuardFields } from "@/components/site/LeadGuardFields";
 import { waHref } from "@/lib/wa";
-import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
+import { trackFormStart } from "@/lib/analytics";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
+import { useLeadSubmission, getTimezone } from "@/lib/leads/form-submission";
 
 /**
  * Compact private 1-on-1 enquiry form for /private-online-yoga.
@@ -74,6 +75,7 @@ export function PrivateYogaEnquiryForm() {
   const [form, setForm] = useState<FormState>(empty);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [busy, setBusy] = useState(false);
+  const submission = useLeadSubmission();
   const [done, setDone] = useState(false);
   const [attribution, setAttribution] = useState<Attribution>({});
   const [country, setCountry] = useState<CountryIso2>("vn");
@@ -92,6 +94,7 @@ export function PrivateYogaEnquiryForm() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (busy) return;
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       const next: typeof errors = {};
@@ -102,71 +105,65 @@ export function PrivateYogaEnquiryForm() {
       return;
     }
     setErrors({});
-    setBusy(true);
-
-    // Shared dedupe key for the browser Pixel event and any future Meta CAPI call.
-    const leadEventId =
-      typeof crypto !== "undefined" && "randomUUID" in crypto
-        ? crypto.randomUUID()
-        : `lead_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-    let timezone: string | null = null;
-    try {
-      timezone = Intl.DateTimeFormat().resolvedOptions().timeZone ?? null;
-    } catch {
-      /* timezone is optional context */
-    }
 
     try {
-      const result = await submitLead({
-        name: parsed.data.name,
-        whatsapp: parsed.data.whatsapp,
-        email: parsed.data.email || undefined,
-        experience_level: parsed.data.level,
-        preferred_experience: "Private 1-on-1 online yoga",
-        preferred_time: parsed.data.time || undefined,
-        goals: parsed.data.focus ? [parsed.data.focus] : [],
-        status: "submitted",
-        source: "website",
-        meta: {
-          funnel: "private_yoga_organic",
-          landing_page: "/private-online-yoga",
-          lead_event_id: leadEventId,
-          market: country,
-          timezone,
-          utm_source: attribution.utm_source ?? null,
-          utm_medium: attribution.utm_medium ?? null,
-          utm_campaign: attribution.utm_campaign ?? null,
-          utm_term: attribution.utm_term ?? null,
-          utm_content: attribution.utm_content ?? null,
-          utm_id: attribution.utm_id ?? null,
-          campaign_id: attribution.campaign_id ?? null,
-          adset_id: attribution.adset_id ?? null,
-          ad_id: attribution.ad_id ?? null,
-          placement: attribution.placement ?? null,
-          keyword: attribution.keyword ?? null,
-          matchtype: attribution.matchtype ?? null,
-          device: attribution.device ?? null,
-          gclid: attribution.gclid ?? null,
-          gbraid: attribution.gbraid ?? null,
-          wbraid: attribution.wbraid ?? null,
-          fbclid: attribution.fbclid ?? null,
-          ttclid: attribution.ttclid ?? null,
-          msclkid: attribution.msclkid ?? null,
-          li_fat_id: attribution.li_fat_id ?? null,
-          referrer_host: attribution.referrer_host ?? null,
-          landing_first_touch: attribution.landing_path ?? null,
-          first_touch_at: attribution.captured_at ?? null,
+      await submission.submit({
+        data: parsed.data,
+        formId: FORM_ID,
+        category: "private_online",
+        setBusy,
+        buildPayload: (data, leadEventId) => ({
+          name: data.name,
+          whatsapp: data.whatsapp,
+          email: data.email || undefined,
+          experience_level: data.level,
+          preferred_experience: "Private 1-on-1 online yoga",
+          preferred_time: data.time || undefined,
+          goals: data.focus ? [data.focus] : [],
+          status: "submitted",
+          source: "website",
+          meta: {
+            funnel: "private_yoga_organic",
+            landing_page: "/private-online-yoga",
+            lead_event_id: leadEventId,
+            market: country,
+            timezone: getTimezone(),
+            utm_source: attribution.utm_source ?? null,
+            utm_medium: attribution.utm_medium ?? null,
+            utm_campaign: attribution.utm_campaign ?? null,
+            utm_term: attribution.utm_term ?? null,
+            utm_content: attribution.utm_content ?? null,
+            utm_id: attribution.utm_id ?? null,
+            campaign_id: attribution.campaign_id ?? null,
+            adset_id: attribution.adset_id ?? null,
+            ad_id: attribution.ad_id ?? null,
+            placement: attribution.placement ?? null,
+            keyword: attribution.keyword ?? null,
+            matchtype: attribution.matchtype ?? null,
+            device: attribution.device ?? null,
+            gclid: attribution.gclid ?? null,
+            gbraid: attribution.gbraid ?? null,
+            wbraid: attribution.wbraid ?? null,
+            fbclid: attribution.fbclid ?? null,
+            ttclid: attribution.ttclid ?? null,
+            msclkid: attribution.msclkid ?? null,
+            li_fat_id: attribution.li_fat_id ?? null,
+            referrer_host: attribution.referrer_host ?? null,
+            landing_first_touch: attribution.landing_path ?? null,
+            first_touch_at: attribution.captured_at ?? null,
+          },
+        }),
+        onSuccess: () => {
+          setDone(true);
+          setForm(empty);
+        },
+        onError: (err) => {
+          console.error(err);
+          toast.error(leadErrorMessage(err));
         },
       });
-      // Conversion events fire ONLY after a confirmed insert. No PII is sent.
-      if (result.outcome === "accepted") trackGenerateLead("Private 1-on-1 online yoga", FORM_ID, leadEventId);
-      setDone(true);
-      setForm(empty);
-    } catch (err) {
-      console.error(err);
-      toast.error(leadErrorMessage(err));
-    } finally {
-      setBusy(false);
+    } catch {
+      /* handled in onError */
     }
   }
 

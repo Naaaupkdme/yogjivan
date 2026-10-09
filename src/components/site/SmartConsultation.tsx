@@ -5,11 +5,12 @@ import { ArrowRight, Check, ShieldCheck, Sparkles, Clock, Heart, MessageCircle }
 import { z } from "zod";
 import { toast } from "sonner";
 import { SearchablePhoneInput } from "@/components/site/SearchablePhoneInput";
-import { submitLead, leadErrorMessage } from "@/lib/leads";
+import { leadErrorMessage } from "@/lib/leads";
 import { LeadGuardFields } from "@/components/site/LeadGuardFields";
 import { SOCIAL } from "@/lib/social";
-import { trackFormStart, trackGenerateLead } from "@/lib/analytics";
+import { trackFormStart } from "@/lib/analytics";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
+import { useLeadSubmission } from "@/lib/leads/form-submission";
 
 const SERVICES = [
   "Private Session",
@@ -50,6 +51,7 @@ export function SmartConsultation() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
+  const submission = useLeadSubmission();
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((s) => ({ ...s, [key]: value }));
@@ -57,6 +59,8 @@ export function SmartConsultation() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (busy) return;
+
     const parsed = schema.safeParse(form);
     if (!parsed.success) {
       const next: typeof errors = {};
@@ -65,25 +69,35 @@ export function SmartConsultation() {
       return;
     }
     setErrors({});
-    setBusy(true);
+
     try {
-      const result = await submitLead({
-        name: parsed.data.name,
-        whatsapp: parsed.data.whatsapp,
-        email: parsed.data.email || undefined,
-        preferred_experience: parsed.data.service,
-        health_notes: parsed.data.message || undefined,
-        status: "submitted",
+      await submission.submit({
+        data: parsed.data,
+        formId: "smart_consultation",
+        category: parsed.data.service,
+        setBusy,
+        buildPayload: (data, leadEventId) => ({
+          name: data.name,
+          whatsapp: data.whatsapp,
+          email: data.email || undefined,
+          preferred_experience: data.service,
+          health_notes: data.message || undefined,
+          status: "submitted",
+          meta: {
+            lead_event_id: leadEventId,
+          },
+        }),
+        onSuccess: () => {
+          setDone(true);
+          setForm(empty);
+        },
+        onError: (err) => {
+          console.error(err);
+          toast.error(leadErrorMessage(err));
+        },
       });
-      // Only after the insert resolved successfully and the success state shows.
-      if (result.outcome === "accepted") trackGenerateLead(parsed.data.service, "smart_consultation");
-      setDone(true);
-      setForm(empty);
-    } catch (err) {
-      console.error(err);
-      toast.error(leadErrorMessage(err));
-    } finally {
-      setBusy(false);
+    } catch {
+      /* handled in onError */
     }
   }
 
