@@ -90,18 +90,42 @@ export function Hero() {
     return () => ctx.revert();
   }, []);
 
-  // Defer hero video load by ~2s so it never competes with LCP. Skip entirely
-  // for data-saver / reduced-motion users.
+  // Explicit noncritical hero video loading policy:
+  // - Never fetch video on mobile (<1024px) or reduced-motion (guarded by isDesktop)
+  // - Never fetch on data-saver or constrained (2G/3G) connections
+  // - On desktop, strictly defer video attachment until the browser is idle after load,
+  //   ensuring it never competes with initial LCP text/paint
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // @ts-expect-error - non-standard but widely available
-    const saveData = navigator.connection?.saveData;
-    if (reduced || saveData) return;
+    if (typeof window === "undefined" || !isDesktop) return;
 
-    const id = window.setTimeout(() => setVideoSrc(heroVideo.url), 100);
-    return () => window.clearTimeout(id);
-  }, []);
+    // @ts-expect-error - NetworkInformation API
+    const conn = navigator.connection;
+    const isConstrained = conn && (conn.saveData || conn.effectiveType === "2g" || conn.effectiveType === "3g");
+    if (isConstrained) return;
+
+    let idleId: number | undefined;
+    let timeoutId: number | undefined;
+
+    const attachVideo = () => {
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(() => setVideoSrc(heroVideo.url), { timeout: 3500 });
+      } else {
+        timeoutId = window.setTimeout(() => setVideoSrc(heroVideo.url), 2000);
+      }
+    };
+
+    if (document.readyState === "complete") {
+      attachVideo();
+    } else {
+      window.addEventListener("load", attachVideo, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener("load", attachVideo);
+      if (idleId && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
+      if (timeoutId) window.clearTimeout(timeoutId);
+    };
+  }, [isDesktop]);
 
   // Rotate quotes — desktop only (mobile saves the timer + re-renders).
   useEffect(() => {

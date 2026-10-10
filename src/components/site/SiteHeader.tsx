@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Facebook, Instagram, Menu, MessageCircle, Search, X, Youtube } from "lucide-react";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
+import optimizedLogo from "@/assets/yog_jivan_logo_gold_112.webp.asset.json";
 import { isViPath, LANG_STORAGE_KEY, languageSwitchTarget } from "@/lib/locale-routes";
 
 function saveLangPreference(code: "EN" | "VI") {
@@ -188,7 +189,14 @@ export function SiteHeader() {
 
       <div className="mx-auto flex h-full max-w-[1600px] items-center justify-between gap-3 px-4 sm:px-6 lg:px-8 2xl:px-12">
         <a href={isVi ? "/vi" : "/"} className="flex min-w-0 items-center gap-3 group" aria-label={isVi ? "Yog Jivan — trang chủ tiếng Việt" : "Yog Jivan Sanctuary home"}>
-          <img src={logo.url} alt="Yog Jivan Sanctuary logo" className="h-11 w-11 shrink-0 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full object-cover ring-1 ring-[color-mix(in_oklab,var(--gold)_40%,transparent)] shadow-[0_8px_24px_-10px_color-mix(in_oklab,var(--gold)_55%,transparent)] transition-transform duration-500 group-hover:scale-105" />
+          <img
+            src={optimizedLogo.url}
+            srcSet={`${optimizedLogo.url} 1x, ${optimizedLogo.url_2x} 2x`}
+            width={56}
+            height={56}
+            alt="Yog Jivan Sanctuary logo"
+            className="h-11 w-11 shrink-0 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full object-cover ring-1 ring-[color-mix(in_oklab,var(--gold)_40%,transparent)] shadow-[0_8px_24px_-10px_color-mix(in_oklab,var(--gold)_55%,transparent)] transition-transform duration-500 group-hover:scale-105"
+          />
           <div className="hidden sm:block xl:hidden 2xl:block min-w-0 leading-none">
             <div className="truncate font-display tracking-[0.24em] text-[0.95rem] uppercase text-gold-gradient">YOG JIVAN</div>
             <div className="truncate font-display tracking-[0.4em] text-[0.55rem] uppercase text-muted-foreground mt-1.5">SANCTUARY</div>
