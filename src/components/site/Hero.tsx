@@ -54,14 +54,32 @@ const GEO_LINES = [
 ] as const;
 
 
+function isConstrainedConnection(): boolean {
+  if (typeof navigator === "undefined") return false;
+  // @ts-expect-error - NetworkInformation API
+  const conn = navigator.connection;
+  if (!conn) return false;
+  return Boolean(
+    conn.saveData ||
+    conn.effectiveType === "slow-2g" ||
+    conn.effectiveType === "2g" ||
+    conn.effectiveType === "3g"
+  );
+}
+
 function useIsDesktop() {
   const [isDesktop, set] = useState(false);
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)");
-    const update = () => set(mq.matches);
+    const mqWidth = window.matchMedia("(min-width: 1024px)");
+    const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => set(mqWidth.matches && !mqMotion.matches);
     update();
-    mq.addEventListener?.("change", update);
-    return () => mq.removeEventListener?.("change", update);
+    mqWidth.addEventListener?.("change", update);
+    mqMotion.addEventListener?.("change", update);
+    return () => {
+      mqWidth.removeEventListener?.("change", update);
+      mqMotion.removeEventListener?.("change", update);
+    };
   }, []);
   return isDesktop;
 }
@@ -91,22 +109,22 @@ export function Hero() {
   }, []);
 
   // Explicit noncritical hero video loading policy:
-  // - Never fetch video on mobile (<1024px) or reduced-motion (guarded by isDesktop)
-  // - Never fetch on data-saver or constrained (2G/3G) connections
-  // - On desktop, strictly defer video attachment until the browser is idle after load,
-  //   ensuring it never competes with initial LCP text/paint
+  // - Retain poster-only on mobile (<1024px), reduced-motion, save-data, or slow-2g/2g/3g connections
+  // - On desktop, defer video attachment until browser idle after load event to reduce competition with initial render
+  // - If viewport or connection condition changes, cancel pending timers and unmount video
+  //   (Note: already transferred bytes cannot be un-downloaded, but unmounting frees video decoder and stops range streams)
   useEffect(() => {
-    if (typeof window === "undefined" || !isDesktop) return;
-
-    // @ts-expect-error - NetworkInformation API
-    const conn = navigator.connection;
-    const isConstrained = conn && (conn.saveData || conn.effectiveType === "2g" || conn.effectiveType === "3g");
-    if (isConstrained) return;
+    if (typeof window === "undefined" || !isDesktop || isConstrainedConnection()) {
+      setVideoSrc(null);
+      setVideoReady(false);
+      return;
+    }
 
     let idleId: number | undefined;
     let timeoutId: number | undefined;
 
     const attachVideo = () => {
+      if (isConstrainedConnection()) return;
       if ("requestIdleCallback" in window) {
         idleId = window.requestIdleCallback(() => setVideoSrc(heroVideo.url), { timeout: 3500 });
       } else {
@@ -120,10 +138,26 @@ export function Hero() {
       window.addEventListener("load", attachVideo, { once: true });
     }
 
+    // @ts-expect-error - NetworkInformation API change listener
+    const conn = navigator.connection;
+    const onConnChange = () => {
+      if (isConstrainedConnection()) {
+        setVideoSrc(null);
+        setVideoReady(false);
+      }
+    };
+    conn?.addEventListener?.("change", onConnChange);
+
     return () => {
       window.removeEventListener("load", attachVideo);
+      conn?.removeEventListener?.("change", onConnChange);
       if (idleId && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
       if (timeoutId) window.clearTimeout(timeoutId);
+      if (videoRef.current) {
+        try { videoRef.current.pause(); } catch {}
+      }
+      setVideoSrc(null);
+      setVideoReady(false);
     };
   }, [isDesktop]);
 
@@ -154,10 +188,21 @@ export function Hero() {
     return () => v.removeEventListener("ended", onEnded);
   }, [videoSrc]);
 
+  const onVideoPlaying = () => {
+    const v = videoRef.current;
+    if (v && "requestVideoFrameCallback" in v) {
+      // Reveal once the browser has actually rendered the first frame
+      // @ts-expect-error - requestVideoFrameCallback
+      v.requestVideoFrameCallback(() => setVideoReady(true));
+    } else {
+      setVideoReady(true);
+    }
+  };
+
   return (
     <section ref={rootRef} className="relative overflow-hidden" style={{ minHeight: "100svh", paddingTop: "var(--hdr-h,72px)" }}>
       <motion.div style={{ y, scale }} className="absolute inset-0">
-        {/* Luxury dark canvas — visible for the first 2s while the video defers */}
+        {/* Luxury dark gradient foundation */}
         <div
           aria-hidden
           className="absolute inset-0"
@@ -166,18 +211,40 @@ export function Hero() {
               "radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--gold) 12%, transparent), transparent 55%), radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--gold-soft) 10%, transparent), transparent 60%), linear-gradient(180deg, color-mix(in oklab, var(--onyx) 96%, black), color-mix(in oklab, var(--onyx) 100%, black))",
           }}
         />
+
+        {/* Genuine lightweight static poster extracted from authentic hero video frame */}
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/assets/hero/hero-meditation-poster-720.webp" type="image/webp" />
+          <source srcSet="/assets/hero/hero-meditation-poster-1280.webp" type="image/webp" />
+          <img
+            src="/assets/hero/hero-meditation-poster-1280.jpg"
+            alt=""
+            aria-hidden
+            width={1280}
+            height={720}
+            loading="eager"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </picture>
+
         {videoSrc && (
           <video
             ref={videoRef}
             src={videoSrc}
+            poster="/assets/hero/hero-meditation-poster-1280.webp"
             autoPlay
             muted
             playsInline
             preload="metadata"
             aria-hidden
-            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out"
+            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-out"
             style={{ opacity: videoReady ? 1 : 0 }}
-            onCanPlay={() => setVideoReady(true)}
+            onPlaying={onVideoPlaying}
+            onError={() => {
+              setVideoReady(false);
+              setVideoSrc(null);
+            }}
           />
         )}
       </motion.div>

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "url": "/assets/hero/hero-meditation-poster-1280.webp",
+  "url_mobile": "/assets/hero/hero-meditation-poster-720.webp",
+  "url_fallback": "/assets/hero/hero-meditation-poster-1280.jpg",
+  "original_filename": "hero-meditation-poster.webp",
+  "size": 32470,
+  "content_type": "image/webp",
+  "width": 1280,
+  "height": 720
+}

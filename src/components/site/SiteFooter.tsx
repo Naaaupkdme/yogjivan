@@ -87,16 +87,22 @@ export function SiteFooter() {
         <div className={`grid gap-8 border-b border-border/60 pb-10 ${hideLocal ? "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]" : "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]"}`}>
           <div>
             <a href={isVi ? "/vi" : "/"} className="flex items-center gap-3" aria-label={isVi ? "Yog Jivan — trang chủ tiếng Việt" : "Yog Jivan home"}>
-              <img
-                src={optimizedLogo.url}
-                srcSet={`${optimizedLogo.url} 1x, ${optimizedLogo.url_2x} 2x`}
-                width={44}
-                height={44}
-                loading="lazy"
-                decoding="async"
-                alt="Yog Jivan Sanctuary logo"
-                className="h-11 w-11 rounded-full object-cover"
-              />
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet="/assets/logo/yog-jivan-logo-gold-56.webp 56w, /assets/logo/yog-jivan-logo-gold-112.webp 112w"
+                  sizes="44px"
+                />
+                <img
+                  src="/assets/logo/yog-jivan-logo-gold-112.png"
+                  width={44}
+                  height={44}
+                  loading="lazy"
+                  decoding="async"
+                  alt="Yog Jivan Sanctuary logo"
+                  className="h-11 w-11 rounded-full object-cover"
+                />
+              </picture>
               <div>
                 <div className="font-display text-xl">Yog Jivan</div>
                 <div className="text-[0.6rem] uppercase tracking-[0.28em] text-muted-foreground">Sanctuary</div>
