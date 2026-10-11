@@ -67,6 +67,14 @@ function isConstrainedConnection(): boolean {
   );
 }
 
+function isVideoEligible(): boolean {
+  if (typeof window === "undefined") return false;
+  const isWide = window.matchMedia("(min-width: 1024px)").matches;
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!isWide || prefersReduced) return false;
+  return !isConstrainedConnection();
+}
+
 function useIsDesktop() {
   const [isDesktop, set] = useState(false);
   useEffect(() => {
@@ -88,6 +96,7 @@ export function Hero() {
   const rootRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const rvfcRef = useRef<number | null>(null);
   const { t } = useLang();
   const isDesktop = useIsDesktop();
   const { scrollYProgress } = useScroll({ target: rootRef, offset: ["start start", "end start"] });
@@ -99,8 +108,15 @@ export function Hero() {
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [videoReady, setVideoReady] = useState(false);
 
+  // Essential heading, body, and CTA entrance:
+  // Honor prefers-reduced-motion by rendering immediately at full opacity without delay or translation
   useEffect(() => {
     if (!contentRef.current) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      gsap.set(".hero-reveal", { opacity: 1, y: 0 });
+      return;
+    }
     const ctx = gsap.context(() => {
       gsap.fromTo(".hero-reveal", { y: 26, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.15, stagger: 0.12, ease: "power3.out", delay: 0.18 });
@@ -108,56 +124,113 @@ export function Hero() {
     return () => ctx.revert();
   }, []);
 
-  // Explicit noncritical hero video loading policy:
+  // Explicit hero video loading policy & guard lifecycle:
   // - Retain poster-only on mobile (<1024px), reduced-motion, save-data, or slow-2g/2g/3g connections
   // - On desktop, defer video attachment until browser idle after load event to reduce competition with initial render
-  // - If viewport or connection condition changes, cancel pending timers and unmount video
-  //   (Note: already transferred bytes cannot be un-downloaded, but unmounting frees video decoder and stops range streams)
+  // - Pending callbacks are canceled immediately on connection degradation, viewport resize, or reduced-motion
+  // - Callbacks re-verify isVideoEligible() at execution time to guard against race conditions
   useEffect(() => {
-    if (typeof window === "undefined" || !isDesktop || isConstrainedConnection()) {
-      setVideoSrc(null);
-      setVideoReady(false);
-      return;
-    }
+    if (typeof window === "undefined") return;
 
     let idleId: number | undefined;
     let timeoutId: number | undefined;
+    let isCancelled = false;
 
-    const attachVideo = () => {
-      if (isConstrainedConnection()) return;
-      if ("requestIdleCallback" in window) {
-        idleId = window.requestIdleCallback(() => setVideoSrc(heroVideo.url), { timeout: 3500 });
-      } else {
-        timeoutId = window.setTimeout(() => setVideoSrc(heroVideo.url), 2000);
+    const cancelPendingWork = () => {
+      isCancelled = true;
+      if (idleId !== undefined && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+        idleId = undefined;
+      }
+      if (timeoutId !== undefined) {
+        window.clearTimeout(timeoutId);
+        timeoutId = undefined;
       }
     };
 
-    if (document.readyState === "complete") {
-      attachVideo();
-    } else {
-      window.addEventListener("load", attachVideo, { once: true });
-    }
-
-    // @ts-expect-error - NetworkInformation API change listener
-    const conn = navigator.connection;
-    const onConnChange = () => {
-      if (isConstrainedConnection()) {
-        setVideoSrc(null);
-        setVideoReady(false);
+    const cancelFrameCallback = () => {
+      if (videoRef.current && rvfcRef.current !== null && "cancelVideoFrameCallback" in videoRef.current) {
+        // @ts-expect-error - cancelVideoFrameCallback
+        videoRef.current.cancelVideoFrameCallback(rvfcRef.current);
       }
+      rvfcRef.current = null;
     };
-    conn?.addEventListener?.("change", onConnChange);
 
-    return () => {
-      window.removeEventListener("load", attachVideo);
-      conn?.removeEventListener?.("change", onConnChange);
-      if (idleId && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
-      if (timeoutId) window.clearTimeout(timeoutId);
+    const detachVideo = () => {
+      cancelPendingWork();
+      cancelFrameCallback();
       if (videoRef.current) {
         try { videoRef.current.pause(); } catch {}
       }
       setVideoSrc(null);
       setVideoReady(false);
+    };
+
+    const executeAttachment = () => {
+      if (isCancelled || !isVideoEligible()) {
+        detachVideo();
+        return;
+      }
+      setVideoSrc(heroVideo.url);
+    };
+
+    const scheduleAttachment = () => {
+      cancelPendingWork();
+      isCancelled = false;
+
+      if (!isVideoEligible()) {
+        detachVideo();
+        return;
+      }
+
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(() => {
+          idleId = undefined;
+          executeAttachment();
+        }, { timeout: 3500 });
+      } else {
+        timeoutId = window.setTimeout(() => {
+          timeoutId = undefined;
+          executeAttachment();
+        }, 2000);
+      }
+    };
+
+    if (isVideoEligible()) {
+      if (document.readyState === "complete") {
+        scheduleAttachment();
+      } else {
+        window.addEventListener("load", scheduleAttachment, { once: true });
+      }
+    } else {
+      detachVideo();
+    }
+
+    const mqWidth = window.matchMedia("(min-width: 1024px)");
+    const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // @ts-expect-error - NetworkInformation API
+    const conn = navigator.connection;
+
+    const onConditionChange = () => {
+      if (isVideoEligible()) {
+        if (!videoSrc && idleId === undefined && timeoutId === undefined) {
+          scheduleAttachment();
+        }
+      } else {
+        detachVideo();
+      }
+    };
+
+    mqWidth.addEventListener?.("change", onConditionChange);
+    mqMotion.addEventListener?.("change", onConditionChange);
+    conn?.addEventListener?.("change", onConditionChange);
+
+    return () => {
+      window.removeEventListener("load", scheduleAttachment);
+      mqWidth.removeEventListener?.("change", onConditionChange);
+      mqMotion.removeEventListener?.("change", onConditionChange);
+      conn?.removeEventListener?.("change", onConditionChange);
+      detachVideo();
     };
   }, [isDesktop]);
 
@@ -191,9 +264,13 @@ export function Hero() {
   const onVideoPlaying = () => {
     const v = videoRef.current;
     if (v && "requestVideoFrameCallback" in v) {
-      // Reveal once the browser has actually rendered the first frame
       // @ts-expect-error - requestVideoFrameCallback
-      v.requestVideoFrameCallback(() => setVideoReady(true));
+      rvfcRef.current = v.requestVideoFrameCallback(() => {
+        rvfcRef.current = null;
+        if (videoRef.current === v && isVideoEligible()) {
+          setVideoReady(true);
+        }
+      });
     } else {
       setVideoReady(true);
     }

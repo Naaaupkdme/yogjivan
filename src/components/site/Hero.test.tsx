@@ -39,6 +39,7 @@ vi.mock("gsap", () => ({
       return { revert: vi.fn() };
     }),
     fromTo: vi.fn(),
+    set: vi.fn(),
   },
 }));
 
@@ -227,5 +228,188 @@ describe("Hero component — media loading policy, authentic static poster, and 
 
     // Video must be unmounted from DOM
     expect(document.querySelector("video")).toBeNull();
+  });
+
+  it("7. Queued idle callback does NOT mount video if connection degrades to constrained before execution", async () => {
+    let queuedCallback: (() => void) | null = null;
+
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: query.includes("min-width: 1024px") ? true : false,
+      media: query,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    }));
+
+    let connChangeCb: (() => void) | null = null;
+    const connObj = {
+      effectiveType: "4g",
+      saveData: false,
+      addEventListener: vi.fn((event: string, cb: any) => {
+        if (event === "change") connChangeCb = cb;
+      }),
+      removeEventListener: vi.fn(),
+    };
+    Object.defineProperty(navigator, "connection", {
+      value: connObj,
+      configurable: true,
+      writable: true,
+    });
+
+    // Mock requestIdleCallback to manually capture the callback without executing it immediately
+    // @ts-expect-error - requestIdleCallback
+    window.requestIdleCallback = vi.fn((cb) => {
+      queuedCallback = cb;
+      return 101;
+    });
+
+    render(<Hero />);
+
+    // Trigger load so attachVideo schedules requestIdleCallback
+    await act(async () => {
+      window.dispatchEvent(new Event("load"));
+    });
+
+    expect(queuedCallback).not.toBeNull();
+    // Video should not be mounted yet since callback hasn't run
+    expect(document.querySelector("video")).toBeNull();
+
+    // Now connection degrades to 3g BEFORE callback executes
+    await act(async () => {
+      connObj.effectiveType = "3g";
+      connChangeCb?.();
+    });
+
+    // Now the queued callback attempts to execute
+    await act(async () => {
+      queuedCallback?.();
+    });
+
+    // Under the buggy code, the queued callback sets videoSrc unconditionally and video mounts!
+    // With the fix, video MUST NOT mount!
+    expect(document.querySelector("video")).toBeNull();
+  });
+
+  it.each([
+    { mode: "slow-2g", conn: { effectiveType: "slow-2g", saveData: false } },
+    { mode: "2g", conn: { effectiveType: "2g", saveData: false } },
+    { mode: "3g", conn: { effectiveType: "3g", saveData: false } },
+    { mode: "saveData", conn: { effectiveType: "4g", saveData: true } },
+  ])("8. Parameterized constraint test ($mode): video is strictly blocked from mounting", async ({ conn }) => {
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: query.includes("min-width: 1024px") ? true : false,
+      media: query,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    }));
+
+    Object.defineProperty(navigator, "connection", {
+      value: { ...conn, addEventListener: vi.fn(), removeEventListener: vi.fn() },
+      configurable: true,
+      writable: true,
+    });
+
+    // @ts-expect-error - requestIdleCallback
+    window.requestIdleCallback = vi.fn((cb) => { cb(); return 1; });
+
+    render(<Hero />);
+
+    await act(async () => {
+      window.dispatchEvent(new Event("load"));
+      await new Promise((r) => setTimeout(r, 20));
+    });
+
+    expect(document.querySelector("video")).toBeNull();
+    // Poster is always retained
+    expect(document.querySelector("picture img")).not.toBeNull();
+  });
+
+  it("9. Queued idle callback does NOT mount video if user enables reduced-motion before callback executes", async () => {
+    let queuedCallback: (() => void) | null = null;
+    let prefersReducedMotion = false;
+    let motionChangeCb: ((e: any) => void) | null = null;
+
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      get matches() {
+        if (query.includes("min-width: 1024px")) return true;
+        if (query.includes("prefers-reduced-motion: reduce")) return prefersReducedMotion;
+        return false;
+      },
+      media: query,
+      addEventListener: (event: string, cb: any) => {
+        if (query.includes("prefers-reduced-motion: reduce")) motionChangeCb = cb;
+      },
+      removeEventListener: vi.fn(),
+    }));
+
+    Object.defineProperty(navigator, "connection", {
+      value: { effectiveType: "4g", saveData: false, addEventListener: vi.fn(), removeEventListener: vi.fn() },
+      configurable: true,
+      writable: true,
+    });
+
+    // @ts-expect-error - requestIdleCallback
+    window.requestIdleCallback = vi.fn((cb) => {
+      queuedCallback = cb;
+      return 102;
+    });
+
+    render(<Hero />);
+
+    await act(async () => {
+      window.dispatchEvent(new Event("load"));
+    });
+
+    expect(queuedCallback).not.toBeNull();
+    expect(document.querySelector("video")).toBeNull();
+
+    // User enables prefers-reduced-motion
+    await act(async () => {
+      prefersReducedMotion = true;
+      motionChangeCb?.({ matches: true });
+    });
+
+    // Now queued callback fires
+    await act(async () => {
+      queuedCallback?.();
+    });
+
+    // Video MUST NOT mount
+    expect(document.querySelector("video")).toBeNull();
+  });
+
+  it("10. Video playback failure (onError): unmounts video and retains authentic poster", async () => {
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: query.includes("min-width: 1024px") ? true : false,
+      media: query,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    }));
+
+    Object.defineProperty(navigator, "connection", {
+      value: { effectiveType: "4g", saveData: false, addEventListener: vi.fn(), removeEventListener: vi.fn() },
+      configurable: true,
+      writable: true,
+    });
+
+    // @ts-expect-error - requestIdleCallback
+    window.requestIdleCallback = vi.fn((cb) => { cb(); return 1; });
+
+    render(<Hero />);
+
+    await act(async () => {
+      window.dispatchEvent(new Event("load"));
+    });
+
+    const video = document.querySelector("video");
+    expect(video).not.toBeNull();
+
+    // Trigger video error (e.g. network disconnect or unplayable format)
+    await act(async () => {
+      video?.dispatchEvent(new Event("error"));
+    });
+
+    // Video must be unmounted and authentic poster must remain intact
+    expect(document.querySelector("video")).toBeNull();
+    expect(document.querySelector("picture img")).not.toBeNull();
   });
 });
