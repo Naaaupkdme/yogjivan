@@ -12,6 +12,15 @@ import communityB from "@/assets/img_20260622_114016.jpg.asset.json";
 import communityC from "@/assets/img_5066.jpg.asset.json";
 import communityD from "@/assets/dji_0014.jpg.asset.json";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
+import optimizedLogo from "@/assets/yog_jivan_logo_gold_112.webp.asset.json";
+
+// Optimized 160x160 thumbnails (8-9 KB each vs 1.2-2.0 MB camera masters)
+const COMMUNITY_THUMBS = [
+  { url: "/assets/thumbnails/img_20260621_105308_thumb_160.webp", alt: "Yog Jivan students in morning namaste practice" },
+  { url: "/assets/thumbnails/img_5066_thumb_160.webp", alt: "Yog Jivan studio practice session" },
+  { url: "/assets/thumbnails/dji_0014_thumb_160.webp", alt: "Yog Jivan outdoor wellness gathering" },
+  { url: "/assets/thumbnails/img_20260622_114016_thumb_160.webp", alt: "Yog Jivan community celebration moment" },
+] as const;
 import { useLang } from "@/lib/language";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
 
@@ -78,7 +87,22 @@ export function SiteFooter() {
         <div className={`grid gap-8 border-b border-border/60 pb-10 ${hideLocal ? "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]" : "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]"}`}>
           <div>
             <a href={isVi ? "/vi" : "/"} className="flex items-center gap-3" aria-label={isVi ? "Yog Jivan — trang chủ tiếng Việt" : "Yog Jivan home"}>
-              <img src={logo.url} alt="Yog Jivan Sanctuary logo" className="h-11 w-11 rounded-full object-cover" />
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet="/assets/logo/yog-jivan-logo-gold-56.webp 56w, /assets/logo/yog-jivan-logo-gold-112.webp 112w"
+                  sizes="44px"
+                />
+                <img
+                  src="/assets/logo/yog-jivan-logo-gold-112.png"
+                  width={44}
+                  height={44}
+                  loading="lazy"
+                  decoding="async"
+                  alt="Yog Jivan Sanctuary logo"
+                  className="h-11 w-11 rounded-full object-cover"
+                />
+              </picture>
               <div>
                 <div className="font-display text-xl">Yog Jivan</div>
                 <div className="text-[0.6rem] uppercase tracking-[0.28em] text-muted-foreground">Sanctuary</div>
@@ -182,9 +206,17 @@ export function SiteFooter() {
           <div>
             <h4 className="eyebrow mb-4">@yogjivan</h4>
             <div className="grid grid-cols-4 gap-2">
-              {[communityA, communityC, communityD, communityB].map((img, i) => (
+              {COMMUNITY_THUMBS.map((img, i) => (
                 <a key={i} href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit Yog Jivan Instagram" className="group overflow-hidden rounded-lg border border-border/60">
-                  <img src={img.url} alt="Yog Jivan community moments on Instagram" loading="lazy" className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img
+                    src={img.url}
+                    alt={img.alt}
+                    width={80}
+                    height={80}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-square w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
                 </a>
               ))}
             </div>

@@ -54,14 +54,40 @@ const GEO_LINES = [
 ] as const;
 
 
+function isConstrainedConnection(): boolean {
+  if (typeof navigator === "undefined") return false;
+  // @ts-expect-error - NetworkInformation API
+  const conn = navigator.connection;
+  if (!conn) return false;
+  return Boolean(
+    conn.saveData ||
+    conn.effectiveType === "slow-2g" ||
+    conn.effectiveType === "2g" ||
+    conn.effectiveType === "3g"
+  );
+}
+
+function isVideoEligible(): boolean {
+  if (typeof window === "undefined") return false;
+  const isWide = window.matchMedia("(min-width: 1024px)").matches;
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!isWide || prefersReduced) return false;
+  return !isConstrainedConnection();
+}
+
 function useIsDesktop() {
   const [isDesktop, set] = useState(false);
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px) and (prefers-reduced-motion: no-preference)");
-    const update = () => set(mq.matches);
+    const mqWidth = window.matchMedia("(min-width: 1024px)");
+    const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => set(mqWidth.matches && !mqMotion.matches);
     update();
-    mq.addEventListener?.("change", update);
-    return () => mq.removeEventListener?.("change", update);
+    mqWidth.addEventListener?.("change", update);
+    mqMotion.addEventListener?.("change", update);
+    return () => {
+      mqWidth.removeEventListener?.("change", update);
+      mqMotion.removeEventListener?.("change", update);
+    };
   }, []);
   return isDesktop;
 }
@@ -70,6 +96,7 @@ export function Hero() {
   const rootRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const rvfcRef = useRef<number | null>(null);
   const { t } = useLang();
   const isDesktop = useIsDesktop();
   const { scrollYProgress } = useScroll({ target: rootRef, offset: ["start start", "end start"] });
@@ -81,8 +108,15 @@ export function Hero() {
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [videoReady, setVideoReady] = useState(false);
 
+  // Essential heading, body, and CTA entrance:
+  // Honor prefers-reduced-motion by rendering immediately at full opacity without delay or translation
   useEffect(() => {
     if (!contentRef.current) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      gsap.set(".hero-reveal", { opacity: 1, y: 0 });
+      return;
+    }
     const ctx = gsap.context(() => {
       gsap.fromTo(".hero-reveal", { y: 26, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.15, stagger: 0.12, ease: "power3.out", delay: 0.18 });
@@ -90,18 +124,115 @@ export function Hero() {
     return () => ctx.revert();
   }, []);
 
-  // Defer hero video load by ~2s so it never competes with LCP. Skip entirely
-  // for data-saver / reduced-motion users.
+  // Explicit hero video loading policy & guard lifecycle:
+  // - Retain poster-only on mobile (<1024px), reduced-motion, save-data, or slow-2g/2g/3g connections
+  // - On desktop, defer video attachment until browser idle after load event to reduce competition with initial render
+  // - Pending callbacks are canceled immediately on connection degradation, viewport resize, or reduced-motion
+  // - Callbacks re-verify isVideoEligible() at execution time to guard against race conditions
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // @ts-expect-error - non-standard but widely available
-    const saveData = navigator.connection?.saveData;
-    if (reduced || saveData) return;
 
-    const id = window.setTimeout(() => setVideoSrc(heroVideo.url), 100);
-    return () => window.clearTimeout(id);
-  }, []);
+    let idleId: number | undefined;
+    let timeoutId: number | undefined;
+    let isCancelled = false;
+
+    const cancelPendingWork = () => {
+      isCancelled = true;
+      if (idleId !== undefined && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+        idleId = undefined;
+      }
+      if (timeoutId !== undefined) {
+        window.clearTimeout(timeoutId);
+        timeoutId = undefined;
+      }
+    };
+
+    const cancelFrameCallback = () => {
+      if (videoRef.current && rvfcRef.current !== null && "cancelVideoFrameCallback" in videoRef.current) {
+        // @ts-expect-error - cancelVideoFrameCallback
+        videoRef.current.cancelVideoFrameCallback(rvfcRef.current);
+      }
+      rvfcRef.current = null;
+    };
+
+    const detachVideo = () => {
+      cancelPendingWork();
+      cancelFrameCallback();
+      if (videoRef.current) {
+        try { videoRef.current.pause(); } catch {}
+      }
+      setVideoSrc(null);
+      setVideoReady(false);
+    };
+
+    const executeAttachment = () => {
+      if (isCancelled || !isVideoEligible()) {
+        detachVideo();
+        return;
+      }
+      setVideoSrc(heroVideo.url);
+    };
+
+    const scheduleAttachment = () => {
+      cancelPendingWork();
+      isCancelled = false;
+
+      if (!isVideoEligible()) {
+        detachVideo();
+        return;
+      }
+
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(() => {
+          idleId = undefined;
+          executeAttachment();
+        }, { timeout: 3500 });
+      } else {
+        timeoutId = window.setTimeout(() => {
+          timeoutId = undefined;
+          executeAttachment();
+        }, 2000);
+      }
+    };
+
+    if (isVideoEligible()) {
+      if (document.readyState === "complete") {
+        scheduleAttachment();
+      } else {
+        window.addEventListener("load", scheduleAttachment, { once: true });
+      }
+    } else {
+      detachVideo();
+    }
+
+    const mqWidth = window.matchMedia("(min-width: 1024px)");
+    const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // @ts-expect-error - NetworkInformation API
+    const conn = navigator.connection;
+
+    const onConditionChange = () => {
+      if (isVideoEligible()) {
+        if (!videoSrc && idleId === undefined && timeoutId === undefined) {
+          scheduleAttachment();
+        }
+      } else {
+        detachVideo();
+      }
+    };
+
+    mqWidth.addEventListener?.("change", onConditionChange);
+    mqMotion.addEventListener?.("change", onConditionChange);
+    conn?.addEventListener?.("change", onConditionChange);
+
+    return () => {
+      window.removeEventListener("load", scheduleAttachment);
+      mqWidth.removeEventListener?.("change", onConditionChange);
+      mqMotion.removeEventListener?.("change", onConditionChange);
+      conn?.removeEventListener?.("change", onConditionChange);
+      detachVideo();
+    };
+  }, [isDesktop]);
 
   // Rotate quotes — desktop only (mobile saves the timer + re-renders).
   useEffect(() => {
@@ -130,10 +261,25 @@ export function Hero() {
     return () => v.removeEventListener("ended", onEnded);
   }, [videoSrc]);
 
+  const onVideoPlaying = () => {
+    const v = videoRef.current;
+    if (v && "requestVideoFrameCallback" in v) {
+      // @ts-expect-error - requestVideoFrameCallback
+      rvfcRef.current = v.requestVideoFrameCallback(() => {
+        rvfcRef.current = null;
+        if (videoRef.current === v && isVideoEligible()) {
+          setVideoReady(true);
+        }
+      });
+    } else {
+      setVideoReady(true);
+    }
+  };
+
   return (
     <section ref={rootRef} className="relative overflow-hidden" style={{ minHeight: "100svh", paddingTop: "var(--hdr-h,72px)" }}>
       <motion.div style={{ y, scale }} className="absolute inset-0">
-        {/* Luxury dark canvas — visible for the first 2s while the video defers */}
+        {/* Luxury dark gradient foundation */}
         <div
           aria-hidden
           className="absolute inset-0"
@@ -142,18 +288,40 @@ export function Hero() {
               "radial-gradient(circle at 20% 30%, color-mix(in oklab, var(--gold) 12%, transparent), transparent 55%), radial-gradient(circle at 80% 70%, color-mix(in oklab, var(--gold-soft) 10%, transparent), transparent 60%), linear-gradient(180deg, color-mix(in oklab, var(--onyx) 96%, black), color-mix(in oklab, var(--onyx) 100%, black))",
           }}
         />
+
+        {/* Genuine lightweight static poster extracted from authentic hero video frame */}
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/assets/hero/hero-meditation-poster-720.webp" type="image/webp" />
+          <source srcSet="/assets/hero/hero-meditation-poster-1280.webp" type="image/webp" />
+          <img
+            src="/assets/hero/hero-meditation-poster-1280.jpg"
+            alt=""
+            aria-hidden
+            width={1280}
+            height={720}
+            loading="eager"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </picture>
+
         {videoSrc && (
           <video
             ref={videoRef}
             src={videoSrc}
+            poster="/assets/hero/hero-meditation-poster-1280.webp"
             autoPlay
             muted
             playsInline
             preload="metadata"
             aria-hidden
-            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out"
+            className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-out"
             style={{ opacity: videoReady ? 1 : 0 }}
-            onCanPlay={() => setVideoReady(true)}
+            onPlaying={onVideoPlaying}
+            onError={() => {
+              setVideoReady(false);
+              setVideoSrc(null);
+            }}
           />
         )}
       </motion.div>
