@@ -28,10 +28,10 @@ export function FounderStory() {
 
         <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-start">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0.95, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: true, margin: "20px" }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
             className="relative lg:sticky lg:top-28"
           >
             <LuxuryImage
@@ -59,10 +59,10 @@ export function FounderStory() {
             {TIMELINE.map((step, i) => (
               <motion.li
                 key={step.year}
-                initial={{ opacity: 0, x: 14 }}
+                initial={{ opacity: 0.95, x: 8 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.55, delay: i * 0.06, ease: "easeOut" }}
+                viewport={{ once: true, margin: "20px" }}
+                transition={{ duration: 0.4, delay: i * 0.04, ease: "easeOut" }}
                 className="relative"
               >
                 <span

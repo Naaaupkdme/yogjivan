@@ -14,12 +14,28 @@ import communityD from "@/assets/dji_0014.jpg.asset.json";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
 import optimizedLogo from "@/assets/yog_jivan_logo_gold_112.webp.asset.json";
 
-// Optimized 160x160 thumbnails (8-9 KB each vs 1.2-2.0 MB camera masters)
+// Optimized responsive thumbnails (160w at 8-9 KB, 320w at 26-34 KB for intermediate viewports)
 const COMMUNITY_THUMBS = [
-  { url: "/assets/thumbnails/img_20260621_105308_thumb_160.webp", alt: "Yog Jivan students in morning namaste practice" },
-  { url: "/assets/thumbnails/img_5066_thumb_160.webp", alt: "Yog Jivan studio practice session" },
-  { url: "/assets/thumbnails/dji_0014_thumb_160.webp", alt: "Yog Jivan outdoor wellness gathering" },
-  { url: "/assets/thumbnails/img_20260622_114016_thumb_160.webp", alt: "Yog Jivan community celebration moment" },
+  {
+    url: "/assets/thumbnails/img_20260621_105308_thumb_160.webp",
+    srcSet: "/assets/thumbnails/img_20260621_105308_thumb_160.webp 160w, /assets/thumbnails/img_20260621_105308_thumb_320.webp 320w",
+    alt: "Yog Jivan students in morning namaste practice",
+  },
+  {
+    url: "/assets/thumbnails/img_5066_thumb_160.webp",
+    srcSet: "/assets/thumbnails/img_5066_thumb_160.webp 160w, /assets/thumbnails/img_5066_thumb_320.webp 320w",
+    alt: "Yog Jivan studio practice session",
+  },
+  {
+    url: "/assets/thumbnails/dji_0014_thumb_160.webp",
+    srcSet: "/assets/thumbnails/dji_0014_thumb_160.webp 160w, /assets/thumbnails/dji_0014_thumb_320.webp 320w",
+    alt: "Yog Jivan outdoor wellness gathering",
+  },
+  {
+    url: "/assets/thumbnails/img_20260622_114016_thumb_160.webp",
+    srcSet: "/assets/thumbnails/img_20260622_114016_thumb_160.webp 160w, /assets/thumbnails/img_20260622_114016_thumb_320.webp 320w",
+    alt: "Yog Jivan community celebration moment",
+  },
 ] as const;
 import { useLang } from "@/lib/language";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
@@ -90,17 +106,19 @@ export function SiteFooter() {
               <picture>
                 <source
                   type="image/webp"
-                  srcSet="/assets/logo/yog-jivan-logo-gold-56.webp 56w, /assets/logo/yog-jivan-logo-gold-112.webp 112w"
+                  srcSet="/assets/logo/yog-jivan-logo-gold-112.webp 112w, /assets/logo/yog-jivan-logo-gold-224.webp 224w"
                   sizes="44px"
                 />
                 <img
                   src="/assets/logo/yog-jivan-logo-gold-112.png"
+                  srcSet="/assets/logo/yog-jivan-logo-gold-112.png 112w, /assets/logo/yog-jivan-logo-gold-224.png 224w"
+                  sizes="44px"
                   width={44}
                   height={44}
                   loading="lazy"
                   decoding="async"
                   alt="Yog Jivan Sanctuary logo"
-                  className="h-11 w-11 rounded-full object-cover"
+                  className="h-11 w-11 object-contain"
                 />
               </picture>
               <div>
@@ -210,6 +228,8 @@ export function SiteFooter() {
                 <a key={i} href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Visit Yog Jivan Instagram" className="group overflow-hidden rounded-lg border border-border/60">
                   <img
                     src={img.url}
+                    srcSet={img.srcSet}
+                    sizes="(min-width: 1024px) 80px, (min-width: 768px) 160px, 120px"
                     alt={img.alt}
                     width={80}
                     height={80}

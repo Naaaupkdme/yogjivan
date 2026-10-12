@@ -192,15 +192,17 @@ export function SiteHeader() {
           <picture>
             <source
               type="image/webp"
-              srcSet="/assets/logo/yog-jivan-logo-gold-56.webp 56w, /assets/logo/yog-jivan-logo-gold-112.webp 112w, /assets/logo/yog-jivan-logo-gold-224.webp 224w"
+              srcSet="/assets/logo/yog-jivan-logo-gold-112.webp 112w, /assets/logo/yog-jivan-logo-gold-224.webp 224w"
               sizes="(min-width: 1024px) 56px, (min-width: 768px) 48px, 44px"
             />
             <img
               src="/assets/logo/yog-jivan-logo-gold-112.png"
+              srcSet="/assets/logo/yog-jivan-logo-gold-112.png 112w, /assets/logo/yog-jivan-logo-gold-224.png 224w"
+              sizes="(min-width: 1024px) 56px, (min-width: 768px) 48px, 44px"
               width={56}
               height={56}
               alt="Yog Jivan Sanctuary logo"
-              className="h-11 w-11 shrink-0 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full object-cover ring-1 ring-[color-mix(in_oklab,var(--gold)_40%,transparent)] shadow-[0_8px_24px_-10px_color-mix(in_oklab,var(--gold)_55%,transparent)] transition-transform duration-500 group-hover:scale-105"
+              className="h-11 w-11 shrink-0 md:h-12 md:w-12 lg:h-14 lg:w-14 object-contain shadow-[0_8px_24px_-10px_color-mix(in_oklab,var(--gold)_55%,transparent)] transition-transform duration-500 group-hover:scale-105"
             />
           </picture>
           <div className="hidden sm:block xl:hidden 2xl:block min-w-0 leading-none">
