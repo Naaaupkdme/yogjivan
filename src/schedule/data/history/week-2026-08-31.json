@@ -1,0 +1,166 @@
+{
+  "weekStart": "2026-08-31",
+  "weekEnd": "2026-09-05",
+  "weekLabelVi": "31/08/2026 – 05/09/2026",
+  "validThrough": "2026-09-05T23:59:59+07:00",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "generatedAt": "2026-08-30T08:00:00+07:00",
+  "overridesApplied": ["Vietnam National Day 01/09 - 02/09 holiday closure"],
+  "specialEvents": [],
+  "studios": {
+    "studio1": {
+      "studioId": "studio1",
+      "studioName": "Studio 1 — Yog Jivan Sanctuary",
+      "address": "Tầng 1 Nhà Thi Đấu Số 1, Bùi Thị Xuân, TP. Hải Dương",
+      "teacherPattern": {
+        "mon": "Master Anil",
+        "tue": "Master Ravi",
+        "wed": "Master Anil",
+        "thu": "Master Ravi",
+        "fri": "Master Anil",
+        "sat": "Master Ravi"
+      },
+      "timeSlots": [
+        "05:15–06:15",
+        "06:30–07:30",
+        "15:00–16:00",
+        "17:15–18:15",
+        "20:00–21:00"
+      ],
+      "rows": [
+        {
+          "slot": "05:15–06:15",
+          "classes": {
+            "mon": { "classId": "morning_hatha", "en": "Hatha Yoga", "vi": "YOGA CƠ BẢN", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "tue": { "classId": "holiday", "en": "Holiday", "vi": "Nghỉ lễ", "isProp": false, "teacher": "Master Ravi", "status": "holiday", "noteVi": "Nghỉ lễ" },
+            "wed": { "classId": "holiday", "en": "National Day Holiday", "vi": "Nghỉ Lễ Quốc Khánh", "isProp": false, "teacher": "Master Anil", "status": "holiday", "noteVi": "Nghỉ Lễ Quốc Khánh 2/9" },
+            "thu": { "classId": "breath_flow", "en": "Breath Flow", "vi": "DÒNG CHẢY HƠI THỞ", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "fri": { "classId": "block_yoga", "en": "Block Yoga", "vi": "YOGA GẠCH", "isProp": true, "propType": "block", "teacher": "Master Anil", "status": "active" },
+            "sat": { "classId": "strap_stretch", "en": "Strap Stretch", "vi": "GIÃN CƠ CÙNG DÂY", "isProp": true, "propType": "strap", "teacher": "Master Ravi", "status": "active" }
+          }
+        },
+        {
+          "slot": "06:30–07:30",
+          "classes": {
+            "mon": { "classId": "mix_yoga", "en": "Mix Yoga", "vi": "YOGA TỔNG HỢP", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "tue": { "classId": "holiday", "en": "Holiday", "vi": "Nghỉ lễ", "isProp": false, "teacher": "Master Ravi", "status": "holiday", "noteVi": "Nghỉ lễ" },
+            "wed": { "classId": "holiday", "en": "National Day Holiday", "vi": "Nghỉ Lễ Quốc Khánh", "isProp": false, "teacher": "Master Anil", "status": "holiday", "noteVi": "Nghỉ Lễ Quốc Khánh 2/9" },
+            "thu": { "classId": "stick_yoga", "en": "Stick Yoga", "vi": "YOGA GẬY", "isProp": true, "propType": "stick", "teacher": "Master Ravi", "status": "active" },
+            "fri": { "classId": "wheel_yoga", "en": "Wheel Yoga", "vi": "YOGA BÁNH XE", "isProp": true, "propType": "wheel", "teacher": "Master Anil", "status": "active" },
+            "sat": { "classId": "morning_activation", "en": "Full Body Activation", "vi": "KÍCH HOẠT TOÀN THÂN", "isProp": false, "teacher": "Master Ravi", "status": "active" }
+          }
+        },
+        {
+          "slot": "15:00–16:00",
+          "classes": {
+            "mon": { "classId": "hip_mobility", "en": "Lower Body Mobility", "vi": "LINH HOẠT PHẦN DƯỚI", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "tue": { "classId": "holiday", "en": "Holiday", "vi": "Nghỉ lễ", "isProp": false, "teacher": "Master Ravi", "status": "holiday", "noteVi": "Nghỉ lễ" },
+            "wed": { "classId": "holiday", "en": "National Day Holiday", "vi": "Nghỉ Lễ Quốc Khánh", "isProp": false, "teacher": "Master Anil", "status": "holiday", "noteVi": "Nghỉ Lễ Quốc Khánh 2/9" },
+            "thu": { "classId": "ball_yoga", "en": "Ball Yoga", "vi": "YOGA BÓNG", "isProp": true, "propType": "ball", "teacher": "Master Ravi", "status": "active" },
+            "fri": { "classId": "partner_stretch", "en": "Partner Stretch", "vi": "GIÃN CƠ CẶP ĐÔI", "isProp": true, "propType": "partner", "teacher": "Master Anil", "status": "active" },
+            "sat": { "classId": "twist_detox", "en": "Rotation Mobility", "vi": "LINH HOẠT XOAY & VẶN", "isProp": false, "teacher": "Master Ravi", "status": "active" }
+          }
+        },
+        {
+          "slot": "17:15–18:15",
+          "classes": {
+            "mon": { "classId": "vinyasa_flow", "en": "Mix Yoga", "vi": "YOGA TỔNG HỢP", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "tue": { "classId": "holiday", "en": "Holiday", "vi": "Nghỉ lễ", "isProp": false, "teacher": "Master Ravi", "status": "holiday", "noteVi": "Nghỉ lễ" },
+            "wed": { "classId": "holiday", "en": "National Day Holiday", "vi": "Nghỉ Lễ Quốc Khánh", "isProp": false, "teacher": "Master Anil", "status": "holiday", "noteVi": "Nghỉ Lễ Quốc Khánh 2/9" },
+            "thu": { "classId": "power_yoga", "en": "Power Yoga", "vi": "YOGA SỨC MẠNH", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "fri": { "classId": "aerial_yoga", "en": "Aerial Yoga", "vi": "YOGA VÕNG", "isProp": true, "propType": "aerial", "teacher": "Master Anil", "status": "active" },
+            "sat": { "classId": "stick_yoga", "en": "Stick Yoga", "vi": "YOGA GẬY", "isProp": true, "propType": "stick", "teacher": "Master Ravi", "status": "active" }
+          }
+        },
+        {
+          "slot": "20:00–21:00",
+          "classes": {
+            "mon": { "classId": "core_stability", "en": "Core Strength", "vi": "SỨC MẠNH CỐT LÕI", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "tue": { "classId": "holiday", "en": "Holiday", "vi": "Nghỉ lễ", "isProp": false, "teacher": "Master Ravi", "status": "holiday", "noteVi": "Nghỉ lễ" },
+            "wed": { "classId": "holiday", "en": "National Day Holiday", "vi": "Nghỉ Lễ Quốc Khánh", "isProp": false, "teacher": "Master Anil", "status": "holiday", "noteVi": "Nghỉ Lễ Quốc Khánh 2/9" },
+            "thu": { "classId": "wheel_release", "en": "Wheel Release", "vi": "GIẢI PHÓNG BÁNH XE", "isProp": true, "propType": "wheel", "teacher": "Master Ravi", "status": "active" },
+            "fri": { "classId": "partner_yoga", "en": "Partner Yoga", "vi": "YOGA CẶP ĐÔI", "isProp": true, "propType": "partner", "teacher": "Master Anil", "status": "active" },
+            "sat": { "classId": "yin_restore", "en": "Functional Yoga", "vi": "YOGA CHỨC NĂNG", "isProp": false, "teacher": "Master Ravi", "status": "active" }
+          }
+        }
+      ]
+    },
+    "studio2": {
+      "studioId": "studio2",
+      "studioName": "Studio 2 — Yog Jivan Yoga Studio",
+      "address": "Tầng 3, Nhà Văn Hóa Lao Động, Ngô Quyền, TP. Hải Dương",
+      "teacherPattern": {
+        "mon": "Master Ravi",
+        "tue": "Master Anil",
+        "wed": "Master Ravi",
+        "thu": "Master Anil",
+        "fri": "Master Ravi",
+        "sat": "Master Anil"
+      },
+      "timeSlots": [
+        "05:00–06:00",
+        "07:00–08:00",
+        "15:30–16:30",
+        "17:30–18:30",
+        "19:45–20:45"
+      ],
+      "rows": [
+        {
+          "slot": "05:00–06:00",
+          "classes": {
+            "mon": { "classId": "power_yoga", "en": "Power Yoga", "vi": "YOGA SỨC MẠNH TOÀN THÂN", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "tue": { "classId": "holiday", "en": "Holiday", "vi": "Nghỉ lễ", "isProp": false, "teacher": "Master Anil", "status": "holiday", "noteVi": "Nghỉ lễ" },
+            "wed": { "classId": "holiday", "en": "National Day Holiday", "vi": "Nghỉ Lễ Quốc Khánh", "isProp": false, "teacher": "Master Ravi", "status": "holiday", "noteVi": "Nghỉ Lễ Quốc Khánh 2/9" },
+            "thu": { "classId": "hatha_foundations", "en": "Hatha Yoga", "vi": "HATHA YOGA CƠ BẢN", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "fri": { "classId": "strap_yoga", "en": "Strap Yoga", "vi": "YOGA DÂY", "isProp": true, "propType": "strap", "teacher": "Master Ravi", "status": "active" },
+            "sat": { "classId": "block_yoga", "en": "Block Yoga", "vi": "YOGA GẠCH", "isProp": true, "propType": "block", "teacher": "Master Anil", "status": "active" }
+          }
+        },
+        {
+          "slot": "07:00–08:00",
+          "classes": {
+            "mon": { "classId": "functional_flow", "en": "Cardio Yoga Flow", "vi": "CHUỖI YOGA CARDIO", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "tue": { "classId": "holiday", "en": "Holiday", "vi": "Nghỉ lễ", "isProp": false, "teacher": "Master Anil", "status": "holiday", "noteVi": "Nghỉ lễ" },
+            "wed": { "classId": "holiday", "en": "National Day Holiday", "vi": "Nghỉ Lễ Quốc Khánh", "isProp": false, "teacher": "Master Ravi", "status": "holiday", "noteVi": "Nghỉ Lễ Quốc Khánh 2/9" },
+            "thu": { "classId": "ball_balance", "en": "Ball Balance", "vi": "CÂN BẰNG CÙNG BÓNG", "isProp": true, "propType": "ball", "teacher": "Master Anil", "status": "active" },
+            "fri": { "classId": "energy_booster", "en": "Energy Booster Yoga", "vi": "NĂNG LƯỢNG BỨT PHÁ", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "sat": { "classId": "stick_mobility", "en": "Stick Mobility", "vi": "LINH HOẠT CÙNG GẬY", "isProp": true, "propType": "stick", "teacher": "Master Anil", "status": "active" }
+          }
+        },
+        {
+          "slot": "15:30–16:30",
+          "classes": {
+            "mon": { "classId": "spine_shoulder_care", "en": "Upper Body Strength", "vi": "SỨC MẠNH THÂN TRÊN", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "tue": { "classId": "holiday", "en": "Holiday", "vi": "Nghỉ lễ", "isProp": false, "teacher": "Master Anil", "status": "holiday", "noteVi": "Nghỉ lễ" },
+            "wed": { "classId": "holiday", "en": "National Day Holiday", "vi": "Nghỉ Lễ Quốc Khánh", "isProp": false, "teacher": "Master Ravi", "status": "holiday", "noteVi": "Nghỉ Lễ Quốc Khánh 2/9" },
+            "thu": { "classId": "wheel_release", "en": "Wheel Release", "vi": "GIẢI PHÓNG BÁNH XE", "isProp": true, "propType": "wheel", "teacher": "Master Anil", "status": "active" },
+            "fri": { "classId": "deep_stretch", "en": "Deep Stretch", "vi": "GIÃN CƠ SÂU", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "sat": { "classId": "ball_yoga", "en": "Ball Yoga", "vi": "YOGA BÓNG", "isProp": true, "propType": "ball", "teacher": "Master Anil", "status": "active" }
+          }
+        },
+        {
+          "slot": "17:30–18:30",
+          "classes": {
+            "mon": { "classId": "hatha_foundations", "en": "Alignment Practice", "vi": "THỰC HÀNH CĂN CHỈNH", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "tue": { "classId": "holiday", "en": "Holiday", "vi": "Nghỉ lễ", "isProp": false, "teacher": "Master Anil", "status": "holiday", "noteVi": "Nghỉ lễ" },
+            "wed": { "classId": "holiday", "en": "National Day Holiday", "vi": "Nghỉ Lễ Quốc Khánh", "isProp": false, "teacher": "Master Ravi", "status": "holiday", "noteVi": "Nghỉ Lễ Quốc Khánh 2/9" },
+            "thu": { "classId": "wheel_yoga", "en": "Wheel Yoga", "vi": "YOGA BÁNH XE LINH HOẠT", "isProp": true, "propType": "wheel", "teacher": "Master Anil", "status": "active" },
+            "fri": { "classId": "stick_yoga", "en": "Stick Yoga", "vi": "YOGA GẬY", "isProp": true, "propType": "stick", "teacher": "Master Ravi", "status": "active" },
+            "sat": { "classId": "power_yoga", "en": "Power Yoga", "vi": "YOGA SỨC MẠNH", "isProp": false, "teacher": "Master Anil", "status": "active" }
+          }
+        },
+        {
+          "slot": "19:45–20:45",
+          "classes": {
+            "mon": { "classId": "core_balance", "en": "Core Strength", "vi": "SỨC MẠNH CỐT LÕI", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "tue": { "classId": "holiday", "en": "Holiday", "vi": "Nghỉ lễ", "isProp": false, "teacher": "Master Anil", "status": "holiday", "noteVi": "Nghỉ lễ" },
+            "wed": { "classId": "holiday", "en": "National Day Holiday", "vi": "Nghỉ Lễ Quốc Khánh", "isProp": false, "teacher": "Master Ravi", "status": "holiday", "noteVi": "Nghỉ Lễ Quốc Khánh 2/9" },
+            "thu": { "classId": "block_restore", "en": "Block Restore", "vi": "PHỤC HỒI CÙNG GẠCH", "isProp": true, "propType": "block", "teacher": "Master Anil", "status": "active" },
+            "fri": { "classId": "partner_stretch", "en": "Partner Stretch", "vi": "GIÃN CƠ CẶP ĐÔI", "isProp": true, "propType": "partner", "teacher": "Master Ravi", "status": "active" },
+            "sat": { "classId": "balance_yoga", "en": "Balance Yoga", "vi": "CÂN BẰNG THÂN TÂM", "isProp": false, "teacher": "Master Anil", "status": "active" }
+          }
+        }
+      ]
+    }
+  }
+}

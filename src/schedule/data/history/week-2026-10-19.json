@@ -1,0 +1,1606 @@
+{
+  "weekStart": "2026-10-19",
+  "weekEnd": "2026-10-24",
+  "weekLabelVi": "19/10/2026 – 24/10/2026",
+  "validThrough": "2026-10-24T23:59:59+07:00",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "generatedAt": "2026-10-12T20:24:37.056Z",
+  "overridesApplied": [],
+  "specialEvents": [],
+  "studios": {
+    "studio1": {
+      "studioId": "studio1",
+      "studioName": "Studio 1 — Yog Jivan Sanctuary",
+      "address": "Tầng 1 Nhà Thi Đấu Số 1, Bùi Thị Xuân, TP. Hải Dương",
+      "teacherPattern": {
+        "mon": "Master Anil",
+        "tue": "Master Ravi",
+        "wed": "Master Anil",
+        "thu": "Master Ravi",
+        "fri": "Master Anil",
+        "sat": "Master Ravi"
+      },
+      "timeSlots": [
+        "05:15–06:15",
+        "06:30–07:30",
+        "15:00–16:00",
+        "17:15–18:15",
+        "20:00–21:00"
+      ],
+      "days": {
+        "mon": {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "state": "active",
+          "teacher": "Master Anil"
+        },
+        "tue": {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "state": "active",
+          "teacher": "Master Ravi"
+        },
+        "wed": {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "state": "active",
+          "teacher": "Master Anil"
+        },
+        "thu": {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "state": "active",
+          "teacher": "Master Ravi"
+        },
+        "fri": {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "state": "active",
+          "teacher": "Master Anil"
+        },
+        "sat": {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "state": "active",
+          "teacher": "Master Ravi"
+        }
+      },
+      "sessions": [
+        {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "weekday": "mon",
+          "weekdayLabelVi": "Thứ 2",
+          "slot": "05:15–06:15",
+          "start": "05:15",
+          "end": "06:15",
+          "classId": "sunrise_flow",
+          "englishName": "Sunrise Flow",
+          "vietnameseName": "Dòng chảy bình minh",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "weekday": "tue",
+          "weekdayLabelVi": "Thứ 3",
+          "slot": "05:15–06:15",
+          "start": "05:15",
+          "end": "06:15",
+          "classId": "strap_yoga",
+          "englishName": "Strap Yoga",
+          "vietnameseName": "Yoga dây định tuyến",
+          "teacher": "Master Ravi",
+          "isProp": true,
+          "propType": "strap",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "weekday": "wed",
+          "weekdayLabelVi": "Thứ 4",
+          "slot": "05:15–06:15",
+          "start": "05:15",
+          "end": "06:15",
+          "classId": "morning_hatha",
+          "englishName": "Morning Hatha",
+          "vietnameseName": "Hatha buổi sáng",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "weekday": "thu",
+          "weekdayLabelVi": "Thứ 5",
+          "slot": "05:15–06:15",
+          "start": "05:15",
+          "end": "06:15",
+          "classId": "hatha_foundations",
+          "englishName": "Hatha Foundations",
+          "vietnameseName": "Nền tảng Hatha yoga",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "weekday": "fri",
+          "weekdayLabelVi": "Thứ 6",
+          "slot": "05:15–06:15",
+          "start": "05:15",
+          "end": "06:15",
+          "classId": "block_restore",
+          "englishName": "Block Restore",
+          "vietnameseName": "Phục hồi cùng gạch yoga",
+          "teacher": "Master Anil",
+          "isProp": true,
+          "propType": "block",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "weekday": "sat",
+          "weekdayLabelVi": "Thứ 7",
+          "slot": "05:15–06:15",
+          "start": "05:15",
+          "end": "06:15",
+          "classId": "slow_hatha",
+          "englishName": "Slow Hatha",
+          "vietnameseName": "Hatha chuyển động chậm",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "weekday": "mon",
+          "weekdayLabelVi": "Thứ 2",
+          "slot": "06:30–07:30",
+          "start": "06:30",
+          "end": "07:30",
+          "classId": "core_balance",
+          "englishName": "Core & Balance",
+          "vietnameseName": "Cốt lõi và cân bằng",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "weekday": "tue",
+          "weekdayLabelVi": "Thứ 3",
+          "slot": "06:30–07:30",
+          "start": "06:30",
+          "end": "07:30",
+          "classId": "core_mobility",
+          "englishName": "Core & Mobility",
+          "vietnameseName": "Cốt lõi và linh hoạt",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "weekday": "wed",
+          "weekdayLabelVi": "Thứ 4",
+          "slot": "06:30–07:30",
+          "start": "06:30",
+          "end": "07:30",
+          "classId": "aerial_yoga",
+          "englishName": "Aerial Yoga",
+          "vietnameseName": "Yoga võng trên không",
+          "teacher": "Master Anil",
+          "isProp": true,
+          "propType": "aerial",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "weekday": "thu",
+          "weekdayLabelVi": "Thứ 5",
+          "slot": "06:30–07:30",
+          "start": "06:30",
+          "end": "07:30",
+          "classId": "functional_strength",
+          "englishName": "Functional Strength",
+          "vietnameseName": "Sức mạnh chức năng",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "weekday": "fri",
+          "weekdayLabelVi": "Thứ 6",
+          "slot": "06:30–07:30",
+          "start": "06:30",
+          "end": "07:30",
+          "classId": "vinyasa_basics",
+          "englishName": "Vinyasa Basics",
+          "vietnameseName": "Vinyasa căn bản",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "weekday": "sat",
+          "weekdayLabelVi": "Thứ 7",
+          "slot": "06:30–07:30",
+          "start": "06:30",
+          "end": "07:30",
+          "classId": "ball_balance",
+          "englishName": "Ball Balance",
+          "vietnameseName": "Cân bằng cùng bóng yoga",
+          "teacher": "Master Ravi",
+          "isProp": true,
+          "propType": "ball",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "weekday": "mon",
+          "weekdayLabelVi": "Thứ 2",
+          "slot": "15:00–16:00",
+          "start": "15:00",
+          "end": "16:00",
+          "classId": "ball_yoga",
+          "englishName": "Ball Yoga",
+          "vietnameseName": "Yoga bóng ổn định",
+          "teacher": "Master Anil",
+          "isProp": true,
+          "propType": "ball",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "weekday": "tue",
+          "weekdayLabelVi": "Thứ 3",
+          "slot": "15:00–16:00",
+          "start": "15:00",
+          "end": "16:00",
+          "classId": "gentle_stretch",
+          "englishName": "Gentle Stretch",
+          "vietnameseName": "Giãn cơ nhẹ nhàng",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "weekday": "wed",
+          "weekdayLabelVi": "Thứ 4",
+          "slot": "15:00–16:00",
+          "start": "15:00",
+          "end": "16:00",
+          "classId": "breath_stretch",
+          "englishName": "Breath & Stretch",
+          "vietnameseName": "Hơi thở và giãn cơ",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "weekday": "thu",
+          "weekdayLabelVi": "Thứ 5",
+          "slot": "15:00–16:00",
+          "start": "15:00",
+          "end": "16:00",
+          "classId": "partner_yoga",
+          "englishName": "Partner Yoga",
+          "vietnameseName": "Yoga đôi gắn kết",
+          "teacher": "Master Ravi",
+          "isProp": true,
+          "propType": "partner",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "weekday": "fri",
+          "weekdayLabelVi": "Thứ 6",
+          "slot": "15:00–16:00",
+          "start": "15:00",
+          "end": "16:00",
+          "classId": "functional_mobility",
+          "englishName": "Functional Mobility",
+          "vietnameseName": "Linh hoạt chức năng",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "weekday": "sat",
+          "weekdayLabelVi": "Thứ 7",
+          "slot": "15:00–16:00",
+          "start": "15:00",
+          "end": "16:00",
+          "classId": "hip_mobility",
+          "englishName": "Hip Mobility",
+          "vietnameseName": "Linh hoạt khớp háng & hông",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "weekday": "mon",
+          "weekdayLabelVi": "Thứ 2",
+          "slot": "17:15–18:15",
+          "start": "17:15",
+          "end": "18:15",
+          "classId": "core_stability",
+          "englishName": "Core Stability",
+          "vietnameseName": "Ổn định cơ lõi",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "weekday": "tue",
+          "weekdayLabelVi": "Thứ 3",
+          "slot": "17:15–18:15",
+          "start": "17:15",
+          "end": "18:15",
+          "classId": "aerial_yoga",
+          "englishName": "Aerial Yoga",
+          "vietnameseName": "Yoga võng trên không",
+          "teacher": "Master Ravi",
+          "isProp": true,
+          "propType": "aerial",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "weekday": "wed",
+          "weekdayLabelVi": "Thứ 4",
+          "slot": "17:15–18:15",
+          "start": "17:15",
+          "end": "18:15",
+          "classId": "functional_flow",
+          "englishName": "Functional Flow",
+          "vietnameseName": "Dòng chảy chuyển động chức năng",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "weekday": "thu",
+          "weekdayLabelVi": "Thứ 5",
+          "slot": "17:15–18:15",
+          "start": "17:15",
+          "end": "18:15",
+          "classId": "functional_mobility",
+          "englishName": "Functional Mobility",
+          "vietnameseName": "Linh hoạt chức năng",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "weekday": "fri",
+          "weekdayLabelVi": "Thứ 6",
+          "slot": "17:15–18:15",
+          "start": "17:15",
+          "end": "18:15",
+          "classId": "vinyasa_flow",
+          "englishName": "Vinyasa Flow",
+          "vietnameseName": "Dòng chảy Vinyasa",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "weekday": "sat",
+          "weekdayLabelVi": "Thứ 7",
+          "slot": "17:15–18:15",
+          "start": "17:15",
+          "end": "18:15",
+          "classId": "strap_stretch",
+          "englishName": "Strap Stretch",
+          "vietnameseName": "Giãn cơ cùng dây tập",
+          "teacher": "Master Ravi",
+          "isProp": true,
+          "propType": "strap",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "weekday": "mon",
+          "weekdayLabelVi": "Thứ 2",
+          "slot": "20:00–21:00",
+          "start": "20:00",
+          "end": "21:00",
+          "classId": "breath_stretch",
+          "englishName": "Breath & Stretch",
+          "vietnameseName": "Hơi thở và giãn cơ",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "weekday": "tue",
+          "weekdayLabelVi": "Thứ 3",
+          "slot": "20:00–21:00",
+          "start": "20:00",
+          "end": "21:00",
+          "classId": "mix_yoga",
+          "englishName": "Mix Yoga",
+          "vietnameseName": "Yoga tổng hợp",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "weekday": "wed",
+          "weekdayLabelVi": "Thứ 4",
+          "slot": "20:00–21:00",
+          "start": "20:00",
+          "end": "21:00",
+          "classId": "strap_yoga",
+          "englishName": "Strap Yoga",
+          "vietnameseName": "Yoga dây định tuyến",
+          "teacher": "Master Anil",
+          "isProp": true,
+          "propType": "strap",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "weekday": "thu",
+          "weekdayLabelVi": "Thứ 5",
+          "slot": "20:00–21:00",
+          "start": "20:00",
+          "end": "21:00",
+          "classId": "deep_stretch",
+          "englishName": "Deep Stretch",
+          "vietnameseName": "Giãn cơ sâu",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "weekday": "fri",
+          "weekdayLabelVi": "Thứ 6",
+          "slot": "20:00–21:00",
+          "start": "20:00",
+          "end": "21:00",
+          "classId": "block_yoga",
+          "englishName": "Block Yoga",
+          "vietnameseName": "Yoga gạch hỗ trợ",
+          "teacher": "Master Anil",
+          "isProp": true,
+          "propType": "block",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "weekday": "sat",
+          "weekdayLabelVi": "Thứ 7",
+          "slot": "20:00–21:00",
+          "start": "20:00",
+          "end": "21:00",
+          "classId": "gentle_yoga",
+          "englishName": "Gentle Yoga",
+          "vietnameseName": "Yoga nhẹ nhàng thư giãn",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        }
+      ],
+      "rows": [
+        {
+          "slot": "05:15–06:15",
+          "classes": {
+            "mon": {
+              "classId": "sunrise_flow",
+              "en": "Sunrise Flow",
+              "vi": "Dòng chảy bình minh",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "tue": {
+              "classId": "strap_yoga",
+              "en": "Strap Yoga",
+              "vi": "Yoga dây định tuyến",
+              "isProp": true,
+              "propType": "strap",
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "wed": {
+              "classId": "morning_hatha",
+              "en": "Morning Hatha",
+              "vi": "Hatha buổi sáng",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "thu": {
+              "classId": "hatha_foundations",
+              "en": "Hatha Foundations",
+              "vi": "Nền tảng Hatha yoga",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "fri": {
+              "classId": "block_restore",
+              "en": "Block Restore",
+              "vi": "Phục hồi cùng gạch yoga",
+              "isProp": true,
+              "propType": "block",
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "sat": {
+              "classId": "slow_hatha",
+              "en": "Slow Hatha",
+              "vi": "Hatha chuyển động chậm",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            }
+          }
+        },
+        {
+          "slot": "06:30–07:30",
+          "classes": {
+            "mon": {
+              "classId": "core_balance",
+              "en": "Core & Balance",
+              "vi": "Cốt lõi và cân bằng",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "tue": {
+              "classId": "core_mobility",
+              "en": "Core & Mobility",
+              "vi": "Cốt lõi và linh hoạt",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "wed": {
+              "classId": "aerial_yoga",
+              "en": "Aerial Yoga",
+              "vi": "Yoga võng trên không",
+              "isProp": true,
+              "propType": "aerial",
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "thu": {
+              "classId": "functional_strength",
+              "en": "Functional Strength",
+              "vi": "Sức mạnh chức năng",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "fri": {
+              "classId": "vinyasa_basics",
+              "en": "Vinyasa Basics",
+              "vi": "Vinyasa căn bản",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "sat": {
+              "classId": "ball_balance",
+              "en": "Ball Balance",
+              "vi": "Cân bằng cùng bóng yoga",
+              "isProp": true,
+              "propType": "ball",
+              "teacher": "Master Ravi",
+              "status": "active"
+            }
+          }
+        },
+        {
+          "slot": "15:00–16:00",
+          "classes": {
+            "mon": {
+              "classId": "ball_yoga",
+              "en": "Ball Yoga",
+              "vi": "Yoga bóng ổn định",
+              "isProp": true,
+              "propType": "ball",
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "tue": {
+              "classId": "gentle_stretch",
+              "en": "Gentle Stretch",
+              "vi": "Giãn cơ nhẹ nhàng",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "wed": {
+              "classId": "breath_stretch",
+              "en": "Breath & Stretch",
+              "vi": "Hơi thở và giãn cơ",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "thu": {
+              "classId": "partner_yoga",
+              "en": "Partner Yoga",
+              "vi": "Yoga đôi gắn kết",
+              "isProp": true,
+              "propType": "partner",
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "fri": {
+              "classId": "functional_mobility",
+              "en": "Functional Mobility",
+              "vi": "Linh hoạt chức năng",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "sat": {
+              "classId": "hip_mobility",
+              "en": "Hip Mobility",
+              "vi": "Linh hoạt khớp háng & hông",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            }
+          }
+        },
+        {
+          "slot": "17:15–18:15",
+          "classes": {
+            "mon": {
+              "classId": "core_stability",
+              "en": "Core Stability",
+              "vi": "Ổn định cơ lõi",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "tue": {
+              "classId": "aerial_yoga",
+              "en": "Aerial Yoga",
+              "vi": "Yoga võng trên không",
+              "isProp": true,
+              "propType": "aerial",
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "wed": {
+              "classId": "functional_flow",
+              "en": "Functional Flow",
+              "vi": "Dòng chảy chuyển động chức năng",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "thu": {
+              "classId": "functional_mobility",
+              "en": "Functional Mobility",
+              "vi": "Linh hoạt chức năng",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "fri": {
+              "classId": "vinyasa_flow",
+              "en": "Vinyasa Flow",
+              "vi": "Dòng chảy Vinyasa",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "sat": {
+              "classId": "strap_stretch",
+              "en": "Strap Stretch",
+              "vi": "Giãn cơ cùng dây tập",
+              "isProp": true,
+              "propType": "strap",
+              "teacher": "Master Ravi",
+              "status": "active"
+            }
+          }
+        },
+        {
+          "slot": "20:00–21:00",
+          "classes": {
+            "mon": {
+              "classId": "breath_stretch",
+              "en": "Breath & Stretch",
+              "vi": "Hơi thở và giãn cơ",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "tue": {
+              "classId": "mix_yoga",
+              "en": "Mix Yoga",
+              "vi": "Yoga tổng hợp",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "wed": {
+              "classId": "strap_yoga",
+              "en": "Strap Yoga",
+              "vi": "Yoga dây định tuyến",
+              "isProp": true,
+              "propType": "strap",
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "thu": {
+              "classId": "deep_stretch",
+              "en": "Deep Stretch",
+              "vi": "Giãn cơ sâu",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "fri": {
+              "classId": "block_yoga",
+              "en": "Block Yoga",
+              "vi": "Yoga gạch hỗ trợ",
+              "isProp": true,
+              "propType": "block",
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "sat": {
+              "classId": "gentle_yoga",
+              "en": "Gentle Yoga",
+              "vi": "Yoga nhẹ nhàng thư giãn",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            }
+          }
+        }
+      ]
+    },
+    "studio2": {
+      "studioId": "studio2",
+      "studioName": "Studio 2 — Yog Jivan Yoga Studio",
+      "address": "Tầng 3, Nhà Văn Hóa Lao Động, Ngô Quyền, TP. Hải Dương",
+      "teacherPattern": {
+        "mon": "Master Ravi",
+        "tue": "Master Anil",
+        "wed": "Master Ravi",
+        "thu": "Master Anil",
+        "fri": "Master Ravi",
+        "sat": "Master Anil"
+      },
+      "timeSlots": [
+        "05:00–06:00",
+        "07:00–08:00",
+        "15:30–16:30",
+        "17:30–18:30",
+        "19:45–20:45"
+      ],
+      "days": {
+        "mon": {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "state": "active",
+          "teacher": "Master Ravi"
+        },
+        "tue": {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "state": "active",
+          "teacher": "Master Anil"
+        },
+        "wed": {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "state": "active",
+          "teacher": "Master Ravi"
+        },
+        "thu": {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "state": "active",
+          "teacher": "Master Anil"
+        },
+        "fri": {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "state": "active",
+          "teacher": "Master Ravi"
+        },
+        "sat": {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "state": "active",
+          "teacher": "Master Anil"
+        }
+      },
+      "sessions": [
+        {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "weekday": "mon",
+          "weekdayLabelVi": "Thứ 2",
+          "slot": "05:00–06:00",
+          "start": "05:00",
+          "end": "06:00",
+          "classId": "block_restore",
+          "englishName": "Block Restore",
+          "vietnameseName": "Phục hồi cùng gạch yoga",
+          "teacher": "Master Ravi",
+          "isProp": true,
+          "propType": "block",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "weekday": "tue",
+          "weekdayLabelVi": "Thứ 3",
+          "slot": "05:00–06:00",
+          "start": "05:00",
+          "end": "06:00",
+          "classId": "spine_wake_up",
+          "englishName": "Spine Wake-Up",
+          "vietnameseName": "Đánh thức cột sống",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "weekday": "wed",
+          "weekdayLabelVi": "Thứ 4",
+          "slot": "05:00–06:00",
+          "start": "05:00",
+          "end": "06:00",
+          "classId": "breath_stretch",
+          "englishName": "Breath & Stretch",
+          "vietnameseName": "Hơi thở và giãn cơ",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "weekday": "thu",
+          "weekdayLabelVi": "Thứ 5",
+          "slot": "05:00–06:00",
+          "start": "05:00",
+          "end": "06:00",
+          "classId": "wheel_release",
+          "englishName": "Wheel Release",
+          "vietnameseName": "Giải phóng cơ với bánh xe yoga",
+          "teacher": "Master Anil",
+          "isProp": true,
+          "propType": "wheel",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "weekday": "fri",
+          "weekdayLabelVi": "Thứ 6",
+          "slot": "05:00–06:00",
+          "start": "05:00",
+          "end": "06:00",
+          "classId": "mix_yoga",
+          "englishName": "Mix Yoga",
+          "vietnameseName": "Yoga tổng hợp",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "weekday": "sat",
+          "weekdayLabelVi": "Thứ 7",
+          "slot": "05:00–06:00",
+          "start": "05:00",
+          "end": "06:00",
+          "classId": "gentle_flow",
+          "englishName": "Gentle Flow",
+          "vietnameseName": "Dòng chảy êm dịu",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "weekday": "mon",
+          "weekdayLabelVi": "Thứ 2",
+          "slot": "07:00–08:00",
+          "start": "07:00",
+          "end": "08:00",
+          "classId": "vinyasa_flow",
+          "englishName": "Vinyasa Flow",
+          "vietnameseName": "Dòng chảy Vinyasa",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "weekday": "tue",
+          "weekdayLabelVi": "Thứ 3",
+          "slot": "07:00–08:00",
+          "start": "07:00",
+          "end": "08:00",
+          "classId": "wheel_yoga",
+          "englishName": "Wheel Yoga",
+          "vietnameseName": "Yoga bánh xe uốn lưng",
+          "teacher": "Master Anil",
+          "isProp": true,
+          "propType": "wheel",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "weekday": "wed",
+          "weekdayLabelVi": "Thứ 4",
+          "slot": "07:00–08:00",
+          "start": "07:00",
+          "end": "08:00",
+          "classId": "power_yoga",
+          "englishName": "Power Yoga",
+          "vietnameseName": "Yoga sức mạnh",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "weekday": "thu",
+          "weekdayLabelVi": "Thứ 5",
+          "slot": "07:00–08:00",
+          "start": "07:00",
+          "end": "08:00",
+          "classId": "balance_yoga",
+          "englishName": "Balance Yoga",
+          "vietnameseName": "Yoga cân bằng thân tâm",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "weekday": "fri",
+          "weekdayLabelVi": "Thứ 6",
+          "slot": "07:00–08:00",
+          "start": "07:00",
+          "end": "08:00",
+          "classId": "strap_yoga",
+          "englishName": "Strap Yoga",
+          "vietnameseName": "Yoga dây định tuyến",
+          "teacher": "Master Ravi",
+          "isProp": true,
+          "propType": "strap",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "weekday": "sat",
+          "weekdayLabelVi": "Thứ 7",
+          "slot": "07:00–08:00",
+          "start": "07:00",
+          "end": "08:00",
+          "classId": "morning_hatha",
+          "englishName": "Morning Hatha",
+          "vietnameseName": "Hatha buổi sáng",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "weekday": "mon",
+          "weekdayLabelVi": "Thứ 2",
+          "slot": "15:30–16:30",
+          "start": "15:30",
+          "end": "16:30",
+          "classId": "hip_opening_flow",
+          "englishName": "Hip Opening Flow",
+          "vietnameseName": "Dòng chảy mở hông",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "weekday": "tue",
+          "weekdayLabelVi": "Thứ 3",
+          "slot": "15:30–16:30",
+          "start": "15:30",
+          "end": "16:30",
+          "classId": "shoulder_neck_care",
+          "englishName": "Shoulder & Neck Care",
+          "vietnameseName": "Trị liệu vai và cổ gáy",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "weekday": "wed",
+          "weekdayLabelVi": "Thứ 4",
+          "slot": "15:30–16:30",
+          "start": "15:30",
+          "end": "16:30",
+          "classId": "partner_stretch",
+          "englishName": "Partner Stretch",
+          "vietnameseName": "Giãn cơ cặp đôi",
+          "teacher": "Master Ravi",
+          "isProp": true,
+          "propType": "partner",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "weekday": "thu",
+          "weekdayLabelVi": "Thứ 5",
+          "slot": "15:30–16:30",
+          "start": "15:30",
+          "end": "16:30",
+          "classId": "back_care_flow",
+          "englishName": "Back Care Flow",
+          "vietnameseName": "Dòng chảy phục hồi lưng",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "weekday": "fri",
+          "weekdayLabelVi": "Thứ 6",
+          "slot": "15:30–16:30",
+          "start": "15:30",
+          "end": "16:30",
+          "classId": "twist_detox",
+          "englishName": "Twist & Detox",
+          "vietnameseName": "Vặn xoắn thanh lọc cơ thể",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "weekday": "sat",
+          "weekdayLabelVi": "Thứ 7",
+          "slot": "15:30–16:30",
+          "start": "15:30",
+          "end": "16:30",
+          "classId": "stick_mobility",
+          "englishName": "Stick Mobility",
+          "vietnameseName": "Linh hoạt cùng gậy tập",
+          "teacher": "Master Anil",
+          "isProp": true,
+          "propType": "stick",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "weekday": "mon",
+          "weekdayLabelVi": "Thứ 2",
+          "slot": "17:30–18:30",
+          "start": "17:30",
+          "end": "18:30",
+          "classId": "stick_yoga",
+          "englishName": "Stick Yoga",
+          "vietnameseName": "Yoga gậy định tuyến",
+          "teacher": "Master Ravi",
+          "isProp": true,
+          "propType": "stick",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "weekday": "tue",
+          "weekdayLabelVi": "Thứ 3",
+          "slot": "17:30–18:30",
+          "start": "17:30",
+          "end": "18:30",
+          "classId": "vinyasa_flow",
+          "englishName": "Vinyasa Flow",
+          "vietnameseName": "Dòng chảy Vinyasa",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "weekday": "wed",
+          "weekdayLabelVi": "Thứ 4",
+          "slot": "17:30–18:30",
+          "start": "17:30",
+          "end": "18:30",
+          "classId": "mix_yoga",
+          "englishName": "Mix Yoga",
+          "vietnameseName": "Yoga tổng hợp",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "weekday": "thu",
+          "weekdayLabelVi": "Thứ 5",
+          "slot": "17:30–18:30",
+          "start": "17:30",
+          "end": "18:30",
+          "classId": "balance_stability",
+          "englishName": "Balance & Stability",
+          "vietnameseName": "Cân bằng và vững vàng",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "weekday": "fri",
+          "weekdayLabelVi": "Thứ 6",
+          "slot": "17:30–18:30",
+          "start": "17:30",
+          "end": "18:30",
+          "classId": "ball_yoga",
+          "englishName": "Ball Yoga",
+          "vietnameseName": "Yoga bóng ổn định",
+          "teacher": "Master Ravi",
+          "isProp": true,
+          "propType": "ball",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "weekday": "sat",
+          "weekdayLabelVi": "Thứ 7",
+          "slot": "17:30–18:30",
+          "start": "17:30",
+          "end": "18:30",
+          "classId": "twist_detox",
+          "englishName": "Twist & Detox",
+          "vietnameseName": "Vặn xoắn thanh lọc cơ thể",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-19",
+          "dateDisplayVi": "19/10",
+          "weekday": "mon",
+          "weekdayLabelVi": "Thứ 2",
+          "slot": "19:45–20:45",
+          "start": "19:45",
+          "end": "20:45",
+          "classId": "gentle_stretch",
+          "englishName": "Gentle Stretch",
+          "vietnameseName": "Giãn cơ nhẹ nhàng",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-20",
+          "dateDisplayVi": "20/10",
+          "weekday": "tue",
+          "weekdayLabelVi": "Thứ 3",
+          "slot": "19:45–20:45",
+          "start": "19:45",
+          "end": "20:45",
+          "classId": "ball_yoga",
+          "englishName": "Ball Yoga",
+          "vietnameseName": "Yoga bóng ổn định",
+          "teacher": "Master Anil",
+          "isProp": true,
+          "propType": "ball",
+          "status": "active"
+        },
+        {
+          "date": "2026-10-21",
+          "dateDisplayVi": "21/10",
+          "weekday": "wed",
+          "weekdayLabelVi": "Thứ 4",
+          "slot": "19:45–20:45",
+          "start": "19:45",
+          "end": "20:45",
+          "classId": "yin_breath",
+          "englishName": "Yin & Breath",
+          "vietnameseName": "Yin Yoga và thở sâu",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-22",
+          "dateDisplayVi": "22/10",
+          "weekday": "thu",
+          "weekdayLabelVi": "Thứ 5",
+          "slot": "19:45–20:45",
+          "start": "19:45",
+          "end": "20:45",
+          "classId": "relax_restore",
+          "englishName": "Relax & Restore",
+          "vietnameseName": "Thư giãn và hồi phục",
+          "teacher": "Master Anil",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-23",
+          "dateDisplayVi": "23/10",
+          "weekday": "fri",
+          "weekdayLabelVi": "Thứ 6",
+          "slot": "19:45–20:45",
+          "start": "19:45",
+          "end": "20:45",
+          "classId": "gentle_hatha",
+          "englishName": "Gentle Hatha",
+          "vietnameseName": "Hatha nhẹ nhàng",
+          "teacher": "Master Ravi",
+          "isProp": false,
+          "status": "active"
+        },
+        {
+          "date": "2026-10-24",
+          "dateDisplayVi": "24/10",
+          "weekday": "sat",
+          "weekdayLabelVi": "Thứ 7",
+          "slot": "19:45–20:45",
+          "start": "19:45",
+          "end": "20:45",
+          "classId": "wheel_release",
+          "englishName": "Wheel Release",
+          "vietnameseName": "Giải phóng cơ với bánh xe yoga",
+          "teacher": "Master Anil",
+          "isProp": true,
+          "propType": "wheel",
+          "status": "active"
+        }
+      ],
+      "rows": [
+        {
+          "slot": "05:00–06:00",
+          "classes": {
+            "mon": {
+              "classId": "block_restore",
+              "en": "Block Restore",
+              "vi": "Phục hồi cùng gạch yoga",
+              "isProp": true,
+              "propType": "block",
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "tue": {
+              "classId": "spine_wake_up",
+              "en": "Spine Wake-Up",
+              "vi": "Đánh thức cột sống",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "wed": {
+              "classId": "breath_stretch",
+              "en": "Breath & Stretch",
+              "vi": "Hơi thở và giãn cơ",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "thu": {
+              "classId": "wheel_release",
+              "en": "Wheel Release",
+              "vi": "Giải phóng cơ với bánh xe yoga",
+              "isProp": true,
+              "propType": "wheel",
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "fri": {
+              "classId": "mix_yoga",
+              "en": "Mix Yoga",
+              "vi": "Yoga tổng hợp",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "sat": {
+              "classId": "gentle_flow",
+              "en": "Gentle Flow",
+              "vi": "Dòng chảy êm dịu",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            }
+          }
+        },
+        {
+          "slot": "07:00–08:00",
+          "classes": {
+            "mon": {
+              "classId": "vinyasa_flow",
+              "en": "Vinyasa Flow",
+              "vi": "Dòng chảy Vinyasa",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "tue": {
+              "classId": "wheel_yoga",
+              "en": "Wheel Yoga",
+              "vi": "Yoga bánh xe uốn lưng",
+              "isProp": true,
+              "propType": "wheel",
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "wed": {
+              "classId": "power_yoga",
+              "en": "Power Yoga",
+              "vi": "Yoga sức mạnh",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "thu": {
+              "classId": "balance_yoga",
+              "en": "Balance Yoga",
+              "vi": "Yoga cân bằng thân tâm",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "fri": {
+              "classId": "strap_yoga",
+              "en": "Strap Yoga",
+              "vi": "Yoga dây định tuyến",
+              "isProp": true,
+              "propType": "strap",
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "sat": {
+              "classId": "morning_hatha",
+              "en": "Morning Hatha",
+              "vi": "Hatha buổi sáng",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            }
+          }
+        },
+        {
+          "slot": "15:30–16:30",
+          "classes": {
+            "mon": {
+              "classId": "hip_opening_flow",
+              "en": "Hip Opening Flow",
+              "vi": "Dòng chảy mở hông",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "tue": {
+              "classId": "shoulder_neck_care",
+              "en": "Shoulder & Neck Care",
+              "vi": "Trị liệu vai và cổ gáy",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "wed": {
+              "classId": "partner_stretch",
+              "en": "Partner Stretch",
+              "vi": "Giãn cơ cặp đôi",
+              "isProp": true,
+              "propType": "partner",
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "thu": {
+              "classId": "back_care_flow",
+              "en": "Back Care Flow",
+              "vi": "Dòng chảy phục hồi lưng",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "fri": {
+              "classId": "twist_detox",
+              "en": "Twist & Detox",
+              "vi": "Vặn xoắn thanh lọc cơ thể",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "sat": {
+              "classId": "stick_mobility",
+              "en": "Stick Mobility",
+              "vi": "Linh hoạt cùng gậy tập",
+              "isProp": true,
+              "propType": "stick",
+              "teacher": "Master Anil",
+              "status": "active"
+            }
+          }
+        },
+        {
+          "slot": "17:30–18:30",
+          "classes": {
+            "mon": {
+              "classId": "stick_yoga",
+              "en": "Stick Yoga",
+              "vi": "Yoga gậy định tuyến",
+              "isProp": true,
+              "propType": "stick",
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "tue": {
+              "classId": "vinyasa_flow",
+              "en": "Vinyasa Flow",
+              "vi": "Dòng chảy Vinyasa",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "wed": {
+              "classId": "mix_yoga",
+              "en": "Mix Yoga",
+              "vi": "Yoga tổng hợp",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "thu": {
+              "classId": "balance_stability",
+              "en": "Balance & Stability",
+              "vi": "Cân bằng và vững vàng",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "fri": {
+              "classId": "ball_yoga",
+              "en": "Ball Yoga",
+              "vi": "Yoga bóng ổn định",
+              "isProp": true,
+              "propType": "ball",
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "sat": {
+              "classId": "twist_detox",
+              "en": "Twist & Detox",
+              "vi": "Vặn xoắn thanh lọc cơ thể",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            }
+          }
+        },
+        {
+          "slot": "19:45–20:45",
+          "classes": {
+            "mon": {
+              "classId": "gentle_stretch",
+              "en": "Gentle Stretch",
+              "vi": "Giãn cơ nhẹ nhàng",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "tue": {
+              "classId": "ball_yoga",
+              "en": "Ball Yoga",
+              "vi": "Yoga bóng ổn định",
+              "isProp": true,
+              "propType": "ball",
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "wed": {
+              "classId": "yin_breath",
+              "en": "Yin & Breath",
+              "vi": "Yin Yoga và thở sâu",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "thu": {
+              "classId": "relax_restore",
+              "en": "Relax & Restore",
+              "vi": "Thư giãn và hồi phục",
+              "isProp": false,
+              "teacher": "Master Anil",
+              "status": "active"
+            },
+            "fri": {
+              "classId": "gentle_hatha",
+              "en": "Gentle Hatha",
+              "vi": "Hatha nhẹ nhàng",
+              "isProp": false,
+              "teacher": "Master Ravi",
+              "status": "active"
+            },
+            "sat": {
+              "classId": "wheel_release",
+              "en": "Wheel Release",
+              "vi": "Giải phóng cơ với bánh xe yoga",
+              "isProp": true,
+              "propType": "wheel",
+              "teacher": "Master Anil",
+              "status": "active"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

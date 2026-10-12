@@ -1,0 +1,166 @@
+{
+  "weekStart": "2026-08-24",
+  "weekEnd": "2026-08-29",
+  "weekLabelVi": "24/08/2026 – 29/08/2026",
+  "validThrough": "2026-08-29T23:59:59+07:00",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "generatedAt": "2026-08-23T08:00:00+07:00",
+  "overridesApplied": [],
+  "specialEvents": [],
+  "studios": {
+    "studio1": {
+      "studioId": "studio1",
+      "studioName": "Studio 1 — Yog Jivan Sanctuary",
+      "address": "Tầng 1 Nhà Thi Đấu Số 1, Bùi Thị Xuân, TP. Hải Dương",
+      "teacherPattern": {
+        "mon": "Master Anil",
+        "tue": "Master Ravi",
+        "wed": "Master Anil",
+        "thu": "Master Ravi",
+        "fri": "Master Anil",
+        "sat": "Master Ravi"
+      },
+      "timeSlots": [
+        "05:15–06:15",
+        "06:30–07:30",
+        "15:00–16:00",
+        "17:15–18:15",
+        "20:00–21:00"
+      ],
+      "rows": [
+        {
+          "slot": "05:15–06:15",
+          "classes": {
+            "mon": { "classId": "core_strength", "en": "Core Strength", "vi": "SỨC MẠNH CỐT LÕI", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "tue": { "classId": "balance_yoga", "en": "Balance Yoga", "vi": "YOGA CÂN BẰNG", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "wed": { "classId": "functional_strength", "en": "Functional Strength", "vi": "SỨC MẠNH CHỨC NĂNG", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "thu": { "classId": "back_strength", "en": "Back Strength", "vi": "SỨC MẠNH LƯNG", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "fri": { "classId": "strap_yoga", "en": "Strap Yoga", "vi": "YOGA DÂY", "isProp": true, "propType": "strap", "teacher": "Master Anil", "status": "active" },
+            "sat": { "classId": "stick_yoga", "en": "Stick Yoga", "vi": "YOGA GẬY", "isProp": true, "propType": "stick", "teacher": "Master Ravi", "status": "active" }
+          }
+        },
+        {
+          "slot": "06:30–07:30",
+          "classes": {
+            "mon": { "classId": "hatha_flow", "en": "Hatha Yoga", "vi": "YOGA CƠ BẢN", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "tue": { "classId": "block_yoga", "en": "Block Yoga", "vi": "YOGA GẠCH", "isProp": true, "propType": "block", "teacher": "Master Ravi", "status": "active" },
+            "wed": { "classId": "breath_flow", "en": "Breath Flow", "vi": "DÒNG CHẢY HƠI THỞ", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "thu": { "classId": "wheel_yoga", "en": "Wheel Yoga", "vi": "YOGA BÁNH XE", "isProp": true, "propType": "wheel", "teacher": "Master Ravi", "status": "active" },
+            "fri": { "classId": "mix_yoga", "en": "Mix Yoga", "vi": "YOGA TỔNG HỢP", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "sat": { "classId": "flexibility_flow", "en": "Flexibility Flow", "vi": "DÒNG CHẢY LINH HOẠT", "isProp": false, "teacher": "Master Ravi", "status": "active" }
+          }
+        },
+        {
+          "slot": "15:00–16:00",
+          "classes": {
+            "mon": { "classId": "wheel_yoga", "en": "Wheel Yoga", "vi": "YOGA BÁNH XE", "isProp": true, "propType": "wheel", "teacher": "Master Anil", "status": "active" },
+            "tue": { "classId": "hip_mobility", "en": "Hip Mobility", "vi": "LINH HOẠT KHỚP HÁNG", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "wed": { "classId": "ball_yoga", "en": "Ball Yoga", "vi": "YOGA BÓNG", "isProp": true, "propType": "ball", "teacher": "Master Anil", "status": "active" },
+            "thu": { "classId": "back_care_flow", "en": "Back Care Flow", "vi": "PHỤC HỒI LƯNG", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "fri": { "classId": "deep_stretch", "en": "Deep Stretch", "vi": "GIÃN CƠ SÂU", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "sat": { "classId": "shoulder_neck_care", "en": "Shoulder & Neck Care", "vi": "TRỊ LIỆU VAI CỔ", "isProp": false, "teacher": "Master Ravi", "status": "active" }
+          }
+        },
+        {
+          "slot": "17:15–18:15",
+          "classes": {
+            "mon": { "classId": "vinyasa_flow", "en": "Vinyasa Flow", "vi": "DÒNG CHẢY VINYASA", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "tue": { "classId": "stick_yoga", "en": "Stick Yoga", "vi": "YOGA GẬY", "isProp": true, "propType": "stick", "teacher": "Master Ravi", "status": "active" },
+            "wed": { "classId": "power_yoga", "en": "Power Yoga", "vi": "YOGA SỨC MẠNH", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "thu": { "classId": "core_stability", "en": "Core Stability", "vi": "ỔN ĐỊNH CƠ LÕI", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "fri": { "classId": "aerial_yoga", "en": "Aerial Yoga", "vi": "YOGA VÕNG", "isProp": true, "propType": "aerial", "teacher": "Master Anil", "status": "active" },
+            "sat": { "classId": "functional_flow", "en": "Functional Flow", "vi": "DÒNG CHẢY CHỨC NĂNG", "isProp": false, "teacher": "Master Ravi", "status": "active" }
+          }
+        },
+        {
+          "slot": "20:00–21:00",
+          "classes": {
+            "mon": { "classId": "gentle_flow", "en": "Gentle Flow", "vi": "DÒNG CHẢY ÊM DỊU", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "tue": { "classId": "aerial_yoga", "en": "Aerial Yoga", "vi": "YOGA VÕNG", "isProp": true, "propType": "aerial", "teacher": "Master Ravi", "status": "active" },
+            "wed": { "classId": "yin_yoga", "en": "Yin Yoga", "vi": "YIN YOGA", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "thu": { "classId": "partner_yoga", "en": "Partner Yoga", "vi": "YOGA CẶP ĐÔI", "isProp": true, "propType": "partner", "teacher": "Master Ravi", "status": "active" },
+            "fri": { "classId": "relax_restore", "en": "Relax & Restore", "vi": "THƯ GIÃN VÀ HỒI PHỤC", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "sat": { "classId": "meditation_breath", "en": "Meditation & Breath", "vi": "THIỀN VÀ HƠI THỞ", "isProp": false, "teacher": "Master Ravi", "status": "active" }
+          }
+        }
+      ]
+    },
+    "studio2": {
+      "studioId": "studio2",
+      "studioName": "Studio 2 — Yog Jivan Yoga Studio",
+      "address": "Tầng 3, Nhà Văn Hóa Lao Động, Ngô Quyền, TP. Hải Dương",
+      "teacherPattern": {
+        "mon": "Master Ravi",
+        "tue": "Master Anil",
+        "wed": "Master Ravi",
+        "thu": "Master Anil",
+        "fri": "Master Ravi",
+        "sat": "Master Anil"
+      },
+      "timeSlots": [
+        "05:00–06:00",
+        "07:00–08:00",
+        "15:30–16:30",
+        "17:30–18:30",
+        "19:45–20:45"
+      ],
+      "rows": [
+        {
+          "slot": "05:00–06:00",
+          "classes": {
+            "mon": { "classId": "morning_hatha", "en": "Morning Hatha", "vi": "HATHA BUỔI SÁNG", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "tue": { "classId": "strap_yoga", "en": "Strap Yoga", "vi": "YOGA DÂY", "isProp": true, "propType": "strap", "teacher": "Master Anil", "status": "active" },
+            "wed": { "classId": "sunrise_flow", "en": "Sunrise Flow", "vi": "DÒNG CHẢY BÌNH MINH", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "thu": { "classId": "stick_yoga", "en": "Stick Yoga", "vi": "YOGA GẬY", "isProp": true, "propType": "stick", "teacher": "Master Anil", "status": "active" },
+            "fri": { "classId": "spine_wake_up", "en": "Spine Wake-Up", "vi": "ĐÁNH THỨC CỘT SỐNG", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "sat": { "classId": "gentle_hatha", "en": "Gentle Hatha", "vi": "HATHA NHẸ NHÀNG", "isProp": false, "teacher": "Master Anil", "status": "active" }
+          }
+        },
+        {
+          "slot": "07:00–08:00",
+          "classes": {
+            "mon": { "classId": "power_yoga", "en": "Power Yoga", "vi": "YOGA SỨC MẠNH", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "tue": { "classId": "vinyasa_flow", "en": "Vinyasa Flow", "vi": "DÒNG CHẢY VINYASA", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "wed": { "classId": "block_yoga", "en": "Block Yoga", "vi": "YOGA GẠCH", "isProp": true, "propType": "block", "teacher": "Master Ravi", "status": "active" },
+            "thu": { "classId": "hatha_foundations", "en": "Hatha Foundations", "vi": "NỀN TẢNG HATHA", "isProp": false, "teacher": "Master Anil", "status": "active" },
+            "fri": { "classId": "wheel_yoga", "en": "Wheel Yoga", "vi": "YOGA BÁNH XE", "isProp": true, "propType": "wheel", "teacher": "Master Ravi", "status": "active" },
+            "sat": { "classId": "flexibility_flow", "en": "Flexibility Flow", "vi": "DÒNG CHẢY LINH HOẠT", "isProp": false, "teacher": "Master Anil", "status": "active" }
+          }
+        },
+        {
+          "slot": "15:30–16:30",
+          "classes": {
+            "mon": { "classId": "hip_mobility", "en": "Hip Mobility", "vi": "LINH HOẠT KHỚP HÁNG", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "tue": { "classId": "ball_yoga", "en": "Ball Yoga", "vi": "YOGA BÓNG", "isProp": true, "propType": "ball", "teacher": "Master Anil", "status": "active" },
+            "wed": { "classId": "shoulder_neck_care", "en": "Shoulder & Neck Care", "vi": "TRỊ LIỆU VAI CỔ", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "thu": { "classId": "strap_stretch", "en": "Strap Stretch", "vi": "GIÃN CƠ CÙNG DÂY", "isProp": true, "propType": "strap", "teacher": "Master Anil", "status": "active" },
+            "fri": { "classId": "deep_stretch", "en": "Deep Stretch", "vi": "GIÃN CƠ SÂU", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "sat": { "classId": "back_care_flow", "en": "Back Care Flow", "vi": "PHỤC HỒI LƯNG", "isProp": false, "teacher": "Master Anil", "status": "active" }
+          }
+        },
+        {
+          "slot": "17:30–18:30",
+          "classes": {
+            "mon": { "classId": "functional_strength", "en": "Functional Strength", "vi": "SỨC MẠNH CHỨC NĂNG", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "tue": { "classId": "wheel_yoga", "en": "Wheel Yoga", "vi": "YOGA BÁNH XE", "isProp": true, "propType": "wheel", "teacher": "Master Anil", "status": "active" },
+            "wed": { "classId": "core_balance", "en": "Core & Balance", "vi": "CỐT LÕI VÀ CÂN BẰNG", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "thu": { "classId": "stick_yoga", "en": "Stick Yoga", "vi": "YOGA GẬY", "isProp": true, "propType": "stick", "teacher": "Master Anil", "status": "active" },
+            "fri": { "classId": "power_vinyasa", "en": "Power Vinyasa", "vi": "POWER VINYASA", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "sat": { "classId": "functional_flow", "en": "Functional Flow", "vi": "DÒNG CHẢY CHỨC NĂNG", "isProp": false, "teacher": "Master Anil", "status": "active" }
+          }
+        },
+        {
+          "slot": "19:45–20:45",
+          "classes": {
+            "mon": { "classId": "yin_yoga", "en": "Yin Yoga", "vi": "YIN YOGA", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "tue": { "classId": "block_restore", "en": "Block Restore", "vi": "PHỤC HỒI CÙNG GẠCH", "isProp": true, "propType": "block", "teacher": "Master Anil", "status": "active" },
+            "wed": { "classId": "gentle_stretch", "en": "Gentle Stretch", "vi": "GIÃN CƠ NHẸ NHÀNG", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "thu": { "classId": "partner_yoga", "en": "Partner Yoga", "vi": "YOGA CẶP ĐÔI", "isProp": true, "propType": "partner", "teacher": "Master Anil", "status": "active" },
+            "fri": { "classId": "pranayama_flow", "en": "Pranayama Flow", "vi": "DÒNG CHẢY THỞ", "isProp": false, "teacher": "Master Ravi", "status": "active" },
+            "sat": { "classId": "balance_yoga", "en": "Balance Yoga", "vi": "YOGA CÂN BẰNG", "isProp": false, "teacher": "Master Anil", "status": "active" }
+          }
+        }
+      ]
+    }
+  }
+}
