@@ -17,7 +17,11 @@ const Testimonials = lazy(() => import("@/components/site/Testimonials").then(m 
 const FAQ = lazy(() => import("@/components/site/FAQ").then(m => ({ default: m.FAQ })));
 const ContactSection = lazy(() => import("@/components/site/ContactSection").then(m => ({ default: m.ContactSection })));
 
-const Skeleton = () => <div className="section-skeleton section-y" aria-hidden />;
+const Skeleton = () => (
+  <div className="section-skeleton py-16 flex items-center justify-center" aria-hidden>
+    <div className="h-px w-24 bg-gradient-to-r from-transparent via-[color:var(--gold)]/35 to-transparent animate-pulse" />
+  </div>
+);
 
 const Lazy = ({ children }: { children: React.ReactNode }) => (
   <Suspense fallback={<Skeleton />}>{children}</Suspense>

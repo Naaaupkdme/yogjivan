@@ -36,11 +36,12 @@ function Particles() {
     return geometry;
   }, [particles]);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!points.current) return;
-    points.current.rotation.y = state.clock.elapsedTime * 0.03;
-    points.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.12) * 0.08;
-    points.current.position.y = Math.sin(state.clock.elapsedTime * 0.2) * 0.15;
+    const t = typeof performance !== "undefined" ? performance.now() * 0.001 : 0;
+    points.current.rotation.y = t * 0.03;
+    points.current.rotation.x = Math.sin(t * 0.12) * 0.08;
+    points.current.position.y = Math.sin(t * 0.2) * 0.15;
   });
 
   return (
@@ -59,9 +60,10 @@ function Particles() {
 
 function Ring({ radius, color, speed, z }: { radius: number; color: string; speed: number; z: number }) {
   const mesh = useRef<THREE.Mesh>(null);
-  useFrame((state) => {
+  useFrame(() => {
     if (!mesh.current) return;
-    mesh.current.rotation.z = state.clock.elapsedTime * speed;
+    const t = typeof performance !== "undefined" ? performance.now() * 0.001 : 0;
+    mesh.current.rotation.z = t * speed;
   });
   return (
     <mesh ref={mesh} position={[0, 0, z]}>

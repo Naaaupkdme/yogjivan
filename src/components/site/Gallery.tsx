@@ -292,10 +292,10 @@ export function Gallery() {
 function CategoryCard({ category, index, onOpen }: { category: Category; index: number; onOpen: () => void }) {
   return (
     <motion.button
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0.95, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.8, delay: index * 0.06, ease: "easeOut" }}
+      viewport={{ once: true, margin: "20px" }}
+      transition={{ duration: 0.45, delay: index * 0.04, ease: "easeOut" }}
       onClick={onOpen}
       className="group relative block w-full overflow-hidden rounded-[1.5rem] border border-border/60 text-left transition-all duration-700 hover:border-[color:var(--gold)]/60 hover:shadow-[0_40px_100px_-30px_color-mix(in_oklab,var(--gold)_55%,transparent)]"
     >
@@ -306,7 +306,7 @@ function CategoryCard({ category, index, onOpen }: { category: Category; index: 
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.05]"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_35%,color-mix(in_oklab,var(--onyx)_60%,transparent)_70%,color-mix(in_oklab,var(--onyx)_94%,transparent))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,color-mix(in_oklab,var(--onyx)_45%,transparent)_70%,color-mix(in_oklab,var(--onyx)_82%,transparent))]" />
         <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-[radial-gradient(circle_at_50%_75%,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_70%)]" />
 
         <div className="absolute inset-x-5 bottom-5 sm:inset-x-6 sm:bottom-6">

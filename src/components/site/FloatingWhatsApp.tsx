@@ -17,7 +17,7 @@ export function FloatingWhatsApp() {
       data-floating-cta
       data-cta-location={chat.isVi ? "floating_zalo" : "floating_whatsapp"}
       aria-label={chat.ariaLabel}
-      className="fixed left-4 z-40 grid h-14 w-14 place-items-center rounded-full border border-white/15 text-[color:var(--foreground)] shadow-[0_22px_60px_-18px_rgba(0,0,0,0.45)] transition-transform hover:scale-105 sm:left-5 bottom-[88px] md:bottom-5"
+      className="fixed left-4 z-40 hidden md:grid h-14 w-14 place-items-center rounded-full border border-white/15 text-[color:var(--foreground)] shadow-[0_22px_60px_-18px_rgba(0,0,0,0.45)] transition-transform hover:scale-105 sm:left-5 bottom-5"
       style={{
         background: chat.isVi
           ? "linear-gradient(135deg, color-mix(in oklab, var(--gold) 30%, #2a7cf7), #0068ff)"

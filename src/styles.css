@@ -277,8 +277,8 @@
 }
 
 @utility section-skeleton {
-  min-height: 60vh;
-  background: linear-gradient(180deg, transparent, color-mix(in oklab, var(--surface) 30%, transparent), transparent);
+  min-height: 180px;
+  background: linear-gradient(180deg, transparent, color-mix(in oklab, var(--surface) 20%, transparent), transparent);
 }
 
 @utility safe-pt {

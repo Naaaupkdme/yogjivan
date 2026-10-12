@@ -48,8 +48,8 @@ const PARTICLES = [
 
 function CountUp({ value, decimals = 0, prefix = "", suffix = "" }: { value: number; decimals?: number; prefix?: string; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  // SSR/no-JS fallback shows the real figure; the count-up only replays client-side.
+  const inView = useInView(ref, { once: true, margin: "40px" });
+  // Start directly with the verified factual value to avoid displaying transient false numbers
   const mv = useMotionValue(value);
   const rounded = useTransform(mv, (v) => {
     const formatted = decimals ? v.toFixed(decimals) : Math.round(v).toLocaleString("en-US");
@@ -58,9 +58,13 @@ function CountUp({ value, decimals = 0, prefix = "", suffix = "" }: { value: num
 
   useEffect(() => {
     if (!inView) return;
-    mv.set(0);
+    // Factual limits, durations and studio counts (value <= 60) stay immediately accurate
+    if (value <= 60) return;
+    // Cumulative metrics (e.g. 10,000+ students) perform a tight, non-misleading count-up
+    const startVal = Math.floor(value * 0.75);
+    mv.set(startVal);
     const controls = animate(mv, value, {
-      duration: 2.5,
+      duration: 0.7,
       ease: [0.16, 1, 0.3, 1],
     });
     return () => controls.stop();
@@ -89,10 +93,10 @@ export function TrustSection() {
           {METRICS.map((m, idx) => (
             <motion.article
               key={m.label}
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ opacity: 0.95, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 1.2, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true, margin: "20px" }}
+              transition={{ duration: 0.45, delay: idx * 0.04, ease: "easeOut" }}
               className="trust-card group relative flex min-h-[180px] flex-col items-center justify-center overflow-hidden rounded-2xl p-5 text-center"
               style={{
                 maxHeight: 216,
