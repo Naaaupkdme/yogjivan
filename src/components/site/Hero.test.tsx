@@ -45,7 +45,7 @@ vi.mock("gsap", () => ({
 }));
 
 vi.mock("@/components/site/AmbientCanvas", () => ({
-  AmbientCanvas: () => <div data-testid="ambient-canvas" />,
+  AmbientCanvas: ({ inView }: any) => <div data-testid="ambient-canvas" data-in-view={String(inView)} />,
 }));
 
 describe("Hero component — media loading policy, authentic static poster, and lifecycle cleanup", () => {
@@ -412,5 +412,73 @@ describe("Hero component — media loading policy, authentic static poster, and 
     // Video must be unmounted and authentic poster must remain intact
     expect(document.querySelector("video")).toBeNull();
     expect(document.querySelector("picture img")).not.toBeNull();
+  });
+
+  it("11. AmbientCanvas lifecycle: skipped on mobile and mounts only on eligible desktop after load", async () => {
+    // 1. Mobile viewport: never mounts
+    render(<Hero />);
+    await act(async () => {
+      window.dispatchEvent(new Event("load"));
+      await new Promise((r) => setTimeout(r, 20));
+    });
+    expect(document.querySelector("[data-testid='ambient-canvas']")).toBeNull();
+    cleanup();
+
+    // 2. Desktop eligible viewport: mounts after load & idle callback
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: query.includes("min-width: 1024px") ? true : false,
+      media: query,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    }));
+
+    // @ts-expect-error - requestIdleCallback
+    window.requestIdleCallback = vi.fn((cb) => { cb(); return 1; });
+
+    render(<Hero />);
+    await act(async () => {
+      window.dispatchEvent(new Event("load"));
+      await new Promise((r) => setTimeout(r, 20));
+    });
+
+    const canvas = document.querySelector("[data-testid='ambient-canvas']");
+    expect(canvas).not.toBeNull();
+    expect(canvas?.getAttribute("data-in-view")).toBe("true");
+  });
+
+  it("12. AmbientCanvas lifecycle: unmounts when resized to mobile or prefers-reduced-motion is enabled", async () => {
+    let isDesktopQuery = true;
+    let desktopListeners: ((e: any) => void)[] = [];
+
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      get matches() {
+        if (query.includes("min-width: 1024px")) return isDesktopQuery;
+        return false;
+      },
+      media: query,
+      addEventListener: (event: string, cb: any) => {
+        if (query.includes("min-width: 1024px")) desktopListeners.push(cb);
+      },
+      removeEventListener: vi.fn(),
+    }));
+
+    // @ts-expect-error - requestIdleCallback
+    window.requestIdleCallback = vi.fn((cb) => { cb(); return 1; });
+
+    render(<Hero />);
+    await act(async () => {
+      window.dispatchEvent(new Event("load"));
+      await new Promise((r) => setTimeout(r, 20));
+    });
+
+    expect(document.querySelector("[data-testid='ambient-canvas']")).not.toBeNull();
+
+    // Resize to mobile
+    await act(async () => {
+      isDesktopQuery = false;
+      desktopListeners.forEach((cb) => cb({ matches: false }));
+    });
+
+    expect(document.querySelector("[data-testid='ambient-canvas']")).toBeNull();
   });
 });

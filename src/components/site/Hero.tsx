@@ -130,40 +130,101 @@ export function Hero() {
     return () => ctx.revert();
   }, []);
 
-  // Defer AmbientCanvas (three.js WebGL) until browser idle after critical render,
-  // and pause its render loop when the hero is scrolled out of view.
+  // Defer AmbientCanvas (three.js WebGL) until browser idle AFTER window load event,
+  // cancel on eligibility loss, unmount on mobile/reduced-motion, and pause when offscreen or hidden.
   useEffect(() => {
-    if (!isDesktop || typeof window === "undefined") return;
+    if (typeof window === "undefined") return;
 
     let idleId: number | undefined;
     let timerId: number | undefined;
+    let isCancelled = false;
 
-    const mountCanvas = () => setShowCanvas(true);
+    const cancelPending = () => {
+      isCancelled = true;
+      if (idleId !== undefined && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+        idleId = undefined;
+      }
+      if (timerId !== undefined) {
+        window.clearTimeout(timerId);
+        timerId = undefined;
+      }
+    };
 
-    if ("requestIdleCallback" in window) {
-      idleId = window.requestIdleCallback(mountCanvas, { timeout: 2500 });
+    const scheduleMount = () => {
+      cancelPending();
+      if (!isVideoEligible()) {
+        setShowCanvas(false);
+        return;
+      }
+      isCancelled = false;
+
+      const executeMount = () => {
+        if (isCancelled || !isVideoEligible()) return;
+        setShowCanvas(true);
+      };
+
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(executeMount, { timeout: 3000 });
+      } else {
+        timerId = window.setTimeout(executeMount, 1500);
+      }
+    };
+
+    const onWindowLoaded = () => {
+      scheduleMount();
+    };
+
+    if (document.readyState === "complete") {
+      scheduleMount();
     } else {
-      timerId = window.setTimeout(mountCanvas, 1500);
+      window.addEventListener("load", onWindowLoaded, { once: true });
     }
+
+    // React to viewport, reduced-motion, or connection changes
+    const mqWidth = window.matchMedia("(min-width: 1024px)");
+    const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const onEligibilityChange = () => {
+      if (!isVideoEligible()) {
+        cancelPending();
+        setShowCanvas(false);
+      } else if (!showCanvas) {
+        scheduleMount();
+      }
+    };
+    mqWidth.addEventListener?.("change", onEligibilityChange);
+    mqMotion.addEventListener?.("change", onEligibilityChange);
+
+    // Track intersection and document visibility to pause R3F frameloop
+    let isIntersecting = true;
+    const updateInView = () => {
+      const isVisible = typeof document !== "undefined" ? document.visibilityState === "visible" : true;
+      setCanvasInView(isIntersecting && isVisible);
+    };
 
     let observer: IntersectionObserver | undefined;
     if (rootRef.current && "IntersectionObserver" in window) {
       observer = new IntersectionObserver(([entry]) => {
-        setCanvasInView(entry.isIntersecting);
+        isIntersecting = entry.isIntersecting;
+        updateInView();
       }, { threshold: 0.05 });
       observer.observe(rootRef.current);
     }
 
+    const onVisibilityChange = () => {
+      updateInView();
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
     return () => {
-      if (idleId !== undefined && "cancelIdleCallback" in window) {
-        window.cancelIdleCallback(idleId);
-      }
-      if (timerId !== undefined) {
-        window.clearTimeout(timerId);
-      }
+      cancelPending();
+      window.removeEventListener("load", onWindowLoaded);
+      mqWidth.removeEventListener?.("change", onEligibilityChange);
+      mqMotion.removeEventListener?.("change", onEligibilityChange);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
       observer?.disconnect();
     };
-  }, [isDesktop]);
+  }, []);
 
   // Explicit hero video loading policy & guard lifecycle:
   // - Retain poster-only on mobile (<1024px), reduced-motion, save-data, or slow-2g/2g/3g connections
