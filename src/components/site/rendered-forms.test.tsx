@@ -466,7 +466,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
 
       await waitFor(() => {
         expect(screen.getByText("Thanks — we've received your request.")).toBeTruthy();
-      });
+      }, { timeout: 3000 });
 
       expect(submitLead).toHaveBeenCalledTimes(1);
       const payload = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0];

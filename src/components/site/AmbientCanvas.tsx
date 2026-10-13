@@ -16,15 +16,24 @@ class CanvasErrorBoundary extends Component<{ children: ReactNode }, { hasError:
   }
 }
 
+let _webglCached: boolean | null = null;
+
 function isWebGLAvailable(): boolean {
   if (typeof window === "undefined") return false;
+  if (_webglCached !== null) return _webglCached;
   try {
     const canvas = document.createElement("canvas");
-    return Boolean(
+    const gl =
       window.WebGLRenderingContext &&
-        (canvas.getContext("webgl2") || canvas.getContext("webgl") || canvas.getContext("experimental-webgl")),
-    );
+      (canvas.getContext("webgl2") || canvas.getContext("webgl") || canvas.getContext("experimental-webgl"));
+    _webglCached = Boolean(gl);
+    if (gl && typeof (gl as WebGLRenderingContext).getExtension === "function") {
+      const ext = (gl as WebGLRenderingContext).getExtension("WEBGL_lose_context");
+      ext?.loseContext();
+    }
+    return _webglCached;
   } catch {
+    _webglCached = false;
     return false;
   }
 }

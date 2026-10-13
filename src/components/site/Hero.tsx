@@ -115,8 +115,9 @@ export function Hero() {
   // When motion is enabled, apply a subtle entrance translation without hiding initial opacity.
   useEffect(() => {
     if (!contentRef.current) return;
+    const isWide = window.matchMedia("(min-width: 1024px)").matches;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) {
+    if (!isWide || reducedMotion) {
       return;
     }
     const ctx = gsap.context(() => {
