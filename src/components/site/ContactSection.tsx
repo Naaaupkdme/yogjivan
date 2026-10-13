@@ -148,7 +148,7 @@ export function ContactSection() {
           <div className="grid gap-6 lg:grid-cols-2">
             {studios.map((studio, idx) => (
               <div key={studio.title} className="group relative overflow-hidden rounded-[1.5rem] border border-[color:var(--gold)]/25 bg-card/30 transition-all hover:border-primary/40">
-                <a href={studio.mapHref} target="_blank" rel="noopener noreferrer" aria-label={`Open ${studio.title} in Google Maps`}
+                <a href={studio.mapHref} target="_blank" rel="noopener noreferrer" aria-label={`Studio ${idx + 1} — Open ${studio.title} in Google Maps`}
                   className="relative block h-64 w-full overflow-hidden">
                   <iframe title={`${studio.title} location on Google Maps`}
                     src={studio.embed}

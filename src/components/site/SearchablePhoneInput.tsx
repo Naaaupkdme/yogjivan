@@ -99,7 +99,7 @@ export function SearchablePhoneInput({
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Select country"
+          aria-label={`+${country.dialCode}, select country`}
           aria-haspopup="listbox"
           aria-expanded={open}
           className="flex items-center gap-2 rounded-l-[1rem] border-r border-white/10 px-3 py-3 text-sm hover:bg-white/[0.03]"

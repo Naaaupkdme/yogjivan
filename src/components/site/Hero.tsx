@@ -107,21 +107,124 @@ export function Hero() {
   const [scrolled, setScrolled] = useState(false);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [videoReady, setVideoReady] = useState(false);
+  const [showCanvas, setShowCanvas] = useState(false);
+  const [canvasInView, setCanvasInView] = useState(true);
 
   // Essential heading, body, and CTA entrance:
-  // Honor prefers-reduced-motion by rendering immediately at full opacity without delay or translation
+  // Text is naturally 100% visible on initial paint / SSR so FCP & LCP elementRenderDelay is 0ms.
+  // When motion is enabled, apply a subtle entrance translation without hiding initial opacity.
   useEffect(() => {
     if (!contentRef.current) return;
+    const isWide = window.matchMedia("(min-width: 1024px)").matches;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) {
-      gsap.set(".hero-reveal", { opacity: 1, y: 0 });
+    if (!isWide || reducedMotion) {
       return;
     }
     const ctx = gsap.context(() => {
-      gsap.fromTo(".hero-reveal", { y: 26, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.15, stagger: 0.12, ease: "power3.out", delay: 0.18 });
+      gsap.from(".hero-reveal", {
+        y: 16,
+        duration: 0.85,
+        stagger: 0.08,
+        ease: "power2.out",
+      });
     }, contentRef);
     return () => ctx.revert();
+  }, []);
+
+  // Defer AmbientCanvas (three.js WebGL) until browser idle AFTER window load event,
+  // cancel on eligibility loss, unmount on mobile/reduced-motion, and pause when offscreen or hidden.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let idleId: number | undefined;
+    let timerId: number | undefined;
+    let isCancelled = false;
+
+    const cancelPending = () => {
+      isCancelled = true;
+      if (idleId !== undefined && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+        idleId = undefined;
+      }
+      if (timerId !== undefined) {
+        window.clearTimeout(timerId);
+        timerId = undefined;
+      }
+    };
+
+    const scheduleMount = () => {
+      cancelPending();
+      if (!isVideoEligible()) {
+        setShowCanvas(false);
+        return;
+      }
+      isCancelled = false;
+
+      const executeMount = () => {
+        if (isCancelled || !isVideoEligible()) return;
+        setShowCanvas(true);
+      };
+
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(executeMount, { timeout: 3000 });
+      } else {
+        timerId = window.setTimeout(executeMount, 1500);
+      }
+    };
+
+    const onWindowLoaded = () => {
+      scheduleMount();
+    };
+
+    if (document.readyState === "complete") {
+      scheduleMount();
+    } else {
+      window.addEventListener("load", onWindowLoaded, { once: true });
+    }
+
+    // React to viewport, reduced-motion, or connection changes
+    const mqWidth = window.matchMedia("(min-width: 1024px)");
+    const mqMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const onEligibilityChange = () => {
+      if (!isVideoEligible()) {
+        cancelPending();
+        setShowCanvas(false);
+      } else if (!showCanvas) {
+        scheduleMount();
+      }
+    };
+    mqWidth.addEventListener?.("change", onEligibilityChange);
+    mqMotion.addEventListener?.("change", onEligibilityChange);
+
+    // Track intersection and document visibility to pause R3F frameloop
+    let isIntersecting = true;
+    const updateInView = () => {
+      const isVisible = typeof document !== "undefined" ? document.visibilityState === "visible" : true;
+      setCanvasInView(isIntersecting && isVisible);
+    };
+
+    let observer: IntersectionObserver | undefined;
+    if (rootRef.current && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(([entry]) => {
+        isIntersecting = entry.isIntersecting;
+        updateInView();
+      }, { threshold: 0.05 });
+      observer.observe(rootRef.current);
+    }
+
+    const onVisibilityChange = () => {
+      updateInView();
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
+
+    return () => {
+      cancelPending();
+      window.removeEventListener("load", onWindowLoaded);
+      mqWidth.removeEventListener?.("change", onEligibilityChange);
+      mqMotion.removeEventListener?.("change", onEligibilityChange);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      observer?.disconnect();
+    };
   }, []);
 
   // Explicit hero video loading policy & guard lifecycle:
@@ -347,10 +450,10 @@ export function Hero() {
       </div>
 
 
-      {/* Ambient three.js layer — desktop only, lazy-loaded after first paint */}
-      {isDesktop && (
+      {/* Ambient three.js layer — desktop only, deferred until browser idle after initial paint */}
+      {isDesktop && showCanvas && (
         <div className="pointer-events-none absolute inset-0 opacity-60">
-          <Suspense fallback={null}><AmbientCanvas /></Suspense>
+          <Suspense fallback={null}><AmbientCanvas inView={canvasInView} /></Suspense>
         </div>
       )}
 
