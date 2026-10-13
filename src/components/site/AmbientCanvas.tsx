@@ -73,10 +73,10 @@ function Ring({ radius, color, speed, z }: { radius: number; color: string; spee
   );
 }
 
-export function AmbientCanvas() {
+export function AmbientCanvas({ inView = true }: { inView?: boolean }) {
   return (
     <div className="pointer-events-none absolute inset-0 opacity-80">
-      <Canvas camera={{ position: [0, 0, 8], fov: 45 }} dpr={[1, 1.5]}>
+      <Canvas frameloop={inView ? "always" : "never"} camera={{ position: [0, 0, 8], fov: 45 }} dpr={[1, 1.5]}>
         <ambientLight intensity={0.55} />
         <Particles />
         <Ring radius={2.6} color="#caa86b" speed={0.08} z={-1} />

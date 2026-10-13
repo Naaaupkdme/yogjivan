@@ -116,7 +116,7 @@ export function Testimonials() {
             href="https://youtube.com/@yogjivanvietnam?si=MClExD8wRgaoWbvR"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Visit the Yog Jivan YouTube channel"
+            aria-label="Visit our YouTube channel"
             className="inline-flex items-center gap-1.5 text-[0.7rem] uppercase tracking-[0.22em] text-primary transition-colors hover:text-foreground"
           >
             Visit our YouTube channel <ArrowRight className="h-3 w-3" />

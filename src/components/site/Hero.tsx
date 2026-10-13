@@ -107,22 +107,63 @@ export function Hero() {
   const [scrolled, setScrolled] = useState(false);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [videoReady, setVideoReady] = useState(false);
+  const [showCanvas, setShowCanvas] = useState(false);
+  const [canvasInView, setCanvasInView] = useState(true);
 
   // Essential heading, body, and CTA entrance:
-  // Honor prefers-reduced-motion by rendering immediately at full opacity without delay or translation
+  // Text is naturally 100% visible on initial paint / SSR so FCP & LCP elementRenderDelay is 0ms.
+  // When motion is enabled, apply a subtle entrance translation without hiding initial opacity.
   useEffect(() => {
     if (!contentRef.current) return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducedMotion) {
-      gsap.set(".hero-reveal", { opacity: 1, y: 0 });
       return;
     }
     const ctx = gsap.context(() => {
-      gsap.fromTo(".hero-reveal", { y: 26, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.15, stagger: 0.12, ease: "power3.out", delay: 0.18 });
+      gsap.from(".hero-reveal", {
+        y: 16,
+        duration: 0.85,
+        stagger: 0.08,
+        ease: "power2.out",
+      });
     }, contentRef);
     return () => ctx.revert();
   }, []);
+
+  // Defer AmbientCanvas (three.js WebGL) until browser idle after critical render,
+  // and pause its render loop when the hero is scrolled out of view.
+  useEffect(() => {
+    if (!isDesktop || typeof window === "undefined") return;
+
+    let idleId: number | undefined;
+    let timerId: number | undefined;
+
+    const mountCanvas = () => setShowCanvas(true);
+
+    if ("requestIdleCallback" in window) {
+      idleId = window.requestIdleCallback(mountCanvas, { timeout: 2500 });
+    } else {
+      timerId = window.setTimeout(mountCanvas, 1500);
+    }
+
+    let observer: IntersectionObserver | undefined;
+    if (rootRef.current && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(([entry]) => {
+        setCanvasInView(entry.isIntersecting);
+      }, { threshold: 0.05 });
+      observer.observe(rootRef.current);
+    }
+
+    return () => {
+      if (idleId !== undefined && "cancelIdleCallback" in window) {
+        window.cancelIdleCallback(idleId);
+      }
+      if (timerId !== undefined) {
+        window.clearTimeout(timerId);
+      }
+      observer?.disconnect();
+    };
+  }, [isDesktop]);
 
   // Explicit hero video loading policy & guard lifecycle:
   // - Retain poster-only on mobile (<1024px), reduced-motion, save-data, or slow-2g/2g/3g connections
@@ -347,10 +388,10 @@ export function Hero() {
       </div>
 
 
-      {/* Ambient three.js layer — desktop only, lazy-loaded after first paint */}
-      {isDesktop && (
+      {/* Ambient three.js layer — desktop only, deferred until browser idle after initial paint */}
+      {isDesktop && showCanvas && (
         <div className="pointer-events-none absolute inset-0 opacity-60">
-          <Suspense fallback={null}><AmbientCanvas /></Suspense>
+          <Suspense fallback={null}><AmbientCanvas inView={canvasInView} /></Suspense>
         </div>
       )}
 

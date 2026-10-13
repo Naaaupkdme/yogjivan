@@ -183,10 +183,13 @@ export function SmartConsultation() {
               />
 
               <div>
-                <label className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">
+                <label htmlFor="consultation-service" className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">
                   What are you interested in? *
                 </label>
                 <select
+                  id="consultation-service"
+                  name="service"
+                  aria-label="What are you interested in?"
                   value={form.service}
                   onChange={(e) => update("service", e.target.value)}
                   className="w-full rounded-[1rem] border border-white/10 bg-white/[0.04] px-4 py-3 text-sm outline-none transition-colors focus:border-[color:var(--gold)]/60"
@@ -203,10 +206,13 @@ export function SmartConsultation() {
             </div>
 
             <div className="mt-4">
-              <label className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">
+              <label htmlFor="consultation-message" className="block text-[0.6rem] uppercase tracking-[0.26em] text-muted-foreground mb-2">
                 Your goal or any health notes (optional)
               </label>
               <textarea
+                id="consultation-message"
+                name="message"
+                aria-label="Your goal or any health notes (optional)"
                 value={form.message}
                 onChange={(e) => update("message", e.target.value)}
                 rows={3}

@@ -102,7 +102,7 @@ export function SiteFooter() {
 
         <div className={`grid gap-8 border-b border-border/60 pb-10 ${hideLocal ? "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]" : "lg:grid-cols-[1.2fr_0.9fr_0.9fr_1.1fr]"}`}>
           <div>
-            <a href={isVi ? "/vi" : "/"} className="flex items-center gap-3" aria-label={isVi ? "Yog Jivan — trang chủ tiếng Việt" : "Yog Jivan home"}>
+            <a href={isVi ? "/vi" : "/"} className="flex items-center gap-3" aria-label="Yog Jivan Sanctuary">
               <picture>
                 <source
                   type="image/webp"
@@ -118,6 +118,7 @@ export function SiteFooter() {
                   loading="lazy"
                   decoding="async"
                   alt="Yog Jivan Sanctuary logo"
+                  aria-hidden="true"
                   className="h-11 w-11 object-contain"
                 />
               </picture>
