@@ -103,7 +103,7 @@ export function Programs() {
               ))}
             </ul>
 
-            <Link to="/contact" hash="consultation" className="mt-10 inline-flex w-full btn-gold">
+            <Link to="/private-online-yoga" hash="private-enquiry" className="mt-10 inline-flex w-full btn-gold">
               Enquire About Private Yoga
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
