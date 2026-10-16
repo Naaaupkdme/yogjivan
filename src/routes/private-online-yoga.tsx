@@ -80,11 +80,66 @@ const CONTINUITY = [
   { t: "Easier to ask questions", d: "A familiar teacher makes it far more comfortable to say what feels difficult, unclear or uncomfortable." },
 ];
 
-const NEXT_STEPS = [
-  { n: "1", t: "We read your request", d: "Your level, what you want to work on and the times that realistically suit you." },
-  { n: "2", t: "We match a suitable teacher", d: "A Yog Jivan teacher is matched to your level, goals and language, and the match is agreed with you." },
-  { n: "3", t: "You start a live 60-minute session", d: "Your matched teacher guides the full hour live, and sessions are generally kept with the same teacher for continuity." },
-];
+export const PRIVATE_PLANS = [
+  {
+    id: "plan-12",
+    planValue: "12-Session Plan",
+    badge: "Kickstart & Foundations",
+    sessions: 12,
+    sessionLabel: "12 Sessions",
+    duration: "60 min each",
+    title: "Practice Foundation",
+    subtitle: "Ideal for beginners or those resetting their alignment",
+    points: [
+      "12 live 1-on-1 private video sessions (60 min each)",
+      "Dedicated Yog Jivan teacher kept for session-to-session continuity",
+      "Essential posture foundations, breathwork & safe modifications",
+      "Pacing & times arranged around your local time zone",
+    ],
+    pricing: "Pricing by enquiry",
+    note: "All dates and weekly pacing agreed directly before starting.",
+    cta: "Enquire About 12 Sessions",
+  },
+  {
+    id: "plan-20",
+    planValue: "20-Session Plan",
+    badge: "Most Popular",
+    featured: true,
+    sessions: 20,
+    sessionLabel: "20 Sessions",
+    duration: "60 min each",
+    title: "Guided Progression",
+    subtitle: "For consistent habit formation, mobility & deeper technique",
+    points: [
+      "20 live 1-on-1 private video sessions (60 min each)",
+      "Dedicated Yog Jivan teacher for uninterrupted practice continuity",
+      "Refine transitions, posture depth, stamina and balance",
+      "Adaptive progression that builds directly on previous sessions",
+    ],
+    pricing: "Pricing by enquiry",
+    note: "All dates and weekly pacing agreed directly before starting.",
+    cta: "Enquire About 20 Sessions",
+  },
+  {
+    id: "plan-24",
+    planValue: "24-Session Plan",
+    badge: "Deep Practice",
+    sessions: 24,
+    sessionLabel: "24 Sessions",
+    duration: "60 min each",
+    title: "Practice Immersion",
+    subtitle: "Complete personal practice evolution across every stage",
+    points: [
+      "24 live 1-on-1 private video sessions (60 min each)",
+      "Dedicated Yog Jivan teacher for long-term consistency and practice continuity",
+      "Advanced technique, inversions or targeted personal focus",
+      "Full personal practice curriculum evolving session by session",
+    ],
+    pricing: "Pricing by enquiry",
+    note: "All dates and weekly pacing agreed directly before starting.",
+    cta: "Enquire About 24 Sessions",
+  },
+] as const;
 
 const LEVELS = [
   {
@@ -324,7 +379,7 @@ export const Route = createFileRoute("/private-online-yoga")({
           name: "Private Online Yoga Classes (1-on-1)",
           serviceType: "Online Private Yoga Session",
           description:
-            "Live 60-minute one-to-one online yoga sessions taught by the Yog Jivan teaching team. Students are matched with a teacher from the team and sessions are generally kept with that same teacher for continuity, for beginner, intermediate and advanced practice. Pricing and scheduling by enquiry.",
+            "Live 60-minute one-to-one online yoga sessions taught by the Yog Jivan teaching team. Students are matched with a teacher from the team and sessions are generally kept with that same teacher for continuity, for beginner, intermediate and advanced practice. Available in 12, 20 and 24-session plans. Pricing and scheduling by enquiry.",
           areaServed: "Worldwide",
           url: "/private-online-yoga",
         })),
@@ -346,6 +401,18 @@ export const Route = createFileRoute("/private-online-yoga")({
 });
 
 function PrivateYogaPage() {
+  const [selectedPlan, setSelectedPlan] = useState<string>("");
+
+  function handleSelectPlan(plan: string) {
+    setSelectedPlan(plan);
+    const el = document.getElementById("private-enquiry");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      const planSelect = document.getElementById("pv-plan") as HTMLSelectElement | null;
+      planSelect?.focus();
+    }
+  }
+
   return (
     <>
       {/* 1 — HERO */}
@@ -357,13 +424,22 @@ function PrivateYogaPage() {
         image={masterImages.studioAdjustment}
         contrastVeil
       >
-
         <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
           You are matched with a Yog Jivan teacher, and sessions are generally kept with that same teacher
           for continuity.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-4">
-          <EnquiryButton ctaLocation="private_yoga_hero">Enquire About Private 1-on-1 Yoga</EnquiryButton>
+          <button
+            type="button"
+            onClick={() => {
+              const el = document.getElementById("private-plans");
+              el?.scrollIntoView({ behavior: "smooth" });
+            }}
+            data-cta-location="private_yoga_hero"
+            className="btn-gold"
+          >
+            View Session Plans & Enquire
+          </button>
           <a
             href={waHref("private")}
             target="_blank"
@@ -388,35 +464,101 @@ function PrivateYogaPage() {
         </p>
       </PageHero>
 
-      {/* 2 — INLINE ENQUIRY FORM */}
+      {/* 2 — 12, 20 & 24-SESSION PLANS */}
+      <section id="private-plans" className="section-pad-sm relative isolate scroll-mt-24">
+        <div className="container-luxe">
+          <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Session plans & formats</p>
+          <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.5rem, 3vw, 2.3rem)" }}>
+            Structured 1-on-1 private practice — 12, 20 & 24-session plans
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/80 md:text-base">
+            Every private plan is built around live 60-minute video sessions with a dedicated teacher
+            kept session after session for continuity. Pacing and schedule are arranged around your week.
+          </p>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-3">
+            {PRIVATE_PLANS.map((plan) => (
+              <div
+                key={plan.id}
+                className={`flex flex-col justify-between rounded-[1.75rem] p-6 md:p-8 transition-transform hover:-translate-y-1 ${
+                  "featured" in plan && plan.featured
+                    ? "glass-luxe border-2 border-[color:var(--gold)]/60 bg-[color-mix(in_oklab,var(--gold)_8%,var(--onyx))] shadow-[var(--shadow-gold)]"
+                    : "glass-soft border border-white/10"
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="rounded-full border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10 px-3 py-1 text-[0.62rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+                      {plan.badge}
+                    </span>
+                    <span className="text-xs text-foreground/70">{plan.duration}</span>
+                  </div>
+                  <h3 className="mt-4 font-display text-2xl text-foreground">{plan.title}</h3>
+                  <div className="mt-1 font-display text-lg text-[color:var(--gold)]">{plan.sessionLabel}</div>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/75">{plan.subtitle}</p>
+
+                  <ul className="mt-6 space-y-2.5 border-t border-white/8 pt-6">
+                    {plan.points.map((pt) => (
+                      <li key={pt} className="flex items-start gap-2.5 text-sm text-foreground/85">
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--gold)]" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-8 border-t border-white/8 pt-6">
+                  <div className="text-sm font-semibold text-foreground">{plan.pricing}</div>
+                  <p className="mt-1 text-xs text-foreground/65">{plan.note}</p>
+                  <button
+                    type="button"
+                    onClick={() => handleSelectPlan(plan.planValue)}
+                    className={`mt-5 w-full justify-center min-h-[44px] ${
+                      "featured" in plan && plan.featured ? "btn-gold" : "btn-ghost-gold"
+                    }`}
+                  >
+                    {plan.cta}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3 — INLINE ENQUIRY FORM */}
       <section id="private-enquiry" className="section-pad-sm relative isolate scroll-mt-28" tabIndex={-1}>
         <div aria-hidden="true" className="liquid-veil" />
         <div className="container-luxe">
-          <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
+          <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,32rem)]">
             <div className="order-2 lg:order-1">
-              <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Start here</p>
+              <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Enquire directly</p>
               <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.5rem, 3vw, 2.3rem)" }}>
-                Book private yoga online — one enquiry, no payment
+                Book private yoga online — matched teacher & personal schedule
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
-                Tell us your current level and the times you can realistically practise. We will match
-                you with a suitable teacher from the Yog Jivan team and explain private-session
-                options, scheduling and pricing directly.
+                Tell us your current level, preferred plan (12, 20 or 24 sessions) and language preference.
+                We will match you with a suitable teacher from the Yog Jivan team and confirm
+                scheduling, format and pricing directly.
               </p>
 
-              <ol className="mt-7 grid gap-3">
-                {NEXT_STEPS.map((s) => (
-                  <li key={s.n} className="flex gap-4 rounded-2xl border border-white/8 bg-white/[0.03] p-4">
-                    <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10 text-sm text-[color:var(--gold)]">
-                      {s.n}
-                    </span>
-                    <div>
-                      <div className="font-display text-base text-foreground">{s.t}</div>
-                      <p className="mt-1 text-sm leading-relaxed text-foreground/75">{s.d}</p>
-                    </div>
+              <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+                <h3 className="font-display text-base text-[color:var(--gold)]">How private matching works</h3>
+                <ul className="mt-3 space-y-2 text-sm text-foreground/80">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[color:var(--gold)]">—</span>
+                    <span><strong>1-on-1 live video:</strong> 60 minutes guided in real time worldwide.</span>
                   </li>
-                ))}
-              </ol>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[color:var(--gold)]">—</span>
+                    <span><strong>Dedicated teacher:</strong> Sessions are generally kept with the same matched teacher for continuity.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[color:var(--gold)]">—</span>
+                    <span><strong>Pricing by enquiry:</strong> All plans, times and weekly pacing agreed before you begin.</span>
+                  </li>
+                </ul>
+              </div>
 
               <p className="mt-6 text-sm leading-relaxed text-foreground/70">
                 We do not ask for medical details on this form. If anything about your health affects
@@ -424,7 +566,10 @@ function PrivateYogaPage() {
               </p>
             </div>
             <div className="order-1 lg:order-2">
-              <PrivateYogaEnquiryForm />
+              <PrivateYogaEnquiryForm
+                selectedPlan={selectedPlan}
+                onSelectPlan={setSelectedPlan}
+              />
             </div>
           </div>
         </div>

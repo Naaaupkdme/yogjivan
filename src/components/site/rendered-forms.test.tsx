@@ -11,9 +11,13 @@ import { submitLead } from "@/lib/leads";
 
 MotionGlobalConfig.skipAnimations = true;
 
-vi.mock("@tanstack/react-router", () => ({
-  Link: ({ children, to, ...props }: any) => <a href={to} {...props}>{children}</a>,
-}));
+vi.mock("@tanstack/react-router", async () => {
+  const actual = await vi.importActual<any>("@tanstack/react-router");
+  return {
+    ...actual,
+    Link: ({ children, to, ...props }: any) => <a href={to} {...props}>{children}</a>,
+  };
+});
 
 vi.mock("sonner", () => ({
   toast: { error: vi.fn(), success: vi.fn() },
@@ -330,6 +334,73 @@ describe("Rendered forms — actual component validation, submission wiring, out
         expect(screen.getByText("Request received.")).toBeTruthy();
       });
       expect(submitLead).toHaveBeenCalledTimes(1);
+    });
+
+    it("submits selectedPlan prop and language preference into preferred_experience and meta", async () => {
+      (submitLead as unknown as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+        outcome: "accepted",
+      });
+
+      const onSelectPlan = vi.fn();
+      const { container } = render(
+        <PrivateYogaEnquiryForm selectedPlan="12-Session Plan" onSelectPlan={onSelectPlan} />
+      );
+
+      const nameInput = screen.getByPlaceholderText("Your full name") as HTMLInputElement;
+      const phoneInput = container.querySelector('input[type="tel"]') as HTMLInputElement;
+      const levelSelect = container.querySelector('select[name="pv-level"]') as HTMLSelectElement;
+      const planSelect = container.querySelector('select[name="pv-plan"]') as HTMLSelectElement;
+      const langSelect = container.querySelector('select[name="pv-language"]') as HTMLSelectElement;
+
+      expect(planSelect.value).toBe("12-Session Plan");
+
+      fireEvent.change(nameInput, { target: { value: "Elena Rostova" } });
+      fireEvent.change(phoneInput, { target: { value: "84782046066" } });
+      fireEvent.change(levelSelect, { target: { value: "Regular or Advanced Practitioner" } });
+      fireEvent.change(langSelect, { target: { value: "Vietnamese" } });
+
+      const submitBtn = screen.getByRole("button", { name: /Enquire About Private/i });
+      fireEvent.click(submitBtn);
+
+      await waitFor(() => {
+        expect(screen.getByText("Request received.")).toBeTruthy();
+      });
+
+      expect(submitLead).toHaveBeenCalledTimes(1);
+      const payload = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0];
+      expect(payload.preferred_experience).toBe(
+        "Private 1-on-1 online yoga (12-Session Plan · Language: Vietnamese)"
+      );
+      expect(payload.meta.plan_sessions).toBe("12-Session Plan");
+      expect(payload.meta.preferred_language).toBe("Vietnamese");
+      expect(payload.meta.funnel).toBe("private_yoga_organic");
+      expect(payload.meta.landing_page).toBe("/private-online-yoga");
+
+      // Verify privacy - no PII or health in analytics
+      expect(mockGtag).toHaveBeenCalledWith(
+        "event",
+        "generate_lead",
+        expect.objectContaining({
+          form_id: "private_yoga_enquiry",
+          service_category: "private_online",
+        })
+      );
+      expect(JSON.stringify(mockGtag.mock.calls)).not.toContain("Elena Rostova");
+    });
+
+    it("PRIVATE_PLANS defines 12, 20 and 24-session packages with pricing by enquiry", async () => {
+      const { PRIVATE_PLANS } = await import("@/routes/private-online-yoga");
+      expect(PRIVATE_PLANS.length).toBe(3);
+      const sessionCounts = PRIVATE_PLANS.map((p) => p.sessions);
+      expect(sessionCounts).toEqual([12, 20, 24]);
+
+      PRIVATE_PLANS.forEach((plan) => {
+        expect(plan.pricing).toBe("Pricing by enquiry");
+        expect(plan.points.some((pt) => pt.includes("60 min") || pt.includes("60-minute"))).toBe(true);
+        expect(plan.points.some((pt) => pt.toLowerCase().includes("continuity"))).toBe(true);
+        // Zero published prices or discounts
+        expect(JSON.stringify(plan)).not.toMatch(/\$|VND|₫|₹|discount|save|valid for|expires/i);
+      });
     });
   });
 

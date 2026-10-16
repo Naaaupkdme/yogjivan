@@ -90,7 +90,7 @@ export function buildLeadPayload(l: LeadRow): { payload: LeadPayload; reply: str
   // Only non-PII attribution keys go into the JSON mirror.
   const safeMeta: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(meta)) {
-    if (/^(utm_|gclid|fbclid|funnel|landing|market|timezone|referrer_host|first_touch_at|lead_event_id)/.test(k)) {
+    if (/^(utm_|gclid|fbclid|funnel|landing|market|timezone|referrer_host|first_touch_at|lead_event_id|preferred_language|plan_)/.test(k)) {
       safeMeta[k] = typeof v === "string" ? v.slice(0, 200) : v;
     }
   }
