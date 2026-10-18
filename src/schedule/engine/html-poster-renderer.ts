@@ -673,15 +673,20 @@ export async function renderPostersWithChrome(
   const s1LatestPng = path.join(outputDir, `poster-studio1-latest.png`);
   const s2LatestPng = path.join(outputDir, `poster-studio2-latest.png`);
 
-  const chromePath = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+  const chromePath = process.env.CHROME_BIN || (process.platform === "darwin"
+    ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    : "/usr/bin/google-chrome");
 
-  if (fs.existsSync(chromePath)) {
+  if (!fs.existsSync(chromePath)) {
+    throw new Error(`Chrome not found at ${chromePath}; poster PNGs were NOT generated`);
+  }
+  {
     execSync(
-      `"${chromePath}" --headless --disable-gpu --screenshot="${s1PngPath}" --window-size=1024,768 "${s1HtmlPath}"`,
+      `"${chromePath}" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=1500 --screenshot="${s1PngPath}" --window-size=1024,768 "${s1HtmlPath}"`,
       { stdio: "ignore" },
     );
     execSync(
-      `"${chromePath}" --headless --disable-gpu --screenshot="${s2PngPath}" --window-size=1024,768 "${s2HtmlPath}"`,
+      `"${chromePath}" --headless --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=1500 --screenshot="${s2PngPath}" --window-size=1024,768 "${s2HtmlPath}"`,
       { stdio: "ignore" },
     );
 
@@ -689,6 +694,9 @@ export async function renderPostersWithChrome(
     fs.copyFileSync(s2PngPath, s2LatestPng);
   }
 
+  if (!fs.existsSync(s1LatestPng) || !fs.existsSync(s2LatestPng)) {
+    throw new Error("Poster PNG rendering incomplete");
+  }
   return {
     studio1Png: s1LatestPng,
     studio2Png: s2LatestPng,
