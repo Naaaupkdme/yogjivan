@@ -169,7 +169,6 @@ describe("Hero component — media loading policy, authentic static poster, and 
     });
 
     // Mock requestIdleCallback
-    // @ts-expect-error - requestIdleCallback
     window.requestIdleCallback = vi.fn((cb) => {
       cb({ didTimeout: false, timeRemaining: () => 50 });
       return 1;
@@ -210,8 +209,7 @@ describe("Hero component — media loading policy, authentic static poster, and 
       writable: true,
     });
 
-    // @ts-expect-error - requestIdleCallback
-    window.requestIdleCallback = vi.fn((cb) => { cb(); return 1; });
+    window.requestIdleCallback = vi.fn((cb: IdleRequestCallback) => { cb({ didTimeout: false, timeRemaining: () => 50 }); return 1; });
 
     render(<Hero />);
 
@@ -232,7 +230,7 @@ describe("Hero component — media loading policy, authentic static poster, and 
   });
 
   it("7. Queued idle callback does NOT mount video if connection degrades to constrained before execution", async () => {
-    let queuedCallback: (() => void) | null = null;
+    let queuedCallback: IdleRequestCallback | null = null;
 
     window.matchMedia = vi.fn().mockImplementation((query: string) => ({
       matches: query.includes("min-width: 1024px") ? true : false,
@@ -257,7 +255,6 @@ describe("Hero component — media loading policy, authentic static poster, and 
     });
 
     // Mock requestIdleCallback to manually capture the callback without executing it immediately
-    // @ts-expect-error - requestIdleCallback
     window.requestIdleCallback = vi.fn((cb) => {
       queuedCallback = cb;
       return 101;
@@ -282,7 +279,7 @@ describe("Hero component — media loading policy, authentic static poster, and 
 
     // Now the queued callback attempts to execute
     await act(async () => {
-      queuedCallback?.();
+      queuedCallback?.({ didTimeout: false, timeRemaining: () => 50 });
     });
 
     // Under the buggy code, the queued callback sets videoSrc unconditionally and video mounts!
@@ -309,8 +306,7 @@ describe("Hero component — media loading policy, authentic static poster, and 
       writable: true,
     });
 
-    // @ts-expect-error - requestIdleCallback
-    window.requestIdleCallback = vi.fn((cb) => { cb(); return 1; });
+    window.requestIdleCallback = vi.fn((cb: IdleRequestCallback) => { cb({ didTimeout: false, timeRemaining: () => 50 }); return 1; });
 
     render(<Hero />);
 
@@ -325,7 +321,7 @@ describe("Hero component — media loading policy, authentic static poster, and 
   });
 
   it("9. Queued idle callback does NOT mount video if user enables reduced-motion before callback executes", async () => {
-    let queuedCallback: (() => void) | null = null;
+    let queuedCallback: IdleRequestCallback | null = null;
     let prefersReducedMotion = false;
     let motionChangeCb: ((e: any) => void) | null = null;
 
@@ -348,7 +344,6 @@ describe("Hero component — media loading policy, authentic static poster, and 
       writable: true,
     });
 
-    // @ts-expect-error - requestIdleCallback
     window.requestIdleCallback = vi.fn((cb) => {
       queuedCallback = cb;
       return 102;
@@ -371,7 +366,7 @@ describe("Hero component — media loading policy, authentic static poster, and 
 
     // Now queued callback fires
     await act(async () => {
-      queuedCallback?.();
+      queuedCallback?.({ didTimeout: false, timeRemaining: () => 50 });
     });
 
     // Video MUST NOT mount
@@ -392,8 +387,7 @@ describe("Hero component — media loading policy, authentic static poster, and 
       writable: true,
     });
 
-    // @ts-expect-error - requestIdleCallback
-    window.requestIdleCallback = vi.fn((cb) => { cb(); return 1; });
+    window.requestIdleCallback = vi.fn((cb: IdleRequestCallback) => { cb({ didTimeout: false, timeRemaining: () => 50 }); return 1; });
 
     render(<Hero />);
 
@@ -432,8 +426,7 @@ describe("Hero component — media loading policy, authentic static poster, and 
       removeEventListener: vi.fn(),
     }));
 
-    // @ts-expect-error - requestIdleCallback
-    window.requestIdleCallback = vi.fn((cb) => { cb(); return 1; });
+    window.requestIdleCallback = vi.fn((cb: IdleRequestCallback) => { cb({ didTimeout: false, timeRemaining: () => 50 }); return 1; });
 
     render(<Hero />);
     await act(async () => {
@@ -462,8 +455,7 @@ describe("Hero component — media loading policy, authentic static poster, and 
       removeEventListener: vi.fn(),
     }));
 
-    // @ts-expect-error - requestIdleCallback
-    window.requestIdleCallback = vi.fn((cb) => { cb(); return 1; });
+    window.requestIdleCallback = vi.fn((cb: IdleRequestCallback) => { cb({ didTimeout: false, timeRemaining: () => 50 }); return 1; });
 
     render(<Hero />);
     await act(async () => {
