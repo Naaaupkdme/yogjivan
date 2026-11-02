@@ -1,7 +1,7 @@
 # Roadmap — Phase 1 lead automation (no publish)
-- [ ] Shop review: six factual catalogue entries, Vietnamese catalogue/detail/B2B routes; no selling or public navigation
-- [ ] Shop review: release checklist, future architecture and operating records
-- [ ] Shop review: tests and SSR/404/mobile/keyboard QA; report exact changes and unpublished status
+- [x] Shop review: six factual catalogue entries, Vietnamese catalogue/detail/B2B routes; no selling or public navigation
+- [x] Shop review: release checklist, future architecture and operating records
+- [x] Shop review: tests and SSR/404/mobile/keyboard QA; evidence in docs/commerce/QA_RESULTS.md; unpublished
 - [x] Schema: CRM IDs, phone fields, health boolean, guard trigger, MCP policy fix
 - [x] Outbox + submitted-only triggers + claims/leases + self-arming retry
 - [x] Phone normalization, reply generator, Telegram format, Sheets planner, dispatcher
