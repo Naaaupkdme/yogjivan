@@ -9,7 +9,8 @@ Review foundation: implemented, unpublished. Requested baseline `be60df1b24a493a
 | Existing Zalo-first/WhatsApp information links | COMPLETE; no enquiry persistence claimed |
 | noindex/follow, no sitemap/global nav additions | COMPLETE; review only |
 | Release checklist/future service-protected architecture | COMPLETE as documentation only |
-| Real media, legal/import/label/certificate verification | BLOCKED — owner evidence and appropriate review |
+| Real product photos | COMPLETE — six matched front photos and secondary Mangaldeep package; PHOTO_PASS_QA.md |
+| Real video, legal/import/label/certificate verification | BLOCKED — owner evidence and appropriate review |
 | Exact prices, inventory, seller policies, COD/QR/bank rules | BLOCKED — owner confirmation |
 | Commerce DB, orders, payments, inventory, shipping, partner CRM/outbox | NOT IMPLEMENTED, deliberately out of scope |
 | Publish/domain changes | NOT PERFORMED |

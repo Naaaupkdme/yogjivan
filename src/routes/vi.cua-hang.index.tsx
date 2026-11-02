@@ -28,7 +28,7 @@ function ShopCatalogue() {
       {categories.map((category) => <TabsContent key={category.value} value={category.value}>
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 min-[480px]:grid-cols-2 lg:grid-cols-3">
           {filterShopSamples(category.value).map((sample) => <article key={sample.id} className="min-w-0 overflow-hidden rounded-md border border-border bg-card">
-            <Link to="/vi/cua-hang/$slug" params={{ slug: sample.slug }} aria-label={`Xem thông tin ${sample.name}`} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"><SampleImage name={sample.name} /></Link>
+            <Link to="/vi/cua-hang/$slug" params={{ slug: sample.slug }} aria-label={`Xem thông tin ${sample.name}`} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"><SampleImage name={sample.name} slug={sample.slug} /></Link>
             <div className="p-5">
               <p className="text-xs text-shop-accent">{sample.category === "beads" ? "Vòng tay & mala" : "Nhang"}</p>
               <h2 className="mt-2 text-2xl leading-tight">{sample.name}</h2>

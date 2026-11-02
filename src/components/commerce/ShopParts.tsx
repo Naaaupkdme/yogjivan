@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowUpRight, ImageOff, MessageCircle, Play } from "lucide-r
 import { Button } from "@/components/ui/button";
 import { CONTACT } from "@/lib/facts/contact";
 import { waHref } from "@/lib/wa";
+import { samplePhotoFor, type SamplePhoto } from "@/lib/commerce/photos";
 import type { ReactNode } from "react";
 
 export function ShopFrame({ children }: { children: ReactNode }) {
@@ -17,7 +18,15 @@ export function ShopFrame({ children }: { children: ReactNode }) {
   </div>;
 }
 
-export function SampleImage({ name, large = false }: { name: string; large?: boolean }) {
+export function RealSamplePhoto({ photo, large = false }: { photo: SamplePhoto; large?: boolean }) {
+  return <div className={`w-full overflow-hidden bg-secondary ${large ? "aspect-square" : "aspect-[4/3]"}`}>
+    <img src={large ? photo.large : photo.small} srcSet={`${photo.small} 640w, ${photo.large} ${photo.width}w`} sizes={large ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 480px) 50vw, 100vw"} width={photo.width} height={photo.height} alt={photo.alt} loading={large ? "eager" : "lazy"} decoding="async" className="h-full w-full object-contain" />
+  </div>;
+}
+
+export function SampleImage({ name, slug, large = false }: { name: string; slug?: string; large?: boolean }) {
+  const photo = slug ? samplePhotoFor(slug) : undefined;
+  if (photo) return <RealSamplePhoto photo={photo} large={large} />;
   return <div role="img" aria-label={`Chưa có ảnh thật của ${name}; ô giữ chỗ, không mô phỏng sản phẩm`} className={`flex w-full flex-col items-center justify-center gap-3 bg-secondary px-5 text-center text-muted-foreground ${large ? "aspect-square" : "aspect-[4/3]"}`}>
     <ImageOff aria-hidden="true" className="size-8 text-shop-accent" strokeWidth={1} />
     <span className="text-sm">Ảnh sản phẩm thực tế<br /><span className="text-xs">Chờ bổ sung</span></span>

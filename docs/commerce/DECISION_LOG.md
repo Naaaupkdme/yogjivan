@@ -7,3 +7,4 @@
 5. **Information enquiries only.** Reuse existing team Zalo destination and safe WhatsApp helper. No form/save-success state, reservation, order, payment or manufactured availability.
 6. **Tradition is not clinical evidence.** Symbolism is described as tradition; no health effects, inferred lab accreditation or guaranteed origins.
 7. **Separate catalogue leaves.** TanStack path layout renders Outlet; index and slug are distinct leaves with their own metadata and missing-slug 404. Existing shell and yoga pages remain unchanged.
+8. **Real-photo-only pass.** Use the six visually matched front/package photographs and secondary Mangaldeep package evidence; retain full frames, actual colours and pending-verification caveats. Exclude the immunity/healing card back. Printed claims and MRP are not Yog Jivan guarantees or prices.
