@@ -42,6 +42,8 @@
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-surface-3: var(--surface-3);
+  --color-shop-accent: var(--shop-accent);
+  --color-shop-accent-foreground: var(--shop-accent-foreground);
 
   --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
@@ -81,6 +83,17 @@
   --border: oklch(1 0 0 / 0.11);
   --input: oklch(1 0 0 / 0.12);
   --ring: var(--gold);
+}
+
+/* Scoped commerce accent; existing yoga roles and themes remain unchanged. */
+.shop-review {
+  --shop-accent: oklch(0.79 0.07 155);
+  --shop-accent-foreground: oklch(0.19 0.025 155);
+  letter-spacing: 0;
+}
+:root[data-theme="ivory"] .shop-review {
+  --shop-accent: oklch(0.43 0.07 155);
+  --shop-accent-foreground: oklch(0.98 0.008 85);
 }
 
 :root[data-theme="earth"] {
