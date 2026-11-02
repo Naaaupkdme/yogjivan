@@ -49,3 +49,7 @@ export function SampleTruthNote() {
     <p className="mt-3 max-w-3xl leading-relaxed text-muted-foreground">Rudraksha, Om và chakra có ý nghĩa biểu tượng trong một số truyền thống thực hành. Ý nghĩa này thuộc về truyền thống, không phải bằng chứng khoa học về tác dụng chữa bệnh hay kết quả sức khoẻ.</p>
   </section>;
 }
+
+export function MissingShopSample() {
+  return <ShopFrame><meta name="robots" content="noindex, follow" /><p className="text-shop-accent">404</p><h1 className="mt-4 text-4xl">Không tìm thấy mẫu</h1><p className="mt-4 text-muted-foreground">Đường dẫn này không thuộc danh mục mẫu hiện tại.</p><Button asChild variant="link" className="mt-6 p-0"><Link to="/vi/cua-hang">Về danh mục mẫu</Link></Button></ShopFrame>;
+}

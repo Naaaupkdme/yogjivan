@@ -1,6 +1,5 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Button } from "@/components/ui/button";
-import { ShopFrame, SampleImage, ShopContact, VideoPlaceholder, SampleTruthNote } from "@/components/commerce/ShopParts";
+import { createFileRoute, notFound } from "@tanstack/react-router";
+import { ShopFrame, SampleImage, ShopContact, VideoPlaceholder, SampleTruthNote, MissingShopSample } from "@/components/commerce/ShopParts";
 import { findShopSample } from "@/lib/commerce/catalogue";
 import { shopHead } from "@/lib/commerce/head";
 
@@ -11,17 +10,13 @@ export const Route = createFileRoute("/vi/cua-hang/$slug")({
     return shopHead(sample ? `${sample.name} — Thông tin mẫu | Yog Jivan` : "Không tìm thấy mẫu | Yog Jivan", sample?.description ?? "Mẫu này không có trong danh mục xem trước của Yog Jivan.", `/vi/cua-hang/${encodeURIComponent(params.slug)}`);
   },
   component: ShopProduct,
-  notFoundComponent: MissingSample,
+  notFoundComponent: () => <MissingShopSample />,
 });
-
-function MissingSample() {
-  return <ShopFrame><meta name="robots" content="noindex, follow" /><p className="text-shop-accent">404</p><h1 className="mt-4 text-4xl">Không tìm thấy mẫu</h1><p className="mt-4 text-muted-foreground">Đường dẫn này không thuộc danh mục mẫu hiện tại.</p><Button asChild variant="link" className="mt-6 p-0"><Link to="/vi/cua-hang">Về danh mục mẫu</Link></Button></ShopFrame>;
-}
 
 function ShopProduct() {
   const { slug } = Route.useParams();
   const sample = findShopSample(slug);
-  if (!sample) return <MissingSample />;
+  if (!sample) return <MissingShopSample />;
   return <ShopFrame>
     <div className="grid gap-8 lg:grid-cols-2 lg:gap-14">
       <div><SampleImage name={sample.name} large /><p className="mt-3 text-xs leading-relaxed text-muted-foreground">Chưa có ảnh thực tế để đối chiếu mẫu. Không sử dụng hình mô phỏng.</p></div>
