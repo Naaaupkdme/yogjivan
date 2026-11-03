@@ -92,7 +92,7 @@ export const PRIVATE_PLANS = [
     subtitle: "Ideal for beginners or those resetting their alignment",
     points: [
       "12 live 1-on-1 private video sessions (60 min each)",
-      "Dedicated Yog Jivan teacher kept for session-to-session continuity",
+      "Matched Yog Jivan teacher, generally kept for practice continuity",
       "Essential posture foundations, breathwork & safe modifications",
       "Pacing & times arranged around your local time zone",
     ],
@@ -103,7 +103,7 @@ export const PRIVATE_PLANS = [
   {
     id: "plan-20",
     planValue: "20-Session Plan",
-    badge: "Most Popular",
+    badge: "Deepening Practice",
     featured: true,
     sessions: 20,
     sessionLabel: "20 Sessions",
@@ -112,7 +112,7 @@ export const PRIVATE_PLANS = [
     subtitle: "For consistent habit formation, mobility & deeper technique",
     points: [
       "20 live 1-on-1 private video sessions (60 min each)",
-      "Dedicated Yog Jivan teacher for uninterrupted practice continuity",
+      "Matched Yog Jivan teacher, generally kept for practice continuity",
       "Refine transitions, posture depth, stamina and balance",
       "Adaptive progression that builds directly on previous sessions",
     ],
@@ -131,7 +131,7 @@ export const PRIVATE_PLANS = [
     subtitle: "Complete personal practice evolution across every stage",
     points: [
       "24 live 1-on-1 private video sessions (60 min each)",
-      "Dedicated Yog Jivan teacher for long-term consistency and practice continuity",
+      "Matched Yog Jivan teacher, generally kept for practice continuity",
       "Advanced technique, inversions or targeted personal focus",
       "Full personal practice curriculum evolving session by session",
     ],
@@ -472,8 +472,8 @@ function PrivateYogaPage() {
             Structured 1-on-1 private practice — 12, 20 & 24-session plans
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/80 md:text-base">
-            Every private plan is built around live 60-minute video sessions with a dedicated teacher
-            kept session after session for continuity. Pacing and schedule are arranged around your week.
+            Every private plan is built around live 60-minute video sessions with a matched teacher,
+            generally kept session after session for continuity. Pacing and schedule are arranged around your week.
           </p>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-3">

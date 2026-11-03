@@ -59,8 +59,18 @@ const schema = z.object({
   name: z.string().trim().min(2, "Please share your full name").max(120),
   whatsapp: z.string().trim().min(6, "Please share a valid WhatsApp number").max(40),
   level: z.string().min(1, "Please choose your current level"),
-  plan: z.string().max(80).optional(),
-  language: z.string().max(80).optional(),
+  plan: z
+    .enum(PRIVATE_PLAN_OPTIONS, {
+      errorMap: () => ({ message: "Please select a valid session plan" }),
+    })
+    .or(z.literal(""))
+    .optional(),
+  language: z
+    .enum(PRIVATE_LANGUAGE_OPTIONS, {
+      errorMap: () => ({ message: "Please select a valid language preference" }),
+    })
+    .or(z.literal(""))
+    .optional(),
   email: z.string().trim().email("Please share a valid email").max(200).optional().or(z.literal("")),
   time: z.string().max(80).optional(),
   focus: z.string().max(80).optional(),
@@ -162,8 +172,17 @@ export function PrivateYogaEnquiryForm({ selectedPlan, onSelectPlan }: PrivateYo
         category: "private_online",
         setBusy,
         buildPayload: (data, leadEventId) => {
-          const planDetail = data.plan && data.plan !== "Custom / Undecided" ? data.plan : null;
-          const langDetail = data.language && data.language !== "Flexible / Any" ? `Language: ${data.language}` : null;
+          const validatedPlan =
+            data.plan && (PRIVATE_PLAN_OPTIONS as readonly string[]).includes(data.plan)
+              ? data.plan
+              : null;
+          const validatedLanguage =
+            data.language && (PRIVATE_LANGUAGE_OPTIONS as readonly string[]).includes(data.language)
+              ? data.language
+              : null;
+
+          const planDetail = validatedPlan && validatedPlan !== "Custom / Undecided" ? validatedPlan : null;
+          const langDetail = validatedLanguage && validatedLanguage !== "Flexible / Any" ? `Language: ${validatedLanguage}` : null;
           const details = [planDetail, langDetail].filter(Boolean).join(" · ");
           const preferredExperience = details
             ? `Private 1-on-1 online yoga (${details})`
@@ -185,8 +204,8 @@ export function PrivateYogaEnquiryForm({ selectedPlan, onSelectPlan }: PrivateYo
               lead_event_id: leadEventId,
               market: country,
               timezone: getTimezone(),
-              plan_sessions: data.plan || null,
-              preferred_language: data.language || null,
+              plan_sessions: validatedPlan,
+              preferred_language: validatedLanguage,
               utm_source: attribution.utm_source ?? null,
               utm_medium: attribution.utm_medium ?? null,
               utm_campaign: attribution.utm_campaign ?? null,
@@ -346,6 +365,7 @@ export function PrivateYogaEnquiryForm({ selectedPlan, onSelectPlan }: PrivateYo
           options={PRIVATE_PLAN_OPTIONS}
           name="pv-plan"
           placeholder="Choose a plan (optional)"
+          error={errors.plan}
         />
 
         <Select
@@ -355,6 +375,7 @@ export function PrivateYogaEnquiryForm({ selectedPlan, onSelectPlan }: PrivateYo
           options={PRIVATE_LANGUAGE_OPTIONS}
           name="pv-language"
           placeholder="Choose language (optional)"
+          error={errors.language}
         />
 
         <Select

@@ -56,6 +56,20 @@ export type LeadPayload = {
   playbook_version: string;
 };
 
+export const VALID_PLAN_SESSIONS = new Set([
+  "12-Session Plan",
+  "20-Session Plan",
+  "24-Session Plan",
+  "Custom / Undecided",
+]);
+
+export const VALID_PREFERRED_LANGUAGES = new Set([
+  "English",
+  "Vietnamese",
+  "Hindi",
+  "Flexible / Any",
+]);
+
 function str(v: unknown, max = 120): string | null {
   if (v === null || v === undefined) return null;
   const s = String(v).trim();
@@ -87,10 +101,22 @@ export function buildLeadPayload(l: LeadRow): { payload: LeadPayload; reply: str
     experience_level: l.experience_level,
     health_present: health,
   });
-  // Only non-PII attribution keys go into the JSON mirror.
+  // Only non-PII attribution keys and exact validated plan/language fields go into the JSON mirror.
   const safeMeta: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(meta)) {
-    if (/^(utm_|gclid|fbclid|funnel|landing|market|timezone|referrer_host|first_touch_at|lead_event_id|preferred_language|plan_)/.test(k)) {
+    if (k === "plan_sessions") {
+      if (typeof v === "string" && VALID_PLAN_SESSIONS.has(v)) {
+        safeMeta[k] = v;
+      }
+      continue;
+    }
+    if (k === "preferred_language") {
+      if (typeof v === "string" && VALID_PREFERRED_LANGUAGES.has(v)) {
+        safeMeta[k] = v;
+      }
+      continue;
+    }
+    if (/^(utm_|gclid|fbclid|funnel|landing|market|timezone|referrer_host|first_touch_at|lead_event_id)/.test(k)) {
       safeMeta[k] = typeof v === "string" ? v.slice(0, 200) : v;
     }
   }
