@@ -165,7 +165,7 @@ export function Hero() {
         setShowCanvas(true);
       };
 
-      if ("requestIdleCallback" in window) {
+      if (typeof window.requestIdleCallback === "function") {
         idleId = window.requestIdleCallback(executeMount, { timeout: 3000 });
       } else {
         timerId = window.setTimeout(executeMount, 1500);
@@ -253,7 +253,6 @@ export function Hero() {
 
     const cancelFrameCallback = () => {
       if (videoRef.current && rvfcRef.current !== null && "cancelVideoFrameCallback" in videoRef.current) {
-        // @ts-expect-error - cancelVideoFrameCallback
         videoRef.current.cancelVideoFrameCallback(rvfcRef.current);
       }
       rvfcRef.current = null;
@@ -286,7 +285,7 @@ export function Hero() {
         return;
       }
 
-      if ("requestIdleCallback" in window) {
+      if (typeof window.requestIdleCallback === "function") {
         idleId = window.requestIdleCallback(() => {
           idleId = undefined;
           executeAttachment();
@@ -367,7 +366,6 @@ export function Hero() {
   const onVideoPlaying = () => {
     const v = videoRef.current;
     if (v && "requestVideoFrameCallback" in v) {
-      // @ts-expect-error - requestVideoFrameCallback
       rvfcRef.current = v.requestVideoFrameCallback(() => {
         rvfcRef.current = null;
         if (videoRef.current === v && isVideoEligible()) {

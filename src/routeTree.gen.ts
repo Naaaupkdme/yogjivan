@@ -47,12 +47,16 @@ import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as GoWhatsappRouteImport } from './routes/go/whatsapp'
 import { Route as ResearchYogaParticipationStatisticsRouteImport } from './routes/research.yoga-participation-statistics'
 import { Route as ViIndexRouteImport } from './routes/vi.index'
+import { Route as ViCuaHangRouteImport } from './routes/vi.cua-hang'
+import { Route as ViDoiTacSanPhamRouteImport } from './routes/vi.doi-tac-san-pham'
 import { Route as ViLopYogaOnlineRouteImport } from './routes/vi.lop-yoga-online'
 import { Route as ViYoga1Kem1OnlineRouteImport } from './routes/vi.yoga-1-kem-1-online'
 import { Route as ViYogaHaiDuongRouteImport } from './routes/vi.yoga-hai-duong'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as ApiPublicN8nCrmControlRouteImport } from './routes/api/public/n8n-crm-control'
+import { Route as ViCuaHangIndexRouteImport } from './routes/vi.cua-hang.index'
+import { Route as ViCuaHangSlugRouteImport } from './routes/vi.cua-hang.$slug'
 import { Route as ApiPublicLeadsDispatchRouteImport } from './routes/api/public/leads/dispatch'
 import { Route as ApiPublicLeadsSubmitRouteImport } from './routes/api/public/leads/submit'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
@@ -252,6 +256,16 @@ const ViIndexRoute = ViIndexRouteImport.update({
   path: '/vi/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ViCuaHangRoute = ViCuaHangRouteImport.update({
+  id: '/vi/cua-hang',
+  path: '/vi/cua-hang',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ViDoiTacSanPhamRoute = ViDoiTacSanPhamRouteImport.update({
+  id: '/vi/doi-tac-san-pham',
+  path: '/vi/doi-tac-san-pham',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ViLopYogaOnlineRoute = ViLopYogaOnlineRouteImport.update({
   id: '/vi/lop-yoga-online',
   path: '/vi/lop-yoga-online',
@@ -282,6 +296,16 @@ const ApiPublicN8nCrmControlRoute = ApiPublicN8nCrmControlRouteImport.update({
   id: '/api/public/n8n-crm-control',
   path: '/api/public/n8n-crm-control',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ViCuaHangIndexRoute = ViCuaHangIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ViCuaHangRoute,
+} as any)
+const ViCuaHangSlugRoute = ViCuaHangSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ViCuaHangRoute,
 } as any)
 const ApiPublicLeadsDispatchRoute = ApiPublicLeadsDispatchRouteImport.update({
   id: '/api/public/leads/dispatch',
@@ -347,6 +371,8 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
   '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
+  '/vi/cua-hang': typeof ViCuaHangRouteWithChildren
+  '/vi/doi-tac-san-pham': typeof ViDoiTacSanPhamRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
   '/vi/yoga-hai-duong': typeof ViYogaHaiDuongRoute
@@ -355,6 +381,8 @@ export interface FileRoutesByFullPath {
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/n8n-crm-control': typeof ApiPublicN8nCrmControlRoute
+  '/vi/cua-hang/$slug': typeof ViCuaHangSlugRoute
+  '/vi/cua-hang/': typeof ViCuaHangIndexRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -398,6 +426,7 @@ export interface FileRoutesByTo {
   '/blog/$slug': typeof BlogSlugRoute
   '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
+  '/vi/doi-tac-san-pham': typeof ViDoiTacSanPhamRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
   '/vi/yoga-hai-duong': typeof ViYogaHaiDuongRoute
@@ -406,6 +435,8 @@ export interface FileRoutesByTo {
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/n8n-crm-control': typeof ApiPublicN8nCrmControlRoute
+  '/vi/cua-hang/$slug': typeof ViCuaHangSlugRoute
+  '/vi/cua-hang': typeof ViCuaHangIndexRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -450,6 +481,8 @@ export interface FileRoutesById {
   '/blog/$slug': typeof BlogSlugRoute
   '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
+  '/vi/cua-hang': typeof ViCuaHangRouteWithChildren
+  '/vi/doi-tac-san-pham': typeof ViDoiTacSanPhamRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
   '/vi/yoga-hai-duong': typeof ViYogaHaiDuongRoute
@@ -458,6 +491,8 @@ export interface FileRoutesById {
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/n8n-crm-control': typeof ApiPublicN8nCrmControlRoute
+  '/vi/cua-hang/$slug': typeof ViCuaHangSlugRoute
+  '/vi/cua-hang/': typeof ViCuaHangIndexRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -503,6 +538,8 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
+    | '/vi/cua-hang'
+    | '/vi/doi-tac-san-pham'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
     | '/vi/yoga-hai-duong'
@@ -511,6 +548,8 @@ export interface FileRouteTypes {
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/api/public/n8n-crm-control'
+    | '/vi/cua-hang/$slug'
+    | '/vi/cua-hang/'
     | '/api/public/leads/dispatch'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
@@ -554,6 +593,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
+    | '/vi/doi-tac-san-pham'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
     | '/vi/yoga-hai-duong'
@@ -562,6 +602,8 @@ export interface FileRouteTypes {
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/api/public/n8n-crm-control'
+    | '/vi/cua-hang/$slug'
+    | '/vi/cua-hang'
     | '/api/public/leads/dispatch'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
@@ -605,6 +647,8 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
+    | '/vi/cua-hang'
+    | '/vi/doi-tac-san-pham'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
     | '/vi/yoga-hai-duong'
@@ -613,6 +657,8 @@ export interface FileRouteTypes {
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/api/public/n8n-crm-control'
+    | '/vi/cua-hang/$slug'
+    | '/vi/cua-hang/'
     | '/api/public/leads/dispatch'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
@@ -657,6 +703,8 @@ export interface RootRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
   GoWhatsappRoute: typeof GoWhatsappRoute
   ResearchYogaParticipationStatisticsRoute: typeof ResearchYogaParticipationStatisticsRoute
+  ViCuaHangRoute: typeof ViCuaHangRouteWithChildren
+  ViDoiTacSanPhamRoute: typeof ViDoiTacSanPhamRoute
   ViLopYogaOnlineRoute: typeof ViLopYogaOnlineRoute
   ViYoga1Kem1OnlineRoute: typeof ViYoga1Kem1OnlineRoute
   ViYogaHaiDuongRoute: typeof ViYogaHaiDuongRoute
@@ -940,6 +988,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ViIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vi/cua-hang': {
+      id: '/vi/cua-hang'
+      path: '/vi/cua-hang'
+      fullPath: '/vi/cua-hang'
+      preLoaderRoute: typeof ViCuaHangRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vi/doi-tac-san-pham': {
+      id: '/vi/doi-tac-san-pham'
+      path: '/vi/doi-tac-san-pham'
+      fullPath: '/vi/doi-tac-san-pham'
+      preLoaderRoute: typeof ViDoiTacSanPhamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vi/lop-yoga-online': {
       id: '/vi/lop-yoga-online'
       path: '/vi/lop-yoga-online'
@@ -982,6 +1044,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicN8nCrmControlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vi/cua-hang/': {
+      id: '/vi/cua-hang/'
+      path: '/'
+      fullPath: '/vi/cua-hang/'
+      preLoaderRoute: typeof ViCuaHangIndexRouteImport
+      parentRoute: typeof ViCuaHangRoute
+    }
+    '/vi/cua-hang/$slug': {
+      id: '/vi/cua-hang/$slug'
+      path: '/$slug'
+      fullPath: '/vi/cua-hang/$slug'
+      preLoaderRoute: typeof ViCuaHangSlugRouteImport
+      parentRoute: typeof ViCuaHangRoute
+    }
     '/api/public/leads/dispatch': {
       id: '/api/public/leads/dispatch'
       path: '/api/public/leads/dispatch'
@@ -1019,6 +1095,20 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface ViCuaHangRouteChildren {
+  ViCuaHangSlugRoute: typeof ViCuaHangSlugRoute
+  ViCuaHangIndexRoute: typeof ViCuaHangIndexRoute
+}
+
+const ViCuaHangRouteChildren: ViCuaHangRouteChildren = {
+  ViCuaHangSlugRoute: ViCuaHangSlugRoute,
+  ViCuaHangIndexRoute: ViCuaHangIndexRoute,
+}
+
+const ViCuaHangRouteWithChildren = ViCuaHangRoute._addFileChildren(
+  ViCuaHangRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -1059,6 +1149,8 @@ const rootRouteChildren: RootRouteChildren = {
   GoWhatsappRoute: GoWhatsappRoute,
   ResearchYogaParticipationStatisticsRoute:
     ResearchYogaParticipationStatisticsRoute,
+  ViCuaHangRoute: ViCuaHangRouteWithChildren,
+  ViDoiTacSanPhamRoute: ViDoiTacSanPhamRoute,
   ViLopYogaOnlineRoute: ViLopYogaOnlineRoute,
   ViYoga1Kem1OnlineRoute: ViYoga1Kem1OnlineRoute,
   ViYogaHaiDuongRoute: ViYogaHaiDuongRoute,

@@ -60,7 +60,7 @@ export function clearState() {
   window.localStorage.removeItem(STATE_KEY);
 }
 
-type SubmitPayload = Partial<Omit<LeadState, "step">> & {
+export type SubmitPayload = Partial<Omit<LeadState, "step">> & {
   name: string;
   whatsapp: string;
   status: string;

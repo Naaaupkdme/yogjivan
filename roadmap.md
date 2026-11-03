@@ -1,9 +1,14 @@
 # Roadmap — Phase 1 lead automation (no publish)
+- [x] Real-photo pass: inspect eight photos, store matched assets, exclude health-claim card back
+- [x] Real-photo pass: responsive catalogue/detail photos, image/layout/regression QA, unpublished report in PHOTO_PASS_QA.md
+- [x] Shop review: six factual catalogue entries, Vietnamese catalogue/detail/B2B routes; no selling or public navigation
+- [x] Shop review: release checklist, future architecture and operating records
+- [x] Shop review: tests and SSR/404/mobile/keyboard QA; evidence in docs/commerce/QA_RESULTS.md; unpublished
 - [x] Schema: CRM IDs, phone fields, health boolean, guard trigger, MCP policy fix
 - [x] Outbox + submitted-only triggers + claims/leases + self-arming retry
 - [x] Phone normalization, reply generator, Telegram format, Sheets planner, dispatcher
 - [x] /go/whatsapp + CTA replacement; tests, typecheck, build
 - [x] Restore Telegram WhatsApp/CRM first row and requested five-row CRM keyboard
 - [x] Resolve current preview/package compatibility error and verify the app
-- [ ] BLOCKED (user): link Telegram + Google Sheets connectors; give private group chat_id
+- [x] Telegram + Google Sheets connectors and private group chat configured (confirmed completed in current operating context)
 - [ ] BLOCKED (user): approve privacy-policy copy; approve publish; coordinate one synthetic E2E lead
