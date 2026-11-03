@@ -35,6 +35,7 @@ export const PRIVATE_PLAN_OPTIONS = [
   "20-Session Plan",
   "24-Session Plan",
   "Custom / Undecided",
+  "Not sure — help me choose",
 ] as const;
 
 export const PRIVATE_LANGUAGE_OPTIONS = [
@@ -181,7 +182,10 @@ export function PrivateYogaEnquiryForm({ selectedPlan, onSelectPlan }: PrivateYo
               ? data.language
               : null;
 
-          const planDetail = validatedPlan && validatedPlan !== "Custom / Undecided" ? validatedPlan : null;
+          const planDetail =
+            validatedPlan && !["Custom / Undecided", "Not sure — help me choose"].includes(validatedPlan)
+              ? validatedPlan
+              : null;
           const langDetail = validatedLanguage && validatedLanguage !== "Flexible / Any" ? `Language: ${validatedLanguage}` : null;
           const details = [planDetail, langDetail].filter(Boolean).join(" · ");
           const preferredExperience = details
@@ -379,12 +383,12 @@ export function PrivateYogaEnquiryForm({ selectedPlan, onSelectPlan }: PrivateYo
         />
 
         <Select
-          label="Preferred session time (optional)"
+          label="Preferred session time (in your local time zone)"
           value={form.time}
           onChange={(v) => update("time", v)}
           options={TIMES}
           name="pv-time"
-          placeholder="Any time works"
+          placeholder="Any time works (scheduled in your time zone)"
         />
 
         <Field

@@ -61,6 +61,7 @@ export const VALID_PLAN_SESSIONS = new Set([
   "20-Session Plan",
   "24-Session Plan",
   "Custom / Undecided",
+  "Not sure — help me choose",
 ]);
 
 export const VALID_PREFERRED_LANGUAGES = new Set([

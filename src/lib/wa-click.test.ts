@@ -7,16 +7,25 @@ describe("/go/whatsapp helpers", () => {
     expect(set.size).toBe(500);
     for (const r of set) expect(r).toMatch(WA_REF_RE);
   });
-  it("destination is always the business number (no open redirect)", () => {
+  it("destination is always the business number with clean prefill (no open redirect)", () => {
     const u = new URL(waDestination("private", null));
     expect(u.host).toBe("wa.me");
     expect(u.pathname).toBe("/84782046066");
+    expect(u.searchParams.get("text")).toBe("Hi Yog Jivan team, I'd like to enquire about private 1-on-1 online yoga sessions.");
     expect(u.searchParams.get("text")).not.toMatch(/Ref:/);
   });
-  it("appends ref only when stored", () => {
+  it("never appends visible ref suffix to customer prefill even when ref is stored", () => {
     const ref = newWaRef();
-    expect(new URL(waDestination("group", ref)).searchParams.get("text")).toContain(`(Ref: ${ref})`);
-    expect(new URL(waDestination("group", "evil")).searchParams.get("text")).not.toContain("evil");
+    const u = new URL(waDestination("group", ref));
+    expect(u.searchParams.get("text")).toBe(
+      "Hi Yog Jivan team, I'd like to join your live online yoga classes and start with the introductory session."
+    );
+    expect(u.searchParams.get("text")).not.toContain("Ref:");
+    expect(u.searchParams.get("text")).not.toContain(ref);
+
+    const uEvil = new URL(waDestination("general", "evil-injection"));
+    expect(uEvil.searchParams.get("text")).toBe("Hi Yog Jivan team, I have a question about your yoga classes.");
+    expect(uEvil.searchParams.get("text")).not.toContain("evil");
   });
   it("drops session/attribution without consent", () => {
     const f = new FormData();

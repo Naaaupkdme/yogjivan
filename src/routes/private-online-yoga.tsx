@@ -428,6 +428,9 @@ function PrivateYogaPage() {
           You are matched with a Yog Jivan teacher, and sessions are generally kept with that same teacher
           for continuity.
         </p>
+        <p className="mt-2 text-xs text-foreground/70">
+          Live 1-on-1 video worldwide: real-time visual alignment cues, personalized breathwork and posture adjustments guided on camera.
+        </p>
         <div className="mt-6 flex flex-wrap items-center gap-4">
           <button
             type="button"
