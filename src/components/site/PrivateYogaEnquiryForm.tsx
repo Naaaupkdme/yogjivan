@@ -12,38 +12,18 @@ import { waHref } from "@/lib/wa";
 import { trackFormStart } from "@/lib/analytics";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
 import { useLeadSubmission, getTimezone } from "@/lib/leads/form-submission";
+import {
+  PRIVATE_PLAN_OPTIONS,
+  PRIVATE_LANGUAGE_OPTIONS,
+} from "@/lib/leads/private-plans";
 
-/**
- * Compact private 1-on-1 enquiry form for /private-online-yoga.
- *
- * Uses the EXISTING lead pipeline (submitLead -> leads table -> CRM webhook)
- * with source="website" so no RLS/migration change is required. The funnel is
- * distinguished purely through non-PII meta fields.
- *
- * Cold-page rule: never ask for diagnosis, medication, surgery, menstrual data
- * or long injury history here. Relevant limitations are discussed after contact.
- */
+export { PRIVATE_PLAN_OPTIONS, PRIVATE_LANGUAGE_OPTIONS };
 
 const LEVELS = [
   "Complete Beginner",
   "Some Yoga Experience",
   "Regular or Advanced Practitioner",
 ];
-
-export const PRIVATE_PLAN_OPTIONS = [
-  "12-Session Plan",
-  "20-Session Plan",
-  "24-Session Plan",
-  "Custom / Undecided",
-  "Not sure — help me choose",
-] as const;
-
-export const PRIVATE_LANGUAGE_OPTIONS = [
-  "English",
-  "Vietnamese",
-  "Hindi",
-  "Flexible / Any",
-] as const;
 
 const TIMES = ["Morning", "Afternoon", "Evening", "Flexible"];
 

@@ -182,9 +182,17 @@ function bootMeta() {
   const win = w();
   if (!win || metaBooted) return;
   const host = win.location?.hostname || "";
-  const allowDev = (win as any).__YJ_TEST_META_PIXEL__ === true;
-  if (!isMetaAllowedHost(host) && !allowDev) {
-    // Suppress real Meta network injection on localhost and preview domains.
+  if (!isMetaAllowedHost(host)) {
+    // Suppress real Meta network injection on non-approved hosts (localhost, preview domains).
+    return;
+  }
+  if (!readConsent().marketing) {
+    // Consent gate: do not inject script until marketing consent is granted.
+    return;
+  }
+  const currentPath = pagePath();
+  if (isSensitiveHealthPath(currentPath)) {
+    // Suppress script injection on sensitive health landing routes.
     return;
   }
   metaBooted = true;
@@ -204,11 +212,18 @@ function bootMeta() {
 }
 
 export function emitMetaPageView(pathOverride?: string) {
-  const path = pathOverride ?? pagePath();
-  if (!readConsent().marketing) return;
-  if (isSensitiveHealthPath(path)) return;
   const win = w();
-  if (!win || typeof win.fbq !== "function") return;
+  if (!win) return;
+  const host = win.location?.hostname || "";
+  if (!isMetaAllowedHost(host)) return;
+  if (!readConsent().marketing) return;
+  const path = pathOverride ?? pagePath();
+  if (isSensitiveHealthPath(path)) return;
+  if (!metaBooted) {
+    bootMeta();
+  }
+  if (typeof win.fbq !== "function") return;
+  if (lastMetaPageViewPath === path) return;
   win.fbq("track", "PageView");
   lastMetaPageViewPath = path;
 }
@@ -220,11 +235,15 @@ export function applyConsent(c: Consent) {
   bootGoogle();
   pushConsentUpdate(c);
   if (c.marketing) {
-    bootMeta();
     const currentPath = pagePath();
-    if (lastMetaPageViewPath !== currentPath) {
-      emitMetaPageView(currentPath);
+    if (!isSensitiveHealthPath(currentPath)) {
+      bootMeta();
+      if (lastMetaPageViewPath !== currentPath) {
+        emitMetaPageView(currentPath);
+      }
     }
+  } else {
+    lastMetaPageViewPath = null;
   }
 }
 
@@ -235,7 +254,10 @@ export function initAnalytics() {
   bootGoogle();
   const stored = readConsent();
   if (stored.marketing) {
-    bootMeta();
+    const currentPath = pagePath();
+    if (!isSensitiveHealthPath(currentPath)) {
+      bootMeta();
+    }
   }
 }
 
@@ -253,7 +275,7 @@ export function gaEvent(name: string, params: Record<string, string | number | b
   win.gtag("event", name, { page_path: pagePath(), ...params });
 }
 
-/** Meta event — only fires when marketing consent is granted and on non-sensitive paths. */
+/** Meta event — only fires on approved host, when marketing consent is granted, and on non-sensitive paths. */
 export function metaEvent(
   name: string,
   params: Record<string, string | number> = {},
@@ -261,10 +283,13 @@ export function metaEvent(
   eventId?: string,
 ) {
   const win = w();
-  if (!win || typeof win.fbq !== "function") return;
+  if (!win) return;
+  const host = win.location?.hostname || "";
+  if (!isMetaAllowedHost(host)) return;
   if (!readConsent().marketing) return;
   const path = pagePath();
   if (isSensitiveHealthPath(path)) return;
+  if (typeof win.fbq !== "function") return;
   if (eventId) win.fbq("track", name, params, { eventID: eventId });
   else win.fbq("track", name, params);
 }
@@ -278,7 +303,10 @@ export function trackPageView() {
     page_title: typeof document !== "undefined" ? document.title : "",
   });
   if (readConsent().marketing) {
-    emitMetaPageView();
+    const path = pagePath();
+    if (!isSensitiveHealthPath(path)) {
+      emitMetaPageView(path);
+    }
   }
 }
 

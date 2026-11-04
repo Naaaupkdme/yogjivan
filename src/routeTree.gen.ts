@@ -58,7 +58,6 @@ import { Route as ApiPublicN8nCrmControlRouteImport } from './routes/api/public/
 import { Route as ViCuaHangIndexRouteImport } from './routes/vi.cua-hang.index'
 import { Route as ViCuaHangSlugRouteImport } from './routes/vi.cua-hang.$slug'
 import { Route as ApiPublicLeadsDispatchRouteImport } from './routes/api/public/leads/dispatch'
-import { Route as ApiPublicLeadsInternalCaptureRouteImport } from './routes/api/public/leads/internal-capture'
 import { Route as ApiPublicLeadsSubmitRouteImport } from './routes/api/public/leads/submit'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
@@ -313,12 +312,6 @@ const ApiPublicLeadsDispatchRoute = ApiPublicLeadsDispatchRouteImport.update({
   path: '/api/public/leads/dispatch',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiPublicLeadsInternalCaptureRoute =
-  ApiPublicLeadsInternalCaptureRouteImport.update({
-    id: '/api/public/leads/internal-capture',
-    path: '/api/public/leads/internal-capture',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const ApiPublicLeadsSubmitRoute = ApiPublicLeadsSubmitRouteImport.update({
   id: '/api/public/leads/submit',
   path: '/api/public/leads/submit',
@@ -391,7 +384,6 @@ export interface FileRoutesByFullPath {
   '/vi/cua-hang/$slug': typeof ViCuaHangSlugRoute
   '/vi/cua-hang/': typeof ViCuaHangIndexRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
-  '/api/public/leads/internal-capture': typeof ApiPublicLeadsInternalCaptureRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -446,7 +438,6 @@ export interface FileRoutesByTo {
   '/vi/cua-hang/$slug': typeof ViCuaHangSlugRoute
   '/vi/cua-hang': typeof ViCuaHangIndexRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
-  '/api/public/leads/internal-capture': typeof ApiPublicLeadsInternalCaptureRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -503,7 +494,6 @@ export interface FileRoutesById {
   '/vi/cua-hang/$slug': typeof ViCuaHangSlugRoute
   '/vi/cua-hang/': typeof ViCuaHangIndexRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
-  '/api/public/leads/internal-capture': typeof ApiPublicLeadsInternalCaptureRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
@@ -561,7 +551,6 @@ export interface FileRouteTypes {
     | '/vi/cua-hang/$slug'
     | '/vi/cua-hang/'
     | '/api/public/leads/dispatch'
-    | '/api/public/leads/internal-capture'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -616,7 +605,6 @@ export interface FileRouteTypes {
     | '/vi/cua-hang/$slug'
     | '/vi/cua-hang'
     | '/api/public/leads/dispatch'
-    | '/api/public/leads/internal-capture'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -672,7 +660,6 @@ export interface FileRouteTypes {
     | '/vi/cua-hang/$slug'
     | '/vi/cua-hang/'
     | '/api/public/leads/dispatch'
-    | '/api/public/leads/internal-capture'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
@@ -727,7 +714,6 @@ export interface RootRouteChildren {
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   ApiPublicN8nCrmControlRoute: typeof ApiPublicN8nCrmControlRoute
   ApiPublicLeadsDispatchRoute: typeof ApiPublicLeadsDispatchRoute
-  ApiPublicLeadsInternalCaptureRoute: typeof ApiPublicLeadsInternalCaptureRoute
   ApiPublicLeadsSubmitRoute: typeof ApiPublicLeadsSubmitRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
@@ -1079,13 +1065,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicLeadsDispatchRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/public/leads/internal-capture': {
-      id: '/api/public/leads/internal-capture'
-      path: '/api/public/leads/internal-capture'
-      fullPath: '/api/public/leads/internal-capture'
-      preLoaderRoute: typeof ApiPublicLeadsInternalCaptureRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/api/public/leads/submit': {
       id: '/api/public/leads/submit'
       path: '/api/public/leads/submit'
@@ -1181,7 +1160,6 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   ApiPublicN8nCrmControlRoute: ApiPublicN8nCrmControlRoute,
   ApiPublicLeadsDispatchRoute: ApiPublicLeadsDispatchRoute,
-  ApiPublicLeadsInternalCaptureRoute: ApiPublicLeadsInternalCaptureRoute,
   ApiPublicLeadsSubmitRoute: ApiPublicLeadsSubmitRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,

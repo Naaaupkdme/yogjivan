@@ -41,6 +41,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
     mockFbq = vi.fn();
     (window as any).gtag = mockGtag;
     (window as any).fbq = mockFbq;
+    (window as any).location.hostname = "www.yogjivan.com";
     window.localStorage.setItem(
       "yj_cookie_consent_v2",
       JSON.stringify({ analytics: true, marketing: true })
@@ -453,11 +454,11 @@ describe("Rendered forms — actual component validation, submission wiring, out
       expect(submitLead).not.toHaveBeenCalled();
     });
 
-    it("PRIVATE_PLANS defines 12, 20 and 24-session packages with pricing by enquiry, neutral badges, and conditional continuity", async () => {
+    it("PRIVATE_PLANS defines 12, 20, 24-session and Custom packages with pricing by enquiry, neutral badges, and conditional continuity", async () => {
       const { PRIVATE_PLANS } = await import("@/routes/private-online-yoga");
-      expect(PRIVATE_PLANS.length).toBe(3);
+      expect(PRIVATE_PLANS.length).toBe(4);
       const sessionCounts = PRIVATE_PLANS.map((p) => p.sessions);
-      expect(sessionCounts).toEqual([12, 20, 24]);
+      expect(sessionCounts).toEqual([12, 20, 24, 0]);
 
       // Strictly neutral badges - no unsupported "Most Popular"
       expect(JSON.stringify(PRIVATE_PLANS)).not.toContain("Most Popular");

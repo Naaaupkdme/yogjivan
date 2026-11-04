@@ -4,6 +4,9 @@
 import { normalizePhone, waMeLink, type NormalizedPhone } from "./phone";
 import { PLAYBOOK_VERSION } from "./playbook";
 import { classifyService, generateReply, isBeginner, safeGoals, type ServiceKind } from "./reply";
+import { VALID_PLAN_SESSIONS, VALID_PREFERRED_LANGUAGES } from "./private-plans";
+
+export { VALID_PLAN_SESSIONS, VALID_PREFERRED_LANGUAGES } from "./private-plans";
 
 export type LeadRow = {
   id: string;
@@ -56,20 +59,6 @@ export type LeadPayload = {
   playbook_version: string;
 };
 
-export const VALID_PLAN_SESSIONS = new Set([
-  "12-Session Plan",
-  "20-Session Plan",
-  "24-Session Plan",
-  "Custom / Undecided",
-  "Not sure — help me choose",
-]);
-
-export const VALID_PREFERRED_LANGUAGES = new Set([
-  "English",
-  "Vietnamese",
-  "Hindi",
-  "Flexible / Any",
-]);
 
 function str(v: unknown, max = 120): string | null {
   if (v === null || v === undefined) return null;

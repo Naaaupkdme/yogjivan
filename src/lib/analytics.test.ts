@@ -77,7 +77,7 @@ describe("analytics - privacy-safe lead categorization", () => {
       mockGtag = vi.fn();
       mockFbq = vi.fn();
       (globalThis as any).window = {
-        location: { pathname: "/test-path", search: "" },
+        location: { hostname: "www.yogjivan.com", pathname: "/test-path", search: "" },
         localStorage: {
           getItem: (key: string) => {
             if (key === "yj_cookie_consent_v2") {
@@ -249,6 +249,100 @@ describe("analytics - privacy-safe lead categorization", () => {
 
       metaEvent("ViewContent", { content_name: "Back Pain" });
       expect(mockFbq).not.toHaveBeenCalled();
+    });
+
+    it("must not bootstrap production Pixel on a sensitive first landing", async () => {
+      const { initAnalytics, resetMetaPageViewTracking } = await import("./analytics");
+      resetMetaPageViewTracking();
+      const insertScript = vi.fn();
+      (globalThis as any).document.getElementsByTagName = vi.fn(() => [{ parentNode: { insertBefore: insertScript } }]);
+      (window as any).location.pathname = "/yoga-for-back-pain";
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+      delete (window as any).fbq;
+
+      initAnalytics();
+      expect(insertScript).not.toHaveBeenCalled();
+    });
+
+    it("must block dispatch on preview even if fbq already exists", async () => {
+      const { metaEvent, resetMetaPageViewTracking } = await import("./analytics");
+      resetMetaPageViewTracking();
+      (window as any).location.hostname = "example.lovable.app";
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+
+      metaEvent("Lead", { content_category: "private_online" });
+      expect(mockFbq).not.toHaveBeenCalled();
+    });
+
+    it("verifies complete GA/Meta lifecycle semantics across consent changes and SPA navigation", async () => {
+      const { applyConsent, trackPageView, metaEvent, resetMetaPageViewTracking } = await import("./analytics");
+      resetMetaPageViewTracking();
+
+      // 1. First visit with denied consent
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: false, marketing: false }));
+      (window as any).location.pathname = "/private-online-yoga";
+      trackPageView();
+
+      // GA fires cookieless modelled page_view; Meta does not fire
+      expect(mockGtag).toHaveBeenCalledWith("event", "page_view", expect.objectContaining({ page_path: "/private-online-yoga" }));
+      expect(mockFbq).not.toHaveBeenCalled();
+
+      mockGtag.mockClear();
+      mockFbq.mockClear();
+
+      // 2. Grant on same route
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+      applyConsent({ analytics: true, marketing: true });
+
+      expect(mockFbq).toHaveBeenCalledWith("track", "PageView");
+      expect(mockGtag).not.toHaveBeenCalledWith("event", "page_view", expect.anything());
+
+      mockFbq.mockClear();
+
+      // 3. Repeated grant on same route is idempotent
+      applyConsent({ analytics: true, marketing: true });
+      expect(mockFbq).not.toHaveBeenCalled();
+
+      // 4. Navigation to permitted route (/online-yoga-classes)
+      (window as any).location.pathname = "/online-yoga-classes";
+      trackPageView();
+      expect(mockGtag).toHaveBeenCalledWith("event", "page_view", expect.objectContaining({ page_path: "/online-yoga-classes" }));
+      expect(mockFbq).toHaveBeenCalledWith("track", "PageView");
+
+      mockGtag.mockClear();
+      mockFbq.mockClear();
+
+      // 5. Navigation to sensitive route (/yoga-for-back-pain)
+      (window as any).location.pathname = "/yoga-for-back-pain";
+      trackPageView();
+      expect(mockGtag).toHaveBeenCalledWith("event", "page_view", expect.objectContaining({ page_path: "/yoga-for-back-pain" }));
+      // Meta PageView and metaEvent are strictly SUPPRESSED on sensitive route
+      expect(mockFbq).not.toHaveBeenCalled();
+      metaEvent("ViewContent", { content_name: "Back pain" });
+      expect(mockFbq).not.toHaveBeenCalled();
+
+      mockGtag.mockClear();
+      mockFbq.mockClear();
+
+      // 6. Navigation back to permitted route (/contact)
+      (window as any).location.pathname = "/contact";
+      trackPageView();
+      expect(mockGtag).toHaveBeenCalledWith("event", "page_view", expect.objectContaining({ page_path: "/contact" }));
+      expect(mockFbq).toHaveBeenCalledWith("track", "PageView");
+
+      mockFbq.mockClear();
+
+      // 7. Revoke consent
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: false }));
+      applyConsent({ analytics: true, marketing: false });
+
+      metaEvent("Lead", { content_category: "contact" });
+      expect(mockFbq).not.toHaveBeenCalled();
+
+      // 8. Regrant consent
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+      applyConsent({ analytics: true, marketing: true });
+      expect(mockFbq).toHaveBeenCalledWith("track", "PageView");
     });
   });
 });

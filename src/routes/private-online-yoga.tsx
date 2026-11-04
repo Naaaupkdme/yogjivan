@@ -34,7 +34,7 @@ import liveGuidanceFloor from "@/assets/paid/live-guidance-floor.webp.asset.json
 
 const PT_TITLE = "Private Online Yoga Classes (1-on-1) | Personal Practice Coaching | Yog Jivan";
 const PT_DESC =
-  "Live 1-on-1 private online yoga, built around your body, level and goals. One dedicated teacher kept session after session, 60 minutes, worldwide. Enquire for plans and times.";
+  "Live 1-on-1 private online yoga, built around your body, level and goals. Matched Yog Jivan teacher generally kept for practice continuity, 60 minutes, worldwide. Structured and custom plans, quoted individually.";
 const PT_URL = "https://www.yogjivan.com/private-online-yoga";
 
 /** AEO/GEO direct-answer capsule. Fact-first and chunkable. */
@@ -49,7 +49,7 @@ const QUICK_ANSWERS: { q: string; a: string }[] = [
   },
   {
     q: "How much does private online yoga cost?",
-    a: "Private 1-on-1 online yoga is arranged individually, so plans and times are quoted by enquiry rather than sold as a fixed package. Send your level, what you want to work on and the times that suit you, and we reply with suitable options for your schedule.",
+    a: "Private 1-on-1 online yoga is arranged individually, offering structured session-count options (12, 20, 24 sessions) and custom plans, individually scheduled and quoted by enquiry. Send your level, what you want to work on and preferred pacing, and we reply with suitable options for your schedule.",
   },
   {
     q: "Is private online yoga better than a group class?",
@@ -138,6 +138,25 @@ export const PRIVATE_PLANS = [
     pricing: "Pricing by enquiry",
     note: "All dates and weekly pacing agreed directly before starting.",
     cta: "Enquire About 24 Sessions",
+  },
+  {
+    id: "plan-custom",
+    planValue: "Custom Sessions",
+    badge: "Personalized Schedule",
+    sessions: 0,
+    sessionLabel: "Custom Plan",
+    duration: "Flexible pacing",
+    title: "Custom Private Sessions",
+    subtitle: "A session count and practice rhythm shaped around your goals and availability.",
+    points: [
+      "Custom session count and schedule tailored to your availability",
+      "Tell us what you have in mind; we will confirm teacher, schedule & quote on WhatsApp",
+      "Matched Yog Jivan teacher, generally kept for practice continuity",
+      "Sessions guided live on 1-on-1 video worldwide (60 min each)",
+    ],
+    pricing: "Pricing by enquiry",
+    note: "All dates, frequency and custom quotation agreed directly before starting.",
+    cta: "Discuss a Custom Plan",
   },
 ] as const;
 
@@ -472,14 +491,14 @@ function PrivateYogaPage() {
         <div className="container-luxe">
           <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Session plans & formats</p>
           <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.5rem, 3vw, 2.3rem)" }}>
-            Structured 1-on-1 private practice — 12, 20 & 24-session plans
+            Structured & custom 1-on-1 private practice — 12, 20, 24 & custom plans
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/80 md:text-base">
-            Every private plan is built around live 60-minute video sessions with a matched teacher,
-            generally kept session after session for continuity. Pacing and schedule are arranged around your week.
+            Structured and custom plans, quoted individually. Every private plan is built around live 60-minute video sessions with a matched teacher,
+            generally kept for practice continuity. Pacing and schedule are arranged around your week.
           </p>
 
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
+          <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {PRIVATE_PLANS.map((plan) => (
               <div
                 key={plan.id}
@@ -540,7 +559,7 @@ function PrivateYogaPage() {
                 Book private yoga online — matched teacher & personal schedule
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
-                Tell us your current level, preferred plan (12, 20 or 24 sessions) and language preference.
+                Tell us your current level, preferred plan (12, 20, 24 sessions or custom) and language preference.
                 We will match you with a suitable teacher from the Yog Jivan team and confirm
                 scheduling, format and pricing directly.
               </p>

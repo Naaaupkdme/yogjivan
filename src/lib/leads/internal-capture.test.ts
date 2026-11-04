@@ -53,7 +53,7 @@ describe("Direct-WhatsApp Lead Capture — authenticated internal intake", () =>
     let capturedPayload: any = null;
     const mockAcceptLead = vi.fn().mockImplementation(async (payload) => {
       capturedPayload = payload;
-      return { status: 200, body: { ok: true, outcome: "accepted", lead_id: "test-uuid-999" } };
+      return { status: 200, body: { ok: true, outcome: "accepted" } };
     });
 
     const res = await handleInternalCapture(
@@ -64,7 +64,6 @@ describe("Direct-WhatsApp Lead Capture — authenticated internal intake", () =>
     expect(res.status).toBe(200);
     expect(res.body.ok).toBe(true);
     expect(res.body.outcome).toBe("accepted");
-    expect(res.body.lead_id).toBe("test-uuid-999");
 
     expect(capturedPayload).not.toBeNull();
     // Preserves DB constraint
@@ -88,7 +87,7 @@ describe("Direct-WhatsApp Lead Capture — authenticated internal intake", () =>
   it("handles duplicate retries gracefully via idempotency outcome", async () => {
     const mockAcceptLead = vi.fn().mockResolvedValue({
       status: 200,
-      body: { ok: true, outcome: "duplicate", lead_id: "existing-uuid-111" },
+      body: { ok: true, outcome: "duplicate" },
     });
 
     const res = await handleInternalCapture(
@@ -99,7 +98,6 @@ describe("Direct-WhatsApp Lead Capture — authenticated internal intake", () =>
     expect(res.status).toBe(200);
     expect(res.body.ok).toBe(true);
     expect(res.body.duplicate).toBe(true);
-    expect(res.body.lead_id).toBe("existing-uuid-111");
   });
 
   it("rejects invalid plan or language options", async () => {
@@ -119,5 +117,32 @@ describe("Direct-WhatsApp Lead Capture — authenticated internal intake", () =>
     );
     expect(resBadLang.status).toBe(400);
     expect(mockAcceptLead).not.toHaveBeenCalled();
+  });
+
+  it("must construct an intake-valid payload for accepted internal-capture input", async () => {
+    let constructed: unknown;
+    const result = await handleInternalCapture(
+      {
+        authorization: "Bearer synthetic-test-secret",
+        body: {
+          name: "Synthetic review",
+          whatsapp: "+12025550123",
+          service: "x".repeat(120),
+          plan_sessions: "24-Session Plan",
+          preferred_language: "English",
+          idempotency_key: "synthetic-review-0001",
+        },
+      },
+      {
+        secret: "synthetic-test-secret",
+        acceptLead: async (input) => {
+          constructed = input;
+          return { status: 200, body: { ok: true, outcome: "accepted" } };
+        },
+      }
+    );
+    expect(result.status).toBe(200);
+    const { finalLeadSchema } = await import("./intake");
+    expect(finalLeadSchema.safeParse(constructed).success).toBe(true);
   });
 });

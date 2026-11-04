@@ -32,7 +32,7 @@ export const internalCaptureSchema = z.object({
   notes: z.string().trim().max(1000).optional().nullable(),
   next_follow_up: z.string().trim().max(80).optional().nullable(),
   original_ref: z.string().trim().max(40).optional().nullable(),
-  idempotency_key: z.string().trim().min(8).max(120),
+  idempotency_key: z.string().trim().min(8).max(100),
 });
 
 export type InternalCaptureInput = z.infer<typeof internalCaptureSchema>;
@@ -42,7 +42,6 @@ export type InternalCaptureResult = {
   body: {
     ok: boolean;
     outcome?: "accepted" | "duplicate" | "rate_limited" | "invalid";
-    lead_id?: string;
     duplicate?: boolean;
     error?: string;
   };
@@ -83,14 +82,16 @@ export async function handleInternalCapture(
     data.preferred_language ? `Language: ${data.preferred_language}` : null,
   ].filter(Boolean).join(" · ");
 
-  const preferredExperience = details ? `${data.service} (${details})` : data.service;
+  const rawExperience = details ? `${data.service} (${details})` : data.service;
+  const preferredExperience = rawExperience.slice(0, 120);
+  const serviceGoal = data.service.slice(0, 80);
 
   // Preserve DB check constraint: source must be 'website'
   const leadPayload = {
     name: data.name,
     whatsapp: phone.whatsapp_full_number ?? data.whatsapp,
     email: data.email || null,
-    goals: [data.service],
+    goals: [serviceGoal],
     preferred_experience: preferredExperience,
     preferred_time: data.preferred_time || null,
     health_notes: null, // Health/medical notes strictly excluded from public CRM intake
@@ -98,7 +99,7 @@ export async function handleInternalCapture(
     experience_level: null,
     source: "website" as const,
     session_id: null,
-    idempotency_key: data.idempotency_key,
+    idempotency_key: data.idempotency_key.slice(0, 100),
     meta: {
       channel: "whatsapp_direct",
       funnel: "direct_whatsapp_capture",
@@ -120,7 +121,6 @@ export async function handleInternalCapture(
   );
 
   const outcome = (res.body as { outcome?: string }).outcome;
-  const leadId = (res.body as { lead_id?: string }).lead_id;
 
   if (res.status === 200) {
     return {
@@ -129,7 +129,6 @@ export async function handleInternalCapture(
         ok: true,
         outcome: (outcome as any) ?? "accepted",
         duplicate: outcome === "duplicate",
-        lead_id: leadId,
       },
     };
   }
