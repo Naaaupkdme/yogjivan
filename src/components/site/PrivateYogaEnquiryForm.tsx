@@ -12,17 +12,12 @@ import { waHref } from "@/lib/wa";
 import { trackFormStart } from "@/lib/analytics";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
 import { useLeadSubmission, getTimezone } from "@/lib/leads/form-submission";
+import {
+  PRIVATE_PLAN_OPTIONS,
+  PRIVATE_LANGUAGE_OPTIONS,
+} from "@/lib/leads/private-plans";
 
-/**
- * Compact private 1-on-1 enquiry form for /private-online-yoga.
- *
- * Uses the EXISTING lead pipeline (submitLead -> leads table -> CRM webhook)
- * with source="website" so no RLS/migration change is required. The funnel is
- * distinguished purely through non-PII meta fields.
- *
- * Cold-page rule: never ask for diagnosis, medication, surgery, menstrual data
- * or long injury history here. Relevant limitations are discussed after contact.
- */
+export { PRIVATE_PLAN_OPTIONS, PRIVATE_LANGUAGE_OPTIONS };
 
 const LEVELS = [
   "Complete Beginner",
@@ -45,13 +40,44 @@ const schema = z.object({
   name: z.string().trim().min(2, "Please share your full name").max(120),
   whatsapp: z.string().trim().min(6, "Please share a valid WhatsApp number").max(40),
   level: z.string().min(1, "Please choose your current level"),
+  plan: z
+    .enum(PRIVATE_PLAN_OPTIONS, {
+      errorMap: () => ({ message: "Please select a valid session plan" }),
+    })
+    .or(z.literal(""))
+    .optional(),
+  language: z
+    .enum(PRIVATE_LANGUAGE_OPTIONS, {
+      errorMap: () => ({ message: "Please select a valid language preference" }),
+    })
+    .or(z.literal(""))
+    .optional(),
   email: z.string().trim().email("Please share a valid email").max(200).optional().or(z.literal("")),
   time: z.string().max(80).optional(),
   focus: z.string().max(80).optional(),
 });
 
-type FormState = { name: string; whatsapp: string; level: string; email: string; time: string; focus: string };
-const empty: FormState = { name: "", whatsapp: "", level: "", email: "", time: "", focus: "" };
+type FormState = {
+  name: string;
+  whatsapp: string;
+  level: string;
+  plan: string;
+  language: string;
+  email: string;
+  time: string;
+  focus: string;
+};
+
+const empty: FormState = {
+  name: "",
+  whatsapp: "",
+  level: "",
+  plan: "",
+  language: "",
+  email: "",
+  time: "",
+  focus: "",
+};
 
 const FORM_ID = "private_yoga_enquiry";
 const SUPPORTED_ISO2 = new Set(defaultCountries.map((c) => parseCountry(c).iso2 as string));
@@ -71,14 +97,28 @@ const NEXT_STEPS = [
   },
 ];
 
-export function PrivateYogaEnquiryForm() {
-  const [form, setForm] = useState<FormState>(empty);
+export type PrivateYogaEnquiryFormProps = {
+  selectedPlan?: string;
+  onSelectPlan?: (plan: string) => void;
+};
+
+export function PrivateYogaEnquiryForm({ selectedPlan, onSelectPlan }: PrivateYogaEnquiryFormProps = {}) {
+  const [form, setForm] = useState<FormState>(() => ({
+    ...empty,
+    plan: selectedPlan || "",
+  }));
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [busy, setBusy] = useState(false);
   const submission = useLeadSubmission();
   const [done, setDone] = useState(false);
   const [attribution, setAttribution] = useState<Attribution>({});
   const [country, setCountry] = useState<CountryIso2>("vn");
+
+  useEffect(() => {
+    if (selectedPlan && selectedPlan !== form.plan) {
+      setForm((s) => ({ ...s, plan: selectedPlan }));
+    }
+  }, [selectedPlan]);
 
   useEffect(() => {
     const a = captureAttribution();
@@ -112,47 +152,70 @@ export function PrivateYogaEnquiryForm() {
         formId: FORM_ID,
         category: "private_online",
         setBusy,
-        buildPayload: (data, leadEventId) => ({
-          name: data.name,
-          whatsapp: data.whatsapp,
-          email: data.email || undefined,
-          experience_level: data.level,
-          preferred_experience: "Private 1-on-1 online yoga",
-          preferred_time: data.time || undefined,
-          goals: data.focus ? [data.focus] : [],
-          status: "submitted",
-          source: "website",
-          meta: {
-            funnel: "private_yoga_organic",
-            landing_page: "/private-online-yoga",
-            lead_event_id: leadEventId,
-            market: country,
-            timezone: getTimezone(),
-            utm_source: attribution.utm_source ?? null,
-            utm_medium: attribution.utm_medium ?? null,
-            utm_campaign: attribution.utm_campaign ?? null,
-            utm_term: attribution.utm_term ?? null,
-            utm_content: attribution.utm_content ?? null,
-            utm_id: attribution.utm_id ?? null,
-            campaign_id: attribution.campaign_id ?? null,
-            adset_id: attribution.adset_id ?? null,
-            ad_id: attribution.ad_id ?? null,
-            placement: attribution.placement ?? null,
-            keyword: attribution.keyword ?? null,
-            matchtype: attribution.matchtype ?? null,
-            device: attribution.device ?? null,
-            gclid: attribution.gclid ?? null,
-            gbraid: attribution.gbraid ?? null,
-            wbraid: attribution.wbraid ?? null,
-            fbclid: attribution.fbclid ?? null,
-            ttclid: attribution.ttclid ?? null,
-            msclkid: attribution.msclkid ?? null,
-            li_fat_id: attribution.li_fat_id ?? null,
-            referrer_host: attribution.referrer_host ?? null,
-            landing_first_touch: attribution.landing_path ?? null,
-            first_touch_at: attribution.captured_at ?? null,
-          },
-        }),
+        buildPayload: (data, leadEventId) => {
+          const validatedPlan =
+            data.plan && (PRIVATE_PLAN_OPTIONS as readonly string[]).includes(data.plan)
+              ? data.plan
+              : null;
+          const validatedLanguage =
+            data.language && (PRIVATE_LANGUAGE_OPTIONS as readonly string[]).includes(data.language)
+              ? data.language
+              : null;
+
+          const planDetail =
+            validatedPlan && !["Custom / Undecided", "Not sure — help me choose"].includes(validatedPlan)
+              ? validatedPlan
+              : null;
+          const langDetail = validatedLanguage && validatedLanguage !== "Flexible / Any" ? `Language: ${validatedLanguage}` : null;
+          const details = [planDetail, langDetail].filter(Boolean).join(" · ");
+          const preferredExperience = details
+            ? `Private 1-on-1 online yoga (${details})`
+            : "Private 1-on-1 online yoga";
+
+          return {
+            name: data.name,
+            whatsapp: data.whatsapp,
+            email: data.email || undefined,
+            experience_level: data.level,
+            preferred_experience: preferredExperience,
+            preferred_time: data.time || undefined,
+            goals: data.focus ? [data.focus] : [],
+            status: "submitted",
+            source: "website",
+            meta: {
+              funnel: "private_yoga_organic",
+              landing_page: "/private-online-yoga",
+              lead_event_id: leadEventId,
+              market: country,
+              timezone: getTimezone(),
+              plan_sessions: validatedPlan,
+              preferred_language: validatedLanguage,
+              utm_source: attribution.utm_source ?? null,
+              utm_medium: attribution.utm_medium ?? null,
+              utm_campaign: attribution.utm_campaign ?? null,
+              utm_term: attribution.utm_term ?? null,
+              utm_content: attribution.utm_content ?? null,
+              utm_id: attribution.utm_id ?? null,
+              campaign_id: attribution.campaign_id ?? null,
+              adset_id: attribution.adset_id ?? null,
+              ad_id: attribution.ad_id ?? null,
+              placement: attribution.placement ?? null,
+              keyword: attribution.keyword ?? null,
+              matchtype: attribution.matchtype ?? null,
+              device: attribution.device ?? null,
+              gclid: attribution.gclid ?? null,
+              gbraid: attribution.gbraid ?? null,
+              wbraid: attribution.wbraid ?? null,
+              fbclid: attribution.fbclid ?? null,
+              ttclid: attribution.ttclid ?? null,
+              msclkid: attribution.msclkid ?? null,
+              li_fat_id: attribution.li_fat_id ?? null,
+              referrer_host: attribution.referrer_host ?? null,
+              landing_first_touch: attribution.landing_path ?? null,
+              first_touch_at: attribution.captured_at ?? null,
+            },
+          };
+        },
         onSuccess: () => {
           setDone(true);
           setForm(empty);
@@ -277,12 +340,35 @@ export function PrivateYogaEnquiryForm() {
         />
 
         <Select
-          label="Preferred session time (optional)"
+          label="Preferred session plan (optional)"
+          value={form.plan}
+          onChange={(v) => {
+            update("plan", v);
+            onSelectPlan?.(v);
+          }}
+          options={PRIVATE_PLAN_OPTIONS}
+          name="pv-plan"
+          placeholder="Choose a plan (optional)"
+          error={errors.plan}
+        />
+
+        <Select
+          label="Language preference (optional)"
+          value={form.language}
+          onChange={(v) => update("language", v)}
+          options={PRIVATE_LANGUAGE_OPTIONS}
+          name="pv-language"
+          placeholder="Choose language (optional)"
+          error={errors.language}
+        />
+
+        <Select
+          label="Preferred session time (in your local time zone)"
           value={form.time}
           onChange={(v) => update("time", v)}
           options={TIMES}
           name="pv-time"
-          placeholder="Any time works"
+          placeholder="Any time works (scheduled in your time zone)"
         />
 
         <Field

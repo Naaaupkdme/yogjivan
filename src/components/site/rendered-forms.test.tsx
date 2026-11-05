@@ -11,9 +11,13 @@ import { submitLead } from "@/lib/leads";
 
 MotionGlobalConfig.skipAnimations = true;
 
-vi.mock("@tanstack/react-router", () => ({
-  Link: ({ children, to, ...props }: any) => <a href={to} {...props}>{children}</a>,
-}));
+vi.mock("@tanstack/react-router", async () => {
+  const actual = await vi.importActual<any>("@tanstack/react-router");
+  return {
+    ...actual,
+    Link: ({ children, to, ...props }: any) => <a href={to} {...props}>{children}</a>,
+  };
+});
 
 vi.mock("sonner", () => ({
   toast: { error: vi.fn(), success: vi.fn() },
@@ -37,6 +41,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
     mockFbq = vi.fn();
     (window as any).gtag = mockGtag;
     (window as any).fbq = mockFbq;
+    (window as any).location.hostname = "www.yogjivan.com";
     window.localStorage.setItem(
       "yj_cookie_consent_v2",
       JSON.stringify({ analytics: true, marketing: true })
@@ -330,6 +335,146 @@ describe("Rendered forms — actual component validation, submission wiring, out
         expect(screen.getByText("Request received.")).toBeTruthy();
       });
       expect(submitLead).toHaveBeenCalledTimes(1);
+    });
+
+    it("submits selectedPlan prop and language preference into preferred_experience and meta", async () => {
+      (submitLead as unknown as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+        outcome: "accepted",
+      });
+
+      const onSelectPlan = vi.fn();
+      const { container } = render(
+        <PrivateYogaEnquiryForm selectedPlan="12-Session Plan" onSelectPlan={onSelectPlan} />
+      );
+
+      const nameInput = screen.getByPlaceholderText("Your full name") as HTMLInputElement;
+      const phoneInput = container.querySelector('input[type="tel"]') as HTMLInputElement;
+      const levelSelect = container.querySelector('select[name="pv-level"]') as HTMLSelectElement;
+      const planSelect = container.querySelector('select[name="pv-plan"]') as HTMLSelectElement;
+      const langSelect = container.querySelector('select[name="pv-language"]') as HTMLSelectElement;
+
+      expect(planSelect.value).toBe("12-Session Plan");
+
+      fireEvent.change(nameInput, { target: { value: "Elena Rostova" } });
+      fireEvent.change(phoneInput, { target: { value: "84782046066" } });
+      fireEvent.change(levelSelect, { target: { value: "Regular or Advanced Practitioner" } });
+      fireEvent.change(langSelect, { target: { value: "Vietnamese" } });
+
+      const submitBtn = screen.getByRole("button", { name: /Enquire About Private/i });
+      fireEvent.click(submitBtn);
+
+      await waitFor(() => {
+        expect(screen.getByText("Request received.")).toBeTruthy();
+      });
+
+      expect(submitLead).toHaveBeenCalledTimes(1);
+      const payload = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0];
+      expect(payload.preferred_experience).toBe(
+        "Private 1-on-1 online yoga (12-Session Plan · Language: Vietnamese)"
+      );
+      expect(payload.meta.plan_sessions).toBe("12-Session Plan");
+      expect(payload.meta.preferred_language).toBe("Vietnamese");
+      expect(payload.meta.funnel).toBe("private_yoga_organic");
+      expect(payload.meta.landing_page).toBe("/private-online-yoga");
+
+      // Verify privacy - no PII or health in analytics
+      expect(mockGtag).toHaveBeenCalledWith(
+        "event",
+        "generate_lead",
+        expect.objectContaining({
+          form_id: "private_yoga_enquiry",
+          service_category: "private_online",
+        })
+      );
+      expect(JSON.stringify(mockGtag.mock.calls)).not.toContain("Elena Rostova");
+    });
+
+    it("empty plan and language selections: submit cleanly with default experience and null meta fields", async () => {
+      (submitLead as unknown as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+        outcome: "accepted",
+      });
+
+      const { container } = render(<PrivateYogaEnquiryForm />);
+
+      const nameInput = screen.getByPlaceholderText("Your full name") as HTMLInputElement;
+      const phoneInput = container.querySelector('input[type="tel"]') as HTMLInputElement;
+      const levelSelect = container.querySelector('select[name="pv-level"]') as HTMLSelectElement;
+
+      fireEvent.change(nameInput, { target: { value: "Maya Lin" } });
+      fireEvent.change(phoneInput, { target: { value: "84782046066" } });
+      fireEvent.change(levelSelect, { target: { value: "Some Yoga Experience" } });
+
+      const submitBtn = screen.getByRole("button", { name: /Enquire About Private/i });
+      fireEvent.click(submitBtn);
+
+      await waitFor(() => {
+        expect(screen.getByText("Request received.")).toBeTruthy();
+      });
+
+      expect(submitLead).toHaveBeenCalledTimes(1);
+      const payload = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0];
+      expect(payload.preferred_experience).toBe("Private 1-on-1 online yoga");
+      expect(payload.meta.plan_sessions).toBeNull();
+      expect(payload.meta.preferred_language).toBeNull();
+    });
+
+    it("rejected unexpected values: blocks submission and renders validation errors in DOM", async () => {
+      const { container } = render(<PrivateYogaEnquiryForm />);
+
+      const nameInput = screen.getByPlaceholderText("Your full name") as HTMLInputElement;
+      const phoneInput = container.querySelector('input[type="tel"]') as HTMLInputElement;
+      const levelSelect = container.querySelector('select[name="pv-level"]') as HTMLSelectElement;
+      const planSelect = container.querySelector('select[name="pv-plan"]') as HTMLSelectElement;
+      const langSelect = container.querySelector('select[name="pv-language"]') as HTMLSelectElement;
+
+      fireEvent.change(nameInput, { target: { value: "Hacker User" } });
+      fireEvent.change(phoneInput, { target: { value: "84782046066" } });
+      fireEvent.change(levelSelect, { target: { value: "Some Yoga Experience" } });
+
+      // Append unexpected option elements to test boundary rejection
+      const invalidPlanOpt = document.createElement("option");
+      invalidPlanOpt.value = "99-Session Unlimited Hack";
+      planSelect.appendChild(invalidPlanOpt);
+
+      const invalidLangOpt = document.createElement("option");
+      invalidLangOpt.value = "Klingon";
+      langSelect.appendChild(invalidLangOpt);
+
+      fireEvent.change(planSelect, { target: { value: "99-Session Unlimited Hack" } });
+      fireEvent.change(langSelect, { target: { value: "Klingon" } });
+
+      const submitBtn = screen.getByRole("button", { name: /Enquire About Private/i });
+      fireEvent.click(submitBtn);
+
+      await waitFor(() => {
+        expect(screen.getByText("Please select a valid session plan")).toBeTruthy();
+        expect(screen.getByText("Please select a valid language preference")).toBeTruthy();
+      });
+
+      expect(submitLead).not.toHaveBeenCalled();
+    });
+
+    it("PRIVATE_PLANS defines 12, 20, 24-session and Custom packages with pricing by enquiry, neutral badges, and conditional continuity", async () => {
+      const { PRIVATE_PLANS } = await import("@/routes/private-online-yoga");
+      expect(PRIVATE_PLANS.length).toBe(4);
+      const sessionCounts = PRIVATE_PLANS.map((p) => p.sessions);
+      expect(sessionCounts).toEqual([12, 20, 24, 0]);
+
+      // Strictly neutral badges - no unsupported "Most Popular"
+      expect(JSON.stringify(PRIVATE_PLANS)).not.toContain("Most Popular");
+
+      PRIVATE_PLANS.forEach((plan) => {
+        expect(plan.pricing).toBe("Pricing by enquiry");
+        expect(plan.points.some((pt) => pt.includes("60 min") || pt.includes("60-minute"))).toBe(true);
+        // Conditional and consistent teacher continuity wording
+        expect(
+          plan.points.some(
+            (pt) => pt.toLowerCase().includes("generally kept") && pt.toLowerCase().includes("continuity")
+          )
+        ).toBe(true);
+        // Zero published prices, regional rates, discounts, or validity terms
+        expect(JSON.stringify(plan)).not.toMatch(/\$|VND|₫|₹|discount|save|valid for|expires/i);
+      });
     });
   });
 

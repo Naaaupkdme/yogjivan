@@ -150,11 +150,51 @@ function pushConsentUpdate(c: Consent) {
 
 /* --------------------------------------------------------------- meta pixel */
 
+export const APPROVED_META_HOSTS = new Set([
+  "yogjivan.com",
+  "www.yogjivan.com",
+  "yogjivan.in",
+  "www.yogjivan.in",
+]);
+
+export function isMetaAllowedHost(hostname: string): boolean {
+  if (!hostname) return false;
+  return APPROVED_META_HOSTS.has(hostname.toLowerCase());
+}
+
+export const SENSITIVE_HEALTH_PATH_RE =
+  /^\/(yoga-for-(back-pain|pcod|thyroid|stress|weight-loss)|period-safe-yoga)/i;
+
+export function isSensitiveHealthPath(path: string): boolean {
+  return SENSITIVE_HEALTH_PATH_RE.test(path);
+}
+
 let metaBooted = false;
+let lastMetaPageViewPath: string | null = null;
+
+export function resetMetaPageViewTracking() {
+  lastMetaPageViewPath = null;
+  metaBooted = false;
+  googleBooted = false;
+}
 
 function bootMeta() {
   const win = w();
   if (!win || metaBooted) return;
+  const host = win.location?.hostname || "";
+  if (!isMetaAllowedHost(host)) {
+    // Suppress real Meta network injection on non-approved hosts (localhost, preview domains).
+    return;
+  }
+  if (!readConsent().marketing) {
+    // Consent gate: do not inject script until marketing consent is granted.
+    return;
+  }
+  const currentPath = pagePath();
+  if (isSensitiveHealthPath(currentPath)) {
+    // Suppress script injection on sensitive health landing routes.
+    return;
+  }
   metaBooted = true;
   /* eslint-disable */
   (function (f: any, b: any, e: string, v: string) {
@@ -169,15 +209,42 @@ function bootMeta() {
   })(win, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
   /* eslint-enable */
   win.fbq!("init", META_PIXEL_ID);
-  // PageView is sent by trackPageView() so it is never duplicated.
+}
+
+export function emitMetaPageView(pathOverride?: string) {
+  const win = w();
+  if (!win) return;
+  const host = win.location?.hostname || "";
+  if (!isMetaAllowedHost(host)) return;
+  if (!readConsent().marketing) return;
+  const path = pathOverride ?? pagePath();
+  if (isSensitiveHealthPath(path)) return;
+  if (!metaBooted) {
+    bootMeta();
+  }
+  if (typeof win.fbq !== "function") return;
+  if (lastMetaPageViewPath === path) return;
+  win.fbq("track", "PageView");
+  lastMetaPageViewPath = path;
 }
 
 /** Applies a consent decision to both platforms. */
 export function applyConsent(c: Consent) {
-  if (!w()) return;
+  const win = w();
+  if (!win) return;
   bootGoogle();
   pushConsentUpdate(c);
-  if (c.marketing) bootMeta();
+  if (c.marketing) {
+    const currentPath = pagePath();
+    if (!isSensitiveHealthPath(currentPath)) {
+      bootMeta();
+      if (lastMetaPageViewPath !== currentPath) {
+        emitMetaPageView(currentPath);
+      }
+    }
+  } else {
+    lastMetaPageViewPath = null;
+  }
 }
 
 /** Initialises measurement on first client render. */
@@ -186,7 +253,12 @@ export function initAnalytics() {
   if (!win) return;
   bootGoogle();
   const stored = readConsent();
-  if (stored.marketing) bootMeta();
+  if (stored.marketing) {
+    const currentPath = pagePath();
+    if (!isSensitiveHealthPath(currentPath)) {
+      bootMeta();
+    }
+  }
 }
 
 /* ------------------------------------------------------------------- events */
@@ -203,7 +275,7 @@ export function gaEvent(name: string, params: Record<string, string | number | b
   win.gtag("event", name, { page_path: pagePath(), ...params });
 }
 
-/** Meta event — only fires when marketing consent is granted. */
+/** Meta event — only fires on approved host, when marketing consent is granted, and on non-sensitive paths. */
 export function metaEvent(
   name: string,
   params: Record<string, string | number> = {},
@@ -211,12 +283,16 @@ export function metaEvent(
   eventId?: string,
 ) {
   const win = w();
-  if (!win || typeof win.fbq !== "function") return;
+  if (!win) return;
+  const host = win.location?.hostname || "";
+  if (!isMetaAllowedHost(host)) return;
   if (!readConsent().marketing) return;
+  const path = pagePath();
+  if (isSensitiveHealthPath(path)) return;
+  if (typeof win.fbq !== "function") return;
   if (eventId) win.fbq("track", name, params, { eventID: eventId });
   else win.fbq("track", name, params);
 }
-
 
 export function trackPageView() {
   const win = w();
@@ -224,9 +300,14 @@ export function trackPageView() {
   gaEvent("page_view", {
     page_location: win.location.href,
     page_path: pagePath(),
-    page_title: document.title,
+    page_title: typeof document !== "undefined" ? document.title : "",
   });
-  metaEvent("PageView");
+  if (readConsent().marketing) {
+    const path = pagePath();
+    if (!isSensitiveHealthPath(path)) {
+      emitMetaPageView(path);
+    }
+  }
 }
 
 export type CtaEvent =

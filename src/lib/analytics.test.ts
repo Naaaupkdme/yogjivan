@@ -77,7 +77,7 @@ describe("analytics - privacy-safe lead categorization", () => {
       mockGtag = vi.fn();
       mockFbq = vi.fn();
       (globalThis as any).window = {
-        location: { pathname: "/test-path", search: "" },
+        location: { hostname: "www.yogjivan.com", pathname: "/test-path", search: "" },
         localStorage: {
           getItem: (key: string) => {
             if (key === "yj_cookie_consent_v2") {
@@ -140,6 +140,209 @@ describe("analytics - privacy-safe lead categorization", () => {
           content_category: "general",
         })
       );
+    });
+  });
+
+  describe("Meta Pixel compliance, host gating & consent lifecycle", () => {
+    let mockGtag: any;
+    let mockFbq: any;
+
+    beforeEach(() => {
+      mockGtag = vi.fn();
+      mockFbq = vi.fn();
+      (globalThis as any).document = {
+        title: "Private Online Yoga",
+        head: { appendChild: vi.fn() },
+        querySelector: vi.fn(),
+        createElement: vi.fn(() => ({ async: true, src: "" })),
+        getElementsByTagName: vi.fn(() => [{ parentNode: { insertBefore: vi.fn() } }]),
+      };
+      (globalThis as any).window = {
+        location: {
+          pathname: "/private-online-yoga",
+          search: "",
+          href: "https://www.yogjivan.com/private-online-yoga",
+          hostname: "www.yogjivan.com",
+        },
+        document: (globalThis as any).document,
+        localStorage: {
+          store: {} as Record<string, string>,
+          getItem(k: string) { return this.store[k] ?? null; },
+          setItem(k: string, v: string) { this.store[k] = v; },
+        },
+        dispatchEvent: vi.fn(),
+        gtag: mockGtag,
+        fbq: mockFbq,
+      };
+    });
+
+    afterEach(() => {
+      delete (globalThis as any).window;
+      delete (globalThis as any).document;
+    });
+
+    it("verifies approved production hosts vs localhost/preview domains", async () => {
+      const { isMetaAllowedHost } = await import("./analytics");
+      expect(isMetaAllowedHost("yogjivan.com")).toBe(true);
+      expect(isMetaAllowedHost("www.yogjivan.com")).toBe(true);
+      expect(isMetaAllowedHost("yogjivan.in")).toBe(true);
+      expect(isMetaAllowedHost("www.yogjivan.in")).toBe(true);
+
+      // Dev and preview hosts strictly unapproved to stop real pixel beacons
+      expect(isMetaAllowedHost("localhost")).toBe(false);
+      expect(isMetaAllowedHost("127.0.0.1")).toBe(false);
+      expect(isMetaAllowedHost("id-preview--fb15e133.lovable.app")).toBe(false);
+      expect(isMetaAllowedHost("something.lovableproject.com")).toBe(false);
+    });
+
+    it("identifies sensitive health routes to protect against health-association flags", async () => {
+      const { isSensitiveHealthPath } = await import("./analytics");
+      expect(isSensitiveHealthPath("/yoga-for-back-pain")).toBe(true);
+      expect(isSensitiveHealthPath("/yoga-for-pcod")).toBe(true);
+      expect(isSensitiveHealthPath("/yoga-for-thyroid")).toBe(true);
+      expect(isSensitiveHealthPath("/yoga-for-stress")).toBe(true);
+      expect(isSensitiveHealthPath("/period-safe-yoga")).toBe(true);
+
+      expect(isSensitiveHealthPath("/")).toBe(false);
+      expect(isSensitiveHealthPath("/private-online-yoga")).toBe(false);
+      expect(isSensitiveHealthPath("/online-yoga-classes")).toBe(false);
+      expect(isSensitiveHealthPath("/contact")).toBe(false);
+    });
+
+    it("reproduces consent denied -> marketing granted: emits missed Meta PageView without duplicating GA", async () => {
+      const { applyConsent, trackPageView, resetMetaPageViewTracking } = await import("./analytics");
+      resetMetaPageViewTracking();
+
+      // 1. Initial page load with consent denied
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: false, marketing: false }));
+      trackPageView();
+
+      // GA fired in restricted mode; Meta did NOT fire because marketing consent was false
+      expect(mockGtag).toHaveBeenCalledWith("event", "page_view", expect.objectContaining({ page_path: "/private-online-yoga" }));
+      expect(mockFbq).not.toHaveBeenCalled();
+
+      mockGtag.mockClear();
+      mockFbq.mockClear();
+
+      // 2. User grants marketing consent on the same route
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+      applyConsent({ analytics: true, marketing: true });
+
+      // Meta PageView is emitted for current route
+      expect(mockFbq).toHaveBeenCalledWith("track", "PageView");
+      // GA page_view is NOT duplicated
+      expect(mockGtag).not.toHaveBeenCalledWith("event", "page_view", expect.anything());
+
+      mockFbq.mockClear();
+
+      // 3. Repeated consent saves on the same route do NOT emit duplicate Meta PageView
+      applyConsent({ analytics: true, marketing: true });
+      expect(mockFbq).not.toHaveBeenCalled();
+    });
+
+    it("suppresses Meta events on sensitive health routes even with marketing consent granted", async () => {
+      const { metaEvent, resetMetaPageViewTracking } = await import("./analytics");
+      resetMetaPageViewTracking();
+
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+      (window as any).location.pathname = "/yoga-for-back-pain";
+
+      metaEvent("ViewContent", { content_name: "Back Pain" });
+      expect(mockFbq).not.toHaveBeenCalled();
+    });
+
+    it("must not bootstrap production Pixel on a sensitive first landing", async () => {
+      const { initAnalytics, resetMetaPageViewTracking } = await import("./analytics");
+      resetMetaPageViewTracking();
+      const insertScript = vi.fn();
+      (globalThis as any).document.getElementsByTagName = vi.fn(() => [{ parentNode: { insertBefore: insertScript } }]);
+      (window as any).location.pathname = "/yoga-for-back-pain";
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+      delete (window as any).fbq;
+
+      initAnalytics();
+      expect(insertScript).not.toHaveBeenCalled();
+    });
+
+    it("must block dispatch on preview even if fbq already exists", async () => {
+      const { metaEvent, resetMetaPageViewTracking } = await import("./analytics");
+      resetMetaPageViewTracking();
+      (window as any).location.hostname = "example.lovable.app";
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+
+      metaEvent("Lead", { content_category: "private_online" });
+      expect(mockFbq).not.toHaveBeenCalled();
+    });
+
+    it("verifies complete GA/Meta lifecycle semantics across consent changes and SPA navigation", async () => {
+      const { applyConsent, trackPageView, metaEvent, resetMetaPageViewTracking } = await import("./analytics");
+      resetMetaPageViewTracking();
+
+      // 1. First visit with denied consent
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: false, marketing: false }));
+      (window as any).location.pathname = "/private-online-yoga";
+      trackPageView();
+
+      // GA fires cookieless modelled page_view; Meta does not fire
+      expect(mockGtag).toHaveBeenCalledWith("event", "page_view", expect.objectContaining({ page_path: "/private-online-yoga" }));
+      expect(mockFbq).not.toHaveBeenCalled();
+
+      mockGtag.mockClear();
+      mockFbq.mockClear();
+
+      // 2. Grant on same route
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+      applyConsent({ analytics: true, marketing: true });
+
+      expect(mockFbq).toHaveBeenCalledWith("track", "PageView");
+      expect(mockGtag).not.toHaveBeenCalledWith("event", "page_view", expect.anything());
+
+      mockFbq.mockClear();
+
+      // 3. Repeated grant on same route is idempotent
+      applyConsent({ analytics: true, marketing: true });
+      expect(mockFbq).not.toHaveBeenCalled();
+
+      // 4. Navigation to permitted route (/online-yoga-classes)
+      (window as any).location.pathname = "/online-yoga-classes";
+      trackPageView();
+      expect(mockGtag).toHaveBeenCalledWith("event", "page_view", expect.objectContaining({ page_path: "/online-yoga-classes" }));
+      expect(mockFbq).toHaveBeenCalledWith("track", "PageView");
+
+      mockGtag.mockClear();
+      mockFbq.mockClear();
+
+      // 5. Navigation to sensitive route (/yoga-for-back-pain)
+      (window as any).location.pathname = "/yoga-for-back-pain";
+      trackPageView();
+      expect(mockGtag).toHaveBeenCalledWith("event", "page_view", expect.objectContaining({ page_path: "/yoga-for-back-pain" }));
+      // Meta PageView and metaEvent are strictly SUPPRESSED on sensitive route
+      expect(mockFbq).not.toHaveBeenCalled();
+      metaEvent("ViewContent", { content_name: "Back pain" });
+      expect(mockFbq).not.toHaveBeenCalled();
+
+      mockGtag.mockClear();
+      mockFbq.mockClear();
+
+      // 6. Navigation back to permitted route (/contact)
+      (window as any).location.pathname = "/contact";
+      trackPageView();
+      expect(mockGtag).toHaveBeenCalledWith("event", "page_view", expect.objectContaining({ page_path: "/contact" }));
+      expect(mockFbq).toHaveBeenCalledWith("track", "PageView");
+
+      mockFbq.mockClear();
+
+      // 7. Revoke consent
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: false }));
+      applyConsent({ analytics: true, marketing: false });
+
+      metaEvent("Lead", { content_category: "contact" });
+      expect(mockFbq).not.toHaveBeenCalled();
+
+      // 8. Regrant consent
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+      applyConsent({ analytics: true, marketing: true });
+      expect(mockFbq).toHaveBeenCalledWith("track", "PageView");
     });
   });
 });

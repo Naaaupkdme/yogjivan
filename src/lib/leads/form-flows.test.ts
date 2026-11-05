@@ -23,7 +23,7 @@ describe("Form flows — production submission coordinator, outcome gating, mute
     mockGtag = vi.fn();
     mockFbq = vi.fn();
     (globalThis as any).window = {
-      location: { pathname: "/test-form-path", search: "" },
+      location: { hostname: "www.yogjivan.com", pathname: "/test-form-path", search: "" },
       localStorage: {
         getItem: (k: string) =>
           k === "yj_cookie_consent_v2"

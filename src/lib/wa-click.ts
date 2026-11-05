@@ -19,11 +19,14 @@ export function newWaRef(): string {
   return `YJ-WA-${s}`;
 }
 
-/** Only ever the business number; ref appended only when it was actually stored. */
-export function waDestination(intent: WaIntent, storedRef: string | null): string {
+/**
+ * Destination is always the business number with the clean prefilled message.
+ * Visible Ref suffix is removed from customer prefill to ensure a natural opening line.
+ * Anonymous click metadata remains stored in whatsapp_clicks on POST.
+ */
+export function waDestination(intent: WaIntent, _storedRef?: string | null): string {
   const base = WA_MESSAGES[intent];
-  const text = storedRef && WA_REF_RE.test(storedRef) ? `${base} (Ref: ${storedRef})` : base;
-  return `${CONTACT.whatsapp}?text=${encodeURIComponent(text)}`;
+  return `${CONTACT.whatsapp}?text=${encodeURIComponent(base)}`;
 }
 
 const BOT_RE = /bot|crawl|spider|slurp|preview|facebookexternalhit|whatsapp\/|headless|lighthouse|curl|wget|python|httpclient/i;

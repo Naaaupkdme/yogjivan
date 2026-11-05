@@ -264,3 +264,86 @@ describe("delivery outcomes", () => {
     expect(sheetOutcome(503, "x", 5).kind).toBe("failed");
   });
 });
+
+describe("mirror metadata permissions & private service classification", () => {
+  it("allows exact validated plan_sessions and preferred_language in safeMeta", () => {
+    const { payload } = buildLeadPayload(
+      lead({
+        meta: {
+          plan_sessions: "20-Session Plan",
+          preferred_language: "Vietnamese",
+          utm_source: "google",
+          landing_page: "/private-online-yoga",
+        },
+      })
+    );
+    const parsedMeta = JSON.parse(payload.meta_json);
+    expect(parsedMeta.plan_sessions).toBe("20-Session Plan");
+    expect(parsedMeta.preferred_language).toBe("Vietnamese");
+    expect(parsedMeta.utm_source).toBe("google");
+  });
+
+  it("strictly rejects arbitrary plan_* keys from mirror safeMeta", () => {
+    const { payload } = buildLeadPayload(
+      lead({
+        meta: {
+          plan_sessions: "12-Session Plan",
+          plan_discount: "20% off",
+          plan_rate: "$500",
+          plan_custom_internal: "secret",
+        },
+      })
+    );
+    const parsedMeta = JSON.parse(payload.meta_json);
+    expect(parsedMeta.plan_sessions).toBe("12-Session Plan");
+    expect(parsedMeta).not.toHaveProperty("plan_discount");
+    expect(parsedMeta).not.toHaveProperty("plan_rate");
+    expect(parsedMeta).not.toHaveProperty("plan_custom_internal");
+  });
+
+  it("strictly rejects unvalidated/unexpected values for plan_sessions and preferred_language", () => {
+    const { payload } = buildLeadPayload(
+      lead({
+        meta: {
+          plan_sessions: "50-Session Plan",
+          preferred_language: "German",
+        },
+      })
+    );
+    const parsedMeta = JSON.parse(payload.meta_json);
+    expect(parsedMeta).not.toHaveProperty("plan_sessions");
+    expect(parsedMeta).not.toHaveProperty("preferred_language");
+  });
+
+  it("omits empty/null optional plan_sessions and preferred_language from safeMeta", () => {
+    const { payload } = buildLeadPayload(
+      lead({
+        meta: {
+          plan_sessions: null,
+          preferred_language: null,
+        },
+      })
+    );
+    const parsedMeta = JSON.parse(payload.meta_json);
+    expect(parsedMeta).not.toHaveProperty("plan_sessions");
+    expect(parsedMeta).not.toHaveProperty("preferred_language");
+  });
+
+  it("classifies all formatted private sessions as service 'private' and priority 'High'", () => {
+    const experiences = [
+      "Private 1-on-1 online yoga (12-Session Plan · Language: Vietnamese)",
+      "Private 1-on-1 online yoga (20-Session Plan · Language: English)",
+      "Private 1-on-1 online yoga (24-Session Plan · Language: Hindi)",
+      "Private 1-on-1 online yoga (Custom / Undecided · Language: Flexible / Any)",
+      "Private 1-on-1 online yoga (20-Session Plan)",
+      "Private 1-on-1 online yoga (Language: Vietnamese)",
+      "Private 1-on-1 online yoga",
+    ];
+
+    for (const exp of experiences) {
+      const { payload } = buildLeadPayload(lead({ preferred_experience: exp }));
+      expect(payload.service).toBe("private");
+      expect(payload.priority).toBe("High");
+    }
+  });
+});

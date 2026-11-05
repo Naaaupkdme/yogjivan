@@ -308,14 +308,12 @@ function RootComponent() {
       lastKey = key;
       trackPageView();
       // Meta ViewContent on key service pages (consent-gated inside metaEvent).
+      // Sensitive health-condition routes are excluded to comply with health data policy.
       const path = window.location.pathname.replace(/\/+$/, "") || "/";
       const VIEW_CONTENT_MAP: Record<string, { content_name: string; content_category: string }> = {
         "/": { content_name: "Home — Yog Jivan Sanctuary", content_category: "Home" },
         "/online-yoga-classes": { content_name: "Online Yoga Classes", content_category: "Online Classes" },
-        "/private-online-yoga": { content_name: "Personal Training", content_category: "Private Sessions" },
-        "/yoga-for-back-pain": { content_name: "Back Pain Yoga", content_category: "Therapeutic Yoga" },
-        "/yoga-for-stress": { content_name: "Stress Relief Yoga", content_category: "Therapeutic Yoga" },
-        "/yoga-for-weight-loss": { content_name: "Weight Loss Yoga", content_category: "Therapeutic Yoga" },
+        "/private-online-yoga": { content_name: "Private Online Yoga", content_category: "Private Sessions" },
         "/contact": { content_name: "Contact Yog Jivan", content_category: "Contact" },
         "/book-online-yoga": { content_name: "Book Online Yoga (paid landing)", content_category: "Online Classes" },
       };
