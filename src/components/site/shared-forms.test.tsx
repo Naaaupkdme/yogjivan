@@ -140,4 +140,53 @@ describe("SharedYogaEnquiryForm — Couples, Family & Parent-Child", () => {
     expect(callPayload.meta?.shared_format).toBe("family");
     expect(callPayload.meta?.participant_count).toBe(3);
   });
+
+  it("accepts controlled format prop and syncs state reliably across rerenders", () => {
+    const onFormatChange = vi.fn();
+    const { rerender } = render(
+      <SharedYogaEnquiryForm format="family" onFormatChange={onFormatChange} />
+    );
+
+    const formatSelect = screen.getByLabelText(/session format/i) as HTMLSelectElement;
+    expect(formatSelect.value).toBe("family");
+    expect(screen.getByLabelText(/total participants in household/i)).toBeDefined();
+
+    // Rerender with parent_child format
+    rerender(<SharedYogaEnquiryForm format="parent_child" onFormatChange={onFormatChange} />);
+    expect(formatSelect.value).toBe("parent_child");
+    expect(screen.queryByLabelText(/total participants in household/i)).toBeNull();
+    expect(screen.getByText(/fixed: 2 participants/i)).toBeDefined();
+
+    // User change calls callback
+    fireEvent.change(formatSelect, { target: { value: "couples" } });
+    expect(onFormatChange).toHaveBeenCalledWith("couples");
+  });
+
+  it("submits parent_child enquiry with 2 participants and adult caregiver metadata", async () => {
+    vi.mocked(leadsModule.submitLead).mockResolvedValueOnce({ outcome: "accepted" });
+
+    const { container } = render(<SharedYogaEnquiryForm format="parent_child" />);
+
+    fireEvent.change(screen.getByLabelText(/adult booking contact name/i), {
+      target: { value: "Rohan & Aarav" },
+    });
+
+    const phoneInput = container.querySelector('input[type="tel"]') as HTMLInputElement;
+    fireEvent.change(phoneInput, { target: { value: "84933334444" } });
+
+    const submitBtn = screen.getByRole("button", { name: /enquire about parent & child yoga/i });
+    fireEvent.click(submitBtn);
+
+    await waitFor(() => {
+      expect(leadsModule.submitLead).toHaveBeenCalledTimes(1);
+    });
+
+    const callPayload = vi.mocked(leadsModule.submitLead).mock.calls[0][0];
+    expect(callPayload.name).toBe("Rohan & Aarav");
+    expect(callPayload.preferred_experience).toContain("Private parent & child online yoga");
+    expect(callPayload.meta?.funnel).toBe("parent_child_yoga_enquiry");
+    expect(callPayload.meta?.landing_page).toBe("/online-family-yoga");
+    expect(callPayload.meta?.shared_format).toBe("parent_child");
+    expect(callPayload.meta?.participant_count).toBe(2);
+  });
 });

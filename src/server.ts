@@ -40,6 +40,12 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+      if (url.pathname.startsWith("/__l5e/")) {
+        // Proxy Lovable R2 assets to production CDN so previews render real assets without 404s
+        const proxied = await fetch(`https://www.yogjivan.com${url.pathname}${url.search}`);
+        return proxied;
+      }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);

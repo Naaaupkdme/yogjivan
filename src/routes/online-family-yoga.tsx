@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { SharedYogaEnquiryForm } from "@/components/site/SharedYogaEnquiryForm";
@@ -74,6 +75,8 @@ export const Route = createFileRoute("/online-family-yoga")({
 });
 
 function FamilyYogaPage() {
+  const [selectedFormat, setSelectedFormat] = useState<"family" | "parent_child">("family");
+
   return (
     <>
       <PageHero
@@ -81,7 +84,8 @@ function FamilyYogaPage() {
         title={FAMILY_OFFER.h1}
         accent="live at home for up to four."
         sub={FAMILY_OFFER.tagline}
-        image={masterImages.kidsYoga}
+        image="/assets/preview/hero-family.svg"
+        imageAlt="Concept preview: Four household members on staggered mats in living room with participating adult caregiver"
       >
         <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
           Bring mindful movement into your household. Live private 60-minute yoga sessions for up to four family members, guided by a dedicated Yog Jivan teacher with an adult participating.
@@ -224,16 +228,20 @@ function FamilyYogaPage() {
           </div>
 
           <div className="mt-8 text-center">
+            <img
+              src="/assets/preview/section-parent-child.svg"
+              alt="Concept preview: Adult caregiver and child practicing together on mats with blocks"
+              className="mx-auto mb-8 max-w-xl rounded-2xl border border-[color:var(--gold)]/30 shadow-xl"
+            />
             <button
               type="button"
+              data-cta="parent-child-enquiry"
               onClick={() => {
+                setSelectedFormat("parent_child");
                 const el = document.getElementById("shared-enquiry-form");
                 el?.scrollIntoView({ behavior: "smooth" });
                 const select = document.getElementById("shared-format-select") as HTMLSelectElement | null;
-                if (select) {
-                  select.value = "parent_child";
-                  select.dispatchEvent(new Event("change", { bubbles: true }));
-                }
+                select?.focus();
               }}
               className="btn-gold inline-flex items-center gap-2 text-sm"
             >
@@ -248,9 +256,10 @@ function FamilyYogaPage() {
         <div className="container-luxe">
           <div className="mx-auto max-w-2xl">
             <SharedYogaEnquiryForm
-              initialFormat="family"
-              heading="Enquire About Live Family Yoga"
-              subheading="Share your family's preferred days, participant count, and time zone. We reply with schedule options and private quote details on WhatsApp."
+              format={selectedFormat}
+              onFormatChange={(fmt) => setSelectedFormat(fmt === "parent_child" ? "parent_child" : "family")}
+              heading={selectedFormat === "parent_child" ? "Enquire About Parent & Child Yoga" : "Enquire About Live Family Yoga"}
+              subheading={selectedFormat === "parent_child" ? "Share your preferred schedule and child age band. We reply with schedule options and private quote details on WhatsApp." : "Share your family's preferred days, participant count, and time zone. We reply with schedule options and private quote details on WhatsApp."}
             />
           </div>
         </div>

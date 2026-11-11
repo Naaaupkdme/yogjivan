@@ -38,20 +38,25 @@ const SUPPORTED_ISO2 = new Set(defaultCountries.map((c) => parseCountry(c).iso2 
 
 export type SharedYogaEnquiryFormProps = {
   initialFormat?: "couples" | "family" | "parent_child";
+  format?: "couples" | "family" | "parent_child";
+  onFormatChange?: (format: "couples" | "family" | "parent_child") => void;
   heading?: string;
   subheading?: string;
 };
 
 export function SharedYogaEnquiryForm({
   initialFormat = "couples",
+  format: controlledFormat,
+  onFormatChange,
   heading = "Enquire About Shared Sessions",
   subheading = "Tell us who is joining and your preferred times. Scheduling and rates are arranged individually by enquiry.",
 }: SharedYogaEnquiryFormProps) {
+  const activeFormat = controlledFormat ?? initialFormat;
   const [form, setForm] = useState<FormState>({
     name: "",
     whatsapp: "",
-    format: initialFormat,
-    participants: initialFormat === "family" ? 4 : 2,
+    format: activeFormat,
+    participants: activeFormat === "family" ? 4 : 2,
     time: "Flexible",
     language: "English",
     notes: "",
@@ -72,14 +77,24 @@ export function SharedYogaEnquiryForm({
   }, []);
 
   useEffect(() => {
-    if (initialFormat !== form.format) {
+    if (controlledFormat && controlledFormat !== form.format) {
+      setForm((s) => ({
+        ...s,
+        format: controlledFormat,
+        participants: controlledFormat === "family" ? (s.participants >= 3 ? s.participants : 4) : 2,
+      }));
+    }
+  }, [controlledFormat]);
+
+  useEffect(() => {
+    if (!controlledFormat && initialFormat !== form.format) {
       setForm((s) => ({
         ...s,
         format: initialFormat,
         participants: initialFormat === "family" ? 4 : 2,
       }));
     }
-  }, [initialFormat]);
+  }, [initialFormat, controlledFormat]);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((s) => {
@@ -94,6 +109,11 @@ export function SharedYogaEnquiryForm({
       return next;
     });
     setErrors((e) => (e[key] ? { ...e, [key]: undefined } : e));
+  }
+
+  function handleFormatChange(nextFormat: FormState["format"]) {
+    update("format", nextFormat);
+    onFormatChange?.(nextFormat);
   }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -229,7 +249,7 @@ export function SharedYogaEnquiryForm({
           <select
             id="shared-format-select"
             value={form.format}
-            onChange={(e) => update("format", e.target.value as FormState["format"])}
+            onChange={(e) => handleFormatChange(e.target.value as FormState["format"])}
             className="w-full rounded-xl border border-border/60 bg-background/60 px-4 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
           >
             <option value="couples">Couples Yoga (2 adults)</option>
@@ -238,10 +258,24 @@ export function SharedYogaEnquiryForm({
           </select>
         </div>
 
+        {form.format === "couples" && (
+          <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+            <Users className="h-3.5 w-3.5 text-[color:var(--gold)]" />
+            Fixed: exactly 2 adult participants.
+          </p>
+        )}
+
+        {form.format === "parent_child" && (
+          <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+            <Users className="h-3.5 w-3.5 text-[color:var(--gold)]" />
+            Fixed: 2 participants (1 participating adult caregiver + 1 child).
+          </p>
+        )}
+
         {form.format === "family" && (
           <div>
             <label htmlFor="shared-pax-select" className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Total Participants in Household
+              Total Participants in Household (Owner-approved up to 4)
             </label>
             <select
               id="shared-pax-select"
@@ -249,9 +283,9 @@ export function SharedYogaEnquiryForm({
               onChange={(e) => update("participants", Number(e.target.value))}
               className="w-full rounded-xl border border-border/60 bg-background/60 px-4 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
             >
-              <option value={2}>2 Family Members</option>
-              <option value={3}>3 Family Members</option>
-              <option value={4}>4 Family Members (Max)</option>
+              <option value={3}>3 Family Members (Recommended tier)</option>
+              <option value={4}>4 Family Members (Maximum tier)</option>
+              <option value={2}>2 Family Members (Family duo)</option>
             </select>
           </div>
         )}

@@ -77,7 +77,8 @@ function CouplesYogaPage() {
         title={COUPLES_OFFER.h1}
         accent="live with a dedicated teacher."
         sub={COUPLES_OFFER.tagline}
-        image={masterImages.studioAdjustment}
+        image="/assets/preview/hero-couples.svg"
+        imageAlt="Concept preview: Two adult partners on separate mats with dual variations and laptop on stand"
       >
         <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
           Practise together from the comfort of home. Share a live 60-minute session tailored for two adults, with personalized guidance, posture alignment, and individual modifications.

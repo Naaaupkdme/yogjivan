@@ -2,12 +2,13 @@ import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
-export function PageHero({ eyebrow, title, accent, sub, image, children, contrastVeil }: {
+export function PageHero({ eyebrow, title, accent, sub, image, imageAlt = "", children, contrastVeil }: {
   eyebrow: string;
   title: string;
   accent?: string;
   sub?: string;
   image?: string;
+  imageAlt?: string;
   children?: ReactNode;
   /** Adds a localized dark scrim behind the text column for pages whose hero
    *  imagery has bright frames. Keeps the image itself at full brightness. */
@@ -17,8 +18,16 @@ export function PageHero({ eyebrow, title, accent, sub, image, children, contras
     <section className="relative isolate overflow-hidden pt-[calc(var(--hdr-h,64px)+3.5rem)] pb-16 md:pt-[calc(var(--hdr-h,80px)+4.5rem)] md:pb-24">
       {image && (
         <>
-          <img src={image} alt="" role="presentation" aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full object-cover opacity-28" />
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_45%,transparent),color-mix(in_oklab,var(--onyx)_68%,transparent))]" />
+          <img
+            src={image}
+            alt={imageAlt}
+            role={imageAlt ? undefined : "presentation"}
+            aria-hidden={imageAlt ? undefined : "true"}
+            fetchPriority="high"
+            loading="eager"
+            className="absolute inset-0 -z-10 h-full w-full object-cover opacity-45 sm:opacity-55"
+          />
+          <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_40%,transparent),color-mix(in_oklab,var(--onyx)_65%,transparent))]" />
         </>
       )}
       {contrastVeil && (
