@@ -599,6 +599,33 @@ function PrivateYogaPage() {
 
       <div className="container-luxe"><hr className="rule-glow" /></div>
 
+      {/* SHARED SESSIONS COMPARISON BANNER */}
+      <section className="section-pad-sm">
+        <div className="container-luxe">
+          <div className="glass-luxe rounded-2xl p-6 md:p-8 border border-border/60">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div>
+                <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Practise Together</p>
+                <h3 className="mt-2 text-xl font-bold text-foreground md:text-2xl">Looking for shared private sessions?</h3>
+                <p className="mt-2 text-sm text-muted-foreground max-w-2xl">
+                  If you prefer to practise alongside a partner or household members, we offer dedicated live online sessions for couples and families.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 shrink-0">
+                <Link to="/online-couples-yoga" className="btn-ghost-gold text-xs">
+                  Couples Yoga (2 Adults) &rarr;
+                </Link>
+                <Link to="/online-family-yoga" className="btn-ghost-gold text-xs">
+                  Family Yoga (Up to 4) &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container-luxe"><hr className="rule-glow" /></div>
+
       {/* 3 — AEO / GEO DIRECT ANSWER */}
       <section className="section-pad-sm">
         <div className="container-luxe">

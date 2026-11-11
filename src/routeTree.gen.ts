@@ -19,6 +19,8 @@ import { Route as CorporateRouteImport } from './routes/corporate'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as OnlineRouteImport } from './routes/online'
+import { Route as OnlineCouplesYogaRouteImport } from './routes/online-couples-yoga'
+import { Route as OnlineFamilyYogaRouteImport } from './routes/online-family-yoga'
 import { Route as OnlinePrivateYogaRouteImport } from './routes/online-private-yoga'
 import { Route as OnlineYogaClassesRouteImport } from './routes/online-yoga-classes'
 import { Route as OnlineYogaProgramsRouteImport } from './routes/online-yoga-programs'
@@ -111,6 +113,16 @@ const McpRoute = McpRouteImport.update({
 const OnlineRoute = OnlineRouteImport.update({
   id: '/online',
   path: '/online',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineCouplesYogaRoute = OnlineCouplesYogaRouteImport.update({
+  id: '/online-couples-yoga',
+  path: '/online-couples-yoga',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineFamilyYogaRoute = OnlineFamilyYogaRouteImport.update({
+  id: '/online-family-yoga',
+  path: '/online-family-yoga',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnlinePrivateYogaRoute = OnlinePrivateYogaRouteImport.update({
@@ -345,6 +357,8 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
+  '/online-couples-yoga': typeof OnlineCouplesYogaRoute
+  '/online-family-yoga': typeof OnlineFamilyYogaRoute
   '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/online-yoga-programs': typeof OnlineYogaProgramsRoute
@@ -400,6 +414,8 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
+  '/online-couples-yoga': typeof OnlineCouplesYogaRoute
+  '/online-family-yoga': typeof OnlineFamilyYogaRoute
   '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/online-yoga-programs': typeof OnlineYogaProgramsRoute
@@ -455,6 +471,8 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
+  '/online-couples-yoga': typeof OnlineCouplesYogaRoute
+  '/online-family-yoga': typeof OnlineFamilyYogaRoute
   '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/online-yoga-programs': typeof OnlineYogaProgramsRoute
@@ -512,6 +530,8 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/mcp'
     | '/online'
+    | '/online-couples-yoga'
+    | '/online-family-yoga'
     | '/online-private-yoga'
     | '/online-yoga-classes'
     | '/online-yoga-programs'
@@ -567,6 +587,8 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/mcp'
     | '/online'
+    | '/online-couples-yoga'
+    | '/online-family-yoga'
     | '/online-private-yoga'
     | '/online-yoga-classes'
     | '/online-yoga-programs'
@@ -621,6 +643,8 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/mcp'
     | '/online'
+    | '/online-couples-yoga'
+    | '/online-family-yoga'
     | '/online-private-yoga'
     | '/online-yoga-classes'
     | '/online-yoga-programs'
@@ -677,6 +701,8 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   McpRoute: typeof McpRoute
   OnlineRoute: typeof OnlineRoute
+  OnlineCouplesYogaRoute: typeof OnlineCouplesYogaRoute
+  OnlineFamilyYogaRoute: typeof OnlineFamilyYogaRoute
   OnlinePrivateYogaRoute: typeof OnlinePrivateYogaRoute
   OnlineYogaClassesRoute: typeof OnlineYogaClassesRoute
   OnlineYogaProgramsRoute: typeof OnlineYogaProgramsRoute
@@ -790,6 +816,20 @@ declare module '@tanstack/react-router' {
       path: '/online'
       fullPath: '/online'
       preLoaderRoute: typeof OnlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-couples-yoga': {
+      id: '/online-couples-yoga'
+      path: '/online-couples-yoga'
+      fullPath: '/online-couples-yoga'
+      preLoaderRoute: typeof OnlineCouplesYogaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-family-yoga': {
+      id: '/online-family-yoga'
+      path: '/online-family-yoga'
+      fullPath: '/online-family-yoga'
+      preLoaderRoute: typeof OnlineFamilyYogaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/online-private-yoga': {
@@ -1121,6 +1161,8 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   McpRoute: McpRoute,
   OnlineRoute: OnlineRoute,
+  OnlineCouplesYogaRoute: OnlineCouplesYogaRoute,
+  OnlineFamilyYogaRoute: OnlineFamilyYogaRoute,
   OnlinePrivateYogaRoute: OnlinePrivateYogaRoute,
   OnlineYogaClassesRoute: OnlineYogaClassesRoute,
   OnlineYogaProgramsRoute: OnlineYogaProgramsRoute,

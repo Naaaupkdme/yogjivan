@@ -374,6 +374,8 @@ export const GROWTH_POSTS: BlogPost[] = [
     related: [
       { label: "Live Online Yoga Classes", to: "/online-yoga-classes" },
       { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga" },
+      { label: "Online Couples Yoga", to: "/online-couples-yoga" },
+      { label: "Online Family Yoga", to: "/online-family-yoga" },
       { label: "What happens in your first live online class", to: "/blog/first-live-online-yoga-class" },
     ],
     faqs: [

@@ -23,6 +23,24 @@ describe("chatChannelFor route awareness and intent routing", () => {
     }
   });
 
+  it("routes couples and family routes to WhatsApp with specific intent ariaLabels", () => {
+    const couples = chatChannelFor("/online-couples-yoga");
+    expect(couples.isVi).toBe(false);
+    expect(couples.channel).toBe("whatsapp");
+    expect(couples.href).toBe("/go/whatsapp?i=couples");
+    expect(couples.ariaLabel).toBe(
+      "Chat with the Yog Jivan team on WhatsApp — enquire about private couples online yoga sessions",
+    );
+
+    const family = chatChannelFor("/online-family-yoga");
+    expect(family.isVi).toBe(false);
+    expect(family.channel).toBe("whatsapp");
+    expect(family.href).toBe("/go/whatsapp?i=family");
+    expect(family.ariaLabel).toBe(
+      "Chat with the Yog Jivan team on WhatsApp — enquire about private family online yoga sessions",
+    );
+  });
+
   it("preserves standard trial / question ariaLabel on non-private English routes", () => {
     const paths = ["/", "/online-yoga-classes", "/programs", "/contact", "/about"];
 

@@ -48,10 +48,14 @@ export function chatChannelFor(pathname: string): ChatChannel {
     };
   }
   const intent = waIntentForPath(pathname);
-  const ariaLabel =
-    intent === "private"
-      ? "Chat with the Yog Jivan team on WhatsApp — enquire about private 1-on-1 yoga sessions"
-      : "Chat with the Yog Jivan team on WhatsApp — book a free trial or ask a question";
+  let ariaLabel = "Chat with the Yog Jivan team on WhatsApp — book a free trial or ask a question";
+  if (intent === "private") {
+    ariaLabel = "Chat with the Yog Jivan team on WhatsApp — enquire about private 1-on-1 yoga sessions";
+  } else if (intent === "couples") {
+    ariaLabel = "Chat with the Yog Jivan team on WhatsApp — enquire about private couples online yoga sessions";
+  } else if (intent === "family") {
+    ariaLabel = "Chat with the Yog Jivan team on WhatsApp — enquire about private family online yoga sessions";
+  }
 
   return {
     isVi: false,
