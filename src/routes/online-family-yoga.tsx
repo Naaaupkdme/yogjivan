@@ -46,12 +46,28 @@ export const Route = createFileRoute("/online-family-yoga")({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
-      ...socialImageMeta(masterImages.kidsYoga),
+      ...socialImageMeta("https://www.yogjivan.com/assets/preview/family-yoga-1400.webp"),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
     ],
-    links: [{ rel: "canonical", href: CANONICAL }],
+    links: [
+      { rel: "canonical", href: CANONICAL },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/assets/preview/family-yoga-768.webp",
+        type: "image/webp",
+        media: "(max-width: 768px)",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/assets/preview/family-yoga-1400.webp",
+        type: "image/webp",
+        media: "(min-width: 769px)",
+      },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -84,8 +100,14 @@ function FamilyYogaPage() {
         title={FAMILY_OFFER.h1}
         accent="live at home for up to four."
         sub={FAMILY_OFFER.tagline}
-        image="/assets/preview/hero-family.svg"
-        imageAlt="Concept preview: Four household members on staggered mats in living room with participating adult caregiver"
+        image768="/assets/preview/family-yoga-768.webp"
+        image1400="/assets/preview/family-yoga-1400.webp"
+        imageWidth={1400}
+        imageHeight={1050}
+        imageAspectRatio="4/3"
+        imageAlt="AI-generated illustration: Four household members practicing yoga together at home on mats with an adult caregiver"
+        imageCaption="AI-generated preview illustration · Does not depict Yog Jivan students or teachers"
+        contrastVeil
       >
         <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
           Bring mindful movement into your household. Live private 60-minute yoga sessions for up to four family members, guided by a dedicated Yog Jivan teacher with an adult participating.
@@ -228,11 +250,34 @@ function FamilyYogaPage() {
           </div>
 
           <div className="mt-8 text-center">
-            <img
-              src="/assets/preview/section-parent-child.svg"
-              alt="Concept preview: Adult caregiver and child practicing together on mats with blocks"
-              className="mx-auto mb-8 max-w-xl rounded-2xl border border-[color:var(--gold)]/30 shadow-xl"
-            />
+            <picture className="mx-auto mb-3 block max-w-xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 shadow-xl aspect-[16/9]">
+              <source
+                media="(max-width: 768px)"
+                srcSet="/assets/preview/parent-child-yoga-768.webp"
+                type="image/webp"
+                width={768}
+                height={432}
+              />
+              <source
+                media="(min-width: 769px)"
+                srcSet="/assets/preview/parent-child-yoga-1400.webp"
+                type="image/webp"
+                width={1400}
+                height={788}
+              />
+              <img
+                src="/assets/preview/parent-child-yoga-768.webp"
+                alt="AI-generated illustration: An adult caregiver and child practicing yoga together at home with blocks"
+                width={768}
+                height={432}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
+            </picture>
+            <p className="mx-auto mb-8 max-w-md text-xs text-muted-foreground/80">
+              AI-generated preview illustration · Does not depict Yog Jivan students or teachers
+            </p>
             <button
               type="button"
               data-cta="parent-child-enquiry"

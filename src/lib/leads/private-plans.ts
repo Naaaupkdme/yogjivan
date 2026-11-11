@@ -36,3 +36,8 @@ export const PRIVATE_LANGUAGE_OPTIONS = [
 ] as const;
 
 export const VALID_PREFERRED_LANGUAGES = new Set<string>(PRIVATE_LANGUAGE_OPTIONS);
+
+export const VALID_SHARED_FORMATS = new Set(["couples", "family", "parent_child"] as const);
+export type SharedYogaFormat = "couples" | "family" | "parent_child";
+
+export const VALID_PARTICIPANT_COUNTS = new Set([2, 3, 4] as const);

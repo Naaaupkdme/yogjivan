@@ -371,7 +371,24 @@ export const Route = createFileRoute("/private-online-yoga")({
       { name: "twitter:title", content: PT_TITLE },
       { name: "twitter:description", content: PT_DESC },
     ],
-    links: [{ rel: "canonical", href: PT_URL }, ...hreflangLinks(PAIR_PRIVATE)],
+    links: [
+      { rel: "canonical", href: PT_URL },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/assets/preview/private-yoga-768.webp",
+        type: "image/webp",
+        media: "(max-width: 768px)",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/assets/preview/private-yoga-1400.webp",
+        type: "image/webp",
+        media: "(min-width: 769px)",
+      },
+      ...hreflangLinks(PAIR_PRIVATE),
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -440,8 +457,13 @@ function PrivateYogaPage() {
         title="Private Online Yoga Classes —"
         accent="1-on-1 live with the Yog Jivan team."
         sub="Live 60-minute one-to-one video sessions shaped around your level, goals and schedule — beginner to advanced, worldwide."
-        image="/assets/preview/hero-private-1on1.svg"
-        imageAlt="Concept preview: One adult student on mat with laptop on stand following private online yoga"
+        image768="/assets/preview/private-yoga-768.webp"
+        image1400="/assets/preview/private-yoga-1400.webp"
+        imageWidth={1400}
+        imageHeight={788}
+        imageAspectRatio="16/9"
+        imageAlt="AI-generated illustration: A student in an online private yoga session with a live video call on a laptop"
+        imageCaption="AI-generated preview illustration · Does not depict Yog Jivan students or teachers"
         contrastVeil
       >
         <p className="max-w-2xl text-sm leading-relaxed text-foreground/85 md:text-base">

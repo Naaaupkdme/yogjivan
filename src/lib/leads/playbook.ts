@@ -7,13 +7,16 @@
 // - Never quote prices first; no cure/treatment claims; never include health-note text.
 // - Group availability is unknown: never promise a slot.
 
-export const PLAYBOOK_VERSION = "yj-first-reply-v2 (2026-09-27)";
+export const PLAYBOOK_VERSION = "yj-first-reply-v2.1 (2026-11-12)";
 
 export const PLAYBOOK = {
   greeting: (first: string) => `Hi ${first} 😊`,
   signoff: "🙏",
   intro: {
     private: "Thank you for your interest in private 1-on-1 online yoga with Yog Jivan.",
+    couples: "Thank you for your interest in live online couples yoga with Yog Jivan.",
+    family: "Thank you for your interest in live online family yoga with Yog Jivan.",
+    parent_child: "Thank you for your interest in private parent & child online yoga with Yog Jivan.",
     group: "Thank you for your interest in Yog Jivan's live online group classes.",
     studio: "Thank you for your interest in classes at our Hai Duong studios.",
     other: "Thank you for reaching out to Yog Jivan.",

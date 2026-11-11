@@ -41,12 +41,28 @@ export const Route = createFileRoute("/online-couples-yoga")({
       { property: "og:description", content: DESCRIPTION },
       { property: "og:url", content: CANONICAL },
       { property: "og:type", content: "website" },
-      ...socialImageMeta(masterImages.studioAdjustment),
+      ...socialImageMeta("https://www.yogjivan.com/assets/preview/couples-yoga-1400.webp"),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESCRIPTION },
     ],
-    links: [{ rel: "canonical", href: CANONICAL }],
+    links: [
+      { rel: "canonical", href: CANONICAL },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/assets/preview/couples-yoga-768.webp",
+        type: "image/webp",
+        media: "(max-width: 768px)",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/assets/preview/couples-yoga-1400.webp",
+        type: "image/webp",
+        media: "(min-width: 769px)",
+      },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -77,8 +93,14 @@ function CouplesYogaPage() {
         title={COUPLES_OFFER.h1}
         accent="live with a dedicated teacher."
         sub={COUPLES_OFFER.tagline}
-        image="/assets/preview/hero-couples.svg"
-        imageAlt="Concept preview: Two adult partners on separate mats with dual variations and laptop on stand"
+        image768="/assets/preview/couples-yoga-768.webp"
+        image1400="/assets/preview/couples-yoga-1400.webp"
+        imageWidth={1400}
+        imageHeight={788}
+        imageAspectRatio="16/9"
+        imageAlt="AI-generated illustration: Two adult partners practicing yoga together at home on separate mats during an online session"
+        imageCaption="AI-generated preview illustration · Does not depict Yog Jivan students or teachers"
+        contrastVeil
       >
         <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
           Practise together from the comfort of home. Share a live 60-minute session tailored for two adults, with personalized guidance, posture alignment, and individual modifications.

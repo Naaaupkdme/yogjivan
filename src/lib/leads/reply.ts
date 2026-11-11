@@ -49,6 +49,17 @@ function lowerFirst(s: string): string {
   return s ? s[0].toLowerCase() + s.slice(1) : s;
 }
 
+function introFor(kind: ServiceKind, l: LeadForReply): string {
+  if (kind === "private") {
+    const s = `${l.preferred_experience ?? ""} ${l.funnel ?? ""}`.toLowerCase();
+    if (/couples/.test(s)) return PLAYBOOK.intro.couples;
+    if (/parent[-_ ]child/.test(s)) return PLAYBOOK.intro.parent_child;
+    if (/family/.test(s)) return PLAYBOOK.intro.family;
+    return PLAYBOOK.intro.private;
+  }
+  return PLAYBOOK.intro[kind];
+}
+
 /**
  * First WhatsApp reply from the versioned playbook (see ./playbook.ts).
  * At most ONE question; 2–4 short lines.
@@ -59,7 +70,7 @@ export function generateReply(l: LeadForReply): string {
   const goals = safeGoals(l.goals).filter((g) => !/private|group|1-on-1|live|beginner|studio|online/i.test(g));
   const tz = l.timezone ? l.timezone.slice(0, 40) : null;
   const time = l.preferred_time ? l.preferred_time.slice(0, 40) : null;
-  const lines: string[] = [`${PLAYBOOK.greeting(firstName(l.name))} ${PLAYBOOK.intro[kind]}`];
+  const lines: string[] = [`${PLAYBOOK.greeting(firstName(l.name))} ${introFor(kind, l)}`];
 
   if (kind === "private") lines.push(beginner ? PLAYBOOK.privateBeginnerOffer : PLAYBOOK.privateOffer);
   if (l.health_present) lines.push(PLAYBOOK.healthLine);

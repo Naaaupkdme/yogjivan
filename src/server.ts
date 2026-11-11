@@ -41,8 +41,14 @@ export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const url = new URL(request.url);
-      if (url.pathname.startsWith("/__l5e/")) {
-        // Proxy Lovable R2 assets to production CDN so previews render real assets without 404s
+      const isLocalOrPreview =
+        url.hostname === "localhost" ||
+        url.hostname === "127.0.0.1" ||
+        url.hostname.endsWith(".local") ||
+        url.hostname.includes("preview");
+
+      if (isLocalOrPreview && url.pathname.startsWith("/__l5e/")) {
+        // In local preview only: proxy Lovable R2 assets to production CDN so preview renders real assets without 404s
         const proxied = await fetch(`https://www.yogjivan.com${url.pathname}${url.search}`);
         return proxied;
       }

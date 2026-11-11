@@ -346,4 +346,111 @@ describe("mirror metadata permissions & private service classification", () => {
       expect(payload.priority).toBe("High");
     }
   });
+
+  describe("Shared Yoga Enquiries downstream mapping (Couples, Family, Parent-Child)", () => {
+    it("preserves shared_format and participant_count for Couples fixture in meta_json and generates tailored reply", () => {
+      const { payload, reply } = buildLeadPayload(
+        lead({
+          name: "Rohan & Priya",
+          preferred_experience: "Private couples online yoga (2 participants)",
+          meta: {
+            funnel: "couples_yoga_enquiry",
+            landing_page: "/online-couples-yoga",
+            shared_format: "couples",
+            participant_count: 2,
+            preferred_language: "English",
+            timezone: "Asia/Kolkata",
+          },
+        })
+      );
+      const meta = JSON.parse(payload.meta_json);
+      expect(meta.shared_format).toBe("couples");
+      expect(meta.participant_count).toBe(2);
+      expect(meta.preferred_language).toBe("English");
+      expect(meta.timezone).toBe("Asia/Kolkata");
+      expect(reply).toMatch(/Thank you for your interest in live online couples yoga with Yog Jivan/);
+      expect(reply).not.toMatch(/1-on-1/);
+    });
+
+    it("preserves shared_format and participant_count for Family of 3 fixture", () => {
+      const { payload, reply } = buildLeadPayload(
+        lead({
+          name: "Nguyen Family",
+          preferred_experience: "Private family online yoga (3 participants)",
+          meta: {
+            funnel: "family_yoga_enquiry",
+            landing_page: "/online-family-yoga",
+            shared_format: "family",
+            participant_count: 3,
+            preferred_language: "Vietnamese",
+            timezone: "Asia/Ho_Chi_Minh",
+          },
+        })
+      );
+      const meta = JSON.parse(payload.meta_json);
+      expect(meta.shared_format).toBe("family");
+      expect(meta.participant_count).toBe(3);
+      expect(meta.preferred_language).toBe("Vietnamese");
+      expect(reply).toMatch(/Thank you for your interest in live online family yoga with Yog Jivan/);
+      expect(reply).not.toMatch(/1-on-1/);
+    });
+
+    it("preserves shared_format and participant_count for Family of 4 fixture", () => {
+      const { payload, reply } = buildLeadPayload(
+        lead({
+          name: "Sharma Household",
+          preferred_experience: "Private family online yoga (4 participants)",
+          meta: {
+            funnel: "family_yoga_enquiry",
+            landing_page: "/online-family-yoga",
+            shared_format: "family",
+            participant_count: 4,
+            preferred_language: "English",
+            timezone: "Asia/Singapore",
+          },
+        })
+      );
+      const meta = JSON.parse(payload.meta_json);
+      expect(meta.shared_format).toBe("family");
+      expect(meta.participant_count).toBe(4);
+      expect(reply).toMatch(/Thank you for your interest in live online family yoga with Yog Jivan/);
+      expect(reply).not.toMatch(/1-on-1/);
+    });
+
+    it("preserves shared_format and participant_count for Parent & Child fixture", () => {
+      const { payload, reply } = buildLeadPayload(
+        lead({
+          name: "Ananya & Tara",
+          preferred_experience: "Private parent & child online yoga (caregiver + child)",
+          meta: {
+            funnel: "parent_child_yoga_enquiry",
+            landing_page: "/online-family-yoga",
+            shared_format: "parent_child",
+            participant_count: 2,
+            preferred_language: "English",
+            timezone: "Asia/Dubai",
+          },
+        })
+      );
+      const meta = JSON.parse(payload.meta_json);
+      expect(meta.shared_format).toBe("parent_child");
+      expect(meta.participant_count).toBe(2);
+      expect(reply).toMatch(/Thank you for your interest in private parent & child online yoga with Yog Jivan/);
+      expect(reply).not.toMatch(/1-on-1/);
+    });
+
+    it("strictly rejects unapproved shared_format or invalid participant counts from meta_json", () => {
+      const { payload } = buildLeadPayload(
+        lead({
+          meta: {
+            shared_format: "group_discount",
+            participant_count: 8,
+          },
+        })
+      );
+      const meta = JSON.parse(payload.meta_json);
+      expect(meta).not.toHaveProperty("shared_format");
+      expect(meta).not.toHaveProperty("participant_count");
+    });
+  });
 });

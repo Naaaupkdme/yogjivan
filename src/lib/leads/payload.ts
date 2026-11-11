@@ -4,9 +4,9 @@
 import { normalizePhone, waMeLink, type NormalizedPhone } from "./phone";
 import { PLAYBOOK_VERSION } from "./playbook";
 import { classifyService, generateReply, isBeginner, safeGoals, type ServiceKind } from "./reply";
-import { VALID_PLAN_SESSIONS, VALID_PREFERRED_LANGUAGES } from "./private-plans";
+import { VALID_PLAN_SESSIONS, VALID_PREFERRED_LANGUAGES, VALID_SHARED_FORMATS, VALID_PARTICIPANT_COUNTS } from "./private-plans";
 
-export { VALID_PLAN_SESSIONS, VALID_PREFERRED_LANGUAGES } from "./private-plans";
+export { VALID_PLAN_SESSIONS, VALID_PREFERRED_LANGUAGES, VALID_SHARED_FORMATS, VALID_PARTICIPANT_COUNTS } from "./private-plans";
 
 export type LeadRow = {
   id: string;
@@ -91,7 +91,7 @@ export function buildLeadPayload(l: LeadRow): { payload: LeadPayload; reply: str
     experience_level: l.experience_level,
     health_present: health,
   });
-  // Only non-PII attribution keys and exact validated plan/language fields go into the JSON mirror.
+  // Only non-PII attribution keys and exact validated plan/language/shared fields go into the JSON mirror.
   const safeMeta: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(meta)) {
     if (k === "plan_sessions") {
@@ -103,6 +103,19 @@ export function buildLeadPayload(l: LeadRow): { payload: LeadPayload; reply: str
     if (k === "preferred_language") {
       if (typeof v === "string" && VALID_PREFERRED_LANGUAGES.has(v)) {
         safeMeta[k] = v;
+      }
+      continue;
+    }
+    if (k === "shared_format") {
+      if (typeof v === "string" && VALID_SHARED_FORMATS.has(v as any)) {
+        safeMeta[k] = v;
+      }
+      continue;
+    }
+    if (k === "participant_count") {
+      const num = typeof v === "number" ? v : typeof v === "string" ? parseInt(v, 10) : NaN;
+      if (!Number.isNaN(num) && VALID_PARTICIPANT_COUNTS.has(num as any)) {
+        safeMeta[k] = num;
       }
       continue;
     }
