@@ -9,17 +9,18 @@ export const CANONICAL_PRIVATE_PLANS = [
   "Not sure — help me choose",
 ] as const;
 
-export const LEGACY_PRIVATE_PLANS = [
-  "Custom / Undecided",
-] as const;
+export const LEGACY_PRIVATE_PLANS = ["Custom / Undecided"] as const;
 
-export const PRIVATE_PLAN_OPTIONS = [
-  "12-Session Plan",
-  "20-Session Plan",
-  "24-Session Plan",
-  "Custom Sessions",
-  "Custom / Undecided",
-  "Not sure — help me choose",
+/**
+ * Form options exposed to student-facing enquiry dropdowns.
+ * Exposes canonical choices only so students never see internal legacy options.
+ */
+export const PRIVATE_PLAN_OPTIONS = CANONICAL_PRIVATE_PLANS;
+
+/** All accepted plan values, including legacy choices for stored readers and validation. */
+export const ALL_ACCEPTED_PRIVATE_PLANS = [
+  ...CANONICAL_PRIVATE_PLANS,
+  ...LEGACY_PRIVATE_PLANS,
 ] as const;
 
 export const VALID_PLAN_SESSIONS = new Set<string>([

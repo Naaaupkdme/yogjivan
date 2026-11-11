@@ -15,15 +15,13 @@ import { useLeadSubmission, getTimezone } from "@/lib/leads/form-submission";
 import {
   PRIVATE_PLAN_OPTIONS,
   PRIVATE_LANGUAGE_OPTIONS,
+  ALL_ACCEPTED_PRIVATE_PLANS,
+  VALID_PLAN_SESSIONS,
 } from "@/lib/leads/private-plans";
 
 export { PRIVATE_PLAN_OPTIONS, PRIVATE_LANGUAGE_OPTIONS };
 
-const LEVELS = [
-  "Complete Beginner",
-  "Some Yoga Experience",
-  "Regular or Advanced Practitioner",
-];
+const LEVELS = ["Complete Beginner", "Some Yoga Experience", "Regular or Advanced Practitioner"];
 
 const TIMES = ["Morning", "Afternoon", "Evening", "Flexible"];
 
@@ -41,7 +39,7 @@ const schema = z.object({
   whatsapp: z.string().trim().min(6, "Please share a valid WhatsApp number").max(40),
   level: z.string().min(1, "Please choose your current level"),
   plan: z
-    .enum(PRIVATE_PLAN_OPTIONS, {
+    .enum(ALL_ACCEPTED_PRIVATE_PLANS, {
       errorMap: () => ({ message: "Please select a valid session plan" }),
     })
     .or(z.literal(""))
@@ -52,7 +50,13 @@ const schema = z.object({
     })
     .or(z.literal(""))
     .optional(),
-  email: z.string().trim().email("Please share a valid email").max(200).optional().or(z.literal("")),
+  email: z
+    .string()
+    .trim()
+    .email("Please share a valid email")
+    .max(200)
+    .optional()
+    .or(z.literal("")),
   time: z.string().max(80).optional(),
   focus: z.string().max(80).optional(),
 });
@@ -102,7 +106,10 @@ export type PrivateYogaEnquiryFormProps = {
   onSelectPlan?: (plan: string) => void;
 };
 
-export function PrivateYogaEnquiryForm({ selectedPlan, onSelectPlan }: PrivateYogaEnquiryFormProps = {}) {
+export function PrivateYogaEnquiryForm({
+  selectedPlan,
+  onSelectPlan,
+}: PrivateYogaEnquiryFormProps = {}) {
   const [form, setForm] = useState<FormState>(() => ({
     ...empty,
     plan: selectedPlan || "",
@@ -153,20 +160,21 @@ export function PrivateYogaEnquiryForm({ selectedPlan, onSelectPlan }: PrivateYo
         category: "private_online",
         setBusy,
         buildPayload: (data, leadEventId) => {
-          const validatedPlan =
-            data.plan && (PRIVATE_PLAN_OPTIONS as readonly string[]).includes(data.plan)
-              ? data.plan
-              : null;
+          const validatedPlan = data.plan && VALID_PLAN_SESSIONS.has(data.plan) ? data.plan : null;
           const validatedLanguage =
             data.language && (PRIVATE_LANGUAGE_OPTIONS as readonly string[]).includes(data.language)
               ? data.language
               : null;
 
           const planDetail =
-            validatedPlan && !["Custom / Undecided", "Not sure — help me choose"].includes(validatedPlan)
+            validatedPlan &&
+            !["Custom / Undecided", "Not sure — help me choose"].includes(validatedPlan)
               ? validatedPlan
               : null;
-          const langDetail = validatedLanguage && validatedLanguage !== "Flexible / Any" ? `Language: ${validatedLanguage}` : null;
+          const langDetail =
+            validatedLanguage && validatedLanguage !== "Flexible / Any"
+              ? `Language: ${validatedLanguage}`
+              : null;
           const details = [planDetail, langDetail].filter(Boolean).join(" · ");
           const preferredExperience = details
             ? `Private 1-on-1 online yoga (${details})`
@@ -399,8 +407,8 @@ export function PrivateYogaEnquiryForm({ selectedPlan, onSelectPlan }: PrivateYo
 
       <p className="mt-4 flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
         <ShieldCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[color:var(--gold)]" />
-        We only use your details to arrange your sessions. No spam, and you can ask us to delete your
-        details at any time.
+        We only use your details to arrange your sessions. No spam, and you can ask us to delete
+        your details at any time.
       </p>
     </form>
   );

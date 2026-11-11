@@ -47,11 +47,17 @@ export function chatChannelFor(pathname: string): ChatChannel {
       channel: "zalo",
     };
   }
+  const intent = waIntentForPath(pathname);
+  const ariaLabel =
+    intent === "private"
+      ? "Chat with the Yog Jivan team on WhatsApp — enquire about private 1-on-1 yoga sessions"
+      : "Chat with the Yog Jivan team on WhatsApp — book a free trial or ask a question";
+
   return {
     isVi: false,
-    href: waHref(waIntentForPath(pathname)),
+    href: waHref(intent),
     label: "WhatsApp",
-    ariaLabel: "Chat with the Yog Jivan team on WhatsApp — book a free trial or ask a question",
+    ariaLabel,
     channel: "whatsapp",
   };
 }
