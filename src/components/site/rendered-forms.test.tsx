@@ -15,7 +15,11 @@ vi.mock("@tanstack/react-router", async () => {
   const actual = await vi.importActual<any>("@tanstack/react-router");
   return {
     ...actual,
-    Link: ({ children, to, ...props }: any) => <a href={to} {...props}>{children}</a>,
+    Link: ({ children, to, ...props }: any) => (
+      <a href={to} {...props}>
+        {children}
+      </a>
+    ),
   };
 });
 
@@ -44,7 +48,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
     (window as any).location.hostname = "www.yogjivan.com";
     window.localStorage.setItem(
       "yj_cookie_consent_v2",
-      JSON.stringify({ analytics: true, marketing: true })
+      JSON.stringify({ analytics: true, marketing: true }),
     );
   });
 
@@ -111,7 +115,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
           form_id: "online_group_quick_enquiry",
           service_category: "online_group",
           lead_event_id: eventId,
-        })
+        }),
       );
 
       // Verify ZERO PII in analytics
@@ -122,7 +126,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
 
     it("rejected response: preserves user inputs in DOM and allows retry", async () => {
       (submitLead as unknown as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
-        new Error("Network connection failed")
+        new Error("Network connection failed"),
       );
 
       const { container } = render(<QuickEnquiryForm />);
@@ -152,8 +156,10 @@ describe("Rendered forms — actual component validation, submission wiring, out
         expect(screen.getByText("Request received.")).toBeTruthy();
       });
 
-      const id1 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0].meta.lead_event_id;
-      const id2 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[1][0].meta.lead_event_id;
+      const id1 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0].meta
+        .lead_event_id;
+      const id2 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[1][0].meta
+        .lead_event_id;
       expect(id2).toBe(id1);
     });
 
@@ -264,14 +270,14 @@ describe("Rendered forms — actual component validation, submission wiring, out
           form_id: "private_yoga_enquiry",
           service_category: "private_online",
           lead_event_id: eventId,
-        })
+        }),
       );
       expect(JSON.stringify(mockGtag.mock.calls)).not.toContain("Charlie Brown");
     });
 
     it("rejected response: preserves inputs in DOM and reuses lead_event_id on unchanged retry", async () => {
       (submitLead as unknown as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
-        new Error("Server error")
+        new Error("Server error"),
       );
 
       const { container } = render(<PrivateYogaEnquiryForm />);
@@ -303,8 +309,10 @@ describe("Rendered forms — actual component validation, submission wiring, out
         expect(screen.getByText("Request received.")).toBeTruthy();
       });
 
-      const id1 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0].meta.lead_event_id;
-      const id2 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[1][0].meta.lead_event_id;
+      const id1 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0].meta
+        .lead_event_id;
+      const id2 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[1][0].meta
+        .lead_event_id;
       expect(id2).toBe(id1);
     });
 
@@ -344,7 +352,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
 
       const onSelectPlan = vi.fn();
       const { container } = render(
-        <PrivateYogaEnquiryForm selectedPlan="12-Session Plan" onSelectPlan={onSelectPlan} />
+        <PrivateYogaEnquiryForm selectedPlan="12-Session Plan" onSelectPlan={onSelectPlan} />,
       );
 
       const nameInput = screen.getByPlaceholderText("Your full name") as HTMLInputElement;
@@ -370,7 +378,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
       expect(submitLead).toHaveBeenCalledTimes(1);
       const payload = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0];
       expect(payload.preferred_experience).toBe(
-        "Private 1-on-1 online yoga (12-Session Plan · Language: Vietnamese)"
+        "Private 1-on-1 online yoga (12-Session Plan · Language: Vietnamese)",
       );
       expect(payload.meta.plan_sessions).toBe("12-Session Plan");
       expect(payload.meta.preferred_language).toBe("Vietnamese");
@@ -384,7 +392,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
         expect.objectContaining({
           form_id: "private_yoga_enquiry",
           service_category: "private_online",
-        })
+        }),
       );
       expect(JSON.stringify(mockGtag.mock.calls)).not.toContain("Elena Rostova");
     });
@@ -465,16 +473,75 @@ describe("Rendered forms — actual component validation, submission wiring, out
 
       PRIVATE_PLANS.forEach((plan) => {
         expect(plan.pricing).toBe("Pricing by enquiry");
-        expect(plan.points.some((pt) => pt.includes("60 min") || pt.includes("60-minute"))).toBe(true);
+        expect(plan.points.some((pt) => pt.includes("60 min") || pt.includes("60-minute"))).toBe(
+          true,
+        );
         // Conditional and consistent teacher continuity wording
         expect(
           plan.points.some(
-            (pt) => pt.toLowerCase().includes("generally kept") && pt.toLowerCase().includes("continuity")
-          )
+            (pt) =>
+              pt.toLowerCase().includes("generally kept") &&
+              pt.toLowerCase().includes("continuity"),
+          ),
         ).toBe(true);
         // Zero published prices, regional rates, discounts, or validity terms
         expect(JSON.stringify(plan)).not.toMatch(/\$|VND|₫|₹|discount|save|valid for|expires/i);
       });
+
+      const customPlan = PRIVATE_PLANS.find((p) => p.id === "plan-custom");
+      expect(customPlan).toBeDefined();
+      expect(customPlan?.planValue).toBe("Custom Sessions");
+    });
+
+    it("dropdown exposes canonical form options only, excluding legacy Custom / Undecided", () => {
+      const { container } = render(<PrivateYogaEnquiryForm />);
+      const planSelect = container.querySelector('select[name="pv-plan"]') as HTMLSelectElement;
+      const optionValues = Array.from(planSelect.options).map((o) => o.value);
+
+      expect(optionValues).toEqual([
+        "",
+        "12-Session Plan",
+        "20-Session Plan",
+        "24-Session Plan",
+        "Custom Sessions",
+        "Not sure — help me choose",
+      ]);
+      expect(optionValues).not.toContain("Custom / Undecided");
+    });
+
+    it("accepts legacy Custom / Undecided value for stored readers and validation compatibility", async () => {
+      (submitLead as unknown as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+        outcome: "accepted",
+      });
+
+      const { container } = render(<PrivateYogaEnquiryForm />);
+      const nameInput = screen.getByPlaceholderText("Your full name") as HTMLInputElement;
+      const phoneInput = container.querySelector('input[type="tel"]') as HTMLInputElement;
+      const levelSelect = container.querySelector('select[name="pv-level"]') as HTMLSelectElement;
+      const planSelect = container.querySelector('select[name="pv-plan"]') as HTMLSelectElement;
+
+      // Programmatically add legacy option to simulate reading or injecting stored choice
+      const legacyOpt = document.createElement("option");
+      legacyOpt.value = "Custom / Undecided";
+      legacyOpt.text = "Custom / Undecided";
+      planSelect.appendChild(legacyOpt);
+
+      fireEvent.change(nameInput, { target: { value: "Legacy Student" } });
+      fireEvent.change(phoneInput, { target: { value: "84782046066" } });
+      fireEvent.change(levelSelect, { target: { value: "Some Yoga Experience" } });
+      fireEvent.change(planSelect, { target: { value: "Custom / Undecided" } });
+
+      const submitBtn = screen.getByRole("button", { name: /Enquire About Private/i });
+      fireEvent.click(submitBtn);
+
+      await waitFor(() => {
+        expect(screen.getByText("Request received.")).toBeTruthy();
+      });
+
+      expect(submitLead).toHaveBeenCalledTimes(1);
+      const payload = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0];
+      expect(payload.meta.plan_sessions).toBe("Custom / Undecided");
+      expect(payload.preferred_experience).toBe("Private 1-on-1 online yoga");
     });
   });
 
@@ -531,7 +598,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
           form_id: "book_online_yoga",
           service_category: "online_group",
           lead_event_id: eventId,
-        })
+        }),
       );
 
       // Verify ZERO health goal text leaks into GA4 event payload
@@ -609,9 +676,12 @@ describe("Rendered forms — actual component validation, submission wiring, out
       const submitBtn = screen.getByRole("button", { name: /Book My Free Consultation/i });
       fireEvent.click(submitBtn);
 
-      await waitFor(() => {
-        expect(screen.getByText("Thanks — we've received your request.")).toBeTruthy();
-      }, { timeout: 3000 });
+      await waitFor(
+        () => {
+          expect(screen.getByText("Thanks — we've received your request.")).toBeTruthy();
+        },
+        { timeout: 3000 },
+      );
 
       expect(submitLead).toHaveBeenCalledTimes(1);
       const payload = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0];
@@ -627,7 +697,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
           form_id: "smart_consultation",
           service_category: "private_online",
           lead_event_id: eventId,
-        })
+        }),
       );
 
       // Verify ZERO health notes or customer messages in analytics
@@ -649,7 +719,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
 
     it("rejected response: preserves inputs in DOM and reuses lead_event_id on unchanged retry", async () => {
       (submitLead as unknown as ReturnType<typeof vi.fn>).mockRejectedValueOnce(
-        new Error("Intake timeout")
+        new Error("Intake timeout"),
       );
 
       const { container } = render(<SmartConsultation />);
@@ -680,8 +750,10 @@ describe("Rendered forms — actual component validation, submission wiring, out
         expect(screen.getByText("Thanks — we've received your request.")).toBeTruthy();
       });
 
-      const id1 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0].meta.lead_event_id;
-      const id2 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[1][0].meta.lead_event_id;
+      const id1 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[0][0].meta
+        .lead_event_id;
+      const id2 = (submitLead as unknown as ReturnType<typeof vi.fn>).mock.calls[1][0].meta
+        .lead_event_id;
       expect(id2).toBe(id1);
     });
 
