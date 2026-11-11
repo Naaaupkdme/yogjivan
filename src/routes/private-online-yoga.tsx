@@ -371,7 +371,24 @@ export const Route = createFileRoute("/private-online-yoga")({
       { name: "twitter:title", content: PT_TITLE },
       { name: "twitter:description", content: PT_DESC },
     ],
-    links: [{ rel: "canonical", href: PT_URL }, ...hreflangLinks(PAIR_PRIVATE)],
+    links: [
+      { rel: "canonical", href: PT_URL },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/assets/preview/private-yoga-768.webp",
+        type: "image/webp",
+        media: "(max-width: 768px)",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/assets/preview/private-yoga-1400.webp",
+        type: "image/webp",
+        media: "(min-width: 769px)",
+      },
+      ...hreflangLinks(PAIR_PRIVATE),
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -439,16 +456,18 @@ function PrivateYogaPage() {
         eyebrow="Private Online Yoga & 1-on-1 Sessions"
         title="Private Online Yoga Classes —"
         accent="1-on-1 live with the Yog Jivan team."
-        sub="One student. One dedicated matched teacher. A live 60-minute practice shaped around your level, goals and schedule — beginner to advanced, worldwide."
-        image={masterImages.studioAdjustment}
+        sub="Live 60-minute one-to-one video sessions shaped around your level, goals and schedule — beginner to advanced, worldwide."
+        image768="/assets/preview/private-yoga-768.webp"
+        image1400="/assets/preview/private-yoga-1400.webp"
+        imageWidth={1400}
+        imageHeight={788}
+        imageAspectRatio="16/9"
+        imageAlt="AI-generated illustration: A student in an online private yoga session with a live video call on a laptop"
+        imageCaption="AI-generated preview illustration · Does not depict Yog Jivan students or teachers"
         contrastVeil
       >
-        <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
-          You are matched with a Yog Jivan teacher, and sessions are generally kept with that same teacher
-          for continuity.
-        </p>
-        <p className="mt-2 text-xs text-foreground/70">
-          Live 1-on-1 video worldwide: real-time visual alignment cues, personalized breathwork and posture adjustments guided on camera.
+        <p className="max-w-2xl text-sm leading-relaxed text-foreground/85 md:text-base">
+          12, 20, 24 sessions or custom plans. Dedicated matched teacher for practice continuity. Pricing by enquiry.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-4">
           <button
@@ -481,8 +500,8 @@ function PrivateYogaPage() {
             </div>
           ))}
         </dl>
-        <p className="mt-4 text-sm text-foreground/70">
-          Teacher matching available across English, Vietnamese and Hindi, subject to availability.
+        <p className="mt-4 text-xs text-foreground/70">
+          Guided in English, Vietnamese or Hindi, subject to teacher availability.
         </p>
       </PageHero>
 
@@ -502,6 +521,7 @@ function PrivateYogaPage() {
             {PRIVATE_PLANS.map((plan) => (
               <div
                 key={plan.id}
+                id={plan.id}
                 className={`flex flex-col justify-between rounded-[1.75rem] p-6 md:p-8 transition-transform hover:-translate-y-1 ${
                   "featured" in plan && plan.featured
                     ? "glass-luxe border-2 border-[color:var(--gold)]/60 bg-[color-mix(in_oklab,var(--gold)_8%,var(--onyx))] shadow-[var(--shadow-gold)]"
@@ -534,6 +554,7 @@ function PrivateYogaPage() {
                   <p className="mt-1 text-xs text-foreground/65">{plan.note}</p>
                   <button
                     type="button"
+                    data-plan-cta={plan.id}
                     onClick={() => handleSelectPlan(plan.planValue)}
                     className={`mt-5 w-full justify-center min-h-[44px] ${
                       "featured" in plan && plan.featured ? "btn-gold" : "btn-ghost-gold"
