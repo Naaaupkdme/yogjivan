@@ -462,7 +462,7 @@ describe("Rendered forms — actual component validation, submission wiring, out
       expect(submitLead).not.toHaveBeenCalled();
     });
 
-    it("PRIVATE_PLANS defines 12, 20, 24-session and Custom packages with pricing by enquiry, neutral badges, and conditional continuity", async () => {
+    it("PRIVATE_PLANS defines 12, 20, 24-session and Custom packages with proposed launch prices, neutral badges, and conditional continuity", async () => {
       const { PRIVATE_PLANS } = await import("@/routes/private-online-yoga");
       expect(PRIVATE_PLANS.length).toBe(4);
       const sessionCounts = PRIVATE_PLANS.map((p) => p.sessions);
@@ -471,8 +471,13 @@ describe("Rendered forms — actual component validation, submission wiring, out
       // Strictly neutral badges - no unsupported "Most Popular"
       expect(JSON.stringify(PRIVATE_PLANS)).not.toContain("Most Popular");
 
+      // File 16 launch pricing menu
+      expect(PRIVATE_PLANS[0].pricing).toBe("US$249 launch package price");
+      expect(PRIVATE_PLANS[1].pricing).toBe("US$399 launch package price");
+      expect(PRIVATE_PLANS[2].pricing).toBe("US$459 launch package price");
+      expect(PRIVATE_PLANS[3].pricing).toBe("Request a custom plan");
+
       PRIVATE_PLANS.forEach((plan) => {
-        expect(plan.pricing).toBe("Pricing by enquiry");
         expect(plan.points.some((pt) => pt.includes("60 min") || pt.includes("60-minute"))).toBe(
           true,
         );
@@ -484,8 +489,6 @@ describe("Rendered forms — actual component validation, submission wiring, out
               pt.toLowerCase().includes("continuity"),
           ),
         ).toBe(true);
-        // Zero published prices, regional rates, discounts, or validity terms
-        expect(JSON.stringify(plan)).not.toMatch(/\$|VND|₫|₹|discount|save|valid for|expires/i);
       });
 
       const customPlan = PRIVATE_PLANS.find((p) => p.id === "plan-custom");

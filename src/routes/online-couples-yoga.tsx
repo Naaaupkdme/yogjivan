@@ -8,27 +8,31 @@ import { waHref } from "@/lib/wa";
 import { COUPLES_OFFER } from "@/lib/facts/shared-offers";
 import { Users, Video, Clock, Globe2, ShieldCheck, HeartHandshake, Sparkles, CheckCircle2 } from "lucide-react";
 
-const TITLE = "Live Online Couples Yoga Classes | Yog Jivan";
+const TITLE = "Online Couples Yoga for Two | Live Partner Yoga | Yog Jivan";
 const DESCRIPTION =
-  "Private online yoga for two adults with a dedicated Yog Jivan teacher. Practise together at home with individual adjustments for different experience levels. Quoted by enquiry.";
+  "Practise live online yoga with a partner or friend. An experienced, certified yoga teacher guides two adults with options for both levels. View the total session price and ask about times.";
 const CANONICAL = "https://www.yogjivan.com/online-couples-yoga";
 
 const FAQS = [
   {
-    q: "Do both of us need prior yoga experience?",
-    a: "Not at all. It is very common for one partner to be a complete beginner while the other has practiced for years. Your teacher gives dual-track cues and modifications so each person practices at a safe, rewarding intensity.",
+    q: "Do we have to be a couple?",
+    a: "No. Two adults can join as partners, friends or relatives.",
   },
   {
-    q: "Can we join from separate devices or locations?",
-    a: "Our default session format is designed for two partners sharing one room and camera. If you travel or need to join from two separate devices, please mention this in your enquiry so your teacher can confirm setup compatibility.",
+    q: "Do we need the same experience?",
+    a: "No. The teacher can suggest an option for each person.",
   },
   {
-    q: "Are acrobatic partner poses or lifts required?",
-    a: "No. Sessions focus on authentic, grounded yoga practice side by side. Any shared or assisted stretches are gentle, optional, and guided only when both partners feel comfortable.",
+    q: "Can we join from two homes?",
+    a: "The standard setup is two mats in the same space. Ask us before booking if you need two locations.",
   },
   {
-    q: "How are couples yoga sessions quoted and booked?",
-    a: "To ensure fairness across time zones and scheduling needs, all shared sessions are quoted individually by enquiry. We discuss your preferred weekly rhythm and confirm bookings privately on WhatsApp.",
+    q: "Do we need to lift or support each other?",
+    a: "No. You can practise side by side and support each other by setting up the space and keeping a regular practice time.",
+  },
+  {
+    q: "How are sessions booked and scheduled?",
+    a: "Share your preferred times on WhatsApp or through the enquiry form below. We confirm availability and discuss booking details directly.",
   },
 ];
 
@@ -89,10 +93,10 @@ function CouplesYogaPage() {
   return (
     <>
       <PageHero
-        eyebrow={COUPLES_OFFER.eyebrow}
-        title={COUPLES_OFFER.h1}
-        accent="live with a dedicated teacher."
-        sub={COUPLES_OFFER.tagline}
+        eyebrow="Partner & Couples Yoga"
+        title="Live Online Yoga for Couples and Partners —"
+        accent="with an experienced, certified teacher."
+        sub="Practise together at home with one experienced, certified yoga teacher guiding both of you live. Bring a partner, friend or adult relative. You can work on the same movements with options suited to each of you."
         image768="/assets/preview/couples-yoga-768.webp"
         image1400="/assets/preview/couples-yoga-1400.webp"
         imageWidth={1400}
@@ -102,10 +106,13 @@ function CouplesYogaPage() {
         imageCaption="AI-generated preview illustration · Does not depict Yog Jivan students or teachers"
         contrastVeil
       >
-        <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
-          Practise together from the comfort of home. Share a live 60-minute session tailored for two adults, with personalized guidance, posture alignment, and individual modifications.
+        <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
+          US$45 total for two adults · 60 minutes live · One teacher
+        </div>
+        <p className="mt-3 text-xs font-semibold text-foreground/90">
+          Every session is led by an experienced, certified Yog Jivan yoga teacher.
         </p>
-        <div className="mt-6 flex flex-wrap items-center gap-4">
+        <div className="mt-5 flex flex-wrap items-center gap-4">
           <button
             type="button"
             onClick={() => {
@@ -114,7 +121,7 @@ function CouplesYogaPage() {
             }}
             className="btn-gold"
           >
-            Enquire About Couples Yoga
+            Check times for two
           </button>
           <a
             href={waHref("couples")}
@@ -127,52 +134,56 @@ function CouplesYogaPage() {
         </div>
       </PageHero>
 
-      {/* Trust & Key Features */}
+      {/* Pricing & Comparison Card */}
       <section className="section-pad-sm border-b border-border/40 bg-card/20">
         <div className="container-luxe">
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            <div className="glass-luxe rounded-xl p-4 text-center">
-              <Users className="mx-auto h-5 w-5 text-[color:var(--gold)]" />
-              <p className="mt-2 text-base font-semibold text-foreground">2 Adults</p>
-              <p className="text-xs text-muted-foreground">Practising together</p>
-            </div>
-            <div className="glass-luxe rounded-xl p-4 text-center">
-              <Clock className="mx-auto h-5 w-5 text-[color:var(--gold)]" />
-              <p className="mt-2 text-base font-semibold text-foreground">60 Minutes</p>
-              <p className="text-xs text-muted-foreground">Live 1-on-2 video</p>
-            </div>
-            <div className="glass-luxe rounded-xl p-4 text-center">
-              <Sparkles className="mx-auto h-5 w-5 text-[color:var(--gold)]" />
-              <p className="mt-2 text-base font-semibold text-foreground">Dual Variations</p>
-              <p className="text-xs text-muted-foreground">Two levels welcome</p>
-            </div>
-            <div className="glass-luxe rounded-xl p-4 text-center">
-              <Globe2 className="mx-auto h-5 w-5 text-[color:var(--gold)]" />
-              <p className="mt-2 text-base font-semibold text-foreground">Worldwide</p>
-              <p className="text-xs text-muted-foreground">Tailored time zones</p>
+          <div className="mx-auto max-w-3xl rounded-[2rem] border border-[color:var(--gold)]/30 bg-[color-mix(in_oklab,var(--gold)_6%,var(--onyx))] p-6 md:p-8">
+            <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Session pricing</p>
+            <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
+              What does partner yoga cost?
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
+              A live session costs <strong>US$45 for two adults</strong>, or <strong>US$22.50 each</strong> if you split it.
+              Two separate standard solo sessions would cost US$60 total. A shared class gives you one practice time and one teacher, while Solo gives one person the full session.
+            </p>
+            <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
+              Every session is led by an experienced, certified Yog Jivan yoga teacher.
+            </p>
+
+            {/* Approved Promo Preview */}
+            <div className="mt-6 rounded-xl border border-[color:var(--gold)]/40 bg-black/30 p-4">
+              <span className="text-[0.65rem] font-semibold uppercase tracking-wider text-[color:var(--gold)]">
+                Launch Offer Preview · Subject to Owner Confirmation
+              </span>
+              <p className="mt-1 text-sm font-medium text-foreground">
+                First booking for three adults? Add one adult to your first shared session at no extra charge. US$45 total for all three, subject to availability.
+              </p>
+              <p className="mt-1 text-[0.7rem] text-muted-foreground">
+                Eligibility: First booking, third participant is an adult, one location/device, subject to slot confirmation, no stacking.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What a 2-person class looks like */}
+      {/* One shared class, two ways to practise */}
       <section className="section-pad">
         <div className="container-luxe">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div>
               <p className="eyebrow">
                 <span className="h-px w-10 bg-[color:var(--gold)]" />
-                Shared Practice Experience
+                Dual-track practice
               </p>
               <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-                What a two-person session looks like
+                One shared class, two ways to practise
               </h2>
               <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground md:text-base">
                 <p>
-                  Practising yoga with a partner at home is one of the most sustainable ways to build a healthy routine. Rather than watching a pre-recorded workout where one person gets left behind, a live private teacher observes both of you on camera in real time.
+                  If one of you is new to yoga and the other practises regularly, the teacher can show two versions of the same movement. Each person can choose what feels appropriate. Set two mats side by side and place your device so your teacher can see both of you.
                 </p>
                 <p>
-                  Your teacher balances the session: calling out cues suited to each partner's mobility, offering props or posture variations, and ensuring both participants feel challenged, supported, and safe throughout the hour.
+                  Sessions focus on authentic, grounded yoga practice side by side. No partner acrobatics, forced stretches, or complicated lifts are required.
                 </p>
               </div>
 

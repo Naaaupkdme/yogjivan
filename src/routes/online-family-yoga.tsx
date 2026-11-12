@@ -9,31 +9,35 @@ import { waHref } from "@/lib/wa";
 import { FAMILY_OFFER, PARENT_CHILD_SECTION } from "@/lib/facts/shared-offers";
 import { Users, Video, Clock, Globe2, ShieldCheck, Heart, Sparkles, CheckCircle2 } from "lucide-react";
 
-const TITLE = "Live Online Family Yoga for Up to Four | Yog Jivan";
+const TITLE = "Private Online Family Yoga for 3 or 4 | Yog Jivan";
 const DESCRIPTION =
-  "Private online family yoga for up to four participants from one household. Live 60-minute sessions guided by a dedicated Yog Jivan teacher with an adult participating. Quoted by enquiry.";
+  "Practise live online yoga together at home with a Yog Jivan teacher. Compare total prices for three and four family members and ask about Parent–Child sessions.";
 const CANONICAL = "https://www.yogjivan.com/online-family-yoga";
 
 const FAQS = [
   {
-    q: "How many people from our household can participate?",
-    a: "Our private family format accommodates up to four participants from the same household in one live session. This ensures the instructor can keep all participants safely in view on camera and deliver personal alignment guidance.",
+    q: "Can three of us join?",
+    a: "Yes. A three-person session is US$55 total.",
+  },
+  {
+    q: "What if a fourth person joins?",
+    a: "Select the four-person option at US$65 total.",
+  },
+  {
+    q: "Can beginners join?",
+    a: "Yes. The teacher offers accessible options, subject to suitability and confirmed age guidelines.",
+  },
+  {
+    q: "Does one price cover everyone?",
+    a: "Yes. The price is for the confirmed participant count in one household booking.",
   },
   {
     q: "Can an adult caregiver practise alongside a child?",
     a: "Yes, adult participation is a core feature of our family sessions. An adult caregiver participates throughout the practice to model movements, assist with spacing, and share a positive wellness routine.",
   },
   {
-    q: "Can all four participants share one camera and device?",
-    a: "Yes. In fact, sharing a single room and camera is our recommended setup. Positioning your device 2.5 to 3.5 metres back in landscape orientation allows all mats to be framed clearly.",
-  },
-  {
-    q: "How do you handle different ages and experience levels?",
-    a: "Your teacher structures the session around fundamental mobility, breath awareness, and accessible posture flows. Variations are offered continuously so adults experience genuine engagement while younger participants enjoy playful, safe movement.",
-  },
-  {
-    q: "What equipment do we need for a family session?",
-    a: "A comfortable floor space, non-slip yoga mats (or clean towels/rugs), a stable stand or low table for your laptop or tablet, and drinking water. No special gym equipment is required.",
+    q: "Can all participants share one camera and device?",
+    a: "Yes. Sharing a single room and camera is our recommended setup. Positioning your device 2.5 to 3.5 metres back in landscape orientation allows all mats to be framed clearly.",
   },
 ];
 
@@ -96,10 +100,10 @@ function FamilyYogaPage() {
   return (
     <>
       <PageHero
-        eyebrow={FAMILY_OFFER.eyebrow}
-        title={FAMILY_OFFER.h1}
-        accent="live at home for up to four."
-        sub={FAMILY_OFFER.tagline}
+        eyebrow="Household & Family Yoga"
+        title="Private Online Family Yoga for Three or Four —"
+        accent="with an experienced, certified teacher."
+        sub="Make time to move together at home. One experienced, certified yoga teacher leads your family live through a shared practice, with simpler options when someone needs a different pace."
         image768="/assets/preview/family-yoga-768.webp"
         image1400="/assets/preview/family-yoga-1400.webp"
         imageWidth={1400}
@@ -109,10 +113,13 @@ function FamilyYogaPage() {
         imageCaption="AI-generated preview illustration · Does not depict Yog Jivan students or teachers"
         contrastVeil
       >
-        <p className="max-w-2xl text-sm leading-relaxed text-foreground/90 md:text-base">
-          Bring mindful movement into your household. Live private 60-minute yoga sessions for up to four family members, guided by a dedicated Yog Jivan teacher with an adult participating.
+        <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
+          3 participants · US$55 total &nbsp;|&nbsp; 4 participants · US$65 total
+        </div>
+        <p className="mt-3 text-xs font-semibold text-foreground/90">
+          Every session is led by an experienced, certified Yog Jivan yoga teacher.
         </p>
-        <div className="mt-6 flex flex-wrap items-center gap-4">
+        <div className="mt-5 flex flex-wrap items-center gap-4">
           <button
             type="button"
             onClick={() => {
@@ -121,7 +128,7 @@ function FamilyYogaPage() {
             }}
             className="btn-gold"
           >
-            Enquire About Family Yoga
+            Choose your family size
           </button>
           <a
             href={waHref("family")}
@@ -134,49 +141,70 @@ function FamilyYogaPage() {
         </div>
       </PageHero>
 
-      {/* Trust & Key Features */}
+      {/* Pricing & Pack Options */}
       <section className="section-pad-sm border-b border-border/40 bg-card/20">
         <div className="container-luxe">
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            <div className="glass-luxe rounded-xl p-4 text-center">
-              <Users className="mx-auto h-5 w-5 text-[color:var(--gold)]" />
-              <p className="mt-2 text-base font-semibold text-foreground">Up to 4</p>
-              <p className="text-xs text-muted-foreground">Household members</p>
-            </div>
-            <div className="glass-luxe rounded-xl p-4 text-center">
-              <Clock className="mx-auto h-5 w-5 text-[color:var(--gold)]" />
-              <p className="mt-2 text-base font-semibold text-foreground">60 Minutes</p>
-              <p className="text-xs text-muted-foreground">Live video session</p>
-            </div>
-            <div className="glass-luxe rounded-xl p-4 text-center">
-              <Heart className="mx-auto h-5 w-5 text-[color:var(--gold)]" />
-              <p className="mt-2 text-base font-semibold text-foreground">Adult Included</p>
-              <p className="text-xs text-muted-foreground">Caregiver participation</p>
-            </div>
-            <div className="glass-luxe rounded-xl p-4 text-center">
-              <ShieldCheck className="mx-auto h-5 w-5 text-[color:var(--gold)]" />
-              <p className="mt-2 text-base font-semibold text-foreground">Safe Practice</p>
-              <p className="text-xs text-muted-foreground">Child-safe standards</p>
+          <div className="mx-auto max-w-4xl rounded-[2rem] border border-[color:var(--gold)]/30 bg-[color-mix(in_oklab,var(--gold)_6%,var(--onyx))] p-6 md:p-8">
+            <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Household pricing</p>
+            <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
+              Choose a session for three or four
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
+              Your price covers the whole household booking. A fourth family member adds US$10 to the single-session total.
+              The amount you see is the total for the group.
+            </p>
+            <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
+              Every session is led by an experienced, certified Yog Jivan yoga teacher.
+            </p>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
+                  Family of 3 (60 min)
+                </span>
+                <div className="mt-2 font-display text-2xl font-bold text-foreground">US$55 total</div>
+                <p className="mt-1 text-xs text-muted-foreground">Single session rate for 3 participants.</p>
+                <div className="mt-4 rounded-lg border border-[color:var(--gold)]/30 bg-black/30 p-3">
+                  <p className="text-xs font-medium text-foreground">
+                    <strong>Pack launch preview:</strong> Book 4 sessions for US$220 total and receive 1 additional session for the same family (5 sessions in total, US$44 effective per session).
+                  </p>
+                  <p className="mt-1 text-[0.68rem] text-muted-foreground">Same household, subject to teacher schedule confirmation.</p>
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
+                  Family of 4 (60 min)
+                </span>
+                <div className="mt-2 font-display text-2xl font-bold text-foreground">US$65 total</div>
+                <p className="mt-1 text-xs text-muted-foreground">Single session rate for 4 participants.</p>
+                <div className="mt-4 rounded-lg border border-[color:var(--gold)]/30 bg-black/30 p-3">
+                  <p className="text-xs font-medium text-foreground">
+                    <strong>Pack launch preview:</strong> 4 sessions for US$240 total (US$60 per session total).
+                  </p>
+                  <p className="mt-1 text-[0.68rem] text-muted-foreground">Covers up to 4 participants from one household.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Shared Family Practice Details */}
+      {/* What your family does together */}
       <section className="section-pad">
         <div className="container-luxe">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <div>
               <p className="eyebrow">
                 <span className="h-px w-10 bg-[color:var(--gold)]" />
-                Household Movement
+                Collaborative Practice
               </p>
               <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-                Who fits one shared family session?
+                What your family does together
               </h2>
               <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground md:text-base">
                 <p>
-                  A family yoga session is crafted for up to four members of one household to practice simultaneously. Whether it is two parents and two children, or a parent and teen, the session creates an active, screen-positive habit together.
+                  Set up a mat or clear space for each person. Your teacher starts with an easy shared movement, explains options and gives cues while everyone practises. A participating adult helps set up the room and stays with the children throughout the class.
                 </p>
                 <p>
                   Your teacher arranges the session around joint mobility, posture foundations, breathing games, and relaxation. The adult caregiver participates side by side, making the experience collaborative rather than a passive kids' video.
@@ -227,14 +255,20 @@ function FamilyYogaPage() {
           <div className="mx-auto max-w-3xl text-center">
             <p className="eyebrow justify-center">
               <span className="h-px w-10 bg-[color:var(--gold)]" />
-              {PARENT_CHILD_SECTION.eyebrow}
+              1 Adult + 1 Child
               <span className="h-px w-10 bg-[color:var(--gold)]" />
             </p>
             <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-              {PARENT_CHILD_SECTION.title}
+              Want to practise with one child?
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-              {PARENT_CHILD_SECTION.summary}
+              Ask about the Parent–Child format. Tell us the child's age range and your preferred time so we can confirm a suitable session. An adult participates throughout.
+            </p>
+            <p className="mt-2 text-xs text-foreground/75 font-medium">
+              We collect only adult contact details. Age range is discussed during enquiry; no child-identifying information or health records are requested.
+            </p>
+            <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
+              Every session is led by an experienced, certified Yog Jivan yoga teacher.
             </p>
           </div>
 

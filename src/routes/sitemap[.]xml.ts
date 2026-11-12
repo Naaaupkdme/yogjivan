@@ -25,6 +25,7 @@ const STATIC_PATHS = [
   "/period-safe-yoga",
   "/yoga-for-expats-in-vietnam",
   "/corporate",
+  "/kids-yoga-hai-duong",
   "/gallery",
   "/testimonials",
   "/blog",

@@ -56,7 +56,7 @@ function ViPrivate() {
       <ViHero
         eyebrow="Chương trình cao cấp"
         title="Yoga 1 Kèm 1 Online"
-        lead={`Buổi tập yoga trực tiếp ${ONLINE_CLASS.durationMinutes} phút dành riêng cho bạn, cùng một giáo viên Yog Jivan được ghép phù hợp với trình độ, mục tiêu và ngôn ngữ của bạn. Học phí và lịch học được tư vấn riêng theo nhu cầu.`}
+        lead={`Buổi tập yoga trực tiếp ${ONLINE_CLASS.durationMinutes} phút dành riêng cho bạn, cùng một giáo viên Yog Jivan được ghép phù hợp với trình độ, mục tiêu và ngôn ngữ của bạn. Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm thuộc đội ngũ Yog Jivan hướng dẫn. Học phí và lịch học được tư vấn riêng theo nhu cầu.`}
         primary={{ href: "#tu-van", label: "Đăng ký tư vấn" }}
         secondary={{ href: CONTACT.zalo, label: "Nhắn Zalo" }}
       />
@@ -85,6 +85,9 @@ function ViPrivate() {
       </ViSection>
 
       <ViSection heading="Về giáo viên">
+        <p className="font-semibold text-[color:var(--gold)]">
+          Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm thuộc đội ngũ Yog Jivan hướng dẫn.
+        </p>
         <p>
           Yog Jivan được sáng lập và dẫn dắt bởi Master Anil Choudhary, Founder & Lead Yoga Teacher, với hơn 12 năm
           giảng dạy yoga Ấn Độ cổ điển. Các buổi 1 kèm 1 do đội ngũ giáo viên Yog Jivan đảm nhiệm với giáo viên được
