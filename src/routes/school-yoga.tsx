@@ -14,8 +14,12 @@ const CANONICAL = "https://www.yogjivan.com/school-yoga";
 
 const FAQS = [
   {
-    q: "How long is a class?",
-    a: "Typically 35–40 minutes, designed around children's natural attention span and physical energy.",
+    q: "What does the school need to provide?",
+    a: "A clean, open room or hall with safe floor space, plus a supervising teacher or assistant present throughout the class.",
+  },
+  {
+    q: "How long is the school demo?",
+    a: "A complimentary demo runs 35 to 40 minutes, designed around students' natural attention span.",
   },
   {
     q: "Can school staff stay?",
@@ -213,16 +217,16 @@ function SchoolYogaPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-between p-6">
                 <div className="flex justify-between items-start">
                   <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[0.7rem] font-medium text-[color:var(--gold)] border border-[color:var(--gold)]/30">
-                    English Audio · Vietnamese Captions · 55s
+                    English Narration · Programme Overview · 55s
                   </span>
                 </div>
                 <div className="text-left">
-                  <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)] text-black px-4 py-2 text-xs font-semibold shadow-lg">
-                    <Play className="h-4 w-4 fill-black" />
-                    Overview Video (Final export attachment pending CDN release)
+                  <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)] text-black px-3.5 py-1.5 text-xs font-semibold shadow-lg">
+                    <Sparkles className="h-4 w-4 text-black" />
+                    Programme Overview Walkthrough
                   </div>
-                  <p className="mt-2 text-xs text-white/80 max-w-md">
-                    Structured 55-second walkthrough: playful movement, story-led structure, school supervision, and complimentary first session.
+                  <p className="mt-2 text-xs text-white/90 max-w-md">
+                    Structured 55-second walkthrough: playful movement, story-led structure, school supervision, and complimentary first session. Streaming video activates on final CDN release.
                   </p>
                 </div>
               </div>
@@ -298,7 +302,7 @@ function SchoolYogaPage() {
                   Every session is conducted in direct partnership with your school staff. Teachers and coordinators remain present throughout the class to supervise, support room safety, and encourage the children.
                 </p>
                 <p>
-                  Yog Jivan has facilitated yoga across 20+ school groups in Vietnam (subject to business confirmation). We present the complimentary first session as a 35–40 minute pilot, allowing your staff and students to experience our teaching approach.
+                  Yog Jivan facilitates yoga for school groups in Vietnam. We present the complimentary first session as a 35–40 minute pilot, allowing your staff and students to experience our teaching approach.
                 </p>
                 <p className="text-xs font-medium text-foreground/90">
                   <strong>Strict Privacy Standard:</strong> We collect only adult coordinator contact information. Child names, photos, health records, or dates of birth are never requested.

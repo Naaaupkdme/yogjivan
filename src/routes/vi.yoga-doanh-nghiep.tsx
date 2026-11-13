@@ -5,7 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { hreflangLinks, PAIR_CORPORATE } from "@/lib/locale-routes";
 import { CONTACT } from "@/lib/facts/contact";
-import { Briefcase, Building2, Clock, CheckCircle2, ShieldCheck, Users, Play } from "lucide-react";
+import { Briefcase, Building2, Clock, CheckCircle2, ShieldCheck, Users, Play, Sparkles } from "lucide-react";
 
 const TITLE = "Yoga doanh nghiệp tại Việt Nam | Yog Jivan";
 const DESCRIPTION =
@@ -24,6 +24,14 @@ const FAQS = [
   {
     q: "Chi phí được tính như thế nào?",
     a: "Chúng tôi báo giá bằng VNĐ minh bạch dựa trên địa điểm, thời lượng buổi tập, số lượng người tham gia và quy mô chương trình (buổi trải nghiệm hoặc chuỗi 4 buổi định kỳ).",
+  },
+  {
+    q: "Cần chuẩn bị gì cho buổi yoga trên ghế?",
+    a: "Chuẩn bị ghế chắc chắn, không gian trống, số người dự kiến và khung giờ phù hợp. Buổi trải nghiệm kéo dài 30 phút.",
+  },
+  {
+    q: "Yog Jivan có thể tổ chức tại văn phòng ngoài Hải Dương không?",
+    a: "Hãy gửi địa điểm cụ thể và số lượng người tham gia để đội ngũ của chúng tôi xác nhận khả năng tổ chức trực tiếp.",
   },
 ];
 
@@ -210,16 +218,16 @@ function ViCorporatePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-between p-6">
                 <div className="flex justify-between items-start">
                   <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[0.7rem] font-medium text-[color:var(--gold)] border border-[color:var(--gold)]/30">
-                    Thuyết minh tiếng Anh · Phụ đề tiếng Việt · 55s
+                    Thuyết minh tiếng Anh · Tóm tắt nội dung
                   </span>
                 </div>
                 <div className="text-left">
-                  <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)] text-black px-4 py-2 text-xs font-semibold shadow-lg">
-                    <Play className="h-4 w-4 fill-black" />
-                    Video giới thiệu (Bản hoàn thiện đang chờ cập nhật CDN)
+                  <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)]/20 border border-[color:var(--gold)]/40 text-[color:var(--gold)] px-4 py-2 text-xs font-semibold">
+                    <Sparkles className="h-4 w-4" />
+                    Giới thiệu tổng quan chương trình
                   </div>
                   <p className="mt-2 text-xs text-white/80 max-w-md">
-                    Tổng quan 55 giây: vận động nhẹ, định dạng trên ghế, khớp với lịch làm việc và buổi thử nghiệm miễn phí.
+                    Tổng quan chương trình: vận động nhẹ, định dạng trên ghế, khớp với lịch làm việc và buổi thử nghiệm miễn phí. Video phát trực tuyến sẽ kích hoạt khi hoàn tất phát hành CDN.
                   </p>
                 </div>
               </div>

@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { SharedYogaEnquiryForm } from "@/components/site/SharedYogaEnquiryForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { masterImages, socialImageMeta } from "@/lib/images";
+import { socialImageMeta } from "@/lib/images";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { waHref } from "@/lib/wa";
 import { FAMILY_OFFER, PARENT_CHILD_SECTION } from "@/lib/facts/shared-offers";
@@ -11,29 +11,29 @@ import { Users, Video, Clock, Globe2, ShieldCheck, Heart, Sparkles, CheckCircle2
 
 const TITLE = "Private Online Family Yoga for 3 or 4 | Yog Jivan";
 const DESCRIPTION =
-  "Practise live online yoga together at home with a Yog Jivan teacher. Compare total prices for three and four family members and ask about Parent–Child sessions.";
+  "Take a live private yoga session with three or four family members. Explore age-appropriate options and parent–child yoga with a participating adult.";
 const CANONICAL = "https://www.yogjivan.com/online-family-yoga";
 
 const FAQS = [
   {
-    q: "Can three of us join?",
-    a: "Yes. A three-person session is US$55 total.",
+    q: "Can three or four family members join?",
+    a: "Yes. Choose the group size in the enquiry and we’ll confirm availability.",
   },
   {
-    q: "What if a fourth person joins?",
-    a: "Select the four-person option at US$65 total.",
+    q: "Can I practise with my child?",
+    a: "Yes. A parent or caregiver participates throughout and we confirm age suitability before booking.",
   },
   {
-    q: "Can beginners join?",
-    a: "Yes. The teacher offers accessible options, subject to suitability and confirmed age guidelines.",
+    q: "Do we need yoga experience?",
+    a: "Tell us your experience and we’ll match the activities to your group.",
   },
   {
-    q: "Does one price cover everyone?",
-    a: "Yes. The price is for the confirmed participant count in one household booking.",
+    q: "What ages can join family yoga?",
+    a: "Send the general age range and group size so we can confirm suitable activities. For parent–child sessions, a parent or caregiver participates throughout.",
   },
   {
-    q: "Can an adult caregiver practise alongside a child?",
-    a: "Yes, adult participation is a core feature of our family sessions. An adult caregiver participates throughout the practice to model movements, assist with spacing, and share a positive wellness routine.",
+    q: "What if three or four family members want to join?",
+    a: "Choose three or four participants in the enquiry. We’ll confirm availability and the total for your household.",
   },
   {
     q: "Can all participants share one camera and device?",
@@ -81,7 +81,7 @@ export const Route = createFileRoute("/online-family-yoga")({
         type: "application/ld+json",
         children: JSON.stringify(
           serviceSchema({
-            name: "Live Online Family Yoga",
+            name: "Private Online Family Yoga for 3 or 4",
             serviceType: "Private Shared Family Yoga Session",
             description: DESCRIPTION,
             areaServed: "Worldwide",
@@ -99,17 +99,17 @@ function FamilyYogaPage() {
 
   return (
     <>
+      {/* 1 — FIRST SCREEN: HERO */}
       <PageHero
         eyebrow="Household & Family Yoga"
-        title="Private Online Family Yoga for Three or Four —"
-        accent="with an experienced, certified teacher."
-        sub="Make time to move together at home. One experienced, certified yoga teacher leads your family live through a shared practice, with simpler options when someone needs a different pace."
+        title="Private Online Family Yoga for 3 or 4"
+        sub="Make time to move together at home. An experienced, certified Yog Jivan yoga teacher guides your family live and adapts the session to the group."
         image768="/assets/preview/family-yoga-768.webp"
         image1400="/assets/preview/family-yoga-1400.webp"
         imageWidth={1400}
         imageHeight={1050}
         imageAspectRatio="4/3"
-        imageAlt="AI-generated illustration: Four household members practicing yoga together at home on mats with an adult caregiver"
+        imageAlt="Four household members practicing yoga together at home on mats with an adult caregiver"
         imageCaption="AI-generated preview illustration · Does not depict Yog Jivan students or teachers"
         contrastVeil
       >
@@ -123,35 +123,255 @@ function FamilyYogaPage() {
           <button
             type="button"
             onClick={() => {
-              const el = document.getElementById("shared-enquiry-form");
+              const el = document.getElementById("plan-session");
               el?.scrollIntoView({ behavior: "smooth" });
             }}
             className="btn-gold"
           >
             Choose your family size
           </button>
-          <a
-            href={waHref("family")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-[color:var(--gold)] hover:underline inline-flex items-center gap-1.5"
+          <button
+            type="button"
+            onClick={() => {
+              const el = document.getElementById("parent-child");
+              el?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="btn-ghost-gold"
           >
-            Or ask a question on WhatsApp
-          </a>
+            See the parent–child option
+          </button>
         </div>
       </PageHero>
 
-      {/* Pricing & Pack Options */}
+      {/* 2 — SECOND SWIPE: ONE FAMILY SESSION, WITH OPTIONS FOR EACH PERSON */}
+      <section className="section-pad border-b border-border/40 bg-card/20">
+        <div className="container-luxe">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow justify-center">
+              <span className="h-px w-10 bg-[color:var(--gold)]" />
+              Shared Family Movement
+              <span className="h-px w-10 bg-[color:var(--gold)]" />
+            </p>
+            <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
+              One family session, with options for each person
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              Your teacher guides the family together and offers simpler or more challenging options where appropriate. Tell us the group size, general age range and experience before booking so we can confirm a suitable format.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            <div className="glass-luxe rounded-2xl p-6 border border-white/10 text-left">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
+                  Family of 3 (60 min)
+                </span>
+                <span className="rounded-full bg-[color:var(--gold)]/10 px-2.5 py-0.5 text-xs text-[color:var(--gold)] font-medium">
+                  3 Participants
+                </span>
+              </div>
+              <h3 className="mt-3 font-display text-xl text-foreground font-semibold">Shared household practice for three</h3>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                Ideal for two parents and one child, or one parent and two children. Movement progressions, cooperative balance challenges, and mindful breathing together.
+              </p>
+              <ul className="mt-4 space-y-2 text-xs text-foreground/80">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
+                  <span>One shared camera and room space</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
+                  <span>Adult participates throughout alongside children</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="glass-luxe rounded-2xl p-6 border border-white/10 text-left">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
+                  Family of 4 (60 min)
+                </span>
+                <span className="rounded-full bg-[color:var(--gold)]/10 px-2.5 py-0.5 text-xs text-[color:var(--gold)] font-medium">
+                  4 Participants
+                </span>
+              </div>
+              <h3 className="mt-3 font-display text-xl text-foreground font-semibold">Full household practice for four</h3>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                Crafted for up to four family members in one household. Balanced pacing designed so adults get restorative benefits while children stay actively engaged.
+              </p>
+              <ul className="mt-4 space-y-2 text-xs text-foreground/80">
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
+                  <span>Covers whole household booking</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
+                  <span>Adapted for mixed ages with safety modifications</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3 — WHAT HAPPENS IN A FAMILY SESSION */}
+      <section className="section-pad border-b border-border/40">
+        <div className="container-luxe">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+            <div>
+              <p className="eyebrow">
+                <span className="h-px w-10 bg-[color:var(--gold)]" />
+                Session Structure
+              </p>
+              <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
+                What happens in a family session?
+              </h2>
+              <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+                <p>
+                  We start with a quick camera and space check, move through a gentle warm-up and guided activities, then finish with slower movement or breathing.
+                </p>
+                <p>
+                  Set up a mat or clear space for each person. Your teacher starts with an easy shared movement, explains options and gives cues while everyone practises. A participating adult helps set up the room and stays with the children throughout the class.
+                </p>
+              </div>
+
+              <div className="mt-6 space-y-3">
+                {FAMILY_OFFER.keyPoints.map((point) => (
+                  <div key={point} className="flex items-start gap-2.5 text-sm text-foreground/90">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--gold)]" />
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8">
+              <h3 className="text-lg font-semibold text-foreground">Room Framing for Up to Four</h3>
+              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                To keep all four participants in view, a wide camera angle and staggered floor layout are recommended. See our{" "}
+                <Link to="/blog/$slug" params={{ slug: "online-yoga-camera-setup" }} className="text-[color:var(--gold)] hover:underline">
+                  online yoga camera and space setup guide
+                </Link>{" "}
+                for full positioning instructions.
+              </p>
+              <ul className="mt-4 space-y-2.5 text-xs text-foreground/80">
+                <li className="flex items-start gap-2">
+                  <span className="font-semibold text-[color:var(--gold)]">•</span>
+                  <span><strong>Staggered mats:</strong> Place two mats in front and two slightly behind and offset, so no one blocks another from the camera view.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-semibold text-[color:var(--gold)]">•</span>
+                  <span><strong>Camera distance:</strong> Elevate the laptop or tablet to table height (about 0.7m) and step 3 to 3.5m back.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-semibold text-[color:var(--gold)]">•</span>
+                  <span><strong>Audio:</strong> Test speakers at comfortable volume so movement cues can be heard clearly across the room.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4 — PARENT-CHILD YOGA AT HOME */}
+      <section id="parent-child" className="section-pad border-b border-border/40 bg-card/30">
+        <div className="container-luxe">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow justify-center">
+              <span className="h-px w-10 bg-[color:var(--gold)]" />
+              1 Adult + 1 Child
+              <span className="h-px w-10 bg-[color:var(--gold)]" />
+            </p>
+            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+              Parent–child yoga at home
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              A parent or caregiver takes part alongside the child. The teacher adjusts activities to the child’s age range and the space available.
+            </p>
+            <p className="mt-2 text-xs text-foreground/75 font-medium">
+              We collect only adult contact details. Age range is discussed during enquiry; no child-identifying information, photos or health records are requested.
+            </p>
+            <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
+              Every session is led by an experienced, certified Yog Jivan yoga teacher.
+            </p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {PARENT_CHILD_SECTION.keyPoints.map((point, idx) => (
+              <div key={idx} className="glass-luxe rounded-xl p-5">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[color:var(--gold)]/15 text-[color:var(--gold)]">
+                  <CheckCircle2 className="h-4 w-4" />
+                </div>
+                <p className="mt-3 text-xs leading-relaxed text-foreground/90">{point}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <picture className="mx-auto mb-3 block max-w-xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 shadow-xl aspect-[16/9]">
+              <source
+                media="(max-width: 768px)"
+                srcSet="/assets/preview/parent-child-yoga-768.webp"
+                type="image/webp"
+                width={768}
+                height={432}
+              />
+              <source
+                media="(min-width: 769px)"
+                srcSet="/assets/preview/parent-child-yoga-1400.webp"
+                type="image/webp"
+                width={1400}
+                height={788}
+              />
+              <img
+                src="/assets/preview/parent-child-yoga-768.webp"
+                alt="An adult caregiver and child practicing yoga together at home"
+                width={768}
+                height={432}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
+            </picture>
+            <p className="mx-auto mb-6 max-w-md text-xs text-muted-foreground/80">
+              AI-generated preview illustration · Does not depict Yog Jivan students or teachers
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button
+                type="button"
+                data-cta="parent-child-enquiry"
+                onClick={() => {
+                  setSelectedFormat("parent_child");
+                  const el = document.getElementById("plan-session");
+                  el?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="btn-gold"
+              >
+                Enquire for 1 Adult + 1 Child
+              </button>
+            </div>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Organising for a school? See our{" "}
+              <Link to="/school-yoga" className="text-[color:var(--gold)] hover:underline">
+                School Yoga programme
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 5 — PRICE FOR YOUR HOUSEHOLD */}
       <section className="section-pad-sm border-b border-border/40 bg-card/20">
         <div className="container-luxe">
           <div className="mx-auto max-w-4xl rounded-[2rem] border border-[color:var(--gold)]/30 bg-[color-mix(in_oklab,var(--gold)_6%,var(--onyx))] p-6 md:p-8">
             <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Household pricing</p>
             <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-              Choose a session for three or four
+              Price for your household
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
-              Your price covers the whole household booking. A fourth family member adds US$10 to the single-session total.
-              The amount you see is the total for the group.
+              Your price covers the whole household booking. Three participants are <strong>US$55 total</strong>; a fourth family member adds US$10 to make <strong>US$65 total</strong>.
+              The amount you see is the total for the entire group.
             </p>
             <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
               Every session is led by an experienced, certified Yog Jivan yoga teacher.
@@ -190,198 +410,15 @@ function FamilyYogaPage() {
         </div>
       </section>
 
-      {/* What your family does together */}
-      <section className="section-pad">
-        <div className="container-luxe">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-            <div>
-              <p className="eyebrow">
-                <span className="h-px w-10 bg-[color:var(--gold)]" />
-                Collaborative Practice
-              </p>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-                What your family does together
-              </h2>
-              <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-                <p>
-                  Set up a mat or clear space for each person. Your teacher starts with an easy shared movement, explains options and gives cues while everyone practises. A participating adult helps set up the room and stays with the children throughout the class.
-                </p>
-                <p>
-                  Your teacher arranges the session around joint mobility, posture foundations, breathing games, and relaxation. The adult caregiver participates side by side, making the experience collaborative rather than a passive kids' video.
-                </p>
-              </div>
-
-              <div className="mt-6 space-y-3">
-                {FAMILY_OFFER.keyPoints.map((point) => (
-                  <div key={point} className="flex items-start gap-2.5 text-sm text-foreground/90">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--gold)]" />
-                    <span>{point}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8">
-              <h3 className="text-lg font-semibold text-foreground">Room Framing for Up to Four</h3>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                To keep all four participants in view, a wide camera angle and staggered floor layout are recommended. See our{" "}
-                <Link to="/blog/$slug" params={{ slug: "online-yoga-camera-setup" }} className="text-[color:var(--gold)] hover:underline">
-                  camera setup guide
-                </Link>{" "}
-                for full positioning instructions.
-              </p>
-              <ul className="mt-4 space-y-2.5 text-xs text-foreground/80">
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-[color:var(--gold)]">•</span>
-                  <span><strong>Staggered mats:</strong> Place two mats in front and two slightly behind and offset, so no one blocks another from the camera view.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-[color:var(--gold)]">•</span>
-                  <span><strong>Camera distance:</strong> Elevate the laptop or tablet to table height (about 0.7m) and step 3 to 3.5m back.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="font-semibold text-[color:var(--gold)]">•</span>
-                  <span><strong>Audio:</strong> Test speakers at comfortable volume so movement cues can be heard clearly across the room.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Dedicated Parent + Child Section */}
-      <section id="parent-child" className="section-pad border-t border-border/40 bg-card/30">
-        <div className="container-luxe">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow justify-center">
-              <span className="h-px w-10 bg-[color:var(--gold)]" />
-              1 Adult + 1 Child
-              <span className="h-px w-10 bg-[color:var(--gold)]" />
-            </p>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-              Want to practise with one child?
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-              Ask about the Parent–Child format. Tell us the child's age range and your preferred time so we can confirm a suitable session. An adult participates throughout.
-            </p>
-            <p className="mt-2 text-xs text-foreground/75 font-medium">
-              We collect only adult contact details. Age range is discussed during enquiry; no child-identifying information or health records are requested.
-            </p>
-            <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
-              Every session is led by an experienced, certified Yog Jivan yoga teacher.
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {PARENT_CHILD_SECTION.keyPoints.map((point, idx) => (
-              <div key={idx} className="glass-luxe rounded-xl p-5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[color:var(--gold)]/15 text-[color:var(--gold)]">
-                  <CheckCircle2 className="h-4 w-4" />
-                </div>
-                <p className="mt-3 text-xs leading-relaxed text-foreground/90">{point}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 text-center">
-            <picture className="mx-auto mb-3 block max-w-xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 shadow-xl aspect-[16/9]">
-              <source
-                media="(max-width: 768px)"
-                srcSet="/assets/preview/parent-child-yoga-768.webp"
-                type="image/webp"
-                width={768}
-                height={432}
-              />
-              <source
-                media="(min-width: 769px)"
-                srcSet="/assets/preview/parent-child-yoga-1400.webp"
-                type="image/webp"
-                width={1400}
-                height={788}
-              />
-              <img
-                src="/assets/preview/parent-child-yoga-768.webp"
-                alt="AI-generated illustration: An adult caregiver and child practicing yoga together at home with blocks"
-                width={768}
-                height={432}
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover"
-              />
-            </picture>
-            <p className="mx-auto mb-8 max-w-md text-xs text-muted-foreground/80">
-              AI-generated preview illustration · Does not depict Yog Jivan students or teachers
-            </p>
-            <button
-              type="button"
-              data-cta="parent-child-enquiry"
-              onClick={() => {
-                setSelectedFormat("parent_child");
-                const el = document.getElementById("shared-enquiry-form");
-                el?.scrollIntoView({ behavior: "smooth" });
-                const select = document.getElementById("shared-format-select") as HTMLSelectElement | null;
-                select?.focus();
-              }}
-              className="btn-gold inline-flex items-center gap-2 text-sm"
-            >
-              Enquire for Parent & Child Session
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Enquiry Form Section */}
-      <section className="section-pad bg-muted/10 border-t border-border/40">
-        <div className="container-luxe">
-          <div className="mx-auto max-w-2xl">
-            <SharedYogaEnquiryForm
-              format={selectedFormat}
-              onFormatChange={(fmt) => setSelectedFormat(fmt === "parent_child" ? "parent_child" : "family")}
-              heading={selectedFormat === "parent_child" ? "Enquire About Parent & Child Yoga" : "Enquire About Live Family Yoga"}
-              subheading={selectedFormat === "parent_child" ? "Share your preferred schedule and child age band. We reply with schedule options and private quote details on WhatsApp." : "Share your family's preferred days, participant count, and time zone. We reply with schedule options and private quote details on WhatsApp."}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Cross-linking to Couples and Solo Offers */}
-      <section className="section-pad-sm border-t border-border/40">
-        <div className="container-luxe">
-          <h3 className="text-center text-lg font-semibold text-foreground">Explore other private formats</h3>
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Link
-              to="/online-couples-yoga"
-              className="glass-luxe flex items-center justify-between rounded-xl p-5 transition hover:border-[color:var(--gold)]/50"
-            >
-              <div>
-                <p className="font-semibold text-foreground">Live Online Couples Yoga</p>
-                <p className="text-xs text-muted-foreground">Private session for exactly two adult partners</p>
-              </div>
-              <span className="text-xs text-[color:var(--gold)] font-medium">Explore Couples &rarr;</span>
-            </Link>
-            <Link
-              to="/private-online-yoga"
-              className="glass-luxe flex items-center justify-between rounded-xl p-5 transition hover:border-[color:var(--gold)]/50"
-            >
-              <div>
-                <p className="font-semibold text-foreground">Solo Private 1-on-1 Yoga</p>
-                <p className="text-xs text-muted-foreground">Dedicated 1-on-1 personal practice coaching</p>
-              </div>
-              <span className="text-xs text-[color:var(--gold)] font-medium">Explore Solo &rarr;</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs */}
-      <section className="section-pad">
+      {/* 6 — QUESTIONS ABOUT ONLINE FAMILY YOGA */}
+      <section className="section-pad border-b border-border/40">
         <div className="container-luxe">
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-center text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-              Frequently Asked Questions
+            <h2 className="text-center font-display text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+              Questions about online family yoga
             </h2>
             <p className="mt-2 text-center text-sm text-muted-foreground">
-              Practical details on scheduling, supervision, and preparing for family yoga online.
+              Frequently asked questions about preparing for family and parent–child yoga at home.
             </p>
             <div className="mt-8">
               <Accordion type="single" collapsible className="w-full">
@@ -396,6 +433,41 @@ function FamilyYogaPage() {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7 — PLAN A FAMILY SESSION */}
+      <section id="plan-session" className="section-pad bg-muted/10">
+        <div className="container-luxe">
+          <div className="mx-auto max-w-2xl">
+            <div className="text-center mb-8">
+              <h2 className="font-display text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+                Plan a family session
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Share your group size, time zone and preferred times. We’ll confirm teacher availability and booking details.
+              </p>
+            </div>
+
+            <div id="shared-enquiry-form">
+              <SharedYogaEnquiryForm
+                initialFormat={selectedFormat}
+                heading="Enquire About Live Family Yoga"
+                subheading="Select your family size (3, 4, or Parent–Child) and preferred times. We confirm availability and discuss booking details directly."
+              />
+            </div>
+
+            {/* Cross-linking to Couples */}
+            <div className="mt-12 border-t border-border/40 pt-8 text-center">
+              <p className="text-sm text-muted-foreground">
+                Two adults only? See{" "}
+                <Link to="/online-couples-yoga" className="text-[color:var(--gold)] font-medium hover:underline">
+                  online couples yoga
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </div>

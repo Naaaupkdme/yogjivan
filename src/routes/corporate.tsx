@@ -25,6 +25,14 @@ const FAQS = [
     q: "How is pricing calculated?",
     a: "We quote for your location, session length, headcount and series size (single pilot or four-session series).",
   },
+  {
+    q: "What do we need to host a chair yoga demo?",
+    a: "Provide stable chairs, clear space, an estimated headcount and preferred time. The complimentary chair demo takes 30 minutes.",
+  },
+  {
+    q: "Can you come to our office outside Hải Dương?",
+    a: "Send the venue location and headcount so our team can confirm on-site availability.",
+  },
 ];
 
 const DEMO_TIMELINE = [
@@ -209,16 +217,16 @@ function CorporatePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-between p-6">
                 <div className="flex justify-between items-start">
                   <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[0.7rem] font-medium text-[color:var(--gold)] border border-[color:var(--gold)]/30">
-                    English Audio · Vietnamese Captions · 55s
+                    English Narration · Programme Overview
                   </span>
                 </div>
                 <div className="text-left">
-                  <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)] text-black px-4 py-2 text-xs font-semibold shadow-lg">
-                    <Play className="h-4 w-4 fill-black" />
-                    Overview Video (Final export attachment pending CDN release)
+                  <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)]/20 border border-[color:var(--gold)]/40 text-[color:var(--gold)] px-4 py-2 text-xs font-semibold">
+                    <Sparkles className="h-4 w-4" />
+                    Programme Overview Walkthrough
                   </div>
                   <p className="mt-2 text-xs text-white/80 max-w-md">
-                    Structured 55-second walkthrough: gentle movement, chair format, workday fit, and complimentary first session.
+                    Structured introduction: gentle movement, chair format, workday fit, and complimentary first session. Streaming video activates upon CDN release.
                   </p>
                 </div>
               </div>
@@ -356,7 +364,7 @@ function CorporatePage() {
                   The host organisation provides the room space, estimated headcount, and protected time window. Participation is always voluntary, and every posture is adapted for comfort.
                 </p>
                 <p>
-                  Yog Jivan has facilitated workplace yoga sessions for approximately 15 workplaces in Vietnam (subject to business confirmation). Following the demo, an optional four-session series is quoted in transparent VND according to headcount and location.
+                  Yog Jivan coordinates workplace yoga sessions for organizations in the Hải Dương area and across Vietnam. Following the demo, an optional four-session series is quoted in transparent VND according to headcount and location.
                 </p>
               </div>
               <p className="mt-4 text-xs font-semibold text-[color:var(--gold)]">

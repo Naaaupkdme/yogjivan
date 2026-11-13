@@ -331,6 +331,10 @@ const PT_FAQS = [
     a: "A yoga mat, clear floor space and a device with a stable connection. Place your phone, tablet or laptop so your full body is visible, usually side-on and a couple of metres back, with enough light. Blocks, a strap or a chair help but household substitutes are fine.",
   },
   {
+    q: "What does my teacher need to see on camera?",
+    a: "Set your device far enough away for the teacher to see you standing and on the mat. Do a quick framing check at the start.",
+  },
+  {
     q: "How are session times and languages arranged?",
     a: "Times are agreed directly with you rather than fixed to a group timetable, so your session is scheduled around your local time zone. Yog Jivan offers teacher matching across English, Vietnamese and Hindi, subject to teacher availability.",
   },

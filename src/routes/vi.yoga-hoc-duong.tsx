@@ -14,8 +14,12 @@ const CANONICAL = "https://www.yogjivan.com/vi/yoga-hoc-duong";
 
 const FAQS = [
   {
-    q: "Một buổi học kéo dài bao lâu?",
-    a: "Thông thường từ 35–40 phút, phù hợp với sự tập trung tự nhiên và nhịp vận động của trẻ nhỏ.",
+    q: "Nhà trường cần chuẩn bị những gì?",
+    a: "Một không gian phòng học hoặc hội trường sạch sẽ, thoáng mát, sàn an toàn, cùng thầy cô giáo hoặc trợ giảng của trường có mặt hỗ trợ suốt buổi tập.",
+  },
+  {
+    q: "Buổi yoga học đường kéo dài bao lâu?",
+    a: "Buổi trải nghiệm miễn phí kéo dài từ 35 đến 40 phút, phù hợp với sự tập trung tự nhiên của học sinh.",
   },
   {
     q: "Thầy cô giáo có thể ở lại quan sát không?",
@@ -214,16 +218,16 @@ function ViSchoolYogaPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-between p-6">
                 <div className="flex justify-between items-start">
                   <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[0.7rem] font-medium text-[color:var(--gold)] border border-[color:var(--gold)]/30">
-                    Thuyết minh tiếng Anh · Phụ đề tiếng Việt · 55s
+                    Thuyết minh tiếng Anh · Tóm tắt nội dung · 55s
                   </span>
                 </div>
                 <div className="text-left">
-                  <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)] text-black px-4 py-2 text-xs font-semibold shadow-lg">
-                    <Play className="h-4 w-4 fill-black" />
-                    Video giới thiệu (Bản hoàn thiện đang chờ cập nhật CDN)
+                  <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)] text-black px-3.5 py-1.5 text-xs font-semibold shadow-lg">
+                    <Sparkles className="h-4 w-4 text-black" />
+                    Tóm tắt nội dung chương trình
                   </div>
-                  <p className="mt-2 text-xs text-white/80 max-w-md">
-                    Tổng quan 55 giây: vận động qua trò chơi, câu chuyện hấp dẫn, giám sát an toàn và buổi trải nghiệm miễn phí.
+                  <p className="mt-2 text-xs text-white/90 max-w-md">
+                    Tổng quan 55 giây: vận động qua trò chơi, câu chuyện hấp dẫn, giám sát an toàn và buổi trải nghiệm miễn phí. Video phát trực tiếp sẽ hoạt động sau khi cập nhật CDN.
                   </p>
                 </div>
               </div>
@@ -299,7 +303,7 @@ function ViSchoolYogaPage() {
                   Mọi buổi tập đều được phối hợp trực tiếp cùng ban giám hiệu và giáo viên chủ nhiệm. Thầy cô luôn có mặt trong suốt buổi tập để giám sát an toàn và hỗ trợ các em học sinh.
                 </p>
                 <p>
-                  Yog Jivan đã triển khai chương trình tại hơn 20 trường học tại Việt Nam (cần xác nhận nội bộ). Buổi thử nghiệm đầu tiên kéo dài 35–40 phút hoàn toàn miễn phí để nhà trường đánh giá trực tiếp hiệu quả trước khi triển khai các khóa ngoại khóa định kỳ.
+                  Yog Jivan triển khai chương trình yoga học đường tại Việt Nam. Buổi thử nghiệm đầu tiên kéo dài 35–40 phút hoàn toàn miễn phí để nhà trường đánh giá trực tiếp hiệu quả trước khi triển khai các khóa ngoại khóa định kỳ.
                 </p>
                 <p className="text-xs font-medium text-foreground/90">
                   <strong>Cam kết bảo mật tuyệt đối:</strong> Chúng tôi chỉ tiếp nhận thông tin liên lạc của người điều phối nhà trường. Tuyệt đối không thu thập tên, hình ảnh hay hồ sơ sức khỏe của học sinh trên biểu mẫu.
