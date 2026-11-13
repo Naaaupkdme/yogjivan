@@ -96,6 +96,7 @@ export const Route = createFileRoute("/online-family-yoga")({
 
 function FamilyYogaPage() {
   const [selectedFormat, setSelectedFormat] = useState<"family" | "parent_child">("family");
+  const [selectedPax, setSelectedPax] = useState<number>(3);
 
   return (
     <>
@@ -161,54 +162,88 @@ function FamilyYogaPage() {
           </div>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            <div className="glass-luxe rounded-2xl p-6 border border-white/10 text-left">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
-                  Family of 3 (60 min)
-                </span>
-                <span className="rounded-full bg-[color:var(--gold)]/10 px-2.5 py-0.5 text-xs text-[color:var(--gold)] font-medium">
-                  3 Participants
-                </span>
+            <div className="glass-luxe flex flex-col justify-between rounded-2xl p-6 border border-white/10 text-left">
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
+                    Family of 3 (60 min)
+                  </span>
+                  <span className="rounded-full bg-[color:var(--gold)]/10 px-2.5 py-0.5 text-xs text-[color:var(--gold)] font-medium">
+                    3 Participants
+                  </span>
+                </div>
+                <h3 className="mt-3 font-display text-xl text-foreground font-semibold">Shared household practice for three</h3>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                  Ideal for two parents and one child, or one parent and two children. Movement progressions, cooperative balance challenges, and mindful breathing together.
+                </p>
+                <ul className="mt-4 space-y-2 text-xs text-foreground/80">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
+                    <span>One shared camera and room space</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
+                    <span>Adult participates throughout alongside children</span>
+                  </li>
+                </ul>
               </div>
-              <h3 className="mt-3 font-display text-xl text-foreground font-semibold">Shared household practice for three</h3>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Ideal for two parents and one child, or one parent and two children. Movement progressions, cooperative balance challenges, and mindful breathing together.
-              </p>
-              <ul className="mt-4 space-y-2 text-xs text-foreground/80">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
-                  <span>One shared camera and room space</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
-                  <span>Adult participates throughout alongside children</span>
-                </li>
-              </ul>
+              <button
+                type="button"
+                data-cta="family-3-enquiry"
+                onClick={() => {
+                  setSelectedFormat("family");
+                  setSelectedPax(3);
+                  const el = document.getElementById("plan-session");
+                  el?.scrollIntoView({ behavior: "smooth" });
+                  const target = el?.querySelector<HTMLElement>("input, select, textarea, button") ?? el;
+                  window.setTimeout(() => target?.focus({ preventScroll: true }), 350);
+                }}
+                className="mt-6 w-full btn-gold text-xs py-2.5"
+              >
+                Select 3 participants & enquire
+              </button>
             </div>
 
-            <div className="glass-luxe rounded-2xl p-6 border border-white/10 text-left">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
-                  Family of 4 (60 min)
-                </span>
-                <span className="rounded-full bg-[color:var(--gold)]/10 px-2.5 py-0.5 text-xs text-[color:var(--gold)] font-medium">
-                  4 Participants
-                </span>
+            <div className="glass-luxe flex flex-col justify-between rounded-2xl p-6 border border-white/10 text-left">
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
+                    Family of 4 (60 min)
+                  </span>
+                  <span className="rounded-full bg-[color:var(--gold)]/10 px-2.5 py-0.5 text-xs text-[color:var(--gold)] font-medium">
+                    4 Participants
+                  </span>
+                </div>
+                <h3 className="mt-3 font-display text-xl text-foreground font-semibold">Full household practice for four</h3>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                  Crafted for up to four family members in one household. Balanced pacing designed so adults get restorative benefits while children stay actively engaged.
+                </p>
+                <ul className="mt-4 space-y-2 text-xs text-foreground/80">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
+                    <span>Covers whole household booking</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
+                    <span>Adapted for mixed ages with safety modifications</span>
+                  </li>
+                </ul>
               </div>
-              <h3 className="mt-3 font-display text-xl text-foreground font-semibold">Full household practice for four</h3>
-              <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Crafted for up to four family members in one household. Balanced pacing designed so adults get restorative benefits while children stay actively engaged.
-              </p>
-              <ul className="mt-4 space-y-2 text-xs text-foreground/80">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
-                  <span>Covers whole household booking</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[color:var(--gold)] shrink-0" />
-                  <span>Adapted for mixed ages with safety modifications</span>
-                </li>
-              </ul>
+              <button
+                type="button"
+                data-cta="family-4-enquiry"
+                onClick={() => {
+                  setSelectedFormat("family");
+                  setSelectedPax(4);
+                  const el = document.getElementById("plan-session");
+                  el?.scrollIntoView({ behavior: "smooth" });
+                  const target = el?.querySelector<HTMLElement>("input, select, textarea, button") ?? el;
+                  window.setTimeout(() => target?.focus({ preventScroll: true }), 350);
+                }}
+                className="mt-6 w-full btn-gold text-xs py-2.5"
+              >
+                Select 4 participants & enquire
+              </button>
             </div>
           </div>
         </div>
@@ -342,8 +377,11 @@ function FamilyYogaPage() {
                 data-cta="parent-child-enquiry"
                 onClick={() => {
                   setSelectedFormat("parent_child");
+                  setSelectedPax(2);
                   const el = document.getElementById("plan-session");
                   el?.scrollIntoView({ behavior: "smooth" });
+                  const target = el?.querySelector<HTMLElement>("input, select, textarea, button") ?? el;
+                  window.setTimeout(() => target?.focus({ preventScroll: true }), 350);
                 }}
                 className="btn-gold"
               >
@@ -386,7 +424,7 @@ function FamilyYogaPage() {
                 <p className="mt-1 text-xs text-muted-foreground">Single session rate for 3 participants.</p>
                 <div className="mt-4 rounded-lg border border-[color:var(--gold)]/30 bg-black/30 p-3">
                   <p className="text-xs font-medium text-foreground">
-                    <strong>Pack launch preview:</strong> Book 4 sessions for US$220 total and receive 1 additional session for the same family (5 sessions in total, US$44 effective per session).
+                    <strong>4-session package:</strong> Book 4 sessions for US$220 total and receive 1 additional session for the same family (5 sessions in total, US$44 effective per session).
                   </p>
                   <p className="mt-1 text-[0.68rem] text-muted-foreground">Same household, subject to teacher schedule confirmation.</p>
                 </div>
@@ -400,7 +438,7 @@ function FamilyYogaPage() {
                 <p className="mt-1 text-xs text-muted-foreground">Single session rate for 4 participants.</p>
                 <div className="mt-4 rounded-lg border border-[color:var(--gold)]/30 bg-black/30 p-3">
                   <p className="text-xs font-medium text-foreground">
-                    <strong>Pack launch preview:</strong> 4 sessions for US$240 total (US$60 per session total).
+                    <strong>4-session package:</strong> 4 sessions for US$240 total (US$60 per session total).
                   </p>
                   <p className="mt-1 text-[0.68rem] text-muted-foreground">Covers up to 4 participants from one household.</p>
                 </div>
@@ -453,7 +491,13 @@ function FamilyYogaPage() {
 
             <div id="shared-enquiry-form">
               <SharedYogaEnquiryForm
-                initialFormat={selectedFormat}
+                format={selectedFormat}
+                participants={selectedPax}
+                onFormatChange={(fmt) => {
+                  setSelectedFormat(fmt as "family" | "parent_child");
+                  if (fmt === "family" && selectedPax < 3) setSelectedPax(3);
+                }}
+                onParticipantsChange={(pax) => setSelectedPax(pax)}
                 heading="Enquire About Live Family Yoga"
                 subheading="Select your family size (3, 4, or Parent–Child) and preferred times. We confirm availability and discuss booking details directly."
               />

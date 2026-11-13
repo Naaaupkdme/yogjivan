@@ -345,10 +345,16 @@ export function SchoolYogaEnquiryForm({
       </div>
 
       <div>
-        <label className="text-xs font-medium text-foreground/80">
-          {isVi ? "Ghi chú thêm về không gian phòng học hoặc lịch sinh hoạt" : "Notes on Room Space or Class Routine"}
+        <label htmlFor="school-notes" className="text-xs font-medium text-foreground/80">
+          {isVi ? "Ghi chú điều phối người lớn (tùy chọn)" : "Adult Booking Logistics Notes (optional)"}
         </label>
+        <p className="mt-0.5 text-[0.7rem] text-muted-foreground">
+          {isVi
+            ? "Vui lòng không điền tên, ngày sinh, hình ảnh hoặc thông tin y tế của học sinh."
+            : "Please do not include child names, dates of birth, photos, or medical history."}
+        </p>
         <textarea
+          id="school-notes"
           rows={2}
           placeholder={
             isVi

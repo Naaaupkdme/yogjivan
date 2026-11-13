@@ -14,15 +14,28 @@ import {
   SHARED_TIME_PREFERENCES,
 } from "@/lib/facts/shared-offers";
 
-const schema = z.object({
-  name: z.string().trim().min(2, "Please share the adult booking contact name").max(120),
-  whatsapp: z.string().trim().min(6, "Please share a valid WhatsApp number").max(40),
-  format: z.enum(["couples", "family", "parent_child"]),
-  participants: z.coerce.number().min(2).max(4),
-  time: z.string().max(80).optional().or(z.literal("")),
-  language: z.string().max(80).optional().or(z.literal("")),
-  notes: z.string().max(300).optional().or(z.literal("")),
-});
+const schema = z
+  .object({
+    name: z.string().trim().min(2, "Please share the adult booking contact name").max(120),
+    whatsapp: z.string().trim().min(6, "Please share a valid WhatsApp number").max(40),
+    format: z.enum(["couples", "family", "parent_child"]),
+    participants: z.coerce.number().int().min(2).max(4),
+    time: z.string().max(80).optional().or(z.literal("")),
+    language: z.string().max(80).optional().or(z.literal("")),
+    notes: z.string().max(300).optional().or(z.literal("")),
+  })
+  .refine(
+    (data) => {
+      if (data.format === "couples") return data.participants === 2;
+      if (data.format === "parent_child") return data.participants === 2;
+      if (data.format === "family") return data.participants === 3 || data.participants === 4;
+      return true;
+    },
+    {
+      message: "Family sessions are for 3 or 4 participants. For 2 participants, please choose Couples or Parent & Child.",
+      path: ["participants"],
+    }
+  );
 
 type FormState = {
   name: string;
@@ -40,6 +53,9 @@ export type SharedYogaEnquiryFormProps = {
   initialFormat?: "couples" | "family" | "parent_child";
   format?: "couples" | "family" | "parent_child";
   onFormatChange?: (format: "couples" | "family" | "parent_child") => void;
+  initialParticipants?: number;
+  participants?: number;
+  onParticipantsChange?: (participants: number) => void;
   heading?: string;
   subheading?: string;
 };
@@ -48,15 +64,23 @@ export function SharedYogaEnquiryForm({
   initialFormat = "couples",
   format: controlledFormat,
   onFormatChange,
+  initialParticipants,
+  participants: controlledParticipants,
+  onParticipantsChange,
   heading = "Enquire About Shared Sessions",
   subheading = "Tell us who is joining and your preferred times. Scheduling and rates are arranged individually by enquiry.",
 }: SharedYogaEnquiryFormProps) {
   const activeFormat = controlledFormat ?? initialFormat;
+  const initialPax =
+    controlledParticipants ??
+    initialParticipants ??
+    (activeFormat === "family" ? 3 : 2);
+
   const [form, setForm] = useState<FormState>({
     name: "",
     whatsapp: "",
     format: activeFormat,
-    participants: activeFormat === "family" ? 4 : 2,
+    participants: initialPax,
     time: "Flexible",
     language: "English",
     notes: "",
@@ -81,17 +105,25 @@ export function SharedYogaEnquiryForm({
       setForm((s) => ({
         ...s,
         format: controlledFormat,
-        participants: controlledFormat === "family" ? (s.participants >= 3 ? s.participants : 4) : 2,
+        participants:
+          controlledParticipants ??
+          (controlledFormat === "family" ? (s.participants >= 3 ? s.participants : 3) : 2),
       }));
     }
   }, [controlledFormat]);
+
+  useEffect(() => {
+    if (controlledParticipants && controlledParticipants !== form.participants) {
+      setForm((s) => ({ ...s, participants: controlledParticipants }));
+    }
+  }, [controlledParticipants]);
 
   useEffect(() => {
     if (!controlledFormat && initialFormat !== form.format) {
       setForm((s) => ({
         ...s,
         format: initialFormat,
-        participants: initialFormat === "family" ? 4 : 2,
+        participants: initialParticipants ?? (initialFormat === "family" ? 3 : 2),
       }));
     }
   }, [initialFormat, controlledFormat]);
@@ -275,17 +307,20 @@ export function SharedYogaEnquiryForm({
         {form.format === "family" && (
           <div>
             <label htmlFor="shared-pax-select" className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              Total Participants in Household (Owner-approved up to 4)
+              Total Participants in Household (Up to 4)
             </label>
             <select
               id="shared-pax-select"
               value={form.participants}
-              onChange={(e) => update("participants", Number(e.target.value))}
+              onChange={(e) => {
+                const val = Number(e.target.value);
+                update("participants", val);
+                onParticipantsChange?.(val);
+              }}
               className="w-full rounded-xl border border-border/60 bg-background/60 px-4 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
             >
-              <option value={3}>3 Family Members (Recommended tier)</option>
-              <option value={4}>4 Family Members (Maximum tier)</option>
-              <option value={2}>2 Family Members (Family duo)</option>
+              <option value={3}>3 Family Members (US$55 / session)</option>
+              <option value={4}>4 Family Members (US$65 / session)</option>
             </select>
           </div>
         )}
@@ -358,14 +393,17 @@ export function SharedYogaEnquiryForm({
 
         <div>
           <label htmlFor="shared-notes" className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            Time Zone & Notes (Optional)
+            Time Zone & Logistics Notes (Optional)
           </label>
+          <p className="mb-1.5 text-[0.7rem] text-muted-foreground">
+            Please do not include minor names, dates of birth, photos, or medical history.
+          </p>
           <textarea
             id="shared-notes"
             rows={2}
             value={form.notes}
             onChange={(e) => update("notes", e.target.value)}
-            placeholder="e.g. UTC+7 (Vietnam), one complete beginner and one regular practitioner"
+            placeholder="e.g. UTC+7 (Vietnam), two adults and one child, prefer weekend mornings"
             className="w-full rounded-xl border border-border/60 bg-background/60 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-[color:var(--gold)] focus:outline-none"
           />
         </div>

@@ -34,18 +34,32 @@ describe("SharedYogaEnquiryForm — Couples, Family & Parent-Child", () => {
     expect(screen.getByText(/privacy & minor safety standard/i)).toBeDefined();
   });
 
-  it("renders family format with selectable participant count (2 to 4)", () => {
+  it("renders family format with selectable participant count (3 or 4) and no duo option", () => {
     render(<SharedYogaEnquiryForm initialFormat="family" />);
 
     const formatSelect = screen.getByLabelText(/session format/i) as HTMLSelectElement;
     expect(formatSelect.value).toBe("family");
 
-    // Participant select should be present
+    // Participant select should be present and default to recommended tier (3)
     const paxSelect = screen.getByLabelText(/total participants in household/i) as HTMLSelectElement;
     expect(paxSelect).toBeDefined();
+    expect(paxSelect.value).toBe("3");
+
+    // Family Duo (2 participants) should NOT exist in family options
+    expect(paxSelect.querySelector('option[value="2"]')).toBeNull();
+
+    fireEvent.change(paxSelect, { target: { value: "4" } });
+    expect(paxSelect.value).toBe("4");
+  });
+
+  it("supports initialParticipants and controlled participants prop", () => {
+    const { rerender } = render(
+      <SharedYogaEnquiryForm format="family" participants={4} />
+    );
+    const paxSelect = screen.getByLabelText(/total participants in household/i) as HTMLSelectElement;
     expect(paxSelect.value).toBe("4");
 
-    fireEvent.change(paxSelect, { target: { value: "3" } });
+    rerender(<SharedYogaEnquiryForm format="family" participants={3} />);
     expect(paxSelect.value).toBe("3");
   });
 

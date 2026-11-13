@@ -472,9 +472,9 @@ describe("Rendered forms — actual component validation, submission wiring, out
       expect(JSON.stringify(PRIVATE_PLANS)).not.toContain("Most Popular");
 
       // File 16 launch pricing menu
-      expect(PRIVATE_PLANS[0].pricing).toBe("US$249 launch package price");
-      expect(PRIVATE_PLANS[1].pricing).toBe("US$399 launch package price");
-      expect(PRIVATE_PLANS[2].pricing).toBe("US$459 launch package price");
+      expect(PRIVATE_PLANS[0].pricing).toBe("US$249 total");
+      expect(PRIVATE_PLANS[1].pricing).toBe("US$399 total");
+      expect(PRIVATE_PLANS[2].pricing).toBe("US$459 total");
       expect(PRIVATE_PLANS[3].pricing).toBe("Request a custom plan");
 
       PRIVATE_PLANS.forEach((plan) => {

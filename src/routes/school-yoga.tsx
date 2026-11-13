@@ -226,7 +226,7 @@ function SchoolYogaPage() {
                     Programme Overview Walkthrough
                   </div>
                   <p className="mt-2 text-xs text-white/90 max-w-md">
-                    Structured 55-second walkthrough: playful movement, story-led structure, school supervision, and complimentary first session. Streaming video activates on final CDN release.
+                    Structured 55-second walkthrough: playful movement, story-led structure, school supervision, and complimentary first session.
                   </p>
                 </div>
               </div>

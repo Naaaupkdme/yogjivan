@@ -96,10 +96,10 @@ export const PRIVATE_PLANS = [
       "Essential posture foundations, breathwork & safe modifications",
       "Pacing & times arranged around your local time zone",
     ],
-    pricing: "US$249 launch package price",
+    pricing: "US$249 total",
     effective: "US$20.75 / session",
     comparison: "Compared with US$360 at single-session rate (save US$111)",
-    note: "Proposed launch preview. Payable total US$249. Schedule agreed directly.",
+    note: "Payable total US$249. Schedule agreed directly.",
     cta: "Enquire About 12 Sessions",
   },
   {
@@ -118,10 +118,10 @@ export const PRIVATE_PLANS = [
       "Refine transitions, posture depth, stamina and balance",
       "Adaptive progression that builds directly on previous sessions",
     ],
-    pricing: "US$399 launch package price",
+    pricing: "US$399 total",
     effective: "US$19.95 / session",
     comparison: "Compared with US$600 at single-session rate (save US$201)",
-    note: "Proposed launch preview. Payable total US$399. Schedule agreed directly.",
+    note: "Payable total US$399. Schedule agreed directly.",
     cta: "Enquire About 20 Sessions",
   },
   {
@@ -139,10 +139,10 @@ export const PRIVATE_PLANS = [
       "Advanced technique, inversions or targeted personal focus",
       "Full personal practice curriculum evolving session by session",
     ],
-    pricing: "US$459 launch package price",
+    pricing: "US$459 total",
     effective: "US$19.13 / session",
     comparison: "Compared with US$720 at single-session rate (save US$261)",
-    note: "Proposed launch preview. Payable total US$459. Schedule agreed directly.",
+    note: "Payable total US$459. Schedule agreed directly.",
     cta: "Enquire About 24 Sessions",
   },
   {
@@ -479,7 +479,7 @@ function PrivateYogaPage() {
         contrastVeil
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          Single session US$30 · First session US$25 (Proposed launch preview)
+          Single session US$30 · First trial session US$25
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Every session is led by an experienced, certified Yog Jivan yoga teacher.

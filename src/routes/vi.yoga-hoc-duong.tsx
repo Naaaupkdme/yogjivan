@@ -227,7 +227,7 @@ function ViSchoolYogaPage() {
                     Tóm tắt nội dung chương trình
                   </div>
                   <p className="mt-2 text-xs text-white/90 max-w-md">
-                    Tổng quan 55 giây: vận động qua trò chơi, câu chuyện hấp dẫn, giám sát an toàn và buổi trải nghiệm miễn phí. Video phát trực tiếp sẽ hoạt động sau khi cập nhật CDN.
+                    Tổng quan 55 giây: vận động qua trò chơi, câu chuyện hấp dẫn, giám sát an toàn và buổi trải nghiệm miễn phí.
                   </p>
                 </div>
               </div>

@@ -226,7 +226,7 @@ function CorporatePage() {
                     Programme Overview Walkthrough
                   </div>
                   <p className="mt-2 text-xs text-white/80 max-w-md">
-                    Structured introduction: gentle movement, chair format, workday fit, and complimentary first session. Streaming video activates upon CDN release.
+                    Structured 55-second introduction: gentle movement, chair format, workday fit, and complimentary first session.
                   </p>
                 </div>
               </div>

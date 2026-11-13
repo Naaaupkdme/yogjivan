@@ -227,7 +227,7 @@ function ViCorporatePage() {
                     Giới thiệu tổng quan chương trình
                   </div>
                   <p className="mt-2 text-xs text-white/80 max-w-md">
-                    Tổng quan chương trình: vận động nhẹ, định dạng trên ghế, khớp với lịch làm việc và buổi thử nghiệm miễn phí. Video phát trực tuyến sẽ kích hoạt khi hoàn tất phát hành CDN.
+                    Tổng quan chương trình: vận động nhẹ, định dạng trên ghế, khớp với lịch làm việc và buổi thử nghiệm miễn phí.
                   </p>
                 </div>
               </div>
@@ -365,7 +365,7 @@ function ViCorporatePage() {
                   Doanh nghiệp chỉ cần chuẩn bị phòng tập, ước lượng số lượng tham gia và chọn khung giờ thích hợp. Nhân viên tham gia hoàn toàn tự nguyện và mọi động tác đều có lựa chọn điều chỉnh.
                 </p>
                 <p>
-                  Yog Jivan đã triển khai chương trình tại khoảng 15 nơi làm việc (cần xác nhận nội bộ). Sau buổi thử nghiệm, chúng tôi sẽ gửi báo giá VNĐ minh bạch nếu doanh nghiệp muốn tiếp tục chuỗi 4 buổi.
+                  Yog Jivan điều phối các buổi yoga văn phòng cho các tổ chức tại khu vực Hải Dương và trên toàn Việt Nam. Sau buổi thử nghiệm, chúng tôi sẽ gửi báo giá VNĐ minh bạch nếu doanh nghiệp muốn tiếp tục chuỗi 4 buổi.
                 </p>
               </div>
               <p className="mt-4 text-xs font-semibold text-[color:var(--gold)]">

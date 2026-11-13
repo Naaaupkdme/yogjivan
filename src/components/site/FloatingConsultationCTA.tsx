@@ -4,7 +4,14 @@ import { PRIVATE_ROUTE, scrollToEnquiry, useEnquiryInView } from "@/components/s
 import { isViPath } from "@/lib/locale-routes";
 
 /** Routes that run their own isolated funnel and must not show a competing CTA. */
-const HIDDEN_ON = ["/book-online-yoga", "/contact"];
+const HIDDEN_ON = [
+  "/book-online-yoga",
+  "/contact",
+  "/corporate",
+  "/school-yoga",
+  "/online-couples-yoga",
+  "/online-family-yoga",
+];
 
 export function FloatingConsultationCTA() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });

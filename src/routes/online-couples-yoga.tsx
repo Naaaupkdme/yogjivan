@@ -270,17 +270,12 @@ function CouplesYogaPage() {
               Every session is led by an experienced, certified Yog Jivan yoga teacher.
             </p>
 
-            {/* Approved Promo Preview */}
-            <div className="mt-6 rounded-xl border border-[color:var(--gold)]/40 bg-black/30 p-4">
-              <span className="text-[0.65rem] font-semibold uppercase tracking-wider text-[color:var(--gold)]">
-                Launch Offer Preview · Subject to Owner Confirmation
-              </span>
-              <p className="mt-1 text-sm font-medium text-foreground">
-                First booking for three adults? Add one adult to your first shared session at no extra charge. US$45 total for all three, subject to availability.
-              </p>
-              <p className="mt-1 text-[0.7rem] text-muted-foreground">
-                Eligibility: First booking, third participant is an adult, one location/device, subject to slot confirmation, no stacking.
-              </p>
+            <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs text-muted-foreground">
+              <span>Practising with a child or a third family member? For 3 or 4 household participants, see </span>
+              <Link to="/online-family-yoga" className="text-[color:var(--gold)] hover:underline font-medium">
+                Family Yoga for 3 or 4
+              </Link>
+              <span>.</span>
             </div>
           </div>
         </div>

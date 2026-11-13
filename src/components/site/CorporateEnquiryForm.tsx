@@ -345,10 +345,11 @@ export function CorporateEnquiryForm({
       </div>
 
       <div>
-        <label className="text-xs font-medium text-foreground/80">
-          {isVi ? "Ghi chú thêm về không gian hoặc thời gian" : "Notes on Room Layout or Shift Windows"}
+        <label htmlFor="corporate-notes" className="text-xs font-medium text-foreground/80">
+          {isVi ? "Ghi chú điều phối (tùy chọn)" : "Logistics Notes (optional)"}
         </label>
         <textarea
+          id="corporate-notes"
           rows={2}
           placeholder={
             isVi
