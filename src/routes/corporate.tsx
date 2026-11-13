@@ -187,7 +187,7 @@ function CorporatePage() {
         </div>
       </section>
 
-      {/* 3 — PROGRAMME OVERVIEW VIDEO & OPTIONS */}
+      {/* 3 — PROGRAMME OVERVIEW & OPTIONS */}
       <section id="programme-overview" className="section-pad border-b border-border/40">
         <div className="container-luxe">
           <div className="mx-auto max-w-3xl text-center">
@@ -196,11 +196,11 @@ function CorporatePage() {
               See how corporate yoga runs at your office
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              A 55-second introduction designed for HR managers and team leaders.
+              A structured overview designed for HR managers and team leaders.
             </p>
           </div>
 
-          {/* Video Overview Card */}
+          {/* Overview Card */}
           <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 bg-black/40">
             <div className="relative aspect-[16/9] w-full overflow-hidden">
               <picture>
@@ -217,47 +217,47 @@ function CorporatePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-between p-6">
                 <div className="flex justify-between items-start">
                   <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[0.7rem] font-medium text-[color:var(--gold)] border border-[color:var(--gold)]/30">
-                    English Narration · Programme Overview
+                    Programme Overview
                   </span>
                 </div>
                 <div className="text-left">
                   <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)]/20 border border-[color:var(--gold)]/40 text-[color:var(--gold)] px-4 py-2 text-xs font-semibold">
                     <Sparkles className="h-4 w-4" />
-                    Programme Overview Walkthrough
+                    Programme Overview
                   </div>
                   <p className="mt-2 text-xs text-white/80 max-w-md">
-                    Structured 55-second introduction: gentle movement, chair format, workday fit, and complimentary first session.
+                    A structured introduction designed for HR managers and team leaders: gentle movement, chair format, workday fit, and complimentary first session.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Video Localized HTML Summary */}
+            {/* Localized HTML Summary */}
             <div className="border-t border-white/10 bg-card/40 p-5 text-xs text-muted-foreground space-y-2">
               <div className="font-semibold text-foreground text-sm">Programme Overview Summary:</div>
               <ul className="grid gap-2 sm:grid-cols-2">
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">00–07s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Chair yoga at work:</strong> Movement relief for stiff neck and shoulders.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">07–16s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Gentle moves & breathing:</strong> Quick resets staff can repeat at their desk.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">16–28s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>30-minute chair format:</strong> Settle, warm-up, chair poses, and relaxation.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">28–38s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Fits the workday:</strong> HR selects time and room; voluntary participation.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">38–46s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Certified teachers:</strong> ~15 workplaces supported in Vietnam.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">46–55s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Complimentary first session:</strong> Request your 30-minute workplace demo.</span>
                 </li>
               </ul>

@@ -188,20 +188,20 @@ function ViCorporatePage() {
         </div>
       </section>
 
-      {/* 3 — GIỚI THIỆU CHƯƠNG TRÌNH & HÌNH THỨC */}
+      {/* 3 — TỔNG QUAN CHƯƠNG TRÌNH & HÌNH THỨC */}
       <section id="programme-overview" className="section-pad border-b border-border/40">
         <div className="container-luxe">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Giới thiệu chương trình<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
+            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Tổng quan chương trình<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
             <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
               Quy trình tổ chức yoga tại nơi làm việc
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              Video 55 giây tóm tắt chương trình dành cho bộ phận nhân sự và ban lãnh đạo.
+              Tóm tắt chương trình dành cho bộ phận nhân sự và ban lãnh đạo.
             </p>
           </div>
 
-          {/* Video Overview Card */}
+          {/* Overview Card */}
           <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 bg-black/40">
             <div className="relative aspect-[16/9] w-full overflow-hidden">
               <picture>
@@ -218,16 +218,16 @@ function ViCorporatePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-between p-6">
                 <div className="flex justify-between items-start">
                   <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[0.7rem] font-medium text-[color:var(--gold)] border border-[color:var(--gold)]/30">
-                    Thuyết minh tiếng Anh · Tóm tắt nội dung
+                    Tổng quan chương trình
                   </span>
                 </div>
                 <div className="text-left">
                   <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)]/20 border border-[color:var(--gold)]/40 text-[color:var(--gold)] px-4 py-2 text-xs font-semibold">
                     <Sparkles className="h-4 w-4" />
-                    Giới thiệu tổng quan chương trình
+                    Tổng quan chương trình
                   </div>
                   <p className="mt-2 text-xs text-white/80 max-w-md">
-                    Tổng quan chương trình: vận động nhẹ, định dạng trên ghế, khớp với lịch làm việc và buổi thử nghiệm miễn phí.
+                    Tóm tắt chương trình dành cho bộ phận nhân sự và ban lãnh đạo: vận động nhẹ, định dạng trên ghế, khớp với lịch làm việc và buổi thử nghiệm miễn phí.
                   </p>
                 </div>
               </div>
@@ -235,30 +235,30 @@ function ViCorporatePage() {
 
             {/* Localized HTML Summary */}
             <div className="border-t border-white/10 bg-card/40 p-5 text-xs text-muted-foreground space-y-2">
-              <div className="font-semibold text-foreground text-sm">Tóm tắt nội dung video:</div>
+              <div className="font-semibold text-foreground text-sm">Tổng quan chương trình:</div>
               <ul className="grid gap-2 sm:grid-cols-2">
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">00–07s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Yoga tại văn phòng:</strong> Giảm mỏi cổ và vai cho nhân viên ngồi lâu.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">07–16s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Động tác nhẹ & thở chậm:</strong> Dễ dàng tập lại ngay tại bàn làm việc.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">16–28s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>30 phút trên ghế:</strong> Khởi động, tập các tư thế an toàn và thư giãn.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">28–38s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Khớp lịch làm việc:</strong> Nhân sự chọn giờ và phòng; tham gia tự nguyện.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">38–46s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Giáo viên có chứng chỉ:</strong> Đã triển khai tại khoảng 15 nơi làm việc.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">46–55s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Trải nghiệm miễn phí:</strong> Đăng ký buổi 30 phút thử nghiệm tại công ty.</span>
                 </li>
               </ul>

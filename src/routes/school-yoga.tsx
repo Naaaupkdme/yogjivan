@@ -187,7 +187,7 @@ function SchoolYogaPage() {
         </div>
       </section>
 
-      {/* 3 — PROGRAMME OVERVIEW VIDEO & 38-MINUTE SCHEDULE */}
+      {/* 3 — PROGRAMME OVERVIEW & 38-MINUTE SCHEDULE */}
       <section id="programme-overview" className="section-pad border-b border-border/40">
         <div className="container-luxe">
           <div className="mx-auto max-w-3xl text-center">
@@ -196,11 +196,11 @@ function SchoolYogaPage() {
               See how school yoga engages young students
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">
-              A 55-second introduction designed for principals, coordinators, and physical educators.
+              A structured overview designed for principals, coordinators, and physical educators.
             </p>
           </div>
 
-          {/* Video Overview Card */}
+          {/* Overview Card */}
           <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 bg-black/40">
             <div className="relative aspect-[16/9] w-full overflow-hidden">
               <picture>
@@ -217,47 +217,47 @@ function SchoolYogaPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-between p-6">
                 <div className="flex justify-between items-start">
                   <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[0.7rem] font-medium text-[color:var(--gold)] border border-[color:var(--gold)]/30">
-                    English Narration · Programme Overview · 55s
+                    Programme Overview
                   </span>
                 </div>
                 <div className="text-left">
                   <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)] text-black px-3.5 py-1.5 text-xs font-semibold shadow-lg">
                     <Sparkles className="h-4 w-4 text-black" />
-                    Programme Overview Walkthrough
+                    Programme Overview
                   </div>
                   <p className="mt-2 text-xs text-white/90 max-w-md">
-                    Structured 55-second walkthrough: playful movement, story-led structure, school supervision, and complimentary first session.
+                    A structured introduction designed for principals, coordinators, and physical educators: playful movement, story-led structure, school supervision, and complimentary first session.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Video Localized HTML Summary */}
+            {/* Localized HTML Summary */}
             <div className="border-t border-white/10 bg-card/40 p-5 text-xs text-muted-foreground space-y-2">
               <div className="font-semibold text-foreground text-sm">Programme Overview Summary:</div>
               <ul className="grid gap-2 sm:grid-cols-2">
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">00–07s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Yoga for schools:</strong> Fun, energetic movement through child-friendly themes.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">07–16s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Movement through play:</strong> Balance games, animal postures, and mindful breathing.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">16–28s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>38-minute sample session:</strong> Settle, warm-up, story adventures, games, and calm close.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">28–38s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Adapted to age group:</strong> Certified teachers tailor activities to school space and level.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">38–46s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Experienced guidance:</strong> Supported across 20+ school groups in Vietnam.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold">46–55s:</span>
+                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
                   <span><strong>Complimentary school demo:</strong> Connect to arrange a free first trial session.</span>
                 </li>
               </ul>
