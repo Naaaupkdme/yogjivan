@@ -24,19 +24,21 @@ export const PAIR_PRIVATE: LocalePair = {
 };
 export const PAIR_CORPORATE: LocalePair = {
   en: "/corporate",
-  vi: "/vi/yoga-doanh-nghiep-hai-duong",
+  vi: "/vi/yoga-doanh-nghiep",
 };
-export const PAIR_KIDS: LocalePair = {
-  en: "/kids-yoga-hai-duong",
-  vi: "/vi/yoga-tre-em-hai-duong",
+export const PAIR_SCHOOL: LocalePair = {
+  en: "/school-yoga",
+  vi: "/vi/yoga-hoc-duong",
 };
+/** Backwards-compatibility alias for tests and prior imports */
+export const PAIR_KIDS: LocalePair = PAIR_SCHOOL;
 
 export const LOCALE_PAIRS: readonly LocalePair[] = [
   PAIR_HOME,
   PAIR_ONLINE,
   PAIR_PRIVATE,
   PAIR_CORPORATE,
-  PAIR_KIDS,
+  PAIR_SCHOOL,
 ] as const;
 
 /** All indexable Vietnamese routes (used by the sitemap). */
@@ -45,8 +47,8 @@ export const VI_ROUTES = [
   "/vi/yoga-hai-duong",
   "/vi/lop-yoga-online",
   "/vi/yoga-1-kem-1-online",
-  "/vi/yoga-doanh-nghiep-hai-duong",
-  "/vi/yoga-tre-em-hai-duong",
+  "/vi/yoga-doanh-nghiep",
+  "/vi/yoga-hoc-duong",
 ] as const;
 
 const normalise = (path: string) => {

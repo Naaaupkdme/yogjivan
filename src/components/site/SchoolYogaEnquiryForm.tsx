@@ -129,7 +129,7 @@ export function SchoolYogaEnquiryForm({
         notes: payloadNotes,
         meta: {
           funnel: "school_yoga_pilot_enquiry",
-          landing_page: isVi ? "/vi/yoga-tre-em-hai-duong" : "/kids-yoga-hai-duong",
+          landing_page: isVi ? "/vi/yoga-hoc-duong" : "/school-yoga",
           lead_event_id: leadEventId,
           market: country,
           timezone: getTimezone(),
@@ -208,6 +208,12 @@ export function SchoolYogaEnquiryForm({
               ? "Dành cho ban giám hiệu và giáo viên điều phối. Chúng tôi không thu thập thông tin cá nhân của trẻ em trên biểu mẫu này."
               : "For school staff and program coordinators. Adult coordinator contact only — no child personal data is requested.")}
         </p>
+        <div className="mt-3 rounded-lg border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-3.5 py-2 text-xs text-foreground/90">
+          <strong>{isVi ? "Khu vực phục vụ: " : "Availability: "}</strong>
+          {isVi
+            ? "Yog Jivan hoạt động tại khu vực Hải Dương. Hãy gửi địa điểm để chúng tôi xác nhận khả năng tổ chức tại doanh nghiệp hoặc trường của bạn."
+            : "Based in the Hải Dương area. Share your location and we’ll confirm whether we can visit your workplace or school."}
+        </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -319,6 +325,23 @@ export function SchoolYogaEnquiryForm({
           />
           {errors.site && <p className="mt-1 text-xs text-destructive">{errors.site}</p>}
         </div>
+      </div>
+
+      <div>
+        <label className="text-xs font-medium text-foreground/80">
+          {isVi ? "Hai khung giờ hoặc tiết học phù hợp" : "Two Preferred Times (Class or extracurricular slots)"}
+        </label>
+        <input
+          type="text"
+          placeholder={
+            isVi
+              ? "VD: Tiết thể dục thứ 3 (9:00) hoặc Buổi chiều thứ 5 (14:30)"
+              : "e.g. Tuesday morning (9:00am) or Thursday afternoon (2:30pm)"
+          }
+          value={form.timing}
+          onChange={(e) => setForm({ ...form, timing: e.target.value })}
+          className="mt-1 w-full rounded-xl border border-input bg-background/50 px-3.5 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
+        />
       </div>
 
       <div>

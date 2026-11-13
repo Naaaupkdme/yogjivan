@@ -129,7 +129,7 @@ export function CorporateEnquiryForm({
         notes: payloadNotes,
         meta: {
           funnel: "corporate_yoga_pilot_enquiry",
-          landing_page: isVi ? "/vi/yoga-doanh-nghiep-hai-duong" : "/corporate",
+          landing_page: isVi ? "/vi/yoga-doanh-nghiep" : "/corporate",
           lead_event_id: leadEventId,
           market: country,
           timezone: getTimezone(),
@@ -208,6 +208,12 @@ export function CorporateEnquiryForm({
               ? "Hãy cho chúng tôi biết về quy mô và mong muốn của doanh nghiệp. Đội ngũ sẽ tư vấn chi tiết."
               : "Tell us about your team and workplace. We will confirm room layout, schedule and quotation.")}
         </p>
+        <div className="mt-3 rounded-lg border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-3.5 py-2 text-xs text-foreground/90">
+          <strong>{isVi ? "Khu vực phục vụ: " : "Availability: "}</strong>
+          {isVi
+            ? "Yog Jivan hoạt động tại khu vực Hải Dương. Hãy gửi địa điểm để chúng tôi xác nhận khả năng tổ chức tại doanh nghiệp hoặc trường của bạn."
+            : "Based in the Hải Dương area. Share your location and we’ll confirm whether we can visit your workplace or school."}
+        </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -319,6 +325,23 @@ export function CorporateEnquiryForm({
             <option value="Combined / Pilot series">Combined pilot or 4-session series</option>
           </select>
         </div>
+      </div>
+
+      <div>
+        <label className="text-xs font-medium text-foreground/80">
+          {isVi ? "Hai khung giờ phù hợp (giờ trưa hoặc sau ca)" : "Two Preferred Times (Lunch break or after shift)"}
+        </label>
+        <input
+          type="text"
+          placeholder={
+            isVi
+              ? "VD: Khung giờ 12:00 - 12:30 hoặc 16:30 - 17:00"
+              : "e.g. 12:00–12:30pm lunch or 4:30–5:00pm after shift"
+          }
+          value={form.timing}
+          onChange={(e) => setForm({ ...form, timing: e.target.value })}
+          className="mt-1 w-full rounded-xl border border-input bg-background/50 px-3.5 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
+        />
       </div>
 
       <div>
