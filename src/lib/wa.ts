@@ -17,6 +17,10 @@ export const WA_MESSAGES = {
     "Hi Yog Jivan team, I'd like to join your live online yoga classes and start with the introductory session.",
   private:
     "Hi Yog Jivan team, I'd like to enquire about private 1-on-1 online yoga sessions.",
+  couples:
+    "Hi Yog Jivan team, I'd like to enquire about private couples online yoga sessions.",
+  family:
+    "Hi Yog Jivan team, I'd like to enquire about private family online yoga sessions.",
   studio:
     "Hi Yog Jivan team, I'd like to ask about classes at your studios in the Hai Duong area.",
   beginner:
@@ -46,6 +50,8 @@ export function waDirectHref(intent: WaIntent = "general"): string {
 /** Best-guess intent from the current route, so generic CTAs stay contextual. */
 export function waIntentForPath(pathname: string): WaIntent {
   const p = (pathname.replace(/\/+$/, "") || "/").toLowerCase();
+  if (p.includes("couples")) return "couples";
+  if (p.includes("family")) return "family";
   if (p.includes("private") || p.includes("personal-training") || p.includes("1-on-1")) return "private";
   if (p.includes("online-yoga") || p.includes("book-online-yoga") || p === "/online") return "group";
   if (p.includes("corporate")) return "corporate";

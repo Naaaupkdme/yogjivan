@@ -5,6 +5,10 @@ describe("counterpart routing", () => {
   it("maps true pairs both ways", () => {
     expect(viCounterpart("/online-yoga-classes")).toBe("/vi/lop-yoga-online");
     expect(viCounterpart("/private-online-yoga/")).toBe("/vi/yoga-1-kem-1-online");
+    expect(viCounterpart("/corporate")).toBe("/vi/yoga-doanh-nghiep");
+    expect(viCounterpart("/school-yoga")).toBe("/vi/yoga-hoc-duong");
+    expect(enCounterpart("/vi/yoga-doanh-nghiep")).toBe("/corporate");
+    expect(enCounterpart("/vi/yoga-hoc-duong")).toBe("/school-yoga");
     expect(enCounterpart("/vi")).toBe("/");
     expect(viCounterpart("/about")).toBeNull();
     expect(languageSwitchTarget("/about").vi).toBe("/vi");

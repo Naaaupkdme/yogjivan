@@ -47,11 +47,21 @@ export function chatChannelFor(pathname: string): ChatChannel {
       channel: "zalo",
     };
   }
+  const intent = waIntentForPath(pathname);
+  let ariaLabel = "Chat with the Yog Jivan team on WhatsApp — book a free trial or ask a question";
+  if (intent === "private") {
+    ariaLabel = "Chat with the Yog Jivan team on WhatsApp — enquire about private 1-on-1 yoga sessions";
+  } else if (intent === "couples") {
+    ariaLabel = "Chat with the Yog Jivan team on WhatsApp — enquire about private couples online yoga sessions";
+  } else if (intent === "family") {
+    ariaLabel = "Chat with the Yog Jivan team on WhatsApp — enquire about private family online yoga sessions";
+  }
+
   return {
     isVi: false,
-    href: waHref(waIntentForPath(pathname)),
+    href: waHref(intent),
     label: "WhatsApp",
-    ariaLabel: "Chat with the Yog Jivan team on WhatsApp — book a free trial or ask a question",
+    ariaLabel,
     channel: "whatsapp",
   };
 }

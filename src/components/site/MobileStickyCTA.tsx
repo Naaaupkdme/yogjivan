@@ -24,6 +24,10 @@ function viSecondary(clean: string) {
     return { href: "#hoc-phi", label: VI_LABELS.viewPricing, Icon: Clock, loc: "mobile_sticky_vi_pricing" };
   if (clean === "/vi/yoga-1-kem-1-online")
     return { href: "#tu-van", label: VI_LABELS.consult, Icon: ArrowDown, loc: "mobile_sticky_vi_consult" };
+  if (clean === "/vi/yoga-doanh-nghiep")
+    return { href: "#corporate-enquiry-form", label: "Đăng ký demo", Icon: ArrowDown, loc: "mobile_sticky_vi_corporate" };
+  if (clean === "/vi/yoga-hoc-duong")
+    return { href: "#school-yoga-enquiry-form", label: "Đăng ký học thử", Icon: ArrowDown, loc: "mobile_sticky_vi_school" };
   return {
     href: "/vi/yoga-hai-duong",
     label: VI_LABELS.haiDuongClasses,
@@ -31,6 +35,14 @@ function viSecondary(clean: string) {
     loc: "mobile_sticky_vi_local",
   };
 }
+
+const PAGE_PRIMARY_CTA: Record<string, { targetId: string; label: string }> = {
+  "/private-online-yoga": { targetId: "private-enquiry", label: "Enquire Now" },
+  "/online-couples-yoga": { targetId: "shared-enquiry-form", label: "Enquire for Two" },
+  "/online-family-yoga": { targetId: "plan-session", label: "Plan Family Session" },
+  "/corporate": { targetId: "corporate-enquiry-form", label: "Request Demo" },
+  "/school-yoga": { targetId: "school-yoga-enquiry-form", label: "Request Demo" },
+};
 
 export function MobileStickyCTA() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -81,15 +93,22 @@ export function MobileStickyCTA() {
     >
       <div className="pointer-events-none absolute inset-x-0 -top-10 h-10 bg-gradient-to-t from-black/70 to-transparent" />
       <div className={SHELL}>
-        {isPrivate ? (
+        {PAGE_PRIMARY_CTA[clean] ? (
           <button
             type="button"
-            onClick={scrollToEnquiry}
-            data-cta-location="mobile_private_enquiry"
-            aria-label="Go to the private 1-on-1 yoga enquiry form"
+            onClick={() => {
+              const el = document.getElementById(PAGE_PRIMARY_CTA[clean].targetId);
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+                const target = el.querySelector<HTMLElement>("input, select, textarea, button") ?? el;
+                window.setTimeout(() => target.focus({ preventScroll: true }), 350);
+              }
+            }}
+            data-cta-location="mobile_page_enquiry"
+            aria-label={`Go to ${PAGE_PRIMARY_CTA[clean].label} section`}
             className={BTN}
           >
-            <ArrowDown className="h-3.5 w-3.5" /> Enquire Now
+            <ArrowDown className="h-3.5 w-3.5" /> {PAGE_PRIMARY_CTA[clean].label}
           </button>
         ) : (
           // Route to the consultation form on /contact — a bare "#consultation"

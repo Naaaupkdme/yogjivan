@@ -9,17 +9,18 @@ export const CANONICAL_PRIVATE_PLANS = [
   "Not sure — help me choose",
 ] as const;
 
-export const LEGACY_PRIVATE_PLANS = [
-  "Custom / Undecided",
-] as const;
+export const LEGACY_PRIVATE_PLANS = ["Custom / Undecided"] as const;
 
-export const PRIVATE_PLAN_OPTIONS = [
-  "12-Session Plan",
-  "20-Session Plan",
-  "24-Session Plan",
-  "Custom Sessions",
-  "Custom / Undecided",
-  "Not sure — help me choose",
+/**
+ * Form options exposed to student-facing enquiry dropdowns.
+ * Exposes canonical choices only so students never see internal legacy options.
+ */
+export const PRIVATE_PLAN_OPTIONS = CANONICAL_PRIVATE_PLANS;
+
+/** All accepted plan values, including legacy choices for stored readers and validation. */
+export const ALL_ACCEPTED_PRIVATE_PLANS = [
+  ...CANONICAL_PRIVATE_PLANS,
+  ...LEGACY_PRIVATE_PLANS,
 ] as const;
 
 export const VALID_PLAN_SESSIONS = new Set<string>([
@@ -35,3 +36,8 @@ export const PRIVATE_LANGUAGE_OPTIONS = [
 ] as const;
 
 export const VALID_PREFERRED_LANGUAGES = new Set<string>(PRIVATE_LANGUAGE_OPTIONS);
+
+export const VALID_SHARED_FORMATS = new Set(["couples", "family", "parent_child"] as const);
+export type SharedYogaFormat = "couples" | "family" | "parent_child";
+
+export const VALID_PARTICIPANT_COUNTS = new Set([2, 3, 4] as const);

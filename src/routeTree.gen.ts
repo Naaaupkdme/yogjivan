@@ -17,8 +17,11 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as CorporateRouteImport } from './routes/corporate'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as KidsYogaHaiDuongRouteImport } from './routes/kids-yoga-hai-duong'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as OnlineRouteImport } from './routes/online'
+import { Route as OnlineCouplesYogaRouteImport } from './routes/online-couples-yoga'
+import { Route as OnlineFamilyYogaRouteImport } from './routes/online-family-yoga'
 import { Route as OnlinePrivateYogaRouteImport } from './routes/online-private-yoga'
 import { Route as OnlineYogaClassesRouteImport } from './routes/online-yoga-classes'
 import { Route as OnlineYogaProgramsRouteImport } from './routes/online-yoga-programs'
@@ -29,6 +32,7 @@ import { Route as PrivateOnlineYogaRouteImport } from './routes/private-online-y
 import { Route as PrivateYogaRouteImport } from './routes/private-yoga'
 import { Route as PrivateYogaClassesRouteImport } from './routes/private-yoga-classes'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as SchoolYogaRouteImport } from './routes/school-yoga'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
@@ -51,7 +55,11 @@ import { Route as ViCuaHangRouteImport } from './routes/vi.cua-hang'
 import { Route as ViDoiTacSanPhamRouteImport } from './routes/vi.doi-tac-san-pham'
 import { Route as ViLopYogaOnlineRouteImport } from './routes/vi.lop-yoga-online'
 import { Route as ViYoga1Kem1OnlineRouteImport } from './routes/vi.yoga-1-kem-1-online'
+import { Route as ViYogaDoanhNghiepRouteImport } from './routes/vi.yoga-doanh-nghiep'
+import { Route as ViYogaDoanhNghiepHaiDuongRouteImport } from './routes/vi.yoga-doanh-nghiep-hai-duong'
 import { Route as ViYogaHaiDuongRouteImport } from './routes/vi.yoga-hai-duong'
+import { Route as ViYogaHocDuongRouteImport } from './routes/vi.yoga-hoc-duong'
+import { Route as ViYogaTreEmHaiDuongRouteImport } from './routes/vi.yoga-tre-em-hai-duong'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as ApiPublicN8nCrmControlRouteImport } from './routes/api/public/n8n-crm-control'
@@ -103,6 +111,11 @@ const GalleryRoute = GalleryRouteImport.update({
   path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KidsYogaHaiDuongRoute = KidsYogaHaiDuongRouteImport.update({
+  id: '/kids-yoga-hai-duong',
+  path: '/kids-yoga-hai-duong',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const McpRoute = McpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
@@ -111,6 +124,16 @@ const McpRoute = McpRouteImport.update({
 const OnlineRoute = OnlineRouteImport.update({
   id: '/online',
   path: '/online',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineCouplesYogaRoute = OnlineCouplesYogaRouteImport.update({
+  id: '/online-couples-yoga',
+  path: '/online-couples-yoga',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnlineFamilyYogaRoute = OnlineFamilyYogaRouteImport.update({
+  id: '/online-family-yoga',
+  path: '/online-family-yoga',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnlinePrivateYogaRoute = OnlinePrivateYogaRouteImport.update({
@@ -161,6 +184,11 @@ const PrivateYogaClassesRoute = PrivateYogaClassesRouteImport.update({
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SchoolYogaRoute = SchoolYogaRouteImport.update({
+  id: '/school-yoga',
+  path: '/school-yoga',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -276,9 +304,30 @@ const ViYoga1Kem1OnlineRoute = ViYoga1Kem1OnlineRouteImport.update({
   path: '/vi/yoga-1-kem-1-online',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ViYogaDoanhNghiepRoute = ViYogaDoanhNghiepRouteImport.update({
+  id: '/vi/yoga-doanh-nghiep',
+  path: '/vi/yoga-doanh-nghiep',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ViYogaDoanhNghiepHaiDuongRoute =
+  ViYogaDoanhNghiepHaiDuongRouteImport.update({
+    id: '/vi/yoga-doanh-nghiep-hai-duong',
+    path: '/vi/yoga-doanh-nghiep-hai-duong',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ViYogaHaiDuongRoute = ViYogaHaiDuongRouteImport.update({
   id: '/vi/yoga-hai-duong',
   path: '/vi/yoga-hai-duong',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ViYogaHocDuongRoute = ViYogaHocDuongRouteImport.update({
+  id: '/vi/yoga-hoc-duong',
+  path: '/vi/yoga-hoc-duong',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ViYogaTreEmHaiDuongRoute = ViYogaTreEmHaiDuongRouteImport.update({
+  id: '/vi/yoga-tre-em-hai-duong',
+  path: '/vi/yoga-tre-em-hai-duong',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
@@ -343,8 +392,11 @@ export interface FileRoutesByFullPath {
   '/contact-us': typeof ContactUsRoute
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
+  '/kids-yoga-hai-duong': typeof KidsYogaHaiDuongRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
+  '/online-couples-yoga': typeof OnlineCouplesYogaRoute
+  '/online-family-yoga': typeof OnlineFamilyYogaRoute
   '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/online-yoga-programs': typeof OnlineYogaProgramsRoute
@@ -355,6 +407,7 @@ export interface FileRoutesByFullPath {
   '/private-yoga': typeof PrivateYogaRoute
   '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
+  '/school-yoga': typeof SchoolYogaRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
@@ -375,7 +428,11 @@ export interface FileRoutesByFullPath {
   '/vi/doi-tac-san-pham': typeof ViDoiTacSanPhamRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
+  '/vi/yoga-doanh-nghiep': typeof ViYogaDoanhNghiepRoute
+  '/vi/yoga-doanh-nghiep-hai-duong': typeof ViYogaDoanhNghiepHaiDuongRoute
   '/vi/yoga-hai-duong': typeof ViYogaHaiDuongRoute
+  '/vi/yoga-hoc-duong': typeof ViYogaHocDuongRoute
+  '/vi/yoga-tre-em-hai-duong': typeof ViYogaTreEmHaiDuongRoute
   '/blog/': typeof BlogIndexRoute
   '/vi/': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -398,8 +455,11 @@ export interface FileRoutesByTo {
   '/contact-us': typeof ContactUsRoute
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
+  '/kids-yoga-hai-duong': typeof KidsYogaHaiDuongRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
+  '/online-couples-yoga': typeof OnlineCouplesYogaRoute
+  '/online-family-yoga': typeof OnlineFamilyYogaRoute
   '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/online-yoga-programs': typeof OnlineYogaProgramsRoute
@@ -410,6 +470,7 @@ export interface FileRoutesByTo {
   '/private-yoga': typeof PrivateYogaRoute
   '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
+  '/school-yoga': typeof SchoolYogaRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
@@ -429,7 +490,11 @@ export interface FileRoutesByTo {
   '/vi/doi-tac-san-pham': typeof ViDoiTacSanPhamRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
+  '/vi/yoga-doanh-nghiep': typeof ViYogaDoanhNghiepRoute
+  '/vi/yoga-doanh-nghiep-hai-duong': typeof ViYogaDoanhNghiepHaiDuongRoute
   '/vi/yoga-hai-duong': typeof ViYogaHaiDuongRoute
+  '/vi/yoga-hoc-duong': typeof ViYogaHocDuongRoute
+  '/vi/yoga-tre-em-hai-duong': typeof ViYogaTreEmHaiDuongRoute
   '/blog': typeof BlogIndexRoute
   '/vi': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -453,8 +518,11 @@ export interface FileRoutesById {
   '/contact-us': typeof ContactUsRoute
   '/corporate': typeof CorporateRoute
   '/gallery': typeof GalleryRoute
+  '/kids-yoga-hai-duong': typeof KidsYogaHaiDuongRoute
   '/mcp': typeof McpRoute
   '/online': typeof OnlineRoute
+  '/online-couples-yoga': typeof OnlineCouplesYogaRoute
+  '/online-family-yoga': typeof OnlineFamilyYogaRoute
   '/online-private-yoga': typeof OnlinePrivateYogaRoute
   '/online-yoga-classes': typeof OnlineYogaClassesRoute
   '/online-yoga-programs': typeof OnlineYogaProgramsRoute
@@ -465,6 +533,7 @@ export interface FileRoutesById {
   '/private-yoga': typeof PrivateYogaRoute
   '/private-yoga-classes': typeof PrivateYogaClassesRoute
   '/programs': typeof ProgramsRoute
+  '/school-yoga': typeof SchoolYogaRoute
   '/services': typeof ServicesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/testimonials': typeof TestimonialsRoute
@@ -485,7 +554,11 @@ export interface FileRoutesById {
   '/vi/doi-tac-san-pham': typeof ViDoiTacSanPhamRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
+  '/vi/yoga-doanh-nghiep': typeof ViYogaDoanhNghiepRoute
+  '/vi/yoga-doanh-nghiep-hai-duong': typeof ViYogaDoanhNghiepHaiDuongRoute
   '/vi/yoga-hai-duong': typeof ViYogaHaiDuongRoute
+  '/vi/yoga-hoc-duong': typeof ViYogaHocDuongRoute
+  '/vi/yoga-tre-em-hai-duong': typeof ViYogaTreEmHaiDuongRoute
   '/blog/': typeof BlogIndexRoute
   '/vi/': typeof ViIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -510,8 +583,11 @@ export interface FileRouteTypes {
     | '/contact-us'
     | '/corporate'
     | '/gallery'
+    | '/kids-yoga-hai-duong'
     | '/mcp'
     | '/online'
+    | '/online-couples-yoga'
+    | '/online-family-yoga'
     | '/online-private-yoga'
     | '/online-yoga-classes'
     | '/online-yoga-programs'
@@ -522,6 +598,7 @@ export interface FileRouteTypes {
     | '/private-yoga'
     | '/private-yoga-classes'
     | '/programs'
+    | '/school-yoga'
     | '/services'
     | '/sitemap.xml'
     | '/testimonials'
@@ -542,7 +619,11 @@ export interface FileRouteTypes {
     | '/vi/doi-tac-san-pham'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
+    | '/vi/yoga-doanh-nghiep'
+    | '/vi/yoga-doanh-nghiep-hai-duong'
     | '/vi/yoga-hai-duong'
+    | '/vi/yoga-hoc-duong'
+    | '/vi/yoga-tre-em-hai-duong'
     | '/blog/'
     | '/vi/'
     | '/.lovable/oauth/consent'
@@ -565,8 +646,11 @@ export interface FileRouteTypes {
     | '/contact-us'
     | '/corporate'
     | '/gallery'
+    | '/kids-yoga-hai-duong'
     | '/mcp'
     | '/online'
+    | '/online-couples-yoga'
+    | '/online-family-yoga'
     | '/online-private-yoga'
     | '/online-yoga-classes'
     | '/online-yoga-programs'
@@ -577,6 +661,7 @@ export interface FileRouteTypes {
     | '/private-yoga'
     | '/private-yoga-classes'
     | '/programs'
+    | '/school-yoga'
     | '/services'
     | '/sitemap.xml'
     | '/testimonials'
@@ -596,7 +681,11 @@ export interface FileRouteTypes {
     | '/vi/doi-tac-san-pham'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
+    | '/vi/yoga-doanh-nghiep'
+    | '/vi/yoga-doanh-nghiep-hai-duong'
     | '/vi/yoga-hai-duong'
+    | '/vi/yoga-hoc-duong'
+    | '/vi/yoga-tre-em-hai-duong'
     | '/blog'
     | '/vi'
     | '/.lovable/oauth/consent'
@@ -619,8 +708,11 @@ export interface FileRouteTypes {
     | '/contact-us'
     | '/corporate'
     | '/gallery'
+    | '/kids-yoga-hai-duong'
     | '/mcp'
     | '/online'
+    | '/online-couples-yoga'
+    | '/online-family-yoga'
     | '/online-private-yoga'
     | '/online-yoga-classes'
     | '/online-yoga-programs'
@@ -631,6 +723,7 @@ export interface FileRouteTypes {
     | '/private-yoga'
     | '/private-yoga-classes'
     | '/programs'
+    | '/school-yoga'
     | '/services'
     | '/sitemap.xml'
     | '/testimonials'
@@ -651,7 +744,11 @@ export interface FileRouteTypes {
     | '/vi/doi-tac-san-pham'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
+    | '/vi/yoga-doanh-nghiep'
+    | '/vi/yoga-doanh-nghiep-hai-duong'
     | '/vi/yoga-hai-duong'
+    | '/vi/yoga-hoc-duong'
+    | '/vi/yoga-tre-em-hai-duong'
     | '/blog/'
     | '/vi/'
     | '/.lovable/oauth/consent'
@@ -675,8 +772,11 @@ export interface RootRouteChildren {
   ContactUsRoute: typeof ContactUsRoute
   CorporateRoute: typeof CorporateRoute
   GalleryRoute: typeof GalleryRoute
+  KidsYogaHaiDuongRoute: typeof KidsYogaHaiDuongRoute
   McpRoute: typeof McpRoute
   OnlineRoute: typeof OnlineRoute
+  OnlineCouplesYogaRoute: typeof OnlineCouplesYogaRoute
+  OnlineFamilyYogaRoute: typeof OnlineFamilyYogaRoute
   OnlinePrivateYogaRoute: typeof OnlinePrivateYogaRoute
   OnlineYogaClassesRoute: typeof OnlineYogaClassesRoute
   OnlineYogaProgramsRoute: typeof OnlineYogaProgramsRoute
@@ -687,6 +787,7 @@ export interface RootRouteChildren {
   PrivateYogaRoute: typeof PrivateYogaRoute
   PrivateYogaClassesRoute: typeof PrivateYogaClassesRoute
   ProgramsRoute: typeof ProgramsRoute
+  SchoolYogaRoute: typeof SchoolYogaRoute
   ServicesRoute: typeof ServicesRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TestimonialsRoute: typeof TestimonialsRoute
@@ -707,7 +808,11 @@ export interface RootRouteChildren {
   ViDoiTacSanPhamRoute: typeof ViDoiTacSanPhamRoute
   ViLopYogaOnlineRoute: typeof ViLopYogaOnlineRoute
   ViYoga1Kem1OnlineRoute: typeof ViYoga1Kem1OnlineRoute
+  ViYogaDoanhNghiepRoute: typeof ViYogaDoanhNghiepRoute
+  ViYogaDoanhNghiepHaiDuongRoute: typeof ViYogaDoanhNghiepHaiDuongRoute
   ViYogaHaiDuongRoute: typeof ViYogaHaiDuongRoute
+  ViYogaHocDuongRoute: typeof ViYogaHocDuongRoute
+  ViYogaTreEmHaiDuongRoute: typeof ViYogaTreEmHaiDuongRoute
   BlogIndexRoute: typeof BlogIndexRoute
   ViIndexRoute: typeof ViIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
@@ -778,6 +883,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kids-yoga-hai-duong': {
+      id: '/kids-yoga-hai-duong'
+      path: '/kids-yoga-hai-duong'
+      fullPath: '/kids-yoga-hai-duong'
+      preLoaderRoute: typeof KidsYogaHaiDuongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mcp': {
       id: '/mcp'
       path: '/mcp'
@@ -790,6 +902,20 @@ declare module '@tanstack/react-router' {
       path: '/online'
       fullPath: '/online'
       preLoaderRoute: typeof OnlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-couples-yoga': {
+      id: '/online-couples-yoga'
+      path: '/online-couples-yoga'
+      fullPath: '/online-couples-yoga'
+      preLoaderRoute: typeof OnlineCouplesYogaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/online-family-yoga': {
+      id: '/online-family-yoga'
+      path: '/online-family-yoga'
+      fullPath: '/online-family-yoga'
+      preLoaderRoute: typeof OnlineFamilyYogaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/online-private-yoga': {
@@ -860,6 +986,13 @@ declare module '@tanstack/react-router' {
       path: '/programs'
       fullPath: '/programs'
       preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/school-yoga': {
+      id: '/school-yoga'
+      path: '/school-yoga'
+      fullPath: '/school-yoga'
+      preLoaderRoute: typeof SchoolYogaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -1016,11 +1149,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ViYoga1Kem1OnlineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vi/yoga-doanh-nghiep': {
+      id: '/vi/yoga-doanh-nghiep'
+      path: '/vi/yoga-doanh-nghiep'
+      fullPath: '/vi/yoga-doanh-nghiep'
+      preLoaderRoute: typeof ViYogaDoanhNghiepRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vi/yoga-doanh-nghiep-hai-duong': {
+      id: '/vi/yoga-doanh-nghiep-hai-duong'
+      path: '/vi/yoga-doanh-nghiep-hai-duong'
+      fullPath: '/vi/yoga-doanh-nghiep-hai-duong'
+      preLoaderRoute: typeof ViYogaDoanhNghiepHaiDuongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vi/yoga-hai-duong': {
       id: '/vi/yoga-hai-duong'
       path: '/vi/yoga-hai-duong'
       fullPath: '/vi/yoga-hai-duong'
       preLoaderRoute: typeof ViYogaHaiDuongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vi/yoga-hoc-duong': {
+      id: '/vi/yoga-hoc-duong'
+      path: '/vi/yoga-hoc-duong'
+      fullPath: '/vi/yoga-hoc-duong'
+      preLoaderRoute: typeof ViYogaHocDuongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vi/yoga-tre-em-hai-duong': {
+      id: '/vi/yoga-tre-em-hai-duong'
+      path: '/vi/yoga-tre-em-hai-duong'
+      fullPath: '/vi/yoga-tre-em-hai-duong'
+      preLoaderRoute: typeof ViYogaTreEmHaiDuongRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.lovable/oauth/consent': {
@@ -1119,8 +1280,11 @@ const rootRouteChildren: RootRouteChildren = {
   ContactUsRoute: ContactUsRoute,
   CorporateRoute: CorporateRoute,
   GalleryRoute: GalleryRoute,
+  KidsYogaHaiDuongRoute: KidsYogaHaiDuongRoute,
   McpRoute: McpRoute,
   OnlineRoute: OnlineRoute,
+  OnlineCouplesYogaRoute: OnlineCouplesYogaRoute,
+  OnlineFamilyYogaRoute: OnlineFamilyYogaRoute,
   OnlinePrivateYogaRoute: OnlinePrivateYogaRoute,
   OnlineYogaClassesRoute: OnlineYogaClassesRoute,
   OnlineYogaProgramsRoute: OnlineYogaProgramsRoute,
@@ -1131,6 +1295,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivateYogaRoute: PrivateYogaRoute,
   PrivateYogaClassesRoute: PrivateYogaClassesRoute,
   ProgramsRoute: ProgramsRoute,
+  SchoolYogaRoute: SchoolYogaRoute,
   ServicesRoute: ServicesRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TestimonialsRoute: TestimonialsRoute,
@@ -1153,7 +1318,11 @@ const rootRouteChildren: RootRouteChildren = {
   ViDoiTacSanPhamRoute: ViDoiTacSanPhamRoute,
   ViLopYogaOnlineRoute: ViLopYogaOnlineRoute,
   ViYoga1Kem1OnlineRoute: ViYoga1Kem1OnlineRoute,
+  ViYogaDoanhNghiepRoute: ViYogaDoanhNghiepRoute,
+  ViYogaDoanhNghiepHaiDuongRoute: ViYogaDoanhNghiepHaiDuongRoute,
   ViYogaHaiDuongRoute: ViYogaHaiDuongRoute,
+  ViYogaHocDuongRoute: ViYogaHocDuongRoute,
+  ViYogaTreEmHaiDuongRoute: ViYogaTreEmHaiDuongRoute,
   BlogIndexRoute: BlogIndexRoute,
   ViIndexRoute: ViIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,

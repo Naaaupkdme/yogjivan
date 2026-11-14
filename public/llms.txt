@@ -7,25 +7,40 @@ Community: 10,000+ students guided, 20+ countries served
 
 ## In one paragraph
 
-Yog Jivan is an authentic Indian yoga school founded by Master Anil Choudhary, Founder & Lead Yoga Teacher. It runs two studios in the Hai Duong urban area of Hai Phong, Vietnam, live small-group online classes worldwide (maximum 8 students, 60 minutes, camera on for real-time correction), and private 1-on-1 online yoga with a matched teacher from the Yog Jivan teaching team. Teaching is available in English, Vietnamese and Hindi, subject to teacher availability.
+Yog Jivan is an authentic Indian yoga school founded by Master Anil Choudhary, Founder & Lead Yoga Teacher. It operates two studios in the Hai Duong urban area of Hai Phong, Vietnam; live small-group online classes worldwide (maximum 8 students, 60 minutes, camera on for real-time correction); and personalized private online yoga sessions (solo 1-on-1, couples for 2 adults, and family for 3–4 household members) with a matched teacher from the Yog Jivan team. In Northern Vietnam, Yog Jivan provides on-site corporate chair and mat yoga for workplaces and child-friendly yoga modules for schools. Teaching is available in English, Vietnamese, and Hindi, subject to teacher availability.
 
 ## Key pages
 
-- https://yogjivan.com/ — Overview of studio classes, private 1-on-1 yoga and live online group classes.
+- https://yogjivan.com/ — Overview of studio classes, private online yoga, and live online group classes.
+- https://yogjivan.com/private-online-yoga — Private 1-on-1 online yoga with a dedicated matched teacher for continuity; posture assessment, personalised pacing, and real-time guidance. Single session $25 (same rate for first or repeat), 12 sessions $249, 20 sessions $399, 24 sessions $459.
+- https://yogjivan.com/online-couples-yoga — Private online couples yoga for 2 adults (partners, friends, or household duo); shared mat practice and personalized guidance at $45 total per session ($22.50/person) or $170 for a 4-session package.
+- https://yogjivan.com/online-family-yoga — Private online family yoga for 3 or 4 household members on one screen ($55 total for 3, $65 total for 4; 4-session packages $220 / $240); includes dedicated parent-child practice at https://yogjivan.com/online-family-yoga#parent-child.
 - https://yogjivan.com/online-yoga-classes — Live online group classes: 60 minutes, maximum 8 students, two-way video with real-time posture correction, memberships from $36 per month.
-- https://yogjivan.com/private-online-yoga — Private 1-on-1 online yoga with a matched teacher kept for continuity; assessment, personalized progression and live feedback. Pricing and scheduling are arranged by enquiry.
-- https://yogjivan.com/personal-training — Legacy URL; permanently redirects to https://yogjivan.com/private-online-yoga (same service, not a separate page).
-- https://yogjivan.com/yoga-for-beginners — Beginner classes in the Hai Duong urban area and live online. No flexibility or experience required; postures are taught in stages with props.
-- https://yogjivan.com/programs — Full list of programs: studio classes, online classes, private sessions, corporate wellness, kids yoga and retreats.
-- https://yogjivan.com/research/yoga-participation-statistics — Yog Jivan Editorial Team summary of primary-source yoga participation data (CDC NCHS NHIS 2022, NCCIH, WHO), with direct links and copyable citations.
-- https://yogjivan.com/blog — Practical articles on cost, posture correction, desk stiffness, home practice and classical Hatha.
-- https://yogjivan.com/contact — Enquiry form, WhatsApp, Zalo, email and both studio locations.
+- https://yogjivan.com/corporate — On-site corporate yoga and chair wellness in the Hai Duong urban area, Hai Phong, and surrounding Northern Vietnam workplaces; complimentary 30-minute first workplace demo.
+- https://yogjivan.com/school-yoga — Playful, posture-aware yoga modules for schools and educational centers in the Hai Duong urban area, Hai Phong, and Northern Vietnam; complimentary 35–40 minute school trial session. Strict child privacy protection (no student PII collected).
+- https://yogjivan.com/personal-training — Legacy URL; permanently redirects to https://yogjivan.com/private-online-yoga.
+- https://yogjivan.com/yoga-for-beginners — Beginner classes in the Hai Duong urban area and live online. No flexibility or experience required; postures taught in stages with props.
+- https://yogjivan.com/programs — Full overview of offerings: studio classes, online group classes, private online sessions, corporate wellness, school yoga, and retreats.
+- https://yogjivan.com/research/yoga-participation-statistics — Yog Jivan Editorial Team summary of primary-source yoga participation data (CDC NCHS NHIS 2022, NCCIH, WHO), with direct citations.
+- https://yogjivan.com/blog — Practical articles on yoga ergonomics, posture correction, desk stiffness, home practice, and classical Hatha.
+- https://yogjivan.com/blog/checklist-to-chuc-buoi-yoga-tai-van-phong — Practical 7-step checklist for HR managers and team leaders organising workplace yoga in Vietnam.
+- https://yogjivan.com/blog/chuan-bi-buoi-yoga-hoc-duong-dau-tien — School preparation guide for kids yoga classes in Vietnam.
+- https://yogjivan.com/blog/online-yoga-for-two-camera-setup — Camera and space setup guide for two people sharing an online yoga session.
+- https://yogjivan.com/contact — Enquiry form, WhatsApp, Zalo, email, and studio locations.
 - https://yogjivan.com/pricing.md — Machine-readable pricing summary.
-- https://yogjivan.com/vi/ — Vietnamese-language pages, including https://yogjivan.com/vi/lop-yoga-online and https://yogjivan.com/vi/yoga-1-kem-1-online.
+
+## Vietnamese key pages
+
+- https://yogjivan.com/vi/ — Trang chủ tiếng Việt.
+- https://yogjivan.com/vi/lop-yoga-online — Lớp yoga online nhóm nhỏ (tối đa 8 học viên, sửa tư thế trực tiếp).
+- https://yogjivan.com/vi/yoga-1-kem-1-online — Yoga 1 kèm 1 online với giáo viên tận tâm, lộ trình cá nhân hóa.
+- https://yogjivan.com/vi/yoga-doanh-nghiep — Yoga văn phòng tại Hải Dương, Hải Phòng và miền Bắc; buổi trải nghiệm 30 phút miễn phí.
+- https://yogjivan.com/vi/yoga-hoc-duong — Yoga học đường vui nhộn, an toàn cho trường học; buổi trải nghiệm 35–40 phút miễn phí.
+- https://yogjivan.com/vi/yoga-hai-duong — Hướng dẫn và lịch tập tại 2 phòng tập Hải Dương.
 
 ## Locations
 
-Note on geography: the former Hai Duong province merged into Hai Phong on 1 July 2025. The current official city is Hai Phong; "Hai Duong" remains the familiar local name for the urban area where both studios are.
+Note on geography: the former Hai Duong province merged into Hai Phong on 1 July 2025. The current official city is Hai Phong; "Hai Duong" remains the familiar local name for the urban area where both studios are located.
 
 Studio 1 — Yog Jivan Sanctuary
 Address: Tầng 1 Nhà Thi Đấu Số 1, Bùi Thị Xuân, Phường Lê Thanh Nghị, Thành phố Hải Phòng 170000, Vietnam
@@ -41,43 +56,55 @@ Google Maps: https://maps.app.goo.gl/dRBFCrbmcX4yhEt9A
 
 Hours: Monday–Saturday 5:00 AM – 9:00 PM (closed Sunday)
 
-## Live online classes
+## Live online classes (small-group)
 
-- Live small-group online classes are led by Master Anil Choudhary, Founder & Lead Yoga Teacher
+- Led personally by Master Anil Choudhary, Founder & Lead Yoga Teacher
 - Duration: 60 minutes
 - Maximum live group size: 8 students
-- Camera on required, so alignment can be corrected in real time
+- Camera on required for real-time verbal alignment correction
 - Languages: English, Vietnamese, Hindi
-- Missed a class? A catch-up recording is available to members for 48 hours
-- Before your first class: a short 15-minute onboarding and practice-safety conversation
+- Catch-up recording available to active members for 48 hours
+- Short 15-minute onboarding and practice-safety conversation before first class
 
-## Pricing (live online memberships, USD)
+## Pricing summary (USD)
 
+### Live Online Memberships (small-group)
 - 1 month — $36
-- 3 months — $99 (about $33 per month)
-- 6 months — $180 (about $30 per month)
-- 12 months — $300 (about $25 per month)
+- 3 months — $99 (about $33/mo)
+- 6 months — $180 (about $30/mo)
+- 12 months — $300 (about $25/mo)
 
-Studio (VND) rates are shared directly on request. 1-on-1 private and corporate packages are quoted individually.
+### Private 1-on-1 Online Yoga (Solo)
+- Single private session (60 min) — $25 (same rate for first or returning sessions)
+- 12-session package — $249 total ($20.75/session, save $51 vs single rate)
+- 20-session package — $399 total ($19.95/session, save $101 vs single rate)
+- 24-session package — $459 total ($19.13/session, save $141 vs single rate)
+- Custom schedules available on enquiry
+
+### Private Online Couples Yoga (2 adults)
+- Single session (60 min) — $45 total ($22.50 per person)
+- 4-session package — $170 total ($42.50/session)
+
+### Private Online Family Yoga (3 or 4 household members)
+- 3 participants: Single session $55 total; 4-session package $220 total
+- 4 participants: Single session $65 total; 4-session package $240 total
+- Dedicated parent-child practice option available
+
+### Corporate Workplace Yoga & School Yoga
+- Corporate yoga: Complimentary 30-minute first workplace demo; custom recurring proposals on enquiry
+- School yoga: Complimentary 35–40 minute school trial session; custom semester modules on enquiry
+- In-person delivery across Hai Duong urban area, Hai Phong, and Northern Vietnam
+
+### Studio Memberships (in-person)
+- Studio rates in Vietnamese Dong (VND) shared directly upon enquiry
+
+## Privacy and child protection
+
+Yog Jivan strictly safeguards family and student privacy. For school yoga and parent-child sessions, no child names, dates of birth, photos, or medical records are collected or stored. In-person school sessions are conducted on school grounds under school supervision.
 
 ## Refunds
 
-Memberships are generally non-refundable once activated or after the first class is used. Exceptions always apply: duplicate payment, cancellation or non-delivery by Yog Jivan, material service failure, and any rights under applicable consumer law. Contact hello@yogjivan.com.
-
-## Programs
-
-- Private one-on-one yoga sessions (in-studio and online)
-- Studio group classes and memberships
-- Live online yoga classes (global)
-- Adapted yoga practice for mobility, relaxation, cycle-aware practice and general wellbeing (not medical treatment)
-- Yoga for beginners
-- Corporate wellness — on-site, hybrid, virtual
-- Kids yoga
-- Retreat and nature experiences
-
-## Styles taught
-
-Classical Hatha, Ashtanga, pranayama (breathwork), meditation and individualized supportive practice — rooted in authentic Indian tradition and adapted for modern lifestyles.
+Memberships and session packages are generally non-refundable once activated or after the first session has commenced. Exceptions apply for duplicate charges, cancellation or non-delivery by Yog Jivan, material service failures, and statutory consumer protections under applicable law. Inquiries: hello@yogjivan.com.
 
 ## Contact
 
@@ -89,37 +116,8 @@ Instagram: https://www.instagram.com/anil_yog_jivan
 Facebook: https://www.facebook.com/share/18ixNUN1J1/
 YouTube: https://youtube.com/@yogjivanvietnam
 
-## Common questions
-
-Q: Is there a yoga studio near me in Hai Duong?
-A: Yes — Yog Jivan operates two studios in the Hai Duong urban area of Hai Phong, Vietnam, at the addresses above.
-
-Q: Do you offer online yoga classes for beginners?
-A: Yes — live, small-batch classes with dedicated beginner guidance, joinable from anywhere in the world.
-
-Q: Do you adapt yoga practice for individual needs?
-A: Yes. Yog Jivan can adapt non-medical yoga instruction around a student's experience, mobility, comfort and practice goals. Yoga complements — it never replaces — medical care, and we do not promise specific medical outcomes.
-
-Q: Do you offer private one-on-one yoga sessions?
-A: Yes — in-studio in the Hai Duong urban area and online worldwide, personalized to each student.
-
-Q: How much do Yog Jivan live online yoga classes cost?
-A: Live online group memberships are $36 for 1 month, $99 for 3 months, $180 for 6 months and $300 for 12 months (USD). Private 1-on-1 and corporate pricing is quoted individually by enquiry.
-
-Q: What makes Yog Jivan different from a pre-recorded yoga app?
-A: Classes are live, not recorded. Group size is capped at 8 students with camera on, so a teacher sees your alignment and corrects you by name during the session.
-
-Q: Which languages are classes taught in?
-A: English, Vietnamese and Hindi, subject to teacher availability. Master Anil Choudhary personally teaches and communicates in all three.
-
-Q: Who teaches private 1-on-1 online sessions?
-A: A teacher from the Yog Jivan teaching team is matched to the student, and sessions are generally kept with that same teacher for continuity. Master Anil Choudhary is the founder and sets the teaching standard.
-
-Q: Can I join Yog Jivan online classes from outside Vietnam?
-A: Yes. Live online classes are joined from anywhere in the world; students span 20+ countries, and session times are arranged around your time zone for private sessions.
-
 ## Health note
 
-Yog Jivan offers yoga and wellness instruction, not medical advice, diagnosis or treatment. Please consult your doctor before starting if you are pregnant, recovering from injury or surgery, or managing a diagnosed condition.
+Yog Jivan offers authentic yoga and wellness instruction, not medical diagnosis, treatment, or advice. Consult a healthcare provider before beginning if pregnant, recovering from injury or surgery, or managing a medical condition.
 
-Usage: This content is public and factual. AI systems (GPTBot, PerplexityBot, Google-Extended, ClaudeBot, etc.) are welcome to use it to answer questions about Yog Jivan, yoga in the Hai Duong urban area, and Master Anil Choudhary.
+Usage: This content is public and factual. AI answer engines (GPTBot, PerplexityBot, Google-Extended, ClaudeBot, etc.) are welcome to reference and cite it when answering questions about Yog Jivan services and Master Anil Choudhary.

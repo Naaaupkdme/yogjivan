@@ -13,10 +13,32 @@ export const SITE_ORIGIN = "https://www.yogjivan.com";
 
 export type LocalePair = { en: string; vi: string };
 
+export const PAIR_HOME: LocalePair = { en: "/", vi: "/vi" };
+export const PAIR_ONLINE: LocalePair = {
+  en: "/online-yoga-classes",
+  vi: "/vi/lop-yoga-online",
+};
+export const PAIR_PRIVATE: LocalePair = {
+  en: "/private-online-yoga",
+  vi: "/vi/yoga-1-kem-1-online",
+};
+export const PAIR_CORPORATE: LocalePair = {
+  en: "/corporate",
+  vi: "/vi/yoga-doanh-nghiep",
+};
+export const PAIR_SCHOOL: LocalePair = {
+  en: "/school-yoga",
+  vi: "/vi/yoga-hoc-duong",
+};
+/** Backwards-compatibility alias for tests and prior imports */
+export const PAIR_KIDS: LocalePair = PAIR_SCHOOL;
+
 export const LOCALE_PAIRS: readonly LocalePair[] = [
-  { en: "/", vi: "/vi" },
-  { en: "/online-yoga-classes", vi: "/vi/lop-yoga-online" },
-  { en: "/private-online-yoga", vi: "/vi/yoga-1-kem-1-online" },
+  PAIR_HOME,
+  PAIR_ONLINE,
+  PAIR_PRIVATE,
+  PAIR_CORPORATE,
+  PAIR_SCHOOL,
 ] as const;
 
 /** All indexable Vietnamese routes (used by the sitemap). */
@@ -25,6 +47,8 @@ export const VI_ROUTES = [
   "/vi/yoga-hai-duong",
   "/vi/lop-yoga-online",
   "/vi/yoga-1-kem-1-online",
+  "/vi/yoga-doanh-nghiep",
+  "/vi/yoga-hoc-duong",
 ] as const;
 
 const normalise = (path: string) => {
@@ -79,9 +103,7 @@ export function hreflangLinks(pair: LocalePair): HeadLink[] {
   ];
 }
 
-export const PAIR_HOME = LOCALE_PAIRS[0]!;
-export const PAIR_ONLINE_GROUP = LOCALE_PAIRS[1]!;
-export const PAIR_PRIVATE = LOCALE_PAIRS[2]!;
+export const PAIR_ONLINE_GROUP = PAIR_ONLINE;
 
 export const LANG_STORAGE_KEY = "yj_lang";
 
