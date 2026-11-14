@@ -49,7 +49,7 @@ const QUICK_ANSWERS: { q: string; a: string }[] = [
   },
   {
     q: "How much does private online yoga cost?",
-    a: "Private 1-on-1 online yoga is arranged individually, offering structured session-count options (12, 20, 24 sessions) and custom plans, individually scheduled and quoted by enquiry. Send your level, what you want to work on and preferred pacing, and we reply with suitable options for your schedule.",
+    a: "Every standalone 60-minute private session is US$25, whether booking your first class or returning. Packages are available at US$249 (12 sessions), US$399 (20 sessions), US$459 (24 sessions), or custom counts by enquiry.",
   },
   {
     q: "Is private online yoga better than a group class?",
@@ -98,7 +98,7 @@ export const PRIVATE_PLANS = [
     ],
     pricing: "US$249 total",
     effective: "US$20.75 / session",
-    comparison: "Compared with US$360 at single-session rate (save US$111)",
+    comparison: "Compared with US$300 at single-session rate (save US$51)",
     note: "Payable total US$249. Schedule agreed directly.",
     cta: "Enquire About 12 Sessions",
   },
@@ -120,7 +120,7 @@ export const PRIVATE_PLANS = [
     ],
     pricing: "US$399 total",
     effective: "US$19.95 / session",
-    comparison: "Compared with US$600 at single-session rate (save US$201)",
+    comparison: "Compared with US$500 at single-session rate (save US$101)",
     note: "Payable total US$399. Schedule agreed directly.",
     cta: "Enquire About 20 Sessions",
   },
@@ -141,7 +141,7 @@ export const PRIVATE_PLANS = [
     ],
     pricing: "US$459 total",
     effective: "US$19.13 / session",
-    comparison: "Compared with US$720 at single-session rate (save US$261)",
+    comparison: "Compared with US$600 at single-session rate (save US$141)",
     note: "Payable total US$459. Schedule agreed directly.",
     cta: "Enquire About 24 Sessions",
   },
@@ -479,7 +479,7 @@ function PrivateYogaPage() {
         contrastVeil
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          Single session US$30 · First trial session US$25
+          Single private session · US$25 · 60 minutes
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
@@ -535,18 +535,18 @@ function PrivateYogaPage() {
             Every session is led by an experienced, certified Yog Jivan yoga teacher.
           </p>
 
-          {/* SINGLE SESSION INTRO CARD */}
+          {/* SINGLE SESSION CARD */}
           <div className="mt-6 rounded-2xl border border-[color:var(--gold)]/40 bg-[color-mix(in_oklab,var(--gold)_8%,var(--onyx))] p-5 md:p-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <div className="inline-block rounded-full bg-[color:var(--gold)]/15 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-[color:var(--gold)]">
-                  Introductory Session · Preview
+                  Single Session Rate
                 </div>
                 <h3 className="mt-2 font-display text-xl text-foreground">
-                  Standard single session US$30 · First session US$25
+                  Single private session · US$25 · 60 minutes
                 </h3>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  Live 60-minute one-to-one video session. Start with a single session to experience the teacher match and personal guidance.
+                  The same single-session rate applies whether you are booking your first class or returning. Live 60-minute one-to-one video session shaped around you.
                 </p>
               </div>
               <a
@@ -616,7 +616,7 @@ function PrivateYogaPage() {
           <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-center">
             <p className="text-xs uppercase tracking-wider text-muted-foreground">Practise alone or together</p>
             <p className="mt-1 text-sm font-medium text-foreground">
-              Solo from US$30 · Two adults US$45 total · Family from US$55 total
+              Solo from US$25 · Two adults US$45 total · Family from US$55 total
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
               Standard single session reference rates. Every session is led by an experienced, certified Yog Jivan yoga teacher.

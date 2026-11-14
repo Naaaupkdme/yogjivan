@@ -56,7 +56,7 @@ function ViPrivate() {
       <ViHero
         eyebrow="Chương trình cao cấp"
         title="Yoga 1 Kèm 1 Online"
-        lead={`Buổi tập yoga trực tiếp ${ONLINE_CLASS.durationMinutes} phút dành riêng cho bạn, cùng một giáo viên Yog Jivan được ghép phù hợp với trình độ, mục tiêu và ngôn ngữ của bạn. Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm thuộc đội ngũ Yog Jivan hướng dẫn. Học phí và lịch học được tư vấn riêng theo nhu cầu.`}
+        lead={`Buổi tập yoga trực tiếp ${ONLINE_CLASS.durationMinutes} phút dành riêng cho bạn, cùng một giáo viên Yog Jivan được ghép phù hợp với trình độ, mục tiêu và ngôn ngữ của bạn. Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm thuộc đội ngũ Yog Jivan hướng dẫn. Buổi yoga riêng 60 phút · 25 USD mỗi buổi.`}
         primary={{ href: "#tu-van", label: "Đăng ký tư vấn" }}
         secondary={{ href: CONTACT.zalo, label: "Nhắn Zalo" }}
       />
@@ -68,6 +68,65 @@ function ViPrivate() {
           hoặc nếu bạn có giới hạn vận động cần được điều chỉnh bài tập.
         </p>
         <p>{SAFETY_NOTE_VI}</p>
+      </ViSection>
+
+      <ViSection heading="Học phí và các gói buổi tập">
+        <div className="rounded-2xl border border-[color:var(--gold)]/40 bg-[color-mix(in_oklab,var(--gold)_8%,var(--onyx))] p-5 md:p-6 mb-6">
+          <div className="text-[0.65rem] font-semibold uppercase tracking-wider text-[color:var(--gold)]">
+            Buổi tập riêng lẻ
+          </div>
+          <h3 className="mt-2 font-display text-xl text-foreground">
+            Buổi yoga riêng 60 phút · 25 USD mỗi buổi
+          </h3>
+          <p className="mt-1 text-sm text-foreground/80">
+            Mức giá mỗi buổi áp dụng cho cả buổi đầu và các buổi đặt lẻ tiếp theo.
+          </p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-3">
+          <div className="glass-soft rounded-2xl border border-white/10 p-5 flex flex-col justify-between">
+            <div>
+              <div className="text-xs uppercase tracking-wider text-[color:var(--gold)] font-semibold">Gói 12 buổi</div>
+              <h4 className="mt-2 font-display text-lg text-foreground">Nền tảng luyện tập</h4>
+              <p className="mt-1 text-xs text-muted-foreground">Phù hợp để làm quen tư thế và xây dựng thói quen.</p>
+              <div className="mt-4 text-xl font-display text-foreground">249 USD <span className="text-xs text-muted-foreground font-normal">(20,75 USD/buổi)</span></div>
+              <p className="mt-1 text-xs text-[color:var(--gold)]">Tiết kiệm 51 USD so với đặt lẻ từng buổi</p>
+            </div>
+            <a href={CONTACT.zalo} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center justify-center rounded-xl bg-white/10 px-3 py-2 text-xs font-semibold text-foreground hover:bg-white/20">
+              Tư vấn gói 12 buổi
+            </a>
+          </div>
+
+          <div className="glass-luxe rounded-2xl border-2 border-[color:var(--gold)]/60 bg-[color-mix(in_oklab,var(--gold)_8%,var(--onyx))] p-5 flex flex-col justify-between shadow-[var(--shadow-gold)]">
+            <div>
+              <div className="text-xs uppercase tracking-wider text-[color:var(--gold)] font-semibold">Gói 20 buổi · Phổ biến</div>
+              <h4 className="mt-2 font-display text-lg text-foreground">Tiến bộ chuyên sâu</h4>
+              <p className="mt-1 text-xs text-muted-foreground">Rèn độ dẻo dai, thể lực và nhịp thở vững vàng.</p>
+              <div className="mt-4 text-xl font-display text-foreground">399 USD <span className="text-xs text-muted-foreground font-normal">(19,95 USD/buổi)</span></div>
+              <p className="mt-1 text-xs text-[color:var(--gold)]">Tiết kiệm 101 USD so với đặt lẻ từng buổi</p>
+            </div>
+            <a href={CONTACT.zalo} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[color:var(--gold)] to-amber-300 px-3 py-2 text-xs font-semibold text-black">
+              Tư vấn gói 20 buổi
+            </a>
+          </div>
+
+          <div className="glass-soft rounded-2xl border border-white/10 p-5 flex flex-col justify-between">
+            <div>
+              <div className="text-xs uppercase tracking-wider text-[color:var(--gold)] font-semibold">Gói 24 buổi</div>
+              <h4 className="mt-2 font-display text-lg text-foreground">Đồng hành toàn diện</h4>
+              <p className="mt-1 text-xs text-muted-foreground">Lộ trình cá nhân hóa dài hạn theo mục tiêu riêng.</p>
+              <div className="mt-4 text-xl font-display text-foreground">459 USD <span className="text-xs text-muted-foreground font-normal">(19,13 USD/buổi)</span></div>
+              <p className="mt-1 text-xs text-[color:var(--gold)]">Tiết kiệm 141 USD so với đặt lẻ từng buổi</p>
+            </div>
+            <a href={CONTACT.zalo} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center justify-center rounded-xl bg-white/10 px-3 py-2 text-xs font-semibold text-foreground hover:bg-white/20">
+              Tư vấn gói 24 buổi
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-center text-xs text-muted-foreground">
+          Tập cùng bạn bè hoặc người thân? Xem <a href="/online-couples-yoga" className="text-[color:var(--gold)] underline underline-offset-4">Yoga 2 người (45 USD/buổi cho 2 người)</a> hoặc <a href="/online-family-yoga" className="text-[color:var(--gold)] underline underline-offset-4">Yoga gia đình 3–4 thành viên</a>.
+        </div>
       </ViSection>
 
       <ViSection heading="Cách chương trình vận hành">

@@ -15,11 +15,10 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 - Best for: Students worldwide wanting consistent, teacher-led practice
 
 ## 1-on-1 Private Online Yoga (Solo)
-- Trial session (60 min): $25
-- Single session (60 min): $30
-- 12-session package: $249 total ($20.75 per session)
-- 20-session package: $399 total (~$20 per session)
-- 24-session package: $459 total (~$19 per session)
+- Single private session (60 min): $25 (same rate for first or returning sessions)
+- 12-session package: $249 total ($20.75 per session, save $51 vs single rate)
+- 20-session package: $399 total ($19.95 per session, save $101 vs single rate)
+- 24-session package: $459 total ($19.13 per session, save $141 vs single rate)
 - Custom schedules: Tailored frequency and timing on enquiry
 - Includes: Live 60-minute one-to-one video sessions with a dedicated matched teacher kept for continuity, initial posture and mobility onboarding, personalised practice progression, and between-session support
 - Format: Live two-way video worldwide

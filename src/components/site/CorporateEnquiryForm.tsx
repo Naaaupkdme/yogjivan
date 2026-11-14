@@ -282,12 +282,12 @@ export function CorporateEnquiryForm({
       <div className="grid gap-4 sm:grid-cols-3">
         <div>
           <label className="text-xs font-medium text-foreground/80">
-            {isVi ? "Địa điểm / Khu công nghiệp *" : "Workplace Site in Hai Duong *"}
+            {isVi ? "Địa điểm tổ chức (thành phố và nơi tập) *" : "Workplace location (city and venue) *"}
           </label>
           <input
             type="text"
             required
-            placeholder={isVi ? "VD: KCN Đại An / TP Hải Dương" : "e.g. Dai An IZ or Central Office"}
+            placeholder={isVi ? "VD: Hải Dương, Hải Phòng (kèm tên công ty/nơi tập)" : "e.g. Hai Duong, Hai Phong (venue name)"}
             value={form.site}
             onChange={(e) => setForm({ ...form, site: e.target.value })}
             className="mt-1 w-full rounded-xl border border-input bg-background/50 px-3.5 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"

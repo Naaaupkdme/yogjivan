@@ -157,7 +157,7 @@ function CouplesYogaPage() {
               Different levels? You can still practise together.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-              Start with the same guided warm-up. Your teacher can offer different versions of a movement so each person can work at a comfortable pace. A partner can be your spouse, friend or another adult.
+              Start with the same guided warm-up. Your teacher can offer different versions of a movement so each person can work at a comfortable pace. A partner can be a friend, spouse or another adult.
             </p>
           </div>
 
@@ -190,6 +190,40 @@ function CouplesYogaPage() {
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 Live, two-way video where your teacher observes both mats continuously and provides real-time verbal alignment cues.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2B — FRIENDS YOGA SUBSECTION */}
+      <section id="friends-yoga" className="section-pad-sm border-b border-border/40 bg-card/10">
+        <div className="container-luxe">
+          <div className="mx-auto max-w-3xl rounded-2xl border border-[color:var(--gold)]/30 bg-white/[0.02] p-6 text-center md:p-8">
+            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Yoga With A Friend<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
+            <h2 className="mt-2 font-display text-2xl font-bold text-foreground md:text-3xl">
+              Book a private online yoga session with a friend
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
+              Book a private online yoga session with a friend. One teacher guides both adults and can offer a different version of the same movement to each person. A partner can be a friend, spouse or another adult.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById("book-session");
+                  el?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="btn-gold"
+              >
+                Enquire for two friends
+              </button>
+              <Link
+                to="/blog/$slug"
+                params={{ slug: "online-yoga-for-two-camera-setup" }}
+                className="btn-ghost-gold"
+              >
+                Read two-person setup guide
+              </Link>
             </div>
           </div>
         </div>
@@ -229,9 +263,9 @@ function CouplesYogaPage() {
             <div className="rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8">
               <h3 className="text-lg font-semibold text-foreground">Camera & Room Setup for Two</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                Setting up for two is simple with household gear. For comprehensive instructions, see our{" "}
-                <Link to="/blog/$slug" params={{ slug: "online-yoga-camera-setup" }} className="text-[color:var(--gold)] hover:underline">
-                  online yoga camera and space setup guide
+                Setting up for two is simple with household gear. For step-by-step instructions, see our{" "}
+                <Link to="/blog/$slug" params={{ slug: "online-yoga-for-two-camera-setup" }} className="text-[color:var(--gold)] hover:underline">
+                  online yoga camera setup guide for two at home
                 </Link>
                 .
               </p>
@@ -263,8 +297,8 @@ function CouplesYogaPage() {
               Session price for two
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
-              A live session costs <strong>US$45 for two adults</strong>, or <strong>US$22.50 each</strong> if you split it.
-              Two separate standard solo sessions would cost US$60 total. A shared class gives you one practice time and one teacher, while Solo gives one person the full session.
+              A live session costs <strong>US$45 for two adults</strong>, or <strong>US$22.50 each</strong> if you split it. A 4-session pack is <strong>US$170</strong>.
+              Two separate standard solo sessions would cost US$50 total ($25 each). A shared class gives you one practice time and one teacher, while Solo gives one person the full session.
             </p>
             <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
               Every session is led by an experienced, certified Yog Jivan yoga teacher.

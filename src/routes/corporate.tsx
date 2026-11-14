@@ -4,43 +4,43 @@ import { CorporateEnquiryForm } from "@/components/site/CorporateEnquiryForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { hreflangLinks, PAIR_CORPORATE } from "@/lib/locale-routes";
-import { waHref } from "@/lib/wa";
-import { Briefcase, Building2, Clock, CheckCircle2, ShieldCheck, Users, Play, Sparkles } from "lucide-react";
+import { Clock, CheckCircle2, Users, FileDown, Sparkles, ArrowDown } from "lucide-react";
 
 const TITLE = "Corporate Yoga in Vietnam | Yog Jivan";
 const DESCRIPTION =
-  "On-site chair yoga and guided movement for teams in Vietnam. Based in the Hải Dương area. Ask Yog Jivan about an office pilot or recurring classes.";
+  "On-site chair yoga and guided movement for teams in Vietnam. Based in the Hải Dương area, Hải Phòng. Request a complimentary 30-minute office demo or download our proposal.";
 const CANONICAL = "https://www.yogjivan.com/corporate";
+const PROPOSAL_PDF_URL = "/assets/proposals/yog-jivan-corporate-yoga-proposal.pdf";
 
 const FAQS = [
   {
-    q: "Do employees need mats?",
-    a: "Chair sessions use stable office chairs and clear space. Mat requirements are agreed in advance if your team chooses the 45-minute mat format.",
+    q: "Do employees need mats or sportswear for the chair demo?",
+    a: "No. The 30-minute chair session uses stable office chairs and clear floor space. Staff can participate comfortably in normal work clothing without needing to change.",
   },
   {
-    q: "Can we book a one-off pilot?",
-    a: "Yes. Tell us the site, expected headcount and preferred time so we can arrange a complimentary 30-minute trial session for your team.",
+    q: "How does the complimentary 30-minute demo work?",
+    a: "We offer one free 30-minute chair yoga pilot session so HR managers and team members can experience the format firsthand with no ongoing commitment.",
   },
   {
-    q: "How is pricing calculated?",
-    a: "We quote for your location, session length, headcount and series size (single pilot or four-session series).",
+    q: "Can you visit workplaces outside the Hải Dương area?",
+    a: "Our teaching base is in the Hải Dương area of Hải Phòng. We travel to nearby industrial parks, Hanoi, and Northern Vietnam by enquiry. Share your venue location and we will confirm availability.",
   },
   {
-    q: "What do we need to host a chair yoga demo?",
-    a: "Provide stable chairs, clear space, an estimated headcount and preferred time. The complimentary chair demo takes 30 minutes.",
+    q: "What do we need to host a chair yoga session?",
+    a: "Provide a clear meeting room or open hall with stable chairs (without wheels or with locked castors) and enough space for staff to move their arms freely.",
   },
   {
-    q: "Can you come to our office outside Hải Dương?",
-    a: "Send the venue location and headcount so our team can confirm on-site availability.",
+    q: "What happens after the initial demo?",
+    a: "If your team wishes to continue, we review feedback together and suggest a tailored 4-session package or recurring schedule with transparent VND quotation based on location and headcount.",
   },
 ];
 
 const DEMO_TIMELINE = [
-  { time: "4 min", step: "Settle & Check Setup", desc: "Welcome, room setup verification, and quick comfort check." },
+  { time: "4 min", step: "Setup & Settle", desc: "Welcome, room setup verification, and quick comfort check." },
   { time: "6 min", step: "Warm-Up", desc: "Gentle joint mobility for fingers, wrists, neck, and shoulders." },
-  { time: "14 min", step: "Guided Movement", desc: "Seated stretches, thoracic mobility, and gentle back resets on stable chairs." },
+  { time: "14 min", step: "Guided Movement", desc: "Guided seated or standing movement to release desk stiffness." },
   { time: "4 min", step: "Breathing & Relaxation", desc: "Mindful diaphragmatic breathing to steady focus and ease mental fatigue." },
-  { time: "2 min", step: "Feedback & Close", desc: "Quick participant feedback on favourite desk stretches to keep." },
+  { time: "2 min", step: "Closing & Feedback", desc: "Closing stretch and participant feedback on favorite moves to repeat at work." },
 ];
 
 export const Route = createFileRoute("/corporate")({
@@ -80,7 +80,7 @@ export const Route = createFileRoute("/corporate")({
             name: "Corporate Yoga in Vietnam",
             serviceType: "Corporate Wellness Program",
             description: DESCRIPTION,
-            areaServed: "Hai Duong, Vietnam",
+            areaServed: "Hai Duong, Hai Phong, Vietnam",
             url: "/corporate",
           })
         ),
@@ -97,7 +97,7 @@ function CorporatePage() {
       <PageHero
         eyebrow="Corporate Wellness · Hai Duong & Vietnam"
         title="Corporate yoga at your workplace"
-        sub="Give your team a guided movement break with gentle chair exercises and breathing they can use again at their desks."
+        sub="Give your team a guided movement break with gentle chair exercises and breathing they can repeat at their desks."
         image768="/assets/preview/corporate-hero-768.webp"
         image1400="/assets/preview/corporate-hero-1280.webp"
         imageWidth={1280}
@@ -107,7 +107,7 @@ function CorporatePage() {
         contrastVeil
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          Based in the Hải Dương area. Share your location and we’ll confirm whether we can visit your workplace or school.
+          Based in the Hải Dương area, Hải Phòng. Share your workplace location and we’ll confirm on-site availability.
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
@@ -123,45 +123,48 @@ function CorporatePage() {
           >
             Request a complimentary 30-minute demo
           </button>
-          <button
-            type="button"
-            onClick={() => {
-              const el = document.getElementById("programme-overview");
-              el?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="btn-ghost-gold"
+          <a
+            href={PROPOSAL_PDF_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            download="yog-jivan-corporate-yoga-proposal.pdf"
+            className="btn-ghost-gold inline-flex items-center gap-2"
           >
-            Watch the programme overview
-          </button>
+            <FileDown className="h-4 w-4 text-[color:var(--gold)]" />
+            Download the corporate yoga proposal (PDF)
+          </a>
         </div>
       </PageHero>
 
-      {/* 2 — BENEFITS */}
+      {/* 2 — WHAT EMPLOYEES TAKE AWAY */}
       <section className="section-pad-sm border-b border-border/40 bg-card/20">
         <div className="container-luxe">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
             <div>
-              <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Workplace Well-being</p>
+              <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Employee Wellbeing</p>
               <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-                Gentle movement and breathing designed for the workday
+                What employees take away
               </h2>
-              <div className="mt-6 space-y-5">
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                Move gently after long periods of sitting. Practise slow breathing between tasks. Learn a few desk-friendly moves to repeat later.
+              </p>
+              <div className="mt-6 space-y-4">
                 <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
-                  <h3 className="text-base font-semibold text-foreground">Move after long periods of sitting</h3>
-                  <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                    Gentle movement for the neck, shoulders and back to relieve the physical strain and stiffness caused by extended desk hours.
+                  <h3 className="text-base font-semibold text-foreground">Move gently after long periods of sitting</h3>
+                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                    Simple joint rotations and seated stretches relieve neck, shoulder, and spinal stiffness accumulated from desk work.
                   </p>
                 </div>
                 <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
-                  <h3 className="text-base font-semibold text-foreground">Pause for slow breathing between tasks</h3>
-                  <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                    Guided breathing pauses to reset mental clarity, reduce stress, and steady the nervous system during demanding workdays.
+                  <h3 className="text-base font-semibold text-foreground">Practise slow breathing between tasks</h3>
+                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                    Structured breathing pauses help calm the nervous system, reset focus, and restore energy during busy workdays.
                   </p>
                 </div>
                 <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
-                  <h3 className="text-base font-semibold text-foreground">Take away simple moves for your desk</h3>
-                  <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                    Practical, accessible postures that employees can easily practice independently during the workday without leaving their desks.
+                  <h3 className="text-base font-semibold text-foreground">Learn a few desk-friendly moves to repeat later</h3>
+                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
+                    Practical, accessible micro-movements that staff can repeat independently at their workstation whenever tension builds up.
                   </p>
                 </div>
               </div>
@@ -187,88 +190,23 @@ function CorporatePage() {
         </div>
       </section>
 
-      {/* 3 — PROGRAMME OVERVIEW & OPTIONS */}
-      <section id="programme-overview" className="section-pad border-b border-border/40">
+      {/* 3 — CHOOSE CHAIR OR MAT YOGA */}
+      <section className="section-pad-sm border-b border-border/40">
         <div className="container-luxe">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Programme Overview<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
+            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Session Formats<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
             <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-              See how corporate yoga runs at your office
+              Choose chair or mat yoga
             </h2>
-            <p className="mt-3 text-sm text-muted-foreground">
-              A structured overview designed for HR managers and team leaders.
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              A 30-minute chair session fits a lunch break or shift transition. Use stable chairs with room to move. A 45-minute mat session is available where the room has enough floor space.
             </p>
           </div>
 
-          {/* Overview Card */}
-          <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 bg-black/40">
-            <div className="relative aspect-[16/9] w-full overflow-hidden">
-              <picture>
-                <source srcSet="/assets/preview/corporate-demo-768.webp" type="image/webp" />
-                <img
-                  src="/assets/preview/corporate-demo-768.webp"
-                  alt="Corporate yoga overview preview poster"
-                  width={768}
-                  height={432}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </picture>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-between p-6">
-                <div className="flex justify-between items-start">
-                  <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[0.7rem] font-medium text-[color:var(--gold)] border border-[color:var(--gold)]/30">
-                    Programme Overview
-                  </span>
-                </div>
-                <div className="text-left">
-                  <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)]/20 border border-[color:var(--gold)]/40 text-[color:var(--gold)] px-4 py-2 text-xs font-semibold">
-                    <Sparkles className="h-4 w-4" />
-                    Programme Overview
-                  </div>
-                  <p className="mt-2 text-xs text-white/80 max-w-md">
-                    A structured introduction designed for HR managers and team leaders: gentle movement, chair format, workday fit, and complimentary first session.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Localized HTML Summary */}
-            <div className="border-t border-white/10 bg-card/40 p-5 text-xs text-muted-foreground space-y-2">
-              <div className="font-semibold text-foreground text-sm">Programme Overview Summary:</div>
-              <ul className="grid gap-2 sm:grid-cols-2">
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Chair yoga at work:</strong> Movement relief for stiff neck and shoulders.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Gentle moves & breathing:</strong> Quick resets staff can repeat at their desk.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>30-minute chair format:</strong> Settle, warm-up, chair poses, and relaxation.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Fits the workday:</strong> HR selects time and room; voluntary participation.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Certified teachers:</strong> ~15 workplaces supported in Vietnam.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Complimentary first session:</strong> Request your 30-minute workplace demo.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* 30-min Chair vs 45-min Mat Options */}
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             <div className="glass-luxe rounded-2xl p-6 md:p-8 border border-[color:var(--gold)]/40 relative">
               <div className="absolute top-4 right-4 rounded-full bg-[color:var(--gold)]/15 border border-[color:var(--gold)]/30 px-3 py-1 text-[0.68rem] font-bold text-[color:var(--gold)] uppercase tracking-wider">
-                Complimentary First Demo Offer
+                Complimentary Demo Offer
               </div>
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[color:var(--gold)]/15 text-[color:var(--gold)]">
@@ -328,13 +266,19 @@ function CorporatePage() {
         </div>
       </section>
 
-      {/* 4 — DEMO TIMELINE (MOBILE-OPTIMIZED) */}
+      {/* 4 — INSIDE THE COMPLIMENTARY CHAIR DEMO */}
       <section className="section-pad-sm border-b border-border/40 bg-card/20">
         <div className="container-luxe">
-          <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Sample Schedule</p>
-          <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-            What happens during a 30-minute chair yoga demo
-          </h2>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Sample Schedule<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
+            <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
+              Inside the complimentary chair demo
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              A structured 30-minute timeline designed to fit your workday schedule.
+            </p>
+          </div>
+
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {DEMO_TIMELINE.map((item, idx) => (
               <div key={idx} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left">
@@ -347,33 +291,46 @@ function CorporatePage() {
               </div>
             ))}
           </div>
+
+          <div className="mt-6 text-center text-xs text-muted-foreground">
+            Total session duration: <strong className="text-foreground">30 minutes</strong> · Guided by an experienced, certified Yog Jivan teacher
+          </div>
         </div>
       </section>
 
-      {/* 5 — HR SETUP & EXPERIENCE */}
+      {/* 5 — WHAT HR AND YOG JIVAN ORGANISE */}
       <section className="section-pad border-b border-border/40">
         <div className="container-luxe">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
             <div>
-              <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />HR Logistics</p>
+              <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Coordination & Setup</p>
               <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-                Simple coordination for workplace organizers
+                What HR and Yog Jivan organise
               </h2>
-              <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground">
-                <p>
-                  The host organisation provides the room space, estimated headcount, and protected time window. Participation is always voluntary, and every posture is adapted for comfort.
-                </p>
-                <p>
-                  Yog Jivan coordinates workplace yoga sessions for organizations in the Hải Dương area and across Vietnam. Following the demo, an optional four-session series is quoted in transparent VND according to headcount and location.
-                </p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                Your organiser shares the location, headcount, room and two suitable times. Yog Jivan confirms the teaching language and offers movement options. Participation is voluntary.
+              </p>
+              <div className="mt-6 space-y-3">
+                <div className="flex items-start gap-3 text-sm text-foreground/85">
+                  <CheckCircle2 className="h-4 w-4 text-[color:var(--gold)] shrink-0 mt-0.5" />
+                  <span><strong>Workplace location:</strong> Based in the Hải Dương area, Hải Phòng. Travel confirmed after enquiry.</span>
+                </div>
+                <div className="flex items-start gap-3 text-sm text-foreground/85">
+                  <CheckCircle2 className="h-4 w-4 text-[color:var(--gold)] shrink-0 mt-0.5" />
+                  <span><strong>Room setup:</strong> A clear room with stable chairs and room to move.</span>
+                </div>
+                <div className="flex items-start gap-3 text-sm text-foreground/85">
+                  <CheckCircle2 className="h-4 w-4 text-[color:var(--gold)] shrink-0 mt-0.5" />
+                  <span><strong>Teaching language:</strong> English or Vietnamese per team choice.</span>
+                </div>
               </div>
-              <p className="mt-4 text-xs font-semibold text-[color:var(--gold)]">
+              <p className="mt-6 text-xs font-semibold text-[color:var(--gold)]">
                 Every session is led by an experienced, certified Yog Jivan yoga teacher.
               </p>
             </div>
 
             <div className="rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8">
-              <h3 className="text-lg font-semibold text-foreground">Organizer Checklist</h3>
+              <h3 className="text-lg font-semibold text-foreground">Organiser Checklist</h3>
               <ul className="mt-4 space-y-3 text-xs text-foreground/80">
                 <li className="flex items-start gap-2.5">
                   <span className="font-semibold text-[color:var(--gold)]">•</span>
@@ -392,25 +349,57 @@ function CorporatePage() {
                   <span><strong>Language support:</strong> Instruction in English or Vietnamese per team choice.</span>
                 </li>
               </ul>
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                <span className="text-xs text-muted-foreground">Detailed 7-step guide:</span>
+                <Link to="/blog/$slug" params={{ slug: "checklist-to-chuc-buoi-yoga-tai-van-phong" }} className="text-xs text-[color:var(--gold)] hover:underline">
+                  Read office checklist &rarr;
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6 — ENQUIRY FORM */}
-      <section className="section-pad bg-muted/10 border-t border-border/40">
+      {/* 6 — AFTER THE DEMO & PROPOSAL / ENQUIRY */}
+      <section className="section-pad bg-muted/10 border-b border-border/40">
         <div className="container-luxe">
-          <div className="mx-auto max-w-2xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Next Steps<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
+            <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
+              After the demo
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Review participation and room setup with us. A suggested four-session series covers chair basics, shoulders and back, hips and legs, then a short routine to repeat at work. We quote in VND based on location, headcount and equipment.
+            </p>
+            <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
+              Supported across ~15 workplaces in Vietnam · Every session is led by an experienced, certified Yog Jivan yoga teacher.
+            </p>
+
+            <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={PROPOSAL_PDF_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="yog-jivan-corporate-yoga-proposal.pdf"
+                className="inline-flex items-center gap-2 rounded-xl border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10 px-4 py-2.5 text-xs font-semibold text-[color:var(--gold)] hover:bg-[color:var(--gold)]/20"
+              >
+                <FileDown className="h-4 w-4" />
+                Download the corporate yoga proposal (PDF)
+              </a>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-2xl">
             <CorporateEnquiryForm
               lang="EN"
               heading="Request a Complimentary 30-Minute Office Demo"
-              subheading="Share your organization name, workplace site, headcount, and two preferred times. We will confirm room suitability and pilot schedule."
+              subheading="Share your organization name, workplace location (city and venue), headcount, and two preferred times. We will confirm room suitability and pilot schedule."
             />
           </div>
         </div>
       </section>
 
-      {/* 7 — FAQS */}
+      {/* FAQS */}
       <section className="section-pad">
         <div className="container-luxe">
           <div className="mx-auto max-w-3xl">

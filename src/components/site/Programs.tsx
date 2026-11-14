@@ -86,11 +86,13 @@ export function Programs() {
             <p className="mt-3 max-w-md text-sm text-muted-foreground">Bespoke sessions designed entirely around you, with a Yog Jivan teacher matched to your goals.</p>
 
             <div className="mt-8 rounded-2xl border border-[color:var(--gold)]/40 bg-[color:var(--onyx)]/60 p-6">
-              <div className="font-display text-2xl leading-none text-foreground">Pricing by enquiry</div>
+              <div className="font-display text-2xl leading-none text-foreground">From US$25 / session</div>
+              <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
+                Single private session · US$25 · 60 minutes
+              </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Private sessions are arranged around your goals, preferred format and scheduling needs, and are taught
-                by a matched Yog Jivan teacher you normally continue with. Current pricing
-                and available times are confirmed before you decide. No payment is requested on this page.
+                by a matched Yog Jivan teacher you normally continue with. Packages from US$249 (12 sessions). Available times and scheduling confirmed directly on WhatsApp.
               </p>
             </div>
 

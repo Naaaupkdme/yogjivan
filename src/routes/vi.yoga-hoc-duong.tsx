@@ -5,12 +5,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { hreflangLinks, PAIR_SCHOOL } from "@/lib/locale-routes";
 import { CONTACT } from "@/lib/facts/contact";
-import { CheckCircle2, Clock, GraduationCap, Heart, Play, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { CheckCircle2, Clock, FileDown, GraduationCap, Heart, ShieldCheck, Sparkles, Users } from "lucide-react";
 
 const TITLE = "Yoga học đường tại Việt Nam | Yog Jivan";
 const DESCRIPTION =
   "Lớp yoga 35–40 phút qua trò chơi và kể chuyện cho trẻ em tại các trường khu vực Hải Dương, Việt Nam. Đăng ký buổi trải nghiệm miễn phí.";
 const CANONICAL = "https://www.yogjivan.com/vi/yoga-hoc-duong";
+const PROPOSAL_PDF_URL = "/assets/proposals/yog-jivan-school-yoga-proposal.pdf";
 
 const FAQS = [
   {
@@ -108,7 +109,7 @@ function ViSchoolYogaPage() {
         contrastVeil
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          Yog Jivan hoạt động tại khu vực Hải Dương. Hãy gửi địa điểm để chúng tôi xác nhận khả năng tổ chức tại doanh nghiệp hoặc trường của bạn.
+          Yog Jivan hoạt động tại khu vực Hải Dương. Hãy gửi địa điểm để chúng tôi xác nhận khả năng tổ chức tại trường của bạn.
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm thuộc đội ngũ Yog Jivan hướng dẫn.
@@ -124,16 +125,16 @@ function ViSchoolYogaPage() {
           >
             Đăng ký buổi trải nghiệm miễn phí cho trường
           </button>
-          <button
-            type="button"
-            onClick={() => {
-              const el = document.getElementById("programme-overview");
-              el?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="btn-ghost-gold"
+          <a
+            href={PROPOSAL_PDF_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            download="yog-jivan-school-yoga-proposal.pdf"
+            className="btn-ghost-gold inline-flex items-center gap-2"
           >
-            Xem giới thiệu chương trình
-          </button>
+            <FileDown className="h-4 w-4 text-[color:var(--gold)]" />
+            Tải đề xuất yoga học đường (PDF)
+          </a>
         </div>
       </PageHero>
 
@@ -144,7 +145,7 @@ function ViSchoolYogaPage() {
             <div>
               <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Vận động bổ ích</p>
               <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-                Khám phá vận động, rèn luyện thói quen qua trò chơi
+                Các em sẽ tập gì?
               </h2>
               <div className="mt-6 space-y-5">
                 <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
@@ -160,7 +161,7 @@ function ViSchoolYogaPage() {
                   </p>
                 </div>
                 <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
-                  <h3 className="text-base font-semibold text-foreground">Thư giãn cuối buổi</h3>
+                  <h3 className="text-base font-semibold text-foreground">Khoảnh khắc tĩnh lặng</h3>
                   <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
                     Bài tập hít thở nhẹ nhàng và những phút tĩnh lặng giúp các em giải tỏa căng thẳng và sẵn sàng tinh thần quay lại các tiết học trên lớp.
                   </p>
@@ -188,125 +189,56 @@ function ViSchoolYogaPage() {
         </div>
       </section>
 
-      {/* 3 — TỔNG QUAN CHƯƠNG TRÌNH & TIẾT HỌC MẪU */}
-      <section id="programme-overview" className="section-pad border-b border-border/40">
+      {/* 3 — LỊCH TRÌNH TIẾT HỌC MẪU 38 PHÚT */}
+      <section className="section-pad border-b border-border/40">
         <div className="container-luxe">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Tổng quan chương trình<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
+            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Lịch mẫu một tiết học<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
             <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-              Yoga học đường diễn ra như thế nào?
+              Lịch mẫu một tiết 38 phút
             </h2>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Tóm tắt chương trình dành cho ban giám hiệu và giáo viên phụ trách thể chất.
-            </p>
-          </div>
-
-          {/* Overview Card */}
-          <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 bg-black/40">
-            <div className="relative aspect-[16/9] w-full overflow-hidden">
-              <picture>
-                <source srcSet="/assets/preview/school-demo-768.webp" type="image/webp" />
-                <img
-                  src="/assets/preview/school-demo-768.webp"
-                  alt="Poster giới thiệu yoga học đường"
-                  width={768}
-                  height={432}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </picture>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-between p-6">
-                <div className="flex justify-between items-start">
-                  <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[0.7rem] font-medium text-[color:var(--gold)] border border-[color:var(--gold)]/30">
-                    Tổng quan chương trình
-                  </span>
-                </div>
-                <div className="text-left">
-                  <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)] text-black px-3.5 py-1.5 text-xs font-semibold shadow-lg">
-                    <Sparkles className="h-4 w-4 text-black" />
-                    Tổng quan chương trình
-                  </div>
-                  <p className="mt-2 text-xs text-white/90 max-w-md">
-                    Tóm tắt chương trình dành cho ban giám hiệu và giáo viên phụ trách thể chất: vận động qua trò chơi, câu chuyện hấp dẫn, giám sát an toàn và buổi trải nghiệm miễn phí.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Localized HTML Summary */}
-            <div className="border-t border-white/10 bg-card/40 p-5 text-xs text-muted-foreground space-y-2">
-              <div className="font-semibold text-foreground text-sm">Tổng quan chương trình:</div>
-              <ul className="grid gap-2 sm:grid-cols-2">
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Yoga học đường:</strong> Khám phá chuyển động qua hoạt động vui nhộn.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Vận động qua trò chơi:</strong> Rèn thăng bằng, mô phỏng động vật và nhịp thở.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Buổi mẫu 38 phút:</strong> Khởi động, kể chuyện chuyển động và thư giãn.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Phù hợp lứa tuổi:</strong> Giáo viên điều chỉnh theo độ tuổi và không gian trường.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Kinh nghiệm học đường:</strong> Đã triển khai tại hơn 20 trường học.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Trải nghiệm miễn phí:</strong> Đăng ký buổi thử nghiệm 35–40 phút cho trường.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* 38-Minute Sample Breakdown */}
-          <div className="mt-12">
-            <h3 className="font-display text-xl font-bold text-foreground text-center">
-              Lịch trình một buổi mẫu 38 phút
-            </h3>
-            <p className="mt-1 text-center text-xs text-muted-foreground">
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
               Buổi học trải nghiệm đầu tiên kéo dài 35–40 phút, được cơ cấu để cân bằng năng lượng và sự tập trung của trẻ.
             </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {CLASS_STRUCTURE.map((item, idx) => (
-                <div key={idx} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left">
-                  <div className="flex items-center justify-between">
-                    <span className="font-display text-lg font-bold text-[color:var(--gold)]">{item.time}</span>
-                    <span className="text-[0.68rem] text-muted-foreground uppercase tracking-wider">Bước {idx + 1}</span>
-                  </div>
-                  <h4 className="mt-2 text-sm font-semibold text-foreground">{item.step}</h4>
-                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {CLASS_STRUCTURE.map((item, idx) => (
+              <div key={idx} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left">
+                <div className="flex items-center justify-between">
+                  <span className="font-display text-lg font-bold text-[color:var(--gold)]">{item.time}</span>
+                  <span className="text-[0.68rem] text-muted-foreground uppercase tracking-wider">Bước {idx + 1}</span>
                 </div>
-              ))}
-            </div>
+                <h3 className="mt-2 text-sm font-semibold text-foreground">{item.step}</h3>
+                <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 text-center text-xs text-muted-foreground">
+            Buổi trải nghiệm miễn phí đầu tiên được thiết kế từ <strong className="text-foreground">35–40 phút</strong> · Do giáo viên yoga có chứng chỉ và giàu kinh nghiệm hướng dẫn
           </div>
         </div>
       </section>
 
-      {/* 4 — PHỐI HỢP CÙNG NHÀ TRƯỜNG & TIÊU CHUẨN */}
-      <section className="section-pad border-b border-border/40">
+      {/* 4 — NHÀ TRƯỜNG CẦN CHUẨN BỊ GÌ? */}
+      <section className="section-pad border-b border-border/40 bg-card/20">
         <div className="container-luxe">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
             <div>
               <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Hợp tác học đường</p>
               <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-                Quy trình phối hợp an toàn và chặt chẽ
+                Nhà trường cần chuẩn bị gì?
               </h2>
               <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground">
                 <p>
-                  Mọi buổi tập đều được phối hợp trực tiếp cùng ban giám hiệu và giáo viên chủ nhiệm. Thầy cô luôn có mặt trong suốt buổi tập để giám sát an toàn và hỗ trợ các em học sinh.
+                  Chuẩn bị một không gian sạch thoáng và người giám sát của trường. Người điều phối chia sẻ độ tuổi chung, sĩ số dự kiến, địa điểm và hai khung giờ phù hợp. Yog Jivan xác nhận giáo viên và điều chỉnh hoạt động cho lớp.
                 </p>
                 <p>
-                  Yog Jivan triển khai chương trình yoga học đường tại Việt Nam. Buổi thử nghiệm đầu tiên kéo dài 35–40 phút hoàn toàn miễn phí để nhà trường đánh giá trực tiếp hiệu quả trước khi triển khai các khóa ngoại khóa định kỳ.
+                  Yog Jivan tổ chức yoga cho các trường học tại Việt Nam. Buổi thử nghiệm đầu tiên kéo dài 35–40 phút hoàn toàn miễn phí để nhà trường và học sinh trải nghiệm phương pháp giảng dạy.
                 </p>
                 <p className="text-xs font-medium text-foreground/90">
-                  <strong>Cam kết bảo mật tuyệt đối:</strong> Chúng tôi chỉ tiếp nhận thông tin liên lạc của người điều phối nhà trường. Tuyệt đối không thu thập tên, hình ảnh hay hồ sơ sức khỏe của học sinh trên biểu mẫu.
+                  <strong>Cam kết bảo mật tuyệt đối:</strong> Chỉ tiếp nhận thông tin liên lạc của người điều phối là người lớn. Không bao giờ yêu cầu tên, hình ảnh, hồ sơ sức khỏe hay ngày sinh của học sinh. Việc chụp ảnh (nếu có) phải có sự đồng ý của nhà trường.
                 </p>
               </div>
               <p className="mt-4 text-xs font-semibold text-[color:var(--gold)]">
@@ -327,6 +259,10 @@ function ViSchoolYogaPage() {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="font-semibold text-[color:var(--gold)]">•</span>
+                  <span><strong>Người điều phối:</strong> Thống nhất sĩ số dự kiến và hai khung giờ phù hợp.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="font-semibold text-[color:var(--gold)]">•</span>
                   <span><strong>Tham gia tự nguyện:</strong> Trẻ có thể nghỉ ngơi bất kỳ lúc nào nếu cảm thấy mệt.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -339,10 +275,36 @@ function ViSchoolYogaPage() {
         </div>
       </section>
 
-      {/* 5 — BIỂU MẪU ĐĂNG KÝ */}
-      <section className="section-pad bg-muted/10 border-t border-border/40">
+      {/* 5 — SAU BUỔI TRẢI NGHIỆM & BIỂU MẪU */}
+      <section className="section-pad bg-muted/10 border-b border-border/40">
         <div className="container-luxe">
-          <div className="mx-auto max-w-2xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Bước tiếp theo<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
+            <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
+              Sau buổi trải nghiệm
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              Chúng tôi cùng nhà trường đánh giá mức độ tương tác và hoạt động phù hợp. Nếu nhà trường muốn tiếp tục, chúng tôi sẽ thống nhất lịch trình, nhân sự giám sát, dụng cụ và gửi báo giá chi tiết theo VNĐ.
+            </p>
+            <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
+              Đã đồng hành cùng hơn 20 trường học tại Việt Nam · Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm hướng dẫn.
+            </p>
+
+            <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={PROPOSAL_PDF_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="yog-jivan-school-yoga-proposal.pdf"
+                className="inline-flex items-center gap-2 rounded-xl border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10 px-4 py-2.5 text-xs font-semibold text-[color:var(--gold)] hover:bg-[color:var(--gold)]/20"
+              >
+                <FileDown className="h-4 w-4" />
+                Tải đề xuất yoga học đường (PDF)
+              </a>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-2xl">
             <SchoolYogaEnquiryForm
               lang="VI"
               heading="Đăng ký buổi trải nghiệm miễn phí cho trường"
@@ -352,7 +314,7 @@ function ViSchoolYogaPage() {
         </div>
       </section>
 
-      {/* 6 — CÂU HỎI THƯỜNG GẶP */}
+      {/* CÂU HỎI THƯỜNG GẶP */}
       <section className="section-pad">
         <div className="container-luxe">
           <div className="mx-auto max-w-3xl">
@@ -379,8 +341,8 @@ function ViSchoolYogaPage() {
 
             <div className="mt-10 text-center text-xs text-muted-foreground">
               <span>Quý phụ huynh muốn tìm lớp tập tại nhà cùng con? Tham khảo </span>
-              <Link to="/online-family-yoga" className="text-[color:var(--gold)] hover:underline">
-                Chương trình Yoga Gia Đình Trực Tuyến
+              <Link to="/online-family-yoga" hash="parent-child" className="text-[color:var(--gold)] hover:underline">
+                Chương trình Yoga Gia Đình Trực Tuyến (Cha mẹ & Con)
               </Link>
               <span> hoặc liên hệ phòng tập qua </span>
               <a href={CONTACT.zalo} target="_blank" rel="noopener noreferrer" className="text-[color:var(--gold)] hover:underline">

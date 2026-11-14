@@ -4,13 +4,13 @@ import { SchoolYogaEnquiryForm } from "@/components/site/SchoolYogaEnquiryForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { hreflangLinks, PAIR_SCHOOL } from "@/lib/locale-routes";
-import { waHref } from "@/lib/wa";
-import { CheckCircle2, Clock, GraduationCap, Heart, Play, ShieldCheck, Sparkles, Users } from "lucide-react";
+import { CheckCircle2, Clock, FileDown, GraduationCap, Heart, ShieldCheck, Sparkles, Users } from "lucide-react";
 
 const TITLE = "Kids Yoga for Schools in Vietnam | Yog Jivan";
 const DESCRIPTION =
   "Play-based 35–40 minute yoga sessions for schools and children’s groups in Vietnam. Based in the Hải Dương area. Ask about a teacher-led complimentary demo.";
 const CANONICAL = "https://www.yogjivan.com/school-yoga";
+const PROPOSAL_PDF_URL = "/assets/proposals/yog-jivan-school-yoga-proposal.pdf";
 
 const FAQS = [
   {
@@ -107,7 +107,7 @@ function SchoolYogaPage() {
         contrastVeil
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          Based in the Hải Dương area. Share your location and we’ll confirm whether we can visit your workplace or school.
+          Based in the Hải Dương area. Share your location and we’ll confirm whether we can visit your school.
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
@@ -123,27 +123,27 @@ function SchoolYogaPage() {
           >
             Request a complimentary school demo
           </button>
-          <button
-            type="button"
-            onClick={() => {
-              const el = document.getElementById("programme-overview");
-              el?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="btn-ghost-gold"
+          <a
+            href={PROPOSAL_PDF_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            download="yog-jivan-school-yoga-proposal.pdf"
+            className="btn-ghost-gold inline-flex items-center gap-2"
           >
-            Watch the programme overview
-          </button>
+            <FileDown className="h-4 w-4 text-[color:var(--gold)]" />
+            Download the school yoga proposal (PDF)
+          </a>
         </div>
       </PageHero>
 
-      {/* 2 — ACTIVITIES & BENEFITS */}
+      {/* 2 — WHAT CHILDREN PRACTISE */}
       <section className="section-pad-sm border-b border-border/40 bg-card/20">
         <div className="container-luxe">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
             <div>
               <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Child-Centered Movement</p>
               <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-                Movement, mindfulness, and cooperation through play
+                What children practise
               </h2>
               <div className="mt-6 space-y-5">
                 <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
@@ -159,7 +159,7 @@ function SchoolYogaPage() {
                   </p>
                 </div>
                 <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">
-                  <h3 className="text-base font-semibold text-foreground">A calm finish</h3>
+                  <h3 className="text-base font-semibold text-foreground">A quiet moment</h3>
                   <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
                     Gentle breathing exercises and quiet rest at the end of class that allow children to relax and transition calmly back to class.
                   </p>
@@ -187,125 +187,56 @@ function SchoolYogaPage() {
         </div>
       </section>
 
-      {/* 3 — PROGRAMME OVERVIEW & 38-MINUTE SCHEDULE */}
-      <section id="programme-overview" className="section-pad border-b border-border/40">
+      {/* 3 — A SAMPLE 38-MINUTE CLASS */}
+      <section className="section-pad border-b border-border/40">
         <div className="container-luxe">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Programme Overview<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
+            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Sample Schedule<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
             <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-              See how school yoga engages young students
+              A sample 38-minute class
             </h2>
-            <p className="mt-3 text-sm text-muted-foreground">
-              A structured overview designed for principals, coordinators, and physical educators.
-            </p>
-          </div>
-
-          {/* Overview Card */}
-          <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 bg-black/40">
-            <div className="relative aspect-[16/9] w-full overflow-hidden">
-              <picture>
-                <source srcSet="/assets/preview/school-demo-768.webp" type="image/webp" />
-                <img
-                  src="/assets/preview/school-demo-768.webp"
-                  alt="School yoga overview preview poster"
-                  width={768}
-                  height={432}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </picture>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-between p-6">
-                <div className="flex justify-between items-start">
-                  <span className="rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[0.7rem] font-medium text-[color:var(--gold)] border border-[color:var(--gold)]/30">
-                    Programme Overview
-                  </span>
-                </div>
-                <div className="text-left">
-                  <div className="inline-flex items-center gap-2 rounded-lg bg-[color:var(--gold)] text-black px-3.5 py-1.5 text-xs font-semibold shadow-lg">
-                    <Sparkles className="h-4 w-4 text-black" />
-                    Programme Overview
-                  </div>
-                  <p className="mt-2 text-xs text-white/90 max-w-md">
-                    A structured introduction designed for principals, coordinators, and physical educators: playful movement, story-led structure, school supervision, and complimentary first session.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Localized HTML Summary */}
-            <div className="border-t border-white/10 bg-card/40 p-5 text-xs text-muted-foreground space-y-2">
-              <div className="font-semibold text-foreground text-sm">Programme Overview Summary:</div>
-              <ul className="grid gap-2 sm:grid-cols-2">
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Yoga for schools:</strong> Fun, energetic movement through child-friendly themes.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Movement through play:</strong> Balance games, animal postures, and mindful breathing.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>38-minute sample session:</strong> Settle, warm-up, story adventures, games, and calm close.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Adapted to age group:</strong> Certified teachers tailor activities to school space and level.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Experienced guidance:</strong> Supported across 20+ school groups in Vietnam.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[color:var(--gold)] font-bold select-none">•</span>
-                  <span><strong>Complimentary school demo:</strong> Connect to arrange a free first trial session.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* 38-Minute Sample Structure Breakdown */}
-          <div className="mt-12">
-            <h3 className="font-display text-xl font-bold text-foreground text-center">
-              What a 38-minute class looks like
-            </h3>
-            <p className="mt-1 text-center text-xs text-muted-foreground">
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
               Complimentary first sessions run 35–40 minutes, structured to maintain energy, focus, and calm.
             </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {CLASS_STRUCTURE.map((item, idx) => (
-                <div key={idx} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left">
-                  <div className="flex items-center justify-between">
-                    <span className="font-display text-lg font-bold text-[color:var(--gold)]">{item.time}</span>
-                    <span className="text-[0.68rem] text-muted-foreground uppercase tracking-wider">Step {idx + 1}</span>
-                  </div>
-                  <h4 className="mt-2 text-sm font-semibold text-foreground">{item.step}</h4>
-                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {CLASS_STRUCTURE.map((item, idx) => (
+              <div key={idx} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-left">
+                <div className="flex items-center justify-between">
+                  <span className="font-display text-lg font-bold text-[color:var(--gold)]">{item.time}</span>
+                  <span className="text-[0.68rem] text-muted-foreground uppercase tracking-wider">Step {idx + 1}</span>
                 </div>
-              ))}
-            </div>
+                <h3 className="mt-2 text-sm font-semibold text-foreground">{item.step}</h3>
+                <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 text-center text-xs text-muted-foreground">
+            Complimentary first class planned for <strong className="text-foreground">35–40 minutes</strong> · Guided by an experienced, certified Yog Jivan teacher
           </div>
         </div>
       </section>
 
-      {/* 4 — SCHOOL COORDINATION & STANDARDS */}
-      <section className="section-pad border-b border-border/40">
+      {/* 4 — WHAT THE SCHOOL PREPARES */}
+      <section className="section-pad border-b border-border/40 bg-card/20">
         <div className="container-luxe">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
             <div>
               <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />School Collaboration</p>
               <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-                Safe, structured coordination with your school
+                What the school prepares
               </h2>
               <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted-foreground">
                 <p>
-                  Every session is conducted in direct partnership with your school staff. Teachers and coordinators remain present throughout the class to supervise, support room safety, and encourage the children.
+                  Provide a clear room and supervising staff. An adult coordinator shares the general age band, estimated group size, venue and preferred time. Yog Jivan confirms the instructor and adjusts activities to the class.
                 </p>
                 <p>
                   Yog Jivan facilitates yoga for school groups in Vietnam. We present the complimentary first session as a 35–40 minute pilot, allowing your staff and students to experience our teaching approach.
                 </p>
                 <p className="text-xs font-medium text-foreground/90">
-                  <strong>Strict Privacy Standard:</strong> We collect only adult coordinator contact information. Child names, photos, health records, or dates of birth are never requested.
+                  <strong>Strict Privacy Standard:</strong> Adult contact only. Child names, photos, health records, or dates of birth are never requested. Permissions for any photos are arranged strictly with school staff.
                 </p>
               </div>
               <p className="mt-4 text-xs font-semibold text-[color:var(--gold)]">
@@ -326,6 +257,10 @@ function SchoolYogaPage() {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="font-semibold text-[color:var(--gold)]">•</span>
+                  <span><strong>Adult coordinator:</strong> Coordinator shares group size and two preferred times.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="font-semibold text-[color:var(--gold)]">•</span>
                   <span><strong>Voluntary movement:</strong> Children can sit out or take rest whenever they wish.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -338,10 +273,36 @@ function SchoolYogaPage() {
         </div>
       </section>
 
-      {/* 5 — ENQUIRY FORM */}
-      <section className="section-pad bg-muted/10 border-t border-border/40">
+      {/* 5 — AFTER THE DEMO & ENQUIRY / FAQS */}
+      <section className="section-pad bg-muted/10 border-b border-border/40">
         <div className="container-luxe">
-          <div className="mx-auto max-w-2xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Next Steps<span className="h-px w-10 bg-[color:var(--gold)]" /></p>
+            <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
+              After the demo
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              We review participation and suitable activities with school staff. If you wish to continue, we confirm schedule, supervision and equipment and send a VND quote.
+            </p>
+            <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
+              Supported across 20+ schools in Vietnam · Every session is led by an experienced, certified Yog Jivan yoga teacher.
+            </p>
+
+            <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={PROPOSAL_PDF_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="yog-jivan-school-yoga-proposal.pdf"
+                className="inline-flex items-center gap-2 rounded-xl border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10 px-4 py-2.5 text-xs font-semibold text-[color:var(--gold)] hover:bg-[color:var(--gold)]/20"
+              >
+                <FileDown className="h-4 w-4" />
+                Download the school yoga proposal (PDF)
+              </a>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-2xl">
             <SchoolYogaEnquiryForm
               lang="EN"
               heading="Request a Complimentary School Yoga Demo"
@@ -351,7 +312,7 @@ function SchoolYogaPage() {
         </div>
       </section>
 
-      {/* 6 — FAQS */}
+      {/* FAQS */}
       <section className="section-pad">
         <div className="container-luxe">
           <div className="mx-auto max-w-3xl">
@@ -378,8 +339,8 @@ function SchoolYogaPage() {
 
             <div className="mt-10 text-center text-xs text-muted-foreground">
               <span>Are you a parent seeking a home session with your children? Visit our </span>
-              <Link to="/online-family-yoga" className="text-[color:var(--gold)] hover:underline">
-                Private Online Family Yoga
+              <Link to="/online-family-yoga" hash="parent-child" className="text-[color:var(--gold)] hover:underline">
+                Private Online Family Yoga (Parent-Child)
               </Link>
               <span> or contact our team via </span>
               <Link to="/contact" className="text-[color:var(--gold)] hover:underline">
