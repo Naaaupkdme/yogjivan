@@ -32,6 +32,7 @@ const STATIC_PATHS = [
   "/research/yoga-participation-statistics",
   "/contact",
   "/privacy",
+  "/help",
 ];
 
 const ENTRIES: Entry[] = [

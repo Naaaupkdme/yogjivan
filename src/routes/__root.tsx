@@ -15,7 +15,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
+import { HelpLauncher } from "@/components/support/HelpLauncher";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { FloatingConsultationCTA } from "@/components/site/FloatingConsultationCTA";
 import { ExitIntentModal } from "@/components/site/ExitIntentModal";
@@ -486,7 +486,7 @@ function RootComponent() {
             <Outlet />
           </main>
           <SiteFooter />
-          <FloatingWhatsApp />
+          <HelpLauncher />
           <FloatingConsultationCTA />
           <ExitIntentModal />
           <MobileStickyCTA />

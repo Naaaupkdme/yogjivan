@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, CTABanner } from "@/components/site/PageHero";
 import { Testimonials } from "@/components/site/Testimonials";
 import { breadcrumbSchema } from "@/lib/schema";
+import { Star, MessageSquareHeart } from "lucide-react";
+import { openHelpSheet } from "@/components/support/HelpSheet";
 
 const TITLE = "Student Community & Google Reviews — Yog Jivan";
 const DESC =
@@ -39,6 +41,37 @@ function CommunityPage() {
         sub="Rather than publishing quotes we cannot verify, we point you to reviews you can read yourself and to the classes where you can judge the teaching in person."
       />
       <Testimonials />
+
+      <section className="section-pad-sm">
+        <div className="container-luxe">
+          <div className="glass-luxe mx-auto max-w-3xl rounded-[2rem] border border-[color:var(--gold)]/25 p-6 md:p-10">
+            <h2 className="font-display leading-[1.15]" style={{ fontSize: "clamp(1.4rem, 2.6vw, 2rem)" }}>
+              Share your experience
+            </h2>
+            <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
+              Have you practised with Yog Jivan? You can leave a public Google review for our physical studios in Vietnam, or share private, confidential feedback directly with our teaching and management team.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => openHelpSheet("reviews")}
+                className="btn-gold text-xs py-2.5 px-4 inline-flex items-center gap-2"
+              >
+                <Star className="h-3.5 w-3.5" />
+                <span>Leave a Google review</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => openHelpSheet("feedback")}
+                className="btn-ghost-gold text-xs py-2.5 px-4 inline-flex items-center gap-2"
+              >
+                <MessageSquareHeart className="h-3.5 w-3.5 text-[color:var(--gold)]" />
+                <span>Send private feedback</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="section-pad-sm">
         <div className="container-luxe">

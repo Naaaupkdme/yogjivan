@@ -1,4 +1,4 @@
-import { Sparkles, MessageCircle, ArrowDown, Clock, Phone, CalendarDays } from "lucide-react";
+import { Sparkles, MessageCircle, ArrowDown, Clock, Phone, CalendarDays, HelpCircle } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { SOCIAL } from "@/lib/social";
 import { CONTACT } from "@/lib/facts/contact";
@@ -7,6 +7,7 @@ import { VI_LABELS } from "@/lib/local-contact";
 import { isViPath } from "@/lib/locale-routes";
 import { PRIVATE_ROUTE, scrollToEnquiry, useEnquiryInView } from "@/components/site/EnquiryScroll";
 import { waHref, waIntentForPath } from "@/lib/wa";
+import { openHelpSheet } from "@/components/support/HelpSheet";
 
 const BTN =
   "inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-[color:var(--gold)] to-amber-300 px-3 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-black";
@@ -65,6 +66,16 @@ export function MobileStickyCTA() {
         aria-label="Liên hệ nhanh"
       >
         <div className="pointer-events-none absolute inset-x-0 -top-10 h-10 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="flex justify-center mb-1">
+          <button
+            type="button"
+            onClick={() => openHelpSheet("faq")}
+            className="inline-flex items-center gap-1 rounded-full bg-black/80 px-3 py-0.5 text-[0.62rem] font-medium text-muted-foreground hover:text-[color:var(--gold)] border border-white/10 shadow-sm backdrop-blur"
+          >
+            <HelpCircle className="h-3 w-3 text-[color:var(--gold)]" />
+            <span>Trợ giúp & Câu hỏi</span>
+          </button>
+        </div>
         <div className={SHELL}>
           <a
             href={CONTACT.zalo}
@@ -92,6 +103,16 @@ export function MobileStickyCTA() {
       aria-label="Quick booking"
     >
       <div className="pointer-events-none absolute inset-x-0 -top-10 h-10 bg-gradient-to-t from-black/70 to-transparent" />
+      <div className="flex justify-center mb-1">
+        <button
+          type="button"
+          onClick={() => openHelpSheet("faq")}
+          className="inline-flex items-center gap-1 rounded-full bg-black/80 px-3 py-0.5 text-[0.62rem] font-medium text-muted-foreground hover:text-[color:var(--gold)] border border-white/10 shadow-sm backdrop-blur"
+        >
+          <HelpCircle className="h-3 w-3 text-[color:var(--gold)]" />
+          <span>Help & FAQs</span>
+        </button>
+      </div>
       <div className={SHELL}>
         {PAGE_PRIMARY_CTA[clean] ? (
           <button

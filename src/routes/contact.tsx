@@ -1,7 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { ContactSection } from "@/components/site/ContactSection";
 import { breadcrumbSchema } from "@/lib/schema";
+import { HelpCircle } from "lucide-react";
+import { openHelpSheet } from "@/components/support/HelpSheet";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -29,6 +31,23 @@ export const Route = createFileRoute("/contact")({
   component: () => (
     <>
       <PageHero eyebrow="Contact" title="Begin the" accent="conversation." sub="A short message is all we need to design your next step." />
+      <div className="container-luxe -mt-6 mb-6">
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[color:var(--gold)]/25 bg-black/40 p-4 backdrop-blur-md">
+          <div className="flex items-center gap-3">
+            <HelpCircle className="h-5 w-5 text-[color:var(--gold)] shrink-0" />
+            <p className="text-xs text-muted-foreground">
+              <strong className="text-foreground">Need help with an existing booking?</strong> Reschedule, check timing, or send a support question to our team.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => openHelpSheet("ask")}
+            className="btn-ghost-gold text-xs py-1.5 px-3.5 whitespace-nowrap"
+          >
+            Open Help & Support &rarr;
+          </button>
+        </div>
+      </div>
       <ContactSection />
     </>
   ),

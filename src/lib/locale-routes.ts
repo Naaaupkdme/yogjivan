@@ -33,12 +33,18 @@ export const PAIR_SCHOOL: LocalePair = {
 /** Backwards-compatibility alias for tests and prior imports */
 export const PAIR_KIDS: LocalePair = PAIR_SCHOOL;
 
+export const PAIR_HELP: LocalePair = {
+  en: "/help",
+  vi: "/vi/tro-giup",
+};
+
 export const LOCALE_PAIRS: readonly LocalePair[] = [
   PAIR_HOME,
   PAIR_ONLINE,
   PAIR_PRIVATE,
   PAIR_CORPORATE,
   PAIR_SCHOOL,
+  PAIR_HELP,
 ] as const;
 
 /** All indexable Vietnamese routes (used by the sitemap). */
@@ -49,6 +55,7 @@ export const VI_ROUTES = [
   "/vi/yoga-1-kem-1-online",
   "/vi/yoga-doanh-nghiep",
   "/vi/yoga-hoc-duong",
+  "/vi/tro-giup",
 ] as const;
 
 const normalise = (path: string) => {

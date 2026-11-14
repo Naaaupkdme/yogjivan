@@ -167,6 +167,7 @@ export function SiteFooter() {
                 {VI_NAV_ITEMS.map((i) => (
                   <li key={i.href}><a href={i.href} className="hover:text-foreground">{i.label}</a></li>
                 ))}
+                <li><a href="/vi/tro-giup" className="hover:text-foreground">Trợ giúp & Góp ý</a></li>
                 <li><a href="/" hrefLang="en" className="hover:text-foreground">English website</a></li>
               </ul>
             ) : (
@@ -187,6 +188,7 @@ export function SiteFooter() {
               <li><Link to="/testimonials" className="hover:text-foreground">Testimonials</Link></li>
               <li><Link to="/blog" className="hover:text-foreground">Journal</Link></li>
               <li><Link to="/research/yoga-participation-statistics" className="hover:text-foreground">Research & Statistics</Link></li>
+              <li><Link to="/help" className="hover:text-foreground">Help & FAQs</Link></li>
               <li><Link to="/contact" className="hover:text-foreground">Contact & Book</Link></li>
             </ul>
             )}
@@ -264,6 +266,9 @@ export function SiteFooter() {
         <div className="flex flex-col gap-3 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Yog Jivan. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link to={isVi ? "/vi/tro-giup" : "/help"} className="underline-offset-4 hover:text-foreground hover:underline">
+              {isVi ? "Trợ giúp & Góp ý" : "Help & FAQs"}
+            </Link>
             <Link to="/privacy" className="underline-offset-4 hover:text-foreground hover:underline">
               {isVi ? "Chính sách bảo mật" : "Privacy Policy"}
             </Link>

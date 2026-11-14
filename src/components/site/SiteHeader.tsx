@@ -1,9 +1,10 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Facebook, Instagram, Menu, MessageCircle, Search, X, Youtube } from "lucide-react";
+import { Facebook, Instagram, Menu, MessageCircle, Search, X, Youtube, HelpCircle } from "lucide-react";
 import logo from "@/assets/yog_jivan_logo_gold.png.asset.json";
 import optimizedLogo from "@/assets/yog_jivan_logo_gold_112.webp.asset.json";
 import { isViPath, LANG_STORAGE_KEY, languageSwitchTarget } from "@/lib/locale-routes";
+import { openHelpSheet } from "@/components/support/HelpSheet";
 
 function saveLangPreference(code: "EN" | "VI") {
   try { localStorage.setItem(LANG_STORAGE_KEY, code); } catch {}
@@ -59,6 +60,7 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
     group: "More",
     items: [
       { href: "/blog", label: "Blog" },
+      { href: "/help", label: "Help & FAQs" },
       { href: "/contact", label: "Contact & Book" },
     ],
   },
@@ -67,7 +69,13 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
 
 /** Vietnamese full-menu structure — VI routes only, no English condition pages. */
 const VI_FULL_MENU: { group: string; items: { href: string; label: string }[] }[] = [
-  { group: "Yog Jivan", items: VI_NAV_ITEMS.map((i) => ({ href: i.href, label: i.label })) },
+  {
+    group: "Yog Jivan",
+    items: [
+      ...VI_NAV_ITEMS.map((i) => ({ href: i.href, label: i.label })),
+      { href: "/vi/tro-giup", label: "Trợ giúp & Góp ý" },
+    ],
+  },
 ];
 
 
@@ -241,6 +249,16 @@ export function SiteHeader() {
           </div>
 
           <SiteSearchButton className="h-8 w-8 sm:h-9 sm:w-9" />
+
+          <button
+            type="button"
+            onClick={() => openHelpSheet("faq")}
+            className="relative grid h-8 w-8 sm:h-9 sm:w-9 shrink-0 place-items-center rounded-full border border-border/60 text-muted-foreground transition hover:border-primary/40 hover:text-foreground"
+            aria-label={isVi ? "Trợ giúp & Câu hỏi" : "Help & Support"}
+            title={isVi ? "Trợ giúp & Câu hỏi" : "Help & Questions"}
+          >
+            <HelpCircle className="h-4 w-4" />
+          </button>
 
           <div className="flex shrink-0 items-center gap-0.5 sm:gap-1 md:border-l md:border-border/50 md:pl-1.5">
 
