@@ -30,8 +30,8 @@ describe("SharedYogaEnquiryForm — Couples, Family & Parent-Child", () => {
     // Participant select should NOT be displayed for couples (fixed at 2)
     expect(screen.queryByLabelText(/total participants in household/i)).toBeNull();
 
-    // Verify minor safety notice is clearly visible
-    expect(screen.getByText(/privacy & minor safety standard/i)).toBeDefined();
+    // Verify adult privacy standard notice is clearly visible (caregiver wording removed for adult-only couples)
+    expect(screen.getByText(/adult privacy standard/i)).toBeDefined();
   });
 
   it("renders family format with selectable participant count (3 or 4) and no duo option", () => {
@@ -50,6 +50,9 @@ describe("SharedYogaEnquiryForm — Couples, Family & Parent-Child", () => {
 
     fireEvent.change(paxSelect, { target: { value: "4" } });
     expect(paxSelect.value).toBe("4");
+
+    // Verify minor safety notice is clearly visible for family sessions
+    expect(screen.getByText(/privacy & minor safety standard/i)).toBeDefined();
   });
 
   it("supports initialParticipants and controlled participants prop", () => {

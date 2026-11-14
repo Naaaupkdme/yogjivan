@@ -11,7 +11,7 @@ import { Users, Video, Clock, Globe2, ShieldCheck, Heart, Sparkles, CheckCircle2
 
 const TITLE = "Private Online Family Yoga for 3 or 4 | Yog Jivan";
 const DESCRIPTION =
-  "Take a live private yoga session with three or four family members. Explore age-appropriate options and parent–child yoga with a participating adult.";
+  "Practise yoga live at home with three or four family members. Explore household sessions and a parent–child format with a participating adult.";
 const CANONICAL = "https://www.yogjivan.com/online-family-yoga";
 
 const FAQS = [
@@ -60,14 +60,14 @@ export const Route = createFileRoute("/online-family-yoga")({
       {
         rel: "preload",
         as: "image",
-        href: "/assets/preview/family-yoga-768.webp",
+        href: "/assets/preview/family-standing-upward-reach-mobile.webp",
         type: "image/webp",
         media: "(max-width: 768px)",
       },
       {
         rel: "preload",
         as: "image",
-        href: "/assets/preview/family-yoga-1400.webp",
+        href: "/assets/preview/family-standing-upward-reach-desktop.webp",
         type: "image/webp",
         media: "(min-width: 769px)",
       },
@@ -102,17 +102,15 @@ function FamilyYogaPage() {
     <>
       {/* 1 — FIRST SCREEN: HERO */}
       <PageHero
-        eyebrow="Household & Family Yoga"
+        eyebrow="Household & Family Yoga · Live Online"
         title="Private Online Family Yoga for 3 or 4"
-        sub="Make time to move together at home. An experienced, certified Yog Jivan yoga teacher guides your family live and adapts the session to the group."
-        image768="/assets/preview/family-yoga-768.webp"
-        image1400="/assets/preview/family-yoga-1400.webp"
-        imageWidth={1400}
-        imageHeight={1050}
-        imageAspectRatio="4/3"
-        imageAlt="Four household members practicing yoga together at home on mats with an adult caregiver"
-        imageCaption="AI-generated preview illustration · Does not depict Yog Jivan students or teachers"
-        contrastVeil
+        sub="Practise live at home with three or four family members. Your teacher can adapt movement options to your household."
+        image768="/assets/preview/family-standing-upward-reach-mobile.webp"
+        image1400="/assets/preview/family-standing-upward-reach-desktop.webp"
+        imageWidth={1440}
+        imageHeight={960}
+        imageAspectRatio="3/2"
+        imageAlt="Four household members standing on yoga mats reaching upward together during a private online family yoga class"
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
           3 participants · US$55 total &nbsp;|&nbsp; 4 participants · US$65 total
@@ -280,7 +278,34 @@ function FamilyYogaPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8">
+            <div className="rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8 overflow-hidden">
+              <div className="overflow-hidden rounded-xl border border-[color:var(--gold)]/20 shadow-md mb-6 aspect-[3/2] bg-muted/20">
+                <picture>
+                  <source
+                    media="(max-width: 768px)"
+                    srcSet="/assets/preview/family-seated-session-mobile.webp"
+                    type="image/webp"
+                    width={768}
+                    height={512}
+                  />
+                  <source
+                    media="(min-width: 769px)"
+                    srcSet="/assets/preview/family-seated-session-desktop.webp"
+                    type="image/webp"
+                    width={1440}
+                    height={960}
+                  />
+                  <img
+                    src="/assets/preview/family-seated-session-desktop.webp"
+                    alt="Four family members seated on mats facing a laptop during an online yoga setup"
+                    width={1440}
+                    height={960}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                </picture>
+              </div>
               <h3 className="text-lg font-semibold text-foreground">Room Framing for Up to Four</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 To keep all four participants in view, a wide camera angle and staggered floor layout are recommended. See our{" "}
@@ -321,7 +346,7 @@ function FamilyYogaPage() {
               Parent–child yoga at home
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-              A parent or caregiver takes part alongside the child. The teacher adjusts activities to the child’s age range and the space available.
+              For parent–child yoga, a parent or caregiver joins the session. Share the general age range and room setup so we can plan suitable activities.
             </p>
             <p className="mt-2 text-xs text-foreground/75 font-medium">
               We collect only adult contact details. Age range is discussed during enquiry; no child-identifying information, photos or health records are requested.
@@ -343,26 +368,26 @@ function FamilyYogaPage() {
           </div>
 
           <div className="mt-8 text-center">
-            <picture className="mx-auto mb-3 block max-w-xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 shadow-xl aspect-[16/9]">
+            <picture className="mx-auto mb-3 block max-w-xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 shadow-xl aspect-[3/2] bg-muted/20">
               <source
                 media="(max-width: 768px)"
-                srcSet="/assets/preview/parent-child-yoga-768.webp"
+                srcSet="/assets/preview/family-parent-child-tablet-practice-mobile.webp"
                 type="image/webp"
                 width={768}
-                height={432}
+                height={512}
               />
               <source
                 media="(min-width: 769px)"
-                srcSet="/assets/preview/parent-child-yoga-1400.webp"
+                srcSet="/assets/preview/family-parent-child-tablet-practice-desktop.webp"
                 type="image/webp"
-                width={1400}
-                height={788}
+                width={1440}
+                height={960}
               />
               <img
-                src="/assets/preview/parent-child-yoga-768.webp"
-                alt="An adult caregiver and child practicing yoga together at home"
-                width={768}
-                height={432}
+                src="/assets/preview/family-parent-child-tablet-practice-desktop.webp"
+                alt="A parent and child practising yoga together on mats guided by a tablet in an online session"
+                width={1440}
+                height={960}
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-cover"

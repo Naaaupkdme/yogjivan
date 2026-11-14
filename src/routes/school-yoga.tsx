@@ -8,7 +8,7 @@ import { CheckCircle2, Clock, FileDown, GraduationCap, Heart, ShieldCheck, Spark
 
 const TITLE = "Kids Yoga for Schools in Vietnam | Yog Jivan";
 const DESCRIPTION =
-  "Play-based 35–40 minute yoga sessions for schools and children’s groups in Vietnam. Based in the Hải Dương area. Ask about a teacher-led complimentary demo.";
+  "Plan a teacher-led school yoga class with stories, games and movement. See the 38-minute sample and request a complimentary school demo.";
 const CANONICAL = "https://www.yogjivan.com/school-yoga";
 const PROPOSAL_PDF_URL = "/assets/proposals/yog-jivan-school-yoga-proposal.pdf";
 
@@ -63,9 +63,9 @@ export const Route = createFileRoute("/school-yoga")({
         rel: "preload",
         as: "image",
         type: "image/webp",
-        href: "/assets/preview/school-hero-768.webp",
-        imageSrcSet: "/assets/preview/school-hero-768.webp 768w, /assets/preview/school-hero-1280.webp 1280w",
-        imageSizes: "(max-width: 768px) 100vw, 1280px",
+        href: "/assets/preview/school-standing-star-pose-mobile.webp",
+        imageSrcSet: "/assets/preview/school-standing-star-pose-mobile.webp 768w, /assets/preview/school-standing-star-pose-desktop.webp 1440w",
+        imageSizes: "(max-width: 768px) 100vw, 1440px",
       },
     ],
     scripts: [
@@ -96,14 +96,13 @@ function SchoolYogaPage() {
       {/* 1 — HERO */}
       <PageHero
         eyebrow="School Wellness · Hai Duong & Vietnam"
-        title="Play-based yoga for schools"
-        sub="Children explore movement, balance and breathing through stories and games, with activities adapted to their age group."
-        image768="/assets/preview/school-hero-768.webp"
-        image1400="/assets/preview/school-hero-1280.webp"
-        imageWidth={1280}
-        imageHeight={720}
-        imageAlt="Children practicing playful yoga in a bright school multipurpose room"
-        imageCaption="AI-generated preview illustration · Does not depict Yog Jivan students or teachers"
+        title="Play-Based Yoga for Schools"
+        sub="Children explore movement through games, stories and simple balance activities."
+        image768="/assets/preview/school-standing-star-pose-mobile.webp"
+        image1400="/assets/preview/school-standing-star-pose-desktop.webp"
+        imageWidth={1440}
+        imageHeight={960}
+        imageAlt="An Indian yoga teacher leading children in a play-based standing star pose in a bright school hall"
         contrastVeil
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
@@ -167,21 +166,19 @@ function SchoolYogaPage() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+            <div className="relative overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 bg-card/60 shadow-lg p-2">
               <picture>
-                <source srcSet="/assets/preview/school-benefits-768.webp" type="image/webp" />
+                <source media="(min-width: 768px)" srcSet="/assets/preview/school-seated-yoga-desktop.webp" type="image/webp" />
+                <source srcSet="/assets/preview/school-seated-yoga-mobile.webp" type="image/webp" />
                 <img
-                  src="/assets/preview/school-benefits-768.webp"
-                  alt="Children learning mindful movement and balance in a school setting"
-                  width={768}
-                  height={432}
+                  src="/assets/preview/school-seated-yoga-desktop.webp"
+                  alt="Children and a supervising teacher seated in a circle for a calm breathing exercise"
+                  width={1440}
+                  height={960}
                   loading="lazy"
-                  className="w-full h-auto object-cover aspect-[16/9]"
+                  className="w-full h-auto object-cover aspect-[3/2] rounded-xl"
                 />
               </picture>
-              <div className="p-3 bg-black/40 text-[0.7rem] text-muted-foreground text-center">
-                AI-generated preview illustration · Does not depict Yog Jivan students or teachers
-              </div>
             </div>
           </div>
         </div>
@@ -285,7 +282,7 @@ function SchoolYogaPage() {
               We review participation and suitable activities with school staff. If you wish to continue, we confirm schedule, supervision and equipment and send a VND quote.
             </p>
             <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
-              Supported across 20+ schools in Vietnam · Every session is led by an experienced, certified Yog Jivan yoga teacher.
+              Supported across school groups in Vietnam · Every session is led by an experienced, certified Yog Jivan yoga teacher.
             </p>
 
             <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3">

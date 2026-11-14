@@ -18,6 +18,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { FloatingConsultationCTA } from "@/components/site/FloatingConsultationCTA";
+import { LanguageSuggestionBanner } from "@/components/site/LanguageSuggestionBanner";
 import { ExitIntentModal } from "@/components/site/ExitIntentModal";
 import { CookieConsent } from "@/components/site/CookieConsent";
 import { initAnalytics, trackPageView, trackCta, metaEvent } from "@/lib/analytics";
@@ -488,6 +489,7 @@ function RootComponent() {
           <SiteFooter />
           <FloatingWhatsApp />
           <FloatingConsultationCTA />
+          <LanguageSuggestionBanner />
           <ExitIntentModal />
           <MobileStickyCTA />
           <CookieConsent />

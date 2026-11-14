@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ViHero, ViSection, ViEnquiryCTA, ViPageNav } from "@/components/site/vi/ViParts";
+import { PageHero } from "@/components/site/PageHero";
+import { ViSection, ViEnquiryCTA, ViPageNav } from "@/components/site/vi/ViParts";
 import { hreflangLinks, PAIR_PRIVATE, SITE_ORIGIN } from "@/lib/locale-routes";
 import { ONLINE_CLASS } from "@/lib/facts/online-class";
 import { SAFETY_NOTE_VI } from "@/lib/facts/vi-copy";
 import { CONTACT } from "@/lib/facts/contact";
 
 const CANONICAL = `${SITE_ORIGIN}/vi/yoga-1-kem-1-online`;
-const TITLE = "Yoga 1 Kèm 1 Online | Giáo Viên Riêng | Yog Jivan";
+const TITLE = "Yoga 1 Kèm 1 Online | Yog Jivan";
 const DESC =
-  "Yoga 1 kèm 1 online cùng giáo viên Yog Jivan được ghép phù hợp với trình độ và mục tiêu của bạn: buổi tập trực tiếp, lộ trình riêng, lịch học được sắp xếp qua trao đổi.";
+  "Tập yoga trực tuyến 1 kèm 1 với giáo viên Yog Jivan có chứng chỉ. Buổi lẻ 60 phút giá 25 USD. Xem các gói và gửi yêu cầu đặt lịch.";
 
 export const Route = createFileRoute("/vi/yoga-1-kem-1-online")({
   head: () => ({
@@ -22,7 +23,24 @@ export const Route = createFileRoute("/vi/yoga-1-kem-1-online")({
       { property: "og:locale", content: "vi_VN" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: CANONICAL }, ...hreflangLinks(PAIR_PRIVATE)],
+    links: [
+      { rel: "canonical", href: CANONICAL },
+      ...hreflangLinks(PAIR_PRIVATE),
+      {
+        rel: "preload",
+        as: "image",
+        href: "/assets/preview/private-yoga-master-anil-live-coaching-mobile.webp",
+        type: "image/webp",
+        media: "(max-width: 768px)",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/assets/preview/private-yoga-master-anil-live-coaching-desktop.webp",
+        type: "image/webp",
+        media: "(min-width: 769px)",
+      },
+    ],
   }),
   component: ViPrivate,
 });
@@ -53,13 +71,71 @@ const STEPS = [
 function ViPrivate() {
   return (
     <>
-      <ViHero
-        eyebrow="Chương trình cao cấp"
-        title="Yoga 1 Kèm 1 Online"
-        lead={`Buổi tập yoga trực tiếp ${ONLINE_CLASS.durationMinutes} phút dành riêng cho bạn, cùng một giáo viên Yog Jivan được ghép phù hợp với trình độ, mục tiêu và ngôn ngữ của bạn. Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm thuộc đội ngũ Yog Jivan hướng dẫn. Buổi yoga riêng 60 phút · 25 USD mỗi buổi.`}
-        primary={{ href: "#tu-van", label: "Đăng ký tư vấn" }}
-        secondary={{ href: CONTACT.zalo, label: "Nhắn Zalo" }}
-      />
+      <PageHero
+        eyebrow="Yoga 1 Kèm 1 Online · Lớp Học Riêng"
+        title="Yoga 1 kèm 1 online"
+        sub="Tập trực tiếp với một giáo viên theo dõi động tác và hướng dẫn trong suốt buổi. Buổi 60 phút được điều chỉnh theo trình độ và mục tiêu của bạn."
+        image768="/assets/preview/private-yoga-master-anil-live-coaching-mobile.webp"
+        image1400="/assets/preview/private-yoga-master-anil-live-coaching-desktop.webp"
+        imageWidth={1440}
+        imageHeight={960}
+        imageAspectRatio="3/2"
+        imageAlt="Thầy Anil ngồi trên thảm tập hướng về màn hình máy tính trong buổi yoga riêng 1 kèm 1 trực tuyến"
+      >
+        <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
+          Buổi yoga riêng 60 phút · 25 USD mỗi buổi · Các gói từ 249 USD
+        </div>
+        <p className="mt-3 text-xs font-semibold text-foreground/90">
+          Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm thuộc đội ngũ Yog Jivan hướng dẫn.
+        </p>
+        <div className="mt-5 flex flex-wrap items-center gap-4">
+          <a href="#tu-van" className="btn-gold">
+            Gửi yêu cầu tập riêng
+          </a>
+          <a
+            href={CONTACT.zalo}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-ghost-gold"
+          >
+            Nhắn Zalo tư vấn
+          </a>
+        </div>
+      </PageHero>
+
+      <ViSection id="meet-your-teacher" heading="Đội ngũ giáo viên Yog Jivan">
+        <div className="glass-soft overflow-hidden rounded-2xl sm:flex sm:items-stretch border border-white/10 max-w-3xl">
+          <img
+            src="/assets/preview/master-anil-profile.webp"
+            alt="Master Anil Choudhary, Sáng lập & Giáo viên Trưởng tại Yog Jivan"
+            width={768}
+            height={960}
+            loading="lazy"
+            className="aspect-[4/5] w-full object-cover object-top sm:w-2/5"
+          />
+          <div className="p-6 sm:w-3/5">
+            <h3 className="font-display text-xl text-foreground">Master Anil Choudhary</h3>
+            <p className="mt-1 text-xs uppercase tracking-wider text-[color:var(--gold)] font-semibold">
+              Sáng lập &amp; Giáo viên Trưởng
+            </p>
+            <p className="mt-3 text-sm text-foreground/80 leading-relaxed">
+              Hơn 12 năm kinh nghiệm giảng dạy yoga truyền thống Ấn Độ, hướng dẫn học viên từ cơ bản đến nâng cao.
+            </p>
+            <ul className="mt-3 text-sm text-foreground/75 space-y-1">
+              <li>— Hatha Yoga truyền thống, Ashtanga và Pranayama</li>
+              <li>— Phương pháp điều chỉnh an toàn, chú trọng trị liệu</li>
+            </ul>
+            <p className="mt-3 text-xs text-foreground/65">
+              Ngôn ngữ giảng dạy: Tiếng Anh, Tiếng Việt, Tiếng Hindi
+            </p>
+            <div className="mt-4 flex flex-wrap items-center gap-3">
+              <a href="#tu-van" className="btn-ghost-gold text-xs py-2 px-3 inline-flex items-center">
+                Hỏi về lịch dạy của giáo viên
+              </a>
+            </div>
+          </div>
+        </div>
+      </ViSection>
 
       <ViSection heading="Phù hợp với ai">
         <p>

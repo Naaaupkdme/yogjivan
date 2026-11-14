@@ -6,9 +6,9 @@ import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { hreflangLinks, PAIR_CORPORATE } from "@/lib/locale-routes";
 import { Clock, CheckCircle2, Users, FileDown, Sparkles } from "lucide-react";
 
-const TITLE = "Yoga doanh nghiệp tại Việt Nam | Yog Jivan";
+const TITLE = "Yoga Doanh Nghiệp tại Việt Nam | Yog Jivan";
 const DESCRIPTION =
-  "Yoga tại nơi làm việc cho doanh nghiệp tại Việt Nam. Khu vực Hải Dương, Hải Phòng. Đăng ký buổi trải nghiệm 30 phút miễn phí hoặc tải bản đề xuất song ngữ.";
+  "Tổ chức yoga trên ghế hoặc trên thảm cho nhân viên. Yog Jivan hoạt động tại khu vực Hải Dương, Hải Phòng. Đăng ký buổi thử 30 phút miễn phí.";
 const CANONICAL = "https://www.yogjivan.com/vi/yoga-doanh-nghiep";
 const PROPOSAL_PDF_URL = "/assets/proposals/yog-jivan-corporate-yoga-proposal.pdf";
 
@@ -64,9 +64,15 @@ export const Route = createFileRoute("/vi/yoga-doanh-nghiep")({
         rel: "preload",
         as: "image",
         type: "image/webp",
-        href: "/assets/preview/corporate-hero-768.webp",
-        imageSrcSet: "/assets/preview/corporate-hero-768.webp 768w, /assets/preview/corporate-hero-1280.webp 1280w",
-        imageSizes: "(max-width: 768px) 100vw, 1280px",
+        href: "/assets/preview/corporate-chair-yoga-office-mobile.webp",
+        media: "(max-width: 768px)",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        type: "image/webp",
+        href: "/assets/preview/corporate-chair-yoga-office-desktop.webp",
+        media: "(min-width: 769px)",
       },
     ],
     scripts: [
@@ -96,19 +102,18 @@ function ViCorporatePage() {
     <>
       {/* 1 — HERO */}
       <PageHero
-        eyebrow="Sức khỏe doanh nghiệp · Hải Dương & Việt Nam"
+        eyebrow="Sức khỏe doanh nghiệp · Việt Nam"
         title="Yoga tại nơi làm việc"
-        sub="Cho đội ngũ một khoảng nghỉ vận động có hướng dẫn, với động tác nhẹ trên ghế và bài thở có thể tập lại ngay tại bàn."
-        image768="/assets/preview/corporate-hero-768.webp"
-        image1400="/assets/preview/corporate-hero-1280.webp"
-        imageWidth={1280}
-        imageHeight={720}
-        imageAlt="Nhân viên văn phòng tập yoga trên ghế cùng nhau"
-        imageCaption="Hình ảnh minh họa tạo bởi AI · Không miêu tả học viên hoặc giáo viên Yog Jivan"
-        contrastVeil
+        sub="Mang một khoảng nghỉ vận động có hướng dẫn đến nơi làm việc."
+        image768="/assets/preview/corporate-chair-yoga-office-mobile.webp"
+        image1400="/assets/preview/corporate-chair-yoga-office-desktop.webp"
+        imageWidth={1440}
+        imageHeight={960}
+        imageAspectRatio="3/2"
+        imageAlt="Giảng viên yoga và nhân viên văn phòng tập yoga trên ghế trong phòng họp hiện đại"
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          Yog Jivan hoạt động tại khu vực Hải Dương, Hải Phòng. Hãy gửi địa điểm nơi làm việc để chúng tôi xác nhận khả năng tổ chức.
+          Yog Jivan hoạt động tại khu vực Hải Dương, Hải Phòng. Gửi địa điểm để chúng tôi xác nhận khả năng tổ chức tại nơi làm việc.
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm thuộc đội ngũ Yog Jivan hướng dẫn.
@@ -122,7 +127,7 @@ function ViCorporatePage() {
             }}
             className="btn-gold"
           >
-            Đăng ký buổi trải nghiệm 30 phút miễn phí
+            Đăng ký demo 30 phút miễn phí
           </button>
           <a
             href={PROPOSAL_PDF_URL}
@@ -132,7 +137,7 @@ function ViCorporatePage() {
             className="btn-ghost-gold inline-flex items-center gap-2"
           >
             <FileDown className="h-4 w-4 text-[color:var(--gold)]" />
-            Tải đề xuất yoga doanh nghiệp (PDF)
+            Tải bản đề xuất PDF
           </a>
         </div>
       </PageHero>
@@ -147,7 +152,7 @@ function ViCorporatePage() {
                 Nhân viên nhận được gì?
               </h2>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                Vận động nhẹ sau khi ngồi lâu. Tập thở chậm giữa giờ làm. Ghi nhớ vài động tác có thể tập lại ngay tại bàn.
+                Nhân viên tập động tác nhẹ cho cổ, vai và lưng, rồi ghi nhớ vài động tác có thể tập lại ngay tại bàn.
               </p>
               <div className="mt-6 space-y-4">
                 <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">

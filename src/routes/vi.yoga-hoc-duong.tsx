@@ -7,9 +7,9 @@ import { hreflangLinks, PAIR_SCHOOL } from "@/lib/locale-routes";
 import { CONTACT } from "@/lib/facts/contact";
 import { CheckCircle2, Clock, FileDown, GraduationCap, Heart, ShieldCheck, Sparkles, Users } from "lucide-react";
 
-const TITLE = "Yoga học đường tại Việt Nam | Yog Jivan";
+const TITLE = "Yoga Học Đường cho Trẻ Em | Yog Jivan";
 const DESCRIPTION =
-  "Lớp yoga 35–40 phút qua trò chơi và kể chuyện cho trẻ em tại các trường khu vực Hải Dương, Việt Nam. Đăng ký buổi trải nghiệm miễn phí.";
+  "Xem lịch mẫu 38 phút với trò chơi, vận động theo câu chuyện và thăng bằng. Đăng ký buổi yoga học đường trải nghiệm miễn phí.";
 const CANONICAL = "https://www.yogjivan.com/vi/yoga-hoc-duong";
 const PROPOSAL_PDF_URL = "/assets/proposals/yog-jivan-school-yoga-proposal.pdf";
 
@@ -65,9 +65,9 @@ export const Route = createFileRoute("/vi/yoga-hoc-duong")({
         rel: "preload",
         as: "image",
         type: "image/webp",
-        href: "/assets/preview/school-hero-768.webp",
-        imageSrcSet: "/assets/preview/school-hero-768.webp 768w, /assets/preview/school-hero-1280.webp 1280w",
-        imageSizes: "(max-width: 768px) 100vw, 1280px",
+        href: "/assets/preview/school-standing-star-pose-mobile.webp",
+        imageSrcSet: "/assets/preview/school-standing-star-pose-mobile.webp 768w, /assets/preview/school-standing-star-pose-desktop.webp 1440w",
+        imageSizes: "(max-width: 768px) 100vw, 1440px",
       },
     ],
     scripts: [
@@ -99,13 +99,12 @@ function ViSchoolYogaPage() {
       <PageHero
         eyebrow="Yoga học đường · Hải Dương & Việt Nam"
         title="Yoga qua trò chơi cho trường học"
-        sub="Các em khám phá vận động, thăng bằng và nhịp thở qua trò chơi và câu chuyện phù hợp với lứa tuổi."
-        image768="/assets/preview/school-hero-768.webp"
-        image1400="/assets/preview/school-hero-1280.webp"
-        imageWidth={1280}
-        imageHeight={720}
-        imageAlt="Các em học sinh vui vẻ tập yoga qua trò chơi tại trường học"
-        imageCaption="Hình ảnh minh họa tạo bởi AI · Không miêu tả học sinh hoặc giáo viên Yog Jivan"
+        sub="Các em khám phá vận động qua trò chơi, câu chuyện và hoạt động thăng bằng đơn giản."
+        image768="/assets/preview/school-standing-star-pose-mobile.webp"
+        image1400="/assets/preview/school-standing-star-pose-desktop.webp"
+        imageWidth={1440}
+        imageHeight={960}
+        imageAlt="Giáo viên yoga hướng dẫn học sinh tư thế ngôi sao thăng bằng trong hội trường sáng thoáng"
         contrastVeil
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
@@ -169,21 +168,19 @@ function ViSchoolYogaPage() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+            <div className="relative overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 bg-card/60 shadow-lg p-2">
               <picture>
-                <source srcSet="/assets/preview/school-benefits-768.webp" type="image/webp" />
+                <source media="(min-width: 768px)" srcSet="/assets/preview/school-seated-yoga-desktop.webp" type="image/webp" />
+                <source srcSet="/assets/preview/school-seated-yoga-mobile.webp" type="image/webp" />
                 <img
-                  src="/assets/preview/school-benefits-768.webp"
-                  alt="Trẻ em rèn luyện khả năng thăng bằng và hợp tác"
-                  width={768}
-                  height={432}
+                  src="/assets/preview/school-seated-yoga-desktop.webp"
+                  alt="Trẻ em và giáo viên giám sát ngồi thành vòng tròn thực hành bài tập thở tĩnh tâm"
+                  width={1440}
+                  height={960}
                   loading="lazy"
-                  className="w-full h-auto object-cover aspect-[16/9]"
+                  className="w-full h-auto object-cover aspect-[3/2] rounded-xl"
                 />
               </picture>
-              <div className="p-3 bg-black/40 text-[0.7rem] text-muted-foreground text-center">
-                Hình ảnh minh họa tạo bởi AI · Không miêu tả học sinh hoặc giáo viên Yog Jivan
-              </div>
             </div>
           </div>
         </div>
@@ -287,7 +284,7 @@ function ViSchoolYogaPage() {
               Chúng tôi cùng nhà trường đánh giá mức độ tương tác và hoạt động phù hợp. Nếu nhà trường muốn tiếp tục, chúng tôi sẽ thống nhất lịch trình, nhân sự giám sát, dụng cụ và gửi báo giá chi tiết theo VNĐ.
             </p>
             <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
-              Đã đồng hành cùng hơn 20 trường học tại Việt Nam · Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm hướng dẫn.
+              Đã đồng hành cùng các nhóm trường học tại Việt Nam · Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm hướng dẫn.
             </p>
 
             <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-3">

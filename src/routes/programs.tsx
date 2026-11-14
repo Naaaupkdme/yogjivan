@@ -84,12 +84,14 @@ export const Route = createFileRoute("/programs")({
       <Services />
       <section className="section-pad-sm">
         <div className="container-luxe">
-          <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Explore further</p>
+          <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Explore our yoga formats</p>
           <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            <span>Practice from anywhere with <Link to="/online-yoga-classes" className="text-[color:var(--gold)] hover:underline">live online yoga classes</Link>.</span>
-            <span>Go one-on-one with <Link to="/private-online-yoga" className="text-[color:var(--gold)] hover:underline">private yoga</Link>.</span>
-            <span>Practise together with <Link to="/online-couples-yoga" className="text-[color:var(--gold)] hover:underline">couples yoga</Link> or <Link to="/online-family-yoga" className="text-[color:var(--gold)] hover:underline">family yoga</Link>.</span>
-            <span>Bring practice to your team with <Link to="/corporate" className="text-[color:var(--gold)] hover:underline">corporate wellness yoga</Link>, or explore <Link to="/school-yoga" className="text-[color:var(--gold)] hover:underline">kids yoga for schools</Link>.</span>
+            <span>One-on-one coaching: <Link to="/private-online-yoga" className="text-[color:var(--gold)] font-medium hover:underline">Private Online Yoga</Link>.</span>
+            <span>Two adults together: <Link to="/online-couples-yoga" className="text-[color:var(--gold)] font-medium hover:underline">Online Yoga for Two</Link>.</span>
+            <span>Household sessions: <Link to="/online-family-yoga" className="text-[color:var(--gold)] font-medium hover:underline">Family Yoga</Link>.</span>
+            <span>Workplace movement: <Link to="/corporate" className="text-[color:var(--gold)] font-medium hover:underline">Corporate Yoga</Link>.</span>
+            <span>Play-based school sessions: <Link to="/school-yoga" className="text-[color:var(--gold)] font-medium hover:underline">School Yoga</Link>.</span>
+            <span>Small-group live practice: <Link to="/online-yoga-classes" className="text-[color:var(--gold)] font-medium hover:underline">Live Online Yoga Classes</Link>.</span>
           </div>
           <div className="mt-6">
             <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Focus areas</p>

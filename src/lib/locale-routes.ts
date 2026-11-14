@@ -69,10 +69,19 @@ export function enCounterpart(path: string): string | null {
   return pair ? pair.en : null;
 }
 
+export const VI_BLOG_SLUGS = [
+  "checklist-to-chuc-buoi-yoga-tai-van-phong",
+  "chuan-bi-buoi-yoga-hoc-duong-dau-tien",
+] as const;
+
 export function isViPath(path: string): boolean {
   const clean = normalise(path);
   // Boundary-safe: "/video" or "/vietnam" must NOT classify as Vietnamese.
-  return clean === "/vi" || clean.startsWith("/vi/");
+  if (clean === "/vi" || clean.startsWith("/vi/")) return true;
+  for (const slug of VI_BLOG_SLUGS) {
+    if (clean === `/blog/${slug}` || clean === `/blog/${slug}/`) return true;
+  }
+  return false;
 }
 
 /**

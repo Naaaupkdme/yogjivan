@@ -6,9 +6,9 @@ import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { hreflangLinks, PAIR_CORPORATE } from "@/lib/locale-routes";
 import { Clock, CheckCircle2, Users, FileDown, Sparkles, ArrowDown } from "lucide-react";
 
-const TITLE = "Corporate Yoga in Vietnam | Yog Jivan";
+const TITLE = "Corporate Yoga in Vietnam: Chair & Mat | Yog Jivan";
 const DESCRIPTION =
-  "On-site chair yoga and guided movement for teams in Vietnam. Based in the Hải Dương area, Hải Phòng. Request a complimentary 30-minute office demo or download our proposal.";
+  "Plan on-site chair or mat yoga for your team. Based in the Hải Dương area, Hải Phòng. Request a complimentary 30-minute chair yoga demo.";
 const CANONICAL = "https://www.yogjivan.com/corporate";
 const PROPOSAL_PDF_URL = "/assets/proposals/yog-jivan-corporate-yoga-proposal.pdf";
 
@@ -63,9 +63,15 @@ export const Route = createFileRoute("/corporate")({
         rel: "preload",
         as: "image",
         type: "image/webp",
-        href: "/assets/preview/corporate-hero-768.webp",
-        imageSrcSet: "/assets/preview/corporate-hero-768.webp 768w, /assets/preview/corporate-hero-1280.webp 1280w",
-        imageSizes: "(max-width: 768px) 100vw, 1280px",
+        href: "/assets/preview/corporate-chair-yoga-office-mobile.webp",
+        media: "(max-width: 768px)",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        type: "image/webp",
+        href: "/assets/preview/corporate-chair-yoga-office-desktop.webp",
+        media: "(min-width: 769px)",
       },
     ],
     scripts: [
@@ -95,16 +101,15 @@ function CorporatePage() {
     <>
       {/* 1 — HERO */}
       <PageHero
-        eyebrow="Corporate Wellness · Hai Duong & Vietnam"
-        title="Corporate yoga at your workplace"
-        sub="Give your team a guided movement break with gentle chair exercises and breathing they can repeat at their desks."
-        image768="/assets/preview/corporate-hero-768.webp"
-        image1400="/assets/preview/corporate-hero-1280.webp"
-        imageWidth={1280}
-        imageHeight={720}
-        imageAlt="Team practicing seated chair yoga in an office setting"
-        imageCaption="AI-generated preview illustration · Does not depict Yog Jivan students or teachers"
-        contrastVeil
+        eyebrow="Corporate Wellness · Vietnam"
+        title="Corporate Yoga at Your Workplace"
+        sub="Bring a guided movement break to your workplace."
+        image768="/assets/preview/corporate-chair-yoga-office-mobile.webp"
+        image1400="/assets/preview/corporate-chair-yoga-office-desktop.webp"
+        imageWidth={1440}
+        imageHeight={960}
+        imageAspectRatio="3/2"
+        imageAlt="An illustrative yoga instructor and office workers practising chair yoga in a modern meeting room"
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
           Based in the Hải Dương area, Hải Phòng. Share your workplace location and we’ll confirm on-site availability.
@@ -121,7 +126,7 @@ function CorporatePage() {
             }}
             className="btn-gold"
           >
-            Request a complimentary 30-minute demo
+            Request complimentary demo
           </button>
           <a
             href={PROPOSAL_PDF_URL}
@@ -131,7 +136,7 @@ function CorporatePage() {
             className="btn-ghost-gold inline-flex items-center gap-2"
           >
             <FileDown className="h-4 w-4 text-[color:var(--gold)]" />
-            Download the corporate yoga proposal (PDF)
+            Download proposal PDF
           </a>
         </div>
       </PageHero>
@@ -146,7 +151,7 @@ function CorporatePage() {
                 What employees take away
               </h2>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                Move gently after long periods of sitting. Practise slow breathing between tasks. Learn a few desk-friendly moves to repeat later.
+                Staff try gentle movements for the neck, shoulders and back, then learn a few moves they can repeat at their desks.
               </p>
               <div className="mt-6 space-y-4">
                 <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4">

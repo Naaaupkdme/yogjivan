@@ -8,9 +8,9 @@ import { waHref } from "@/lib/wa";
 import { COUPLES_OFFER } from "@/lib/facts/shared-offers";
 import { Users, Video, Clock, Globe2, ShieldCheck, HeartHandshake, Sparkles, CheckCircle2 } from "lucide-react";
 
-const TITLE = "Online Couples Yoga for Two | Yog Jivan";
+const TITLE = "Online Couples Yoga for Two Adults | Yog Jivan";
 const DESCRIPTION =
-  "Book a live private yoga class for two adults. One certified teacher guides both partners and adapts the movements to each person’s level.";
+  "Take a private live yoga class for two adults. Practise with a partner or friend, with movement options for each person and guidance from one teacher.";
 const CANONICAL = "https://www.yogjivan.com/online-couples-yoga";
 
 const FAQS = [
@@ -63,14 +63,14 @@ export const Route = createFileRoute("/online-couples-yoga")({
       {
         rel: "preload",
         as: "image",
-        href: "/assets/preview/couples-yoga-768.webp",
+        href: "/assets/preview/couples-friends-standing-side-reach-mobile.webp",
         type: "image/webp",
         media: "(max-width: 768px)",
       },
       {
         rel: "preload",
         as: "image",
-        href: "/assets/preview/couples-yoga-1400.webp",
+        href: "/assets/preview/couples-friends-standing-side-reach-desktop.webp",
         type: "image/webp",
         media: "(min-width: 769px)",
       },
@@ -102,17 +102,15 @@ function CouplesYogaPage() {
     <>
       {/* 1 — FIRST SCREEN: HERO */}
       <PageHero
-        eyebrow="Partner & Couples Yoga"
+        eyebrow="Partner & Couples Yoga · Live Online"
         title="Live Online Yoga for Two"
-        sub="Practise together in a private 60-minute session. One experienced, certified Yog Jivan yoga teacher guides both adults and adapts the movements to each person."
-        image768="/assets/preview/couples-yoga-768.webp"
-        image1400="/assets/preview/couples-yoga-1400.webp"
-        imageWidth={1400}
-        imageHeight={788}
-        imageAspectRatio="16/9"
-        imageAlt="Two adults practicing yoga together at home on separate mats during an online session"
-        imageCaption="AI-generated preview illustration · Does not depict Yog Jivan students or teachers"
-        contrastVeil
+        sub="Two adults. One live teacher. A private 60-minute class with options for each person."
+        image768="/assets/preview/couples-friends-standing-side-reach-mobile.webp"
+        image1400="/assets/preview/couples-friends-standing-side-reach-desktop.webp"
+        imageWidth={1440}
+        imageHeight={960}
+        imageAspectRatio="3/2"
+        imageAlt="Two adults practising an active standing stretch side by side on mats during an online yoga session"
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
           US$45 total for two adults · 60 minutes live · One teacher
@@ -129,7 +127,7 @@ function CouplesYogaPage() {
             }}
             className="btn-gold"
           >
-            Enquire for two adults
+            Enquire for two
           </button>
           <button
             type="button"
@@ -157,7 +155,7 @@ function CouplesYogaPage() {
               Different levels? You can still practise together.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">
-              Start with the same guided warm-up. Your teacher can offer different versions of a movement so each person can work at a comfortable pace. A partner can be a friend, spouse or another adult.
+              Start with the same guided warm-up. If one person is newer, the teacher can give each of you a version of the same movement. Your teacher provides live visual cues when both participants are in view. A partner can be a friend, spouse or another adult.
             </p>
           </div>
 
@@ -260,7 +258,34 @@ function CouplesYogaPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8">
+            <div className="rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8 overflow-hidden">
+              <div className="overflow-hidden rounded-xl border border-[color:var(--gold)]/20 shadow-md mb-6 aspect-[3/2] bg-muted/20">
+                <picture>
+                  <source
+                    media="(max-width: 768px)"
+                    srcSet="/assets/preview/couples-friends-seated-session-mobile.webp"
+                    type="image/webp"
+                    width={768}
+                    height={512}
+                  />
+                  <source
+                    media="(min-width: 769px)"
+                    srcSet="/assets/preview/couples-friends-seated-session-desktop.webp"
+                    type="image/webp"
+                    width={1440}
+                    height={960}
+                  />
+                  <img
+                    src="/assets/preview/couples-friends-seated-session-desktop.webp"
+                    alt="Two adults seated on yoga mats in front of a laptop for an online yoga consultation"
+                    width={1440}
+                    height={960}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                </picture>
+              </div>
               <h3 className="text-lg font-semibold text-foreground">Camera & Room Setup for Two</h3>
               <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
                 Setting up for two is simple with household gear. For step-by-step instructions, see our{" "}

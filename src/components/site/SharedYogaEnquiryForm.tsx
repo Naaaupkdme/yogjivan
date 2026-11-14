@@ -411,10 +411,12 @@ export function SharedYogaEnquiryForm({
         <div className="rounded-xl border border-border/40 bg-muted/20 p-3 text-[11px] leading-relaxed text-muted-foreground">
           <p className="flex items-center gap-1.5 font-medium text-foreground">
             <ShieldCheck className="h-3.5 w-3.5 text-[color:var(--gold)]" />
-            Privacy & Minor Safety Standard
+            {form.format === "couples" ? "Adult Privacy Standard" : "Privacy & Minor Safety Standard"}
           </p>
           <p className="mt-1">
-            An adult caregiver books and attends every shared session. We do not ask for or store minor contact details, birth dates, or health history on enquiry forms.
+            {form.format === "couples"
+              ? "We collect only your contact information to schedule and confirm your two-adult session. No sensitive health history is requested on this form."
+              : "An adult books and attends every shared household session. We do not ask for or store minor contact details, birth dates, or health history on enquiry forms."}
           </p>
         </div>
 

@@ -10,9 +10,9 @@ export function PageHero({
   image,
   image768,
   image1400,
-  imageWidth = 1400,
-  imageHeight = 788,
-  imageAspectRatio = "16/9",
+  imageWidth = 1440,
+  imageHeight = 960,
+  imageAspectRatio = "3/2",
   imagePosition = "object-center",
   imageAlt = "",
   imageCaption,
@@ -29,7 +29,7 @@ export function PageHero({
   image1400?: string;
   imageWidth?: number;
   imageHeight?: number;
-  imageAspectRatio?: "16/9" | "4/3" | string;
+  imageAspectRatio?: "3/2" | "16/9" | "4/3" | string;
   imagePosition?: string;
   imageAlt?: string;
   imageCaption?: string;
@@ -39,98 +39,90 @@ export function PageHero({
 }) {
   const hasImage = Boolean(image || image768 || image1400);
   const fallbackSrc = image || image1400 || image768 || "";
-  const aspectClass = imageAspectRatio === "4/3" ? "aspect-[4/3]" : "aspect-[16/9]";
 
   return (
-    <section className="relative isolate overflow-hidden pt-[calc(var(--hdr-h,64px)+3.5rem)] pb-16 md:pt-[calc(var(--hdr-h,80px)+4.5rem)] md:pb-24">
-      {contrastVeil && (
-        <>
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_90%_at_18%_45%,color-mix(in_oklab,var(--onyx)_78%,transparent),transparent_70%)]"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,transparent_33%,color-mix(in_oklab,var(--onyx)_72%,transparent))]"
-          />
-        </>
-      )}
+    <section className="relative isolate overflow-hidden pt-[calc(var(--hdr-h,64px)+3rem)] pb-14 md:pt-[calc(var(--hdr-h,80px)+4rem)] md:pb-20">
       <div className="pointer-events-none absolute inset-0 -z-10 ambient-grid opacity-20" />
-      <div className="pointer-events-none absolute inset-x-0 top-14 -z-10 mx-auto h-64 w-[56rem] max-w-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_72%)] blur-3xl" />
-
-      {/* Desktop-only dark overlay so text stays readable over backdrop */}
-      {hasImage && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10 hidden md:block bg-[linear-gradient(180deg,color-mix(in_oklab,var(--onyx)_45%,transparent),color-mix(in_oklab,var(--onyx)_70%,transparent))]"
-        />
-      )}
+      <div className="pointer-events-none absolute inset-x-0 top-14 -z-10 mx-auto h-64 w-[56rem] max-w-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_16%,transparent),transparent_72%)] blur-3xl" />
 
       <div className="container-luxe">
-        <p className="eyebrow">
-          <span className="h-px w-10 bg-primary" />{eyebrow}
-        </p>
-        <h1
-          className="mt-5 max-w-5xl fluid-title"
-          style={contrastVeil ? { textShadow: "0 2px 24px color-mix(in oklab, var(--onyx) 85%, transparent)" } : undefined}
-        >
-          {title} {accent && <span className="italic text-gold-gradient">{accent}</span>}
-        </h1>
-        {sub && (
-          <p
-            className={`mt-5 max-w-2xl text-base leading-relaxed md:text-lg ${contrastVeil ? "text-foreground/85" : "text-muted-foreground"}`}
-          >
-            {sub}
-          </p>
-        )}
-
-        {children && <div className="mt-8">{children}</div>}
-
-        {hasImage && (
-          <div className={stackImageOnMobile ? "relative mt-8 md:mt-0" : "contents"}>
-            <picture
-              className={
-                stackImageOnMobile
-                  ? `relative block w-full max-w-2xl overflow-hidden rounded-2xl border border-[color:var(--gold)]/25 shadow-xl ${aspectClass} md:aspect-auto md:max-w-none md:rounded-none md:border-0 md:shadow-none md:absolute md:inset-0 md:-z-10 md:h-full`
-                  : "absolute inset-0 -z-10 block h-full w-full overflow-hidden"
-              }
-            >
-              {image768 && (
-                <source
-                  media="(max-width: 768px)"
-                  srcSet={image768}
-                  type="image/webp"
-                  width={imageAspectRatio === "4/3" ? 768 : 768}
-                  height={imageAspectRatio === "4/3" ? 576 : 432}
-                />
+        {hasImage ? (
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            {/* Copy column */}
+            <div className="lg:col-span-7">
+              <p className="eyebrow">
+                <span className="h-px w-10 bg-primary" />{eyebrow}
+              </p>
+              <h1 className="mt-5 fluid-title leading-[1.08]">
+                {title} {accent && <span className="italic text-gold-gradient">{accent}</span>}
+              </h1>
+              {sub && (
+                <p className="mt-5 max-w-2xl text-base leading-relaxed text-foreground/85 md:text-lg">
+                  {sub}
+                </p>
               )}
-              {image1400 && (
-                <source
-                  media="(min-width: 769px)"
-                  srcSet={image1400}
-                  type="image/webp"
-                  width={imageAspectRatio === "4/3" ? 1400 : 1400}
-                  height={imageAspectRatio === "4/3" ? 1050 : 788}
-                />
-              )}
-              <img
-                src={fallbackSrc}
-                alt={imageAlt}
-                width={imageWidth}
-                height={imageHeight}
-                role={imageAlt ? undefined : "presentation"}
-                aria-hidden={imageAlt ? undefined : "true"}
-                fetchPriority="high"
-                loading="eager"
-                decoding="async"
-                className={`h-full w-full object-cover ${imagePosition} opacity-95 md:opacity-45 md:sm:opacity-55`}
-              />
-            </picture>
-            {imageCaption && stackImageOnMobile && (
-              <p className="mt-2 text-xs text-muted-foreground/80 md:hidden">
-                {imageCaption}
+              {children && <div className="mt-8">{children}</div>}
+            </div>
+
+            {/* Photo column: 3:2 framing, sharp rendering, subtle warm border & shadow */}
+            <div className="lg:col-span-5">
+              <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
+                <div className="relative overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 bg-gradient-to-br from-card/90 via-card/50 to-muted/20 p-1.5 shadow-[0_16px_40px_rgba(0,0,0,0.35)] transition-transform duration-200 hover:-translate-y-0.5 motion-reduce:transform-none">
+                  <picture className="block w-full overflow-hidden rounded-xl aspect-[3/2] bg-muted/20">
+                    {image768 && (
+                      <source
+                        media="(max-width: 768px)"
+                        srcSet={image768}
+                        type="image/webp"
+                        width={768}
+                        height={512}
+                      />
+                    )}
+                    {image1400 && (
+                      <source
+                        media="(min-width: 769px)"
+                        srcSet={image1400}
+                        type="image/webp"
+                        width={1440}
+                        height={960}
+                      />
+                    )}
+                    <img
+                      src={fallbackSrc}
+                      alt={imageAlt}
+                      width={imageWidth}
+                      height={imageHeight}
+                      role={imageAlt ? undefined : "presentation"}
+                      aria-hidden={imageAlt ? undefined : "true"}
+                      fetchPriority="high"
+                      loading="eager"
+                      decoding="async"
+                      className={`h-full w-full object-cover ${imagePosition}`}
+                    />
+                  </picture>
+                </div>
+                {imageCaption && (
+                  <p className="mt-2 text-center text-xs text-muted-foreground/75">
+                    {imageCaption}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="max-w-4xl">
+            <p className="eyebrow">
+              <span className="h-px w-10 bg-primary" />{eyebrow}
+            </p>
+            <h1 className="mt-5 max-w-5xl fluid-title">
+              {title} {accent && <span className="italic text-gold-gradient">{accent}</span>}
+            </h1>
+            {sub && (
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                {sub}
               </p>
             )}
+            {children && <div className="mt-8">{children}</div>}
           </div>
         )}
       </div>
