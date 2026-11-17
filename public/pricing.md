@@ -2,7 +2,7 @@
 
 Authentic Indian yoga with Master Anil Choudhary, Founder & Lead Yoga Teacher. Two studios in the Hai Duong urban area of Hai Phong, Vietnam; live online classes worldwide. Online prices in USD. Studio (VND) rates are shared directly on request.
 
-Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/contact
+Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://www.yogjivan.com/contact
 
 ## Live Online Memberships (small-group)
 - 1 month — $36
@@ -24,14 +24,14 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 - Format: Live two-way video worldwide
 
 ## Private Online Couples Yoga (2 adults)
-- Single session (60 min): $45 total ($22.50 per person)
-- 4-session package: $170 total ($42.50 per session)
+- Single session (60 min): $36 total ($18 per person)
+- 4-session package: $132 total ($33 per session, save $12 vs single rate)
 - Includes: Live 60-minute private session for two adults practising together on camera, partner-aware adjustments, joint pacing, and guidance from a dedicated matched teacher
 - Format: Live two-way video worldwide
 
 ## Private Online Family Yoga (3 or 4 household members)
-- 3 participants: $55 total per session · 4-session package $220 total (includes 1 additional complimentary session for the same household, 5 sessions total, $44 effective per session)
-- 4 participants: $65 total per session · 4-session package $240 total ($60 per session)
+- 3 participants: $44 total per session · 4-session package $160 total ($40 per session, save $16 vs single rate)
+- 4 participants: $52 total per session · 4-session package $192 total ($48 per session, save $16 vs single rate)
 - Includes: Live 60-minute shared household yoga session, adaptive sequences for mixed experience levels, and optional parent-child focused structure
 - Format: Live two-way video worldwide
 - Privacy note: No child names, dates of birth, photos, or medical records collected
@@ -61,4 +61,4 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 - Refunds: Memberships and session packages are generally non-refundable once activated or after the first session has been used. Exceptions apply for duplicate billing, non-delivery by Yog Jivan, material service failures, or statutory consumer protection rights. Contact hello@yogjivan.com.
 - Health disclaimer: Yoga complements but does not replace medical diagnosis, consultation, or treatment.
 
-Last updated: 2026-11-14
+Last updated: 2026-11-18

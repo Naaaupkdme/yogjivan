@@ -39,6 +39,10 @@ const FAQS = [
     a: "The standard setup is two mats in the same space sharing one camera. Ask us before booking if you need two locations.",
   },
   {
+    q: "How much does online couples yoga cost?",
+    a: "A live 60-minute session is US$36 total for two adults (US$18 each). A four-session pack is US$132 total (US$33 per session, saving US$12 vs four single sessions). Both adults share one camera feed and practise together.",
+  },
+  {
     q: "How are sessions booked and scheduled?",
     a: "Share your preferred times on WhatsApp or through the enquiry form below. We confirm availability and discuss booking details directly.",
   },
@@ -113,7 +117,7 @@ function CouplesYogaPage() {
         imageAlt="Two adults practising an active standing stretch side by side on mats during an online yoga session"
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          US$45 total for two adults (covers both participants — US$22.50 each) · 4-session pack US$170 · 60 minutes live
+          US$36 total for two adults (covers both participants — US$18 each) · 4-session pack US$132 · 60 minutes live
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
@@ -309,7 +313,7 @@ function CouplesYogaPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="font-semibold text-[color:var(--gold)]">•</span>
-                  <span><strong>Shared screen & single total price:</strong> Both adults practise together on one camera feed; the US$45 session rate covers both participants.</span>
+                  <span><strong>Shared screen & single total price:</strong> Both adults practise together on one camera feed; the US$36 session rate covers both participants.</span>
                 </li>
               </ul>
             </div>
@@ -326,8 +330,8 @@ function CouplesYogaPage() {
               Session price for two
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
-              A live session costs <strong>US$45 total for two adults</strong> (covers both participants — <strong>US$22.50 each</strong>). A 4-session pack is <strong>US$170</strong> total.
-              Two separate standard solo sessions would cost US$50 total ($25 each). A shared class gives you one practice time and one teacher, while Solo gives one person the full session.
+              A live session costs <strong>US$36 total for two adults</strong> (covers both participants — <strong>US$18 each</strong>). Four sessions are <strong>US$132 total</strong> (US$33 per session, saving US$12 vs four single sessions).
+              Two separate standalone solo sessions would cost US$50 total (US$25 each), saving you US$14 per class when practising together.
             </p>
             <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
               Every session is led by an experienced, certified Yog Jivan yoga teacher.

@@ -232,7 +232,7 @@ function ViPrivate() {
         </div>
 
         <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-center text-xs text-muted-foreground">
-          Tập cùng bạn bè hoặc người thân? Xem <a href="/online-couples-yoga" className="text-[color:var(--gold)] underline underline-offset-4">Yoga 2 người (45 USD/buổi cho 2 người)</a> hoặc <a href="/online-family-yoga" className="text-[color:var(--gold)] underline underline-offset-4">Yoga gia đình 3–4 thành viên</a>.
+          Tập cùng bạn bè hoặc người thân? Xem <a href="/online-couples-yoga" className="text-[color:var(--gold)] underline underline-offset-4">Yoga 2 người (36 USD/buổi cho 2 người)</a> hoặc <a href="/online-family-yoga" className="text-[color:var(--gold)] underline underline-offset-4">Yoga gia đình 3–4 thành viên (từ 44 USD/buổi)</a>.
         </div>
       </ViSection>
 

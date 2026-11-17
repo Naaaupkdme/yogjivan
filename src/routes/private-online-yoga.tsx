@@ -676,7 +676,7 @@ function PrivateYogaPage() {
           <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-center">
             <p className="text-xs uppercase tracking-wider text-muted-foreground">Practise alone or together</p>
             <p className="mt-1 text-sm font-medium text-foreground">
-              Solo from US$25 · Two adults US$45 total · Family from US$55 total
+              Solo from US$25 · Two adults US$36 total · Family from US$44 total
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
               Standard single session reference rates. Every session is led by an experienced, certified Yog Jivan yoga teacher.

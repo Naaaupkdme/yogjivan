@@ -429,7 +429,7 @@ export const GROWTH_POSTS: BlogPost[] = [
       { label: "Yoga Doanh Nghiệp (Tiếng Việt)", to: "/vi/yoga-doanh-nghiep" },
       { label: "Corporate Yoga Programs (English)", to: "/corporate" },
       { label: "Chuẩn bị buổi yoga học đường đầu tiên", to: "/blog/chuan-bi-buoi-yoga-hoc-duong-dau-tien" },
-      { label: "Yoga for desk workers", to: "/blog/yoga-for-desk-workers" },
+      { label: "Desk worker yoga: back, neck & shoulders (tiếng Anh)", to: "/blog/desk-worker-yoga-back-neck-shoulders" },
     ],
     faqs: [
       { q: "Nhân viên có cần thay đồ thể thao chuyên dụng không?", a: "Không bắt buộc. Các bài tập yoga ghế văn phòng được thiết kế phù hợp với trang phục công sở co giãn hoặc quần áo lịch sự thông thường." },

@@ -22,9 +22,10 @@ export const COUPLES_OFFER = {
     "Pacing and schedule arranged around your time zone",
   ],
   internalReviewQuote: {
-    standardProposalUSD: 50,
-    launchProposalUSD: 45,
-    note: "Internal reference only. Public copy remains 'Pricing by enquiry'.",
+    singleUSD: 36,
+    fourPackUSD: 132,
+    perSessionPackUSD: 33,
+    note: "Option B approved by owner. Live 60-min session.",
   },
 } as const;
 
@@ -46,9 +47,11 @@ export const FAMILY_OFFER = {
     "Flexible session scheduling across time zones",
   ],
   internalReviewQuote: {
-    threePaxProposalUSD: 65,
-    fourPaxProposalUSD: 75,
-    note: "Internal reference only. Public copy remains 'Pricing by enquiry'.",
+    threePaxUSD: 44,
+    threePaxFourPackUSD: 160,
+    fourPaxUSD: 52,
+    fourPaxFourPackUSD: 192,
+    note: "Option B approved by owner. Live 60-min session.",
   },
 } as const;
 

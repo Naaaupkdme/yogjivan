@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "How much does online family yoga cost?",
-    a: "A single 60-minute session is US$55 total for 3 household members, or US$65 total for 4 members. For ongoing practice, a 4-session package is US$220 for 3 participants (includes 1 additional complimentary session, giving 5 total sessions at US$44 effective per session) and US$240 for 4 participants (US$60 per session).",
+    a: "A single 60-minute session is US$44 total for 3 household members, or US$52 total for 4 members. A four-session pack is US$160 for 3 participants (US$40 per session, saving US$16 vs four singles) and US$192 for 4 participants (US$48 per session, saving US$16 vs four singles). All packs contain exactly four sessions.",
   },
   {
     q: "Can all participants share one camera and device?",
@@ -113,7 +113,7 @@ function FamilyYogaPage() {
         imageAlt="Four household members standing on yoga mats reaching upward together during a private online family yoga class"
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          3 participants · US$55 total &nbsp;|&nbsp; 4 participants · US$65 total
+          3 participants · US$44 total &nbsp;|&nbsp; 4 participants · US$52 total
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
@@ -430,7 +430,7 @@ function FamilyYogaPage() {
               Price for your household
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
-              Your price covers the whole household booking. Three participants are <strong>US$55 total</strong>; a fourth family member adds US$10 to make <strong>US$65 total</strong>.
+              Your price covers the whole household booking. Three participants are <strong>US$44 total</strong>; a fourth family member adds US$8 to make <strong>US$52 total</strong>.
               The amount you see is the total for the entire group.
             </p>
             <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
@@ -442,11 +442,11 @@ function FamilyYogaPage() {
                 <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
                   Family of 3 (60 min)
                 </span>
-                <div className="mt-2 font-display text-2xl font-bold text-foreground">US$55 total</div>
+                <div className="mt-2 font-display text-2xl font-bold text-foreground">US$44 total</div>
                 <p className="mt-1 text-xs text-muted-foreground">Single session rate for 3 participants.</p>
                 <div className="mt-4 rounded-lg border border-[color:var(--gold)]/30 bg-black/30 p-3">
                   <p className="text-xs font-medium text-foreground">
-                    <strong>4-session package:</strong> Book 4 sessions for US$220 total and receive 1 additional session for the same family (5 sessions in total, US$44 effective per session).
+                    <strong>4-session pack:</strong> 4 sessions for US$160 total (US$40 per session, saving US$16 vs four singles).
                   </p>
                   <p className="mt-1 text-[0.68rem] text-muted-foreground">Same household, subject to teacher schedule confirmation.</p>
                 </div>
@@ -456,11 +456,11 @@ function FamilyYogaPage() {
                 <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
                   Family of 4 (60 min)
                 </span>
-                <div className="mt-2 font-display text-2xl font-bold text-foreground">US$65 total</div>
+                <div className="mt-2 font-display text-2xl font-bold text-foreground">US$52 total</div>
                 <p className="mt-1 text-xs text-muted-foreground">Single session rate for 4 participants.</p>
                 <div className="mt-4 rounded-lg border border-[color:var(--gold)]/30 bg-black/30 p-3">
                   <p className="text-xs font-medium text-foreground">
-                    <strong>4-session package:</strong> 4 sessions for US$240 total (US$60 per session total).
+                    <strong>4-session pack:</strong> 4 sessions for US$192 total (US$48 per session, saving US$16 vs four singles).
                   </p>
                   <p className="mt-1 text-[0.68rem] text-muted-foreground">Covers up to 4 participants from one household.</p>
                 </div>

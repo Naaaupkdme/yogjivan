@@ -319,8 +319,8 @@ export function SharedYogaEnquiryForm({
               }}
               className="w-full rounded-xl border border-border/60 bg-background/60 px-4 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
             >
-              <option value={3}>3 Family Members (US$55 / session)</option>
-              <option value={4}>4 Family Members (US$65 / session)</option>
+              <option value={3}>3 Family Members (US$44 / session)</option>
+              <option value={4}>4 Family Members (US$52 / session)</option>
             </select>
           </div>
         )}
