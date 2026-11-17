@@ -7,9 +7,9 @@ import { hreflangLinks, PAIR_SCHOOL } from "@/lib/locale-routes";
 import { CONTACT } from "@/lib/facts/contact";
 import { CheckCircle2, Clock, FileDown, GraduationCap, Heart, ShieldCheck, Sparkles, Users } from "lucide-react";
 
-const TITLE = "Yoga Học Đường cho Trẻ Em | Yog Jivan";
+const TITLE = "Yoga học đường cho trẻ em tại Việt Nam | Yog Jivan";
 const DESCRIPTION =
-  "Xem lịch mẫu 38 phút với trò chơi, vận động theo câu chuyện và thăng bằng. Đăng ký buổi yoga học đường trải nghiệm miễn phí.";
+  "Xem buổi yoga học đường mẫu 38 phút với vận động, kể chuyện và trò chơi thăng bằng. Đăng ký buổi trải nghiệm miễn phí cho trường.";
 const CANONICAL = "https://www.yogjivan.com/vi/yoga-hoc-duong";
 const PROPOSAL_PDF_URL = "/assets/proposals/yog-jivan-school-yoga-proposal.pdf";
 
@@ -97,9 +97,9 @@ function ViSchoolYogaPage() {
     <>
       {/* 1 — HERO */}
       <PageHero
-        eyebrow="Yoga học đường · Hải Dương & Việt Nam"
+        eyebrow="Yoga học đường · Việt Nam"
         title="Yoga qua trò chơi cho trường học"
-        sub="Các em khám phá vận động qua trò chơi, câu chuyện và hoạt động thăng bằng đơn giản."
+        sub="Yog Jivan tổ chức yoga học đường qua kể chuyện, trò chơi, vận động và các bài tập thăng bằng. Giáo viên nhà trường có mặt để giám sát. Nhà trường có thể đăng ký buổi trải nghiệm miễn phí."
         image768="/assets/preview/school-standing-star-pose-mobile.webp"
         image1400="/assets/preview/school-standing-star-pose-desktop.webp"
         imageWidth={1440}
@@ -108,9 +108,12 @@ function ViSchoolYogaPage() {
         contrastVeil
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          Yog Jivan hoạt động tại khu vực Hải Dương. Hãy gửi địa điểm để chúng tôi xác nhận khả năng tổ chức tại trường của bạn.
+          35–40 phút · Kể chuyện, trò chơi và vận động · Có giáo viên nhà trường giám sát.
         </div>
-        <p className="mt-3 text-xs font-semibold text-foreground/90">
+        <p className="mt-2.5 text-xs text-foreground/80">
+          Cho chúng tôi biết trường ở đâu để xác nhận khả năng tổ chức tại trường.
+        </p>
+        <p className="mt-2 text-xs font-semibold text-foreground/90">
           Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm thuộc đội ngũ Yog Jivan hướng dẫn.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-4">

@@ -104,7 +104,7 @@ function CouplesYogaPage() {
       <PageHero
         eyebrow="Partner & Couples Yoga · Live Online"
         title="Live Online Yoga for Two"
-        sub="Two adults. One live teacher. A private 60-minute class with options for each person."
+        sub="Private live yoga for two adults. Join with a partner or friend, even if you have different experience levels. Practise live with a partner or friend in a private online yoga class for two adults. One teacher guides both participants and offers movement options for different experience levels."
         image768="/assets/preview/couples-friends-standing-side-reach-mobile.webp"
         image1400="/assets/preview/couples-friends-standing-side-reach-desktop.webp"
         imageWidth={1440}
@@ -113,7 +113,7 @@ function CouplesYogaPage() {
         imageAlt="Two adults practising an active standing stretch side by side on mats during an online yoga session"
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          US$45 total for two adults · 60 minutes live · One teacher
+          US$45 total for two adults (covers both participants — US$22.50 each) · 4-session pack US$170 · 60 minutes live
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
@@ -307,6 +307,10 @@ function CouplesYogaPage() {
                   <span className="font-semibold text-[color:var(--gold)]">•</span>
                   <span><strong>Lighting:</strong> Keep window or room light in front of you so your teacher can see alignment clearly.</span>
                 </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-semibold text-[color:var(--gold)]">•</span>
+                  <span><strong>Shared screen & single total price:</strong> Both adults practise together on one camera feed; the US$45 session rate covers both participants.</span>
+                </li>
               </ul>
             </div>
           </div>
@@ -322,7 +326,7 @@ function CouplesYogaPage() {
               Session price for two
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
-              A live session costs <strong>US$45 for two adults</strong>, or <strong>US$22.50 each</strong> if you split it. A 4-session pack is <strong>US$170</strong>.
+              A live session costs <strong>US$45 total for two adults</strong> (covers both participants — <strong>US$22.50 each</strong>). A 4-session pack is <strong>US$170</strong> total.
               Two separate standard solo sessions would cost US$50 total ($25 each). A shared class gives you one practice time and one teacher, while Solo gives one person the full session.
             </p>
             <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">

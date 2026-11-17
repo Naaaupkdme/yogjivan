@@ -8,7 +8,7 @@ import { Clock, CheckCircle2, Users, FileDown, Sparkles, ArrowDown } from "lucid
 
 const TITLE = "Corporate Yoga in Vietnam: Chair & Mat | Yog Jivan";
 const DESCRIPTION =
-  "Plan on-site chair or mat yoga for your team. Based in the Hải Dương area, Hải Phòng. Request a complimentary 30-minute chair yoga demo.";
+  "Bring 30-minute chair yoga or 45-minute mat yoga to your workplace. Explore setup, employee activities and a complimentary office demo.";
 const CANONICAL = "https://www.yogjivan.com/corporate";
 const PROPOSAL_PDF_URL = "/assets/proposals/yog-jivan-corporate-yoga-proposal.pdf";
 
@@ -102,8 +102,8 @@ function CorporatePage() {
       {/* 1 — HERO */}
       <PageHero
         eyebrow="Corporate Wellness · Vietnam"
-        title="Corporate Yoga at Your Workplace"
-        sub="Bring a guided movement break to your workplace."
+        title="On-Site Yoga for Workplace Teams"
+        sub="Bring a guided movement break to your workplace. Yog Jivan offers 30-minute chair yoga and 45-minute mat yoga for workplace teams. HR can request a complimentary 30-minute office demo, subject to venue availability."
         image768="/assets/preview/corporate-chair-yoga-office-mobile.webp"
         image1400="/assets/preview/corporate-chair-yoga-office-desktop.webp"
         imageWidth={1440}
@@ -111,8 +111,13 @@ function CorporatePage() {
         imageAspectRatio="3/2"
         imageAlt="An illustrative yoga instructor and office workers practising chair yoga in a modern meeting room"
       >
-        <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          Based in the Hải Dương area, Hải Phòng. Share your workplace location and we’ll confirm on-site availability.
+        <div className="grid gap-2.5 sm:grid-cols-2 max-w-xl">
+          <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-3.5 py-2 text-xs text-foreground/90 font-medium">
+            <strong className="text-[color:var(--gold)]">Chair yoga</strong> · 30 min · Stable chairs and a clear space
+          </div>
+          <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-3.5 py-2 text-xs text-foreground/90 font-medium">
+            <strong className="text-[color:var(--gold)]">Mat yoga</strong> · 45 min · Room for each participant to move comfortably
+          </div>
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
@@ -126,7 +131,7 @@ function CorporatePage() {
             }}
             className="btn-gold"
           >
-            Request complimentary demo
+            Request a Free 30-Minute Office Demo
           </button>
           <a
             href={PROPOSAL_PDF_URL}
@@ -398,7 +403,7 @@ function CorporatePage() {
             <CorporateEnquiryForm
               lang="EN"
               heading="Request a Complimentary 30-Minute Office Demo"
-              subheading="Share your organization name, workplace location (city and venue), headcount, and two preferred times. We will confirm room suitability and pilot schedule."
+              subheading="Share your city, expected headcount and two suitable times. We’ll confirm venue availability and the best format for your team."
             />
           </div>
         </div>

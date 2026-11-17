@@ -39,7 +39,7 @@ const PT_URL = "https://www.yogjivan.com/private-online-yoga";
 
 /** AEO/GEO direct-answer capsule. Fact-first and chunkable. */
 const DIRECT_ANSWER =
-  "Private online yoga at Yog Jivan is a live 60-minute one-to-one session with a teacher from the Yog Jivan team. You are matched with a dedicated teacher based on your level and goals, and sessions are generally kept with that same teacher for continuity. Sessions are live on video, available worldwide, and adapted for beginners, intermediate students and advanced practitioners. Pricing and scheduling are arranged by enquiry.";
+  "Yog Jivan offers live, 60-minute private online yoga sessions for one person. A standalone session costs US$25. Choose a single session, a structured package (12 sessions US$249, 20 sessions US$399, 24 sessions US$459) or a custom plan. You are matched with a dedicated teacher based on your level and goals, and sessions are generally kept with that same teacher for continuity. Booking, scheduling and payment are arranged directly on WhatsApp.";
 
 /** Short, self-contained answers (40–60 words) for search and answer engines. */
 const QUICK_ANSWERS: { q: string; a: string }[] = [
@@ -251,7 +251,8 @@ const COMPARISON = [
       "Generally the same matched teacher for continuity",
       "Your pace and your goals",
       "Live feedback as you move",
-      "Scheduling and pricing by enquiry",
+      "US$25 standalone or packages from US$249",
+      "Scheduling and booking arranged on WhatsApp",
     ],
   },
   {
@@ -296,8 +297,8 @@ const SESSION_DETAILS = [
   { t: "Languages", d: "Teacher matching is available across English, Vietnamese and Hindi, subject to availability. Tell us your preference in your enquiry." },
   { t: "Camera & setup", d: "Camera on, positioned so your full body is visible from the side. A mat, clear floor space and optional blocks, strap or a chair." },
   { t: "Suitability", d: "Beginner, intermediate and advanced practitioners." },
-  { t: "Pricing", d: "By enquiry. No payment is requested on this page." },
-  { t: "Scheduling", d: "By enquiry, arranged around your time zone." },
+  { t: "Pricing", d: "US$25 per standalone 60-minute session. Packages: 12 sessions US$249, 20 US$399, 24 US$459. Custom plans quoted by enquiry." },
+  { t: "Scheduling", d: "Arranged on WhatsApp around your time zone and preferred days." },
 ];
 
 /** Visible FAQ only. Deliberately NO FAQPage JSON-LD. */
@@ -388,14 +389,14 @@ export const Route = createFileRoute("/private-online-yoga")({
       {
         rel: "preload",
         as: "image",
-        href: "/assets/preview/private-yoga-master-anil-live-coaching-mobile.webp",
+        href: "/assets/preview/private-indian-instructor-mobile.webp",
         type: "image/webp",
         media: "(max-width: 768px)",
       },
       {
         rel: "preload",
         as: "image",
-        href: "/assets/preview/private-yoga-master-anil-live-coaching-desktop.webp",
+        href: "/assets/preview/private-indian-instructor-desktop.webp",
         type: "image/webp",
         media: "(min-width: 769px)",
       },
@@ -427,7 +428,7 @@ export const Route = createFileRoute("/private-online-yoga")({
           name: "Private Online Yoga Classes (1-on-1)",
           serviceType: "Online Private Yoga Session",
           description:
-            "Live 60-minute one-to-one online yoga sessions taught by the Yog Jivan teaching team. Students are matched with a teacher from the team and sessions are generally kept with that same teacher for continuity, for beginner, intermediate and advanced practice. Available in 12, 20 and 24-session plans. Pricing and scheduling by enquiry.",
+            "Live 60-minute one-to-one online yoga sessions taught by the Yog Jivan teaching team. Matched teacher for continuity across beginner, intermediate and advanced practice. Standalone session US$25; packages of 12, 20 and 24 sessions from US$249. Booking and scheduling arranged on WhatsApp.",
           areaServed: "Worldwide",
           url: "/private-online-yoga",
         })),
@@ -467,13 +468,13 @@ function PrivateYogaPage() {
       <PageHero
         eyebrow="Private Online Yoga · 1-on-1 Sessions"
         title="Private Online Yoga Classes, One-to-One"
-        sub="Practise live with one teacher who can see your movement and offer cues as you go. Your 60-minute session is shaped around your level and goals."
-        image768="/assets/preview/private-yoga-master-anil-live-coaching-mobile.webp"
-        image1400="/assets/preview/private-yoga-master-anil-live-coaching-desktop.webp"
+        sub="Yog Jivan offers live, 60-minute private online yoga sessions for one person. A standalone session costs US$25. Choose a single session, a structured package or a custom plan. Practise live with one teacher who can see your movement and offer cues as you go."
+        image768="/assets/preview/private-indian-instructor-mobile.webp"
+        image1400="/assets/preview/private-indian-instructor-desktop.webp"
         imageWidth={1440}
         imageHeight={960}
         imageAspectRatio="3/2"
-        imageAlt="Master Anil seated on a mat facing his laptop during a live one-to-one private online yoga session"
+        imageAlt="Yoga instructor demonstrating a standing stretch beside a laptop"
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
           Single private session · US$25 · 60 minutes · Packages from US$249
@@ -531,25 +532,49 @@ function PrivateYogaPage() {
       {/* REAL-TIME FEEDBACK EXAMPLE */}
       <section className="section-pad-sm border-b border-border/40 bg-card/20">
         <div className="container-luxe">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow justify-center"><span className="h-px w-10 bg-[color:var(--gold)]" />Real-time guidance in practice</p>
-            <h2 className="mt-3 font-display text-2xl md:text-3xl leading-snug">
-              How live visual adjustments work
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-foreground/80">
-              Unlike pre-recorded videos, your teacher actively observes your alignment through video and offers practical adjustments as you move.
-            </p>
-          </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 max-w-3xl mx-auto">
-            <div className="glass-soft rounded-2xl p-5 border border-white/10">
-              <span className="text-[0.68rem] uppercase tracking-wider text-[color:var(--gold)] font-semibold">1. Camera check</span>
-              <p className="mt-2 text-sm text-foreground/90 font-medium">“Angle your camera slightly downward”</p>
-              <p className="mt-1 text-xs text-muted-foreground">Your teacher ensures both your feet and pelvis are clearly in frame for standing and floor postures.</p>
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <div>
+              <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Real-time guidance in practice</p>
+              <h2 className="mt-3 font-display text-2xl md:text-3xl leading-snug">
+                How live visual adjustments work
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+                Unlike pre-recorded videos, your teacher actively observes your alignment through video and offers practical adjustments as you move.
+              </p>
+              <div className="mt-6 space-y-4">
+                <div className="glass-soft rounded-2xl p-5 border border-white/10">
+                  <span className="text-[0.68rem] uppercase tracking-wider text-[color:var(--gold)] font-semibold">1. Camera check</span>
+                  <p className="mt-2 text-sm text-foreground/90 font-medium">“Angle your camera slightly downward”</p>
+                  <p className="mt-1 text-xs text-muted-foreground">Your teacher ensures both your feet and pelvis are clearly in frame for standing and floor postures.</p>
+                </div>
+                <div className="glass-soft rounded-2xl p-5 border border-white/10">
+                  <span className="text-[0.68rem] uppercase tracking-wider text-[color:var(--gold)] font-semibold">2. Movement cue</span>
+                  <p className="mt-2 text-sm text-foreground/90 font-medium">“Ease your front knee back over your ankle”</p>
+                  <p className="mt-1 text-xs text-muted-foreground">If a posture feels tight or unstable, the teacher offers a simpler, safer variation adapted to your body.</p>
+                </div>
+              </div>
             </div>
-            <div className="glass-soft rounded-2xl p-5 border border-white/10">
-              <span className="text-[0.68rem] uppercase tracking-wider text-[color:var(--gold)] font-semibold">2. Movement cue</span>
-              <p className="mt-2 text-sm text-foreground/90 font-medium">“Ease your front knee back over your ankle”</p>
-              <p className="mt-1 text-xs text-muted-foreground">If a posture feels tight or unstable, the teacher offers a simpler, safer variation adapted to your body.</p>
+
+            <div className="relative overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 bg-card/60 shadow-lg p-2">
+              <picture>
+                <source
+                  media="(min-width: 769px)"
+                  srcSet="/assets/preview/private-live-guided-practice-desktop.webp"
+                  type="image/webp"
+                />
+                <source
+                  srcSet="/assets/preview/private-live-guided-practice-mobile.webp"
+                  type="image/webp"
+                />
+                <img
+                  src="/assets/preview/private-live-guided-practice-desktop.webp"
+                  alt="Student receiving live posture adjustments during a private online yoga session"
+                  width={1440}
+                  height={960}
+                  loading="lazy"
+                  className="w-full h-auto object-cover aspect-[3/2] rounded-xl"
+                />
+              </picture>
             </div>
           </div>
         </div>
@@ -725,7 +750,7 @@ function PrivateYogaPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-[color:var(--gold)]">—</span>
-                    <span><strong>Pricing by enquiry:</strong> All plans, times and weekly pacing agreed before you begin.</span>
+                    <span><strong>Clear pricing:</strong> US$25 per standalone session; packages from US$249. Times and weekly pacing agreed before you begin.</span>
                   </li>
                 </ul>
               </div>
@@ -976,17 +1001,9 @@ function PrivateYogaPage() {
             */}
             <div className={TEACHING_TEAM.length > 1 ? "grid gap-4 sm:grid-cols-2" : ""}>
               {TEACHING_TEAM.map((t) => (
-                <article key={t.id} className="glass-soft overflow-hidden rounded-[1.75rem] sm:flex sm:items-stretch">
-                  <img
-                    src={t.photo}
-                    alt={t.photoAlt}
-                    width={768}
-                    height={960}
-                    loading="lazy"
-                    className="aspect-[4/5] w-full object-cover object-top sm:w-2/5"
-                  />
-                  <div className="p-6 sm:w-3/5">
-                    <h3 className="font-display text-xl text-foreground">{t.name}</h3>
+                <article key={t.id} className="glass-soft rounded-[1.75rem] border border-[color:var(--gold)]/25 p-6 md:p-8">
+                  <div>
+                    <h3 className="font-display text-2xl text-foreground">{t.name}</h3>
                     <p className="mt-1 text-[0.68rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">
                       {t.role}
                     </p>
@@ -999,7 +1016,7 @@ function PrivateYogaPage() {
                     <p className="mt-3 text-sm leading-relaxed text-foreground/65">
                       Teaches: {t.suitableLevels.join(" · ")} · {t.languages.join(", ")}
                     </p>
-                    <div className="mt-4 flex flex-wrap items-center gap-3">
+                    <div className="mt-5 flex flex-wrap items-center gap-3">
                       <a
                         href="#private-yoga-enquiry-form"
                         className="btn-ghost-gold text-xs py-2 px-3 inline-flex items-center"

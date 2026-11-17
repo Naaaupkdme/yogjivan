@@ -54,7 +54,30 @@ export default {
       }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const normalized = await normalizeCatastrophicSsrResponse(response);
+
+      // Edge country hint: extract platform header without storing IP or calling third parties
+      const rawCountry = (
+        request.headers.get("cf-ipcountry") ||
+        request.headers.get("x-vercel-ip-country") ||
+        request.headers.get("x-country-code") ||
+        request.headers.get("x-country") ||
+        request.headers.get("cloudfront-viewer-country") ||
+        ""
+      ).trim().toUpperCase();
+
+      if (/^[A-Z]{2}$/.test(rawCountry)) {
+        // Supported 2-letter country bucket: append cookie if not already set
+        const resHeaders = new Headers(normalized.headers);
+        resHeaders.append("set-cookie", `yj_edge_country=${rawCountry}; Path=/; SameSite=Lax`);
+        return new Response(normalized.body, {
+          status: normalized.status,
+          statusText: normalized.statusText,
+          headers: resHeaders,
+        });
+      }
+
+      return normalized;
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {

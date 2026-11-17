@@ -6,9 +6,9 @@ import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { hreflangLinks, PAIR_SCHOOL } from "@/lib/locale-routes";
 import { CheckCircle2, Clock, FileDown, GraduationCap, Heart, ShieldCheck, Sparkles, Users } from "lucide-react";
 
-const TITLE = "Kids Yoga for Schools in Vietnam | Yog Jivan";
+const TITLE = "School Yoga in Vietnam: Play-Based Kids Classes | Yog Jivan";
 const DESCRIPTION =
-  "Plan a teacher-led school yoga class with stories, games and movement. See the 38-minute sample and request a complimentary school demo.";
+  "Explore a 38-minute school yoga session with stories, movement and balance games. Request a complimentary demo for your school.";
 const CANONICAL = "https://www.yogjivan.com/school-yoga";
 const PROPOSAL_PDF_URL = "/assets/proposals/yog-jivan-school-yoga-proposal.pdf";
 
@@ -95,9 +95,9 @@ function SchoolYogaPage() {
     <>
       {/* 1 — HERO */}
       <PageHero
-        eyebrow="School Wellness · Hai Duong & Vietnam"
+        eyebrow="School Yoga · Vietnam"
         title="Play-Based Yoga for Schools"
-        sub="Children explore movement through games, stories and simple balance activities."
+        sub="Yog Jivan offers play-based yoga for schools, using stories, games, movement and balance activities. School staff stay present during the session. Organisers can request a complimentary demo."
         image768="/assets/preview/school-standing-star-pose-mobile.webp"
         image1400="/assets/preview/school-standing-star-pose-desktop.webp"
         imageWidth={1440}
@@ -106,9 +106,12 @@ function SchoolYogaPage() {
         contrastVeil
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          Based in the Hải Dương area. Share your location and we’ll confirm whether we can visit your school.
+          35–40 minutes · Stories, games and movement · School staff present.
         </div>
-        <p className="mt-3 text-xs font-semibold text-foreground/90">
+        <p className="mt-2.5 text-xs text-foreground/80">
+          Tell us where your school is and we’ll confirm on-site availability.
+        </p>
+        <p className="mt-2 text-xs font-semibold text-foreground/90">
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-4">

@@ -345,6 +345,13 @@ export const GROWTH_POSTS: BlogPost[] = [
         "Use a side or front-diagonal angle — this shows alignment better than straight-on.",
         "Check that your head and feet both stay in frame when you stand and when you lie down.",
       ]},
+      { type: "h2", text: "Camera setup by format: One person, two people, or family" },
+      { type: "p", text: "Different session formats require slightly different camera distances and mat angles so your teacher can see everyone clearly:" },
+      { type: "ul", items: [
+        "Solo (Private 1-on-1): Position the camera 2 to 2.5 metres away at knee-to-hip height, angled from the front-diagonal. This allows your teacher to observe posture alignment in standing and floor postures. Explore our Private Online Yoga sessions (/private-online-yoga).",
+        "Two adults (Couples & Friends): Place mats parallel, spaced about 0.5 to 1 metre apart. Move the camera back 3 to 3.5 metres in landscape mode so both participants stay in frame without blocking each other. Explore Online Couples Yoga (/online-couples-yoga).",
+        "Family (Three or four participants): Arrange mats in a staggered arc or 2x2 grid. Mount or prop the camera 3.5 to 4.5 metres back, slightly elevated, ensuring all family members are visible both standing and seated. Explore Online Family Yoga (/online-family-yoga).",
+      ]},
       { type: "h2", text: "Lighting" },
       { type: "p", text: "Light should come from in front of you. A window behind you turns you into a silhouette and the teacher will see nothing useful. If your room is dim, a lamp facing you from the front is enough." },
       { type: "h2", text: "Floor space" },

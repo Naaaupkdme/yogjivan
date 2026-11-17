@@ -29,14 +29,14 @@ export const Route = createFileRoute("/vi/yoga-1-kem-1-online")({
       {
         rel: "preload",
         as: "image",
-        href: "/assets/preview/private-yoga-master-anil-live-coaching-mobile.webp",
+        href: "/assets/preview/private-indian-instructor-mobile.webp",
         type: "image/webp",
         media: "(max-width: 768px)",
       },
       {
         rel: "preload",
         as: "image",
-        href: "/assets/preview/private-yoga-master-anil-live-coaching-desktop.webp",
+        href: "/assets/preview/private-indian-instructor-desktop.webp",
         type: "image/webp",
         media: "(min-width: 769px)",
       },
@@ -74,13 +74,13 @@ function ViPrivate() {
       <PageHero
         eyebrow="Yoga 1 Kèm 1 Online · Lớp Học Riêng"
         title="Yoga 1 kèm 1 online"
-        sub="Tập trực tiếp với một giáo viên theo dõi động tác và hướng dẫn trong suốt buổi. Buổi 60 phút được điều chỉnh theo trình độ và mục tiêu của bạn."
-        image768="/assets/preview/private-yoga-master-anil-live-coaching-mobile.webp"
-        image1400="/assets/preview/private-yoga-master-anil-live-coaching-desktop.webp"
+        sub="Yog Jivan tổ chức các buổi yoga trực tuyến 1 kèm 1 kéo dài 60 phút. Một buổi lẻ có giá 25 USD. Bạn có thể chọn buổi lẻ, gói tập hoặc lịch tập theo nhu cầu. Tập trực tiếp với một giáo viên theo dõi động tác và hướng dẫn trong suốt buổi."
+        image768="/assets/preview/private-indian-instructor-mobile.webp"
+        image1400="/assets/preview/private-indian-instructor-desktop.webp"
         imageWidth={1440}
         imageHeight={960}
         imageAspectRatio="3/2"
-        imageAlt="Thầy Anil ngồi trên thảm tập hướng về màn hình máy tính trong buổi yoga riêng 1 kèm 1 trực tuyến"
+        imageAlt="Giáo viên yoga minh họa động tác giãn người đứng bên cạnh máy tính xách tay"
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
           Buổi yoga riêng 60 phút · 25 USD mỗi buổi · Các gói từ 249 USD
@@ -104,35 +104,66 @@ function ViPrivate() {
       </PageHero>
 
       <ViSection id="meet-your-teacher" heading="Đội ngũ giáo viên Yog Jivan">
-        <div className="glass-soft overflow-hidden rounded-2xl sm:flex sm:items-stretch border border-white/10 max-w-3xl">
-          <img
-            src="/assets/preview/master-anil-profile.webp"
-            alt="Master Anil Choudhary, Sáng lập & Giáo viên Trưởng tại Yog Jivan"
-            width={768}
-            height={960}
-            loading="lazy"
-            className="aspect-[4/5] w-full object-cover object-top sm:w-2/5"
-          />
-          <div className="p-6 sm:w-3/5">
-            <h3 className="font-display text-xl text-foreground">Master Anil Choudhary</h3>
-            <p className="mt-1 text-xs uppercase tracking-wider text-[color:var(--gold)] font-semibold">
-              Sáng lập &amp; Giáo viên Trưởng
+        <div className="glass-soft rounded-2xl p-6 md:p-8 border border-white/10 max-w-3xl">
+          <h3 className="font-display text-xl text-foreground">Master Anil Choudhary</h3>
+          <p className="mt-1 text-xs uppercase tracking-wider text-[color:var(--gold)] font-semibold">
+            Sáng lập &amp; Giáo viên Trưởng
+          </p>
+          <p className="mt-3 text-sm text-foreground/80 leading-relaxed">
+            Hơn 12 năm kinh nghiệm giảng dạy yoga truyền thống Ấn Độ, hướng dẫn học viên từ cơ bản đến nâng cao.
+          </p>
+          <ul className="mt-3 text-sm text-foreground/75 space-y-1">
+            <li>— Hatha Yoga truyền thống, Ashtanga và Pranayama</li>
+            <li>— Phương pháp điều chỉnh an toàn, chú trọng trị liệu</li>
+          </ul>
+          <p className="mt-3 text-xs text-foreground/65">
+            Ngôn ngữ giảng dạy: Tiếng Anh, Tiếng Việt, Tiếng Hindi
+          </p>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <a href="#tu-van" className="btn-ghost-gold text-xs py-2 px-3 inline-flex items-center">
+              Hỏi về lịch dạy của giáo viên
+            </a>
+          </div>
+        </div>
+      </ViSection>
+
+      <ViSection heading="Hướng dẫn điều chỉnh tư thế trực tiếp">
+        <div className="grid items-center gap-8 lg:grid-cols-2">
+          <div>
+            <p className="text-sm text-foreground/85 leading-relaxed">
+              Khác với video ghi hình sẵn, giáo viên trực tiếp quan sát tư thế của bạn qua video và đưa ra điều chỉnh bằng lời theo thời gian thực để bạn tập an toàn và chuẩn xác.
             </p>
-            <p className="mt-3 text-sm text-foreground/80 leading-relaxed">
-              Hơn 12 năm kinh nghiệm giảng dạy yoga truyền thống Ấn Độ, hướng dẫn học viên từ cơ bản đến nâng cao.
-            </p>
-            <ul className="mt-3 text-sm text-foreground/75 space-y-1">
-              <li>— Hatha Yoga truyền thống, Ashtanga và Pranayama</li>
-              <li>— Phương pháp điều chỉnh an toàn, chú trọng trị liệu</li>
-            </ul>
-            <p className="mt-3 text-xs text-foreground/65">
-              Ngôn ngữ giảng dạy: Tiếng Anh, Tiếng Việt, Tiếng Hindi
-            </p>
-            <div className="mt-4 flex flex-wrap items-center gap-3">
-              <a href="#tu-van" className="btn-ghost-gold text-xs py-2 px-3 inline-flex items-center">
-                Hỏi về lịch dạy của giáo viên
-              </a>
+            <div className="mt-4 space-y-3">
+              <div className="glass-soft rounded-xl p-4 border border-white/10">
+                <span className="text-xs uppercase tracking-wider text-[color:var(--gold)] font-semibold">1. Kiểm tra góc máy</span>
+                <p className="mt-1 text-xs text-muted-foreground">Giáo viên hướng dẫn góc camera sao cho thấy rõ toàn bộ cơ thể trong cả tư thế đứng và nằm.</p>
+              </div>
+              <div className="glass-soft rounded-xl p-4 border border-white/10">
+                <span className="text-xs uppercase tracking-wider text-[color:var(--gold)] font-semibold">2. Nhắc nhở điều chỉnh</span>
+                <p className="mt-1 text-xs text-muted-foreground">Nếu động tác quá sức hoặc sai trục khớp, giáo viên gợi ý biến thể đơn giản, phù hợp với cơ thể bạn.</p>
+              </div>
             </div>
+          </div>
+          <div className="relative overflow-hidden rounded-2xl border border-[color:var(--gold)]/30 bg-card/60 shadow-lg p-2">
+            <picture>
+              <source
+                media="(min-width: 769px)"
+                srcSet="/assets/preview/private-live-guided-practice-desktop.webp"
+                type="image/webp"
+              />
+              <source
+                srcSet="/assets/preview/private-live-guided-practice-mobile.webp"
+                type="image/webp"
+              />
+              <img
+                src="/assets/preview/private-live-guided-practice-desktop.webp"
+                alt="Học viên nhận hướng dẫn điều chỉnh tư thế trực tiếp trong buổi tập yoga trực tuyến 1 kèm 1"
+                width={1440}
+                height={960}
+                loading="lazy"
+                className="w-full h-auto object-cover aspect-[3/2] rounded-xl"
+              />
+            </picture>
           </div>
         </div>
       </ViSection>

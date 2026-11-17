@@ -3,6 +3,12 @@ import { useRouter, useRouterState } from "@tanstack/react-router";
 import { LANG_STORAGE_KEY, viCounterpart } from "@/lib/locale-routes";
 import { Globe, X } from "lucide-react";
 
+function getCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const match = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
 export function LanguageSuggestionBanner() {
   const router = useRouter();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -13,22 +19,27 @@ export function LanguageSuggestionBanner() {
     if (typeof window === "undefined") return;
 
     try {
-      // 1. If explicit choice exists, do not prompt
+      // 1. Saved manual choice always wins
       const saved = localStorage.getItem(LANG_STORAGE_KEY);
       if (saved) return;
 
-      // 2. If already dismissed in this session, do not prompt
+      // 2. If dismissed in this session, do not prompt again
       if (sessionStorage.getItem("yj_lang_suggest_dismissed")) return;
 
       // 3. Check if current route has a valid Vietnamese counterpart
       const counterpart = viCounterpart(pathname);
       if (!counterpart) return;
 
-      // 4. Check if visitor's device languages include Vietnamese
+      // 4. Read country hint from verified platform edge signal (via yj_edge_country cookie)
+      const edgeCountry = getCookie("yj_edge_country");
+
+      // 5. Check if visitor's device languages include Vietnamese
       const userLangs = navigator.languages || [navigator.language || ""];
       const prefersVi = userLangs.some((l) => l.toLowerCase().startsWith("vi"));
 
-      if (prefersVi) {
+      // Suggest Vietnamese if visitor has vi browser language OR edge indicates Vietnam ("VN").
+      // Other visitors (including India "IN") default to English when no Vietnamese preference exists.
+      if (prefersVi || edgeCountry === "VN") {
         setSuggestionTarget(counterpart);
       }
     } catch {}
@@ -41,7 +52,9 @@ export function LanguageSuggestionBanner() {
       localStorage.setItem(LANG_STORAGE_KEY, "VI");
     } catch {}
     setDismissed(true);
-    const targetWithQuery = `${suggestionTarget}${window.location.search}${window.location.hash}`;
+    // Preserve query parameters and known anchor destinations
+    const currentHash = window.location.hash;
+    const targetWithQuery = `${suggestionTarget}${window.location.search}${currentHash}`;
     router.history.push(targetWithQuery);
   };
 

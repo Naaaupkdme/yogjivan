@@ -6,9 +6,9 @@ import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { hreflangLinks, PAIR_CORPORATE } from "@/lib/locale-routes";
 import { Clock, CheckCircle2, Users, FileDown, Sparkles } from "lucide-react";
 
-const TITLE = "Yoga Doanh Nghiệp tại Việt Nam | Yog Jivan";
+const TITLE = "Yoga doanh nghiệp tại Việt Nam | Yog Jivan";
 const DESCRIPTION =
-  "Tổ chức yoga trên ghế hoặc trên thảm cho nhân viên. Yog Jivan hoạt động tại khu vực Hải Dương, Hải Phòng. Đăng ký buổi thử 30 phút miễn phí.";
+  "Tổ chức yoga trên ghế 30 phút hoặc yoga trên thảm 45 phút cho nhân viên. Xem cách chuẩn bị và đăng ký buổi trải nghiệm miễn phí.";
 const CANONICAL = "https://www.yogjivan.com/vi/yoga-doanh-nghiep";
 const PROPOSAL_PDF_URL = "/assets/proposals/yog-jivan-corporate-yoga-proposal.pdf";
 
@@ -103,8 +103,8 @@ function ViCorporatePage() {
       {/* 1 — HERO */}
       <PageHero
         eyebrow="Sức khỏe doanh nghiệp · Việt Nam"
-        title="Yoga tại nơi làm việc"
-        sub="Mang một khoảng nghỉ vận động có hướng dẫn đến nơi làm việc."
+        title="Yoga tại nơi làm việc cho doanh nghiệp"
+        sub="Mang một khoảng nghỉ vận động có hướng dẫn đến nơi làm việc. Yog Jivan tổ chức yoga trên ghế 30 phút và yoga trên thảm 45 phút cho nhân viên. Bộ phận nhân sự có thể đăng ký buổi trải nghiệm 30 phút miễn phí, tùy theo địa điểm."
         image768="/assets/preview/corporate-chair-yoga-office-mobile.webp"
         image1400="/assets/preview/corporate-chair-yoga-office-desktop.webp"
         imageWidth={1440}
@@ -112,8 +112,13 @@ function ViCorporatePage() {
         imageAspectRatio="3/2"
         imageAlt="Giảng viên yoga và nhân viên văn phòng tập yoga trên ghế trong phòng họp hiện đại"
       >
-        <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          Yog Jivan hoạt động tại khu vực Hải Dương, Hải Phòng. Gửi địa điểm để chúng tôi xác nhận khả năng tổ chức tại nơi làm việc.
+        <div className="grid gap-2.5 sm:grid-cols-2 max-w-xl">
+          <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-3.5 py-2 text-xs text-foreground/90 font-medium">
+            <strong className="text-[color:var(--gold)]">Yoga trên ghế</strong> · 30 phút · Ghế chắc chắn và lối đi thông thoáng
+          </div>
+          <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-3.5 py-2 text-xs text-foreground/90 font-medium">
+            <strong className="text-[color:var(--gold)]">Yoga trên thảm</strong> · 45 phút · Đủ không gian vận động cho từng người
+          </div>
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Mỗi buổi học đều do giáo viên yoga có chứng chỉ và giàu kinh nghiệm thuộc đội ngũ Yog Jivan hướng dẫn.
@@ -127,7 +132,7 @@ function ViCorporatePage() {
             }}
             className="btn-gold"
           >
-            Đăng ký demo 30 phút miễn phí
+            Đăng ký buổi tập thử 30 phút miễn phí
           </button>
           <a
             href={PROPOSAL_PDF_URL}
@@ -399,7 +404,7 @@ function ViCorporatePage() {
             <CorporateEnquiryForm
               lang="VI"
               heading="Đăng ký buổi trải nghiệm 30 phút miễn phí"
-              subheading="Gửi tên doanh nghiệp, địa điểm tổ chức (thành phố và nơi tập), số người dự kiến và hai khung giờ phù hợp để chúng tôi lên lịch."
+              subheading="Gửi thành phố, số người dự kiến và hai khung giờ phù hợp. Chúng tôi sẽ xác nhận khả năng đến địa điểm và tư vấn hình thức tập."
             />
           </div>
         </div>

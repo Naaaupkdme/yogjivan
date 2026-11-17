@@ -104,7 +104,7 @@ function FamilyYogaPage() {
       <PageHero
         eyebrow="Household & Family Yoga · Live Online"
         title="Private Online Family Yoga for 3 or 4"
-        sub="Practise live at home with three or four family members. Your teacher can adapt movement options to your household."
+        sub="Practise live at home with three or four family members. Your teacher can adapt movement options to your household. Yog Jivan offers live private online yoga for three or four family members. A separate parent–child format is available with an adult participating."
         image768="/assets/preview/family-standing-upward-reach-mobile.webp"
         image1400="/assets/preview/family-standing-upward-reach-desktop.webp"
         imageWidth={1440}
