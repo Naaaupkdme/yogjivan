@@ -191,11 +191,12 @@ export function SchoolYogaEnquiryForm({
   }
 
   return (
-    <form
-      id="school-yoga-enquiry-form"
-      onSubmit={handleSubmit}
-      className="glass-luxe rounded-2xl p-6 sm:p-8 border border-border/70 space-y-5"
-    >
+    <div id="school-enquiry-form" className="scroll-mt-24">
+      <form
+        id="school-yoga-enquiry-form"
+        onSubmit={handleSubmit}
+        className="glass-luxe rounded-2xl p-6 sm:p-8 border border-border/70 space-y-5"
+      >
       <LeadGuardFields />
       <div>
         <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />{isVi ? "Dành cho trường học" : "For Schools & Educators"}</p>
@@ -390,5 +391,6 @@ export function SchoolYogaEnquiryForm({
         </button>
       </div>
     </form>
+    </div>
   );
 }

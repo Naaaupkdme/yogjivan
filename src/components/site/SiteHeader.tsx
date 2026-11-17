@@ -86,7 +86,7 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [fullOpen, setFullOpen] = useState(false);
   const { location } = useRouterState();
-  const langTargets = languageSwitchTarget(location.pathname);
+  const langTargets = languageSwitchTarget(location.pathname, location.searchStr, location.hash);
   const isVi = isViPath(location.pathname);
   const activeLang: "EN" | "VI" = isVi ? "VI" : "EN";
   // Pre-filled opening line so a tap on WhatsApp never lands on a blank thread.

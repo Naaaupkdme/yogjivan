@@ -89,11 +89,20 @@ export function isViPath(path: string): boolean {
  * Unmapped EN routes fall back to the Vietnamese hub, never to a
  * same-URL partial translation. Unmapped VI routes fall back to `/`.
  */
-export function languageSwitchTarget(path: string): { en: string; vi: string } {
-  if (isViPath(path)) {
-    return { en: enCounterpart(path) ?? "/", vi: normalise(path) === "/vi" ? "/vi" : path };
-  }
-  return { en: path, vi: viCounterpart(path) ?? "/vi" };
+export function languageSwitchTarget(path: string, search = "", hash = ""): LocalePair {
+  const en = isViPath(path) ? enCounterpart(path) : path;
+  const vi = isViPath(path) ? path : viCounterpart(path);
+  return {
+    en: en ? localeLink(en, search, hash) : "/",
+    vi: vi ? localeLink(vi, search, hash) : "/vi",
+  };
+}
+
+function localeLink(path: string, search: string, hash: string): string {
+  let anchor = hash.replace(/^#/, "");
+  if (path === PAIR_PRIVATE.en && anchor === "tu-van") anchor = "private-enquiry";
+  if (path === PAIR_PRIVATE.vi && anchor === "private-enquiry") anchor = "tu-van";
+  return `${path}${search}${anchor ? `#${anchor}` : ""}`;
 }
 
 type HeadLink = { rel: string; href: string; hrefLang?: string };
@@ -136,6 +145,5 @@ export function preferredLocaleRedirect(
   if (stored !== "VI" || isViPath(pathname)) return null;
   const vi = viCounterpart(pathname);
   if (!vi || normalise(vi) === normalise(pathname)) return null;
-  const h = hash && !hash.startsWith("#") ? `#${hash}` : hash;
-  return `${vi}${search}${h}`;
+  return localeLink(vi, search, hash);
 }

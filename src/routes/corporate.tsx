@@ -192,9 +192,6 @@ function CorporatePage() {
                   className="w-full h-auto object-cover aspect-[16/9]"
                 />
               </picture>
-              <div className="p-3 bg-black/40 text-[0.7rem] text-muted-foreground text-center">
-                AI-generated preview illustration · Does not depict Yog Jivan students or teachers
-              </div>
             </div>
           </div>
         </div>

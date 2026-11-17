@@ -193,9 +193,6 @@ function ViCorporatePage() {
                   className="w-full h-auto object-cover aspect-[16/9]"
                 />
               </picture>
-              <div className="p-3 bg-black/40 text-[0.7rem] text-muted-foreground text-center">
-                Hình ảnh minh họa tạo bởi AI · Không miêu tả học viên hoặc giáo viên Yog Jivan
-              </div>
             </div>
           </div>
         </div>

@@ -25,6 +25,17 @@ describe("English-copy safety", () => {
   });
 });
 
+describe("Private enquiry locale links", () => {
+  it("keeps attribution and maps the enquiry anchor in both directions", () => {
+    expect(languageSwitchTarget("/private-online-yoga", "?utm_source=x", "#private-enquiry").vi)
+      .toBe("/vi/yoga-1-kem-1-online?utm_source=x#tu-van");
+    expect(languageSwitchTarget("/vi/yoga-1-kem-1-online", "?utm_source=x", "tu-van").en)
+      .toBe("/private-online-yoga?utm_source=x#private-enquiry");
+    expect(preferredLocaleRedirect("/private-online-yoga", "VI", "?utm_source=x", "#private-enquiry"))
+      .toBe("/vi/yoga-1-kem-1-online?utm_source=x#tu-van");
+  });
+});
+
 describe("saved preference redirect", () => {
   it("redirects VI preference on mapped EN route, preserving query/hash", () => {
     expect(preferredLocaleRedirect("/online-yoga-classes", "VI", "?utm_source=x", "#faq"))

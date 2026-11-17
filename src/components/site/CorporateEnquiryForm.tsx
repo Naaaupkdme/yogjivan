@@ -191,11 +191,12 @@ export function CorporateEnquiryForm({
   }
 
   return (
-    <form
-      id="corporate-enquiry-form"
-      onSubmit={handleSubmit}
-      className="glass-luxe rounded-2xl p-6 sm:p-8 border border-border/70 space-y-5"
-    >
+    <div id="corporate-yoga-enquiry-form" className="scroll-mt-24">
+      <form
+        id="corporate-enquiry-form"
+        onSubmit={handleSubmit}
+        className="glass-luxe rounded-2xl p-6 sm:p-8 border border-border/70 space-y-5"
+      >
       <LeadGuardFields />
       <div>
         <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />{isVi ? "Dành cho doanh nghiệp" : "For Organizations"}</p>
@@ -385,5 +386,6 @@ export function CorporateEnquiryForm({
         </button>
       </div>
     </form>
+    </div>
   );
 }

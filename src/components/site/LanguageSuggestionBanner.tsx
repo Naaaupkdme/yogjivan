@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter, useRouterState } from "@tanstack/react-router";
-import { LANG_STORAGE_KEY, viCounterpart } from "@/lib/locale-routes";
+import { LANG_STORAGE_KEY, languageSwitchTarget, viCounterpart } from "@/lib/locale-routes";
 import { Globe, X } from "lucide-react";
 
 function getCookie(name: string): string | null {
@@ -52,10 +52,8 @@ export function LanguageSuggestionBanner() {
       localStorage.setItem(LANG_STORAGE_KEY, "VI");
     } catch {}
     setDismissed(true);
-    // Preserve query parameters and known anchor destinations
-    const currentHash = window.location.hash;
-    const targetWithQuery = `${suggestionTarget}${window.location.search}${currentHash}`;
-    router.history.push(targetWithQuery);
+    const target = languageSwitchTarget(pathname, window.location.search, window.location.hash);
+    router.history.push(target.vi);
   };
 
   const handleKeepEn = () => {

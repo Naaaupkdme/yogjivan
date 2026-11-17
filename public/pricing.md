@@ -30,7 +30,7 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 - Format: Live two-way video worldwide
 
 ## Private Online Family Yoga (3 or 4 household members)
-- 3 participants: $55 total per session · 4-session package $220 total ($55 per session)
+- 3 participants: $55 total per session · 4-session package $220 total (includes 1 additional complimentary session for the same household, 5 sessions total, $44 effective per session)
 - 4 participants: $65 total per session · 4-session package $240 total ($60 per session)
 - Includes: Live 60-minute shared household yoga session, adaptive sequences for mixed experience levels, and optional parent-child focused structure
 - Format: Live two-way video worldwide

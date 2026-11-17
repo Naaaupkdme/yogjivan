@@ -32,8 +32,8 @@ const FAQS = [
     a: "Send the general age range and group size so we can confirm suitable activities. For parent–child sessions, a parent or caregiver participates throughout.",
   },
   {
-    q: "What if three or four family members want to join?",
-    a: "Choose three or four participants in the enquiry. We’ll confirm availability and the total for your household.",
+    q: "How much does online family yoga cost?",
+    a: "A single 60-minute session is US$55 total for 3 household members, or US$65 total for 4 members. For ongoing practice, a 4-session package is US$220 for 3 participants (includes 1 additional complimentary session, giving 5 total sessions at US$44 effective per session) and US$240 for 4 participants (US$60 per session).",
   },
   {
     q: "Can all participants share one camera and device?",
@@ -393,9 +393,6 @@ function FamilyYogaPage() {
                 className="h-full w-full object-cover"
               />
             </picture>
-            <p className="mx-auto mb-6 max-w-md text-xs text-muted-foreground/80">
-              AI-generated preview illustration · Does not depict Yog Jivan students or teachers
-            </p>
             <div className="flex flex-wrap justify-center gap-4">
               <button
                 type="button"
