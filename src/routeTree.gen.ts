@@ -48,6 +48,7 @@ import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as GoSlugRouteImport } from './routes/go/$slug'
 import { Route as GoWhatsappRouteImport } from './routes/go/whatsapp'
 import { Route as ResearchYogaParticipationStatisticsRouteImport } from './routes/research.yoga-participation-statistics'
 import { Route as ViIndexRouteImport } from './routes/vi.index'
@@ -268,6 +269,11 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GoSlugRoute = GoSlugRouteImport.update({
+  id: '/go/$slug',
+  path: '/go/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GoWhatsappRoute = GoWhatsappRouteImport.update({
   id: '/go/whatsapp',
   path: '/go/whatsapp',
@@ -422,6 +428,7 @@ export interface FileRoutesByFullPath {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/go/$slug': typeof GoSlugRoute
   '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/cua-hang': typeof ViCuaHangRouteWithChildren
@@ -485,6 +492,7 @@ export interface FileRoutesByTo {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/go/$slug': typeof GoSlugRoute
   '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/doi-tac-san-pham': typeof ViDoiTacSanPhamRoute
@@ -548,6 +556,7 @@ export interface FileRoutesById {
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/go/$slug': typeof GoSlugRoute
   '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/cua-hang': typeof ViCuaHangRouteWithChildren
@@ -613,6 +622,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/go/$slug'
     | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
     | '/vi/cua-hang'
@@ -676,6 +686,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/go/$slug'
     | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
     | '/vi/doi-tac-san-pham'
@@ -738,6 +749,7 @@ export interface FileRouteTypes {
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/blog/$slug'
+    | '/go/$slug'
     | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
     | '/vi/cua-hang'
@@ -802,6 +814,7 @@ export interface RootRouteChildren {
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  GoSlugRoute: typeof GoSlugRoute
   GoWhatsappRoute: typeof GoWhatsappRoute
   ResearchYogaParticipationStatisticsRoute: typeof ResearchYogaParticipationStatisticsRoute
   ViCuaHangRoute: typeof ViCuaHangRouteWithChildren
@@ -1100,6 +1113,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/go/$slug': {
+      id: '/go/$slug'
+      path: '/go/$slug'
+      fullPath: '/go/$slug'
+      preLoaderRoute: typeof GoSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/go/whatsapp': {
       id: '/go/whatsapp'
       path: '/go/whatsapp'
@@ -1311,6 +1331,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
   BlogSlugRoute: BlogSlugRoute,
+  GoSlugRoute: GoSlugRoute,
   GoWhatsappRoute: GoWhatsappRoute,
   ResearchYogaParticipationStatisticsRoute:
     ResearchYogaParticipationStatisticsRoute,
