@@ -182,10 +182,10 @@ function CorporatePage() {
 
             <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
               <picture>
-                <source srcSet="/assets/preview/corporate-benefits-768.webp" type="image/webp" />
+                <source srcSet="/assets/preview/corporate-office-seated-session-768.webp 768w, /assets/preview/corporate-office-seated-session-1280.webp 1280w" sizes="(min-width: 1024px) 50vw, 100vw" type="image/webp" />
                 <img
-                  src="/assets/preview/corporate-benefits-768.webp"
-                  alt="Office workers doing gentle chair stretches"
+                  src="/assets/preview/corporate-office-seated-session-768.webp"
+                  alt="Illustrative image: an Indian yoga instructor guiding four office staff through seated chair stretches in a bright office"
                   width={768}
                   height={432}
                   loading="lazy"

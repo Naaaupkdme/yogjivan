@@ -183,10 +183,10 @@ function ViCorporatePage() {
 
             <div className="relative overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
               <picture>
-                <source srcSet="/assets/preview/corporate-benefits-768.webp" type="image/webp" />
+                <source srcSet="/assets/preview/corporate-office-seated-session-768.webp 768w, /assets/preview/corporate-office-seated-session-1280.webp 1280w" sizes="(min-width: 1024px) 50vw, 100vw" type="image/webp" />
                 <img
-                  src="/assets/preview/corporate-benefits-768.webp"
-                  alt="Nhân viên công sở tập giãn cơ nhẹ nhàng trên ghế"
+                  src="/assets/preview/corporate-office-seated-session-768.webp"
+                  alt="Ảnh minh họa: giáo viên yoga người Ấn Độ hướng dẫn bốn nhân viên văn phòng tập giãn cơ trên ghế"
                   width={768}
                   height={432}
                   loading="lazy"
