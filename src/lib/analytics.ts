@@ -208,6 +208,10 @@ function bootMeta() {
     const s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
   })(win, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
   /* eslint-enable */
+  // Manual Only mode (documented Meta Pixel option): disable automatic
+  // configuration (auto button-click / page-metadata collection). MUST run
+  // before init. Data minimisation only; not a category workaround.
+  win.fbq!("set", "autoConfig", false, META_PIXEL_ID);
   win.fbq!("init", META_PIXEL_ID);
 }
 

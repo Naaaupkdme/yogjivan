@@ -247,6 +247,35 @@ describe("analytics - privacy-safe lead categorization", () => {
       expect(mockFbq).not.toHaveBeenCalled();
     });
 
+    it("sets autoConfig=false before init exactly once (Manual Only mode)", async () => {
+      const { applyConsent, trackPageView, resetMetaPageViewTracking } = await import("./analytics");
+      resetMetaPageViewTracking();
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+      trackPageView();
+      applyConsent({ analytics: true, marketing: true });
+      (window as any).location.pathname = "/online-yoga-classes";
+      trackPageView();
+      const calls = mockFbq.mock.calls.map((c: unknown[]) => c.slice(0, 2).join(":"));
+      const setIdx = calls.indexOf("set:autoConfig");
+      const initIdx = calls.indexOf("init:1752860699056785");
+      expect(mockFbq.mock.calls[setIdx]).toEqual(["set", "autoConfig", false, "1752860699056785"]);
+      expect(setIdx).toBeGreaterThanOrEqual(0);
+      expect(setIdx).toBeLessThan(initIdx);
+      expect(calls.filter((c: string) => c === "set:autoConfig")).toHaveLength(1);
+      expect(calls.filter((c: string) => c.startsWith("init:"))).toHaveLength(1);
+    });
+
+    it("does not set autoConfig or init without marketing consent or on preview host", async () => {
+      const { trackPageView, resetMetaPageViewTracking } = await import("./analytics");
+      resetMetaPageViewTracking();
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: false }));
+      trackPageView();
+      (window as any).location.hostname = "id-preview--x.lovable.app";
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+      trackPageView();
+      expect(mockFbq).not.toHaveBeenCalled();
+    });
+
     it("must not bootstrap production Pixel on a sensitive first landing", async () => {
       const { initAnalytics, resetMetaPageViewTracking } = await import("./analytics");
       resetMetaPageViewTracking();
