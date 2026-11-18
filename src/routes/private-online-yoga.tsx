@@ -722,6 +722,7 @@ function PrivateYogaPage() {
       </section>
 
       {/* 3 — INLINE ENQUIRY FORM */}
+      <div id="enquiry-form" className="scroll-mt-28" />
       <section id="private-enquiry" className="section-pad-sm relative isolate scroll-mt-28" tabIndex={-1}>
         <div aria-hidden="true" className="liquid-veil" />
         <div className="container-luxe">
@@ -732,9 +733,9 @@ function PrivateYogaPage() {
                 Book private yoga online — matched teacher & personal schedule
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
-                Tell us your current level, preferred plan (12, 20, 24 sessions or custom) and language preference.
-                We will match you with a suitable teacher from the Yog Jivan team and confirm
-                scheduling, format and pricing directly.
+                A standalone online session is US$25. Ask about schedule, packages or a custom plan.
+                Tell us your current level and goals; we will match you with a suitable teacher from the Yog Jivan team and confirm
+                scheduling directly.
               </p>
 
               <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
@@ -1159,7 +1160,7 @@ function PrivateYogaPage() {
               Start with a simple enquiry
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-foreground/85">
-              Private-session pricing and available times are confirmed after enquiry. No payment is
+              A standalone online session is US$25. Ask about schedule, packages or a custom plan. No payment is
               requested on this page.
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4">

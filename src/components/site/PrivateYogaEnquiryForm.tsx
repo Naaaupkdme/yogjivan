@@ -302,8 +302,7 @@ export function PrivateYogaEnquiryForm({
         Enquire about private 1-on-1 yoga
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        Tell us your level and when you like to practise. Pricing and scheduling are arranged by
-        enquiry — no payment is requested here.
+        A standalone online session is US$25. Ask about schedule, packages or a custom plan — no payment is requested on this page.
       </p>
 
       {/* Compact paired layout from sm upward: Name+WhatsApp, Level+Time, Email+Focus.

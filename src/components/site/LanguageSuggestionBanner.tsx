@@ -53,7 +53,7 @@ export function LanguageSuggestionBanner() {
     } catch {}
     setDismissed(true);
     const target = languageSwitchTarget(pathname, window.location.search, window.location.hash);
-    router.history.push(target.vi);
+    window.location.href = target.vi;
   };
 
   const handleKeepEn = () => {

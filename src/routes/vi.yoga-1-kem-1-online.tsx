@@ -269,10 +269,11 @@ function ViPrivate() {
         </p>
       </ViSection>
 
-      <div id="tu-van">
+      <div id="tu-van" className="scroll-mt-28" tabIndex={-1}>
+        <div id="tu-van-form" className="scroll-mt-28" />
         <ViEnquiryCTA
           heading="Nhận tư vấn buổi tập riêng"
-          body="Nhắn Zalo cho đội ngũ Yog Jivan. Chúng tôi sẽ hỏi về kinh nghiệm tập, mục tiêu và lịch của bạn, sau đó tư vấn giáo viên phù hợp cùng học phí cho chương trình 1 kèm 1."
+          body="Buổi lẻ trực tuyến 60 phút giá 25 USD. Nhắn Zalo cho đội ngũ Yog Jivan để hỏi về lịch tập, gói tập hoặc phương án theo nhu cầu. Chúng tôi sẽ ghép giáo viên phù hợp và hỗ trợ bạn trực tiếp."
         />
       </div>
 

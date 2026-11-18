@@ -100,8 +100,8 @@ export function languageSwitchTarget(path: string, search = "", hash = ""): Loca
 
 function localeLink(path: string, search: string, hash: string): string {
   let anchor = hash.replace(/^#/, "");
-  if (path === PAIR_PRIVATE.en && anchor === "tu-van") anchor = "private-enquiry";
-  if (path === PAIR_PRIVATE.vi && anchor === "private-enquiry") anchor = "tu-van";
+  if (path === PAIR_PRIVATE.en && (anchor === "tu-van" || anchor === "tu-van-form")) anchor = "private-enquiry";
+  if (path === PAIR_PRIVATE.vi && (anchor === "private-enquiry" || anchor === "private-enquiry-form" || anchor === "enquiry-form")) anchor = "tu-van";
   return `${path}${search}${anchor ? `#${anchor}` : ""}`;
 }
 

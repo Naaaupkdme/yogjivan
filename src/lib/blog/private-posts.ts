@@ -8,7 +8,7 @@ import type { BlogPost } from "@/lib/blog/types";
 
 const PRIVATE_CTA = {
   title: "Private 1-on-1 online yoga",
-  sub: "Tell us your level, your goals and when you like to practise. Scheduling and pricing are arranged by enquiry.",
+  sub: "A standalone online session is US$25. Ask about schedule, packages or a custom plan.",
   primary: { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga" },
   secondary: { label: "Live Online Group Classes", to: "/online-yoga-classes" },
 };
