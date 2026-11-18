@@ -6,9 +6,9 @@ import { AREA_PHRASE_VI } from "@/lib/facts/vi-copy";
 import { CONTACT } from "@/lib/facts/contact";
 
 const CANONICAL = `${SITE_ORIGIN}/vi`;
-const TITLE = "Yoga Hải Dương & Lớp Yoga Online | Yog Jivan";
+const TITLE = "Yog Jivan Việt Nam | Yoga 1 Kèm 1, Lớp Online & Hải Dương";
 const DESC =
-  "Yog Jivan có hai cơ sở yoga phục vụ khu vực Hải Dương, lớp yoga online trực tiếp theo nhóm nhỏ và yoga 1 kèm 1 online cùng giáo viên phù hợp với trình độ của bạn.";
+  "Trang tổng quan Yog Jivan bằng tiếng Việt: yoga 1 kèm 1 online với giáo viên phù hợp, lớp yoga online trực tiếp theo nhóm nhỏ và lớp tại hai cơ sở ở Hải Dương. Chọn hình thức phù hợp với bạn.";
 
 export const Route = createFileRoute("/vi/")({
   head: () => ({

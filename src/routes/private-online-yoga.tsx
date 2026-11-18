@@ -1059,6 +1059,8 @@ function PrivateYogaPage() {
               <img
                 src={liveGuidanceFloor.url}
                 alt="A Yog Jivan teacher guiding a student through a floor posture in the studio"
+                width={1920}
+                height={1440}
                 loading="lazy"
                 className="aspect-video w-full object-cover"
               />
@@ -1096,6 +1098,8 @@ function PrivateYogaPage() {
               <img
                 src={teachingAdjustment.url}
                 alt="A Yog Jivan teacher adjusting a student's alignment during a studio class"
+                width={1440}
+                height={1920}
                 loading="lazy"
                 className="mt-6 aspect-[16/9] w-full rounded-2xl object-cover opacity-90"
               />

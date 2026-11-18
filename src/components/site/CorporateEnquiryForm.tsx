@@ -219,10 +219,10 @@ export function CorporateEnquiryForm({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="corp-field-1" className="text-xs font-medium text-foreground/80">
             {isVi ? "Tên doanh nghiệp / Đơn vị *" : "Organization / Company Name *"}
           </label>
-          <input
+          <input id="corp-field-1"
             type="text"
             required
             placeholder={isVi ? "VD: Công ty TNHH Sản xuất..." : "e.g. Acme Corp Vietnam"}
@@ -234,10 +234,10 @@ export function CorporateEnquiryForm({
         </div>
 
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="corp-field-2" className="text-xs font-medium text-foreground/80">
             {isVi ? "Người đại diện & Chức vụ *" : "Organizer Name & Role *"}
           </label>
-          <input
+          <input id="corp-field-2"
             type="text"
             required
             placeholder={isVi ? "VD: Nguyễn Văn A (HR Manager)" : "e.g. Sarah Jenkins (HR Lead)"}
@@ -266,10 +266,10 @@ export function CorporateEnquiryForm({
         </div>
 
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="corp-field-3" className="text-xs font-medium text-foreground/80">
             {isVi ? "Email công việc (tùy chọn)" : "Business Email (optional)"}
           </label>
-          <input
+          <input id="corp-field-3"
             type="email"
             placeholder={isVi ? "contact@company.com" : "wellness@company.com"}
             value={form.email}
@@ -282,10 +282,10 @@ export function CorporateEnquiryForm({
 
       <div className="grid gap-4 sm:grid-cols-3">
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="corp-field-4" className="text-xs font-medium text-foreground/80">
             {isVi ? "Địa điểm tổ chức (thành phố và nơi tập) *" : "Workplace location (city and venue) *"}
           </label>
-          <input
+          <input id="corp-field-4"
             type="text"
             required
             placeholder={isVi ? "VD: Hải Dương, Hải Phòng (kèm tên công ty/nơi tập)" : "e.g. Hai Duong, Hai Phong (venue name)"}
@@ -297,10 +297,10 @@ export function CorporateEnquiryForm({
         </div>
 
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="corp-field-5" className="text-xs font-medium text-foreground/80">
             {isVi ? "Quy mô số người dự kiến *" : "Estimated Headcount *"}
           </label>
-          <select
+          <select id="corp-field-5"
             value={form.headcount}
             onChange={(e) => setForm({ ...form, headcount: e.target.value })}
             className="mt-1 w-full rounded-xl border border-input bg-background/50 px-3.5 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
@@ -313,10 +313,10 @@ export function CorporateEnquiryForm({
         </div>
 
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="corp-field-6" className="text-xs font-medium text-foreground/80">
             {isVi ? "Hình thức tập *" : "Session Format *"}
           </label>
-          <select
+          <select id="corp-field-6"
             value={form.format}
             onChange={(e) => setForm({ ...form, format: e.target.value })}
             className="mt-1 w-full rounded-xl border border-input bg-background/50 px-3.5 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
@@ -329,10 +329,10 @@ export function CorporateEnquiryForm({
       </div>
 
       <div>
-        <label className="text-xs font-medium text-foreground/80">
+        <label htmlFor="corp-field-7" className="text-xs font-medium text-foreground/80">
           {isVi ? "Hai khung giờ phù hợp (giờ trưa hoặc sau ca)" : "Two Preferred Times (Lunch break or after shift)"}
         </label>
-        <input
+        <input id="corp-field-7"
           type="text"
           placeholder={
             isVi

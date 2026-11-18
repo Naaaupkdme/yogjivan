@@ -9,7 +9,7 @@ import { CONTACT } from "@/lib/facts/contact";
 const CANONICAL = `${SITE_ORIGIN}/vi/yoga-hai-duong`;
 const TITLE = "Yoga Hải Dương | Lớp Yoga & 2 Cơ Sở Yog Jivan";
 const DESC =
-  "Yog Jivan có hai cơ sở yoga phục vụ khu vực Hải Dương, Hải Phòng. Lớp cho người mới bắt đầu đến nâng cao, do đội ngũ giáo viên Yog Jivan hướng dẫn trực tiếp.";
+  "Lớp yoga trực tiếp tại hai cơ sở Yog Jivan ở Hải Dương: Nhà Thi Đấu Bùi Thị Xuân và Nhà Văn Hóa Lao Động Ngô Quyền. Mở cửa 05:00–21:00, lớp từ người mới bắt đầu đến nâng cao.";
 
 // NOTE: there is no equivalent English route for this local page, so it is
 // self-canonical with NO hreflang alternate. Do not pair it to "/" or

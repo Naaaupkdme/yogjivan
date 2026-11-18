@@ -245,7 +245,7 @@ export function SiteFooter() {
               Receive mindful insights, retreat updates and wellness inspiration.
             </p>
             <form className="mt-3 grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" onSubmit={(e) => e.preventDefault()}>
-              <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="rounded-full border border-border bg-card/40 px-4 py-2.5 text-sm outline-none focus:border-primary/50" />
+              <input type="email" aria-label="Email address" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="rounded-full border border-border bg-card/40 px-4 py-2.5 text-sm outline-none focus:border-primary/50" />
               <button className="btn-gold !min-h-[2.5rem] !text-[0.6rem]">{t.footer.subscribe}</button>
             </form>
           </div>

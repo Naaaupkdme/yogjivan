@@ -219,10 +219,10 @@ export function SchoolYogaEnquiryForm({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="school-field-1" className="text-xs font-medium text-foreground/80">
             {isVi ? "Tên trường / Cơ sở giáo dục *" : "School or Institution Name *"}
           </label>
-          <input
+          <input id="school-field-1"
             type="text"
             required
             placeholder={isVi ? "VD: Trường Tiểu học..." : "e.g. Hai Duong International Primary"}
@@ -234,10 +234,10 @@ export function SchoolYogaEnquiryForm({
         </div>
 
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="school-field-2" className="text-xs font-medium text-foreground/80">
             {isVi ? "Người đại diện trường & Chức vụ *" : "Coordinator Name & Role *"}
           </label>
-          <input
+          <input id="school-field-2"
             type="text"
             required
             placeholder={isVi ? "VD: Cô Mai (Giáo viên Thể chất)" : "e.g. Ms. Linh (PE Coordinator)"}
@@ -266,10 +266,10 @@ export function SchoolYogaEnquiryForm({
         </div>
 
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="school-field-3" className="text-xs font-medium text-foreground/80">
             {isVi ? "Email trường học (tùy chọn)" : "School Email (optional)"}
           </label>
-          <input
+          <input id="school-field-3"
             type="email"
             placeholder={isVi ? "school@edu.vn" : "contact@school.edu.vn"}
             value={form.email}
@@ -282,10 +282,10 @@ export function SchoolYogaEnquiryForm({
 
       <div className="grid gap-4 sm:grid-cols-3">
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="school-field-4" className="text-xs font-medium text-foreground/80">
             {isVi ? "Nhóm tuổi của trẻ *" : "Children's Age Band *"}
           </label>
-          <select
+          <select id="school-field-4"
             value={form.ageBand}
             onChange={(e) => setForm({ ...form, ageBand: e.target.value })}
             className="mt-1 w-full rounded-xl border border-input bg-background/50 px-3.5 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
@@ -298,10 +298,10 @@ export function SchoolYogaEnquiryForm({
         </div>
 
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="school-field-5" className="text-xs font-medium text-foreground/80">
             {isVi ? "Sĩ số lớp dự kiến *" : "Estimated Class Size *"}
           </label>
-          <select
+          <select id="school-field-5"
             value={form.classSize}
             onChange={(e) => setForm({ ...form, classSize: e.target.value })}
             className="mt-1 w-full rounded-xl border border-input bg-background/50 px-3.5 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
@@ -313,10 +313,10 @@ export function SchoolYogaEnquiryForm({
         </div>
 
         <div>
-          <label className="text-xs font-medium text-foreground/80">
+          <label htmlFor="school-field-6" className="text-xs font-medium text-foreground/80">
             {isVi ? "Địa điểm trường tại Hải Dương *" : "School Site in Hai Duong *"}
           </label>
-          <input
+          <input id="school-field-6"
             type="text"
             required
             placeholder={isVi ? "VD: Phường Lê Thanh Nghị, TP Hải Dương" : "e.g. Hai Duong City campus"}
@@ -329,10 +329,10 @@ export function SchoolYogaEnquiryForm({
       </div>
 
       <div>
-        <label className="text-xs font-medium text-foreground/80">
+        <label htmlFor="school-field-7" className="text-xs font-medium text-foreground/80">
           {isVi ? "Hai khung giờ hoặc tiết học phù hợp" : "Two Preferred Times (Class or extracurricular slots)"}
         </label>
-        <input
+        <input id="school-field-7"
           type="text"
           placeholder={
             isVi

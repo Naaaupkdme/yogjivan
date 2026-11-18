@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { isNotFoundShell } from "@/lib/seo/not-found-robots";
 import {
   Outlet,
   Link,
@@ -47,8 +48,6 @@ const GTM_HEAD_SCRIPT = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.star
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      {/* React 19 hoists this into <head> so the 404 shell is never indexable. */}
-      <meta name="robots" content="noindex, follow" />
       <div className="max-w-lg text-center">
         <p className="eyebrow justify-center">404</p>
         <h1 className="mt-4 text-5xl">Page not found</h1>
@@ -86,13 +85,18 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
+  head: ({ match, matches }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      // Global search-preview permissions. The 404 shell overrides this with
-      // its own noindex meta (see NotFoundComponent).
-      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      // Global search-preview permissions; the unmatched-URL 404 shell gets a
+      // single noindex directive instead (no conflicting index tag).
+      {
+        name: "robots",
+        content: isNotFoundShell(match, matches)
+          ? "noindex, follow"
+          : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
       { title: ROOT_TITLE },
       { name: "description", content: ROOT_DESC },
       { name: "author", content: "Yog Jivan" },
