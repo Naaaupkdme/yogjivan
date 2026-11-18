@@ -13,7 +13,10 @@ export default function HelpPanel({ pathname, onClose }: { pathname: string; onC
   const [kind, setKind] = useState<(typeof FEEDBACK_KINDS)[number]>("suggestion");
   const [message, setMessage] = useState("");
   const [hp, setHp] = useState("");
+  const [contact, setContact] = useState("");
+  const [consent, setConsent] = useState(false);
   const [state, setState] = useState<"idle" | "sending" | "done" | "error" | "rate">("idle");
+  const [ticket, setTicket] = useState<{ id: string; notified: boolean } | null>(null);
 
   const kindLabel = vi
     ? { suggestion: "Góp ý", problem: "Báo lỗi", compliment: "Lời khen" }
@@ -26,10 +29,17 @@ export default function HelpPanel({ pathname, onClose }: { pathname: string; onC
       const r = await fetch("/api/public/help/feedback", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ kind, message, page_path: pathname.slice(0, 200), lang: vi ? "VI" : "EN", website: hp }),
+        body: JSON.stringify({
+          kind, message, page_path: pathname.slice(0, 200), lang: vi ? "VI" : "EN", website: hp,
+          ...(contact.trim() ? { reply_contact: contact.trim(), contact_consent: consent } : {}),
+        }),
       });
-      setState(r.ok ? "done" : r.status === 429 ? "rate" : "error");
-      if (r.ok) setMessage("");
+      if (r.ok) {
+        const j = await r.json();
+        setTicket({ id: j.ticket_id, notified: Boolean(j.notified) });
+        setMessage(""); setContact(""); setConsent(false);
+        setState("done");
+      } else setState(r.status === 429 ? "rate" : "error");
     } catch {
       setState("error");
     }
@@ -37,7 +47,7 @@ export default function HelpPanel({ pathname, onClose }: { pathname: string; onC
 
   const section = "rounded-xl border border-border/60 p-4 space-y-2";
   return (
-    <div className="fixed inset-0 z-[1000] flex items-end justify-center bg-background/70 backdrop-blur-sm sm:items-center" onClick={onClose}>
+    <div className="fixed inset-0 z-[80] flex items-end justify-center bg-background/70 backdrop-blur-sm sm:items-center" onClick={onClose}>
       <div
         role="dialog" aria-modal="true" aria-labelledby="yj-help-title"
         className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-t-2xl border border-border bg-card p-5 text-card-foreground shadow-xl sm:rounded-2xl"
@@ -68,6 +78,7 @@ export default function HelpPanel({ pathname, onClose }: { pathname: string; onC
           </div>
           <div className={section}>
             <p className="font-medium">{vi ? "Bạn đã tập ở studio nào? Để lại đánh giá Google" : "Which studio did you visit? Leave a Google review"}</p>
+            <p className="text-xs text-muted-foreground">{vi ? "Đánh giá công khai, trung thực — tốt hay chưa tốt đều được trân trọng." : "Public and honest — every experience, good or not, is welcome."}</p>
             <div className="flex flex-col gap-2">
               {[LOCATIONS.studio1, LOCATIONS.studio2].map((s) => (
                 <a key={s.id} href={s.googleMaps} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-lg border border-border px-3 py-2 hover:bg-muted">
@@ -78,7 +89,7 @@ export default function HelpPanel({ pathname, onClose }: { pathname: string; onC
           </div>
           <form className={section} onSubmit={send}>
             <p className="font-medium">{vi ? "Góp ý riêng cho chúng tôi" : "Private feedback to the team"}</p>
-            <p className="text-xs text-muted-foreground">{vi ? "Không công khai. Vui lòng không ghi số điện thoại, email hay thông tin sức khỏe." : "Not public. Please don't include phone, email or health details."}</p>
+            <p className="text-xs text-muted-foreground">{vi ? "Không công khai, tách biệt với đánh giá Google. Vui lòng không ghi thông tin sức khỏe hay thông tin về trẻ em." : "Not public and separate from Google reviews. Please don't include health details or information about children."}</p>
             <div className="flex gap-2" role="radiogroup" aria-label={vi ? "Loại góp ý" : "Feedback type"}>
               {FEEDBACK_KINDS.map((k) => (
                 <button key={k} type="button" role="radio" aria-checked={kind === k} onClick={() => setKind(k)}
@@ -87,11 +98,21 @@ export default function HelpPanel({ pathname, onClose }: { pathname: string; onC
             </div>
             <label htmlFor="yj-help-msg" className="sr-only">{vi ? "Nội dung" : "Message"}</label>
             <textarea id="yj-help-msg" required minLength={5} maxLength={1000} rows={3} value={message} onChange={(e) => setMessage(e.target.value)} className="w-full rounded-lg border border-border bg-background p-2" />
+            <label htmlFor="yj-help-contact" className="block text-xs">{vi ? "Email hoặc số điện thoại để chúng tôi trả lời (không bắt buộc)" : "Email or phone for a reply (optional)"}</label>
+            <input id="yj-help-contact" type="text" autoComplete="email" maxLength={120} value={contact} onChange={(e) => setContact(e.target.value)} className="w-full rounded-lg border border-border bg-background p-2" />
+            {contact.trim() && (
+              <label className="flex items-start gap-2 text-xs">
+                <input type="checkbox" required checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5" />
+                <span>{vi ? "Tôi đồng ý để đội ngũ Yog Jivan dùng thông tin này chỉ để trả lời góp ý này." : "I agree the Yog Jivan team may use this only to reply to this feedback."}</span>
+              </label>
+            )}
             <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={hp} onChange={(e) => setHp(e.target.value)} className="hidden" />
             <button type="submit" disabled={state === "sending"} className="rounded-full bg-primary px-4 py-2 text-primary-foreground disabled:opacity-60">{vi ? "Gửi" : "Send"}</button>
             <p aria-live="polite" className="text-xs">
-              {state === "done" && (vi ? "Cảm ơn bạn! Đã gửi." : "Thank you — sent.")}
-              {state === "error" && (vi ? "Chưa gửi được, vui lòng thử lại." : "Couldn't send, please try again.")}
+              {state === "done" && ticket && (vi
+                ? `Cảm ơn bạn! Mã góp ý: ${ticket.id}. ${ticket.notified ? "Đội ngũ đã nhận được thông báo." : "Góp ý đã được lưu và sẽ được xem xét."}`
+                : `Thank you! Ticket ${ticket.id}. ${ticket.notified ? "The team has been notified." : "Your feedback is saved and will be reviewed."}`)}
+              {state === "error" && (vi ? "Chưa gửi được. Nội dung vẫn còn — bấm Gửi để thử lại." : "Couldn't send. Your text is kept — press Send to try again.")}
               {state === "rate" && (vi ? "Bạn đã gửi nhiều lần, vui lòng thử lại sau." : "Too many messages — please try later.")}
             </p>
           </form>

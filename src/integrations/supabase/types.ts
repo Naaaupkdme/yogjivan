@@ -161,35 +161,82 @@ export type Database = {
       help_feedback: {
         Row: {
           created_at: string
+          has_contact: boolean
           id: string
           ip_hash: string | null
           kind: string
           lang: string | null
           message: string
+          notified_at: string | null
+          notify_attempts: number
+          notify_error: string | null
+          notify_status: string
           page_path: string | null
           reviewed_at: string | null
+          ticket_id: string
         }
         Insert: {
           created_at?: string
+          has_contact?: boolean
           id?: string
           ip_hash?: string | null
           kind: string
           lang?: string | null
           message: string
+          notified_at?: string | null
+          notify_attempts?: number
+          notify_error?: string | null
+          notify_status?: string
           page_path?: string | null
           reviewed_at?: string | null
+          ticket_id?: string
         }
         Update: {
           created_at?: string
+          has_contact?: boolean
           id?: string
           ip_hash?: string | null
           kind?: string
           lang?: string | null
           message?: string
+          notified_at?: string | null
+          notify_attempts?: number
+          notify_error?: string | null
+          notify_status?: string
           page_path?: string | null
           reviewed_at?: string | null
+          ticket_id?: string
         }
         Relationships: []
+      }
+      help_feedback_contacts: {
+        Row: {
+          consent_at: string
+          contact: string
+          created_at: string
+          feedback_id: string
+        }
+        Insert: {
+          consent_at?: string
+          contact: string
+          created_at?: string
+          feedback_id: string
+        }
+        Update: {
+          consent_at?: string
+          contact?: string
+          created_at?: string
+          feedback_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "help_feedback_contacts_feedback_id_fkey"
+            columns: ["feedback_id"]
+            isOneToOne: true
+            referencedRelation: "help_feedback"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       lead_crm_events: {
         Row: {
