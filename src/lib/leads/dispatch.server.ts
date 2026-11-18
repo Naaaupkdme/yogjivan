@@ -4,6 +4,7 @@
 import { buildLeadPayload, type LeadPayload, type LeadRow } from "./payload";
 import { formatTelegramAlert, crmLink } from "./telegram-format";
 import { planSheetUpsert, cellRange } from "./sheet-plan";
+import { scoreLead } from "./ai-score.server";
 import { telegramOutcome, sheetOutcome, type Outcome } from "./outcomes";
 
 const GATEWAY = "https://connector-gateway.lovable.dev";
@@ -41,6 +42,7 @@ async function prepare(admin: Admin) {
     const { data: lead } = await admin.from("leads").select(LEAD_COLS).eq("id", r.lead_id).maybeSingle();
     if (!lead) continue;
     const { payload, reply } = buildLeadPayload(lead as LeadRow);
+    payload.ai = await scoreLead(payload, process.env.LOVABLE_API_KEY);
     await admin.from("leads").update({
       country_code: payload.phone.country_code,
       mobile_number: payload.phone.mobile_number,

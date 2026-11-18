@@ -12,7 +12,7 @@ const HEADER = [
   "Landing Page","UTM Source","First Touch At","Created At (UTC)","Updated At (UTC)","Session ID","Meta JSON",
   "Country/Region (inferred)","Record Type","Priority","Funnel Stage","Contact Status","Last Contact","Next Follow-up",
   "Owner","Notes","Duplicate Key","Source UUID","Lead Status","Demo Status","Next Action","Response Status",
-  "Contacted Via","Country Code","Mobile Number","WhatsApp Full Number","Phone Original Input","Phone Validation",
+  "Contacted Via","Country Code","Mobile Number","WhatsApp Full Number","Phone Original Input","Phone Validation","AI Score","AI Summary","Worth a Call",
 ];
 
 function lead(over: Partial<LeadRow> = {}): LeadRow {

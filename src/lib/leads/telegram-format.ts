@@ -68,6 +68,11 @@ export function formatTelegramAlert(p: LeadPayload, reply: string, crmUrl: strin
       `• Source: ${clip(p.landing_page ?? p.source, 60)}`,
       `• Priority: ${clip(p.priority, 10)}`,
     ],
+    ...(p.ai ? [[
+      `🤖 <b>AI SCORE:</b> ${p.ai.score}/100 (${p.ai.fit} fit)`,
+      `• Summary: ${clip(p.ai.summary, 200)}`,
+      p.ai.worth_call ? `📞 <b>Worth a call</b> — ${clip(p.ai.reason, 120)}` : `• Call: not a priority — ${clip(p.ai.reason, 120)}`,
+    ]] : []),
     [`🔒 <b>Health information provided:</b> ${p.health_present ? "Yes" : "No"}`],
     ["💬 <b>READY TO COPY</b>", `<blockquote>${replyText ? escapeHtml(replyText) : "—"}</blockquote>`],
   ];

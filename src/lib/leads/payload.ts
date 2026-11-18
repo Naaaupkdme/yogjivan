@@ -57,6 +57,7 @@ export type LeadPayload = {
   updated_at: string;
   reply_link: string | null;
   playbook_version: string;
+  ai?: import("./ai-score").AiScore | null;
 };
 
 
