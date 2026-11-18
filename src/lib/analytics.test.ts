@@ -114,9 +114,7 @@ describe("analytics - privacy-safe lead categorization", () => {
       expect(mockFbq).toHaveBeenCalledWith(
         "track",
         "Lead",
-        expect.objectContaining({
-          content_category: "online_group",
-        }),
+        {},
         { eventID: testEventId }
       );
     });
@@ -136,9 +134,7 @@ describe("analytics - privacy-safe lead categorization", () => {
       expect(mockFbq).toHaveBeenCalledWith(
         "track",
         "Lead",
-        expect.objectContaining({
-          content_category: "general",
-        })
+        {}
       );
     });
   });
@@ -344,5 +340,28 @@ describe("analytics - privacy-safe lead categorization", () => {
       applyConsent({ analytics: true, marketing: true });
       expect(mockFbq).toHaveBeenCalledWith("track", "PageView");
     });
+  });
+});
+
+describe("Meta data minimisation", () => {
+  afterEach(() => { delete (globalThis as any).window; });
+  it("ViewContent and Lead send no custom parameters even if passed", async () => {
+    const fbq = vi.fn();
+    const store: Record<string, string> = { yj_cookie_consent_v2: JSON.stringify({ analytics: true, marketing: true }) };
+    (globalThis as any).window = {
+      location: { pathname: "/private-online-yoga", search: "", href: "https://www.yogjivan.com/private-online-yoga", hostname: "www.yogjivan.com" },
+      localStorage: { getItem: (k: string) => store[k] ?? null, setItem: (k: string, v: string) => { store[k] = v; } },
+      dispatchEvent: vi.fn(), fbq,
+    };
+    const { metaEvent } = await import("./analytics");
+    metaEvent("ViewContent", { content_name: "Private Online Yoga", content_category: "Private Sessions" });
+    metaEvent("Lead", { content_category: "private_online" }, "evt-1");
+    expect(fbq).toHaveBeenCalledTimes(2);
+    expect(fbq.mock.calls[0]).toEqual(["track", "ViewContent", {}]);
+    expect(fbq.mock.calls[1]).toEqual(["track", "Lead", {}, { eventID: "evt-1" }]);
+  });
+  it("only configured event names exist", async () => {
+    const { META_EVENTS } = await import("./analytics");
+    expect([...META_EVENTS]).toEqual(["PageView", "ViewContent", "Contact", "Lead"]);
   });
 });

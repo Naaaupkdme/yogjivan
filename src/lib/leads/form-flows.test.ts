@@ -115,7 +115,7 @@ describe("Form flows — production submission coordinator, outcome gating, mute
       const fbCall = mockFbq.mock.calls[0];
       expect(fbCall[0]).toBe("track");
       expect(fbCall[1]).toBe("Lead");
-      expect(fbCall[2].content_category).toBe("online_group");
+      expect(fbCall[2]).toEqual({});
       expect(fbCall[3]).toEqual({ eventID: leadEventId });
       expect(JSON.stringify(fbCall[2])).not.toContain("Back");
     });

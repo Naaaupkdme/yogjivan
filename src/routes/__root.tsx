@@ -324,11 +324,7 @@ function RootComponent() {
       };
       const match = VIEW_CONTENT_MAP[path];
       if (match) {
-        metaEvent("ViewContent", {
-          content_name: match.content_name,
-          content_category: match.content_category,
-          content_type: "product",
-        });
+        metaEvent("ViewContent");
       }
     };
     // Initial load (gtag config runs with send_page_view:false).

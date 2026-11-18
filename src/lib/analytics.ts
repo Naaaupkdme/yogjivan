@@ -275,23 +275,36 @@ export function gaEvent(name: string, params: Record<string, string | number | b
   win.gtag("event", name, { page_path: pagePath(), ...params });
 }
 
+/**
+ * Central Meta event configuration (dataset category: Health & wellness).
+ * Data minimisation: NO custom parameters are ever sent — no service labels,
+ * categories, content names or free text. Only the event name, plus an
+ * optional eventID in the fbq options argument for future deduplication.
+ * Listing an event here does NOT mean Meta allows it; Meta's final event
+ * eligibility for this dataset is still pending owner review.
+ */
+export const META_EVENTS = ["PageView", "ViewContent", "Contact", "Lead"] as const;
+export type MetaEventName = (typeof META_EVENTS)[number];
+
 /** Meta event — only fires on approved host, when marketing consent is granted, and on non-sensitive paths. */
 export function metaEvent(
-  name: string,
-  params: Record<string, string | number> = {},
-  /** Meta CAPI deduplication key — the same value must be sent server-side. */
+  name: MetaEventName,
+  /** Ignored by design (kept for call-site compatibility); never sent to Meta. */
+  _params?: Record<string, string | number>,
+  /** Deduplication key, sent only in the fbq options argument. */
   eventId?: string,
 ) {
   const win = w();
   if (!win) return;
+  if (!(META_EVENTS as readonly string[]).includes(name)) return;
   const host = win.location?.hostname || "";
   if (!isMetaAllowedHost(host)) return;
   if (!readConsent().marketing) return;
   const path = pagePath();
   if (isSensitiveHealthPath(path)) return;
   if (typeof win.fbq !== "function") return;
-  if (eventId) win.fbq("track", name, params, { eventID: eventId });
-  else win.fbq("track", name, params);
+  if (eventId) win.fbq("track", name, {}, { eventID: eventId });
+  else win.fbq("track", name, {});
 }
 
 export function trackPageView() {
@@ -422,7 +435,7 @@ export function trackGenerateLead(serviceCategory: string, formId: string, event
     service_category: safeCategory,
     ...(eventId ? { lead_event_id: eventId } : {}),
   });
-  metaEvent("Lead", { content_category: safeCategory }, eventId);
+  metaEvent("Lead", undefined, eventId);
 }
 
 
