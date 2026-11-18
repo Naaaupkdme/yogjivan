@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Search, X } from "lucide-react";
 import { BodyPortal } from "@/components/site/BodyPortal";
-import { FALLBACK_LINKS, POPULAR_SEARCHES, searchSite } from "@/lib/site-search";
+import { useRouterState } from "@tanstack/react-router";
+import { FALLBACK_LINKS, POPULAR_SEARCHES, loadSearchEntries, searchSite, type SearchEntry } from "@/lib/site-search";
+import { isViPath } from "@/lib/locale-routes";
 
 const OPEN_EVENT = "yj:open-search";
 
@@ -31,7 +33,17 @@ export function SiteSearch() {
   const listRef = useRef<HTMLDivElement>(null);
   const restoreRef = useRef<HTMLElement | null>(null);
 
-  const results = useMemo(() => searchSite(query, 8), [query]);
+  const [entries, setEntries] = useState<SearchEntry[] | null>(null);
+  const pathname = useRouterState({ select: (st) => st.location.pathname });
+  const lang: "en" | "vi" = isViPath(pathname) ? "vi" : "en";
+  const results = useMemo(
+    () => (entries ? searchSite(query, entries, { limit: 8, locale: lang }) : []),
+    [query, entries, lang],
+  );
+
+  useEffect(() => {
+    if (open && !entries) loadSearchEntries().then(setEntries).catch(() => setEntries([]));
+  }, [open, entries]);
 
   useEffect(() => {
     const onOpen = () => {
@@ -139,7 +151,7 @@ export function SiteSearch() {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search classes, topics, pricing or locations…"
+            placeholder={lang === "vi" ? "Tìm lớp học, chủ đề, học phí…" : "Search classes, topics, pricing or locations…"}
             aria-label="Search classes, topics, pricing or locations"
             className="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
           />
@@ -157,10 +169,10 @@ export function SiteSearch() {
           {!query.trim() && (
             <div>
               <div className="px-2 pb-2 text-[0.6rem] uppercase tracking-[0.28em] text-[color:var(--gold)]/80">
-                Popular searches
+                {lang === "vi" ? "Tìm kiếm phổ biến" : "Popular searches"}
               </div>
               <div className="flex flex-wrap gap-2 px-2 pb-2">
-                {POPULAR_SEARCHES.map((term) => (
+                {POPULAR_SEARCHES[lang].map((term) => (
                   <button
                     key={term}
                     data-focusable
@@ -205,12 +217,12 @@ export function SiteSearch() {
             </>
           )}
 
-          {query.trim() && results.length === 0 && (
+          {query.trim() && entries && results.length === 0 && (
             <div className="px-3 py-6">
-              <p className="text-sm text-foreground">No results found for “{query}”</p>
-              <p className="mt-2 text-xs text-muted-foreground">Try one of these instead:</p>
+              <p className="text-sm text-foreground">{lang === "vi" ? "Không tìm thấy kết quả cho" : "No results found for"} “{query}”</p>
+              <p className="mt-2 text-xs text-muted-foreground">{lang === "vi" ? "Bạn có thể xem:" : "Try one of these instead:"}</p>
               <div className="mt-3 flex flex-wrap gap-2">
-                {FALLBACK_LINKS.map((l) => (
+                {FALLBACK_LINKS[lang].map((l) => (
                   <a
                     key={l.href}
                     data-focusable

@@ -1,6 +1,8 @@
-// Curated sitewide search index. Every href must resolve to a real current
-// route or a real current anchor on that route. No generated pages.
-import { BLOG_POSTS } from "@/lib/blog-posts";
+// Sitewide search. The page index is generated automatically from each public
+// route's own head() metadata (see src/lib/search/route-meta.ts and the
+// yj-search-index Vite plugin); blog articles come from the editorial registry.
+// Nothing here lists pages by hand: only query aliases (synonyms) live here.
+import type { RouteSearchEntry } from "@/lib/search/route-meta";
 
 export type SearchEntry = {
   id: string;
@@ -8,318 +10,12 @@ export type SearchEntry = {
   description: string;
   category: string;
   href: string;
-  keywords: string[];
-  /** Intent weighting so the most useful destination ranks first. Default 1. */
-  boost?: number;
+  locale: "en" | "vi";
+  /** Extra searchable text (FAQ questions, blog keywords). */
+  text: string;
 };
 
-const PAGES: SearchEntry[] = [
-  {
-    id: "home",
-    title: "Home",
-    description: "Yog Jivan yoga studios serving the Hai Duong urban area, plus live online classes.",
-    category: "Pages",
-    href: "/",
-    boost: 0.85,
-    keywords: [
-      "home", "yog jivan", "sanctuary", "hai phong", "vietnam yoga", "trang chu",
-    ],
-  },
-  {
-    id: "programs",
-    title: "Programs & Pricing",
-    description: "Studio membership options, private yoga by enquiry and live online class plans.",
-    category: "Programs",
-    href: "/programs",
-    boost: 1.3,
-    keywords: [
-      "programs", "pricing", "price", "prices", "cost", "fees", "membership", "plans", "packages",
-      "how much", "gia", "gia ca", "hoc phi", "bang gia", "chuong trinh", "gia lop yoga",
-    ],
-  },
-  {
-    id: "studio-classes",
-    title: "Studio Classes in Hai Duong",
-    description: "In-person group classes, Monday to Saturday, at the Yog Jivan studios in the Hai Duong urban area.",
-    category: "Programs",
-    href: "/programs",
-    boost: 1.35,
-    keywords: [
-      "studio", "studio classes", "in person", "group class", "offline", "walk in", "membership",
-      "hai duong", "hai duong yoga", "yoga hai duong", "hai duong studio", "yoga studio",
-      "near me", "yoga near me", "yoga classes near me", "yoga class near me", "classes near me",
-      "lop tai phong tap", "lop nhom", "lop yoga hai duong", "trung tam yoga hai duong",
-      "lop yoga gan day", "yoga gan day", "gan day",
-    ],
-  },
-  {
-    id: "beginners",
-    title: "Yoga for Beginners",
-    description: "A safety-first starting path for complete beginners, with alignment guidance from the first class.",
-    category: "Programs",
-    href: "/yoga-for-beginners",
-    boost: 1.25,
-    keywords: [
-      "beginner", "beginners", "new", "newbie", "starting", "start yoga", "first class", "not flexible",
-      "basics", "foundation", "nguoi moi bat dau", "nguoi moi", "yoga co ban", "moi bat dau",
-    ],
-  },
-  {
-    id: "online",
-    title: "Online Yoga Classes",
-    description: "Live small-group online classes of 60 minutes with a maximum of 8 students and real-time correction.",
-    category: "Online",
-    href: "/online-yoga-classes",
-    boost: 1.3,
-    keywords: [
-      "online yoga", "online yoga classes", "live online yoga", "online", "online class", "online classes", "live class", "live online", "zoom", "virtual",
-      "remote", "small group", "group class online", "worldwide", "timezone",
-      "lop yoga online", "yoga truc tuyen", "hoc online", "lop online",
-    ],
-  },
-  {
-    id: "online-pricing",
-    title: "Online Class Pricing",
-    description: "Monthly to yearly membership plans for live online yoga, shown on the online classes page.",
-    category: "Online",
-    href: "/online-yoga-classes",
-    keywords: [
-      "online pricing", "online price", "monthly", "subscription", "usd", "plan", "membership online",
-      "how much online", "gia online", "hoc phi online",
-    ],
-  },
-  {
-    id: "online-trial",
-    title: "Free Introductory Online Offer",
-    description: "New students can try live group access plus one complimentary private session before joining.",
-    category: "Online",
-    href: "/online-yoga-classes",
-    keywords: [
-      "trial", "free trial", "free class", "intro", "introductory", "try", "first free", "no card",
-      "hoc thu", "dung thu", "mien phi",
-    ],
-  },
-  {
-    id: "online-setup",
-    title: "Camera policy for live online classes",
-    description: "How to position your device and space so live posture correction works during online classes.",
-    category: "Online",
-    href: "/online-yoga-classes",
-    boost: 0.8,
-    keywords: [
-      "camera", "camera on", "webcam", "setup", "equipment", "mat", "props", "internet", "device",
-      "laptop", "phone", "privacy", "may quay", "thiet bi", "chuan bi",
-    ],
-  },
-  {
-    id: "private",
-    title: "Private Yoga",
-    description: "One-to-one 60-minute sessions with the Yog Jivan teaching team, in studio or live online, arranged by enquiry.",
-    category: "Programs",
-    href: "/private-online-yoga",
-    keywords: [
-      "private", "private yoga", "personal training", "personal trainer", "one to one", "one on one",
-      "1 on 1", "1-1", "individual", "solo", "bespoke", "personal instructor", "private teacher",
-      "lop rieng", "mot kem mot", "hoc rieng", "giao vien rieng",
-    ],
-  },
-  {
-    id: "private-online",
-    title: "Private 1-on-1 Online Yoga",
-    description: "Fully individual live online sessions with personalised pacing and real-time guidance.",
-    category: "Online",
-    href: "/private-online-yoga",
-    boost: 1.7,
-    keywords: [
-      "private online", "private online yoga", "one to one online yoga", "online private", "1 on 1 online", "one to one online", "private live",
-      "personal online", "individual online", "hoc rieng online", "mot kem mot online", "lop rieng truc tuyen",
-    ],
-  },
-  {
-    id: "about",
-    title: "About Master Anil",
-    description: "Master Anil Choudhary, Founder & Lead Yoga Teacher, and the Indian yoga background behind Yog Jivan.",
-    category: "About",
-    href: "/about",
-    keywords: [
-      "about", "master anil", "anil", "anil choudhary", "teacher", "instructor", "founder", "guru",
-      "who teaches", "experience", "lineage", "india", "giao vien", "thay", "nguoi sang lap",
-    ],
-  },
-  {
-    id: "contact",
-    title: "Contact & Book a Consultation",
-    description: "Message the studio on WhatsApp, Zalo, phone or email, or request a free consultation.",
-    category: "Contact",
-    href: "/contact#consultation",
-    boost: 1.25,
-    keywords: [
-      "contact", "locations", "studio address", "dia chi yoga", "book", "booking", "enquiry", "enquire", "consultation", "whatsapp", "zalo", "phone",
-      "email", "call", "address", "location", "map", "directions", "where", "near me",
-      "lien he", "dia chi", "dat lich", "so dien thoai",
-    ],
-  },
-  {
-    id: "studio-1",
-    title: "Yog Jivan Sanctuary (Studio 1)",
-    description: "Studio at Bùi Thị Xuân, Phường Lê Thanh Nghị — aerial yoga is available here.",
-    category: "Locations",
-    href: "/contact",
-    keywords: [
-      "studio 1", "sanctuary", "bui thi xuan", "le thanh nghi", "location", "address", "map",
-      "aerial", "aerial yoga", "fly yoga", "dia chi", "co so 1", "yoga bay",
-    ],
-  },
-  {
-    id: "studio-2",
-    title: "Yog Jivan Yoga Studio (Studio 2)",
-    description: "Second studio at Tầng 3, Nhà Văn Hóa Lao Động, Ngô Quyền, in the Hai Duong urban area.",
-    category: "Locations",
-    href: "/contact",
-    keywords: [
-      "studio 2", "wellness center", "healing center", "ngo quyen", "thanh dong", "location",
-      "address", "map", "dia chi", "co so 2",
-    ],
-  },
-  {
-    id: "back-pain",
-    title: "Yoga for Back Pain",
-    description: "Careful, alignment-led practice to support back and spine comfort in daily life.",
-    category: "Focus Areas",
-    href: "/yoga-for-back-pain",
-    keywords: [
-      "back pain", "backache", "back", "spine", "lower back", "neck", "neck pain", "posture",
-      "sciatica", "desk", "dau lung", "dau co", "cot song",
-    ],
-  },
-  {
-    id: "stress",
-    title: "Yoga for Stress",
-    description: "Breath-led, slower practice to support relaxation, calm and better sleep habits.",
-    category: "Focus Areas",
-    href: "/yoga-for-stress",
-    keywords: [
-      "stress", "anxiety", "calm", "relax", "relaxation", "sleep", "insomnia", "burnout", "breathing",
-      "pranayama", "meditation", "cang thang", "giam cang thang", "thu gian", "mat ngu", "thien",
-    ],
-  },
-  {
-    id: "weight-loss",
-    title: "Yoga for Weight Loss",
-    description: "A sustainable, strength- and consistency-focused approach rather than quick-fix promises.",
-    category: "Focus Areas",
-    href: "/yoga-for-weight-loss",
-    keywords: [
-      "weight loss", "fat loss", "slim", "lose weight", "fitness", "toning", "giam can", "giam mo",
-    ],
-  },
-  {
-    id: "pcod",
-    title: "Yoga for PCOD & PCOS",
-    description: "Gentle, supportive practice for women managing PCOD or PCOS alongside medical care.",
-    category: "Focus Areas",
-    href: "/yoga-for-pcod",
-    keywords: ["pcod", "pcos", "hormone", "hormonal", "women", "womens health", "cycle", "kinh nguyet", "noi tiet"],
-  },
-  {
-    id: "thyroid",
-    title: "Yoga for Thyroid",
-    description: "Supportive practice and breathwork for people living with thyroid conditions.",
-    category: "Focus Areas",
-    href: "/yoga-for-thyroid",
-    keywords: ["thyroid", "hypothyroid", "hyperthyroid", "metabolism", "tuyen giap"],
-  },
-  {
-    id: "period-safe",
-    title: "Period-Safe Yoga",
-    description: "What to practise, adapt or skip during menstruation, with teacher-guided modifications.",
-    category: "Focus Areas",
-    href: "/period-safe-yoga",
-    keywords: ["period", "periods", "menstruation", "menstrual", "cramps", "women", "kinh nguyet", "dau bung kinh"],
-  },
-  {
-    id: "expats",
-    title: "Yoga for Expats in Vietnam",
-    description: "English-language classes for expats living in Vietnam, in studio or live online.",
-    category: "Programs",
-    href: "/yoga-for-expats-in-vietnam",
-    keywords: [
-      "expat", "expats", "foreigner", "english", "english class", "vietnam", "hanoi", "hai phong",
-      "nguoi nuoc ngoai", "tieng anh",
-    ],
-  },
-  {
-    id: "corporate",
-    title: "Corporate Yoga",
-    description: "Workplace yoga and wellbeing sessions for teams, arranged by enquiry.",
-    category: "Programs",
-    href: "/corporate",
-    keywords: ["corporate", "company", "office", "workplace", "team", "employee", "business", "cong ty", "doanh nghiep"],
-  },
-  {
-    id: "gallery",
-    title: "Gallery",
-    description: "Photographs from the Yog Jivan studios, classes and community.",
-    category: "Pages",
-    href: "/gallery",
-    keywords: ["gallery", "photos", "pictures", "images", "studio photos", "hinh anh", "thu vien anh"],
-  },
-  {
-    id: "testimonials",
-    title: "Testimonials",
-    description: "Student experiences and reviews from studio and online practitioners.",
-    category: "Pages",
-    href: "/testimonials",
-    keywords: ["testimonials", "reviews", "students", "feedback", "rating", "danh gia", "cam nhan"],
-  },
-  {
-    id: "blog",
-    title: "Blog",
-    description: "Articles on practice, breathwork, therapeutic yoga and building a lasting home routine.",
-    category: "Blog",
-    href: "/blog",
-    keywords: ["blog", "articles", "guides", "reading", "tips", "bai viet"],
-  },
-  {
-    id: "yoga-participation-statistics",
-    title: "Yoga Participation Statistics — Primary Sources",
-    description: "Citation-ready U.S. yoga participation figures and clearly separated Viet Nam and global physical-activity context.",
-    category: "Research",
-    href: "/research/yoga-participation-statistics",
-    boost: 1.1,
-    keywords: [
-      "yoga statistics", "yoga participation", "yoga data", "yoga research", "how many people do yoga",
-      "cdc yoga", "nhis yoga", "vietnam physical activity", "global physical activity", "primary sources",
-    ],
-  },
-];
-
-const BLOG_ENTRIES: SearchEntry[] = BLOG_POSTS.map((post) => ({
-  id: `blog-${post.slug}`,
-  title: post.title,
-  description: post.excerpt,
-  category: `Blog · ${post.cat}`,
-  href: `/blog/${post.slug}`,
-  keywords: [post.cat, post.cluster ?? "", post.primaryKeyword ?? "", ...post.slug.split("-")].filter(Boolean),
-}));
-
-export const SEARCH_INDEX: SearchEntry[] = [...PAGES, ...BLOG_ENTRIES];
-
-export const POPULAR_SEARCHES = [
-  "Online Yoga Classes",
-  "Yoga for Beginners",
-  "Private Yoga",
-  "Programs & Pricing",
-  "Yoga for Back Pain",
-  "Contact",
-];
-
-export const FALLBACK_LINKS = [
-  { label: "Programs & Pricing", href: "/programs" },
-  { label: "Yoga for Beginners", href: "/yoga-for-beginners" },
-  { label: "Online Yoga Classes", href: "/online-yoga-classes" },
-  { label: "Contact", href: "/contact#consultation" },
-];
+export type SearchResult = SearchEntry & { score: number };
 
 /** Lowercase + strip diacritics (handles Vietnamese đ/Đ too). */
 export function normalize(input: string): string {
@@ -333,7 +29,73 @@ export function normalize(input: string): string {
     .trim();
 }
 
-/** Levenshtein distance, capped for cheap typo tolerance. */
+/**
+ * Query aliases: a normalized phrase on the left expands to extra search terms.
+ * Generic vocabulary only — never page URLs — so new pages benefit automatically.
+ */
+const ALIASES: Record<string, string> = {
+  couple: "couples partner two adults",
+  couples: "couple partner two adults",
+  "cap doi": "couples partner two adults",
+  "yoga cap doi": "couples partner two adults",
+  "vo chong": "couples partner two adults",
+  family: "family families household kids parents",
+  "gia dinh": "family families household",
+  kids: "kids children school play based",
+  kid: "kids children school",
+  children: "kids school",
+  child: "kids school",
+  "tre em": "kids children school hoc duong",
+  "thieu nhi": "kids children school",
+  school: "school kids children",
+  schools: "school kids",
+  "hoc duong": "school kids hoc duong",
+  "truong hoc": "school kids hoc duong",
+  corporate: "corporate workplace company team office doanh nghiep",
+  workplace: "corporate workplace office team doanh nghiep",
+  office: "corporate workplace chair doanh nghiep",
+  company: "corporate workplace doanh nghiep",
+  business: "corporate workplace doanh nghiep",
+  "doanh nghiep": "corporate workplace doanh nghiep",
+  "cong ty": "corporate workplace doanh nghiep",
+  "van phong": "corporate workplace doanh nghiep",
+  private: "private 1 to 1 one",
+  "one to one": "private 1 to 1",
+  "one on one": "private 1 to 1",
+  "1 on 1": "private 1 to 1",
+  "1 1": "private 1 to 1",
+  personal: "private 1 to 1",
+  "mot kem mot": "1 kem 1 private",
+  "1 kem 1": "1 kem 1 private",
+  "kem rieng": "1 kem 1 private",
+  online: "online live",
+  "truc tuyen": "online truc tuyen",
+  price: "pricing programs",
+  prices: "pricing programs",
+  cost: "pricing programs",
+  "gia": "pricing programs",
+  "hoc phi": "pricing programs",
+  beginner: "beginners",
+  "nguoi moi": "beginners",
+  back: "back discomfort",
+  stress: "stress",
+  "cang thang": "stress",
+  contact: "contact consultation book",
+  "lien he": "contact consultation",
+  teacher: "master anil founder",
+  "giao vien": "master anil",
+  location: "hai duong studio contact",
+  "near me": "hai duong studio",
+};
+
+function expand(q: string): string[] {
+  const hit = Object.keys(ALIASES).filter(
+    (k) => q === k || q.startsWith(`${k} `) || q.endsWith(` ${k}`) || q.includes(` ${k} `),
+  );
+  // Longest phrase wins: "gia dinh" (family) must not also trigger "gia" (price).
+  return hit.filter((k) => !hit.some((o) => o !== k && o.includes(k))).map((k) => ALIASES[k]!);
+}
+
 function editDistance(a: string, b: string): number {
   if (a === b) return 0;
   if (Math.abs(a.length - b.length) > 2) return 3;
@@ -341,67 +103,140 @@ function editDistance(a: string, b: string): number {
   for (let i = 1; i <= a.length; i++) {
     const cur = [i];
     for (let j = 1; j <= b.length; j++) {
-      cur[j] = Math.min(
-        prev[j] + 1,
-        cur[j - 1] + 1,
-        prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1),
-      );
+      cur[j] = Math.min(prev[j]! + 1, cur[j - 1]! + 1, prev[j - 1]! + (a[i - 1] === b[j - 1] ? 0 : 1));
     }
     prev = cur;
   }
-  return prev[b.length];
+  return prev[b.length]!;
 }
 
 function tokenScore(token: string, haystack: string, weight: number): number {
   if (!token) return 0;
-  if (haystack.includes(token)) {
-    return haystack.startsWith(token) ? weight * 1.2 : weight;
-  }
+  if (` ${haystack} `.includes(` ${token}`)) return weight * (haystack.startsWith(token) ? 1.2 : 1);
+  if (token.length >= 4 && haystack.includes(token)) return weight * 0.7;
   if (token.length >= 4) {
-    // typo tolerance against individual words
     for (const word of haystack.split(" ")) {
-      if (Math.abs(word.length - token.length) <= 2 && editDistance(token, word) <= 1) {
-        return weight * 0.6;
-      }
+      if (Math.abs(word.length - token.length) <= 2 && editDistance(token, word) <= 1) return weight * 0.6;
     }
   }
   return 0;
 }
 
-export type SearchResult = SearchEntry & { score: number };
+const STOP = new Set(["yoga", "the", "a", "for", "in", "and", "of", "lop", "cho", "tai", "va"]);
 
-export function searchSite(query: string, limit = 8): SearchResult[] {
+/** Turn generated route metadata + editorial posts into searchable entries. */
+export function buildEntries(
+  routes: RouteSearchEntry[],
+  posts: { slug: string; title: string; excerpt: string; cat: string; faqs?: { q: string }[] }[] = [],
+): SearchEntry[] {
+  const pages: SearchEntry[] = routes.map((r) => ({
+    id: `page:${r.p}`,
+    title: r.t,
+    description: r.d,
+    category: r.l === "vi" ? "Trang" : "Page",
+    href: r.p,
+    locale: r.l,
+    text: r.k,
+  }));
+  const seen = new Set(pages.map((p) => p.href));
+  const blog: SearchEntry[] = posts
+    .filter((p) => !seen.has(`/blog/${p.slug}`))
+    .map((p) => ({
+      id: `blog:${p.slug}`,
+      title: p.title,
+      description: p.excerpt.length > 180 ? `${p.excerpt.slice(0, 179)}…` : p.excerpt,
+      category: `Blog · ${p.cat}`,
+      href: `/blog/${p.slug}`,
+      locale: /[ăâđêôơư]/i.test(p.title) ? "vi" : "en",
+      text: [p.slug.replace(/-/g, " "), ...(p.faqs ?? []).slice(0, 4).map((f) => f.q)].join(" "),
+    }));
+  return [...pages, ...blog];
+}
+
+type Prepared = { e: SearchEntry; title: string; desc: string; text: string; path: string };
+const cache = new WeakMap<SearchEntry[], Prepared[]>();
+function prepare(entries: SearchEntry[]): Prepared[] {
+  let p = cache.get(entries);
+  if (!p) {
+    p = entries.map((e) => ({
+      e,
+      title: normalize(e.title),
+      desc: normalize(e.description),
+      text: normalize(e.text),
+      path: normalize(e.href.replace(/[/-]/g, " ")),
+    }));
+    cache.set(entries, p);
+  }
+  return p;
+}
+
+export function searchSite(
+  query: string,
+  entries: SearchEntry[],
+  opts: { limit?: number; locale?: "en" | "vi" } = {},
+): SearchResult[] {
+  const { limit = 8, locale } = opts;
   const q = normalize(query);
   if (!q) return [];
-  const tokens = q.split(" ").filter(Boolean);
+  const tokens = q.split(" ").filter((t) => t && !STOP.has(t));
+  const aliasTokens = expand(q).join(" ").split(" ").filter((t) => t && !STOP.has(t) && !tokens.includes(t));
+  if (!tokens.length && !aliasTokens.length) tokens.push(...q.split(" "));
 
   const results: SearchResult[] = [];
-  for (const entry of SEARCH_INDEX) {
-    const title = normalize(entry.title);
-    const desc = normalize(entry.description);
-    const cat = normalize(entry.category);
-    const keys = normalize(entry.keywords.join(" "));
-
+  for (const p of prepare(entries)) {
     let score = 0;
-    if (title === q) score += 200;
-    else if (title.startsWith(q)) score += 120;
-    else if (title.includes(q)) score += 90;
-    if (keys.includes(q)) score += 70;
-    if (desc.includes(q)) score += 30;
+    if (p.title === q) score += 200;
+    else if (p.title.startsWith(q)) score += 120;
+    else if (p.title.includes(q)) score += 90;
+    if (p.path.includes(q)) score += 60;
+    if (p.desc.includes(q)) score += 30;
+    if (p.text.includes(q)) score += 20;
 
-    let matched = score > 0;
-    for (const token of tokens) {
-      const s =
-        tokenScore(token, title, 24) +
-        tokenScore(token, keys, 18) +
-        tokenScore(token, desc, 8) +
-        tokenScore(token, cat, 6);
-      if (s > 0) matched = true;
+    let hits = 0;
+    for (const t of tokens) {
+      const s = tokenScore(t, p.title, 24) + tokenScore(t, p.path, 20) + tokenScore(t, p.desc, 8) + tokenScore(t, p.text, 5);
+      if (s > 0) hits++;
       score += s;
     }
-
-    if (matched && score > 0) results.push({ ...entry, score: score * (entry.boost ?? 1) });
+    for (const t of aliasTokens) {
+      score += tokenScore(t, p.title, 24) + tokenScore(t, p.path, 20) + 0.5 * tokenScore(t, p.desc, 6);
+    }
+    // Multi-word queries must match most of their words directly unless an alias carried them.
+    if (tokens.length > 1 && hits < Math.ceil(tokens.length / 2) && score < 40) continue;
+    if (score <= 0) continue;
+    if (!p.e.href.startsWith("/blog/")) score *= 1.25;
+    if (locale && p.e.locale === locale) score *= 1.3;
+    results.push({ ...p.e, score });
   }
-
   return results.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title)).slice(0, limit);
 }
+
+/** Lazily load the generated page index + blog registry (kept out of the main bundle). */
+let loading: Promise<SearchEntry[]> | null = null;
+export function loadSearchEntries(): Promise<SearchEntry[]> {
+  loading ??= Promise.all([import("virtual:yj-search-index"), import("@/lib/blog-posts")]).then(
+    ([routes, blog]) => buildEntries(routes.default, blog.BLOG_POSTS),
+  );
+  return loading;
+}
+
+export const POPULAR_SEARCHES = {
+  en: ["Private online yoga", "Online classes", "Couples yoga", "Family yoga", "Corporate yoga", "Kids yoga"],
+  vi: ["Yoga 1 kèm 1", "Lớp yoga online", "Yoga cặp đôi", "Yoga gia đình", "Yoga doanh nghiệp", "Yoga học đường"],
+};
+
+export const FALLBACK_LINKS = {
+  en: [
+    { label: "Online Classes", href: "/online-yoga-classes" },
+    { label: "Beginner Yoga", href: "/yoga-for-beginners" },
+    { label: "Private Training", href: "/private-online-yoga" },
+    { label: "Programs", href: "/programs" },
+    { label: "Contact", href: "/contact" },
+  ],
+  vi: [
+    { label: "Lớp yoga online", href: "/vi/lop-yoga-online" },
+    { label: "Yoga 1 kèm 1", href: "/vi/yoga-1-kem-1-online" },
+    { label: "Yoga Hải Dương", href: "/vi/yoga-hai-duong" },
+    { label: "Trang chủ", href: "/vi" },
+  ],
+};

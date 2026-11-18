@@ -38,12 +38,20 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
     ],
   },
   {
-    group: "Programs",
+    group: "Yoga Services",
     items: [
-      { href: "/programs", label: "All Programs" },
-      { href: "/private-online-yoga", label: "Private & Personal Training" },
-      { href: "/private-online-yoga", label: "Private 1-on-1 Online Yoga" },
+      { href: "/private-online-yoga", label: "Private Online Yoga (1-on-1)" },
       { href: "/online-yoga-classes", label: "Online Yoga Classes" },
+      { href: "/online-couples-yoga", label: "Couples Yoga" },
+      { href: "/online-family-yoga", label: "Family Yoga" },
+      { href: "/corporate", label: "Corporate Yoga" },
+      { href: "/school-yoga", label: "School & Kids Yoga" },
+      { href: "/programs", label: "All Programs & Pricing" },
+    ],
+  },
+  {
+    group: "Focus Areas",
+    items: [
       { href: "/yoga-for-beginners", label: "Yoga for Beginners" },
       { href: "/yoga-for-back-pain", label: "Yoga for Back Pain" },
       { href: "/yoga-for-stress", label: "Yoga for Stress" },
@@ -52,7 +60,6 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
       { href: "/yoga-for-thyroid", label: "Yoga for Thyroid" },
       { href: "/period-safe-yoga", label: "Period-Safe Yoga" },
       { href: "/yoga-for-expats-in-vietnam", label: "Yoga for Expats in Vietnam" },
-      { href: "/corporate", label: "Corporate Wellness" },
     ],
   },
   {
@@ -65,9 +72,18 @@ const FULL_MENU: { group: string; items: { href: string; label: string }[] }[] =
 ];
 
 
-/** Vietnamese full-menu structure — VI routes only, no English condition pages. */
+/** Vietnamese full menu — VI routes where they exist; couples/family have English pages only. */
 const VI_FULL_MENU: { group: string; items: { href: string; label: string }[] }[] = [
   { group: "Yog Jivan", items: VI_NAV_ITEMS.map((i) => ({ href: i.href, label: i.label })) },
+  {
+    group: "Dịch vụ",
+    items: [
+      { href: "/vi/yoga-doanh-nghiep", label: "Yoga doanh nghiệp" },
+      { href: "/vi/yoga-hoc-duong", label: "Yoga học đường & trẻ em" },
+      { href: "/online-couples-yoga", label: "Yoga cặp đôi (tiếng Anh)" },
+      { href: "/online-family-yoga", label: "Yoga gia đình (tiếng Anh)" },
+    ],
+  },
 ];
 
 
