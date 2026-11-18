@@ -11,3 +11,22 @@ describe("short links", () => {
     expect(shortLinkTarget("nope")).toBe("/");
   });
 });
+
+describe("approved short-link mapping", () => {
+  const expected: Record<string, string> = {
+    yt: "/private-online-yoga", private: "/private-online-yoga",
+    insta: "/", fb: "/", tiktok: "/",
+    zalo: "/vi/yoga-1-kem-1-online", qr: "/vi/yoga-hai-duong",
+  };
+  for (const [slug, path] of Object.entries(expected)) {
+    it(`${slug} -> ${path}`, () => {
+      expect(shortLinkTarget(slug).split("?")[0]).toBe(path);
+    });
+  }
+  it("never redirects off-site", () => {
+    for (const s of ["https://evil.com", "//evil.com", "..%2F..", "yt/../x"]) {
+      expect(shortLinkTarget(s).startsWith("/")).toBe(true);
+      expect(shortLinkTarget(s).startsWith("//")).toBe(false);
+    }
+  });
+});
