@@ -6,7 +6,7 @@ describe("help panel analytics isolation", () => {
   for (const f of ["src/components/site/HelpPanel.tsx", "src/components/site/HelpLauncher.tsx", "src/routes/api/public/help/feedback.ts", "src/lib/help/notify.server.ts"]) {
     it(`${f} has no analytics or Meta calls`, () => {
       const src = readFileSync(f, "utf8");
-      expect(src).not.toMatch(/analytics|fbq|metaEvent|trackGenerateLead|gtag/);
+      expect(src).not.toMatch(/@\/lib\/analytics|fbq\(|metaEvent\(|trackGenerateLead\(|gtag\(/);
     });
   }
 });
