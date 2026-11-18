@@ -57,6 +57,13 @@
       "when": 1795037873909,
       "tag": "0007_help_feedback_tickets_notify_contacts",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1795038613022,
+      "tag": "0008_help_ai_usage_caps",
+      "breakpoints": true
     }
   ]
 }

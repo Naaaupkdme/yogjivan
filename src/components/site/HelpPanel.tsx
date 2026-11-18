@@ -16,11 +16,26 @@ export default function HelpPanel({ pathname, onClose }: { pathname: string; onC
   const [contact, setContact] = useState("");
   const [consent, setConsent] = useState(false);
   const [state, setState] = useState<"idle" | "sending" | "done" | "error" | "rate">("idle");
+  const [q, setQ] = useState("");
+  const [ai, setAi] = useState<{ state: "idle" | "loading" | "done" | "error"; res?: AskRes }>({ state: "idle" });
   const [ticket, setTicket] = useState<{ id: string; notified: boolean } | null>(null);
 
   const kindLabel = vi
     ? { suggestion: "Góp ý", problem: "Báo lỗi", compliment: "Lời khen" }
     : { suggestion: "Suggestion", problem: "Problem", compliment: "Compliment" };
+
+  async function ask(e: React.FormEvent) {
+    e.preventDefault();
+    if (q.trim().length < 2) return;
+    setAi({ state: "loading" });
+    try {
+      const r = await fetch("/api/public/help/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ q: q.trim(), lang: vi ? "VI" : "EN" }) });
+      if (!r.ok) throw new Error();
+      setAi({ state: "done", res: await r.json() });
+    } catch {
+      setAi({ state: "error" });
+    }
+  }
 
   async function send(e: React.FormEvent) {
     e.preventDefault();
@@ -65,6 +80,19 @@ export default function HelpPanel({ pathname, onClose }: { pathname: string; onC
               <Search className="h-4 w-4" /> {vi ? "Tìm kiếm trên website" : "Search the site & FAQs"}
             </button>
           </div>
+          <form className={section} onSubmit={ask} aria-labelledby="yj-ai-title">
+            <p id="yj-ai-title" className="font-medium">{vi ? "Hỏi trợ lý AI" : "Ask the AI assistant"} <span className="ml-1 rounded-full border border-border px-2 py-0.5 text-[10px] uppercase tracking-wide text-muted-foreground">AI</span></p>
+            <p className="text-xs text-muted-foreground">{vi ? "Trả lời từ thông tin trên website (Anh, Việt, Hindi). Không hỏi về sức khỏe cá nhân." : "Answers from our website facts in English, Vietnamese or Hindi. Not for personal health questions."}</p>
+            <label htmlFor="yj-ai-q" className="sr-only">{vi ? "Câu hỏi" : "Question"}</label>
+            <div className="flex gap-2">
+              <input id="yj-ai-q" type="text" maxLength={300} value={q} onChange={(e) => setQ(e.target.value)} placeholder={vi ? "VD: Lớp 1 kèm 1 giá bao nhiêu?" : "e.g. How much is a private session?"} className="min-w-0 flex-1 rounded-lg border border-border bg-background p-2" />
+              <button type="submit" disabled={ai.state === "loading"} className="rounded-full bg-primary px-4 py-2 text-primary-foreground disabled:opacity-60">{ai.state === "loading" ? "…" : vi ? "Hỏi" : "Ask"}</button>
+            </div>
+            <div aria-live="polite" className="text-sm">
+              {ai.state === "error" && <p className="text-xs">{vi ? "Trợ lý chưa trả lời được. Hãy thử lại hoặc nhắn đội ngũ." : "The assistant couldn't answer. Try again or message the team."}</p>}
+              {ai.state === "done" && ai.res && <AiAnswer res={ai.res} vi={vi} chatHref={chat.href} chatName={chat.channel === "zalo" ? "Zalo" : "WhatsApp"} />}
+            </div>
+          </form>
           <div className={section}>
             <p className="font-medium">{vi ? "Hỏi đội ngũ Yog Jivan" : "Ask the Yog Jivan team"}</p>
             <div className="flex flex-wrap gap-2">
@@ -120,4 +148,31 @@ export default function HelpPanel({ pathname, onClose }: { pathname: string; onC
       </div>
     </div>
   );
+}
+
+type AskRes = { kind: "price" | "ai" | "handoff" | "cap" | "unavailable"; reason?: string; answer?: string; sources?: { id: string; title: string; url: string }[] };
+
+function AiAnswer({ res, vi, chatHref, chatName }: { res: AskRes; vi: boolean; chatHref: string; chatName: string }) {
+  const team = (
+    <a href={chatHref} target="_blank" rel="noopener noreferrer" className="underline">{vi ? `Nhắn đội ngũ qua ${chatName}` : `Message the team on ${chatName}`}</a>
+  );
+  if (res.kind === "price" || res.kind === "ai") {
+    return (
+      <div className="mt-2 space-y-2 rounded-lg bg-muted/40 p-3">
+        <p className="text-[10px] uppercase tracking-wide text-muted-foreground">{res.kind === "price" ? (vi ? "Giá từ bảng giá hiện tại" : "From our current price list") : vi ? "Trợ lý AI" : "AI assistant"}</p>
+        <p className="whitespace-pre-line">{res.answer}</p>
+        {res.sources && res.sources.length > 0 && (
+          <p className="text-xs">{vi ? "Nguồn: " : "Source: "}{res.sources.map((s, i) => (<span key={s.id}>{i > 0 && " · "}<a href={s.url} className="underline">{s.title}</a></span>))}</p>
+        )}
+        <p className="text-xs">{team}</p>
+      </div>
+    );
+  }
+  const msg =
+    res.kind === "handoff" && res.reason === "health"
+      ? vi ? "Câu hỏi về sức khỏe nên được trao đổi với đội ngũ và bác sĩ của bạn. Bạn không cần gửi thông tin sức khỏe tại đây." : "Health questions are best discussed with our team and your doctor. You don't need to share health details here."
+      : res.kind === "cap"
+        ? vi ? "Đã hết lượt hỏi AI hôm nay. Hãy dùng tìm kiếm hoặc nhắn đội ngũ." : "AI questions are used up for today. Please use search or message the team."
+        : vi ? "Trợ lý không chắc chắn về câu này — đội ngũ sẽ trả lời chính xác hơn." : "The assistant isn't sure about this one — our team can answer properly.";
+  return <p className="mt-2 rounded-lg bg-muted/40 p-3 text-sm">{msg} {team}</p>;
 }

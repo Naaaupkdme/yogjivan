@@ -1,0 +1,110 @@
+// Help knowledge — generated from the shared facts modules (single source of
+// truth). Never hand-copy prices or facts here.
+import { ONLINE_PLANS, PRIVATE_PRICING, STUDIO_PRICING_NOTE } from "@/lib/facts/pricing";
+import { SHARED_PRICING_TABLE } from "@/lib/facts/shared-offers";
+import { TRIAL } from "@/lib/facts/trial";
+import { ONLINE_CLASS } from "@/lib/facts/online-class";
+import { REFUND_POLICY, HEALTH_DISCLAIMER } from "@/lib/facts/policies";
+import { LOCATIONS, STUDIO_HOURS } from "@/lib/facts/locations";
+import { CONTACT } from "@/lib/facts/contact";
+
+export type HelpLang = "EN" | "VI" | "HI";
+export type Fact = { id: string; title: string; url: string; text: string };
+
+const pkgs = PRIVATE_PRICING.packages.map((p) => `${p.sessions} sessions US$${p.totalUSD}`).join(", ");
+const group = ONLINE_PLANS.map((p) => `${p.label} US$${p.priceUSD}`).join(", ");
+const shared = SHARED_PRICING_TABLE;
+
+export const FACTS: Fact[] = [
+  { id: "group_price", title: "Live online group classes", url: "/online-yoga-classes",
+    text: `Live online group membership: ${group}. Classes ${ONLINE_CLASS.durationMinutes} minutes, max ${ONLINE_CLASS.maxGroupSize} students, camera on, taught in ${ONLINE_CLASS.languages.join(", ")} on ${ONLINE_CLASS.platform}. Recordings for ${ONLINE_CLASS.recordings.windowHours} hours.` },
+  { id: "private_price", title: "Private 1-on-1 online yoga", url: "/private-online-yoga",
+    text: `Private 1-on-1 online session: ${PRIVATE_PRICING.sessionMinutes} minutes, US$${PRIVATE_PRICING.singleUSD} per single session. Packages: ${pkgs}. Custom plans by enquiry. Matched with a dedicated Yog Jivan teacher; scheduling on WhatsApp.` },
+  { id: "couples_price", title: "Couples online yoga", url: "/online-couples-yoga",
+    text: `Couples (2 people) private online: single session US$${shared.couples.singleUSD} total; 6 sessions US$${shared.couples.plans[6].totalUSD}, 12 US$${shared.couples.plans[12].totalUSD}, 24 US$${shared.couples.plans[24].totalUSD}.` },
+  { id: "family_price", title: "Family online yoga", url: "/online-family-yoga",
+    text: `Family private online: 3 people single US$${shared.family3.singleUSD} (6/12/24 sessions US$${shared.family3.plans[6].totalUSD}/${shared.family3.plans[12].totalUSD}/${shared.family3.plans[24].totalUSD}); 4 people single US$${shared.family4.singleUSD} (US$${shared.family4.plans[6].totalUSD}/${shared.family4.plans[12].totalUSD}/${shared.family4.plans[24].totalUSD}).` },
+  { id: "trial", title: "Free trial", url: "/online-yoga-classes", text: TRIAL.summary },
+  { id: "studios", title: "Hai Duong studios", url: "/vi/yoga-hai-duong",
+    text: `Two studios: ${LOCATIONS.studio1.name}, ${LOCATIONS.studio1.street} (aerial yoga here); ${LOCATIONS.studio2.name}, ${LOCATIONS.studio2.street}. Hours ${STUDIO_HOURS.label}, closed Sunday. ${STUDIO_PRICING_NOTE}` },
+  { id: "refund", title: "Refunds & cancellation", url: "/online-yoga-classes", text: `${REFUND_POLICY.summary} ${REFUND_POLICY.howTo}` },
+  { id: "contact", title: "Contact", url: "/contact",
+    text: `WhatsApp ${CONTACT.phoneDisplay}, Zalo, email ${CONTACT.email}. ${CONTACT.responseTime}.` },
+  { id: "kids_school", title: "Kids & school yoga", url: "/school-yoga", text: "School and kids yoga programmes in Hai Duong; details and quotes by enquiry." },
+  { id: "corporate", title: "Corporate yoga", url: "/corporate", text: "Corporate/office yoga sessions for teams; details and quotes by enquiry." },
+  { id: "health", title: "Health note", url: "/private-online-yoga", text: HEALTH_DISCLAIMER.short },
+];
+export const FACT_IDS = FACTS.map((f) => f.id);
+
+export function detectLang(q: string, uiLang: "EN" | "VI"): HelpLang {
+  if (/[\u0900-\u097F]/.test(q) || /\b(kitna|kitne|kaise|paise|daam|kya hai)\b/i.test(q)) return "HI";
+  if (/[ăâđêôơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]/i.test(q)) return "VI";
+  return uiLang;
+}
+
+const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d");
+
+export function isPriceQuestion(q: string): boolean {
+  const n = norm(q);
+  return /\b(price|prices|pricing|cost|costs|fee|fees|how much|usd|\$|rate|package|gia|bao nhieu|hoc phi|chi phi|tien|kitna|kitne|paise|daam|fees)\b/.test(n)
+    || /कीमत|शुल्क|फीस|कितना|कितने|दाम|पैसे/.test(q);
+}
+
+export function isHealthQuestion(q: string): boolean {
+  const n = norm(q);
+  return /\b(pain|injur|surgery|pregnan|diabet|thyroid|pcos|pcod|blood pressure|hypertension|cancer|depress|anxiety|disease|medic|doctor|symptom|condition|hernia|slip disc|disc|arthritis|asthma|heart|cure|treat|dau|benh|mang thai|phau thuat|thuoc|tieu duong|huyet ap)\b/.test(n)
+    || /दर्द|बीमारी|गर्भ|सर्जरी|डॉक्टर|दवा|इलाज|मधुमेह|थायराइड/.test(q);
+}
+
+export function factsFor(ids: readonly string[]) {
+  return FACTS.filter((f) => ids.includes(f.id)).map(({ id, title, url }) => ({ id, title, url }));
+}
+
+/** Deterministic price answer — never generated by AI. */
+export function priceAnswer(q: string, lang: HelpLang): { text: string; sources: string[] } {
+  const n = norm(q);
+  const want = (re: RegExp) => re.test(n) || re.test(q);
+  const couples = want(/couple|cap doi|partner|कपल|जोड़/);
+  const family = want(/family|gia dinh|परिवार/);
+  const privat = want(/private|1-on-1|1 on 1|one.to.one|personal|1 kem 1|rieng|निजी|प्राइवेट/);
+  const groupQ = want(/group|membership|class|nhom|lop|ग्रुप|क्लास/);
+  const studio = want(/studio|hai duong|phong tap/);
+  const P = PRIVATE_PRICING, pk = P.packages;
+  const L = {
+    private: {
+      EN: `Private 1-on-1 online (${P.sessionMinutes} min): US$${P.singleUSD} per session. Packages: ${pk.map((p) => `${p.sessions} sessions US$${p.totalUSD}`).join(", ")}.`,
+      VI: `Yoga 1 kèm 1 online (${P.sessionMinutes} phút): ${P.singleUSD} USD/buổi. Gói: ${pk.map((p) => `${p.sessions} buổi ${p.totalUSD} USD`).join(", ")}.`,
+      HI: `प्राइवेट 1-on-1 ऑनलाइन (${P.sessionMinutes} मिनट): US$${P.singleUSD} प्रति सेशन। पैकेज: ${pk.map((p) => `${p.sessions} सेशन US$${p.totalUSD}`).join(", ")}।`,
+    },
+    group: {
+      EN: `Live online group membership: ${ONLINE_PLANS.map((p) => `${p.months} month${p.months > 1 ? "s" : ""} US$${p.priceUSD}`).join(", ")}.`,
+      VI: `Lớp nhóm online: ${ONLINE_PLANS.map((p) => `${p.months} tháng ${p.priceUSD} USD`).join(", ")}.`,
+      HI: `लाइव ऑनलाइन ग्रुप मेंबरशिप: ${ONLINE_PLANS.map((p) => `${p.months} महीने US$${p.priceUSD}`).join(", ")}।`,
+    },
+    couples: {
+      EN: `Couples online (2 people): US$${shared.couples.singleUSD} per session total; 6/12/24 sessions US$${shared.couples.plans[6].totalUSD}/${shared.couples.plans[12].totalUSD}/${shared.couples.plans[24].totalUSD}.`,
+      VI: `Yoga cặp đôi online: ${shared.couples.singleUSD} USD/buổi cho 2 người; gói 6/12/24 buổi ${shared.couples.plans[6].totalUSD}/${shared.couples.plans[12].totalUSD}/${shared.couples.plans[24].totalUSD} USD.`,
+      HI: `कपल ऑनलाइन (2 लोग): US$${shared.couples.singleUSD} प्रति सेशन; 6/12/24 सेशन US$${shared.couples.plans[6].totalUSD}/${shared.couples.plans[12].totalUSD}/${shared.couples.plans[24].totalUSD}।`,
+    },
+    family: {
+      EN: `Family online: 3 people US$${shared.family3.singleUSD}/session, 4 people US$${shared.family4.singleUSD}/session; packages on the page.`,
+      VI: `Yoga gia đình online: 3 người ${shared.family3.singleUSD} USD/buổi, 4 người ${shared.family4.singleUSD} USD/buổi; xem gói trên trang.`,
+      HI: `फैमिली ऑनलाइन: 3 लोग US$${shared.family3.singleUSD}/सेशन, 4 लोग US$${shared.family4.singleUSD}/सेशन; पैकेज पेज पर।`,
+    },
+    studio: {
+      EN: STUDIO_PRICING_NOTE,
+      VI: "Học phí tại studio được báo trực tiếp — nhắn Zalo cho đội ngũ Yog Jivan.",
+      HI: "स्टूडियो फीस सीधे बताई जाती है — WhatsApp या Zalo पर संदेश भेजें।",
+    },
+  } as const;
+  const parts: string[] = [], sources: string[] = [];
+  if (privat) { parts.push(L.private[lang]); sources.push("private_price"); }
+  if (couples) { parts.push(L.couples[lang]); sources.push("couples_price"); }
+  if (family) { parts.push(L.family[lang]); sources.push("family_price"); }
+  if (studio) { parts.push(L.studio[lang]); sources.push("studios"); }
+  if (groupQ || parts.length === 0) {
+    if (parts.length === 0 && !groupQ) { parts.push(L.private[lang]); sources.push("private_price"); }
+    parts.push(L.group[lang]); sources.push("group_price");
+  }
+  return { text: parts.join("\n"), sources };
+}

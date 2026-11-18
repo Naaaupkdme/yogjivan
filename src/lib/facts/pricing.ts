@@ -38,3 +38,18 @@ export const PRICING_SUMMARY =
 /** Studio pricing is not published publicly. */
 export const STUDIO_PRICING_NOTE =
   "Studio membership rates are shared directly — message us on WhatsApp or Zalo for current pricing.";
+
+/**
+ * Private 1-on-1 online pricing (owner-chosen; do not reopen).
+ * Page copy on /private-online-yoga and /vi/yoga-1-kem-1-online must match —
+ * enforced by src/lib/help/knowledge.test.ts.
+ */
+export const PRIVATE_PRICING = {
+  sessionMinutes: 60,
+  singleUSD: 25,
+  packages: [
+    { sessions: 12, totalUSD: 249 },
+    { sessions: 20, totalUSD: 399 },
+    { sessions: 24, totalUSD: 459 },
+  ],
+} as const;

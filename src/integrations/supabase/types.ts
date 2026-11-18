@@ -158,6 +158,42 @@ export type Database = {
         }
         Relationships: []
       }
+      help_ai_outcomes: {
+        Row: {
+          count: number
+          day: string
+          outcome: string
+        }
+        Insert: {
+          count?: number
+          day: string
+          outcome: string
+        }
+        Update: {
+          count?: number
+          day?: string
+          outcome?: string
+        }
+        Relationships: []
+      }
+      help_ai_usage: {
+        Row: {
+          count: number
+          day: string
+          ip_hash: string
+        }
+        Insert: {
+          count?: number
+          day: string
+          ip_hash: string
+        }
+        Update: {
+          count?: number
+          day?: string
+          ip_hash?: string
+        }
+        Relationships: []
+      }
       help_feedback: {
         Row: {
           created_at: string
@@ -699,6 +735,11 @@ export type Database = {
         Returns: number
       }
       format_crm_lead_id: { Args: { n: number }; Returns: string }
+      help_ai_outcome: { Args: { p_outcome: string }; Returns: undefined }
+      help_ai_take: {
+        Args: { p_global_cap: number; p_ip_hash: string; p_user_cap: number }
+        Returns: string
+      }
       lead_outbox_arm_retry: { Args: never; Returns: undefined }
       lead_outbox_retry_tick: { Args: never; Returns: undefined }
       lead_outbox_wake: { Args: never; Returns: undefined }
