@@ -4,6 +4,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube, MessageCircle, MapPin, Mail, Phone } from "lucide-react";
 import { SOCIAL, STUDIO_ADDRESSES } from "@/lib/social";
 
+import { HelpLauncher } from "@/components/site/HelpLauncher";
 import { ZaloIcon } from "@/components/icons/ZaloIcon";
 import { isViPath } from "@/lib/locale-routes";
 import { VI_NAV_ITEMS } from "@/lib/local-contact";
@@ -267,6 +268,7 @@ export function SiteFooter() {
             <Link to="/privacy" className="underline-offset-4 hover:text-foreground hover:underline">
               {isVi ? "Chính sách bảo mật" : "Privacy Policy"}
             </Link>
+            <HelpLauncher isVi={isVi} />
             <button
               type="button"
               onClick={() => window.dispatchEvent(new Event("yj:open-cookie-settings"))}

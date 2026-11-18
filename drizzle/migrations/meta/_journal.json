@@ -43,6 +43,13 @@
       "when": 1790938409734,
       "tag": "0005_crm_archive_restore",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1795037568895,
+      "tag": "0006_migration",
+      "breakpoints": true
     }
   ]
 }

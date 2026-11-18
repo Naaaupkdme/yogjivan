@@ -158,6 +158,39 @@ export type Database = {
         }
         Relationships: []
       }
+      help_feedback: {
+        Row: {
+          created_at: string
+          id: string
+          ip_hash: string | null
+          kind: string
+          lang: string | null
+          message: string
+          page_path: string | null
+          reviewed_at: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          ip_hash?: string | null
+          kind: string
+          lang?: string | null
+          message: string
+          page_path?: string | null
+          reviewed_at?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          ip_hash?: string | null
+          kind?: string
+          lang?: string | null
+          message?: string
+          page_path?: string | null
+          reviewed_at?: string | null
+        }
+        Relationships: []
+      }
       lead_crm_events: {
         Row: {
           action: string

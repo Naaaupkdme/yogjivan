@@ -66,6 +66,7 @@ import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[
 import { Route as ApiPublicN8nCrmControlRouteImport } from './routes/api/public/n8n-crm-control'
 import { Route as ViCuaHangIndexRouteImport } from './routes/vi.cua-hang.index'
 import { Route as ViCuaHangSlugRouteImport } from './routes/vi.cua-hang.$slug'
+import { Route as ApiPublicHelpFeedbackRouteImport } from './routes/api/public/help/feedback'
 import { Route as ApiPublicLeadsDispatchRouteImport } from './routes/api/public/leads/dispatch'
 import { Route as ApiPublicLeadsSubmitRouteImport } from './routes/api/public/leads/submit'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
@@ -362,6 +363,11 @@ const ViCuaHangSlugRoute = ViCuaHangSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ViCuaHangRoute,
 } as any)
+const ApiPublicHelpFeedbackRoute = ApiPublicHelpFeedbackRouteImport.update({
+  id: '/api/public/help/feedback',
+  path: '/api/public/help/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicLeadsDispatchRoute = ApiPublicLeadsDispatchRouteImport.update({
   id: '/api/public/leads/dispatch',
   path: '/api/public/leads/dispatch',
@@ -447,6 +453,7 @@ export interface FileRoutesByFullPath {
   '/api/public/n8n-crm-control': typeof ApiPublicN8nCrmControlRoute
   '/vi/cua-hang/$slug': typeof ViCuaHangSlugRoute
   '/vi/cua-hang/': typeof ViCuaHangIndexRoute
+  '/api/public/help/feedback': typeof ApiPublicHelpFeedbackRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -510,6 +517,7 @@ export interface FileRoutesByTo {
   '/api/public/n8n-crm-control': typeof ApiPublicN8nCrmControlRoute
   '/vi/cua-hang/$slug': typeof ViCuaHangSlugRoute
   '/vi/cua-hang': typeof ViCuaHangIndexRoute
+  '/api/public/help/feedback': typeof ApiPublicHelpFeedbackRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -575,6 +583,7 @@ export interface FileRoutesById {
   '/api/public/n8n-crm-control': typeof ApiPublicN8nCrmControlRoute
   '/vi/cua-hang/$slug': typeof ViCuaHangSlugRoute
   '/vi/cua-hang/': typeof ViCuaHangIndexRoute
+  '/api/public/help/feedback': typeof ApiPublicHelpFeedbackRoute
   '/api/public/leads/dispatch': typeof ApiPublicLeadsDispatchRoute
   '/api/public/leads/submit': typeof ApiPublicLeadsSubmitRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -641,6 +650,7 @@ export interface FileRouteTypes {
     | '/api/public/n8n-crm-control'
     | '/vi/cua-hang/$slug'
     | '/vi/cua-hang/'
+    | '/api/public/help/feedback'
     | '/api/public/leads/dispatch'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
@@ -704,6 +714,7 @@ export interface FileRouteTypes {
     | '/api/public/n8n-crm-control'
     | '/vi/cua-hang/$slug'
     | '/vi/cua-hang'
+    | '/api/public/help/feedback'
     | '/api/public/leads/dispatch'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
@@ -768,6 +779,7 @@ export interface FileRouteTypes {
     | '/api/public/n8n-crm-control'
     | '/vi/cua-hang/$slug'
     | '/vi/cua-hang/'
+    | '/api/public/help/feedback'
     | '/api/public/leads/dispatch'
     | '/api/public/leads/submit'
     | '/lovable/email/auth/preview'
@@ -831,6 +843,7 @@ export interface RootRouteChildren {
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   ApiPublicN8nCrmControlRoute: typeof ApiPublicN8nCrmControlRoute
+  ApiPublicHelpFeedbackRoute: typeof ApiPublicHelpFeedbackRoute
   ApiPublicLeadsDispatchRoute: typeof ApiPublicLeadsDispatchRoute
   ApiPublicLeadsSubmitRoute: typeof ApiPublicLeadsSubmitRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
@@ -1239,6 +1252,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ViCuaHangSlugRouteImport
       parentRoute: typeof ViCuaHangRoute
     }
+    '/api/public/help/feedback': {
+      id: '/api/public/help/feedback'
+      path: '/api/public/help/feedback'
+      fullPath: '/api/public/help/feedback'
+      preLoaderRoute: typeof ApiPublicHelpFeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/leads/dispatch': {
       id: '/api/public/leads/dispatch'
       path: '/api/public/leads/dispatch'
@@ -1349,6 +1369,7 @@ const rootRouteChildren: RootRouteChildren = {
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   ApiPublicN8nCrmControlRoute: ApiPublicN8nCrmControlRoute,
+  ApiPublicHelpFeedbackRoute: ApiPublicHelpFeedbackRoute,
   ApiPublicLeadsDispatchRoute: ApiPublicLeadsDispatchRoute,
   ApiPublicLeadsSubmitRoute: ApiPublicLeadsSubmitRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
