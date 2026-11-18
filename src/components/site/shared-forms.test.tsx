@@ -240,4 +240,29 @@ describe("SharedYogaEnquiryForm — Couples, Family & Parent-Child", () => {
     expect(callPayload.meta?.preferred_plan).toBe("24-Session Plan");
     expect(callPayload.preferred_experience).toContain("24-Session Plan");
   });
+
+  it("renders enquiry summary with group total and dynamically updates when switching family group size", () => {
+    const { rerender } = render(
+      <SharedYogaEnquiryForm initialFormat="couples" plan="12-Session Plan" />
+    );
+
+    // Couples 12-session summary
+    expect(screen.getByText(/12-Session Plan · US\$349 total for 2 adults/i)).toBeDefined();
+    expect(screen.getByText(/US\$29\.08 per session for both/i)).toBeDefined();
+
+    // Family 3 pax 12-session summary
+    rerender(<SharedYogaEnquiryForm format="family" participants={3} plan="12-Session Plan" />);
+    expect(screen.getByText(/12-Session Plan · US\$429 total for 3 participants/i)).toBeDefined();
+    expect(screen.getByText(/US\$35\.75 per session for group/i)).toBeDefined();
+
+    // Switch family to 4 pax
+    rerender(<SharedYogaEnquiryForm format="family" participants={4} plan="12-Session Plan" />);
+    expect(screen.getByText(/12-Session Plan · US\$519 total for 4 participants/i)).toBeDefined();
+    expect(screen.getByText(/US\$43\.25 per session for group/i)).toBeDefined();
+
+    // 24-session plan for 4 pax
+    rerender(<SharedYogaEnquiryForm format="family" participants={4} plan="24-Session Plan" />);
+    expect(screen.getByText(/24-Session Plan · US\$999 total for 4 participants/i)).toBeDefined();
+    expect(screen.getByText(/US\$41\.63 per session for group/i)).toBeDefined();
+  });
 });

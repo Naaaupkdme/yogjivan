@@ -30,6 +30,129 @@ export type SharedPlanCard = {
   featured?: boolean;
 };
 
+export const SHARED_PRICING_TABLE = {
+  couples: {
+    pax: 2,
+    singleUSD: 36,
+    plans: {
+      6: { totalUSD: 192, perSessionUSD: "32.00", saveUSD: 24 },
+      12: { totalUSD: 349, perSessionUSD: "29.08", saveUSD: 83 },
+      24: { totalUSD: 669, perSessionUSD: "27.88", saveUSD: 195 },
+    },
+  },
+  family3: {
+    pax: 3,
+    singleUSD: 44,
+    plans: {
+      6: { totalUSD: 228, perSessionUSD: "38.00", saveUSD: 36 },
+      12: { totalUSD: 429, perSessionUSD: "35.75", saveUSD: 99 },
+      24: { totalUSD: 819, perSessionUSD: "34.13", saveUSD: 237 },
+    },
+  },
+  family4: {
+    pax: 4,
+    singleUSD: 52,
+    plans: {
+      6: { totalUSD: 276, perSessionUSD: "46.00", saveUSD: 36 },
+      12: { totalUSD: 519, perSessionUSD: "43.25", saveUSD: 105 },
+      24: { totalUSD: 999, perSessionUSD: "41.63", saveUSD: 249 },
+    },
+  },
+} as const;
+
+export function getSharedPlanSummary(
+  format: "couples" | "family" | "parent_child",
+  participants: number,
+  plan?: string
+): { headline: string; details: string } | null {
+  if (!plan) return null;
+
+  if (format === "couples") {
+    if (plan === "Single Session") {
+      return {
+        headline: "Single Session · US$36 total for 2 adults",
+        details: "Live 60-minute session covering both participants (US$18 each).",
+      };
+    }
+    if (plan === "6-Session Plan") {
+      return {
+        headline: "6-Session Plan · US$192 total for 2 adults",
+        details: "6 sessions · US$32.00 per session for both · Save US$24 vs 6 single sessions.",
+      };
+    }
+    if (plan === "12-Session Plan") {
+      return {
+        headline: "12-Session Plan · US$349 total for 2 adults (Recommended)",
+        details: "12 sessions · US$29.08 per session for both · Save US$83 vs 12 single sessions.",
+      };
+    }
+    if (plan === "24-Session Plan") {
+      return {
+        headline: "24-Session Plan · US$669 total for 2 adults (Lowest rate)",
+        details: "24 sessions · US$27.88 per session for both · Save US$195 vs 24 single sessions.",
+      };
+    }
+    if (plan === "Custom Plan") {
+      return {
+        headline: "Custom Couples Plan · Quote by enquiry",
+        details: "Flexible schedule and tailored session count arranged on WhatsApp.",
+      };
+    }
+  }
+
+  if (format === "family") {
+    const is4 = participants === 4;
+    const paxLabel = is4 ? "4 participants" : "3 participants";
+    if (plan === "Single Session") {
+      return {
+        headline: `Single Session · US$${is4 ? 52 : 44} total for ${paxLabel}`,
+        details: `Live 60-minute session covering all ${paxLabel} from one household.`,
+      };
+    }
+    if (plan === "6-Session Plan") {
+      return {
+        headline: `6-Session Plan · US$${is4 ? 276 : 228} total for ${paxLabel}`,
+        details: `6 sessions · US$${is4 ? "46.00" : "38.00"} per session for group · Save US$36 vs 6 single sessions.`,
+      };
+    }
+    if (plan === "12-Session Plan") {
+      return {
+        headline: `12-Session Plan · US$${is4 ? 519 : 429} total for ${paxLabel} (Recommended)`,
+        details: `12 sessions · US$${is4 ? "43.25" : "35.75"} per session for group · Save US$${is4 ? 105 : 99} vs 12 single sessions.`,
+      };
+    }
+    if (plan === "24-Session Plan") {
+      return {
+        headline: `24-Session Plan · US$${is4 ? 999 : 819} total for ${paxLabel} (Lowest rate)`,
+        details: `24 sessions · US$${is4 ? "41.63" : "34.13"} per session for group · Save US$${is4 ? 249 : 237} vs 24 single sessions.`,
+      };
+    }
+    if (plan === "Custom Plan") {
+      return {
+        headline: `Custom Family Plan · Quote by enquiry`,
+        details: `Flexible schedule and tailored cadence arranged on WhatsApp.`,
+      };
+    }
+  }
+
+  if (format === "parent_child") {
+    if (plan === "Single Session") {
+      return {
+        headline: "Single Session · US$36 total for 1 Adult + 1 Child",
+        details: "Live 60-minute shared practice with participating adult caregiver.",
+      };
+    }
+    if (plan === "Custom Plan") {
+      return {
+        headline: "Custom Parent & Child Plan · Quote by enquiry",
+        details: "Flexible schedule and age-appropriate structure arranged on WhatsApp.",
+      };
+    }
+  }
+
+  return null;
+}
+
 export const COUPLES_OFFER = {
   id: "couples",
   title: "Live Online Couples Yoga Classes",
@@ -50,10 +173,10 @@ export const COUPLES_OFFER = {
   internalReviewQuote: {
     singleUSD: 36,
     perPersonSingleUSD: 18,
-    sixPackUSD: 198,
-    twelvePackUSD: 384,
-    twentyFourPackUSD: 744,
-    note: "Option B approved single rate ($36 total / $18 each). Multi-session packages for owner review.",
+    sixPackUSD: 192,
+    twelvePackUSD: 349,
+    twentyFourPackUSD: 669,
+    note: "File 29 adopted pricing: Single $36 ($18/pax), 6/$192 ($32), 12/$349 ($29.08), 24/$669 ($27.88).",
   },
 } as const;
 
@@ -73,16 +196,17 @@ export const COUPLES_PLANS: SharedPlanCard[] = [
       "Individual posture variations adapted to each partner's flexibility",
       "Flexible schedule and session times arranged around your time zone",
     ],
-    pricing: "US$198 total",
-    effective: "US$33 per session (US$16.50 per person)",
-    comparison: "Compared with US$216 at single-session rate (save US$18)",
+    pricing: "US$192 total for 2 adults",
+    effective: "6 sessions · US$32.00 per session for both",
+    comparison: "Save US$24 vs 6 single sessions",
     note: "Covers both adult participants on a shared screen. Schedule agreed directly.",
-    cta: "Request package price",
+    cta: "Enquire about 6 sessions",
   },
   {
     id: "couples-plan-12",
     planValue: "12-Session Plan",
-    badge: "12-Session Plan",
+    badge: "Recommended plan",
+    featured: true,
     sessions: 12,
     sessionLabel: "12 Live Sessions",
     duration: "60 min each",
@@ -94,34 +218,33 @@ export const COUPLES_PLANS: SharedPlanCard[] = [
       "Gradual progression from essential alignment to deeper mobility",
       "Shared practice space with clear camera angle guidance",
     ],
-    pricing: "US$384 total",
-    effective: "US$32 per session (US$16.00 per person)",
-    comparison: "Compared with US$432 at single-session rate (save US$48)",
+    pricing: "US$349 total for 2 adults",
+    effective: "12 sessions · US$29.08 per session for both",
+    comparison: "Save US$83 vs 12 single sessions",
     note: "Covers both adult participants on a shared screen. Schedule agreed directly.",
-    cta: "Request package price",
+    cta: "Enquire about 12 sessions",
   },
   {
     id: "couples-plan-24",
     planValue: "24-Session Plan",
-    badge: "24-Session Plan · Highest Value",
-    featured: true,
+    badge: "Lowest price per session",
     sessions: 24,
     sessionLabel: "24 Live Sessions",
     duration: "60 min each",
     title: "Deep Practice Partnership",
-    subtitle: "Comprehensive long-term practice with our deepest multi-session discount",
+    subtitle: "Comprehensive long-term practice with our lowest price per session",
     points: [
       "24 live 60-minute private video sessions for two adults",
       "Dedicated teacher continuity across your entire yoga journey",
       "Full spectrum practice: posture depth, breathwork & joint longevity",
       "Priority scheduling and flexible rescheduling with advance notice",
     ],
-    pricing: "US$744 total",
-    effective: "US$31 per session (US$15.50 per person)",
-    comparison: "Base comparison: 24 × US$36 = US$864. Save US$120 with 24-session discount.",
-    discountNote: "US$120 package discount applied vs 24 standalone sessions",
+    pricing: "US$669 total for 2 adults",
+    effective: "24 sessions · US$27.88 per session for both",
+    comparison: "Save US$195 vs 24 single sessions",
+    discountNote: "Lowest price per session for couples",
     note: "Covers both adult participants on a shared screen. Schedule agreed directly.",
-    cta: "Request package price",
+    cta: "Enquire about 24 sessions",
   },
   {
     id: "couples-plan-custom",
@@ -164,14 +287,14 @@ export const FAMILY_OFFER = {
   ],
   internalReviewQuote: {
     threePaxSingleUSD: 44,
-    threePaxSixPackUSD: 240,
-    threePaxTwelvePackUSD: 468,
-    threePaxTwentyFourPackUSD: 912,
+    threePaxSixPackUSD: 228,
+    threePaxTwelvePackUSD: 429,
+    threePaxTwentyFourPackUSD: 819,
     fourPaxSingleUSD: 52,
-    fourPaxSixPackUSD: 288,
-    fourPaxTwelvePackUSD: 564,
-    fourPaxTwentyFourPackUSD: 1104,
-    note: "Option B approved single rates ($44 for 3 pax, $52 for 4 pax). Multi-session packages for owner review.",
+    fourPaxSixPackUSD: 276,
+    fourPaxTwelvePackUSD: 519,
+    fourPaxTwentyFourPackUSD: 999,
+    note: "File 29 adopted pricing: 3 pax ($44, 6/$228, 12/$429, 24/$819); 4 pax ($52, 6/$276, 12/$519, 24/$999).",
   },
 } as const;
 
@@ -191,16 +314,17 @@ export const FAMILY_3_PLANS: SharedPlanCard[] = [
       "Accessible poses tailored across all ages with participating adult",
       "Convenient scheduling adapted to your household routine",
     ],
-    pricing: "US$240 total",
-    effective: "US$40 per session (covers 3 participants)",
-    comparison: "Compared with US$264 at single-session rate (save US$24)",
+    pricing: "US$228 total for 3 participants",
+    effective: "6 sessions · US$38.00 per session for 3",
+    comparison: "Save US$36 vs 6 single sessions",
     note: "Covers 3 participants from one household on a shared screen.",
-    cta: "Request package price",
+    cta: "Enquire about 6 sessions",
   },
   {
     id: "family-3-plan-12",
     planValue: "12-Session Plan",
-    badge: "12-Session Plan",
+    badge: "Recommended plan",
+    featured: true,
     sessions: 12,
     sessionLabel: "12 Live Sessions",
     duration: "60 min each",
@@ -212,34 +336,33 @@ export const FAMILY_3_PLANS: SharedPlanCard[] = [
       "Balanced sequence of movement, mindful breathing and relaxation",
       "Paced around school, work and household commitments",
     ],
-    pricing: "US$468 total",
-    effective: "US$39 per session (covers 3 participants)",
-    comparison: "Compared with US$528 at single-session rate (save US$60)",
+    pricing: "US$429 total for 3 participants",
+    effective: "12 sessions · US$35.75 per session for 3",
+    comparison: "Save US$99 vs 12 single sessions",
     note: "Covers 3 participants from one household on a shared screen.",
-    cta: "Request package price",
+    cta: "Enquire about 12 sessions",
   },
   {
     id: "family-3-plan-24",
     planValue: "24-Session Plan",
-    badge: "24-Session Plan · Highest Value",
-    featured: true,
+    badge: "Lowest price per session",
     sessions: 24,
     sessionLabel: "24 Live Sessions",
     duration: "60 min each",
     title: "Long-Term Family Wellness",
-    subtitle: "Complete half-year or seasonal journey with our deepest 24-session discount",
+    subtitle: "Complete half-year or seasonal journey with our lowest price per session",
     points: [
       "24 live 60-minute private video sessions for 3 participants",
       "Dedicated teacher continuity across your family's yoga journey",
       "Progressive development in posture, balance, breath and focus",
       "Priority booking and flexible rescheduling with advance notice",
     ],
-    pricing: "US$912 total",
-    effective: "US$38 per session (covers 3 participants)",
-    comparison: "Base comparison: 24 × US$44 = US$1,056. Save US$144 with 24-session discount.",
-    discountNote: "US$144 package discount applied vs 24 standalone sessions",
+    pricing: "US$819 total for 3 participants",
+    effective: "24 sessions · US$34.13 per session for 3",
+    comparison: "Save US$237 vs 24 single sessions",
+    discountNote: "Lowest price per session for 3 participants",
     note: "Covers 3 participants from one household on a shared screen.",
-    cta: "Request package price",
+    cta: "Enquire about 24 sessions",
   },
   {
     id: "family-3-plan-custom",
@@ -279,16 +402,17 @@ export const FAMILY_4_PLANS: SharedPlanCard[] = [
       "Accessible poses tailored across all ages with participating adult",
       "Convenient scheduling adapted to your household routine",
     ],
-    pricing: "US$288 total",
-    effective: "US$48 per session (covers 4 participants)",
-    comparison: "Compared with US$312 at single-session rate (save US$24)",
+    pricing: "US$276 total for 4 participants",
+    effective: "6 sessions · US$46.00 per session for 4",
+    comparison: "Save US$36 vs 6 single sessions",
     note: "Covers up to 4 participants from one household on a shared screen.",
-    cta: "Request package price",
+    cta: "Enquire about 6 sessions",
   },
   {
     id: "family-4-plan-12",
     planValue: "12-Session Plan",
-    badge: "12-Session Plan",
+    badge: "Recommended plan",
+    featured: true,
     sessions: 12,
     sessionLabel: "12 Live Sessions",
     duration: "60 min each",
@@ -300,34 +424,33 @@ export const FAMILY_4_PLANS: SharedPlanCard[] = [
       "Balanced sequence of movement, mindful breathing and relaxation",
       "Paced around school, work and household commitments",
     ],
-    pricing: "US$564 total",
-    effective: "US$47 per session (covers 4 participants)",
-    comparison: "Compared with US$624 at single-session rate (save US$60)",
+    pricing: "US$519 total for 4 participants",
+    effective: "12 sessions · US$43.25 per session for 4",
+    comparison: "Save US$105 vs 12 single sessions",
     note: "Covers up to 4 participants from one household on a shared screen.",
-    cta: "Request package price",
+    cta: "Enquire about 12 sessions",
   },
   {
     id: "family-4-plan-24",
     planValue: "24-Session Plan",
-    badge: "24-Session Plan · Highest Value",
-    featured: true,
+    badge: "Lowest price per session",
     sessions: 24,
     sessionLabel: "24 Live Sessions",
     duration: "60 min each",
     title: "Long-Term Family Wellness",
-    subtitle: "Complete half-year or seasonal journey with our deepest 24-session discount",
+    subtitle: "Complete half-year or seasonal journey with our lowest price per session",
     points: [
       "24 live 60-minute private video sessions for up to 4 participants",
       "Dedicated teacher continuity across your family's yoga journey",
       "Progressive development in posture, balance, breath and focus",
       "Priority booking and flexible rescheduling with advance notice",
     ],
-    pricing: "US$1,104 total",
-    effective: "US$46 per session (covers 4 participants)",
-    comparison: "Base comparison: 24 × US$52 = US$1,248. Save US$144 with 24-session discount.",
-    discountNote: "US$144 package discount applied vs 24 standalone sessions",
+    pricing: "US$999 total for 4 participants",
+    effective: "24 sessions · US$41.63 per session for 4",
+    comparison: "Save US$249 vs 24 single sessions",
+    discountNote: "Lowest price per session for 4 participants",
     note: "Covers up to 4 participants from one household on a shared screen.",
-    cta: "Request package price",
+    cta: "Enquire about 24 sessions",
   },
   {
     id: "family-4-plan-custom",

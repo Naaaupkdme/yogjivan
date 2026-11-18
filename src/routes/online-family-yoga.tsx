@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "How much does online family yoga cost?",
-    a: "A single 60-minute session is US$44 total for 3 household members, or US$52 total for 4 members. We also offer 6-, 12-, and 24-session multi-session plans, as well as custom schedules by enquiry. All participants share one camera feed and practise together.",
+    a: "A single 60-minute session is US$44 total for 3 household members, or US$52 total for 4 members. Multi-session plans for 3 participants are 6 sessions for US$228 (US$38.00/session, save US$36), 12 sessions for US$429 (US$35.75/session, save US$99), and 24 sessions for US$819 (US$34.13/session, save US$237). For 4 participants, plans are 6 sessions for US$276 (US$46.00/session, save US$36), 12 sessions for US$519 (US$43.25/session, save US$105), and 24 sessions for US$999 (US$41.63/session, save US$249). Custom schedules are available by enquiry. All participants share one camera feed and practise together.",
   },
   {
     q: "Can all participants share one camera and device?",
@@ -567,6 +567,59 @@ function FamilyYogaPage() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* CRAWLABLE GROUP SIZE COMPARISON */}
+          <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-5 md:p-6">
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
+              Family household plan overview · 3 vs 4 participants
+            </h3>
+            <p className="mt-1 text-xs text-muted-foreground">
+              All prices cover the entire household on a shared camera feed. Standalone single sessions or multi-session plans:
+            </p>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 text-xs">
+              <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+                <p className="font-semibold text-foreground text-sm">3 Participants (Single: US$44 total)</p>
+                <ul className="mt-2 space-y-1.5 text-foreground/80">
+                  <li className="flex justify-between">
+                    <span>6-session plan:</span>
+                    <strong className="text-foreground">US$228 total</strong>
+                  </li>
+                  <li className="text-[0.7rem] text-muted-foreground">US$38.00/session · Save US$36 vs singles</li>
+                  <li className="flex justify-between pt-1 border-t border-white/5">
+                    <span>12-session plan (Recommended):</span>
+                    <strong className="text-foreground">US$429 total</strong>
+                  </li>
+                  <li className="text-[0.7rem] text-muted-foreground">US$35.75/session · Save US$99 vs singles</li>
+                  <li className="flex justify-between pt-1 border-t border-white/5">
+                    <span>24-session plan (Lowest rate):</span>
+                    <strong className="text-foreground">US$819 total</strong>
+                  </li>
+                  <li className="text-[0.7rem] text-muted-foreground">US$34.13/session · Save US$237 vs singles</li>
+                </ul>
+              </div>
+
+              <div className="rounded-xl border border-white/10 bg-black/20 p-4">
+                <p className="font-semibold text-foreground text-sm">4 Participants (Single: US$52 total)</p>
+                <ul className="mt-2 space-y-1.5 text-foreground/80">
+                  <li className="flex justify-between">
+                    <span>6-session plan:</span>
+                    <strong className="text-foreground">US$276 total</strong>
+                  </li>
+                  <li className="text-[0.7rem] text-muted-foreground">US$46.00/session · Save US$36 vs singles</li>
+                  <li className="flex justify-between pt-1 border-t border-white/5">
+                    <span>12-session plan (Recommended):</span>
+                    <strong className="text-foreground">US$519 total</strong>
+                  </li>
+                  <li className="text-[0.7rem] text-muted-foreground">US$43.25/session · Save US$105 vs singles</li>
+                  <li className="flex justify-between pt-1 border-t border-white/5">
+                    <span>24-session plan (Lowest rate):</span>
+                    <strong className="text-foreground">US$999 total</strong>
+                  </li>
+                  <li className="text-[0.7rem] text-muted-foreground">US$41.63/session · Save US$249 vs singles</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
           {/* PRACTISE ALONE OR TOGETHER STRIP */}

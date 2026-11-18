@@ -13,6 +13,7 @@ import {
   SHARED_LANGUAGES,
   SHARED_TIME_PREFERENCES,
   SHARED_PLAN_OPTIONS,
+  getSharedPlanSummary,
 } from "@/lib/facts/shared-offers";
 
 const schema = z
@@ -240,6 +241,7 @@ export function SharedYogaEnquiryForm({
   }
 
   const waIntent = form.format === "couples" ? "couples" : "family";
+  const planSummary = getSharedPlanSummary(form.format, form.participants, form.plan);
 
   if (done) {
     return (
@@ -364,6 +366,19 @@ export function SharedYogaEnquiryForm({
             ))}
           </select>
         </div>
+
+        {planSummary && (
+          <div
+            id="shared-enquiry-summary"
+            className="rounded-xl border border-[color:var(--gold)]/35 bg-[color-mix(in_oklab,var(--gold)_10%,var(--onyx))] p-3.5 text-xs"
+          >
+            <span className="font-semibold uppercase tracking-wider text-[color:var(--gold)] text-[0.68rem]">
+              Enquiry Summary
+            </span>
+            <p className="mt-1 font-semibold text-foreground text-sm">{planSummary.headline}</p>
+            <p className="mt-0.5 text-xs text-muted-foreground">{planSummary.details}</p>
+          </div>
+        )}
 
         <div>
           <label htmlFor="shared-adult-name" className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground">

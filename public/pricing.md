@@ -26,9 +26,9 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://www.yogjivan.
 ## Private Online Couples Yoga (2 adults)
 - Single session (60 min): $36 total ($18 per person)
 - Multi-session packages (package quote by enquiry):
-  - 6-session package: $198 total ($33 per session, $16.50/person; save $18 vs single rate)
-  - 12-session package: $384 total ($32 per session, $16/person; save $48 vs single rate)
-  - 24-session package: $744 total ($31 per session, $15.50/person; base 24 × $36 = $864, save $120 with 24-session discount)
+  - 6-session package: $192 total ($32.00 per session, $16.00/person; save $24 vs single rate)
+  - 12-session package (Recommended plan): $349 total ($29.08 per session, $14.54/person; save $83 vs single rate)
+  - 24-session package (Lowest price per session): $669 total ($27.88 per session, $13.94/person; save $195 vs single rate)
   - Custom schedules: Tailored frequency and timing on enquiry
 - Includes: Live 60-minute private session for two adults practising together on camera, partner-aware adjustments, joint pacing, and guidance from a dedicated matched teacher
 - Format: Live two-way video worldwide
@@ -36,15 +36,15 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://www.yogjivan.
 ## Private Online Family Yoga (3 or 4 household members)
 - 3 participants:
   - Single session (60 min): $44 total
-  - 6-session package: $240 total ($40 per session; save $24 vs single rate)
-  - 12-session package: $468 total ($39 per session; save $60 vs single rate)
-  - 24-session package: $912 total ($38 per session; base 24 × $44 = $1,056, save $144 with 24-session discount)
+  - 6-session package: $228 total ($38.00 per session; save $36 vs single rate)
+  - 12-session package (Recommended plan): $429 total ($35.75 per session; save $99 vs single rate)
+  - 24-session package (Lowest price per session): $819 total ($34.13 per session; save $237 vs single rate)
   - Custom schedules: Tailored frequency and timing on enquiry
 - 4 participants:
   - Single session (60 min): $52 total
-  - 6-session package: $288 total ($48 per session; save $24 vs single rate)
-  - 12-session package: $564 total ($47 per session; save $60 vs single rate)
-  - 24-session package: $1,104 total ($46 per session; base 24 × $52 = $1,248, save $144 with 24-session discount)
+  - 6-session package: $276 total ($46.00 per session; save $36 vs single rate)
+  - 12-session package (Recommended plan): $519 total ($43.25 per session; save $105 vs single rate)
+  - 24-session package (Lowest price per session): $999 total ($41.63 per session; save $249 vs single rate)
   - Custom schedules: Tailored frequency and timing on enquiry
 - Includes: Live 60-minute shared household yoga session, adaptive sequences for mixed experience levels, and optional parent-child focused structure
 - Format: Live two-way video worldwide

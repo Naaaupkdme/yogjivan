@@ -41,7 +41,7 @@ const FAQS = [
   },
   {
     q: "How much does online couples yoga cost?",
-    a: "A live 60-minute session is US$36 total for two adults (covers both participants — US$18 each). We also offer 6-, 12-, and 24-session multi-session plans, as well as custom schedules by enquiry. Both adults share one camera feed and practise together.",
+    a: "A live 60-minute session is US$36 total for two adults (covers both participants — US$18 each). We also offer multi-session plans: 6 sessions for US$192 (US$32.00/session, save US$24), 12 sessions for US$349 (US$29.08/session, save US$83), and 24 sessions for US$669 (US$27.88/session, save US$195), as well as custom schedules by enquiry. Both adults share one camera feed and practise together.",
   },
   {
     q: "How are sessions booked and scheduled?",
