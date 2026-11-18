@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { SharedYogaEnquiryForm } from "@/components/site/SharedYogaEnquiryForm";
@@ -5,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { socialImageMeta } from "@/lib/images";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { waHref } from "@/lib/wa";
-import { COUPLES_OFFER } from "@/lib/facts/shared-offers";
+import { COUPLES_OFFER, COUPLES_PLANS } from "@/lib/facts/shared-offers";
 import { Users, Video, Clock, Globe2, ShieldCheck, HeartHandshake, Sparkles, CheckCircle2 } from "lucide-react";
 
 const TITLE = "Online Couples Yoga for Two Adults | Yog Jivan";
@@ -40,7 +41,7 @@ const FAQS = [
   },
   {
     q: "How much does online couples yoga cost?",
-    a: "A live 60-minute session is US$36 total for two adults (US$18 each). A four-session pack is US$132 total (US$33 per session, saving US$12 vs four single sessions). Both adults share one camera feed and practise together.",
+    a: "A live 60-minute session is US$36 total for two adults (covers both participants — US$18 each). We also offer 6-, 12-, and 24-session multi-session plans, as well as custom schedules by enquiry. Both adults share one camera feed and practise together.",
   },
   {
     q: "How are sessions booked and scheduled?",
@@ -102,6 +103,18 @@ export const Route = createFileRoute("/online-couples-yoga")({
 });
 
 function CouplesYogaPage() {
+  const [selectedPlan, setSelectedPlan] = useState<string>("");
+
+  function handleSelectPlan(plan: string) {
+    setSelectedPlan(plan);
+    const el = document.getElementById("book-session");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      const planSelect = document.getElementById("shared-plan-select") as HTMLSelectElement | null;
+      planSelect?.focus();
+    }
+  }
+
   return (
     <>
       {/* 1 — FIRST SCREEN: HERO */}
@@ -117,7 +130,7 @@ function CouplesYogaPage() {
         imageAlt="Two adults practising an active standing stretch side by side on mats during an online yoga session"
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          US$36 total for two adults (covers both participants — US$18 each) · 4-session pack US$132 · 60 minutes live
+          US$36 total for two adults (covers both participants — US$18 each) · 60 minutes live
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
@@ -129,6 +142,7 @@ function CouplesYogaPage() {
               const el = document.getElementById("book-session");
               el?.scrollIntoView({ behavior: "smooth" });
             }}
+            data-cta-location="couples_hero"
             className="btn-gold"
           >
             Enquire for two
@@ -136,12 +150,24 @@ function CouplesYogaPage() {
           <button
             type="button"
             onClick={() => {
+              const el = document.getElementById("couples-plans");
+              el?.scrollIntoView({ behavior: "smooth" });
+            }}
+            data-cta-location="couples_hero"
+            className="btn-ghost-gold"
+          >
+            See plans and pricing
+          </button>
+          <button
+            type="button"
+            onClick={() => {
               const el = document.getElementById("how-it-works");
               el?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="btn-ghost-gold"
+            data-cta-location="couples_hero"
+            className="text-xs text-[color:var(--gold)] hover:underline inline-flex items-center gap-1 self-center"
           >
-            See how the session works
+            See how the session works &rarr;
           </button>
         </div>
       </PageHero>
@@ -321,29 +347,118 @@ function CouplesYogaPage() {
         </div>
       </section>
 
-      {/* 4 — SESSION PRICE FOR TWO */}
-      <section className="section-pad-sm border-b border-border/40 bg-card/20">
+      {/* 4 — COMPARE ONLINE COUPLES YOGA PLANS */}
+      <section id="couples-plans" className="section-pad-sm relative isolate scroll-mt-24">
         <div className="container-luxe">
-          <div className="mx-auto max-w-3xl rounded-[2rem] border border-[color:var(--gold)]/30 bg-[color-mix(in_oklab,var(--gold)_6%,var(--onyx))] p-6 md:p-8">
-            <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Session pricing</p>
-            <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-              Session price for two
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
-              A live session costs <strong>US$36 total for two adults</strong> (covers both participants — <strong>US$18 each</strong>). Four sessions are <strong>US$132 total</strong> (US$33 per session, saving US$12 vs four single sessions).
-              Two separate standalone solo sessions would cost US$50 total (US$25 each), saving you US$14 per class when practising together.
-            </p>
-            <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
-              Every session is led by an experienced, certified Yog Jivan yoga teacher.
-            </p>
+          <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Session plans & pricing</p>
+          <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.5rem, 3vw, 2.3rem)" }}>
+            Compare online couples yoga plans
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/80 md:text-base">
+            Book one live session for two, choose a multi-session plan, or ask for a custom schedule.
+            Each plan shows the full package total and the effective rate per session for both adults.
+          </p>
+          <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
+            Every session is led by an experienced, certified Yog Jivan yoga teacher.
+          </p>
 
-            <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs text-muted-foreground">
-              <span>Practising with a child or a third family member? For 3 or 4 household participants, see </span>
-              <Link to="/online-family-yoga" className="text-[color:var(--gold)] hover:underline font-medium">
-                Family Yoga for 3 or 4
-              </Link>
-              <span>.</span>
+          {/* SINGLE SESSION CARD */}
+          <div className="mt-6 rounded-2xl border border-[color:var(--gold)]/40 bg-[color-mix(in_oklab,var(--gold)_8%,var(--onyx))] p-5 md:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <div className="inline-block rounded-full bg-[color:var(--gold)]/15 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-[color:var(--gold)]">
+                  Single Session Rate
+                </div>
+                <h3 className="mt-2 font-display text-xl text-foreground">
+                  Single session for two · US$36 total · 60 minutes
+                </h3>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Covers both participants (US$18 each). Live 60-minute session on a shared screen with a dedicated teacher.
+                  Two separate standalone solo sessions would cost US$50 total (US$25 each), saving you US$14 per class when practising together.
+                </p>
+              </div>
+              <button
+                type="button"
+                data-plan-cta="couples-plan-single"
+                onClick={() => handleSelectPlan("Single Session")}
+                className="btn-gold text-xs shrink-0 self-start sm:self-center"
+              >
+                Enquire for two &rarr;
+              </button>
             </div>
+          </div>
+
+          {/* MULTI-SESSION PACK CARDS */}
+          <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {COUPLES_PLANS.map((plan) => (
+              <div
+                key={plan.id}
+                id={plan.id}
+                className={`flex flex-col justify-between rounded-[1.75rem] p-6 md:p-8 transition-transform hover:-translate-y-1 ${
+                  plan.featured
+                    ? "glass-luxe border-2 border-[color:var(--gold)]/60 bg-[color-mix(in_oklab,var(--gold)_8%,var(--onyx))] shadow-[var(--shadow-gold)]"
+                    : "glass-soft border border-white/10"
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="rounded-full border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10 px-3 py-1 text-[0.62rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+                      {plan.badge}
+                    </span>
+                    <span className="text-xs text-foreground/70">{plan.duration}</span>
+                  </div>
+                  <h3 className="mt-4 font-display text-2xl text-foreground">{plan.title}</h3>
+                  <div className="mt-1 font-display text-lg text-[color:var(--gold)]">{plan.sessionLabel}</div>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/75">{plan.subtitle}</p>
+
+                  <ul className="mt-6 space-y-2.5 border-t border-white/8 pt-6">
+                    {plan.points.map((pt) => (
+                      <li key={pt} className="flex items-start gap-2.5 text-sm text-foreground/85">
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--gold)]" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-8 border-t border-white/8 pt-6">
+                  <div className="text-sm font-semibold text-foreground">{plan.pricing}</div>
+                  {plan.effective && <div className="mt-1 text-xs font-medium text-[color:var(--gold)]">{plan.effective}</div>}
+                  {plan.comparison && <p className="mt-1 text-[0.7rem] text-muted-foreground">{plan.comparison}</p>}
+                  {plan.discountNote && <p className="mt-1 text-[0.7rem] font-medium text-[color:var(--gold)]">{plan.discountNote}</p>}
+                  <p className="mt-2 text-xs text-foreground/65">{plan.note}</p>
+                  <button
+                    type="button"
+                    data-plan-cta={plan.id}
+                    onClick={() => handleSelectPlan(plan.planValue)}
+                    className={`mt-5 w-full justify-center min-h-[44px] ${
+                      plan.featured ? "btn-gold" : "btn-ghost-gold"
+                    }`}
+                  >
+                    {plan.cta}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* PRACTISE ALONE OR TOGETHER STRIP */}
+          <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-center">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground">Practise alone or together</p>
+            <p className="mt-1 text-sm font-medium text-foreground">
+              Solo from US$25 · Two adults US$36 total · Family from US$44 total
+            </p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Standard single session reference rates. Every session is led by an experienced, certified Yog Jivan yoga teacher.
+            </p>
+          </div>
+
+          <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs text-muted-foreground text-center">
+            <span>Practising with a child or a third family member? For 3 or 4 household participants, see </span>
+            <Link to="/online-family-yoga" className="text-[color:var(--gold)] hover:underline font-medium">
+              Family Yoga for 3 or 4
+            </Link>
+            <span>.</span>
           </div>
         </div>
       </section>
@@ -392,6 +507,8 @@ function CouplesYogaPage() {
             <div id="shared-enquiry-form">
               <SharedYogaEnquiryForm
                 initialFormat="couples"
+                plan={selectedPlan}
+                onPlanChange={setSelectedPlan}
                 heading="Enquire About Live Couples Yoga"
                 subheading="Share your contact information and two preferred times. We reply with schedule options and confirmation on WhatsApp."
               />

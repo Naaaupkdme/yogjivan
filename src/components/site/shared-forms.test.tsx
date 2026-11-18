@@ -206,4 +206,38 @@ describe("SharedYogaEnquiryForm — Couples, Family & Parent-Child", () => {
     expect(callPayload.meta?.shared_format).toBe("parent_child");
     expect(callPayload.meta?.participant_count).toBe(2);
   });
+
+  it("supports plan prop and passes preferred_plan in lead payload", async () => {
+    vi.mocked(leadsModule.submitLead).mockResolvedValueOnce({ outcome: "accepted" });
+
+    const onPlanChange = vi.fn();
+    const { container, rerender } = render(
+      <SharedYogaEnquiryForm initialFormat="couples" plan="12-Session Plan" onPlanChange={onPlanChange} />
+    );
+
+    const planSelect = screen.getByLabelText(/preferred plan/i) as HTMLSelectElement;
+    expect(planSelect.value).toBe("12-Session Plan");
+
+    // Rerender with 24-session plan
+    rerender(<SharedYogaEnquiryForm initialFormat="couples" plan="24-Session Plan" onPlanChange={onPlanChange} />);
+    expect(planSelect.value).toBe("24-Session Plan");
+
+    fireEvent.change(screen.getByLabelText(/adult booking contact name/i), {
+      target: { value: "Maya & Dev" },
+    });
+
+    const phoneInput = container.querySelector('input[type="tel"]') as HTMLInputElement;
+    fireEvent.change(phoneInput, { target: { value: "84977778888" } });
+
+    const submitBtn = screen.getByRole("button", { name: /enquire about couples yoga/i });
+    fireEvent.click(submitBtn);
+
+    await waitFor(() => {
+      expect(leadsModule.submitLead).toHaveBeenCalledTimes(1);
+    });
+
+    const callPayload = vi.mocked(leadsModule.submitLead).mock.calls[0][0];
+    expect(callPayload.meta?.preferred_plan).toBe("24-Session Plan");
+    expect(callPayload.preferred_experience).toContain("24-Session Plan");
+  });
 });

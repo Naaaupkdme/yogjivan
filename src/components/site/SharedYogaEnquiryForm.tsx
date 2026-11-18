@@ -12,6 +12,7 @@ import { useLeadSubmission, getTimezone } from "@/lib/leads/form-submission";
 import {
   SHARED_LANGUAGES,
   SHARED_TIME_PREFERENCES,
+  SHARED_PLAN_OPTIONS,
 } from "@/lib/facts/shared-offers";
 
 const schema = z
@@ -20,6 +21,7 @@ const schema = z
     whatsapp: z.string().trim().min(6, "Please share a valid WhatsApp number").max(40),
     format: z.enum(["couples", "family", "parent_child"]),
     participants: z.coerce.number().int().min(2).max(4),
+    plan: z.string().max(80).optional().or(z.literal("")),
     time: z.string().max(80).optional().or(z.literal("")),
     language: z.string().max(80).optional().or(z.literal("")),
     notes: z.string().max(300).optional().or(z.literal("")),
@@ -42,6 +44,7 @@ type FormState = {
   whatsapp: string;
   format: "couples" | "family" | "parent_child";
   participants: number;
+  plan: string;
   time: string;
   language: string;
   notes: string;
@@ -56,6 +59,9 @@ export type SharedYogaEnquiryFormProps = {
   initialParticipants?: number;
   participants?: number;
   onParticipantsChange?: (participants: number) => void;
+  initialPlan?: string;
+  plan?: string;
+  onPlanChange?: (plan: string) => void;
   heading?: string;
   subheading?: string;
 };
@@ -67,6 +73,9 @@ export function SharedYogaEnquiryForm({
   initialParticipants,
   participants: controlledParticipants,
   onParticipantsChange,
+  initialPlan,
+  plan: controlledPlan,
+  onPlanChange,
   heading = "Enquire About Shared Sessions",
   subheading = "Tell us who is joining and your preferred times. Scheduling and rates are arranged individually by enquiry.",
 }: SharedYogaEnquiryFormProps) {
@@ -81,6 +90,7 @@ export function SharedYogaEnquiryForm({
     whatsapp: "",
     format: activeFormat,
     participants: initialPax,
+    plan: controlledPlan ?? initialPlan ?? "",
     time: "Flexible",
     language: "English",
     notes: "",
@@ -117,6 +127,12 @@ export function SharedYogaEnquiryForm({
       setForm((s) => ({ ...s, participants: controlledParticipants }));
     }
   }, [controlledParticipants]);
+
+  useEffect(() => {
+    if (controlledPlan !== undefined && controlledPlan !== form.plan) {
+      setForm((s) => ({ ...s, plan: controlledPlan }));
+    }
+  }, [controlledPlan]);
 
   useEffect(() => {
     if (!controlledFormat && initialFormat !== form.format) {
@@ -169,7 +185,8 @@ export function SharedYogaEnquiryForm({
       parent_child: "Private parent & child online yoga (caregiver + child)",
     };
 
-    const preferredExp = formatLabels[parsed.data.format] || "Private shared online yoga";
+    const baseExp = formatLabels[parsed.data.format] || "Private shared online yoga";
+    const preferredExp = parsed.data.plan ? `${baseExp} · ${parsed.data.plan}` : baseExp;
     const funnelName =
       parsed.data.format === "couples"
         ? "couples_yoga_enquiry"
@@ -202,6 +219,7 @@ export function SharedYogaEnquiryForm({
             timezone: getTimezone(),
             shared_format: data.format,
             participant_count: data.participants,
+            preferred_plan: data.plan || null,
             preferred_language: data.language || null,
             utm_source: attribution.utm_source ?? null,
             utm_medium: attribution.utm_medium ?? null,
@@ -324,6 +342,28 @@ export function SharedYogaEnquiryForm({
             </select>
           </div>
         )}
+
+        <div>
+          <label htmlFor="shared-plan-select" className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Preferred Plan / Package (Optional)
+          </label>
+          <select
+            id="shared-plan-select"
+            value={form.plan}
+            onChange={(e) => {
+              update("plan", e.target.value);
+              onPlanChange?.(e.target.value);
+            }}
+            className="w-full rounded-xl border border-border/60 bg-background/60 px-4 py-2.5 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
+          >
+            <option value="">Select a plan (optional)</option>
+            {SHARED_PLAN_OPTIONS.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </select>
+        </div>
 
         <div>
           <label htmlFor="shared-adult-name" className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground">

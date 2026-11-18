@@ -13,8 +13,8 @@ Yog Jivan is an authentic Indian yoga school founded by Master Anil Choudhary, F
 
 - https://www.yogjivan.com/ — Overview of studio classes, private online yoga, and live online group classes.
 - https://www.yogjivan.com/private-online-yoga — Private 1-on-1 online yoga with a dedicated matched teacher for continuity; posture assessment, personalised pacing, and real-time guidance. Single session $25 (same rate for first or repeat), 12 sessions $249, 20 sessions $399, 24 sessions $459.
-- https://www.yogjivan.com/online-couples-yoga — Private online couples yoga for 2 adults (partners, friends, or household duo); shared mat practice and personalized guidance at $36 total per session ($18/person) or $132 for a 4-session package ($33/session).
-- https://www.yogjivan.com/online-family-yoga — Private online family yoga for 3 or 4 household members on one screen ($44 total for 3, $52 total for 4; 4-session packages $160 / $192); includes dedicated parent-child practice at https://www.yogjivan.com/online-family-yoga#parent-child.
+- https://www.yogjivan.com/online-couples-yoga — Private online couples yoga for 2 adults (partners, friends, or household duo); shared mat practice and personalized guidance at $36 total per session ($18/person); 6-, 12-, and 24-session packages and custom schedules available by enquiry.
+- https://www.yogjivan.com/online-family-yoga — Private online family yoga for 3 or 4 household members on one screen ($44 total for 3, $52 total for 4; multi-session packages available by enquiry); includes dedicated parent-child practice at https://www.yogjivan.com/online-family-yoga#parent-child.
 - https://www.yogjivan.com/online-yoga-classes — Live online group classes: 60 minutes, maximum 8 students, two-way video with real-time posture correction, memberships from $36 per month.
 - https://www.yogjivan.com/corporate — On-site corporate yoga and chair wellness in the Hai Duong urban area, Hai Phong, and surrounding Northern Vietnam workplaces; complimentary 30-minute first workplace demo.
 - https://www.yogjivan.com/school-yoga — Playful, posture-aware yoga modules for schools and educational centers in the Hai Duong urban area, Hai Phong, and Northern Vietnam; complimentary 35–40 minute school trial session. Strict child privacy protection (no student PII collected).
@@ -83,11 +83,11 @@ Hours: Monday–Saturday 5:00 AM – 9:00 PM (closed Sunday)
 
 ### Private Online Couples Yoga (2 adults)
 - Single session (60 min) — $36 total ($18 per person)
-- 4-session package — $132 total ($33/session)
+- Multi-session packages (6, 12, 24 sessions) and custom plans available by enquiry
 
 ### Private Online Family Yoga (3 or 4 household members)
-- 3 participants: Single session $44 total; 4-session package $160 total ($40/session)
-- 4 participants: Single session $52 total; 4-session package $192 total ($48/session)
+- 3 participants: Single session $44 total; multi-session packages (6, 12, 24 sessions) by enquiry
+- 4 participants: Single session $52 total; multi-session packages (6, 12, 24 sessions) by enquiry
 - Dedicated parent-child practice option available
 
 ### Corporate Workplace Yoga & School Yoga
@@ -112,7 +112,7 @@ Phone: +84 782 046 066
 WhatsApp: https://wa.me/84782046066
 Zalo: https://zalo.me/84782046066
 Email: hello@yogjivan.com
-Instagram: https://www.instagram.com/anil_yog_jivan
+Instagram: https://www.instagram.com/yogjivan.yoga/
 Facebook: https://www.facebook.com/share/18ixNUN1J1/
 YouTube: https://youtube.com/@yogjivanvietnam
 

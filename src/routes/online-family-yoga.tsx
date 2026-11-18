@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { socialImageMeta } from "@/lib/images";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { waHref } from "@/lib/wa";
-import { FAMILY_OFFER, PARENT_CHILD_SECTION } from "@/lib/facts/shared-offers";
+import { FAMILY_OFFER, PARENT_CHILD_SECTION, FAMILY_3_PLANS, FAMILY_4_PLANS } from "@/lib/facts/shared-offers";
 import { Users, Video, Clock, Globe2, ShieldCheck, Heart, Sparkles, CheckCircle2 } from "lucide-react";
 
 const TITLE = "Private Online Family Yoga for 3 or 4 | Yog Jivan";
@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "How much does online family yoga cost?",
-    a: "A single 60-minute session is US$44 total for 3 household members, or US$52 total for 4 members. A four-session pack is US$160 for 3 participants (US$40 per session, saving US$16 vs four singles) and US$192 for 4 participants (US$48 per session, saving US$16 vs four singles). All packs contain exactly four sessions.",
+    a: "A single 60-minute session is US$44 total for 3 household members, or US$52 total for 4 members. We also offer 6-, 12-, and 24-session multi-session plans, as well as custom schedules by enquiry. All participants share one camera feed and practise together.",
   },
   {
     q: "Can all participants share one camera and device?",
@@ -97,6 +97,20 @@ export const Route = createFileRoute("/online-family-yoga")({
 function FamilyYogaPage() {
   const [selectedFormat, setSelectedFormat] = useState<"family" | "parent_child">("family");
   const [selectedPax, setSelectedPax] = useState<number>(3);
+  const [selectedPlan, setSelectedPlan] = useState<string>("");
+
+  function handleSelectPlan(plan: string, pax?: number) {
+    setSelectedPlan(plan);
+    if (pax) setSelectedPax(pax);
+    const el = document.getElementById("plan-session");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      const planSelect = document.getElementById("shared-plan-select") as HTMLSelectElement | null;
+      planSelect?.focus();
+    }
+  }
+
+  const activeFamilyPlans = selectedPax === 4 ? FAMILY_4_PLANS : FAMILY_3_PLANS;
 
   return (
     <>
@@ -113,7 +127,7 @@ function FamilyYogaPage() {
         imageAlt="Four household members standing on yoga mats reaching upward together during a private online family yoga class"
       >
         <div className="rounded-xl border border-[color:var(--gold)]/30 bg-[color:var(--gold)]/10 px-4 py-2 text-xs font-medium text-[color:var(--gold)] max-w-fit">
-          3 participants · US$44 total &nbsp;|&nbsp; 4 participants · US$52 total
+          3 participants · US$44 total &nbsp;|&nbsp; 4 participants · US$52 total · 60 minutes live
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
@@ -125,6 +139,7 @@ function FamilyYogaPage() {
               const el = document.getElementById("plan-session");
               el?.scrollIntoView({ behavior: "smooth" });
             }}
+            data-cta-location="family_hero"
             className="btn-gold"
           >
             Choose your family size
@@ -132,12 +147,24 @@ function FamilyYogaPage() {
           <button
             type="button"
             onClick={() => {
+              const el = document.getElementById("family-plans");
+              el?.scrollIntoView({ behavior: "smooth" });
+            }}
+            data-cta-location="family_hero"
+            className="btn-ghost-gold"
+          >
+            See plans and pricing
+          </button>
+          <button
+            type="button"
+            onClick={() => {
               const el = document.getElementById("parent-child");
               el?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="btn-ghost-gold"
+            data-cta-location="family_hero"
+            className="text-xs text-[color:var(--gold)] hover:underline inline-flex items-center gap-1 self-center"
           >
-            See the parent–child option
+            See parent–child option &rarr;
           </button>
         </div>
       </PageHero>
@@ -421,51 +448,144 @@ function FamilyYogaPage() {
         </div>
       </section>
 
-      {/* 5 — PRICE FOR YOUR HOUSEHOLD */}
-      <section className="section-pad-sm border-b border-border/40 bg-card/20">
+      {/* 5 — COMPARE ONLINE FAMILY YOGA PLANS */}
+      <section id="family-plans" className="section-pad-sm relative isolate scroll-mt-24">
         <div className="container-luxe">
-          <div className="mx-auto max-w-4xl rounded-[2rem] border border-[color:var(--gold)]/30 bg-[color-mix(in_oklab,var(--gold)_6%,var(--onyx))] p-6 md:p-8">
-            <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Household pricing</p>
-            <h2 className="mt-3 font-display text-2xl font-bold text-foreground md:text-3xl">
-              Price for your household
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-foreground/85 md:text-base">
-              Your price covers the whole household booking. Three participants are <strong>US$44 total</strong>; a fourth family member adds US$8 to make <strong>US$52 total</strong>.
-              The amount you see is the total for the entire group.
-            </p>
-            <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
-              Every session is led by an experienced, certified Yog Jivan yoga teacher.
-            </p>
+          <p className="eyebrow"><span className="h-px w-10 bg-[color:var(--gold)]" />Session plans & pricing</p>
+          <h2 className="mt-4 font-display leading-[1.15]" style={{ fontSize: "clamp(1.5rem, 3vw, 2.3rem)" }}>
+            Compare online family yoga plans
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-foreground/80 md:text-base">
+            Choose your household size to see the total for everyone in the session.
+            Each plan shows the full package total and the effective rate per session for your whole household.
+          </p>
+          <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
+            Every session is led by an experienced, certified Yog Jivan yoga teacher.
+          </p>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
-                  Family of 3 (60 min)
-                </span>
-                <div className="mt-2 font-display text-2xl font-bold text-foreground">US$44 total</div>
-                <p className="mt-1 text-xs text-muted-foreground">Single session rate for 3 participants.</p>
-                <div className="mt-4 rounded-lg border border-[color:var(--gold)]/30 bg-black/30 p-3">
-                  <p className="text-xs font-medium text-foreground">
-                    <strong>4-session pack:</strong> 4 sessions for US$160 total (US$40 per session, saving US$16 vs four singles).
-                  </p>
-                  <p className="mt-1 text-[0.68rem] text-muted-foreground">Same household, subject to teacher schedule confirmation.</p>
-                </div>
-              </div>
+          {/* HOUSEHOLD SIZE SELECTOR */}
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Select household size:</span>
+            <button
+              type="button"
+              onClick={() => setSelectedPax(3)}
+              className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
+                selectedPax === 3
+                  ? "bg-[color:var(--gold)] text-black shadow-sm"
+                  : "border border-white/20 bg-white/5 text-foreground hover:bg-white/10"
+              }`}
+            >
+              3 Participants · US$44 / session
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedPax(4)}
+              className={`rounded-full px-4 py-2 text-xs font-semibold transition ${
+                selectedPax === 4
+                  ? "bg-[color:var(--gold)] text-black shadow-sm"
+                  : "border border-white/20 bg-white/5 text-foreground hover:bg-white/10"
+              }`}
+            >
+              4 Participants · US$52 / session
+            </button>
+          </div>
 
-              <div className="rounded-xl border border-white/10 bg-white/[0.03] p-5">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[color:var(--gold)]">
-                  Family of 4 (60 min)
-                </span>
-                <div className="mt-2 font-display text-2xl font-bold text-foreground">US$52 total</div>
-                <p className="mt-1 text-xs text-muted-foreground">Single session rate for 4 participants.</p>
-                <div className="mt-4 rounded-lg border border-[color:var(--gold)]/30 bg-black/30 p-3">
-                  <p className="text-xs font-medium text-foreground">
-                    <strong>4-session pack:</strong> 4 sessions for US$192 total (US$48 per session, saving US$16 vs four singles).
-                  </p>
-                  <p className="mt-1 text-[0.68rem] text-muted-foreground">Covers up to 4 participants from one household.</p>
+          {/* SINGLE SESSION CARD */}
+          <div className="mt-6 rounded-2xl border border-[color:var(--gold)]/40 bg-[color-mix(in_oklab,var(--gold)_8%,var(--onyx))] p-5 md:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <div className="inline-block rounded-full bg-[color:var(--gold)]/15 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-wider text-[color:var(--gold)]">
+                  Single Session Rate · {selectedPax} Participants
                 </div>
+                <h3 className="mt-2 font-display text-xl text-foreground">
+                  Single session for {selectedPax} · US${selectedPax === 4 ? "52" : "44"} total · 60 minutes
+                </h3>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Single session rate for {selectedPax} family members from one household (both reference rates: 3 participants = US$44 total, 4 participants = US$52 total). Live 60-minute video session on a shared screen with a dedicated teacher.
+                </p>
               </div>
+              <button
+                type="button"
+                data-plan-cta={`family-${selectedPax}-plan-single`}
+                onClick={() => handleSelectPlan("Single Session", selectedPax)}
+                className="btn-gold text-xs shrink-0 self-start sm:self-center"
+              >
+                Enquire for {selectedPax} &rarr;
+              </button>
             </div>
+          </div>
+
+          {/* MULTI-SESSION PACK CARDS */}
+          <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {activeFamilyPlans.map((plan) => (
+              <div
+                key={plan.id}
+                id={plan.id}
+                className={`flex flex-col justify-between rounded-[1.75rem] p-6 md:p-8 transition-transform hover:-translate-y-1 ${
+                  plan.featured
+                    ? "glass-luxe border-2 border-[color:var(--gold)]/60 bg-[color-mix(in_oklab,var(--gold)_8%,var(--onyx))] shadow-[var(--shadow-gold)]"
+                    : "glass-soft border border-white/10"
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="rounded-full border border-[color:var(--gold)]/40 bg-[color:var(--gold)]/10 px-3 py-1 text-[0.62rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+                      {plan.badge}
+                    </span>
+                    <span className="text-xs text-foreground/70">{plan.duration}</span>
+                  </div>
+                  <h3 className="mt-4 font-display text-2xl text-foreground">{plan.title}</h3>
+                  <div className="mt-1 font-display text-lg text-[color:var(--gold)]">{plan.sessionLabel}</div>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/75">{plan.subtitle}</p>
+
+                  <ul className="mt-6 space-y-2.5 border-t border-white/8 pt-6">
+                    {plan.points.map((pt) => (
+                      <li key={pt} className="flex items-start gap-2.5 text-sm text-foreground/85">
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--gold)]" />
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-8 border-t border-white/8 pt-6">
+                  <div className="text-sm font-semibold text-foreground">{plan.pricing}</div>
+                  {plan.effective && <div className="mt-1 text-xs font-medium text-[color:var(--gold)]">{plan.effective}</div>}
+                  {plan.comparison && <p className="mt-1 text-[0.7rem] text-muted-foreground">{plan.comparison}</p>}
+                  {plan.discountNote && <p className="mt-1 text-[0.7rem] font-medium text-[color:var(--gold)]">{plan.discountNote}</p>}
+                  <p className="mt-2 text-xs text-foreground/65">{plan.note}</p>
+                  <button
+                    type="button"
+                    data-plan-cta={plan.id}
+                    onClick={() => handleSelectPlan(plan.planValue, selectedPax)}
+                    className={`mt-5 w-full justify-center min-h-[44px] ${
+                      plan.featured ? "btn-gold" : "btn-ghost-gold"
+                    }`}
+                  >
+                    {plan.cta}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* PRACTISE ALONE OR TOGETHER STRIP */}
+          <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-center">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground">Practise alone or together</p>
+            <p className="mt-1 text-sm font-medium text-foreground">
+              Solo from US$25 · Two adults US$36 total · Family from US$44 total
+            </p>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Standard single session reference rates. Every session is led by an experienced, certified Yog Jivan yoga teacher.
+            </p>
+          </div>
+
+          <div className="mt-6 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs text-muted-foreground text-center">
+            <span>Two adults only? For partner or friend sessions, see </span>
+            <Link to="/online-couples-yoga" className="text-[color:var(--gold)] hover:underline font-medium">
+              Online Couples Yoga
+            </Link>
+            <span>.</span>
           </div>
         </div>
       </section>
@@ -515,6 +635,8 @@ function FamilyYogaPage() {
               <SharedYogaEnquiryForm
                 format={selectedFormat}
                 participants={selectedPax}
+                plan={selectedPlan}
+                onPlanChange={setSelectedPlan}
                 onFormatChange={(fmt) => {
                   setSelectedFormat(fmt as "family" | "parent_child");
                   if (fmt === "family" && selectedPax < 3) setSelectedPax(3);

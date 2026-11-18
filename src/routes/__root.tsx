@@ -147,7 +147,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           email: "hello@yogjivan.com",
           sameAs: [
             "https://www.facebook.com/share/18ixNUN1J1/",
-            "https://www.instagram.com/anil_yog_jivan",
+            "https://www.instagram.com/yogjivan.yoga/",
             "https://youtube.com/@yogjivanvietnam",
             "https://zalo.me/84782046066",
           ],
@@ -177,7 +177,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               }],
               sameAs: [
                 "https://www.facebook.com/share/18ixNUN1J1/",
-                "https://www.instagram.com/anil_yog_jivan",
+                "https://www.instagram.com/yogjivan.yoga/",
                 "https://youtube.com/@yogjivanvietnam",
                 "https://zalo.me/84782046066",
                 "https://maps.app.goo.gl/9GymWfE5M164VfDE8",
@@ -208,7 +208,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               }],
               sameAs: [
                 "https://www.facebook.com/share/18ixNUN1J1/",
-                "https://www.instagram.com/anil_yog_jivan",
+                "https://www.instagram.com/yogjivan.yoga/",
                 "https://youtube.com/@yogjivanvietnam",
                 "https://zalo.me/84782046066",
                 "https://maps.app.goo.gl/dRBFCrbmcX4yhEt9A",
@@ -245,7 +245,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           knowsLanguage: ["English", "Hindi", "Vietnamese"],
           sameAs: [
             "https://www.facebook.com/share/18ixNUN1J1/",
-            "https://www.instagram.com/anil_yog_jivan",
+            "https://www.instagram.com/yogjivan.yoga/",
             "https://youtube.com/@yogjivanvietnam",
           ],
         }),
