@@ -34,7 +34,7 @@ import liveGuidanceFloor from "@/assets/paid/live-guidance-floor.webp.asset.json
 
 const PT_TITLE = "Private Online Yoga Classes, 1-to-1 | Yog Jivan";
 const PT_DESC =
-  "Practise live with a certified Yog Jivan yoga teacher. Book a 60-minute private online session for US$25 or explore multi-session packages.";
+  "Private 1-on-1 online yoga with a certified Yog Jivan teacher: level assessment, live corrections and a personal practice plan. 60-minute session US$25, packages available.";
 const PT_URL = "https://www.yogjivan.com/private-online-yoga";
 
 /** AEO/GEO direct-answer capsule. Fact-first and chunkable. */

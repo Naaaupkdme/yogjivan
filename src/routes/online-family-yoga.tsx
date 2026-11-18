@@ -9,9 +9,9 @@ import { waHref } from "@/lib/wa";
 import { FAMILY_OFFER, PARENT_CHILD_SECTION, FAMILY_3_PLANS, FAMILY_4_PLANS } from "@/lib/facts/shared-offers";
 import { Users, Video, Clock, Globe2, ShieldCheck, Heart, Sparkles, CheckCircle2 } from "lucide-react";
 
-const TITLE = "Private Online Family Yoga for 3 or 4 | Yog Jivan";
+const TITLE = "Online Family & Kids Yoga at Home, Private | Yog Jivan";
 const DESCRIPTION =
-  "Practise yoga live at home with three or four family members. Explore household sessions and a parent–child format with a participating adult.";
+  "Private live family yoga online for 3 or 4 household members, plus a parent–child kids yoga format with an adult joining. Movement options for every age.";
 const CANONICAL = "https://www.yogjivan.com/online-family-yoga";
 
 const FAQS = [

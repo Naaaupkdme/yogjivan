@@ -9,7 +9,7 @@ import { waHref } from "@/lib/wa";
 import { COUPLES_OFFER, COUPLES_PLANS } from "@/lib/facts/shared-offers";
 import { Users, Video, Clock, Globe2, ShieldCheck, HeartHandshake, Sparkles, CheckCircle2 } from "lucide-react";
 
-const TITLE = "Online Couples Yoga for Two Adults | Yog Jivan";
+const TITLE = "Online Couples & Partner Yoga, Private for Two | Yog Jivan";
 const DESCRIPTION =
   "Take a private live yoga class for two adults. Practise with a partner or friend, with movement options for each person and guidance from one teacher.";
 const CANONICAL = "https://www.yogjivan.com/online-couples-yoga";

@@ -6,7 +6,7 @@ import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { hreflangLinks, PAIR_SCHOOL } from "@/lib/locale-routes";
 import { CheckCircle2, Clock, FileDown, GraduationCap, Heart, ShieldCheck, Sparkles, Users } from "lucide-react";
 
-const TITLE = "School Yoga in Vietnam: Play-Based Kids Classes | Yog Jivan";
+const TITLE = "Kids Yoga for Schools in Vietnam, Play-Based | Yog Jivan";
 const DESCRIPTION =
   "Explore a 38-minute school yoga session with stories, movement and balance games. Request a complimentary demo for your school.";
 const CANONICAL = "https://www.yogjivan.com/school-yoga";
