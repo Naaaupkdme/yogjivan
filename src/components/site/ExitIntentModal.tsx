@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Sparkles } from "lucide-react";
@@ -7,9 +7,11 @@ const STORAGE_KEY = "yj_exit_intent_dismissed";
 
 export function ExitIntentModal() {
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isPrivateRoute = pathname.includes("private") || pathname.includes("1-kem-1");
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || isPrivateRoute) return;
     try { if (localStorage.getItem(STORAGE_KEY) === "1") return; } catch {}
 
     let shown = false;

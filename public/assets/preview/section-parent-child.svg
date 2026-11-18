@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgPC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141312"/>
+      <stop offset="60%" stop-color="#1c1917"/>
+      <stop offset="100%" stop-color="#0c0a09"/>
+    </linearGradient>
+    <radialGradient id="glowPC" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C5A880" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="matPC" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#292524"/>
+      <stop offset="100%" stop-color="#1c1917"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bgPC)"/>
+  <rect width="1200" height="800" fill="url(#glowPC)"/>
+
+  <!-- Two Mats Side by Side (Caregiver & Child) -->
+  <polygon points="250,560 550,560 500,720 180,720" fill="url(#matPC)" stroke="#C5A880" stroke-opacity="0.35" stroke-width="2"/>
+  <polygon points="650,560 950,560 900,720 580,720" fill="url(#matPC)" stroke="#C5A880" stroke-opacity="0.35" stroke-width="2"/>
+
+  <!-- Foam Blocks on mats -->
+  <polygon points="320,640 370,640 360,670 310,670" fill="#d97706" fill-opacity="0.4" stroke="#f59e0b" stroke-width="1.5"/>
+  <polygon points="720,640 770,640 760,670 710,670" fill="#d97706" fill-opacity="0.4" stroke="#f59e0b" stroke-width="1.5"/>
+
+  <!-- Adult Caregiver (Left, seated spine stretch & mirroring) -->
+  <g transform="translate(350, 480)" fill="#d6d3d1" fill-opacity="0.7">
+    <circle cx="20" cy="-45" r="20"/>
+    <path d="M10,-20 C15,0 18,55 15,95 C32,95 38,0 35,-20 Z"/>
+    <path d="M5,95 C-15,115 -25,140 -35,160 C-15,165 15,145 35,145 C55,145 85,165 105,160 C95,140 85,115 65,95 Z"/>
+  </g>
+
+  <!-- Child (Right, smaller seated posture mirroring caregiver) -->
+  <g transform="translate(750, 520)" fill="#f5f5f4" fill-opacity="0.8">
+    <circle cx="16" cy="-35" r="15"/>
+    <path d="M8,-18 C11,-2 13,32 11,60 C23,60 26,-2 23,-18 Z"/>
+    <path d="M3,60 C-12,72 -20,88 -28,105 C-12,110 12,95 28,95 C44,95 68,110 84,105 C76,88 68,72 53,60 Z"/>
+  </g>
+
+  <!-- Concept Banner Card -->
+  <g transform="translate(250, 100)">
+    <rect width="700" height="200" rx="16" fill="#1c1917" fill-opacity="0.9" stroke="#C5A880" stroke-width="1.5"/>
+    <rect x="30" y="25" width="370" height="30" rx="15" fill="#C5A880" fill-opacity="0.15" stroke="#C5A880" stroke-opacity="0.5"/>
+    <text x="50" y="45" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.15em" fill="#C5A880">
+      CONCEPT PREVIEW · FILE 13 SHOT PLAN
+    </text>
+    <text x="30" y="90" font-family="system-ui, Georgia, serif" font-size="22" font-weight="600" fill="#f5f5f4">
+      Parent &amp; Child Shared Practice Section
+    </text>
+    <text x="30" y="125" font-family="system-ui, sans-serif" font-size="14" fill="#a8a29e">
+      • Composition: Adult caregiver + child on separate mats, mirrored gentle postures
+    </text>
+    <text x="30" y="150" font-family="system-ui, sans-serif" font-size="14" fill="#a8a29e">
+      • Adult actively participating side-by-side · Adaptable movement · No acrobatics
+    </text>
+    <text x="30" y="178" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#78716c">
+      * Candidate preview visual — real caregiver &amp; child photo to replace upon consent &amp; shoot
+    </text>
+  </g>
+</svg>

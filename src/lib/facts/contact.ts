@@ -14,7 +14,7 @@ export const CONTACT = {
   responseTime: "Usually within a few hours",
   social: {
     facebook: "https://www.facebook.com/share/18ixNUN1J1/",
-    instagram: "https://www.instagram.com/anil_yog_jivan",
+    instagram: "https://www.instagram.com/yogjivan.yoga/",
     youtube: "https://youtube.com/@yogjivanvietnam",
   },
 } as const;

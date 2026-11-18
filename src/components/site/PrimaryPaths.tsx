@@ -35,8 +35,8 @@ export function PrimaryPaths() {
             <p className="mt-1 text-sm italic text-[color:var(--gold)]">A practice built around you</p>
             <p className="mt-4 text-sm leading-relaxed text-foreground/85">
               A live {ONLINE_CLASS.durationMinutes}-minute one-to-one session with a matched Yog Jivan
-              teacher — your level, your goals, your schedule. Sessions are generally kept with the
-              same matched teacher. Pricing and scheduling by enquiry.
+              teacher — your level, your goals, your schedule. A standalone online session is US$25.
+              Ask about schedule, packages or a custom plan.
             </p>
             <span className="mt-6 inline-flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">
               Enquire about private 1-on-1 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />

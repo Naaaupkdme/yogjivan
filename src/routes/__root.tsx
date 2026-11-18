@@ -18,6 +18,7 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import { FloatingConsultationCTA } from "@/components/site/FloatingConsultationCTA";
+import { LanguageSuggestionBanner } from "@/components/site/LanguageSuggestionBanner";
 import { ExitIntentModal } from "@/components/site/ExitIntentModal";
 import { CookieConsent } from "@/components/site/CookieConsent";
 import { initAnalytics, trackPageView, trackCta, metaEvent } from "@/lib/analytics";
@@ -146,7 +147,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           email: "hello@yogjivan.com",
           sameAs: [
             "https://www.facebook.com/share/18ixNUN1J1/",
-            "https://www.instagram.com/anil_yog_jivan",
+            "https://www.instagram.com/yogjivan.yoga/",
             "https://youtube.com/@yogjivanvietnam",
             "https://zalo.me/84782046066",
           ],
@@ -176,7 +177,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               }],
               sameAs: [
                 "https://www.facebook.com/share/18ixNUN1J1/",
-                "https://www.instagram.com/anil_yog_jivan",
+                "https://www.instagram.com/yogjivan.yoga/",
                 "https://youtube.com/@yogjivanvietnam",
                 "https://zalo.me/84782046066",
                 "https://maps.app.goo.gl/9GymWfE5M164VfDE8",
@@ -207,7 +208,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               }],
               sameAs: [
                 "https://www.facebook.com/share/18ixNUN1J1/",
-                "https://www.instagram.com/anil_yog_jivan",
+                "https://www.instagram.com/yogjivan.yoga/",
                 "https://youtube.com/@yogjivanvietnam",
                 "https://zalo.me/84782046066",
                 "https://maps.app.goo.gl/dRBFCrbmcX4yhEt9A",
@@ -244,7 +245,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           knowsLanguage: ["English", "Hindi", "Vietnamese"],
           sameAs: [
             "https://www.facebook.com/share/18ixNUN1J1/",
-            "https://www.instagram.com/anil_yog_jivan",
+            "https://www.instagram.com/yogjivan.yoga/",
             "https://youtube.com/@yogjivanvietnam",
           ],
         }),
@@ -488,6 +489,7 @@ function RootComponent() {
           <SiteFooter />
           <FloatingWhatsApp />
           <FloatingConsultationCTA />
+          <LanguageSuggestionBanner />
           <ExitIntentModal />
           <MobileStickyCTA />
           <CookieConsent />

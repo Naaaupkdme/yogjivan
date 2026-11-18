@@ -85,8 +85,54 @@ const MENU_ID = "yj-full-menu";
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [fullOpen, setFullOpen] = useState(false);
+  const [browserHash, setBrowserHash] = useState<string>(() => (typeof window !== "undefined" ? window.location.hash || "" : ""));
   const { location } = useRouterState();
-  const langTargets = languageSwitchTarget(location.pathname);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const syncHash = () => {
+      setBrowserHash(window.location.hash || "");
+    };
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    window.addEventListener("popstate", syncHash);
+    return () => {
+      window.removeEventListener("hashchange", syncHash);
+      window.removeEventListener("popstate", syncHash);
+    };
+  }, [location.pathname]);
+
+  const effectiveHash = (typeof window !== "undefined" && window.location.hash) ? window.location.hash : (browserHash || location.hash || "");
+  const effectiveSearch = (typeof window !== "undefined" && window.location.search) ? window.location.search : (location.searchStr || "");
+  const langTargets = languageSwitchTarget(location.pathname, effectiveSearch, effectiveHash);
+
+  const getLiveTarget = (code: "EN" | "VI") => {
+    if (typeof window === "undefined") {
+      return code === "VI" ? langTargets.vi : langTargets.en;
+    }
+    const liveHash = window.location.hash || effectiveHash;
+    const liveSearch = window.location.search || effectiveSearch;
+    const target = languageSwitchTarget(location.pathname, liveSearch, liveHash);
+    return code === "VI" ? target.vi : target.en;
+  };
+
+  const handleLangClick = (e: React.MouseEvent<HTMLAnchorElement>, code: "EN" | "VI") => {
+    saveLangPreference(code);
+    if (typeof window !== "undefined") {
+      const dest = getLiveTarget(code);
+      e.currentTarget.setAttribute("href", dest);
+    }
+  };
+
+  const syncLangHref = (e: React.SyntheticEvent<HTMLAnchorElement>, code: "EN" | "VI") => {
+    if (typeof window !== "undefined") {
+      const dest = getLiveTarget(code);
+      if (e.currentTarget.getAttribute("href") !== dest) {
+        e.currentTarget.setAttribute("href", dest);
+      }
+    }
+  };
+
   const isVi = isViPath(location.pathname);
   const activeLang: "EN" | "VI" = isVi ? "VI" : "EN";
   // Pre-filled opening line so a tap on WhatsApp never lands on a blank thread.
@@ -232,7 +278,9 @@ export function SiteHeader() {
               ]
             ).map((item) => (
               <a key={item.code} href={item.href} hrefLang={item.hrefLang}
-                onClick={() => saveLangPreference(item.code)}
+                onClick={(e) => handleLangClick(e, item.code)}
+                onMouseEnter={(e) => syncLangHref(e, item.code)}
+                onFocus={(e) => syncLangHref(e, item.code)}
                 aria-current={activeLang === item.code ? "true" : undefined}
                 className={`px-2 py-1.5 text-[0.58rem] uppercase tracking-[0.18em] transition-colors ${activeLang === item.code ? "bg-primary/15 text-primary" : "text-muted-foreground hover:text-foreground"}`}>
                 {item.code}
@@ -339,7 +387,9 @@ export function SiteHeader() {
                       { code: "VI" as const, href: langTargets.vi, hrefLang: "vi" },
                     ]).map((item) => (
                       <a key={item.code} href={item.href} hrefLang={item.hrefLang}
-                        onClick={() => { saveLangPreference(item.code); setFullOpen(false); }}
+                        onClick={(e) => { handleLangClick(e, item.code); setFullOpen(false); }}
+                        onMouseEnter={(e) => syncLangHref(e, item.code)}
+                        onFocus={(e) => syncLangHref(e, item.code)}
                         aria-current={activeLang === item.code ? "true" : undefined}
                         className={`px-3 py-2 text-[0.6rem] uppercase tracking-[0.18em] transition-colors ${activeLang === item.code ? "bg-primary/15 text-primary" : "text-muted-foreground hover:text-foreground"}`}>
                         {item.code}

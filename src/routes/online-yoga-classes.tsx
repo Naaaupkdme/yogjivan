@@ -188,6 +188,8 @@ const FAQS: { q: string; a: string }[] = [
 
 const RELATED_LINKS = [
   { to: "/private-online-yoga", label: "Private 1-on-1 yoga" },
+  { to: "/online-family-yoga", label: "Family yoga online" },
+  { to: "/online-couples-yoga", label: "Couples yoga online" },
   { to: "/yoga-for-beginners", label: "Yoga for beginners" },
   { to: "/programs", label: "All programs" },
   { to: "/about", label: "About Master Anil" },

@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { getPostBySlug, relatedPosts, type BlogPost } from "@/lib/blog-posts";
 import { breadcrumbSchema } from "@/lib/schema";
+import { VI_BLOG_SLUGS } from "@/lib/locale-routes";
 
 const SITE = "https://www.yogjivan.com";
 
@@ -16,6 +17,7 @@ export const Route = createFileRoute("/blog/$slug")({
       return { meta: [{ title: "Article not found — Yog Jivan" }, { name: "robots", content: "noindex" }] };
     }
     const { post } = loaderData;
+    const isVi = VI_BLOG_SLUGS.includes(post.slug as any);
     const url = `${SITE}/blog/${params.slug}`;
     const raw = post.metaDescription ?? post.excerpt;
     const desc = raw.length > 158 ? raw.slice(0, 155) + "…" : raw;
@@ -31,6 +33,7 @@ export const Route = createFileRoute("/blog/$slug")({
           headline: post.title,
           description: desc,
           datePublished: post.date,
+          inLanguage: isVi ? "vi" : "en",
           ...(post.updated ? { dateModified: post.updated } : {}),
           author: {
             "@type": "Person",
@@ -53,6 +56,7 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:description", content: desc },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
+        { property: "og:locale", content: isVi ? "vi_VN" : "en_US" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: desc },
@@ -74,12 +78,16 @@ export const Route = createFileRoute("/blog/$slug")({
   ),
 });
 
-function fmt(d: string) {
+function fmt(d: string, isVi?: boolean) {
+  if (isVi) {
+    return new Date(d).toLocaleDateString("vi-VN", { year: "numeric", month: "long", day: "numeric" });
+  }
   return new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 }
 
 function BlogArticle() {
   const { post } = Route.useLoaderData() as { post: BlogPost };
+  const isVi = VI_BLOG_SLUGS.includes(post.slug as any);
   const related = relatedPosts(post, 3);
   const cta = post.cta;
 
@@ -87,15 +95,15 @@ function BlogArticle() {
     <article className="pt-32 md:pt-40">
       <div className="container-luxe max-w-3xl">
         <Link to="/blog" className="inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.24em] text-muted-foreground hover:text-[color:var(--gold)]">
-          <ArrowLeft className="h-3.5 w-3.5" /> Back to the Journal
+          <ArrowLeft className="h-3.5 w-3.5" /> {isVi ? "Quay lại Nhật ký" : "Back to the Journal"}
         </Link>
 
         <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-[0.6rem] uppercase tracking-[0.24em]">
           <span className="text-[color:var(--gold)]">{post.cat}</span>
-          <span className="text-muted-foreground">{post.read} read</span>
-          <span className="text-muted-foreground">Published {fmt(post.date)}</span>
+          <span className="text-muted-foreground">{post.read} {isVi ? "phút đọc" : "read"}</span>
+          <span className="text-muted-foreground">{isVi ? "Xuất bản" : "Published"} {fmt(post.date, isVi)}</span>
           {post.updated && post.updated !== post.date && (
-            <span className="text-muted-foreground">Updated {fmt(post.updated)}</span>
+            <span className="text-muted-foreground">{isVi ? "Cập nhật" : "Updated"} {fmt(post.updated, isVi)}</span>
           )}
         </div>
 
@@ -103,16 +111,30 @@ function BlogArticle() {
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{post.excerpt}</p>
 
         <p className="mt-6 text-sm text-muted-foreground">
-          Written by{" "}
-          <Link to="/about" className="text-[color:var(--gold)] hover:underline">
-            Master Anil Choudhary
-          </Link>
-          , Founder &amp; Lead Yoga Teacher at Yog Jivan.
+          {isVi ? (
+            <>
+              Tác giả:{" "}
+              <Link to="/about" className="text-[color:var(--gold)] hover:underline">
+                Master Anil Choudhary
+              </Link>
+              , Sáng lập &amp; Giáo viên Trưởng tại Yog Jivan.
+            </>
+          ) : (
+            <>
+              Written by{" "}
+              <Link to="/about" className="text-[color:var(--gold)] hover:underline">
+                Master Anil Choudhary
+              </Link>
+              , Founder &amp; Lead Yoga Teacher at Yog Jivan.
+            </>
+          )}
         </p>
 
         {post.keyTakeaways && post.keyTakeaways.length > 0 && (
           <section className="mt-10 rounded-2xl border border-[color:var(--gold)]/25 bg-white/[0.03] p-6">
-            <h2 className="text-[0.6rem] uppercase tracking-[0.28em] text-[color:var(--gold)]">Key takeaways</h2>
+            <h2 className="text-[0.6rem] uppercase tracking-[0.28em] text-[color:var(--gold)]">
+              {isVi ? "Điểm cốt lõi" : "Key takeaways"}
+            </h2>
             <ul className="mt-4 space-y-2 text-sm leading-relaxed text-foreground/90">
               {post.keyTakeaways.map((k) => (
                 <li key={k} className="flex gap-3">
@@ -145,7 +167,9 @@ function BlogArticle() {
 
         {post.faqs && post.faqs.length > 0 && (
           <section className="mt-16">
-            <h2 className="font-display text-2xl md:text-3xl">Frequently asked</h2>
+            <h2 className="font-display text-2xl md:text-3xl">
+              {isVi ? "Câu hỏi thường gặp" : "Frequently asked"}
+            </h2>
             <div className="mt-6 space-y-5">
               {post.faqs.map((f) => (
                 <div key={f.q} className="rounded-2xl border border-white/10 bg-white/5 p-5">
@@ -159,7 +183,9 @@ function BlogArticle() {
 
         {cta && (
           <section className="mt-16 rounded-2xl border border-[color:var(--gold)]/30 bg-gradient-to-br from-[color:var(--gold)]/10 to-transparent p-8 text-center">
-            <p className="text-[0.6rem] uppercase tracking-[0.28em] text-[color:var(--gold)]">Next step</p>
+            <p className="text-[0.6rem] uppercase tracking-[0.28em] text-[color:var(--gold)]">
+              {isVi ? "Bước tiếp theo" : "Next step"}
+            </p>
             <h2 className="mt-3 font-display text-2xl md:text-3xl">{cta.title}</h2>
             <p className="mt-3 text-sm text-muted-foreground">{cta.sub}</p>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -172,7 +198,9 @@ function BlogArticle() {
         )}
 
         <section className="mt-16 border-t border-white/10 pt-10">
-          <h2 className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]/80 mb-4">Related</h2>
+          <h2 className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]/80 mb-4">
+            {isVi ? "Liên kết hữu ích" : "Related"}
+          </h2>
           <ul className="grid gap-2">
             {post.related.map((r) => (
               <li key={r.to + (r.hash ?? "")}>
@@ -183,7 +211,9 @@ function BlogArticle() {
         </section>
 
         <section className="mt-16 border-t border-white/10 pt-10 pb-24">
-          <h2 className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]/80 mb-4">More from the Journal</h2>
+          <h2 className="text-[0.6rem] uppercase tracking-[0.24em] text-[color:var(--gold)]/80 mb-4">
+            {isVi ? "Bài viết khác từ Nhật ký" : "More from the Journal"}
+          </h2>
           <div className="grid gap-4 md:grid-cols-3">
             {related.map((r) => (
               <Link key={r.slug} to="/blog/$slug" params={{ slug: r.slug }} className="group rounded-xl border border-white/10 p-5 hover:border-[color:var(--gold)]/40">

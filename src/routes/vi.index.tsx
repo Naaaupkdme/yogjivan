@@ -50,7 +50,7 @@ function ViHome() {
             <h3 className="mt-4 font-display text-xl leading-tight">Yoga 1 kèm 1 online</h3>
             <p className="mt-3 text-sm leading-relaxed text-foreground/85">
               Buổi tập trực tiếp {ONLINE_CLASS.durationMinutes} phút, riêng cho bạn, cùng một giáo viên Yog Jivan được
-              ghép phù hợp. Học phí và lịch học được tư vấn riêng.
+              ghép phù hợp. Buổi lẻ trực tuyến 60 phút giá 25 USD. Nhắn chúng tôi để hỏi về lịch tập, gói tập hoặc phương án theo nhu cầu.
             </p>
           </a>
           <a

@@ -2,7 +2,7 @@
 
 Authentic Indian yoga with Master Anil Choudhary, Founder & Lead Yoga Teacher. Two studios in the Hai Duong urban area of Hai Phong, Vietnam; live online classes worldwide. Online prices in USD. Studio (VND) rates are shared directly on request.
 
-Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/contact
+Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://www.yogjivan.com/contact
 
 ## Live Online Memberships (small-group)
 - 1 month — $36
@@ -14,26 +14,65 @@ Contact: hello@yogjivan.com · WhatsApp +84 782 046 066 · https://yogjivan.com/
 - Format: Zoom / Google Meet
 - Best for: Students worldwide wanting consistent, teacher-led practice
 
-## 1-on-1 Private Sessions (Online or Studio)
-- Price: Custom — contact for a quote
-- Includes: Personalized program with a matched Yog Jivan teacher, onboarding and practice-safety conversation, progress reviews, direct support between sessions
-- Format: Online or in-person at the studios
-- Best for: Personalized practice goals, individual pacing, or advanced practice
+## 1-on-1 Private Online Yoga (Solo)
+- Single private session (60 min): $25 (same rate for first or returning sessions)
+- 12-session package: $249 total ($20.75 per session, save $51 vs single rate)
+- 20-session package: $399 total ($19.95 per session, save $101 vs single rate)
+- 24-session package: $459 total ($19.13 per session, save $141 vs single rate)
+- Custom schedules: Tailored frequency and timing on enquiry
+- Includes: Live 60-minute one-to-one video sessions with a dedicated matched teacher kept for continuity, initial posture and mobility onboarding, personalised practice progression, and between-session support
+- Format: Live two-way video worldwide
 
-## Studio Membership — Hai Duong urban area, Hai Phong, Vietnam
-- Price: Contact for current rates (VND)
+## Private Online Couples Yoga (2 adults)
+- Single session (60 min): $36 total ($18 per person)
+- Multi-session packages (package quote by enquiry):
+  - 6-session package: $192 total ($32.00 per session, $16.00/person; save $24 vs single rate)
+  - 12-session package (Recommended plan): $349 total ($29.08 per session, $14.54/person; save $83 vs single rate)
+  - 24-session package (Lowest price per session): $669 total ($27.88 per session, $13.94/person; save $195 vs single rate)
+  - Custom schedules: Tailored frequency and timing on enquiry
+- Includes: Live 60-minute private session for two adults practising together on camera, partner-aware adjustments, joint pacing, and guidance from a dedicated matched teacher
+- Format: Live two-way video worldwide
+
+## Private Online Family Yoga (3 or 4 household members)
+- 3 participants:
+  - Single session (60 min): $44 total
+  - 6-session package: $228 total ($38.00 per session; save $36 vs single rate)
+  - 12-session package (Recommended plan): $429 total ($35.75 per session; save $99 vs single rate)
+  - 24-session package (Lowest price per session): $819 total ($34.13 per session; save $237 vs single rate)
+  - Custom schedules: Tailored frequency and timing on enquiry
+- 4 participants:
+  - Single session (60 min): $52 total
+  - 6-session package: $276 total ($46.00 per session; save $36 vs single rate)
+  - 12-session package (Recommended plan): $519 total ($43.25 per session; save $105 vs single rate)
+  - 24-session package (Lowest price per session): $999 total ($41.63 per session; save $249 vs single rate)
+  - Custom schedules: Tailored frequency and timing on enquiry
+- Includes: Live 60-minute shared household yoga session, adaptive sequences for mixed experience levels, and optional parent-child focused structure
+- Format: Live two-way video worldwide
+- Privacy note: No child names, dates of birth, photos, or medical records collected
+
+## Corporate Workplace Yoga (On-site & Virtual)
+- Complimentary demo: 30-minute first workplace session
+- Ongoing programs: Tailored weekly, bi-weekly, or monthly packages quoted upon enquiry
+- Includes: Gentle chair and mat sequences, ergonomic reset for neck/shoulders, and flexible scheduling for HR teams
+- Delivery: On-site across Hai Duong urban area, Hai Phong, and Northern Vietnam; live virtual worldwide
+
+## School Yoga (Educational Modules)
+- Complimentary demo: 35–40 minute school trial session
+- Ongoing programs: Custom semester or extracurricular modules quoted upon enquiry
+- Includes: Playful movement, animal balance postures, breathing exercises, and calm focus games
+- Delivery: On-site at schools and learning centres in Northern Vietnam under school staff supervision
+- Child privacy: Zero collection of student PII or medical data
+
+## Studio Memberships — Hai Duong urban area, Hai Phong, Vietnam
+- Rates: Shared directly in Vietnamese Dong (VND) on enquiry
+- Locations: Yog Jivan Sanctuary (Bùi Thị Xuân, aerial yoga available) & Yog Jivan Yoga Studio (Nhà Văn Hóa Lao Động)
 - Includes: Group classes at the Yog Jivan studios; community events
 - Format: In-person only
 
-## Corporate Wellness
-- Price: Custom — contact for a proposal
-- Includes: Onsite or online yoga programs for teams, workshops, wellness sessions
-- Format: Onsite (Vietnam) or online (worldwide)
+## Notes & Policies
+- Teaching team: Live small-group online classes are led personally by Master Anil Choudhary. Private, corporate, and school sessions are guided by experienced, certified teachers from the Yog Jivan teaching team under Master Anil's standards.
+- Missed classes: Members receive a 48-hour catch-up recording for small-group classes. Live attendance is strongly encouraged for real-time feedback.
+- Refunds: Memberships and session packages are generally non-refundable once activated or after the first session has been used. Exceptions apply for duplicate billing, non-delivery by Yog Jivan, material service failures, or statutory consumer protection rights. Contact hello@yogjivan.com.
+- Health disclaimer: Yoga complements but does not replace medical diagnosis, consultation, or treatment.
 
-## Notes
-- Studio and private sessions are taught by the Yog Jivan teaching team, founded and led by Master Anil Choudhary. Live small-group online classes are led by Master Anil.
-- Session recordings: members receive a 48-hour catch-up recording for missed classes. Live attendance is strongly encouraged — recordings cannot correct your posture in real time.
-- Refunds: memberships are generally non-refundable once activated or after the first class is used. Exceptions always apply for duplicate payment, cancellation or non-delivery by Yog Jivan, material service failure, and any rights under applicable consumer law. Email hello@yogjivan.com.
-- Yoga is complementary to, not a substitute for, medical care.
-
-Last updated: 2026-09-25
+Last updated: 2026-11-18

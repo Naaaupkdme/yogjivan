@@ -40,9 +40,44 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+      const isLocalOrPreview =
+        url.hostname === "localhost" ||
+        url.hostname === "127.0.0.1" ||
+        url.hostname.endsWith(".local") ||
+        url.hostname.includes("preview");
+
+      if (isLocalOrPreview && url.pathname.startsWith("/__l5e/")) {
+        // In local preview only: proxy Lovable R2 assets to production CDN so preview renders real assets without 404s
+        const proxied = await fetch(`https://www.yogjivan.com${url.pathname}${url.search}`);
+        return proxied;
+      }
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const normalized = await normalizeCatastrophicSsrResponse(response);
+
+      // Edge country hint: extract platform header without storing IP or calling third parties
+      const rawCountry = (
+        request.headers.get("cf-ipcountry") ||
+        request.headers.get("x-vercel-ip-country") ||
+        request.headers.get("x-country-code") ||
+        request.headers.get("x-country") ||
+        request.headers.get("cloudfront-viewer-country") ||
+        ""
+      ).trim().toUpperCase();
+
+      if (/^[A-Z]{2}$/.test(rawCountry)) {
+        // Supported 2-letter country bucket: append cookie if not already set
+        const resHeaders = new Headers(normalized.headers);
+        resHeaders.append("set-cookie", `yj_edge_country=${rawCountry}; Path=/; SameSite=Lax`);
+        return new Response(normalized.body, {
+          status: normalized.status,
+          statusText: normalized.statusText,
+          headers: resHeaders,
+        });
+      }
+
+      return normalized;
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {

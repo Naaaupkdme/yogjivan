@@ -34,8 +34,8 @@ export type TeacherProfile = {
   languages: readonly string[];
   specialties: readonly string[];
   suitableLevels: readonly TeacherLevel[];
-  photo: string;
-  photoAlt: string;
+  photo?: string;
+  photoAlt?: string;
   shortBio: string;
   profilePath?: string;
 };
@@ -58,8 +58,6 @@ export const TEACHING_TEAM: readonly TeacherProfile[] = [
       "Therapeutic, safety-first sequencing",
     ],
     suitableLevels: ["Beginner", "Intermediate", "Advanced"],
-    photo: masterImages.founderPortrait,
-    photoAlt: masterAlts.founderPortrait,
     shortBio:
       "12+ years teaching authentic yoga across beginner, intermediate and advanced practice.",
     profilePath: "/about",

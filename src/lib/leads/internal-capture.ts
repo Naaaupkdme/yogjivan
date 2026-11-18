@@ -5,7 +5,7 @@
 
 import { z } from "zod";
 import { normalizePhone } from "./phone";
-import { VALID_PLAN_SESSIONS, VALID_PREFERRED_LANGUAGES } from "./payload";
+import { VALID_PLAN_SESSIONS, VALID_PREFERRED_LANGUAGES, VALID_SHARED_FORMATS, VALID_PARTICIPANT_COUNTS } from "./payload";
 import { bearerMatches } from "@/lib/crm/bridge";
 
 export const INTERNAL_CRM_STAGES = [
@@ -23,6 +23,8 @@ export const internalCaptureSchema = z.object({
   whatsapp: z.string().trim().min(5, "Valid phone number required").max(40),
   email: z.union([z.string().trim().email().max(200), z.literal("")]).optional().nullable(),
   service: z.string().trim().max(120).default("Private 1-on-1 online yoga"),
+  shared_format: z.string().trim().refine((v) => !v || VALID_SHARED_FORMATS.has(v as any), "Invalid shared format").optional().nullable(),
+  participant_count: z.number().int().refine((v) => !v || VALID_PARTICIPANT_COUNTS.has(v as any), "Invalid participant count").optional().nullable(),
   plan_sessions: z.string().trim().refine((v) => !v || VALID_PLAN_SESSIONS.has(v), "Invalid plan").optional().nullable(),
   preferred_language: z.string().trim().refine((v) => !v || VALID_PREFERRED_LANGUAGES.has(v), "Invalid language").optional().nullable(),
   preferred_time: z.string().trim().max(120).optional().nullable(),
@@ -78,6 +80,8 @@ export async function handleInternalCapture(
 
   // Build structured preferred_experience matching the private sessions format
   const details = [
+    data.shared_format ? `Format: ${data.shared_format}` : null,
+    data.participant_count ? `${data.participant_count} participants` : null,
     data.plan_sessions,
     data.preferred_language ? `Language: ${data.preferred_language}` : null,
   ].filter(Boolean).join(" · ");
@@ -102,7 +106,7 @@ export async function handleInternalCapture(
     idempotency_key: data.idempotency_key.slice(0, 100),
     meta: {
       channel: "whatsapp_direct",
-      funnel: "direct_whatsapp_capture",
+      funnel: data.shared_format ? `${data.shared_format}_yoga_internal` : "direct_whatsapp_capture",
       stage: data.stage,
       notes: data.notes || null,
       next_follow_up: data.next_follow_up || null,
@@ -111,6 +115,8 @@ export async function handleInternalCapture(
       timezone: data.timezone || null,
       plan_sessions: data.plan_sessions || null,
       preferred_language: data.preferred_language || null,
+      shared_format: data.shared_format || null,
+      participant_count: data.participant_count || null,
     },
   };
 

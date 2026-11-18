@@ -13,10 +13,32 @@ export const SITE_ORIGIN = "https://www.yogjivan.com";
 
 export type LocalePair = { en: string; vi: string };
 
+export const PAIR_HOME: LocalePair = { en: "/", vi: "/vi" };
+export const PAIR_ONLINE: LocalePair = {
+  en: "/online-yoga-classes",
+  vi: "/vi/lop-yoga-online",
+};
+export const PAIR_PRIVATE: LocalePair = {
+  en: "/private-online-yoga",
+  vi: "/vi/yoga-1-kem-1-online",
+};
+export const PAIR_CORPORATE: LocalePair = {
+  en: "/corporate",
+  vi: "/vi/yoga-doanh-nghiep",
+};
+export const PAIR_SCHOOL: LocalePair = {
+  en: "/school-yoga",
+  vi: "/vi/yoga-hoc-duong",
+};
+/** Backwards-compatibility alias for tests and prior imports */
+export const PAIR_KIDS: LocalePair = PAIR_SCHOOL;
+
 export const LOCALE_PAIRS: readonly LocalePair[] = [
-  { en: "/", vi: "/vi" },
-  { en: "/online-yoga-classes", vi: "/vi/lop-yoga-online" },
-  { en: "/private-online-yoga", vi: "/vi/yoga-1-kem-1-online" },
+  PAIR_HOME,
+  PAIR_ONLINE,
+  PAIR_PRIVATE,
+  PAIR_CORPORATE,
+  PAIR_SCHOOL,
 ] as const;
 
 /** All indexable Vietnamese routes (used by the sitemap). */
@@ -25,6 +47,8 @@ export const VI_ROUTES = [
   "/vi/yoga-hai-duong",
   "/vi/lop-yoga-online",
   "/vi/yoga-1-kem-1-online",
+  "/vi/yoga-doanh-nghiep",
+  "/vi/yoga-hoc-duong",
 ] as const;
 
 const normalise = (path: string) => {
@@ -45,10 +69,19 @@ export function enCounterpart(path: string): string | null {
   return pair ? pair.en : null;
 }
 
+export const VI_BLOG_SLUGS = [
+  "checklist-to-chuc-buoi-yoga-tai-van-phong",
+  "chuan-bi-buoi-yoga-hoc-duong-dau-tien",
+] as const;
+
 export function isViPath(path: string): boolean {
   const clean = normalise(path);
   // Boundary-safe: "/video" or "/vietnam" must NOT classify as Vietnamese.
-  return clean === "/vi" || clean.startsWith("/vi/");
+  if (clean === "/vi" || clean.startsWith("/vi/")) return true;
+  for (const slug of VI_BLOG_SLUGS) {
+    if (clean === `/blog/${slug}` || clean === `/blog/${slug}/`) return true;
+  }
+  return false;
 }
 
 /**
@@ -56,11 +89,20 @@ export function isViPath(path: string): boolean {
  * Unmapped EN routes fall back to the Vietnamese hub, never to a
  * same-URL partial translation. Unmapped VI routes fall back to `/`.
  */
-export function languageSwitchTarget(path: string): { en: string; vi: string } {
-  if (isViPath(path)) {
-    return { en: enCounterpart(path) ?? "/", vi: normalise(path) === "/vi" ? "/vi" : path };
-  }
-  return { en: path, vi: viCounterpart(path) ?? "/vi" };
+export function languageSwitchTarget(path: string, search = "", hash = ""): LocalePair {
+  const en = isViPath(path) ? enCounterpart(path) : path;
+  const vi = isViPath(path) ? path : viCounterpart(path);
+  return {
+    en: en ? localeLink(en, search, hash) : "/",
+    vi: vi ? localeLink(vi, search, hash) : "/vi",
+  };
+}
+
+function localeLink(path: string, search: string, hash: string): string {
+  let anchor = hash.replace(/^#/, "");
+  if (path === PAIR_PRIVATE.en && (anchor === "tu-van" || anchor === "tu-van-form")) anchor = "private-enquiry";
+  if (path === PAIR_PRIVATE.vi && (anchor === "private-enquiry" || anchor === "private-enquiry-form" || anchor === "enquiry-form")) anchor = "tu-van";
+  return `${path}${search}${anchor ? `#${anchor}` : ""}`;
 }
 
 type HeadLink = { rel: string; href: string; hrefLang?: string };
@@ -79,9 +121,7 @@ export function hreflangLinks(pair: LocalePair): HeadLink[] {
   ];
 }
 
-export const PAIR_HOME = LOCALE_PAIRS[0]!;
-export const PAIR_ONLINE_GROUP = LOCALE_PAIRS[1]!;
-export const PAIR_PRIVATE = LOCALE_PAIRS[2]!;
+export const PAIR_ONLINE_GROUP = PAIR_ONLINE;
 
 export const LANG_STORAGE_KEY = "yj_lang";
 
@@ -105,6 +145,5 @@ export function preferredLocaleRedirect(
   if (stored !== "VI" || isViPath(pathname)) return null;
   const vi = viCounterpart(pathname);
   if (!vi || normalise(vi) === normalise(pathname)) return null;
-  const h = hash && !hash.startsWith("#") ? `#${hash}` : hash;
-  return `${vi}${search}${h}`;
+  return localeLink(vi, search, hash);
 }

@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141312"/>
+      <stop offset="50%" stop-color="#1c1917"/>
+      <stop offset="100%" stop-color="#0c0a09"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="68%" cy="42%" r="50%">
+      <stop offset="0%" stop-color="#d97706" stop-opacity="0.22"/>
+      <stop offset="60%" stop-color="#C5A880" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mat1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#292524"/>
+      <stop offset="100%" stop-color="#1c1917"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+
+  <!-- Subtle Studio Grid -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="270" x2="1920" y2="270"/>
+    <line x1="0" y1="540" x2="1920" y2="540"/>
+    <line x1="0" y1="810" x2="1920" y2="810"/>
+    <line x1="480" y1="0" x2="480" y2="1080"/>
+    <line x1="960" y1="0" x2="960" y2="1080"/>
+    <line x1="1440" y1="0" x2="1440" y2="1080"/>
+  </g>
+
+  <!-- Two Parallel Mats on Floor -->
+  <!-- Mat 1 (Partner A) -->
+  <polygon points="1020,770 1340,770 1280,940 930,940" fill="url(#mat1)" stroke="#C5A880" stroke-opacity="0.35" stroke-width="2"/>
+  <!-- Mat 2 (Partner B) -->
+  <polygon points="1380,770 1700,770 1640,940 1290,940" fill="url(#mat1)" stroke="#C5A880" stroke-opacity="0.35" stroke-width="2"/>
+
+  <!-- Yoga Block on Mat 2 (Demonstrating dual modifications) -->
+  <polygon points="1330,860 1380,860 1370,890 1320,890" fill="#d97706" fill-opacity="0.5" stroke="#f59e0b" stroke-width="1.5"/>
+
+  <!-- Centered Laptop facing both mats -->
+  <g transform="translate(850, 720)">
+    <line x1="40" y1="50" x2="40" y2="90" stroke="#78716c" stroke-width="4"/>
+    <line x1="15" y1="90" x2="65" y2="90" stroke="#78716c" stroke-width="4"/>
+    <polygon points="5,50 75,50 70,60 10,60" fill="#44403c"/>
+    <polygon points="10,50 70,50 65,10 15,10" fill="#292524" stroke="#a8a29e" stroke-width="2"/>
+    <rect x="20" y="16" width="40" height="30" rx="2" fill="#0284c7" fill-opacity="0.35"/>
+    <circle cx="40" cy="28" r="6" fill="#38bdf8" fill-opacity="0.8"/>
+    <circle cx="55" cy="18" r="2" fill="#22c55e"/>
+  </g>
+
+  <!-- Partner A Silhouette (Warrior pose / active standing) -->
+  <g transform="translate(1120, 620)" fill="#d6d3d1" fill-opacity="0.65">
+    <circle cx="20" cy="-60" r="20"/>
+    <path d="M10,-35 C15,-10 18,50 15,85 C32,85 38,-10 35,-35 Z"/>
+    <path d="M10,-20 C-25,-15 -55,-10 -75,-10 C-75,-5 -25,-5 10,-10 Z"/>
+    <path d="M35,-20 C60,-15 90,-10 110,-10 C110,-5 60,-5 35,-10 Z"/>
+    <path d="M0,85 C-20,110 -40,150 -50,190 C-35,195 -10,140 10,95 Z"/>
+    <path d="M25,85 C45,110 70,145 90,190 C75,195 50,140 35,95 Z"/>
+  </g>
+
+  <!-- Partner B Silhouette (Modified pose with yoga block for support) -->
+  <g transform="translate(1480, 640)" fill="#e7e5e4" fill-opacity="0.65">
+    <circle cx="20" cy="-45" r="20"/>
+    <path d="M10,-20 C15,0 18,55 15,90 C32,90 38,0 35,-20 Z"/>
+    <!-- Supported arm reaching toward block -->
+    <path d="M10,-5 C-15,20 -40,55 -55,85 C-50,90 -15,40 10,10 Z"/>
+    <!-- Upper arm gentle stretch -->
+    <path d="M35,-5 C50,-25 70,-45 85,-65 C90,-60 65,-20 35,10 Z"/>
+    <path d="M5,90 C-10,115 -25,145 -35,180 C-20,185 -5,140 15,100 Z"/>
+    <path d="M25,90 C40,115 55,145 70,180 C55,185 40,140 30,100 Z"/>
+  </g>
+
+  <!-- Concept Placeholder Label Card -->
+  <g transform="translate(1080, 240)">
+    <rect width="720" height="230" rx="16" fill="#1c1917" fill-opacity="0.85" stroke="#C5A880" stroke-width="1.5"/>
+    <rect x="30" y="30" width="370" height="32" rx="16" fill="#C5A880" fill-opacity="0.15" stroke="#C5A880" stroke-opacity="0.5"/>
+    <text x="50" y="51" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.15em" fill="#C5A880">
+      CONCEPT PREVIEW · FILE 13 SHOT PLAN
+    </text>
+    <text x="30" y="100" font-family="system-ui, Georgia, serif" font-size="24" font-weight="600" fill="#f5f5f4">
+      Live Online Couples Yoga
+    </text>
+    <text x="30" y="135" font-family="system-ui, sans-serif" font-size="14" fill="#a8a29e">
+      • Composition: Exactly two adult partners side-by-side on two separate mats
+    </text>
+    <text x="30" y="160" font-family="system-ui, sans-serif" font-size="14" fill="#a8a29e">
+      • Dual variations: One practicing standard pose, one with block modification
+    </text>
+    <text x="30" y="195" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#78716c">
+      * Candidate preview visual — real couples photoshoot asset to replace upon shoot
+    </text>
+  </g>
+</svg>
