@@ -276,6 +276,20 @@ describe("analytics - privacy-safe lead categorization", () => {
       expect(mockFbq).not.toHaveBeenCalled();
     });
 
+    it("one Meta PageView per distinct pathname+search within a document; repeats and consent re-saves add none", async () => {
+      const { trackPageView, applyConsent, resetMetaPageViewTracking } = await import("./analytics");
+      resetMetaPageViewTracking();
+      window.localStorage.setItem("yj_cookie_consent_v2", JSON.stringify({ analytics: true, marketing: true }));
+      const loc = (window as any).location;
+      trackPageView(); trackPageView();
+      applyConsent({ analytics: true, marketing: true });
+      loc.pathname = "/online-yoga-classes"; trackPageView(); trackPageView();
+      loc.search = "?a=1"; trackPageView();
+      const pv = mockFbq.mock.calls.filter((c: unknown[]) => c[0] === "track" && c[1] === "PageView");
+      expect(pv).toHaveLength(3);
+      expect(mockFbq.mock.calls.filter((c: unknown[]) => c[0] === "init")).toHaveLength(1);
+    });
+
     it("must not bootstrap production Pixel on a sensitive first landing", async () => {
       const { initAnalytics, resetMetaPageViewTracking } = await import("./analytics");
       resetMetaPageViewTracking();

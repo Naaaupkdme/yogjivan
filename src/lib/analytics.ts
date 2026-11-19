@@ -280,7 +280,8 @@ export function gaEvent(name: string, params: Record<string, string | number | b
 }
 
 /**
- * Central Meta event configuration (dataset category: Health & wellness).
+ * Central Meta event configuration. The dataset category is set by the owner
+ * in Meta Events Manager (currently None); this code never sets or relies on it.
  * Data minimisation: NO custom parameters are ever sent — no service labels,
  * categories, content names or free text. Only the event name, plus an
  * optional eventID in the fbq options argument for future deduplication.
