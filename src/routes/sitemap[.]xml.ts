@@ -1,54 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-
-const BASE_URL = "https://www.yogjivan.com";
+import routeIndex from "virtual:yj-search-index";
 import { BLOG_POSTS } from "@/lib/blog-posts";
-import { VI_ROUTES } from "@/lib/locale-routes";
-// Only canonical, 200-status, indexable HTML routes. /pricing.md is a raw
-// machine-readable file for AI agents (linked from llms.txt), not an HTML page.
-type Entry = { path: string; lastmod?: string };
+import { buildSitemapEntries, SITEMAP_BASE_URL } from "@/lib/sitemap-entries";
 
-const STATIC_PATHS = [
-  "/",
-  "/about",
-  "/programs",
-  "/private-online-yoga",
-  "/online-couples-yoga",
-  "/online-family-yoga",
-  "/online-yoga-classes",
-  "/yoga-for-beginners",
-  "/yoga-for-back-pain",
-  "/yoga-for-stress",
-  "/yoga-for-weight-loss",
-  "/yoga-for-pcod",
-  "/yoga-for-thyroid",
-  "/period-safe-yoga",
-  "/yoga-for-expats-in-vietnam",
-  "/corporate",
-  "/school-yoga",
-  "/gallery",
-  "/testimonials",
-  "/blog",
-  "/research/yoga-participation-statistics",
-  "/contact",
-  "/privacy",
-];
-
-const ENTRIES: Entry[] = [
-  ...STATIC_PATHS.map((path) => ({ path })),
-  // Indexable Vietnamese routes (see src/lib/locale-routes.ts).
-  ...VI_ROUTES.map((path) => ({ path })),
-  ...BLOG_POSTS.map((p) => ({ path: `/blog/${p.slug}`, lastmod: p.updated ?? p.date })),
-];
-
+// Canonical, indexable HTML routes only — generated automatically from each
+// route's head() metadata (same source as site search) plus blog posts.
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const urls = ENTRIES.map((e) =>
+        const urls = buildSitemapEntries(routeIndex, BLOG_POSTS).map((e) =>
           [
             `  <url>`,
-            `    <loc>${BASE_URL}${e.path}</loc>`,
+            `    <loc>${SITEMAP_BASE_URL}${e.path}</loc>`,
             e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
             `    <changefreq>weekly</changefreq>`,
             `    <priority>${e.path === "/" ? "1.0" : "0.8"}</priority>`,
