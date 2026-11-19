@@ -1,66 +1,61 @@
-# Bing Webmaster: automatic page discovery and IndexNow (read-only findings and plan)
+# Smaller plan: automatic sitemap + optional manual IndexNow handoff
 
-## What exists today (checked this turn)
+## Verified current state (read-only)
 
-- **IndexNow key file:** `public/de480e04401c43ff962683a0d46b58dc.txt`. Its content matches its filename. Live `https://www.yogjivan.com/<key>.txt` returns 200. The non-www address `yogjivan.com/<key>.txt` sends visitors to www (302). So www is the only correct host and key location.
-- **No IndexNow sender anywhere:** no code, no backend function, no scheduled job and no publish hook. The 15 old submissions from July were made outside this codebase.
-- **Saved credential names:** GOOGLE_SEARCH_CONSOLE_API_KEY, GOOGLE_SHEETS_API_KEY, LOVABLE_API_KEY, N8N_CRM_BRIDGE_TOKEN, TELEGRAM_API_KEY, plus the standard backend ones. There is no IndexNow or Bing credential. IndexNow does not need one: the public key file is the proof of ownership.
-- **Sitemap:** `src/routes/sitemap[.]xml.ts` serves 54 URLs on live, all under `https://www.yogjivan.com`.
-  - The main English pages are a hand-typed list (`STATIC_PATHS`).
-  - Vietnamese pages come from `src/lib/locale-routes.ts` (`VI_ROUTES`).
-  - Blog posts come from `src/lib/blog-posts.ts` (`BLOG_POSTS`).
-  - **The gap:** a new English page is not added to the sitemap unless someone edits the hand-typed list.
-- **Site search** already finds new pages automatically. `search-index-plugin.ts` with `src/lib/search/route-meta.ts` reads each page's own title/description settings and skips redirect, noindex and utility pages. This is the right single source of truth to reuse.
-- **robots.txt** points to the www sitemap only, and blocks `/go/`.
+- **IndexNow key file:** `public/de480e04401c43ff962683a0d46b58dc.txt` matches its own filename.
+  - Live `https://www.yogjivan.com/<key>.txt` returns 200.
+  - The non-www address redirects (302) to www.
+  - So the only correct host and keyLocation is `www.yogjivan.com`.
+- **No IndexNow sender exists** anywhere in the project: no code, backend function, scheduled job or publish hook. The 15 July submissions came from somewhere outside this project.
+- **Saved credential names (names only):** GOOGLE_SEARCH_CONSOLE_API_KEY, GOOGLE_SHEETS_API_KEY, LOVABLE_API_KEY, N8N_CRM_BRIDGE_TOKEN, TELEGRAM_API_KEY, plus standard backend keys. IndexNow needs no credential beyond the public key file.
+- **Sitemap:** `src/routes/sitemap[.]xml.ts` serves 54 www URLs.
+  - English pages come from a hand-typed list.
+  - Vietnamese pages come from `src/lib/locale-routes.ts`.
+  - Blog posts come from `src/lib/blog-posts.ts`.
+  - **Gap:** a new English page is left out until someone edits that list by hand.
+- **Site search already discovers pages automatically.** `search-index-plugin.ts` with `src/lib/search/route-meta.ts` reads each page's own metadata and skips redirect, noindex and utility pages.
+- **n8n** runs locally on your side, so I cannot inspect it. I will not claim any n8n automation works.
+- **Flag alt notice:** this is not a real accessibility gap.
+  - The flag sits inside the phone country picker button, which already has its own label (`+84, select country`).
+  - `alt=""` is therefore the correct marking for a decorative image.
+  - No change is proposed.
 
-## Flag image alt notice
+## Part A: automatic sitemap (application change, after approval)
 
-- The flag is drawn by the phone-number country picker, from an outside image service (cdnjs twemoji). It uses `alt=""`.
-- The surrounding button already has a readable label (`+84, select country`, in `SearchablePhoneInput.tsx`).
-- So the flag is purely decorative and `alt=""` is the correct accessibility practice. **This is not a real accessibility gap.** No change is recommended. Adding text like "Vietnam flag" would make screen readers say the country twice.
-- The hero background image (`alt=""`, `aria-hidden`) is also correctly decorative.
-- An optional, separate idea: load flags without the outside image service. That is not needed for search engines.
+1. Generate the sitemap from the same page metadata that site search uses, plus `BLOG_POSTS`.
+   - Reuse the search tool's exclusions (noindex, redirects, utility pages, shop review pages, `/go/`).
+   - Keep the www base address and the blog `lastmod` dates.
+2. Remove the hand-typed English list. The Vietnamese list stays the source for Vietnamese pages wherever it is already authoritative.
+3. Add a test that locks in today's exact 54 canonical URLs, so the switch is provably identical. A test page with noindex or a redirect must not appear.
+4. The work touches about 2 files plus 1 test file.
+   - No new database table, secret, access or dependency.
+   - Nothing changes in the CRM, n8n bridge, forms or tracking.
 
-## Proposed changes (next build, after approval)
+## Part B (optional, separate): manual IndexNow after publish via n8n
 
-1. **Automatic sitemap.** Build the sitemap from the same page list site search already uses (page metadata plus `BLOG_POSTS`). Keep the existing exclusions and the www base address. Remove the hand-typed list. Add a test that compares today's 54 URLs, so nothing silently drops out.
-2. **IndexNow on publish, changed pages only.**
-   - New endpoint `src/routes/api/public/indexnow/publish.ts`, triggered by Lovable's built-in "project published" event.
-   - It verifies the event's signature with the official Standard Webhooks method, using a signing secret the owner pastes into Secrets.
-   - It then reads the live sitemap and fetches each listed page. For each page it keeps a fingerprint of the visible content, ignoring scripts and version-numbered asset files.
-   - It compares fingerprints against a small new table (`indexnow_state`: url, content_hash, last_submitted_at, last_status). The table is readable and writable only by the server.
-   - It sends **only new or changed** canonical www URLs in one request to `api.indexnow.org/indexnow`: host `www.yogjivan.com`, the key, keyLocation on www, at most 10,000 URLs.
-3. **Safety rules**
-   - A URL is sent only if it is in the sitemap, starts with `https://www.yogjivan.com`, and has no `?`, `#`, `/go/` or tracking parameters. No personal data is involved anywhere.
-   - Fingerprints are saved only after IndexNow returns 200 or 202. On 429 or a server error, nothing is saved, so the next publish retries naturally. No timers and no loops.
-   - There is no "send the whole sitemap" path. The very first run saves fingerprints and sends only the pages changed since then. A one-time full send happens only if you choose it.
-   - Nothing happens in visitors' browsers.
-4. **Fallback if Events & Hooks is not on your plan** (it needs the Business plan): the same endpoint protected by a new secret token, triggered once by hand after each publish (for example from n8n). Same change-only logic.
+There is no app code and no new credential. The key is public by design.
 
-## Dependencies you need to provide
+**Handoff for you:** a new, separate n8n workflow. Your existing CRM workflows are not touched.
 
-- Lovable Events & Hooks access (Business plan), and creating the destination yourself in Settings, Events & Hooks.
-- Or approval of the manual-token fallback.
-- Webhook signature checking adds one small official library, `standardwebhooks`. This is the only new dependency.
+1. **Manual Trigger** node, with a field where you paste the changed page addresses (one per line).
+2. **Code** node that keeps only lines starting with `https://www.yogjivan.com/`, drops anything with `?`, `#` or `/go/`, removes duplicates, and caps the list at 100.
+3. **HTTP Request** node: POST to `https://api.indexnow.org/indexnow`, JSON body:
+   `{"host":"www.yogjivan.com","key":"<key from the file name>","keyLocation":"https://www.yogjivan.com/<key>.txt","urlList":[...]}`
+4. **Responses:** 200 or 202 means accepted. 429 means stop and try once later by hand. 400, 403 or 422 means check the URL list or the key file. There are no automatic retry loops.
+5. **Rule:** run it once after each publish, only for pages that were actually added or changed. Never paste the whole sitemap.
+
+The same request also works as a one-line `curl` command if you prefer not to use n8n. I can provide the exact text.
 
 ## Validation
 
-- Unit tests:
-  - the sitemap matches the current 54 URLs
-  - noindex, redirect and `/go/` pages are excluded
-  - the URL filter rejects tracking parameters and the non-www host
-  - unchanged fingerprints mean nothing is sent
-  - 429 or 5xx responses save nothing
-  - unsigned or forged events are rejected with 401
-- A dry-run mode that only lists the URLs it would send.
-- After publish, which needs your approval: send one real changed page, then confirm in Bing's IndexNow dashboard. A 202 answer only means "received", not "indexed".
+- **Part A:** the 54-URL equality test, the exclusion test, the full existing test suite, and a check that the preview sitemap matches today's live sitemap.
+- **Part B:** after your next publish, send one changed page (for example `/school-yoga`), then confirm it appears in Bing's IndexNow dashboard. A 202 only means received, not indexed.
 
 ## Cost
 
-- About 55 page reads per publish on the live site, plus one IndexNow request.
-- No AI use, no paid services, and a tiny database table.
-- Build effort: one focused change of about 4 files, plus a test file and a database change.
+- **Part A:** small one-time build. No runtime cost.
+- **Part B:** zero in the app. One free IndexNow request per manual run.
 
 ## Out of scope
 
-No noindex changes; School needs no fix. No broad SEO rewrite. No changes to secrets or access. No key regeneration. No publishing.
+No webhook, database table, secret or Business-plan feature. No noindex changes. No broad SEO rewrite. No publishing.
