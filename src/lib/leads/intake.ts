@@ -3,12 +3,25 @@
 import { createHash, createHmac } from "crypto";
 import { z } from "zod";
 import { normalizePhone } from "./phone";
+import { sharedNotesSchema, organizerNotesSchema } from "./enquiry-notes";
 
 export const MAX_BODY_BYTES = 16_384;
 export const HONEYPOT_FIELD = "yj_hp_website";
 
 const s = (max: number) => z.string().trim().max(max);
-const metaValue = z.union([z.string().max(300), z.number(), z.boolean(), z.null()]);
+const metaValue = z.union([z.string().max(400), z.number(), z.boolean(), z.null()]);
+const leadMetaSchema = z.record(z.string().max(60), metaValue).superRefine((meta, ctx) => {
+  for (const [key, value] of Object.entries(meta)) {
+    if (key === "shared_notes" || key === "organizer_notes") {
+      const schema = key === "shared_notes" ? sharedNotesSchema : organizerNotesSchema;
+      if (value !== null && !schema.safeParse(value).success) {
+        ctx.addIssue({ code: "custom", path: [key], message: "Invalid logistics notes" });
+      }
+    } else if (typeof value === "string" && value.length > 300) {
+      ctx.addIssue({ code: "custom", path: [key], message: "Metadata exceeds 300 characters" });
+    }
+  }
+});
 
 export const finalLeadSchema = z.object({
   name: z.string().trim().min(1).max(120),
@@ -22,7 +35,7 @@ export const finalLeadSchema = z.object({
   experience_level: s(60).optional().nullable(),
   source: z.enum(["website", "website_paid_online_yoga"]),
   session_id: z.string().uuid().optional().nullable(),
-  meta: z.record(z.string().max(60), metaValue).optional()
+  meta: leadMetaSchema.optional()
     .refine((m) => !m || Object.keys(m).length <= 40, "too many meta keys"),
   idempotency_key: s(100).optional().nullable(),
   hp: z.string().max(500).optional().nullable(),

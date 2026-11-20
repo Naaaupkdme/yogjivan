@@ -16,6 +16,8 @@ import {
   getSharedPlanSummary,
 } from "@/lib/facts/shared-offers";
 
+import { sharedNotesSchema, SHARED_NOTES_MAX } from "@/lib/leads/enquiry-notes";
+
 const schema = z
   .object({
     name: z.string().trim().min(2, "Please share the adult booking contact name").max(120),
@@ -25,7 +27,7 @@ const schema = z
     plan: z.string().max(80).optional().or(z.literal("")),
     time: z.string().max(80).optional().or(z.literal("")),
     language: z.string().max(80).optional().or(z.literal("")),
-    notes: z.string().max(300).optional().or(z.literal("")),
+    notes: sharedNotesSchema,
   })
   .refine(
     (data) => {
@@ -211,7 +213,7 @@ export function SharedYogaEnquiryForm({
           preferred_time: data.time || undefined,
           status: "submitted",
           source: "website",
-          goals: data.notes ? [data.notes] : [],
+          goals: [],
           meta: {
             funnel: funnelName,
             landing_page: landingPage,
@@ -219,6 +221,7 @@ export function SharedYogaEnquiryForm({
             market: country,
             timezone: getTimezone(),
             shared_format: data.format,
+            shared_notes: data.notes || null,
             participant_count: data.participants,
             preferred_plan: data.plan || null,
             preferred_language: data.language || null,
@@ -455,12 +458,16 @@ export function SharedYogaEnquiryForm({
           </p>
           <textarea
             id="shared-notes"
+            maxLength={SHARED_NOTES_MAX}
+            aria-invalid={Boolean(errors.notes)}
+            aria-describedby={errors.notes ? "shared-notes-error" : undefined}
             rows={2}
             value={form.notes}
             onChange={(e) => update("notes", e.target.value)}
             placeholder="e.g. UTC+7 (Vietnam), two adults and one child, prefer weekend mornings"
             className="w-full rounded-xl border border-border/60 bg-background/60 px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-[color:var(--gold)] focus:outline-none"
           />
+          {errors.notes && <p id="shared-notes-error" className="mt-1 text-xs text-destructive">{errors.notes}</p>}
         </div>
 
         <div className="rounded-xl border border-border/40 bg-muted/20 p-3 text-[11px] leading-relaxed text-muted-foreground">

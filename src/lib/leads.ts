@@ -66,7 +66,7 @@ export type SubmitPayload = Partial<Omit<LeadState, "step">> & {
   status: string;
   /** Must be an allowed source value (see leads insert policy). */
   source?: "website" | "website_paid_online_yoga";
-  /** Non-PII campaign/attribution context. */
+  /** Attribution plus private logistics notes; downstream mirrors use an allowlist. */
   meta?: Record<string, string | number | boolean | null>;
 };
 

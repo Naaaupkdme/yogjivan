@@ -11,6 +11,8 @@ import { CONTACT } from "@/lib/facts/contact";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
 import { useLeadSubmission, getTimezone } from "@/lib/leads/form-submission";
 
+import { organizerNotesSchema, ORGANIZER_NOTES_MAX } from "@/lib/leads/enquiry-notes";
+
 const schema = z.object({
   schoolName: z.string().trim().min(2, "Please share the school or institution name").max(120),
   coordinatorName: z.string().trim().min(2, "Please share the coordinator name and role").max(120),
@@ -20,7 +22,7 @@ const schema = z.object({
   classSize: z.string().min(1, "Please choose an estimated group size"),
   site: z.string().trim().min(2, "Please share the school location or district in Hai Duong").max(160),
   timing: z.string().max(80).optional().or(z.literal("")),
-  notes: z.string().max(400).optional().or(z.literal("")),
+  notes: organizerNotesSchema,
 });
 
 type FormState = {
@@ -102,18 +104,6 @@ export function SchoolYogaEnquiryForm({
       return;
     }
 
-    const payloadNotes = [
-      `School/Institution: ${parsed.data.schoolName}`,
-      `Coordinator/Staff: ${parsed.data.coordinatorName}`,
-      `School Site: ${parsed.data.site}`,
-      `Age Band: ${parsed.data.ageBand}`,
-      `Class Size: ${parsed.data.classSize}`,
-      `Timing: ${parsed.data.timing || "Flexible"}`,
-      parsed.data.notes ? `Notes: ${parsed.data.notes}` : null,
-    ]
-      .filter(Boolean)
-      .join(" · ");
-
     await submission.submit({
       data: parsed.data,
       formId: "school-yoga-pilot-enquiry",
@@ -126,8 +116,8 @@ export function SchoolYogaEnquiryForm({
         preferred_experience: `School Yoga Pilot (${data.ageBand}, ${data.classSize})`,
         status: "submitted",
         source: "website",
-        notes: payloadNotes,
         meta: {
+          organizer_notes: data.notes || null,
           funnel: "school_yoga_pilot_enquiry",
           landing_page: isVi ? "/vi/yoga-hoc-duong" : "/school-yoga",
           lead_event_id: leadEventId,
@@ -351,11 +341,14 @@ export function SchoolYogaEnquiryForm({
         </label>
         <p className="mt-0.5 text-[0.7rem] text-muted-foreground">
           {isVi
-            ? "Vui lòng không điền tên, ngày sinh, hình ảnh hoặc thông tin y tế của học sinh."
-            : "Please do not include child names, dates of birth, photos, or medical history."}
+            ? "Chỉ ghi thông tin về phòng tập, lịch và điều phối người lớn. Không điền thông tin cá nhân hoặc sức khỏe của trẻ em."
+            : "Room, scheduling and adult-coordinator logistics only. Omit children’s personal and health details."}
         </p>
         <textarea
           id="school-notes"
+          maxLength={ORGANIZER_NOTES_MAX}
+          aria-invalid={Boolean(errors.notes)}
+          aria-describedby={errors.notes ? "school-notes-error" : undefined}
           rows={2}
           placeholder={
             isVi
@@ -366,6 +359,7 @@ export function SchoolYogaEnquiryForm({
           onChange={(e) => setForm({ ...form, notes: e.target.value })}
           className="mt-1 w-full rounded-xl border border-input bg-background/50 px-3.5 py-2 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
         />
+        {errors.notes && <p id="school-notes-error" className="mt-1 text-xs text-destructive">{errors.notes}</p>}
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">

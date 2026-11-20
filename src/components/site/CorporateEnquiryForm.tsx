@@ -11,6 +11,8 @@ import { CONTACT } from "@/lib/facts/contact";
 import { captureAttribution, detectMarket, type Attribution } from "@/lib/attribution";
 import { useLeadSubmission, getTimezone } from "@/lib/leads/form-submission";
 
+import { organizerNotesSchema, ORGANIZER_NOTES_MAX } from "@/lib/leads/enquiry-notes";
+
 const schema = z.object({
   orgName: z.string().trim().min(2, "Please share your organization or company name").max(120),
   contactName: z.string().trim().min(2, "Please share the organizer name and role").max(120),
@@ -20,7 +22,7 @@ const schema = z.object({
   headcount: z.string().min(1, "Please choose an estimated headcount"),
   format: z.string().min(1, "Please choose a session format"),
   timing: z.string().max(80).optional().or(z.literal("")),
-  notes: z.string().max(400).optional().or(z.literal("")),
+  notes: organizerNotesSchema,
 });
 
 type FormState = {
@@ -102,18 +104,6 @@ export function CorporateEnquiryForm({
       return;
     }
 
-    const payloadNotes = [
-      `Company/Org: ${parsed.data.orgName}`,
-      `Role/Contact: ${parsed.data.contactName}`,
-      `Workplace Site: ${parsed.data.site}`,
-      `Headcount: ${parsed.data.headcount}`,
-      `Format: ${parsed.data.format}`,
-      `Timing: ${parsed.data.timing || "Flexible"}`,
-      parsed.data.notes ? `Notes: ${parsed.data.notes}` : null,
-    ]
-      .filter(Boolean)
-      .join(" · ");
-
     await submission.submit({
       data: parsed.data,
       formId: "corporate-pilot-enquiry",
@@ -126,8 +116,8 @@ export function CorporateEnquiryForm({
         preferred_experience: `Corporate Yoga Pilot (${data.format}, ${data.headcount})`,
         status: "submitted",
         source: "website",
-        notes: payloadNotes,
         meta: {
+          organizer_notes: data.notes || null,
           funnel: "corporate_yoga_pilot_enquiry",
           landing_page: isVi ? "/vi/yoga-doanh-nghiep" : "/corporate",
           lead_event_id: leadEventId,
@@ -351,6 +341,9 @@ export function CorporateEnquiryForm({
         </label>
         <textarea
           id="corporate-notes"
+          maxLength={ORGANIZER_NOTES_MAX}
+          aria-invalid={Boolean(errors.notes)}
+          aria-describedby={errors.notes ? "corporate-notes-error" : undefined}
           rows={2}
           placeholder={
             isVi
@@ -361,6 +354,7 @@ export function CorporateEnquiryForm({
           onChange={(e) => setForm({ ...form, notes: e.target.value })}
           className="mt-1 w-full rounded-xl border border-input bg-background/50 px-3.5 py-2 text-sm text-foreground focus:border-[color:var(--gold)] focus:outline-none"
         />
+        {errors.notes && <p id="corporate-notes-error" className="mt-1 text-xs text-destructive">{errors.notes}</p>}
       </div>
 
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
