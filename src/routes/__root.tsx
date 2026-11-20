@@ -89,6 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { name: "facebook-domain-verification", content: "nhl1jnk6j21j9y2fbbcxd0eo4frsn6" },
       // Global search-preview permissions; the unmatched-URL 404 shell gets a
       // single noindex directive instead (no conflicting index tag).
       {
