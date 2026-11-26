@@ -361,10 +361,9 @@ function CorporatePage() {
                   <span><strong>Language support:</strong> Instruction in English or Vietnamese per team choice.</span>
                 </li>
               </ul>
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">Detailed 7-step guide:</span>
-                <Link to="/blog/$slug" params={{ slug: "checklist-to-chuc-buoi-yoga-tai-van-phong" }} className="text-xs text-[color:var(--gold)] hover:underline">
-                  Read office checklist &rarr;
+              <div className="mt-6 border-t border-white/10 pt-4">
+                <Link to="/blog/$slug" params={{ slug: "checklist-to-chuc-buoi-yoga-tai-van-phong" }} hrefLang="vi" className="text-sm text-[color:var(--gold)] underline underline-offset-4">
+                  Read the office yoga checklist in Vietnamese
                 </Link>
               </div>
             </div>

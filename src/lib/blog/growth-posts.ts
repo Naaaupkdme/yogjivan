@@ -1,4 +1,5 @@
 // High-intent articles supporting the local, online, comparison and desk-work clusters.
+import { PRIVATE_ONLINE_SINGLE_SUMMARY } from "@/lib/facts/pricing";
 import type { BlogPost } from "@/lib/blog/types";
 
 export const GROWTH_POSTS: BlogPost[] = [
@@ -31,7 +32,7 @@ export const GROWTH_POSTS: BlogPost[] = [
         "Aerial yoga: available at Studio 1 only, and best approached after some general practice.",
         "Live online classes: 60 minutes, maximum eight students, taught in English, Vietnamese and Hindi — useful if you travel or work irregular hours.",
       ]},
-      { type: "p", text: "Studio membership options are listed on our programs and pricing page. Private session scheduling and pricing are confirmed by enquiry rather than published, because they depend on frequency and format." },
+      { type: "p", text: `Contact the studio for in-person rates and available times. If you prefer to practise from home, the private online class has a published rate. ${PRIVATE_ONLINE_SINGLE_SUMMARY}` },
       { type: "h2", text: "What actually happens in a first class" },
       { type: "p", text: "You will be asked briefly about any injuries, health conditions or recent surgery before you start. The session then begins with simple warming movement, moves into basic standing and seated postures, and ends with a short breathing practice and rest. You will not be expected to keep up with experienced students, and you will not be asked to do anything that feels unsafe. Master Anil gives verbal corrections during the class, so you are not left copying a shape you cannot see." },
       { type: "h2", text: "What to bring" },
@@ -80,7 +81,7 @@ export const GROWTH_POSTS: BlogPost[] = [
     date: "2026-08-06",
     keyTakeaways: [
       "Live group classes are 60 minutes with a maximum of eight students.",
-      "Private sessions are 60 minutes, entirely built around one person, with pricing confirmed by enquiry.",
+      PRIVATE_ONLINE_SINGLE_SUMMARY,
       "The two formats can be combined: group for routine, private for specific work.",
     ],
     body: [
@@ -100,11 +101,11 @@ export const GROWTH_POSTS: BlogPost[] = [
       { type: "p", text: "Group classes ask for camera on, because real-time posture correction is the reason the class is live rather than recorded; we explain how that works before you join. If practising visibly in front of other students is uncomfortable for you — a common and reasonable preference — a private session removes that entirely." },
       { type: "h2", text: "Community" },
       { type: "p", text: "The group format offers something private work cannot: familiar faces, shared routine, and the quiet accountability of being noticed when you miss a week. For many students that is the deciding factor." },
-      { type: "h2", text: "How pricing is presented" },
-      { type: "p", text: "Live online group membership plans are published on the online classes page, so you can compare them yourself. Private session pricing is confirmed by enquiry, because it depends on frequency, format and scheduling. We do not publish a private price we would then have to qualify." },
+      { type: "h2", text: "How to compare a membership with a private session" },
+      { type: "p", text: `Group members pay for a period of time. The online classes page lists each membership total. ${PRIVATE_ONLINE_SINGLE_SUMMARY} If you want to meet regularly on your own, the private online yoga page also lists packages by session count.` },
       { type: "h2", text: "A simple way to decide" },
       { type: "ul", items: [
-        "Want routine, structure and a lower published price? Start with the live group class.",
+        "Want a regular group slot? Compare the monthly membership with the number of classes you expect to attend.",
         "Have a specific limitation, an irregular schedule, or a strong preference for one-to-one work? Start private.",
         "Not sure? Many students do group classes weekly and book occasional private sessions to work on something specific.",
       ]},
@@ -118,7 +119,7 @@ export const GROWTH_POSTS: BlogPost[] = [
     ],
     faqs: [
       { q: "How many students are in a live group class?", a: "A maximum of eight, so the teacher can still give individual verbal corrections." },
-      { q: "Why is private pricing not published?", a: "It depends on frequency, format and scheduling, so we confirm it by enquiry rather than publish a figure that would need qualifying." },
+      { q: "How much is one private online session?", a: PRIVATE_ONLINE_SINGLE_SUMMARY },
       { q: "Can I switch between formats?", a: "Yes. Many students keep a group routine and add private sessions when they want to work on something specific." },
     ],
     cta: {
@@ -320,81 +321,136 @@ export const GROWTH_POSTS: BlogPost[] = [
     slug: "online-yoga-camera-setup",
     cat: "Online",
     cluster: "online",
-    primaryKeyword: "online yoga camera setup",
-    title: "How to set up your camera and space for live online yoga",
-    seoTitle: "Camera & Space Setup for Online Yoga",
+    primaryKeyword: "how to set up a camera for online yoga",
+    title: "How to set up your camera for online yoga",
+    seoTitle: "Online Yoga Camera Setup: A Full-Body Checklist",
     excerpt:
-      "Device placement, framing, lighting, floor space, props, audio and privacy — a practical checklist so your teacher can actually see and correct you.",
+      "Place your camera on a stable surface in landscape, aim diagonally toward your mat, and check both standing and floor views before class starts.",
     metaDescription:
-      "A practical setup guide for live online yoga: camera framing, lighting, floor space, mat and props, internet and audio, privacy and a pre-class checklist.",
-    read: "7 min",
+      "Set up your camera for live online yoga. Check that your teacher can see you on the mat, then find the right setup for one person, two adults or family.",
+    read: "6 min",
     date: "2026-08-06",
+    updated: "2026-11-23",
     keyTakeaways: [
-      "Aim for full-body framing from the side or a front-diagonal angle.",
-      "Light in front of you, not behind — backlighting makes you a silhouette.",
-      "Household items work fine as props; you do not need to buy equipment.",
+      "Place the camera on a stable surface in landscape, angled front-diagonally toward your mat.",
+      "Check that the preview shows your head and feet while standing, and your whole mat while lying down.",
+      "Keep lighting in front of you rather than behind to avoid becoming a dark silhouette.",
+      "Use recommended distances as starting points: 2–2.5 m for solo, ~3 m for two adults, and 3.5–4.5 m for family.",
     ],
     body: [
-      { type: "p", text: "Live online yoga only works if the teacher can see you. A few minutes of setup makes the difference between receiving real corrections and effectively watching a video. Here is how to arrange your device and space." },
-      { type: "h2", text: "Which device to use" },
-      { type: "p", text: "A phone, tablet or laptop all work. A laptop is usually easiest because it sits stably and the screen is large enough to see the teacher. A phone is fine when propped at a decent height — a stack of books or a small stool works. Whatever you use, put it in landscape orientation and make sure it is charged or plugged in." },
-      { type: "h2", text: "Framing" },
-      { type: "ul", items: [
-        "Place the camera 2 to 3 metres away if you can, so your whole mat is in frame.",
-        "Set the lens at roughly knee to hip height rather than on the floor.",
-        "Use a side or front-diagonal angle — this shows alignment better than straight-on.",
-        "Check that your head and feet both stay in frame when you stand and when you lie down.",
-      ]},
-      { type: "h2", text: "Camera setup by format: One person, two people, or family" },
-      { type: "p", text: "Different session formats require slightly different camera distances and mat angles so your teacher can see everyone clearly:" },
-      { type: "ul", items: [
-        "Solo (Private 1-on-1): Position the camera 2 to 2.5 metres away at knee-to-hip height, angled from the front-diagonal. This allows your teacher to observe posture alignment in standing and floor postures. Explore our Private Online Yoga sessions (/private-online-yoga).",
-        "Two adults (Couples & Friends): Place mats parallel, spaced about 0.5 to 1 metre apart. Move the camera back 3 to 3.5 metres in landscape mode so both participants stay in frame without blocking each other. Explore Online Couples Yoga (/online-couples-yoga).",
-        "Family (Three or four participants): Arrange mats in a staggered arc or 2x2 grid. Mount or prop the camera 3.5 to 4.5 metres back, slightly elevated, ensuring all family members are visible both standing and seated. Explore Online Family Yoga (/online-family-yoga).",
-      ]},
-      { type: "h2", text: "Lighting" },
-      { type: "p", text: "Light should come from in front of you. A window behind you turns you into a silhouette and the teacher will see nothing useful. If your room is dim, a lamp facing you from the front is enough." },
-      { type: "h2", text: "Floor space" },
-      { type: "p", text: "You need enough room to lie down and stretch your arms out in every direction without hitting furniture. Clear the area before class rather than mid-session, and check the floor is not slippery under your mat." },
-      { type: "h2", text: "Mat and props" },
-      { type: "ul", items: [
-        "A non-slip mat is the one item worth having.",
-        "A firm cushion or folded blanket instead of a bolster.",
-        "A belt, scarf or towel instead of a yoga strap.",
-        "Two thick books instead of blocks.",
-        "A sturdy chair for supported or seated variations.",
-      ]},
-      { type: "h2", text: "Internet and audio" },
-      { type: "p", text: "Sit near the router or use a wired connection if you can. Test your speakers before class — you need to hear a correction called out while you are facing away from the screen. Headphones can help in a noisy home, but choose ones that stay put when you move." },
-      { type: "h2", text: "Privacy" },
-      { type: "p", text: "Camera on is expected in live classes, because it is what makes real-time correction possible. You control the frame: position the device so only your practice area is visible, use a plain wall as a background, and close the door if you would rather not have the household in shot. If practising on camera in a group is not for you, private 1-on-1 online sessions are an alternative." },
-      { type: "h2", text: "Pre-class checklist" },
-      { type: "ul", items: [
-        "Device charged, propped, landscape, at knee-to-hip height.",
-        "Whole body in frame standing and lying down.",
-        "Light in front of you.",
-        "Floor clear, mat down, props within reach.",
-        "Audio tested, notifications silenced.",
-        "Water nearby, joined a couple of minutes early.",
-      ]},
+      {
+        type: "p",
+        text: "Place your camera on a stable surface in landscape. Aim it toward your mat from the front and slightly to the side. Check that the preview shows your head and feet when you stand and still shows your whole body when you lie down. Move the device back if either view is cut off.",
+      },
+      { type: "h2", text: "Find the right camera angle" },
+      {
+        type: "p",
+        text: "For a solo class, start with the lens between knee and hip height. Place the device about 2 to 2.5 metres from your mat if you have the room. Try a front-diagonal view so the teacher can see more than one side of your body. A steady table or a secure phone stand can work.",
+      },
+      {
+        type: "p",
+        text: "Face a window or lamp where possible. If the light is behind you, check the screen. If your outline is hard to see, turn the mat or move the lamp.",
+      },
+      { type: "h2", text: "Check your online yoga camera setup" },
+      {
+        type: "ol",
+        items: [
+          "Open your camera preview. Stand on the mat and look for both feet and your head.",
+          "Check the mat from a seated or lying position as well. Make sure the edge of the picture does not cut off the space you need.",
+          "If something is missing, move the device back or change the angle. Call out once to check that the teacher can hear you.",
+        ],
+      },
+      {
+        type: "p",
+        text: "If you want the teacher to check your view at the start, [see how a private session works](/blog/what-happens-in-a-private-online-yoga-session) or read our guide on [what to expect at your first live class](/blog/first-live-online-yoga-class).",
+      },
+      { type: "h2", text: "Set up for one, two or family" },
+      {
+        type: "table",
+        headers: ["Who is practising", "What to try", "Where to go next"],
+        rows: [
+          [
+            "Solo",
+            "One mat, a diagonal view and enough room for standing and floor work.",
+            "[See private online yoga](/private-online-yoga#private-enquiry)",
+          ],
+          [
+            "Two adults",
+            "Two parallel mats, with space between them. Try the camera about 3 metres back, then adjust until both people fit.",
+            "[See yoga for two](/online-couples-yoga#book-session) · [Setup guide](/blog/online-yoga-for-two-camera-setup)",
+          ],
+          [
+            "Three or four",
+            "Stagger the mats so one person does not block another. Try a slightly higher camera and start 3.5 to 4.5 metres back if there is room.",
+            "[See family yoga](/online-family-yoga#plan-session)",
+          ],
+        ],
+      },
+      { type: "h2", text: "Check the space and sound" },
+      {
+        type: "p",
+        text: "Move chairs and bags away from the mat before joining. Leave enough space to lie down and reach without hitting furniture. In a small room, try filming diagonally from a corner. Before the lesson starts, ask the teacher whether they can see and hear you from the mat.",
+      },
+      {
+        type: "p",
+        text: "Sit near your router or use a wired connection if you can. Test your speakers before class — you need to hear a correction called out while you are facing away from the screen. Headphones can help in a noisy home, but choose ones that stay put when you move.",
+      },
+      { type: "h2", text: "Mat and household props" },
+      {
+        type: "ul",
+        items: [
+          "A non-slip mat is the one item worth having.",
+          "A firm cushion or folded blanket instead of a bolster.",
+          "A belt, scarf or towel instead of a yoga strap.",
+          "Two thick books instead of blocks.",
+          "A sturdy chair for supported or seated variations.",
+        ],
+      },
+      { type: "h2", text: "Privacy in your home" },
+      {
+        type: "p",
+        text: "Camera on is expected in live classes, because real-time correction is what makes live classes effective. You control the frame: position the device so only your practice area is visible, use a plain wall as a background, and close the door if you would rather not have the household in shot. If practising on camera in a group is not for you, private 1-on-1 online sessions offer complete privacy.",
+      },
+      {
+        type: "p",
+        text: "Start with a stable camera, then check your whole mat from standing and floor positions. A good online yoga camera setup lets you spend the class practising instead of moving your device. [Ask about a live private class](/private-online-yoga#private-enquiry) if you want a teacher to guide your first session.",
+      },
     ],
     related: [
-      { label: "Live Online Yoga Classes", to: "/online-yoga-classes" },
-      { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga" },
-      { label: "Online Couples Yoga", to: "/online-couples-yoga" },
-      { label: "Online Family Yoga", to: "/online-family-yoga" },
+      { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga", hash: "private-enquiry" },
+      { label: "Online Couples Yoga (with partner)", to: "/online-couples-yoga", hash: "book-session" },
+      { label: "Online Family Yoga (3 to 4 people)", to: "/online-family-yoga", hash: "plan-session" },
       { label: "What happens in your first live online class", to: "/blog/first-live-online-yoga-class" },
+      { label: "What happens in a private online yoga session", to: "/blog/what-happens-in-a-private-online-yoga-session" },
+      { label: "One-camera setup for two students", to: "/blog/online-yoga-for-two-camera-setup" },
     ],
     faqs: [
-      { q: "Do I need a special camera?", a: "No. The camera in a phone, tablet or laptop is fine. Placement and lighting matter far more than camera quality." },
-      { q: "Can I keep my camera off?", a: "Camera on is expected in live group classes so the teacher can correct your alignment. If that does not suit you, a private session is a better fit." },
-      { q: "What if I do not own props?", a: "Household items work. A cushion, a belt or scarf, two books and a chair cover almost everything." },
+      {
+        q: "Do I need a separate webcam?",
+        a: "A phone, tablet or laptop can work. Put the device on a stable support and test the whole mat in the preview. Decide if you need another camera after you try your current device. Good framing will usually matter more for the class than buying a new camera.",
+      },
+      {
+        q: "Should I turn my phone sideways?",
+        a: "Start with the phone sideways in landscape. The wider view gives you more room to show the mat and is especially useful with two people. Check your class app's preview before you begin. If its display cuts off your feet or hands, move back and test again.",
+      },
+      {
+        q: "How do I keep the rest of my room private?",
+        a: "Turn the mat and camera toward a plain wall if you can. Move personal items out of the picture. Ask anyone sharing the room to stay clear of the camera view. Before you join, check the preview from your standing spot and from the mat.",
+      },
+      {
+        q: "What if there is not enough space for the recommended distance?",
+        a: "Use the distance as a starting point. Try a camera position in a corner and adjust the angle. Check that you can move without contacting furniture. If your teacher cannot see a useful view, tell them at the start so you can discuss your setup.",
+      },
+      {
+        q: "Can two adults share one device?",
+        a: "Yes, when both adults are practising in the same room and remain visible. Put the mats beside one another rather than directly in front of each other. Try standing and sitting in the preview together. Ask the studio about the available arrangement if you will join from different homes.",
+      },
     ],
     cta: {
-      title: "Ready when you are",
-      sub: "Live 60-minute online classes, maximum eight students, with real-time verbal guidance.",
-      primary: { label: "Live Online Yoga Classes", to: "/online-yoga-classes" },
-      secondary: { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga" },
+      title: "Ask about a live private class",
+      sub: "Tell us your time zone and when you can practise so we can match you with a teacher.",
+      primary: { label: "Enquire about a private session", to: "/private-online-yoga", hash: "private-enquiry" },
+      secondary: { label: "Compare yoga programmes", to: "/programs" },
     },
   },
   {
@@ -496,41 +552,93 @@ export const GROWTH_POSTS: BlogPost[] = [
     title: "How to Set Up an Online Yoga Class for Two at Home",
     seoTitle: "How to Set Up an Online Yoga Class for Two at Home | Yog Jivan",
     excerpt:
-      "Practical camera, space, and preparation guide for two people sharing an online private yoga session at home with one matched teacher.",
+      "Place two parallel mats with room between them, start your camera roughly 3 metres back in landscape, and use preview to check standing and floor framing for both adults.",
     metaDescription:
-      "How to set up an online yoga class for two at home: one camera setup, practising with different levels, and what to send before booking.",
+      "Practical one-camera setup for two adults practising online yoga together: mat spacing, standing and floor fit checks, room clearance, and shared booking.",
     read: "5 min",
     date: "2026-11-14",
+    updated: "2026-11-25",
     keyTakeaways: [
-      "One camera can frame two practitioners comfortably when placed 2–3 metres back at hip height.",
-      "Partners, friends, or household pairs can practise together even with different mobility or experience levels.",
-      "One certified teacher guides both participants simultaneously with customized verbal adjustments.",
+      "Place two mats parallel with 0.5 to 1 metre between them so both adults can stretch without colliding.",
+      "Start with the device about 3 metres away at knee-to-hip height in landscape mode — distance is a starting point, adjust using your camera preview.",
+      "Perform a two-step fit check: verify both people are visible standing with arms raised, and lying down on the mats.",
+      "Partners, friends, and household pairs can share one screen; one teacher provides individual cues for different flexibility levels.",
     ],
     body: [
-      { type: "h2", text: "One camera for two people" },
-      { type: "p", text: "Place your device on a stable surface and frame enough space for both of you. Check that the teacher can see you standing and on the mat. Set up before the session so you can adjust the angles together." },
-      { type: "h2", text: "Different levels are welcome" },
-      { type: "p", text: "Tell the teacher what each person has practised before. You can join the same warm-up and use different versions of a movement if needed. Friends and partners can both book this two-adult format." },
-      { type: "h2", text: "What to send before booking" },
-      { type: "p", text: "Share your time zone, two preferred times and whether you are practising in the same space. If more people want to join, ask about the suitable format before booking." },
-      { type: "p", text: "Learn more and book your shared session at Online Couples Yoga (/online-couples-yoga) or explore Online Family Yoga (/online-family-yoga) for 3–4 household members." },
+      {
+        type: "p",
+        text: "Sharing a live online yoga class with a partner or friend means you only need one camera, one screen and one room. Before your teacher joins, run a quick fit check in your camera preview. Here is how to arrange two mats, position your device and make sure both adults stay clearly in view throughout the session.",
+      },
+      { type: "h2", text: "The two-person camera fit check" },
+      {
+        type: "ol",
+        items: [
+          "Set your device on a stable table or stand in landscape orientation. Aim it from the front and slightly to one side so the teacher can observe alignment from more than one angle.",
+          "Start with the camera roughly 3 metres back from the mats at knee-to-hip height. Treat this distance as a practical starting point: your lens field of view, screen size and room width will determine the exact spot. Always verify the frame in your live camera preview.",
+          "Standing check: Stand side by side on your mats. Check that both people's heads, raised hands and feet stay inside the preview edge without anyone stepping out.",
+          "Floor check: Sit and lie down on your mats. Make sure the bottom and sides of the frame still show both bodies and mats completely without cutting off limbs.",
+          "No-blocking check: Stagger the mats slightly if one person blocks the other during side reaches or lunges. Both practitioners should remain clearly visible from the camera position.",
+        ],
+      },
+      {
+        type: "p",
+        text: "For general advice on device angles, lighting and solo setups, see our [master online yoga camera setup guide](/blog/online-yoga-camera-setup).",
+      },
+      { type: "h2", text: "Mat spacing and room clearance" },
+      {
+        type: "p",
+        text: "Place two mats parallel to each other with about 0.5 to 1 metre of space between them. This gap gives you room to extend your arms sideways and transition between postures without bumping hands or mats. Clear away chairs, low coffee tables and bags before class so you have clear floor space around both mats.",
+      },
+      { type: "h2", text: "Audio and sound check for two" },
+      {
+        type: "p",
+        text: "Because you are moving together across a wider area, test your device speakers at a comfortable volume. You need to hear the teacher's verbal guidance clearly when facing away from the screen or lying down. Call out once before the class starts to check that your microphone picks up voices from both mats without echo.",
+      },
+      { type: "h2", text: "Practising with different levels" },
+      {
+        type: "p",
+        text: "You do not need equal flexibility or identical yoga experience to share a private session. In a private couples class, one certified Yog Jivan teacher watches both students live on video and gives individual variations for each posture. A beginner can work on foundational alignment while their partner explores a deeper variation.",
+      },
+      { type: "h2", text: "Friends, couples and household pairs" },
+      {
+        type: "p",
+        text: "This two-adult format is open to any two people: spouses, partners, friends, or family relatives living together. If you want to practise together but join from two separate homes, ask the studio when enquiring so we can confirm available arrangements.",
+      },
+      {
+        type: "p",
+        text: "Ready to schedule? [Enquire about private online couples yoga](/online-couples-yoga#book-session) or [compare couples session plans and pricing](/online-couples-yoga#couples-plans). If three or four household members want to join, see our [online family yoga options](/online-family-yoga#plan-session).",
+      },
     ],
     related: [
-      { label: "Online Couples Yoga for Two", to: "/online-couples-yoga" },
-      { label: "Online Yoga with a Friend", to: "/online-couples-yoga", hash: "friends-yoga" },
-      { label: "Private Online Family Yoga", to: "/online-family-yoga" },
-      { label: "Can an online teacher correct your posture?", to: "/blog/can-an-online-yoga-teacher-correct-your-posture" },
+      { label: "Online Couples Yoga (Private for Two)", to: "/online-couples-yoga", hash: "book-session" },
+      { label: "Compare Couples Yoga Plans & Pricing", to: "/online-couples-yoga", hash: "couples-plans" },
+      { label: "Online Yoga Camera & Space Setup Checklist", to: "/blog/online-yoga-camera-setup" },
+      { label: "How to plan your first month of online yoga together", to: "/blog/planning-online-yoga-together" },
+      { label: "Private Online Family Yoga (3–4 people)", to: "/online-family-yoga", hash: "plan-session" },
     ],
     faqs: [
-      { q: "Can two people with different flexibility practice together?", a: "Yes. One teacher guides both adults on video and offers variations of the same movement tailored to each person's needs." },
-      { q: "Do we need two separate devices?", a: "No. Two adults practice in the same space sharing one camera view." },
-      { q: "Can friends book this format instead of couples?", a: "Yes. A partner can be a friend, spouse, or another adult in your household." },
+      {
+        q: "Do we need two separate webcams or devices?",
+        a: "No. The standard and most comfortable setup is two adults sharing one room, one camera and one screen.",
+      },
+      {
+        q: "Can friends book this format instead of couples?",
+        a: "Yes. Any two adults can book this format together — partners, friends, coworkers or household relatives.",
+      },
+      {
+        q: "What if our room is not 3 metres wide?",
+        a: "Three metres is only a starting guideline. If your space is narrower, try placing the camera diagonally in a corner or angling the mats in a slight V-shape. Check your preview to confirm both people fit comfortably.",
+      },
+      {
+        q: "How much does a private live session for two cost?",
+        a: "A single 60-minute session is US$36 total for two adults (US$18 each). Multi-session packages are also available: 6 sessions for US$192, 12 sessions for US$349, and 24 sessions for US$669.",
+      },
     ],
     cta: {
       title: "Plan your online yoga session for two",
       sub: "Tell us who is joining and your preferred times. One teacher guides both adults live on video.",
-      primary: { label: "Online Couples Yoga", to: "/online-couples-yoga" },
-      secondary: { label: "Yoga with a Friend", to: "/online-couples-yoga", hash: "friends-yoga" },
+      primary: { label: "Enquire for two adults", to: "/online-couples-yoga", hash: "book-session" },
+      secondary: { label: "Compare couples plans", to: "/online-couples-yoga", hash: "couples-plans" },
     },
   },
 ];

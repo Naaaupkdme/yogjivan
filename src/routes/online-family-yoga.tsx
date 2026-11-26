@@ -118,7 +118,7 @@ function FamilyYogaPage() {
       <PageHero
         eyebrow="Household & Family Yoga · Live Online"
         title="Private Online Family Yoga for 3 or 4"
-        sub="Practise live at home with three or four family members. Your teacher can adapt movement options to your household. Yog Jivan offers live private online yoga for three or four family members. A separate parent–child format is available with an adult participating."
+        sub="Live private family yoga for three or four household members. A single live family session costs US$44 total for three people or US$52 total for four. One teacher guides the household together on a shared camera, adapting movement options for each person. An adult can ask separately about the parent–child format."
         image768="/assets/preview/family-standing-upward-reach-mobile.webp"
         image1400="/assets/preview/family-standing-upward-reach-desktop.webp"
         imageWidth={1440}
@@ -133,39 +133,53 @@ function FamilyYogaPage() {
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
         </p>
         <div className="mt-5 flex flex-wrap items-center gap-4">
-          <button
-            type="button"
-            onClick={() => {
+          <a
+            href="#plan-session"
+            onClick={(e) => {
               const el = document.getElementById("plan-session");
-              el?.scrollIntoView({ behavior: "smooth" });
+              if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, "", "#plan-session");
+                const target = el?.querySelector<HTMLElement>("input, select, textarea, button") ?? el;
+                window.setTimeout(() => target?.focus({ preventScroll: true }), 350);
+              }
             }}
             data-cta-location="family_hero"
             className="btn-gold"
           >
             Choose your family size
-          </button>
-          <button
-            type="button"
-            onClick={() => {
+          </a>
+          <a
+            href="#family-plans"
+            onClick={(e) => {
               const el = document.getElementById("family-plans");
-              el?.scrollIntoView({ behavior: "smooth" });
+              if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, "", "#family-plans");
+              }
             }}
             data-cta-location="family_hero"
             className="btn-ghost-gold"
           >
             See plans and pricing
-          </button>
-          <button
-            type="button"
-            onClick={() => {
+          </a>
+          <a
+            href="#parent-child"
+            onClick={(e) => {
               const el = document.getElementById("parent-child");
-              el?.scrollIntoView({ behavior: "smooth" });
+              if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, "", "#parent-child");
+              }
             }}
             data-cta-location="family_hero"
             className="text-xs text-[color:var(--gold)] hover:underline inline-flex items-center gap-1 self-center"
           >
             See parent–child option &rarr;
-          </button>
+          </a>
         </div>
       </PageHero>
 
@@ -640,6 +654,14 @@ function FamilyYogaPage() {
             </Link>
             <span>.</span>
           </div>
+
+          <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs text-muted-foreground text-center">
+            <span>Deciding between a parent–child or household booking? Read our guide on </span>
+            <Link to="/blog/$slug" params={{ slug: "choose-family-yoga-booking" }} className="text-[color:var(--gold)] hover:underline font-medium">
+              which family yoga booking fits your household
+            </Link>
+            <span>.</span>
+          </div>
         </div>
       </section>
 
@@ -684,21 +706,19 @@ function FamilyYogaPage() {
               </p>
             </div>
 
-            <div id="shared-enquiry-form">
-              <SharedYogaEnquiryForm
-                format={selectedFormat}
-                participants={selectedPax}
-                plan={selectedPlan}
-                onPlanChange={setSelectedPlan}
-                onFormatChange={(fmt) => {
-                  setSelectedFormat(fmt as "family" | "parent_child");
-                  if (fmt === "family" && selectedPax < 3) setSelectedPax(3);
-                }}
-                onParticipantsChange={(pax) => setSelectedPax(pax)}
-                heading="Enquire About Live Family Yoga"
-                subheading="Select your family size (3, 4, or Parent–Child) and preferred times. We confirm availability and discuss booking details directly."
-              />
-            </div>
+            <SharedYogaEnquiryForm
+              format={selectedFormat}
+              participants={selectedPax}
+              plan={selectedPlan}
+              onPlanChange={setSelectedPlan}
+              onFormatChange={(fmt) => {
+                setSelectedFormat(fmt as "family" | "parent_child");
+                if (fmt === "family" && selectedPax < 3) setSelectedPax(3);
+              }}
+              onParticipantsChange={(pax) => setSelectedPax(pax)}
+              heading="Enquire About Live Family Yoga"
+              subheading="Select your family size (3, 4, or Parent–Child) and preferred times. We confirm availability and discuss booking details directly."
+            />
 
             {/* Cross-linking to Couples */}
             <div className="mt-12 border-t border-border/40 pt-8 text-center">

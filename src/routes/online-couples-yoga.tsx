@@ -121,7 +121,7 @@ function CouplesYogaPage() {
       <PageHero
         eyebrow="Partner & Couples Yoga · Live Online"
         title="Live Online Yoga for Two"
-        sub="Private live yoga for two adults. Join with a partner or friend, even if you have different experience levels. Practise live with a partner or friend in a private online yoga class for two adults. One teacher guides both participants and offers movement options for different experience levels."
+        sub="Private live yoga for two adults. Practise with a partner or friend, with individual movement options and real-time guidance from one dedicated teacher. A single live session costs US$36 total for two adults on a shared camera. Ask the team about joining from separate locations."
         image768="/assets/preview/couples-friends-standing-side-reach-mobile.webp"
         image1400="/assets/preview/couples-friends-standing-side-reach-desktop.webp"
         imageWidth={1440}
@@ -133,42 +133,55 @@ function CouplesYogaPage() {
           US$36 total for two adults (covers both participants — US$18 each) · 60 minutes live
         </div>
         <p className="mt-3 text-xs font-semibold text-foreground/90">
-          Every session is led by an experienced, certified Yog Jivan yoga teacher.
+          Every session is led by an experienced, certified Yog Jivan yoga teacher. Friends, partners and household pairs welcome.
         </p>
         <div className="mt-5 flex flex-wrap items-center gap-4">
-          <button
-            type="button"
-            onClick={() => {
+          <a
+            href="#book-session"
+            onClick={(e) => {
               const el = document.getElementById("book-session");
-              el?.scrollIntoView({ behavior: "smooth" });
+              if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, "", "#book-session");
+                const planSelect = document.getElementById("shared-plan-select") as HTMLSelectElement | null;
+                planSelect?.focus();
+              }
             }}
             data-cta-location="couples_hero"
             className="btn-gold"
           >
             Enquire for two
-          </button>
-          <button
-            type="button"
-            onClick={() => {
+          </a>
+          <a
+            href="#couples-plans"
+            onClick={(e) => {
               const el = document.getElementById("couples-plans");
-              el?.scrollIntoView({ behavior: "smooth" });
+              if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, "", "#couples-plans");
+              }
             }}
             data-cta-location="couples_hero"
             className="btn-ghost-gold"
           >
             See plans and pricing
-          </button>
-          <button
-            type="button"
-            onClick={() => {
+          </a>
+          <a
+            href="#how-it-works"
+            onClick={(e) => {
               const el = document.getElementById("how-it-works");
-              el?.scrollIntoView({ behavior: "smooth" });
+              if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth" });
+              }
             }}
             data-cta-location="couples_hero"
             className="text-xs text-[color:var(--gold)] hover:underline inline-flex items-center gap-1 self-center"
           >
             See how the session works &rarr;
-          </button>
+          </a>
         </div>
       </PageHero>
 
@@ -460,6 +473,14 @@ function CouplesYogaPage() {
             </Link>
             <span>.</span>
           </div>
+
+          <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs text-muted-foreground text-center">
+            <span>Planning your first month together? Read our guide on </span>
+            <Link to="/blog/$slug" params={{ slug: "planning-online-yoga-together" }} className="text-[color:var(--gold)] hover:underline font-medium">
+              how to plan your first month of online yoga together
+            </Link>
+            <span>.</span>
+          </div>
         </div>
       </section>
 
@@ -504,15 +525,13 @@ function CouplesYogaPage() {
               </p>
             </div>
 
-            <div id="shared-enquiry-form">
-              <SharedYogaEnquiryForm
-                initialFormat="couples"
-                plan={selectedPlan}
-                onPlanChange={setSelectedPlan}
-                heading="Enquire About Live Couples Yoga"
-                subheading="Share your contact information and two preferred times. We reply with schedule options and confirmation on WhatsApp."
-              />
-            </div>
+            <SharedYogaEnquiryForm
+              initialFormat="couples"
+              plan={selectedPlan}
+              onPlanChange={setSelectedPlan}
+              heading="Enquire About Live Couples Yoga"
+              subheading="Share your contact information and two preferred times. We reply with schedule options and confirmation on WhatsApp."
+            />
 
             {/* Cross-linking to Solo and Family Offers */}
             <div className="mt-12 border-t border-border/40 pt-8">

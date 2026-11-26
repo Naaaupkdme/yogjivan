@@ -75,6 +75,19 @@ function ViHome() {
         </div>
       </ViSection>
 
+      <ViSection heading="Yoga cho doanh nghiệp và trường học">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <a href="/vi/yoga-doanh-nghiep" className="glass-soft rounded-[1.5rem] border border-white/10 p-6">
+            <h3 className="font-display text-xl leading-tight">Yoga cho doanh nghiệp</h3>
+            <p className="mt-3 text-sm leading-relaxed">Chọn buổi yoga trên ghế hoặc trên thảm cho nhân viên. Xem cách bố trí phòng và đăng ký buổi trải nghiệm.</p>
+          </a>
+          <a href="/vi/yoga-hoc-duong" className="glass-soft rounded-[1.5rem] border border-white/10 p-6">
+            <h3 className="font-display text-xl leading-tight">Yoga học đường</h3>
+            <p className="mt-3 text-sm leading-relaxed">Tìm hiểu buổi yoga đầu tiên cho học sinh, vai trò của giáo viên nhà trường và cách đăng ký cho lớp.</p>
+          </a>
+        </div>
+      </ViSection>
+
       <ViTrustStrip />
 
       <ViSection heading="Người sáng lập và đội ngũ giáo viên">

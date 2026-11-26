@@ -64,7 +64,7 @@ type Service = {
   blurb: string;
   bullets: string[];
   cta: string;
-  to: "/private-online-yoga" | "/programs" | "/corporate";
+  to: "/private-online-yoga" | "/programs" | "/corporate" | "/school-yoga" | "/online-yoga-classes";
   Icon: typeof User;
   // image left optional — temporarily replaced by gradient placeholder.
   image?: string;
@@ -168,12 +168,12 @@ const SERVICES: Service[] = [
   },
   {
     num: "06",
-    title: "Kids",
+    title: "School",
     italic: "Yoga",
-    blurb: "Playful practice that nurtures confidence, focus and healthy growth.",
-    bullets: ["Focus & Concentration", "Flexibility", "Confidence Building", "Healthy Growth"],
-    cta: "Enroll Child",
-    to: "/programs",
+    blurb: "Play-based yoga sessions that organisers can bring to their school.",
+    bullets: ["Age-Appropriate Movement", "Teacher-Led Sessions", "School Staff Present", "Demo by Enquiry"],
+    cta: "Explore school yoga",
+    to: "/school-yoga",
     Icon: Smile,
     variant: "kids",
     opacity: 0.15,
@@ -188,8 +188,8 @@ const SERVICES: Service[] = [
     italic: "Classes",
     blurb: "Practice live with Yog Jivan from anywhere in the world.",
     bullets: ["Live Interactive Sessions", "Global Community", "Flexible Schedule", "Personalized Guidance"],
-    cta: "Join Online",
-    to: "/programs",
+    cta: "Explore live online classes",
+    to: "/online-yoga-classes",
     Icon: Globe2,
     variant: "online",
     opacity: 0.15,

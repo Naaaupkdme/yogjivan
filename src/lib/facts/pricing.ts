@@ -53,3 +53,6 @@ export const PRIVATE_PRICING = {
     { sessions: 24, totalUSD: 459 },
   ],
 } as const;
+
+export const PRIVATE_ONLINE_SINGLE_SUMMARY =
+  `A standalone private online session costs US${formatUSD(PRIVATE_PRICING.singleUSD)} for ${PRIVATE_PRICING.sessionMinutes} minutes.`;

@@ -1,6 +1,7 @@
 // Buyer-intent articles: written for people actively comparing and ready to
 // enquire. Facts only — pricing comes from the confirmed membership tiers,
-// private sessions stay enquiry-based, and no health outcome is promised.
+// published private online pricing is sourced from the shared pricing facts.
+import { PRIVATE_ONLINE_SINGLE_SUMMARY } from "@/lib/facts/pricing";
 import type { BlogPost } from "@/lib/blog/types";
 
 export const BUYER_POSTS: BlogPost[] = [
@@ -12,15 +13,15 @@ export const BUYER_POSTS: BlogPost[] = [
     title: "How much do live online yoga classes cost? A clear price breakdown",
     seoTitle: "How Much Do Live Online Yoga Classes Cost? (2026 Prices)",
     excerpt:
-      "What live online yoga actually costs, how membership lengths compare per month, why private 1-on-1 sessions are quoted separately, and what is included.",
+      `Compare monthly group membership prices with the cost of 1-on-1 yoga. ${PRIVATE_ONLINE_SINGLE_SUMMARY}`,
     metaDescription:
-      "Live online yoga membership prices from $36 per month, with per-month costs for 3, 6 and 12-month plans, what is included, and how private 1-on-1 pricing works.",
+      `See monthly group membership prices and what each class includes. ${PRIVATE_ONLINE_SINGLE_SUMMARY}`,
     read: "6 min",
     date: "2026-09-26",
     keyTakeaways: [
       "Yog Jivan live online memberships are $36 for one month, dropping to about $25 a month on the 12-month plan.",
       "Every membership includes live 60-minute classes with a maximum of eight students and real-time correction.",
-      "Private 1-on-1 online sessions are quoted by enquiry, because they depend on frequency and format.",
+      PRIVATE_ONLINE_SINGLE_SUMMARY,
     ],
     body: [
       { type: "p", text: "Most people comparing online yoga are really comparing two different products: a video library you watch alone, and a live class where a teacher can see you and correct you. The prices below are for live classes with a real teacher on screen, which is the only format Yog Jivan teaches online." },
@@ -40,8 +41,8 @@ export const BUYER_POSTS: BlogPost[] = [
         "A catch-up recording available to members for 48 hours if you miss a class.",
         "A short 15-minute onboarding and practice-safety conversation before your first class.",
       ]},
-      { type: "h2", text: "Why private 1-on-1 sessions are priced separately" },
-      { type: "p", text: "A private session is a whole hour built around one person: your level, your limitations, your schedule and your goals. Because the right number of sessions per week and the format differ from student to student, private pricing is confirmed by enquiry rather than published as a fixed package. There is no payment requested when you enquire." },
+      { type: "h2", text: "What does a private online session cost?" },
+      { type: "p", text: `${PRIVATE_ONLINE_SINGLE_SUMMARY} You have the teacher’s attention for the full session. The private class page lists multi-session totals. Ask the team about availability or a custom plan.` },
       { type: "h2", text: "Is live online yoga worth it compared with free videos?" },
       { type: "p", text: "Free videos are excellent for following along when you already know the postures. What they cannot do is tell you that your knee is tracking inward, that your lower back is compensating, or that a posture should be modified for you today. A live class is the paid part of that difference. If you practise mainly for relaxation and already move well, free video may be enough; if you want your alignment watched and adjusted, a live class is the reason to pay." },
       { type: "h2", text: "How to work out your real cost" },
@@ -56,7 +57,7 @@ export const BUYER_POSTS: BlogPost[] = [
     faqs: [
       { q: "How much does a live online yoga class cost?", a: "Yog Jivan live online memberships are $36 for one month. The 12-month plan works out to about $25 per month. All plans include live 60-minute classes capped at eight students." },
       { q: "Do you charge for a trial class?", a: "New students start with our introductory offer for the live online group classes. Message us and we will arrange it." },
-      { q: "How much is a private 1-on-1 online yoga session?", a: "Private sessions are quoted by enquiry, because pricing depends on frequency and format. No payment is requested when you enquire." },
+      { q: "How much is a private 1-on-1 online yoga session?", a: PRIVATE_ONLINE_SINGLE_SUMMARY },
       { q: "Are there refunds?", a: "Memberships are generally non-refundable once activated or after the first class is used, with exceptions for duplicate payment, cancellation by Yog Jivan, service failure and your rights under applicable consumer law." },
     ],
     cta: {

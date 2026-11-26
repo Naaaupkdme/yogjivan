@@ -5,10 +5,12 @@ import { Programs } from "@/components/site/Programs";
 import { Services } from "@/components/site/Services";
 import { FurtherReading } from "@/components/site/FurtherReading";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
+import { formatUSD, PRIVATE_PRICING } from "@/lib/facts/pricing";
 
 const TITLE = "Yoga Programs & Pricing in Hai Duong | Yog Jivan";
+// The static search index reads this literal. Pricing parity is tested against PRIVATE_PRICING.
 const DESCRIPTION =
-  "Compare Yog Jivan studio memberships, private 60-minute yoga by enquiry, and live small-group online yoga with Master Anil in Hai Duong or worldwide.";
+  "Compare Yog Jivan studio classes in Hai Duong, private online yoga at US$25 for 60 minutes, and live small-group online yoga.";
 
 export const Route = createFileRoute("/programs")({
   head: () => ({
@@ -45,7 +47,7 @@ export const Route = createFileRoute("/programs")({
         children: JSON.stringify(serviceSchema({
           name: "Private Yoga Sessions",
           serviceType: "Private Yoga Session",
-          description: "Live 60-minute one-on-one yoga sessions with a matched teacher from the Yog Jivan teaching team, in studio or online, adapted to your experience and goals. A standalone online session is US$25. Ask about schedule, packages or a custom plan.",
+          description: `Live ${PRIVATE_PRICING.sessionMinutes}-minute one-on-one yoga sessions with a matched Yog Jivan teacher, in studio or online, adapted to your experience and goals. A standalone online session is US${formatUSD(PRIVATE_PRICING.singleUSD)}. Ask about schedule, packages or a custom plan.`,
           areaServed: "Hai Duong, Vietnam",
           url: "/private-online-yoga",
         })),

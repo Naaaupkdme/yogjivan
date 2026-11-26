@@ -1,5 +1,6 @@
 // Cleaned versions of the seven original journal articles.
 // Original publication dates preserved; `updated` records the 2026-08-06 revision.
+import { PRIVATE_ONLINE_SINGLE_SUMMARY } from "@/lib/facts/pricing";
 import type { BlogPost } from "@/lib/blog/types";
 
 export const LEGACY_POSTS: BlogPost[] = [
@@ -107,7 +108,7 @@ export const LEGACY_POSTS: BlogPost[] = [
       { type: "h2", text: "Signs to see a clinician instead" },
       { type: "p", text: "Movement is not the right first step for everything. Please see a doctor rather than starting a routine if you have unexplained pain, pain following significant trauma, numbness or weakness in a leg or arm, loss of bladder or bowel control, fever with back pain, or pain that consistently wakes you at night. These need proper assessment." },
       { type: "h2", text: "Getting it adapted to you" },
-      { type: "p", text: "If you already have back discomfort, a general routine can only take you so far. In a private session, your matched Yog Jivan teacher can watch how you actually move, remove anything that provokes your symptoms, and adjust the sequence to your situation. Private sessions are 60 minutes, in studio or live online, with scheduling and pricing confirmed by enquiry." },
+      { type: "p", text: `If you already have back discomfort, a general routine can only take you so far. In a private session, your matched Yog Jivan teacher can watch how you actually move, remove anything that provokes your symptoms, and adjust the sequence to your situation. ${PRIVATE_ONLINE_SINGLE_SUMMARY} Contact the studio for in-person rates and availability.` },
     ],
     related: [
       { label: "Yoga for Back Pain", to: "/yoga-for-back-pain" },
@@ -401,7 +402,7 @@ export const LEGACY_POSTS: BlogPost[] = [
       { type: "h2", text: "Where medical care must come first" },
       { type: "p", text: "Please see a doctor before booking if you have undiagnosed or worsening pain, a recent injury or surgery, numbness or weakness in a limb, loss of bladder or bowel control, fever alongside pain, an unstable cardiac condition, or a high-risk pregnancy. If your answers suggest you need assessment rather than a mat, we will say so and ask you to come back once you have clearance." },
       { type: "h2", text: "Group or private?" },
-      { type: "p", text: "If you mainly want structure and routine, a group class is usually enough — our live online groups cap at eight students so verbal correction is still possible. If you have specific limitations, an unusual schedule, or you would simply rather not practise in a group, private sessions are the better fit. Private scheduling and pricing are confirmed by enquiry." },
+      { type: "p", text: `If you mainly want structure and routine, a group class is usually enough — our live online groups cap at eight students so verbal correction is still possible. If you have specific limitations, an unusual schedule, or you would simply rather not practise in a group, private sessions are the better fit. ${PRIVATE_ONLINE_SINGLE_SUMMARY} For in-person rates, ask the studio directly.` },
       { type: "p", text: "Our condition-focused pages for back discomfort, stress and PCOD explain how the practice is adapted in each case, always alongside — never instead of — qualified medical care." },
     ],
     related: [
@@ -417,7 +418,7 @@ export const LEGACY_POSTS: BlogPost[] = [
     ],
     cta: {
       title: "Talk to us about a private session",
-      sub: "Live 60-minute one-to-one sessions in studio or online. Scheduling and pricing confirmed by enquiry.",
+      sub: `${PRIVATE_ONLINE_SINGLE_SUMMARY} Ask us about available times or in-studio pricing.`,
       primary: { label: "Private 1-on-1 Yoga", to: "/private-online-yoga" },
       secondary: { label: "Contact the studio", to: "/contact", hash: "consultation" },
     },

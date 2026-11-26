@@ -4,11 +4,12 @@
 // Editorial safety pass: no medical diagnosis or treatment claims, no comparative
 // safety declarations, no unverified frequency/outcome guidance, no recording-policy
 // assertions beyond the verified fact that private sessions are live.
+import { PRIVATE_ONLINE_SINGLE_SUMMARY } from "@/lib/facts/pricing";
 import type { BlogPost } from "@/lib/blog/types";
 
 const PRIVATE_CTA = {
   title: "Private 1-on-1 online yoga",
-  sub: "A standalone online session is US$25. Ask about schedule, packages or a custom plan.",
+  sub: `${PRIVATE_ONLINE_SINGLE_SUMMARY} Ask about available times, packages or a custom plan.`,
   primary: { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga" },
   secondary: { label: "Live Online Group Classes", to: "/online-yoga-classes" },
 };
@@ -83,7 +84,7 @@ export const PRIVATE_POSTS: BlogPost[] = [
     ],
     cta: {
       title: "Explore private, couples, or family yoga",
-      sub: "Tell us your goals, who is joining, and your preferred schedule. Pricing and timing are confirmed directly on WhatsApp.",
+      sub: "Each class page lists its standard rates. Share who is joining and your preferred times with the team to check availability.",
       primary: { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga" },
       secondary: { label: "Couples Yoga for Two", to: "/online-couples-yoga" },
     },
@@ -344,7 +345,7 @@ export const PRIVATE_POSTS: BlogPost[] = [
         "Be sceptical of promised cures, guaranteed timelines or dramatic percentage claims from anyone.",
       ]},
       { type: "h2", text: "How Yog Jivan approaches these points" },
-      { type: "p", text: "For transparency, here are our own answers. Private sessions are live, 60 minutes, camera on, with a matched teacher, generally kept the same for continuity, preceded by a short onboarding conversation. Yog Jivan offers matching across English, Vietnamese and Hindi subject to teacher availability. Private scheduling and pricing are confirmed by enquiry because they depend on frequency and format, and our studio reviews are published on Google where you can read them yourself. Apply the same nine checks to anyone else you are considering." },
+      { type: "p", text: `Yog Jivan private sessions are live, with a matched teacher and a short onboarding conversation. You can request English, Vietnamese or Hindi, subject to availability. ${PRIVATE_ONLINE_SINGLE_SUMMARY} The teacher and time are confirmed when you enquire. You can read studio reviews on Google and use the same nine questions with any teacher you are considering.` },
     ],
     related: [
       { label: "Private 1-on-1 Online Yoga", to: "/private-online-yoga" },

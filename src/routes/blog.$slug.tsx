@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { getPostBySlug, relatedPosts, type BlogPost } from "@/lib/blog-posts";
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/blog/$slug")({
     const raw = post.metaDescription ?? post.excerpt;
     const desc = raw.length > 158 ? raw.slice(0, 155) + "…" : raw;
     const title = post.seoTitle ?? post.title;
+    const pageTitle = /[|—–-]\s*Yog Jivan$/i.test(title) ? title : `${title} — Yog Jivan`;
 
     const scripts: Array<{ type: string; children: string }> = [
       { type: "application/ld+json", children: JSON.stringify(breadcrumbSchema(post.title, `/blog/${params.slug}`)) },
@@ -35,7 +37,9 @@ export const Route = createFileRoute("/blog/$slug")({
           datePublished: post.date,
           inLanguage: isVi ? "vi" : "en",
           ...(post.updated ? { dateModified: post.updated } : {}),
-          author: {
+          author: post.editorialTeam ? {
+            "@type": "Organization", name: "Yog Jivan Editorial Team", url: SITE,
+          } : {
             "@type": "Person",
             name: "Master Anil Choudhary",
             jobTitle: "Founder & Lead Yoga Teacher",
@@ -50,7 +54,7 @@ export const Route = createFileRoute("/blog/$slug")({
 
     return {
       meta: [
-        { title: `${title} — Yog Jivan` },
+        { title: pageTitle },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
@@ -85,6 +89,69 @@ function fmt(d: string, isVi?: boolean) {
   return new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 }
 
+function renderInlineText(text: string): ReactNode {
+  const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const parts: (string | ReactNode)[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const label = match[1];
+    let to = match[2];
+    to = to.replace(/^https?:\/\/(?:www\.)?yogjivan\.com/, "");
+    const [pathPart, hashPart] = to.split("#");
+    const isExternal = pathPart.startsWith("http://") || pathPart.startsWith("https://");
+
+    if (isExternal) {
+      parts.push(
+        <a
+          key={match.index}
+          href={to}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[color:var(--gold)] hover:underline"
+        >
+          {label}
+        </a>
+      );
+    } else {
+      const blogMatch = pathPart.match(/^\/blog\/([^/]+)$/);
+      if (blogMatch) {
+        parts.push(
+          <Link
+            key={match.index}
+            to="/blog/$slug"
+            params={{ slug: blogMatch[1] }}
+            hash={hashPart}
+            className="text-[color:var(--gold)] hover:underline"
+          >
+            {label}
+          </Link>
+        );
+      } else {
+        parts.push(
+          <Link
+            key={match.index}
+            to={pathPart as any}
+            hash={hashPart}
+            className="text-[color:var(--gold)] hover:underline"
+          >
+            {label}
+          </Link>
+        );
+      }
+    }
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return parts.length > 0 ? parts : text;
+}
+
 function BlogArticle() {
   const { post } = Route.useLoaderData() as { post: BlogPost };
   const isVi = VI_BLOG_SLUGS.includes(post.slug as any);
@@ -111,7 +178,7 @@ function BlogArticle() {
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">{post.excerpt}</p>
 
         <p className="mt-6 text-sm text-muted-foreground">
-          {isVi ? (
+          {post.editorialTeam ? "By the Yog Jivan Editorial Team" : isVi ? (
             <>
               Tác giả:{" "}
               <Link to="/about" className="text-[color:var(--gold)] hover:underline">
@@ -149,11 +216,61 @@ function BlogArticle() {
         <div className="mt-12 space-y-6">
           {post.body.map((block, i) => {
             if (block.type === "h2") return <h2 key={i} className="font-display text-2xl md:text-3xl leading-tight mt-10">{block.text}</h2>;
-            if (block.type === "p") return <p key={i} className="text-base leading-relaxed text-foreground/85">{block.text}</p>;
+            if (block.type === "p") return <p key={i} className="text-base leading-relaxed text-foreground/85">{renderInlineText(block.text)}</p>;
             if (block.type === "ul") return (
               <ul key={i} className="ml-5 list-disc space-y-2 text-foreground/85">
-                {block.items.map((it, j) => <li key={j} className="leading-relaxed">{it}</li>)}
+                {block.items.map((it, j) => <li key={j} className="leading-relaxed">{renderInlineText(it)}</li>)}
               </ul>
+            );
+            if (block.type === "ol") return (
+              <ol key={i} className="ml-5 list-decimal space-y-2 text-foreground/85">
+                {block.items.map((it, j) => <li key={j} className="leading-relaxed">{renderInlineText(it)}</li>)}
+              </ol>
+            );
+            if (block.type === "table") return (
+              <div key={i} className="my-8">
+                {/* Mobile stacked cards (< md): zero horizontal scroll */}
+                <div className="md:hidden space-y-3">
+                  {block.rows.map((row, rIdx) => (
+                    <div key={rIdx} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 space-y-2">
+                      <div className="text-xs uppercase tracking-[0.2em] font-semibold text-[color:var(--gold)]">
+                        {renderInlineText(row[0])}
+                      </div>
+                      <p className="text-sm text-foreground/85 leading-relaxed">
+                        {renderInlineText(row[1])}
+                      </p>
+                      {row[2] && (
+                        <div className="pt-2 border-t border-white/10 text-xs font-medium">
+                          <span className="text-muted-foreground mr-1.5">{block.headers[2] || "Where to go next"}:</span>
+                          {renderInlineText(row[2])}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Desktop table (md+) */}
+                <div className="hidden md:block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02]">
+                  <table className="w-full text-left text-sm">
+                    <thead className="bg-white/5 border-b border-white/10 text-[0.65rem] uppercase tracking-[0.22em] text-[color:var(--gold)]">
+                      <tr>
+                        {block.headers.map((h, hIdx) => (
+                          <th key={hIdx} className="px-5 py-3.5 font-semibold">{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-white/10">
+                      {block.rows.map((row, rIdx) => (
+                        <tr key={rIdx} className="hover:bg-white/[0.02]">
+                          <td className="px-5 py-4 font-medium text-foreground whitespace-nowrap align-top">{renderInlineText(row[0])}</td>
+                          <td className="px-5 py-4 text-foreground/85 leading-relaxed align-top">{renderInlineText(row[1])}</td>
+                          <td className="px-5 py-4 align-top">{renderInlineText(row[2])}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             );
             if (block.type === "quote") return (
               <blockquote key={i} className="my-8 border-l-2 border-[color:var(--gold)]/60 pl-6 italic text-foreground/90">

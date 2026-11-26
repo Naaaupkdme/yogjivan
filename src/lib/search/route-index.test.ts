@@ -5,6 +5,7 @@ import { generateIndex } from "../../../search-index-plugin";
 import { extractRouteEntry } from "./route-meta";
 import { buildEntries, searchSite } from "@/lib/site-search";
 import { BLOG_POSTS } from "@/lib/blog-posts";
+import { formatUSD, PRIVATE_PRICING } from "@/lib/facts/pricing";
 
 const ROUTES = join(__dirname, "../../routes");
 const index = generateIndex(ROUTES);
@@ -17,6 +18,11 @@ describe("automatic route index", () => {
     for (const p of ["/private-online-yoga", "/online-couples-yoga", "/online-family-yoga", "/corporate", "/school-yoga", "/vi/yoga-doanh-nghiep", "/vi/yoga-hoc-duong"]) {
       expect(paths).toContain(p);
     }
+  });
+
+  it("keeps the Programs search description aligned with the standalone private online rate", () => {
+    const description = index.find((entry) => entry.p === "/programs")?.d;
+    expect(description).toContain(`US${formatUSD(PRIVATE_PRICING.singleUSD)} for ${PRIVATE_PRICING.sessionMinutes} minutes`);
   });
 
   it("excludes redirect, noindex, draft-shop, dynamic and utility routes", () => {
@@ -61,6 +67,7 @@ describe("search queries", () => {
     ["couple", "/online-couples-yoga"],
     ["couples yoga", "/online-couples-yoga"],
     ["family", "/online-family-yoga"],
+    ["family yoga", "/online-family-yoga"],
     ["corporate", "/corporate"],
     ["workplace", "/corporate"],
     ["school", "/school-yoga"],
@@ -71,12 +78,29 @@ describe("search queries", () => {
   it.each([
     ["yoga cặp đôi", "/online-couples-yoga"],
     ["gia đình", "/online-family-yoga"],
+    ["gia dinh", "/online-family-yoga"],
     ["doanh nghiệp", "/vi/yoga-doanh-nghiep"],
     ["doanh nghiep", "/vi/yoga-doanh-nghiep"],
     ["học đường", "/vi/yoga-hoc-duong"],
     ["trẻ em", "/vi/yoga-hoc-duong"],
     ["1 kèm 1", "/vi/yoga-1-kem-1-online"],
   ])("VI %s → %s", (q, href) => expect(top(q, "vi")[0]).toBe(href));
+
+  it("finds the family booking guide when searching its full title", () => {
+    expect(top("Which family yoga booking fits your household?")[0]).toBe("/blog/choose-family-yoga-booking");
+  });
+
+  it("finds the couples booking guide when searching its full title", () => {
+    expect(top("How to plan your first month of online yoga together")[0]).toBe("/blog/planning-online-yoga-together");
+  });
+
+  it("finds the camera setup guide for informational camera query", () => {
+    expect(top("how to set up a camera for online yoga")[0]).toBe("/blog/online-yoga-camera-setup");
+  });
+
+  it("finds the two-person camera guide when searching its full title", () => {
+    expect(top("How to Set Up an Online Yoga Class for Two at Home")[0]).toBe("/blog/online-yoga-for-two-camera-setup");
+  });
 
   it("returns nothing for gibberish", () => {
     expect(searchSite("qzxwv plorbt", entries)).toEqual([]);
