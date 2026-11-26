@@ -483,17 +483,23 @@ function PrivateYogaPage() {
           Every session is led by an experienced, certified Yog Jivan yoga teacher.
         </p>
         <div className="mt-5 flex flex-wrap items-center gap-4">
-          <button
-            type="button"
-            onClick={() => {
-              const el = document.getElementById("private-yoga-enquiry-form");
-              el?.scrollIntoView({ behavior: "smooth" });
+          <a
+            href="#private-enquiry"
+            onClick={(e) => {
+              const el = document.getElementById("private-enquiry");
+              if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth" });
+                window.history.pushState(null, "", "#private-enquiry");
+                const nameInput = document.getElementById("pv-name") as HTMLInputElement | null;
+                nameInput?.focus();
+              }
             }}
             data-cta-location="private_yoga_hero"
             className="btn-gold"
           >
             Enquire about private yoga
-          </button>
+          </a>
           <button
             type="button"
             onClick={() => {

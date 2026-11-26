@@ -273,6 +273,11 @@ function SchoolYogaPage() {
                   <span><strong>Age bands:</strong> Activities and pacing customized for Preschool, Primary, or Middle school.</span>
                 </li>
               </ul>
+              <div className="mt-6 border-t border-white/10 pt-4">
+                <Link to="/blog/$slug" params={{ slug: "chuan-bi-buoi-yoga-hoc-duong-dau-tien" }} hrefLang="vi" className="text-sm text-[color:var(--gold)] underline underline-offset-4">
+                  Read the school yoga preparation guide in Vietnamese
+                </Link>
+              </div>
             </div>
           </div>
         </div>

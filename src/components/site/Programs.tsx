@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import { STUDIO_PRICING_NOTE } from "@/lib/facts/pricing";
+import { formatUSD, PRIVATE_PRICING, STUDIO_PRICING_NOTE } from "@/lib/facts/pricing";
 
 // Studio (VND) rates are deliberately NOT published — see src/lib/facts/pricing.ts.
 // Never reintroduce hard-coded VND price cards here.
@@ -16,8 +16,11 @@ const STUDIO = {
   ],
 };
 
+const privateOnlinePrice = `US${formatUSD(PRIVATE_PRICING.singleUSD)}`;
+const privateSessionMinutes = PRIVATE_PRICING.sessionMinutes;
+
 const PRIVATE_PERKS = [
-  "Live 60-minute private sessions with a matched Yog Jivan teacher",
+  `Live ${privateSessionMinutes}-minute private sessions with a matched Yog Jivan teacher`,
   "Sessions are generally kept with the same matched teacher for continuity",
   "Practice adapted to your experience and goals",
   "Real-time posture guidance",
@@ -35,9 +38,9 @@ export function Programs() {
             Begin your <span className="italic text-gold-gradient">journey</span> — your way.
           </h2>
           <p className="mt-5 text-muted-foreground md:text-lg">
-            Yog Jivan offers studio group classes in the Hai Duong urban area, private 60-minute yoga in studio or
-            online by enquiry, and live small-group online classes for up to 8 students. Studio and private-session
-            rates are shared directly and confirmed before you decide.
+            Explore studio group classes in the Hai Duong urban area, private one-to-one yoga and live small-group
+            online classes for up to 8 students. A standalone {privateSessionMinutes}-minute private online session
+            costs {privateOnlinePrice}. Ask us directly for studio rates.
           </p>
         </div>
 
@@ -86,9 +89,9 @@ export function Programs() {
             <p className="mt-3 max-w-md text-sm text-muted-foreground">Bespoke sessions designed entirely around you, with a Yog Jivan teacher matched to your goals.</p>
 
             <div className="mt-8 rounded-2xl border border-[color:var(--gold)]/40 bg-[color:var(--onyx)]/60 p-6">
-              <div className="font-display text-2xl leading-none text-foreground">From US$25 / session</div>
+              <div className="font-display text-2xl leading-none text-foreground">{privateOnlinePrice} / standalone online session</div>
               <p className="mt-2 text-xs font-semibold text-[color:var(--gold)]">
-                Single private session · US$25 · 60 minutes
+                Live private online yoga · {privateSessionMinutes} minutes
               </p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Private sessions are arranged around your goals, preferred format and scheduling needs, and are taught

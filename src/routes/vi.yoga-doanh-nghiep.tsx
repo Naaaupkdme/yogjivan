@@ -362,10 +362,9 @@ function ViCorporatePage() {
                   <span><strong>Ngôn ngữ hỗ trợ:</strong> Giảng dạy tiếng Việt hoặc tiếng Anh tùy theo đội ngũ.</span>
                 </li>
               </ul>
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">Cần chuẩn bị gì chi tiết:</span>
-                <Link to="/blog/$slug" params={{ slug: "checklist-to-chuc-buoi-yoga-tai-van-phong" }} className="text-xs text-[color:var(--gold)] hover:underline">
-                  Xem hướng dẫn chuẩn bị văn phòng &rarr;
+              <div className="mt-6 border-t border-white/10 pt-4">
+                <Link to="/blog/$slug" params={{ slug: "checklist-to-chuc-buoi-yoga-tai-van-phong" }} hrefLang="vi" className="text-sm text-[color:var(--gold)] underline underline-offset-4">
+                  Xem hướng dẫn chuẩn bị buổi yoga tại văn phòng
                 </Link>
               </div>
             </div>

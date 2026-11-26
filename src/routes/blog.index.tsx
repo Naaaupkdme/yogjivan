@@ -62,7 +62,7 @@ function BlogIndex() {
         eyebrow="The Journal"
         title="Notes from the"
         accent="practice."
-        sub="Practical guides on starting yoga, live online classes, private one-to-one sessions and everyday mobility — written by Master Anil Choudhary."
+        sub="Practical guides on starting yoga, live online classes, private one-to-one sessions and everyday mobility from Master Anil Choudhary and the Yog Jivan team."
       />
 
       <section className="section-tight">
@@ -82,8 +82,7 @@ function BlogIndex() {
               <Link to="/blog/$slug" params={{ slug: "private-online-yoga-vs-group-classes" }} className="text-[color:var(--gold)] hover:underline">
                 private and small-group formats compare
               </Link>
-              , and how to move more comfortably if you sit at a desk all day. Every article is written by Master Anil
-              Choudhary, Founder &amp; Lead Yoga Teacher, and links to the relevant class or programme page.
+              , and how to move more comfortably if you sit at a desk all day. Each guide links to the relevant class or programme page.
             </p>
             <p className="mt-4">
               Looking for figures rather than practice guidance? Read our citation-ready review of{" "}

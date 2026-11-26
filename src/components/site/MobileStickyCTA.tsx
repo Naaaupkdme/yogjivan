@@ -100,7 +100,9 @@ export function MobileStickyCTA() {
               const el = document.getElementById(PAGE_PRIMARY_CTA[clean].targetId);
               if (el) {
                 el.scrollIntoView({ behavior: "smooth", block: "start" });
-                const target = el.querySelector<HTMLElement>("input, select, textarea, button") ?? el;
+                const target = el.querySelector<HTMLElement>(
+                  ':is(input:not([type="hidden"]), select, textarea, button):not(:disabled):not([tabindex="-1"]):not([aria-hidden="true"] *)',
+                ) ?? el;
                 window.setTimeout(() => target.focus({ preventScroll: true }), 350);
               }
             }}

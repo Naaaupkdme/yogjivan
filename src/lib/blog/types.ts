@@ -2,11 +2,19 @@
 
 export type BlogFaq = { q: string; a: string };
 
+export type BlogTable = {
+  type: "table";
+  headers: string[];
+  rows: string[][];
+};
+
 export type BlogBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
   | { type: "ul"; items: string[] }
-  | { type: "quote"; text: string; cite?: string };
+  | { type: "ol"; items: string[] }
+  | { type: "quote"; text: string; cite?: string }
+  | BlogTable;
 
 /** Internal organisation only — never rendered as a keyword blob. */
 export type BlogCluster =
@@ -27,6 +35,7 @@ export type BlogCta = {
 };
 
 export type BlogPost = {
+  editorialTeam?: boolean;
   slug: string;
   cat: string;
   /** Internal cluster label used for related-article selection and search tuning. */

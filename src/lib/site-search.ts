@@ -204,7 +204,7 @@ export function searchSite(
     // Multi-word queries must match most of their words directly unless an alias carried them.
     if (tokens.length > 1 && hits < Math.ceil(tokens.length / 2) && score < 40) continue;
     if (score <= 0) continue;
-    if (!p.e.href.startsWith("/blog/")) score *= 1.25;
+    if (!p.e.href.startsWith("/blog/")) score *= 1.6;
     if (locale && p.e.locale === locale) score *= 1.3;
     results.push({ ...p.e, score });
   }

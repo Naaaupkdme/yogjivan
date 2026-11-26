@@ -1,6 +1,7 @@
 // Blog posts data. Add entries to the cluster files below and they appear
 // automatically on /blog, /blog/$slug, sitewide search and sitemap.xml.
 
+import { BOOKING_GUIDES } from "@/lib/blog/booking-guides";
 import { LEGACY_POSTS } from "@/lib/blog/legacy-posts";
 import { GROWTH_POSTS } from "@/lib/blog/growth-posts";
 import { PRIVATE_POSTS } from "@/lib/blog/private-posts";
@@ -9,7 +10,7 @@ import type { BlogPost } from "@/lib/blog/types";
 
 export type { BlogPost, BlogFaq, BlogBlock, BlogCluster, BlogCta } from "@/lib/blog/types";
 
-export const BLOG_POSTS: BlogPost[] = [...BUYER_POSTS, ...PRIVATE_POSTS, ...GROWTH_POSTS, ...LEGACY_POSTS];
+export const BLOG_POSTS: BlogPost[] = [...BOOKING_GUIDES, ...BUYER_POSTS, ...PRIVATE_POSTS, ...GROWTH_POSTS, ...LEGACY_POSTS];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((p) => p.slug === slug);
