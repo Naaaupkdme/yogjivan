@@ -3,6 +3,7 @@ import { masterImages } from "@/lib/images";
 import { PUBLIC_TRUST } from "@/lib/facts/trust";
 import { CONTACT } from "@/lib/facts/contact";
 import { Button } from "@/components/ui/button";
+import collaborationPortrait from "@/assets/leadership/sonu-ghanghas-collaboration.webp.asset.json";
 
 export function Leadership({ locale = "en", detailed = false }: { locale?: "en" | "vi"; detailed?: boolean }) {
   const vi = locale === "vi";
@@ -40,10 +41,13 @@ export function Leadership({ locale = "en", detailed = false }: { locale?: "en" 
             </div>
           </article>
         </div>
-        {detailed && <div className="mt-10 border-t border-border pt-8">
+        {detailed && <div className="mt-10 grid items-center gap-8 border-t border-border pt-8 md:grid-cols-[minmax(0,1fr)_280px]">
+          <div>
           <h2 className="font-display text-2xl">{vi ? "Hợp tác kinh doanh" : "Business collaboration"}</h2>
           <p className="mt-4 max-w-3xl leading-relaxed text-muted-foreground">{vi ? "Trao đổi với đội ngũ Yog Jivan về hợp tác website, tìm kiếm hoặc thiết kế quy trình làm việc. Đội ngũ sẽ chuyển yêu cầu của bạn đến người phù hợp." : "Speak with the Yog Jivan team about website, search or workflow-design collaboration. The team will direct your enquiry to the right person."}</p>
           <Button asChild className="mt-6"><a href={`mailto:${CONTACT.email}`}>{vi ? "Liên hệ về hợp tác" : "Discuss a collaboration"}</a></Button>
+          </div>
+          <img src={collaborationPortrait.url} width={640} height={800} sizes="(min-width: 768px) 280px, calc(100vw - 48px)" alt={vi ? "Chân dung Sonu Ghanghas mặc áo sơ mi xanh ô liu bên cửa sổ" : "Sonu Ghanghas wearing an olive shirt beside a window"} className="aspect-[4/5] w-full rounded-lg object-contain" loading="lazy" decoding="async" />
         </div>}
       </div>
     </section>
