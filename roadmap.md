@@ -15,5 +15,5 @@
 - [x] Telegram + Google Sheets connectors and private group chat configured (confirmed completed in current operating context)
 - [ ] BLOCKED (user): approve privacy-policy copy; approve publish; coordinate one synthetic E2E lead
 
-- [ ] Business-first Sonu bio EN/VI (profile, Home summary, Person schema, llms)
-- [ ] Compact Home-only leadership cards (/ and /vi), About layout unchanged
+- [x] Business-first Sonu bio EN/VI (profile, Home summary, Person schema, llms)
+- [x] Compact Home-only leadership cards (/ and /vi), About layout unchanged

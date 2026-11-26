@@ -26,6 +26,6 @@ export function sonuSchema(locale: "en" | "vi") {
 /** Sonu's owner-confirmed project WhatsApp; used only in his collaboration block (never metadata/JSON-LD). */
 const SONU_WA = "917988599389";
 export const SONU_PROJECT_WHATSAPP = {
-  en: `https://wa.me/${SONU_WA}?text=${encodeURIComponent("Hello Sonu, I'd like to discuss a website or automation project.")}`,
-  vi: `https://wa.me/${SONU_WA}?text=${encodeURIComponent("Xin chào Sonu, tôi muốn trao đổi về một dự án website hoặc tự động hóa.")}`,
+  en: `https://wa.me/${SONU_WA}?text=${encodeURIComponent("Hello Sonu, I'd like to discuss a website, growth or automation project.")}`,
+  vi: `https://wa.me/${SONU_WA}?text=${encodeURIComponent("Xin chào Sonu, tôi muốn trao đổi về một dự án website, tăng trưởng hoặc tự động hóa.")}`,
 };

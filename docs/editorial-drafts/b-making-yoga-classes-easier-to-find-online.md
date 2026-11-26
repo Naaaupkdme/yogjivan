@@ -37,6 +37,13 @@ The site search is built automatically from each public page's title and descrip
 ## 6. Internal links
 Each page links to the reader's next step (e.g. from a beginner guide to the class that suits beginners), using descriptive link text rather than "click here".
 
+## 6b. Meaningful menu names
+Menu labels use the words students use ("Private Online Yoga", "Couples Yoga", "Family Yoga", "Corporate Yoga", "School / Kids Yoga"; VI: "Yoga 1 kèm 1", "Yoga cặp đôi"…), grouped so the main choices are visible without opening many levels.
+*Proof needed:* screenshot of the open desktop and mobile menu.
+
+## 6c. A first-time walk-through
+Ask someone who has never seen the site to find (1) a private online class, (2) the studio nearest to them, (3) how to contact the team — in English and in Vietnamese. Note where they hesitate and fix that label or link first.
+
 ## 7. What to avoid
 Keyword-stuffed pages, copied location pages, invented reviews or statistics, and automatic translations published without review.
 
@@ -51,6 +58,9 @@ Keyword-stuffed pages, copied location pages, invented reviews or statistics, an
 ## Internal links (verified live URLs)
 - Sonu's profile: https://www.yogjivan.com/about#sonu-ghanghas
 - /private-online-yoga, /online-yoga-classes, /vi/lop-yoga-online, /vi/yoga-1-kem-1-online
+
+## Reciprocal profile link (once public)
+When this article is published, add one link to it from the "Helping students find the right class" item in Sonu's Selected Work on /about#sonu-ghanghas (and the VI equivalent when translated) — nowhere else.
 
 ## Screenshot / proof list
 - Header search open with results for an EN and a VI query

@@ -47,6 +47,9 @@ Label every example like this in the published article. Do not show real names, 
 ## 5. Human hand-off
 Automation can sort, remind and summarise. A person should: answer pricing nuances, discuss health concerns (and refer to a medical professional where appropriate), agree schedules, and close the conversation. Make the hand-off visible: "A member of our team will reply."
 
+## Suggested redacted diagram
+A simple left-to-right diagram (no names, numbers or message text): Website form / WhatsApp / Zalo → one enquiry list → status + named owner → next action with date → human reply → outcome. Label it "Illustrative workflow".
+
 ## 6. Checklist
 - [ ] One place where all enquiries land
 - [ ] Honest confirmation message

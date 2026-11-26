@@ -36,7 +36,11 @@ describe("leadership identity and discovery", () => {
     ]);
   });
   it("routes scoped leadership aliases to the localized Sonu anchor only on exact queries", () => {
-    const entries = buildEntries(generateIndex(join(__dirname, "../routes")));
+    // Synthetic pages: avoids racing the route-index test's temporary fixture file.
+    const entries = buildEntries([
+      { p: "/online-couples-yoga", t: "Online Couples Yoga", d: "Private partner sessions for two adults.", l: "en", k: "" },
+      { p: "/contact", t: "Contact Yog Jivan", d: "Consultation form and contact options.", l: "en", k: "form" },
+    ] as Parameters<typeof buildEntries>[0]);
     for (const q of ["Sonu Ghanghas", "Sonu", "co-founder", "co founder", "cofounder", "co form", "Dong sang lap", "đồng sáng lập"]) {
       expect(searchSite(q, entries, { locale: "en" })[0]?.href).toBe("/about#sonu-ghanghas");
       expect(searchSite(q, entries, { locale: "vi" })[0]?.href).toBe("/vi/gioi-thieu#sonu-ghanghas");
