@@ -3,8 +3,12 @@ import portrait800 from "@/assets/leadership/sonu-ghanghas-co-founder-800.webp.a
 
 export const SONU_PORTRAIT = { small: portrait480.url, large: portrait800.url, width: 800, height: 1000 };
 export const SONU_BIO = {
-  en: "Sonu works on the systems behind Yog Jivan’s online experience. His work covers website development and improvement, SEO, and how enquiries move from the site to the people who can help. He also designs AI-agent workflows and automations for tasks such as organising incoming requests and making follow-ups easier to manage. He has worked with more than ten companies and has practised yoga for five years.",
-  vi: "Sonu phụ trách các hệ thống hỗ trợ trải nghiệm trực tuyến của Yog Jivan. Công việc của anh bao gồm phát triển và cải thiện website, SEO, cùng quy trình chuyển yêu cầu từ website đến đội ngũ có thể hỗ trợ. Anh cũng thiết kế quy trình làm việc với tác tử AI và các hệ thống tự động hóa, chẳng hạn như sắp xếp yêu cầu mới và giúp quản lý việc liên hệ lại thuận tiện hơn. Anh đã làm việc với hơn mười công ty và có năm năm thực hành yoga.",
+  en: "Sonu Ghanghas is a co-founder of Yog Jivan. He focuses on how the studio grows and how people experience it, from finding a class that fits to getting a clear answer when they reach out. He has worked with more than ten companies, and five years of personal yoga practice give him a student’s perspective on the business. He welcomes conversations with studio owners, agencies and teams working on better ways to reach and support their customers.",
+  vi: "Sonu Ghanghas là đồng sáng lập của Yog Jivan. Anh tập trung vào việc phát triển studio và trải nghiệm của mọi người với Yog Jivan, từ lúc tìm được lớp học phù hợp đến khi nhận được câu trả lời rõ ràng mỗi khi liên hệ. Anh đã làm việc với hơn mười công ty, và năm năm tự tập yoga mang lại cho anh góc nhìn của một học viên về công việc kinh doanh. Anh sẵn sàng trao đổi với chủ studio, agency và các đội ngũ đang tìm cách tốt hơn để tiếp cận và hỗ trợ khách hàng.",
+};
+export const SONU_SUMMARY = {
+  en: "Sonu focuses on growing Yog Jivan and making it easier for students and partners to connect with the studio.",
+  vi: "Sonu tập trung phát triển Yog Jivan và giúp học viên, đối tác kết nối với studio dễ dàng hơn.",
 };
 export function sonuSchema(locale: "en" | "vi") {
   return {
@@ -19,3 +23,9 @@ export function sonuSchema(locale: "en" | "vi") {
     worksFor: { "@id": "https://www.yogjivan.com/#organization" },
   };
 }
+/** Sonu's owner-confirmed project WhatsApp; used only in his collaboration block (never metadata/JSON-LD). */
+const SONU_WA = "917988599389";
+export const SONU_PROJECT_WHATSAPP = {
+  en: `https://wa.me/${SONU_WA}?text=${encodeURIComponent("Hello Sonu, I'd like to discuss a website or automation project.")}`,
+  vi: `https://wa.me/${SONU_WA}?text=${encodeURIComponent("Xin chào Sonu, tôi muốn trao đổi về một dự án website hoặc tự động hóa.")}`,
+};

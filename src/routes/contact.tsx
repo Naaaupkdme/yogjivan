@@ -30,6 +30,13 @@ export const Route = createFileRoute("/contact")({
     <>
       <PageHero eyebrow="Contact" title="Begin the" accent="conversation." sub="A short message is all we need to design your next step." />
       <ContactSection />
+      <section aria-labelledby="project-enquiries" className="container mx-auto max-w-3xl px-6 pb-20 text-center">
+        <h2 id="project-enquiries" className="font-display text-xl">Website, SEO or automation projects</h2>
+        <p className="mt-3 text-sm text-muted-foreground">
+          Not a class booking? For website, search or enquiry-workflow projects, see{" "}
+          <a href="/about#sonu-ghanghas" className="text-primary underline underline-offset-4">Sonu Ghanghas’s project collaboration profile</a>.
+        </p>
+      </section>
     </>
   ),
 });

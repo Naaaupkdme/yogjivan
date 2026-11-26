@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { join } from "node:path";
 import { generateIndex } from "../../search-index-plugin";
 import { buildEntries, searchSite } from "@/lib/site-search";
-import { sonuSchema } from "@/lib/leadership";
+import { sonuSchema, SONU_PROJECT_WHATSAPP } from "@/lib/leadership";
 import { buildSitemapEntries } from "@/lib/sitemap-entries";
 import { BLOG_POSTS } from "@/lib/blog-posts";
 import { hreflangLinks, PAIR_ABOUT, languageSwitchTarget } from "@/lib/locale-routes";
@@ -21,8 +21,8 @@ describe("leadership identity and discovery", () => {
   it("discovers localized leadership through existing route metadata, without a profile route", () => {
     const routes = generateIndex(join(__dirname, "../routes"));
     const entries = buildEntries(routes);
-    expect(searchSite("Sonu Ghanghas", entries, { locale: "en" })[0]?.href).toBe("/about");
-    expect(searchSite("Sonu Ghanghas", entries, { locale: "vi" })[0]?.href).toBe("/vi/gioi-thieu");
+    expect(searchSite("Sonu Ghanghas", entries, { locale: "en" }).map((r) => r.href)).toContain("/about");
+    expect(searchSite("Sonu Ghanghas", entries, { locale: "vi" }).map((r) => r.href)).toContain("/vi/gioi-thieu");
     const sitemap = buildSitemapEntries(routes, BLOG_POSTS);
     for (const path of ["/about", "/vi/gioi-thieu"]) {
       expect(sitemap.filter((entry) => entry.path === path)).toHaveLength(1);
@@ -34,5 +34,21 @@ describe("leadership identity and discovery", () => {
     expect(hreflangLinks(PAIR_ABOUT).map((link) => link.href)).toEqual([
       "https://www.yogjivan.com/about", "https://www.yogjivan.com/vi/gioi-thieu", "https://www.yogjivan.com/about",
     ]);
+  });
+  it("routes scoped leadership aliases to the localized Sonu anchor only on exact queries", () => {
+    const entries = buildEntries(generateIndex(join(__dirname, "../routes")));
+    for (const q of ["Sonu Ghanghas", "Sonu", "co-founder", "co founder", "cofounder", "co form", "Dong sang lap", "đồng sáng lập"]) {
+      expect(searchSite(q, entries, { locale: "en" })[0]?.href).toBe("/about#sonu-ghanghas");
+      expect(searchSite(q, entries, { locale: "vi" })[0]?.href).toBe("/vi/gioi-thieu#sonu-ghanghas");
+    }
+    for (const q of ["form", "contact form", "couples yoga", "private online yoga"]) {
+      expect(searchSite(q, entries, { locale: "en" }).some((r) => r.href.includes("#sonu"))).toBe(false);
+    }
+    expect(searchSite("couples yoga", entries, { locale: "en" })[0]?.href).toBe("/online-couples-yoga");
+  });
+  it("uses the owner-confirmed project WhatsApp with encoded locale messages", () => {
+    expect(SONU_PROJECT_WHATSAPP.en).toMatch(/^https:\/\/wa\.me\/917988599389\?text=Hello%20Sonu/);
+    expect(decodeURIComponent(SONU_PROJECT_WHATSAPP.vi)).toContain("dự án website");
+    expect(JSON.stringify(sonuSchema("en"))).not.toContain("7988599389");
   });
 });

@@ -170,6 +170,26 @@ function prepare(entries: SearchEntry[]): Prepared[] {
   return p;
 }
 
+/**
+ * Scoped leadership section aliases: only an exact normalized query triggers
+ * this result, so generic words like "form" never fuzzily match the profile.
+ */
+export const LEADERSHIP_ALIASES = new Set(
+  ["Sonu Ghanghas", "Sonu", "co-founder", "co founder", "cofounder", "co form", "Dong sang lap", "đồng sáng lập"].map(normalize),
+);
+export const LEADERSHIP_RESULTS: Record<"en" | "vi", SearchEntry> = {
+  en: {
+    id: "section:sonu-ghanghas:en", title: "Sonu Ghanghas — Co-founder & Growth Partner",
+    description: "Leadership profile: website, SEO and enquiry-workflow work behind Yog Jivan.",
+    category: "Leadership", href: "/about#sonu-ghanghas", locale: "en", text: "",
+  },
+  vi: {
+    id: "section:sonu-ghanghas:vi", title: "Sonu Ghanghas — Đồng sáng lập & phụ trách phát triển",
+    description: "Hồ sơ lãnh đạo: website, SEO và quy trình xử lý yêu cầu của Yog Jivan.",
+    category: "Lãnh đạo", href: "/vi/gioi-thieu#sonu-ghanghas", locale: "vi", text: "",
+  },
+};
+
 export function searchSite(
   query: string,
   entries: SearchEntry[],
@@ -208,7 +228,9 @@ export function searchSite(
     if (locale && p.e.locale === locale) score *= 1.3;
     results.push({ ...p.e, score });
   }
-  return results.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title)).slice(0, limit);
+  const sorted = results.sort((a, b) => b.score - a.score || a.title.localeCompare(b.title));
+  if (LEADERSHIP_ALIASES.has(q)) sorted.unshift({ ...LEADERSHIP_RESULTS[locale ?? "en"], score: 1000 });
+  return sorted.slice(0, limit);
 }
 
 /** Lazily load the generated page index + blog registry (kept out of the main bundle). */
