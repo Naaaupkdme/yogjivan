@@ -1,4 +1,5 @@
 # Roadmap — Phase 1 lead automation (no publish)
+- [x] Sonu profile: original responsive portraits, bilingual About/home/footer, scoped schema, llms and sitemap checks; local preview QA complete, hosted preview requires editor access
 - [x] Surgical notes fix: shared 300-character notes; Corporate/School metadata persistence; isolated submission/privacy regressions
 - [x] Real-photo pass: inspect eight photos, store matched assets, exclude health-claim card back
 - [x] Real-photo pass: responsive catalogue/detail photos, image/layout/regression QA, unpublished report in PHOTO_PASS_QA.md

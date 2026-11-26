@@ -3,14 +3,17 @@ import { PageHero } from "@/components/site/PageHero";
 import { About } from "@/components/site/About";
 import { masterImages, socialImageMeta } from "@/lib/images";
 import { breadcrumbSchema } from "@/lib/schema";
+import { Leadership } from "@/components/site/Leadership";
+import { sonuSchema } from "@/lib/leadership";
+import { hreflangLinks, PAIR_ABOUT } from "@/lib/locale-routes";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Master Anil Choudhary — Founder of Yog Jivan Hai Duong" },
-      { name: "description", content: "Meet Master Anil Choudhary, founder and lead yoga teacher of Yog Jivan — 12+ years teaching authentic Indian yoga in Hai Duong and live online." },
-      { property: "og:title", content: "About Master Anil Choudhary — Yog Jivan" },
-      { property: "og:description", content: "Authentic Indian yoga rooted in tradition, taught in Hai Duong, Vietnam by Master Anil Choudhary." },
+      { title: "About Master Anil & Sonu Ghanghas — Yog Jivan Leadership" },
+      { name: "description", content: "Meet Master Anil, founder and lead yoga teacher, and Sonu Ghanghas, co-founder & growth partner working on Yog Jivan’s website, search and enquiry workflows." },
+      { property: "og:title", content: "Master Anil & Sonu Ghanghas — Yog Jivan Leadership" },
+      { property: "og:description", content: "Meet the people behind Yog Jivan’s teaching and online experience: Master Anil and Sonu Ghanghas." },
       { property: "og:url", content: "https://www.yogjivan.com/about" },
       { property: "og:type", content: "website" },
       ...socialImageMeta(masterImages.founderPortrait),
@@ -18,10 +21,13 @@ export const Route = createFileRoute("/about")({
       { name: "twitter:title", content: "About Master Anil Choudhary — Yog Jivan" },
       { name: "twitter:description", content: "Authentic Indian yoga rooted in tradition, taught in Hai Duong, Vietnam by Master Anil Choudhary." },
     ],
-    links: [{ rel: "canonical", href: "https://www.yogjivan.com/about" }],
+    links: [{ rel: "canonical", href: "https://www.yogjivan.com/about" }, ...hreflangLinks(PAIR_ABOUT)],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify(breadcrumbSchema("About", "/about")),
+    }, {
+      type: "application/ld+json",
+      children: JSON.stringify(sonuSchema("en")),
     }],
   }),
   component: AboutPage,
@@ -65,6 +71,7 @@ function AboutPage() {
     <>
       <PageHero eyebrow="The Founder" title="A life devoted to the" accent="path." sub="Master Anil Choudhary brings 12+ years of authentic Indian yoga teaching, careful progression and safety-first guidance — and sets the teaching standard every Yog Jivan teacher follows." image={masterImages.meditationPortrait} />
       <AnswerCapsule />
+      <Leadership detailed />
       <About />
       <section className="section-pad-sm">
         <div className="container-luxe">

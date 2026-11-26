@@ -4,6 +4,7 @@ import { hreflangLinks, PAIR_HOME, SITE_ORIGIN } from "@/lib/locale-routes";
 import { ONLINE_CLASS } from "@/lib/facts/online-class";
 import { AREA_PHRASE_VI } from "@/lib/facts/vi-copy";
 import { CONTACT } from "@/lib/facts/contact";
+import { Leadership } from "@/components/site/Leadership";
 
 const CANONICAL = `${SITE_ORIGIN}/vi`;
 const TITLE = "Yog Jivan Việt Nam | Yoga 1 Kèm 1, Lớp Online & Hải Dương";
@@ -89,6 +90,7 @@ function ViHome() {
       </ViSection>
 
       <ViTrustStrip />
+      <Leadership locale="vi" />
 
       <ViSection heading="Người sáng lập và đội ngũ giáo viên">
         <p>

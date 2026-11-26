@@ -14,6 +14,7 @@ export const SITE_ORIGIN = "https://www.yogjivan.com";
 export type LocalePair = { en: string; vi: string };
 
 export const PAIR_HOME: LocalePair = { en: "/", vi: "/vi" };
+export const PAIR_ABOUT: LocalePair = { en: "/about", vi: "/vi/gioi-thieu" };
 export const PAIR_ONLINE: LocalePair = {
   en: "/online-yoga-classes",
   vi: "/vi/lop-yoga-online",
@@ -35,6 +36,7 @@ export const PAIR_KIDS: LocalePair = PAIR_SCHOOL;
 
 export const LOCALE_PAIRS: readonly LocalePair[] = [
   PAIR_HOME,
+  PAIR_ABOUT,
   PAIR_ONLINE,
   PAIR_PRIVATE,
   PAIR_CORPORATE,
@@ -44,6 +46,7 @@ export const LOCALE_PAIRS: readonly LocalePair[] = [
 /** All indexable Vietnamese routes (used by the sitemap). */
 export const VI_ROUTES = [
   "/vi",
+  "/vi/gioi-thieu",
   "/vi/yoga-hai-duong",
   "/vi/lop-yoga-online",
   "/vi/yoga-1-kem-1-online",

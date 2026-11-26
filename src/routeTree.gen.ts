@@ -54,6 +54,7 @@ import { Route as ResearchYogaParticipationStatisticsRouteImport } from './route
 import { Route as ViIndexRouteImport } from './routes/vi.index'
 import { Route as ViCuaHangRouteImport } from './routes/vi.cua-hang'
 import { Route as ViDoiTacSanPhamRouteImport } from './routes/vi.doi-tac-san-pham'
+import { Route as ViGioiThieuRouteImport } from './routes/vi.gioi-thieu'
 import { Route as ViLopYogaOnlineRouteImport } from './routes/vi.lop-yoga-online'
 import { Route as ViYoga1Kem1OnlineRouteImport } from './routes/vi.yoga-1-kem-1-online'
 import { Route as ViYogaDoanhNghiepRouteImport } from './routes/vi.yoga-doanh-nghiep'
@@ -302,6 +303,11 @@ const ViDoiTacSanPhamRoute = ViDoiTacSanPhamRouteImport.update({
   path: '/vi/doi-tac-san-pham',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ViGioiThieuRoute = ViGioiThieuRouteImport.update({
+  id: '/vi/gioi-thieu',
+  path: '/vi/gioi-thieu',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ViLopYogaOnlineRoute = ViLopYogaOnlineRouteImport.update({
   id: '/vi/lop-yoga-online',
   path: '/vi/lop-yoga-online',
@@ -445,6 +451,7 @@ export interface FileRoutesByFullPath {
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/cua-hang': typeof ViCuaHangRouteWithChildren
   '/vi/doi-tac-san-pham': typeof ViDoiTacSanPhamRoute
+  '/vi/gioi-thieu': typeof ViGioiThieuRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
   '/vi/yoga-doanh-nghiep': typeof ViYogaDoanhNghiepRoute
@@ -510,6 +517,7 @@ export interface FileRoutesByTo {
   '/go/whatsapp': typeof GoWhatsappRoute
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/doi-tac-san-pham': typeof ViDoiTacSanPhamRoute
+  '/vi/gioi-thieu': typeof ViGioiThieuRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
   '/vi/yoga-doanh-nghiep': typeof ViYogaDoanhNghiepRoute
@@ -577,6 +585,7 @@ export interface FileRoutesById {
   '/research/yoga-participation-statistics': typeof ResearchYogaParticipationStatisticsRoute
   '/vi/cua-hang': typeof ViCuaHangRouteWithChildren
   '/vi/doi-tac-san-pham': typeof ViDoiTacSanPhamRoute
+  '/vi/gioi-thieu': typeof ViGioiThieuRoute
   '/vi/lop-yoga-online': typeof ViLopYogaOnlineRoute
   '/vi/yoga-1-kem-1-online': typeof ViYoga1Kem1OnlineRoute
   '/vi/yoga-doanh-nghiep': typeof ViYogaDoanhNghiepRoute
@@ -645,6 +654,7 @@ export interface FileRouteTypes {
     | '/research/yoga-participation-statistics'
     | '/vi/cua-hang'
     | '/vi/doi-tac-san-pham'
+    | '/vi/gioi-thieu'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
     | '/vi/yoga-doanh-nghiep'
@@ -710,6 +720,7 @@ export interface FileRouteTypes {
     | '/go/whatsapp'
     | '/research/yoga-participation-statistics'
     | '/vi/doi-tac-san-pham'
+    | '/vi/gioi-thieu'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
     | '/vi/yoga-doanh-nghiep'
@@ -776,6 +787,7 @@ export interface FileRouteTypes {
     | '/research/yoga-participation-statistics'
     | '/vi/cua-hang'
     | '/vi/doi-tac-san-pham'
+    | '/vi/gioi-thieu'
     | '/vi/lop-yoga-online'
     | '/vi/yoga-1-kem-1-online'
     | '/vi/yoga-doanh-nghiep'
@@ -843,6 +855,7 @@ export interface RootRouteChildren {
   ResearchYogaParticipationStatisticsRoute: typeof ResearchYogaParticipationStatisticsRoute
   ViCuaHangRoute: typeof ViCuaHangRouteWithChildren
   ViDoiTacSanPhamRoute: typeof ViDoiTacSanPhamRoute
+  ViGioiThieuRoute: typeof ViGioiThieuRoute
   ViLopYogaOnlineRoute: typeof ViLopYogaOnlineRoute
   ViYoga1Kem1OnlineRoute: typeof ViYoga1Kem1OnlineRoute
   ViYogaDoanhNghiepRoute: typeof ViYogaDoanhNghiepRoute
@@ -1181,6 +1194,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ViDoiTacSanPhamRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vi/gioi-thieu': {
+      id: '/vi/gioi-thieu'
+      path: '/vi/gioi-thieu'
+      fullPath: '/vi/gioi-thieu'
+      preLoaderRoute: typeof ViGioiThieuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vi/lop-yoga-online': {
       id: '/vi/lop-yoga-online'
       path: '/vi/lop-yoga-online'
@@ -1377,6 +1397,7 @@ const rootRouteChildren: RootRouteChildren = {
     ResearchYogaParticipationStatisticsRoute,
   ViCuaHangRoute: ViCuaHangRouteWithChildren,
   ViDoiTacSanPhamRoute: ViDoiTacSanPhamRoute,
+  ViGioiThieuRoute: ViGioiThieuRoute,
   ViLopYogaOnlineRoute: ViLopYogaOnlineRoute,
   ViYoga1Kem1OnlineRoute: ViYoga1Kem1OnlineRoute,
   ViYogaDoanhNghiepRoute: ViYogaDoanhNghiepRoute,

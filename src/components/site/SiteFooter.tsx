@@ -131,6 +131,9 @@ export function SiteFooter() {
             <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
               {isVi ? "Yoga Ấn Độ chính thống — tại Hải Dương và trực tuyến." : "Rooted in tradition. Refined for modern life."}
             </p>
+            <a href={`${isVi ? "/vi/gioi-thieu" : "/about"}#sonu-ghanghas`} className="mt-4 inline-block text-sm text-primary underline underline-offset-4">
+              Sonu Ghanghas — {isVi ? "Đồng sáng lập & phụ trách phát triển" : "Co-founder & Growth Partner"}
+            </a>
             <a
               href={SOCIAL.googleMapsStudio1}
               target="_blank"

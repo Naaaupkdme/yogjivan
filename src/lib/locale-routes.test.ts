@@ -10,8 +10,8 @@ describe("counterpart routing", () => {
     expect(enCounterpart("/vi/yoga-doanh-nghiep")).toBe("/corporate");
     expect(enCounterpart("/vi/yoga-hoc-duong")).toBe("/school-yoga");
     expect(enCounterpart("/vi")).toBe("/");
-    expect(viCounterpart("/about")).toBeNull();
-    expect(languageSwitchTarget("/about").vi).toBe("/vi");
+    expect(viCounterpart("/about")).toBe("/vi/gioi-thieu");
+    expect(languageSwitchTarget("/about").vi).toBe("/vi/gioi-thieu");
   });
 });
 
@@ -45,7 +45,7 @@ describe("saved preference redirect", () => {
   it("never redirects otherwise (no loops)", () => {
     expect(preferredLocaleRedirect("/online-yoga-classes", "EN")).toBeNull();
     expect(preferredLocaleRedirect("/online-yoga-classes", null)).toBeNull();
-    expect(preferredLocaleRedirect("/about", "VI")).toBeNull();
+    expect(preferredLocaleRedirect("/about", "VI")).toBe("/vi/gioi-thieu");
     expect(preferredLocaleRedirect("/vi/lop-yoga-online", "VI")).toBeNull();
     expect(preferredLocaleRedirect("/vi", "EN")).toBeNull();
   });

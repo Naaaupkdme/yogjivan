@@ -63,18 +63,19 @@ const LIVE_54 = [
   "/yoga-for-weight-loss",
 ];
 
-// Batch A candidate: 54 live baseline + 2 release-ready booking guides = 56 URLs.
+// Candidate: 54 live baseline + 2 booking guides + Vietnamese About = 57 URLs.
 const CANDIDATE_56 = [
   ...LIVE_54,
   "/blog/choose-family-yoga-booking",
   "/blog/planning-online-yoga-together",
+  "/vi/gioi-thieu",
 ];
 
 describe("automatic sitemap", () => {
-  it("matches the 56 canonical URLs (54 live baseline + 2 release-ready booking guides)", () => {
+  it("matches the baseline plus booking guides and Vietnamese About", () => {
     const paths = buildSitemapEntries(generateIndex(join(__dirname, "../routes")), BLOG_POSTS).map((e) => e.path);
     expect([...paths].sort()).toEqual([...CANDIDATE_56].sort());
-    expect(paths.length).toBe(56);
+    expect(paths.length).toBe(57);
     expect(paths[0]).toBe("/");
   });
   it("excludes noindex, redirect and /go routes", () => {

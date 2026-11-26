@@ -6,6 +6,7 @@ import { Hero } from "@/components/site/Hero";
 import { LocalIntro } from "@/components/site/LocalIntro";
 import { DiscoverTopics } from "@/components/site/DiscoverTopics";
 import { PrimaryPaths } from "@/components/site/PrimaryPaths";
+import { Leadership } from "@/components/site/Leadership";
 
 import { FAQS } from "@/lib/faqs";
 
@@ -77,6 +78,7 @@ function Index() {
 
       <Lazy><TrustSection /></Lazy>
       <Lazy><FounderStory /></Lazy>
+      <Leadership />
       <DiscoverTopics />
       <Lazy><Gallery /></Lazy>
       <Lazy><VideoTestimonials /></Lazy>
